@@ -6,6 +6,9 @@
 if (CSite::InDir('/index.php') && SITE_ID!='s2'){
     ?>
 	<div class="inner">
+	<?if($USER->IsAdmin()){
+		echo '12';
+	}?>
 		<div class="banner-02"><?$APPLICATION->IncludeComponent(
 	"d7:slider",
 	"",
