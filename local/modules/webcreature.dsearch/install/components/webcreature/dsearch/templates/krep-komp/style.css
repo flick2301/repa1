@@ -1,0 +1,40 @@
+.dsearch_result .search_result_start img {
+    max-width: 120px;
+    max-height: 90px;
+    margin-right: 12px;
+}
+.dsearch_result .search_result_start, .dsearch_result .search_result_end {
+    padding: 7px 0px;
+    cursor: pointer;
+    vertical-align: top;
+}
+.dsearch_result .search_result_start {
+    padding-left: 12px;
+}
+.dsearch_result .search_result_end {
+    padding-right: 12px;
+    border-bottom: 1px solid #eee;
+}
+.dsearch_result tr:last-child .search_result_start, .dsearch_result tr:last-child .search_result_end {
+}
+.dsearch_result tr:hover  .search_result_start, .dsearch_result tr:hover  .search_result_end {
+    background: #eee;
+}
+.dsearch_result {
+}
+.dsearch_result .title {
+    padding: 0px 12px;
+}
+.dsearch_result table {
+    width: 100%;
+}
+.top_pagenavigation {
+    margin-bottom: 20px;		
+}	
+.bottom_pagenavigation {
+    margin-top: 20px;	
+}	
+.title.alert {
+    margin-top: 20px;
+    font-size: 18px;	
+}	

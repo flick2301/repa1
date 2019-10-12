@@ -1,0 +1,11 @@
+.system-message_error {
+    background: #ff5f5f;
+    color: white;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    display: none;
+}
+/*
+.checkout .checkout__delivery-type {
+    display: block !important;
+}*/

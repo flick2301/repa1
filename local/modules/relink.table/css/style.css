@@ -1,0 +1,51 @@
+.generate_report{
+    display:inline-flex;
+    height:40px;
+    padding:0 5px;
+    background-color:#e7e7e7;
+    border-radius: 5px;
+    margin:20px 100px 20px 0;
+    cursor:pointer;
+    border:1px solid black;
+    
+}
+.reports{
+    border:1px solid black;
+    margin:20px 0 0 0;
+    padding:0px;
+    border-spacing:0;
+    
+}
+.reports tr{
+    margin:0px;
+    padding:0px;
+    
+}
+.reports td{
+    border:1px solid black;
+    
+    border-spacing:0;
+    padding:15px;
+}
+.generate_report:hover{
+    
+    background-color:#0c58cf;
+    
+   
+}
+.generate_report:hover span{
+    
+     
+    
+    color:white;
+}
+.generate_report span{
+        display: flex;
+    -webkit-box-align: center;
+        align-items: center;
+        font-weight:700;
+}
+.size-20{
+    font-size:22px;
+}
+

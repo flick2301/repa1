@@ -1,0 +1,1 @@
+<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3AfFQV6Nh5V8hk-ppu-YqVhhPcpLGGBRI7&amp;source=constructor" width="470" height="370" frameborder="0"></iframe>

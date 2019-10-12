@@ -1,0 +1,1 @@
+<img alt='Магазин крепежа «КРЕП-КОМП».' src="/include/logo_krep-komp_big.png">
