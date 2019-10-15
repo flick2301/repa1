@@ -4300,6 +4300,11 @@
 	height: 310px;	
 }
 
+.product-list__items--card .product-list__item p {
+	height: 63px;
+	overflow-y: auto;
+}
+
 .show-btn-wrap {
     border-radius: 3px;
     border: 1px solid #0c59cf;

@@ -279,7 +279,7 @@ Loc::LoadMessages(__FILE__);
             <?=$APPLICATION->ShowViewContent('RELINK');?>
             <?=$APPLICATION->ShowViewContent("smart_filter");?>
             <?if($APPLICATION->GetCurPage() == "/catalog/"):
-                $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Москреп\"");
+                $APPLICATION->SetPageProperty("title", "Интернет-магазин \"КРЕП-КОМП\"");
             endif;?>
             <?if(0):?>            
             <div class="aside-contacts">
