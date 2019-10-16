@@ -99,7 +99,8 @@ if($request['clear']=='Y'){
 
             $code = basename($row['0']);
 
-
+			
+			
             if (strpos($code, '.html')) {
                 $code = basename($row['0'], '.html');
                 $elementList = \Bitrix\Iblock\ElementTable::getList(array("select" => array('ID', 'IBLOCK_ID'), "filter" => array("=CODE" => $code, 'IBLOCK_ID' => CATALOG_IBLOCK_ID)));
@@ -116,7 +117,7 @@ if($request['clear']=='Y'){
                $akceptor = $row['1'];
            if($row['2'])
                $ankor = $row['2'];
-           
+           if($donor_id){
            $result = LinksTable::add(array(
                 'ANKOR' => $ankor,
                 'AKCEPTOR' => $akceptor,
@@ -124,6 +125,7 @@ if($request['clear']=='Y'){
                 'DONOR_ID' => $donor_id,
                 
             ));
+		   }
            
            
            
