@@ -35,7 +35,7 @@ BX.ready(function () {
             onsuccess: function (data) {
                 if (data.STATUS == 'OK') {
                     BX.addClass(e.target, 'active');
-                   
+                   ga ('send', 'event', 'Корзина', 'Добавить в корзину');
                     BX.onCustomEvent('OnBasketChange');
                     $('.header-basket').popUp();
                 } else {

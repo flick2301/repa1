@@ -37,6 +37,7 @@ BX.ready(function () {
                     BX.addClass(e.target, 'active');
                    console.log(e.target.dataset.price);
                     BX.onCustomEvent('OnBasketChange');
+					ga ('send', 'event', 'Корзина', 'Добавить в корзину');
                     $('.header-basket').popUp();
                 } else {
                    console.log(data);

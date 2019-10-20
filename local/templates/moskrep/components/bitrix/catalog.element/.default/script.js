@@ -33,8 +33,9 @@ BX.ready(function () {
             onsuccess: function (data) {
                 if (data.STATUS == 'OK') {
                     BX.addClass(e.target, 'active');
-                   ga('send', 'event', 'Добавление товара в корзину', 'Добавление товара в корзину'); 
+                   
                    yaCounter29426710.reachGoal('AddToShoppingCart');
+				   ga ('send', 'event', 'Корзина', 'Добавить в корзину');
                     BX.onCustomEvent('OnBasketChange');
                     $('.header-basket').popUp();
                     

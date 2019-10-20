@@ -49,6 +49,7 @@ if(strlen($arResult["OK_MESSAGE"]) > 0)
 
 
         yaCounter29426710.reachGoal('SendMessage');
+		ga('send', 'event', 'Сообщения', 'Отправка сообщение');
 
     };
 
