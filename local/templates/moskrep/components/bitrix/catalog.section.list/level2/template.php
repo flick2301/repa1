@@ -54,7 +54,7 @@ global $APPLICATION;
                 <div class="nav-sale__img">
                     <img src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>
-                <span class="nav-sale__title"><?=$arSection['NAME']?></span>
+                <span class="nav-sale__title"><span><?=$arSection['NAME']?></span></span>
             </a>
         </li>
     <?}?>		
@@ -70,7 +70,7 @@ global $APPLICATION;
                             <div class="nav-sale__img">
                                 <img src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                             </div>
-                            <span class="nav-sale__title"><?=$arSection['NAME']?></span>
+                            <span class="nav-sale__title"><span><?=$arSection['NAME']?></span></span>
                         </a>
                     </llist-number__titlei>
                 <?endforeach;?>
@@ -265,7 +265,7 @@ global $APPLICATION;
                 <div class="nav-sale__img">
                     <img src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>
-                <span class="nav-sale__title"><?=$arSection['NAME']?></span>
+                <span class="nav-sale__title"><span><?=$arSection['NAME']?></span></span>
             </a>
         </li>
     <?}?>
@@ -278,7 +278,7 @@ global $APPLICATION;
                 <div class="nav-sale__img">
                     <img src="<?=$dop_section['PICTURE']['src']?>" alt="<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>
-                <span class="nav-sale__title"><?=$dop_section['H1']["VALUE"]?></span>
+                <span class="nav-sale__title"><span><?=$dop_section['H1']["VALUE"]?></span></span>
             </a>
         </li>
     <?php

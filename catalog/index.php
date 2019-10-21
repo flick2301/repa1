@@ -176,9 +176,9 @@ $APPLICATION->SetPageProperty("component", "catalog");
 			4 => "ARTNUMBER",
 			5 => "",
 		),
-		"LIST_PREV_PIC_H_L2" => "85",
+		"LIST_PREV_PIC_H_L2" => "201",
 		"LIST_PREV_PIC_H_L3" => "71",
-		"LIST_PREV_PIC_W_L2" => "85",
+		"LIST_PREV_PIC_W_L2" => "268",
 		"LIST_PREV_PIC_W_L3" => "71",
 		"LIST_PROPERTY_CODE" => array(
 			0 => "",
