@@ -25,8 +25,8 @@ $APPLICATION->SetTitle("Сертификаты соответствия");
 		"IBLOCK_TYPE" => "certificates",	// IBLOCK_TYPE
 		"ITEMS_PREV_PIC_H" => "370",	// Высота картинки раздела
 		"ITEMS_PREV_PIC_W" => "370",	// Ширина картинки для раздела
-		"LIST_PREV_PIC_H_L2" => "86",	// Высота картинки раздела
-		"LIST_PREV_PIC_W_L2" => "86",	// Ширина картинки для раздела
+		"LIST_PREV_PIC_H_L2" => "201",	// Высота картинки раздела
+		"LIST_PREV_PIC_W_L2" => "268",	// Ширина картинки для раздела
 		"SEF_FOLDER" => "/certificates/",	// Каталог ЧПУ (относительно корня сайта)
 		"SEF_MODE" => "Y",	// Включить поддержку ЧПУ
 		"SEF_URL_TEMPLATES" => array(
