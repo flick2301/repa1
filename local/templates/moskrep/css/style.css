@@ -1856,6 +1856,7 @@
             align-items: center;
 }
 
+
 .nav-sale:not(.temp2) .nav-sale__img {
 	margin-top: 0;
 	width: inherit;
@@ -1872,6 +1873,10 @@
 	text-align: center;
 	top: 1px;
 	left: 1px;
+}
+
+.nav-sale:not(.temp2) .nav-sale__item .nav-sale__img img {
+	height: 200px;	
 }
 
 .nav-sale__title {

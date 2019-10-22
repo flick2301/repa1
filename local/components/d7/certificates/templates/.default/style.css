@@ -11,3 +11,7 @@ and open the template in the editor.
 .certs{
     height:380px !important;
 }
+
+.nav-sale:not(.temp2) .nav-sale__img img {
+
+}
