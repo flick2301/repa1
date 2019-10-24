@@ -1865,14 +1865,14 @@
 }
 
 .nav-sale:not(.temp2) .nav-sale__img img {
-	position: relative;;
-	/*width: 268px;*/
+	width: 268px;
 	height: 201px;
 	margin: auto;
 	display: block;
 	text-align: center;
-	top: 1px;
-	left: 1px;
+	top: 0px;
+	left: 0px;
+	margin-top: 1px;
 }
 
 .nav-sale:not(.temp2) .nav-sale__item .nav-sale__img img {
