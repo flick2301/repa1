@@ -1865,7 +1865,7 @@
 }
 
 .nav-sale:not(.temp2) .nav-sale__img img {
-	width: 268px;
+	/*width: 268px;*/
 	height: 201px;
 	margin: auto;
 	display: block;
