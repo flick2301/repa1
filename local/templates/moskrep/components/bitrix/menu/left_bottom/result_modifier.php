@@ -18,7 +18,7 @@ foreach($arResult as $key=>$arItem):
     if($delete)
         unset($arResult[$key]);
     if($arItem['LINK']=='/krepezh/ankera/anker_shpilka/'){
-        array_splice($arResult, $key, 0, array(array("TEXT"=>"Химический анкер", "LINK"=> "/krepezh/ankera/khimicheskiy-anker/", "SELECTED"=> false, "PERMISSION"=>"X",  "IS_PARENT"=> false, "IS_PARENT"=> false, "DEPTH_LEVEL"=>'3'), array("TEXT"=>"Анкер регулировачный", "LINK"=> "/krepezh/ankera/anker-regulirovochnyy/", "SELECTED"=> false, "PERMISSION"=>"X",  "IS_PARENT"=> false, "IS_PARENT"=> false,  "DEPTH_LEVEL"=>'3')));
+        array_splice($arResult, $key, 0, array(array("TEXT"=>"Химический анкер", "LINK"=> "/krepezh/ankera/khimicheskiy-anker/", "SELECTED"=> false, "PERMISSION"=>"X",  "IS_PARENT"=> false, "IS_PARENT"=> false, "DEPTH_LEVEL"=>'3'), array("TEXT"=>"Анкер регулировочный", "LINK"=> "/krepezh/ankera/anker-regulirovochnyy/", "SELECTED"=> false, "PERMISSION"=>"X",  "IS_PARENT"=> false, "IS_PARENT"=> false,  "DEPTH_LEVEL"=>'3')));
 
     }
 
