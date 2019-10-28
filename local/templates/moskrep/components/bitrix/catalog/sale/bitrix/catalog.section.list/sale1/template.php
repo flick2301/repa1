@@ -24,7 +24,7 @@ $this->setFrameMode(true);
                 <div class="nav-sale__img">
                     <img src="<?=$arSection['PICTURE']['src']?>" alt="">
                 </div>
-                <span class="nav-sale__title"><?=$arSection['NAME']?></span>
+                <span class="nav-sale__title"><span><?=$arSection['NAME']?></span></span>
             </a>
         </li>
     <?}?>		

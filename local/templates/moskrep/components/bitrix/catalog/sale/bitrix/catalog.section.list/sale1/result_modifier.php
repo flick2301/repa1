@@ -19,7 +19,7 @@ foreach($arResult['SECTIONS'] as $key=>$arSection){
    
    
     
-    $file = CFile::ResizeImageGet($arSection['PICTURE']['ID'], array('width'=>85, 'height'=>85), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+    $file = CFile::ResizeImageGet($arSection['PICTURE']['ID'], array('width'=>268, 'height'=>201), BX_RESIZE_IMAGE_PROPORTIONAL, true);
     $arResult['SECTIONS'][$key]['PICTURE'] = $file;
     
 }
