@@ -42,6 +42,7 @@ Loc::LoadMessages(__FILE__);
     if (d.head) d.head.appendChild(s);
   })(document);
 </script>
+<?require_once($_SERVER["DOCUMENT_ROOT"]."/include/counters.php");?>
 </head>
 <?$APPLICATION->ShowPanel();?>
 <body>

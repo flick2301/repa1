@@ -2,7 +2,14 @@ BX.ready(function () {
 	
 	
 	
-	
+	gtag('event','view_item', {
+		'value': BX('main_link').dataset.price,
+		'items': [
+		{
+			'id': BX('main_link').dataset.product, 
+			'google_business_vertical': 'retail'
+		}]
+	});
 
     
     var buyBtnDetail = document.body.querySelectorAll('.card__btn');

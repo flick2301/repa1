@@ -268,7 +268,7 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/fancybox.min.js");?>
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/common.js");?>
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.cookie.js");?>
-<?require_once($_SERVER["DOCUMENT_ROOT"]."/include/counters.php");?>
+
 
 <?
 if (CSite::InDir('/index.php')){
