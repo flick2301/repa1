@@ -1,4 +1,9 @@
 BX.ready(function () {
+	
+	
+	
+	
+
     
     var buyBtnDetail = document.body.querySelectorAll('.card__btn');
 

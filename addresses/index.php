@@ -36,28 +36,7 @@ $APPLICATION->SetTitle("Адреса магазинов");
 					</div>
 				</div>
 			</div>
-                        <div class="contact">
-                            <div class="contact__wrapper">
-                                <div class="contact__text">
-                                    <div class="contact__first">
-                                        <strong>Точка выдачи<br>
-                                        в Москве</strong>
-                                        <p>
-					 Москва, улица Кировоградская, дом 9, корпус 4,, павильон 1-47, ТЦ "Южный", метро Южная<br>
-					 пн-пт 10:00-19:00;
-                                        </p>
-                                    </div>
-                                    <div class="contact__last">
-                                        <a href="tel:+7 (499) 350-55-55" class="contact__phone roistat-phone">8 499 350-55-55</a> 
-                                    </div>
-                                </div>
-                                <div class="contact__map">
-                                    <div id="map1">
-                                        <?include($_SERVER["DOCUMENT_ROOT"].'/include/map4.php');?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
 			<div class="contact">
 				<div class="contact__wrapper">
 					<div class="contact__text">

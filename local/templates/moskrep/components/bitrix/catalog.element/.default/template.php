@@ -66,7 +66,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
             <div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][1]?> ₽</b> при заказе от 100000 ₽</div><br>
             <div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][2]?> ₽</b> при заказе от 500000 ₽</div>
             <?endif;?>
-		    <a href="javascript:void(0)" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' rel="nofollow" class="blue-btn card__btn">Добавить в корзину</a>
+		    <a href="javascript:void(0)" id='main_link' data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' rel="nofollow" class="blue-btn card__btn">Добавить в корзину</a>
 		</div>
 		<ul class="basket-info__items">
 		    <li class="basket-info__item basket-info--car"><span>Доставка</span><i></i><strong>от 290 руб.</strong></li>
