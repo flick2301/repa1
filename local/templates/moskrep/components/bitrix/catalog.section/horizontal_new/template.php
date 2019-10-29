@@ -132,6 +132,7 @@ if($arParams['FOR_SEO']!='Y'){
         $index=0;
         foreach ($size as $item)
         {
+			$arItemsID[]=$item['ID'];
             
             $price = $item['PRICES'][ID_SALE_PRICE]['VALUE'] ? $item['PRICES'][ID_SALE_PRICE]['VALUE'] : $item['PRICES'][ID_BASE_PRICE]['VALUE'];
             $old_price = $item['PRICES'][ID_SALE_PRICE]['VALUE'] ? $item['PRICES'][ID_BASE_PRICE]['VALUE'] : 0;
@@ -246,6 +247,25 @@ while($arSection = $db_list->GetNext()) {
 </ul>
 <?}?>
 
+<?
+if(count($arItemsID)){
+	?>
+	<script>
+	BX.ready(function () {
+		gtag('event','view_item_list', {
+				'items': [
+					<?foreach($arItemsID as $IDs):?>
+						{
+							'id':  <?=$IDs?>, 
+							'google_business_vertical': 'retail'
+						},
+					<?endforeach;?>]
+					});
+	});
+	</script>
+	<?
+}
+?>
 
 <?if($arResult['UF_DETAIL_TEXT']):?>
 <div class='set-default-parametr-page-cat'><?=html_entity_decode($arResult['UF_DETAIL_TEXT'], ENT_QUOTES, "UTF-8");?></div>
