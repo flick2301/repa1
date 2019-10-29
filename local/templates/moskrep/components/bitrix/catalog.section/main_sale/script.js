@@ -36,7 +36,14 @@ BX.ready(function () {
             onsuccess: function (data) {
                 if (data.STATUS == 'OK') {
                     BX.addClass(e.target, 'active');
-                   
+                   gtag('event','add_to_cart', {
+						'value': e.target.dataset.price,
+						'items': [
+						{
+							'id':  e.target.dataset.product, 
+							'google_business_vertical': 'retail'
+						}]
+					});
                     BX.onCustomEvent('OnBasketChange');
                     $('.header-basket').popUp();
                 } else {

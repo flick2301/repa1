@@ -38,6 +38,14 @@ BX.ready(function () {
                    console.log(e.target.dataset.price);
                     BX.onCustomEvent('OnBasketChange');
 					ga ('send', 'event', 'Корзина', 'Добавить в корзину');
+					gtag('event','add_to_cart', {
+						'value': e.target.dataset.price,
+						'items': [
+						{
+							'id':  e.target.dataset.product, 
+							'google_business_vertical': 'retail'
+						}]
+					});
                     $('.header-basket').popUp();
                 } else {
                    console.log(data);
