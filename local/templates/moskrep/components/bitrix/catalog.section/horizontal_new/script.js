@@ -7,13 +7,21 @@
 
 BX.ready(function () {
     var buyBtnDetail = document.body.querySelectorAll('.basket-btn');
-
+	var IDs=[];
     for (var i = 0; i < buyBtnDetail.length; i++) {
         BX.bind(buyBtnDetail[i], 'click', BX.delegate(function (e) {
             add2basketDetail(e)
         }, this));
+		
+		
+	IDs.push({'id': buyBtnDetail[i].dataset.product, 'google_business_vertical': 'retail'});
+		
     
     }
+	
+	gtag('event','view_item_list', {
+				'items': IDs
+					});
     
     function add2basketDetail(e) {
         var id = e.target.dataset.product,
