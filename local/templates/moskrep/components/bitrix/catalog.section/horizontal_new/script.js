@@ -20,6 +20,7 @@ BX.ready(function () {
     }
 	
 	gtag('event','view_item_list', {
+		'send_to': 'AW-958495754',
 				'items': IDs
 					});
     
@@ -47,6 +48,7 @@ BX.ready(function () {
                     BX.onCustomEvent('OnBasketChange');
 					ga ('send', 'event', 'Корзина', 'Добавить в корзину');
 					gtag('event','add_to_cart', {
+						'send_to': 'AW-958495754',
 						'value': e.target.dataset.price,
 						'items': [
 						{

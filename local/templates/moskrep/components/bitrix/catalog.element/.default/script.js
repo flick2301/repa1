@@ -3,6 +3,7 @@ BX.ready(function () {
 	
 	
 	gtag('event','view_item', {
+		'send_to': 'AW-958495754',
 		'value': BX('main_link').dataset.price,
 		'items': [
 		{
@@ -49,6 +50,7 @@ BX.ready(function () {
                    yaCounter29426710.reachGoal('AddToShoppingCart');
 				   ga ('send', 'event', 'Корзина', 'Добавить в корзину');
 				   gtag('event','add_to_cart', {
+					   'send_to': 'AW-958495754',
 						'value': e.target.dataset.price,
 						'items': [
 						{
