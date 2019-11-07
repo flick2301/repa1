@@ -252,6 +252,25 @@ while($arSection = $db_list->GetNext()) {
 <div class='set-default-parametr-page-cat'><?=html_entity_decode($arResult['UF_DETAIL_TEXT'], ENT_QUOTES, "UTF-8");?></div>
 <?endif;?>
 
-
+<script>
+BX.ready(function () {
+    var buyBtnDetail = document.body.querySelectorAll('.basket-btn');
+	var IDs=[];
+	var sum=0;
+    for (var i = 0; i < buyBtnDetail.length; i++) {
+     
+		
+	IDs.push(buyBtnDetail[i].dataset.product);
+	sum =  sum+Number(buyBtnDetail[i].dataset.price);
+		
+    
+    }
+	
+	
+	
+	console.log(IDs);
+	console.log(sum);
+});
+</script>
 
 		
