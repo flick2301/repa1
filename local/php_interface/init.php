@@ -1,4 +1,141 @@
 <?php
+use \Bitrix\Main\EventManager;
+use \Bitrix\Main\Event;
+use \Bitrix\Main\Entity;
+use \Bitrix\Sale\Order;
+use \Bitrix\Sale\Payment;
+use \Bitrix\Sale\PaySystem\Manager;
+use \Bitrix\Sale\Shipment;
+use \Bitrix\Sale\Helpers\Admin\Blocks\OrderBasketShipment;
+$inst = EventManager::getInstance();
+$inst-> addEventHandler('sale', 'OnBeforeCollectionDeleteItem', 'saveInfo');
+$inst-> addEventHandler('sale', 'OnSaleOrderBeforeSaved', 'reverseInfo');
+//Небольшая прослойка, возвращает доступные поля
+/**
+ * @param array $arValues
+ * @param array $allowedFields
+ * @return array $result
+ */
+function checkFields( $arValues, $allowedFields) {
+	   $result = array();
+	   foreach ( $arValues as $key => $value ) {
+		      if ( in_array( $key,$allowedFields ) && !in_array($key, array('ACCOUNT_NUMBER')) ) {
+			         $result[$key] = $value;
+			}
+		}
+	   return $result;
+	}
+function saveInfo(\Bitrix\Main\Event $event ) {
+	   /**
+	    * @var \Bitrix\Sale\Shipment|\Bitrix\Sale\Payment $entity
+	    */
+	   if ( $_SESSION['BX_CML2_EXPORT'] ) {
+		      $entity = $event->getParameter('ENTITY');
+		      if ( $entity instanceof Shipment ) {
+			         if ( !is_array( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] )  )
+			            $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] = array();
+			         if ( !$entity->isSystem() )
+			            $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'][] = checkFields( $entity->getFields()->getValues(), Shipment::getAvailableFields() );
+			}
+		    /* Коллекцию оплат пусть удаляет  if ( $entity instanceof Payment ) {
+			         if ( !is_array( $_SESSION['BX_CML2_EXPORT']['DELETED_PAYMENTS'] )  )
+			            $_SESSION['BX_CML2_EXPORT']['DELETED_PAYMENTS'] = array();
+			         $_SESSION['BX_CML2_EXPORT']['DELETED_PAYMENTS'][] = checkFields( $entity->getFields()->getValues(), Payment::getAvailableFields() );
+			}
+			*/
+		}
+	   else {
+		      return;
+		}
+	}
+
+function reverseInfo(\Bitrix\Main\Event $event ) {
+	   /**
+	    * @var \Bitrix\Sale\Order $order
+	    * @var \Bitrix\Sale\ShipmentCollection $shipmentCollection
+	    * @var \Bitrix\Sale\Shipment $shipment
+	    * @var \Bitrix\Sale\PaymentCollection $paymentCollection
+	    * @var \Bitrix\Sale\Payment $payment
+	    * @var \Bitrix\Sale\PropertyValue $somePropValue
+	    * **/
+	   if ( $_SESSION['BX_CML2_EXPORT'] ) {
+		      $order = $event->getParameter("ENTITY");
+		      if ( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] ) {
+			         //Вернем отгрузки
+			         $shipmentCollection = $order->getShipmentCollection();
+			         $systemShipmentItemCollection = $shipmentCollection->getSystemShipment()->getShipmentItemCollection();
+			$products = array();
+			         $basket = $order->getBasket();
+			         if ($basket)
+			         {
+				            /** @var \Bitrix\Sale\BasketItem $product */
+				            $basketItems = $basket->getBasketItems();
+				            foreach ($basketItems as $product)
+				            {
+					               $systemShipmentItem = $systemShipmentItemCollection->getItemByBasketCode($product->getBasketCode());
+					               if ($product->isBundleChild() || !$systemShipmentItem || $systemShipmentItem->getQuantity() <= 0)
+					                  continue;
+					               $products[] = array(
+					                  'AMOUNT' => $product->getQuantity(),
+					                  'BASKET_CODE' => $product->getBasketCode()
+					               );
+					}
+				}
+			         /** @var \Bitrix\Sale\Shipment $obShipment */
+			         /** @var array $shipmentFields */
+			         foreach ( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] as $shipmentFields ) {
+				            $fg = true;
+				            foreach( $shipmentCollection as $obShipment ) {
+					               if ($obShipment->isSystem())
+					                  continue;
+					               $usedFields = checkFields($obShipment->getFields()->getValues(), Shipment::getAvailableFields() );
+					               if ( count( array_diff_assoc( $shipmentFields, $usedFields) ) == 0 )
+					                  $fg = false;
+					 //доставка с такими полями уже есть
+					}
+				            if ( $fg ) {
+					               $shipment = $shipmentCollection->createItem();
+					               $shipment->setFields( $shipmentFields );
+					               OrderBasketShipment::updateData($order, $shipment, $products);
+					}
+				}
+			         unset( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] );
+			}
+			/* Коллекцию оплат пусть удаляет  if ( $entity instanceof Payment ) {
+		      if ( $_SESSION['BX_CML2_EXPORT']['DELETED_PAYMENTS'] ) {
+			         //Вернем оплаты
+			         $paymentCollection = $order->getPaymentCollection();
+			        
+			         foreach ( $_SESSION['BX_CML2_EXPORT']['DELETED_PAYMENTS'] as $paymentFields ) {
+				            $fg = true;
+				            foreach( $paymentCollection as $obPayment ) {
+					               $usedFields = checkFields( $obPayment->getFields()->getValues(), Payment::getAvailableFields() );
+					               if ( count( array_diff_assoc( $paymentFields, $usedFields) ) == 0 )
+					                  $fg = false;
+					 //такая оплата уже есть
+					}
+				            if ( $fg ) {
+					               $payment = $paymentCollection->createItem();
+					               $payment->setFields( $paymentFields );
+					}
+				}
+			         unset( $_SESSION['BX_CML2_EXPORT']['DELETED_PAYMENTS'] );
+			}
+			*/
+		      //Проверим сумму заказа
+		      $paymentCollection = $order->getPaymentCollection();
+		      if ( ($sumP = $paymentCollection->getSum() ) != ($sumO = $order->getPrice() ) ) {
+			         $diff = $sumO - $sumP;
+			         $innerPayID = Manager::getInnerPaySystemId();
+			         foreach ( $paymentCollection as $payment ) {
+				            if ( $payment->getPaymentSystemId() != $innerPayID) {
+					               $newVal = floatval($payment->getField("SUM")) + floatval($diff);
+					               $payment->setField("SUM", $newVal);
+					}
+				}
+			}
+		}
+	}
 
 if(file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/constants.php"))
         require_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/constants.php");
