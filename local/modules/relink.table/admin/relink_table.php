@@ -99,7 +99,7 @@ if($request['clear']=='Y'){
 
             $code = basename($row['0']);
 
-			
+			$donor_id = 0;
 			
             if (strpos($code, '.html')) {
                 $code = basename($row['0'], '.html');
@@ -113,6 +113,11 @@ if($request['clear']=='Y'){
             $section = $sectionList->fetch();
             $donor_id = $section['ID'];
             }
+			if(!$donor_id){
+				$elementList = \Bitrix\Iblock\ElementTable::getList(array("select" => array('ID', 'IBLOCK_ID'), "filter" => array("=CODE" => array($code, str_replace('_', '-', $code)), 'IBLOCK_ID' => SORTING_IBLOCK_ID)));
+				$element = $elementList->fetch();
+				$donor_id = $element['ID'];
+			}
            if($row['1'])
                $akceptor = $row['1'];
            if($row['2'])
@@ -125,6 +130,8 @@ if($request['clear']=='Y'){
                 'DONOR_ID' => $donor_id,
                 
             ));
+		   }else{
+			   Bitrix\Main\Diag\Debug::writeToFile(array($row['0'], $code),"","/upload/error_donors.txt");
 		   }
            
            

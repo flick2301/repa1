@@ -265,3 +265,11 @@ foreach($arResult['SECTIONS'] as $key=>$arSection){
     
     
 }
+
+if($arResult['REFERENCE']['ITEM']['ID']!=''){
+	$relinkList = \Relink\Table\LinksTable::getList(array("select" => array('*'), "filter" => array("=DONOR_ID" => $arResult['REFERENCE']['ITEM']['ID'])));
+while($arRelink = $relinkList->fetch()){
+    $arResult['RELINK'][] = $arRelink;
+}
+
+}

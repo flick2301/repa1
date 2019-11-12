@@ -18,7 +18,13 @@ if($APPLICATION->GetGroupRight("table")>"D") // проверка уровня д
 			"items_id" => $MODULE_ID,
                         "module_id"   => $MODULE_ID,
 			"more_url" => array('relink_table_admin.php'),
-			"items" => array()
+			"items" => array(
+							array(
+								"url" => "relink_table_control_admin.php?lang=".LANGUAGE_ID,
+								//"more_url" => array('pol_generator_edit_key.php',"pol_generator_list_keys.php"),
+								"text" => 'Проверка адресов АНКОРОВ',
+							),
+				)
 		);
   return $aMenu;
 }

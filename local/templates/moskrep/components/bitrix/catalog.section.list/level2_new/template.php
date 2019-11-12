@@ -22,7 +22,6 @@ global $APPLICATION;
 <?
 //Если мы зашли на страницу СПРАВОЧНИКА
 if($arResult['REFERENCE']['ITEM']['ID']!=''){?>
-
    
 <h1 class="s38-title"><?=$arResult['REFERENCE']['ITEM']['H1']['VALUE']?></h1>
     

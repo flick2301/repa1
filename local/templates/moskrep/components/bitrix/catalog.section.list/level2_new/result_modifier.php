@@ -9,6 +9,7 @@ $relinkList = \Relink\Table\LinksTable::getList(array("select" => array('*'), "f
 while($arRelink = $relinkList->fetch()){
     $arResult['RELINK'][] = $arRelink;
 }
+
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -281,4 +282,12 @@ foreach($arResult['SECTIONS'] as $key=>$arSection){
 
     
     
+}
+
+if($arResult['REFERENCE']['ITEM']['ID']!=''){
+	$relinkList = \Relink\Table\LinksTable::getList(array("select" => array('*'), "filter" => array("=DONOR_ID" => $arResult['REFERENCE']['ITEM']['ID'])));
+while($arRelink = $relinkList->fetch()){
+    $arResult['RELINK'][] = $arRelink;
+}
+
 }
