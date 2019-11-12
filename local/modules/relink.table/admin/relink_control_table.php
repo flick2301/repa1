@@ -71,8 +71,9 @@ if($request->get("view")){
 		}else{
 			//echo $row['AKCEPTOR'].'..........'.'DONE'.'<br />';
 		}
-		curl_close($handle);
+		
 	}
+	curl_close($handle);
 	
 	
 }
