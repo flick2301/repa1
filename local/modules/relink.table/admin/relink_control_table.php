@@ -1,7 +1,6 @@
 <?php
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
 
-require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_admin_before.php");
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_admin_after.php");
 require($_SERVER["DOCUMENT_ROOT"]."/local/classes/SpreadsheetReader_CSV.php");
 $module_id = 'relink.table';
 
@@ -48,24 +47,30 @@ $request = $context->getRequest();
 	
 </form>
 <?
+$url = 'https://krep-komp.ru/krepezh/ankera/anker_regulirovochnyy/';
+print_r(get_headers($url));
 if($request->get("view")){
 	
 	$result = LinksTable::getList(array(
             'select'=>array('ID', 'AKCEPTOR'),
             //'count_total' => true,
             //'offset' => $nav->getOffset(),
-            //'limit' => $nav->getLimit(),
+            'limit' => '100',
         ));
 	while ($row = $result->fetch())
     {
 		$url = $row['AKCEPTOR'];
 		$handle = curl_init($url);
+		
 		curl_setopt($handle,  CURLOPT_RETURNTRANSFER, TRUE);
-
+		curl_setopt($handle, CURLOPT_NOBODY, 1);
+		
+		curl_setopt($handle, CURLOPT_FRESH_CONNECT, 1); // не использовать cache
 		$response = curl_exec($handle);
 
 		/* Проверка на статус 404 (не найдено). */
 		$httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+		curl_close($handle);
 		if($httpCode == 404) {
 			echo $row['AKCEPTOR'].'..........'.'404'.'<br />';
 		}else{
@@ -73,12 +78,12 @@ if($request->get("view")){
 		}
 		
 	}
-	curl_close($handle);
+	
 	
 	
 }
 ?>
 <?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/epilog_admin.php");
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/epilog_after.php");
 
 ?>
