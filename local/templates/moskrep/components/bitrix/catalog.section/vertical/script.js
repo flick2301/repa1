@@ -8,6 +8,7 @@
 BX.ready(function () {
     var buyBtnDetail = document.body.querySelectorAll('.product-list__btn');
 
+	var IDs=[];
     for (var i = 0; i < buyBtnDetail.length; i++) {
         BX.bind(buyBtnDetail[i], 'click', BX.delegate(function (e) {
             add2basketDetail(e)
