@@ -10,7 +10,17 @@ Loc::LoadMessages(__FILE__);
 <!DOCTYPE html>
 <html xml:lang="<?=LANGUAGE_ID?>" lang="<?=LANGUAGE_ID?>">
 <head>
-    
+  	<!--АНТИСОВЕТНИК-->
+	<script data-skip-moving='true'>
+(function(d) {
+var ref=d.getElementsByTagName('script')[0]; 
+var js, id='3356a6aae65d7a48c0f5f36187171be6';
+if (d.getElementById(id)) return;
+js=d.createElement('script'); js.id=id;js.async=false;
+js.src='https://antisovetnic.ru/anti/'+escape(id);
+ref.parentNode.insertBefore(js, ref);}(document));
+</script>
+	<!--АНТИСОВЕТНИК-->  
        
     
     <meta charset="utf-8">
@@ -30,17 +40,7 @@ Loc::LoadMessages(__FILE__);
 		
 	?>
 	
-	<!--АНТИСОВЕТНИК-->
-	<script data-skip-moving='true'>
-(function(d) {
-var ref=d.getElementsByTagName('script')[0]; 
-var js, id='3356a6aae65d7a48c0f5f36187171be6';
-if (d.getElementById(id)) return;
-js=d.createElement('script'); js.id=id;js.async=false;
-js.src='https://antisovetnic.ru/anti/'+escape(id);
-ref.parentNode.insertBefore(js, ref);}(document));
-</script>
-	<!--АНТИСОВЕТНИК-->
+
 
    <link rel='canonical' href='https://<?=$_SERVER["SERVER_NAME"]?><?=$APPLICATION->ShowViewContent('page_url');?>' />
 
