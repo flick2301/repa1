@@ -6,15 +6,14 @@ use Bitrix\Main,
 	Bitrix\Main\Localization\Loc,
 	Bitrix\Main\Page\Asset;
 
+
 Asset::getInstance()->addJs("/bitrix/components/bitrix/sale.order.payment.change/templates/.default/script.js");
 
 
 Loc::loadMessages(__FILE__);
 
 ?>
-<?$APPLICATION->AddChainItem("Мои заказы", "");?>
-<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());?>
-<h1 class="s38-title"><?=$APPLICATION->ShowTitle();?></h1>
+
 <?
 
 if (!empty($arResult['ERRORS']['FATAL']))

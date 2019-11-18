@@ -1,6 +1,7 @@
 <?
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
+
 $arChildParams = array(
 	"PATH_TO_DETAIL" => $arResult["PATH_TO_DETAIL"],
 	"PATH_TO_CANCEL" => $arResult["PATH_TO_CANCEL"],
@@ -27,11 +28,13 @@ $arChildParams = array(
 foreach ($arParams as $key => $val)
 	if(strpos($key, "STATUS_COLOR_") !== false && strpos($key, "~") !== 0)
 		$arChildParams[$key] = $val;
-
+	
+	
 $APPLICATION->IncludeComponent(
 	"bitrix:sale.personal.order.list",
 	"",
 	$arChildParams,
 	$component
 );
+
 ?>
