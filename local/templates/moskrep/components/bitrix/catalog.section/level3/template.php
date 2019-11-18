@@ -56,7 +56,7 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 ?>
                             
             <tr class="blue-table__tr">
-		<td class="blue-table__td blue-table__name"><a href="<?=$item['DETAIL_PAGE_URL']?>" target="_self" class="name-b"><?=$item['NAME']?></a></td>
+		<td class="blue-table__td blue-table__name"><a href="<?=$item['DETAIL_PAGE_URL']?>" target="_self" alt='<?=$item['NAME']?>' class="name-b"><?=$item['NAME']?></a></td>
 		<td class="blue-table__td"><span class="articul-b"><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?></span></td>
 		<td class="blue-table__td"><span class="size-b"><?=implode($size, 'x');?></span></td>
 		<?if($ral_in_ar){?>

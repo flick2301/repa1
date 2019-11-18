@@ -100,7 +100,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                     <li data-tab="tab-6" class="card-tabs__item" style="color:#01B10E">Ваши скидки</li>
 		</ul>
 	    <div id="tab-1" class="card__tabs-list active">
-                <div itemprop="description"><?=($arResult['DETAIL_DESCRIPTION']) ? html_entity_decode($arResult['DETAIL_DESCRIPTION'], ENT_QUOTES, "UTF-8") : $arResult['NAME'];?></div>
+                <div class='delivery__text' itemprop="description"><?=($arResult['DETAIL_DESCRIPTION']) ? html_entity_decode($arResult['DETAIL_DESCRIPTION'], ENT_QUOTES, "UTF-8") : $arResult['NAME'];?></div>
 		<?if(count($arResult['BASE_PROPERTIES_HEAD'])):?>
                 <h2 id='chars' class="s28-title">Характеристики</h2>
 		<div class="info__items-wrap">
