@@ -107,6 +107,7 @@ $rsGender = CUserFieldEnum::GetList(array(), array("ID" => $aSection["UF_SEC_LIS
 						"SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
 						"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],
 						"USE_MAIN_ELEMENT_SECTION" => $arParams["USE_MAIN_ELEMENT_SECTION"],
+						"SECTION_USER_FIELDS" => array("UF_SOPUT_SPR"),
 						'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
 						'CURRENCY_ID' => $arParams['CURRENCY_ID'],
 						'HIDE_NOT_AVAILABLE' => $arParams["HIDE_NOT_AVAILABLE"],

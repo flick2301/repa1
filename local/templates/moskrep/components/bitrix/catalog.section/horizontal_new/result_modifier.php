@@ -51,6 +51,13 @@ if($arSection = $rsResult->GetNext()) {
     $arResult["UF_RELATED"] = $arSection["UF_RELATED"];
     $arResult["UF_DETAIL_TEXT"] = $arSection["UF_DETAIL_TEXT"];
 }
+
+$rsResult = CIBlockElement::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ID" => $arResult["UF_SOPUT_SPR"]), false, false, array("*"));
+while($arElement = $rsResult->GetNext()) { 
+    
+    $arResult['UF_SOPUT_SPR_ITMES'][] = $arElement;
+    
+}
 						
 
 $entity_data_class = GetEntityDataClass(TECH_HB_ID);

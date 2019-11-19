@@ -102,6 +102,19 @@ if($arParams['FOR_SEO']!='Y'){
         <?$APPLICATION->ShowViewContent('filter_in_stock_2');?>
     </div>
 </div>
+<?if($arResult['UF_SOPUT_SPR_ITMES']){
+	
+	foreach($arResult['UF_SOPUT_SPR_ITMES'] as $soput_itme){
+		?>
+<div class="sorting_item">
+    <a href="<?=$soput_itme['CODE']?>/" class="sorting_link">
+                    
+                        <span class="sorting_title"><?=$soput_itme['NAME']?></span>
+                    </a>
+                </div>
+<?
+	}
+}?>
 
 <div class="sale-category sale-category--new">
     <table class="blue-table price-category <?=($ral_in_ar) ? 'blue-table__8-rows' : 'blue-table__7-rows';?>">
