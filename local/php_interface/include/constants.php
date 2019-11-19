@@ -28,7 +28,7 @@ define("TECH_HB_ID", 4);
 // id highload-инфоблока Шаблоны для размеров саморезов(текст)
 define("SIZE_HB_ID", 6);
 define("URL_MARKETS", "/addresses/");
-define("NEW_TEMPL_SECTION", array("1656", "1767", "1831", "2558"));
+define("NEW_TEMPL_SECTION", array("1656", "1767", "1831", "2558", ''));
 const ARR_UINTS_MM = array('DIAMETR', 'SHIRINA', 'VYSOTA', 'DLINA');
 const ARR_UNITS_SHT = array('KOLICHESTVO_V_UPAKOVKE');
 const ARR_UNITS_RAL = array('TSVET');
