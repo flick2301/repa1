@@ -18,4 +18,28 @@ $APPLICATION->SetTitle("Новая страница");
 		"TOP_COUNT" => "5",
 		"USE_LANGUAGE_GUESS" => "Y"
 	)
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?>
+
+<?$APPLICATION->IncludeComponent(
+	"idf:slider", 
+	".default", 
+	array(
+		"IBLOCK_TYPE" => "banners",
+		"IBLOCK_ID" => "6",
+		"width" => "1020",
+		"height" => "360",
+		"effect" => "fold",
+		"slices" => "21",
+		"animSpeed" => "800",
+		"pauseTime" => "8000",
+		"startSlide" => "0",
+		"directionNav" => "N",
+		"controlNav" => "N",
+		"pauseOnHover" => "Y",
+		"text_title" => "",
+		"COMPONENT_TEMPLATE" => ".default"
+	),
+	false
+);?>
+
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
