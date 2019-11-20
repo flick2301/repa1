@@ -58,8 +58,17 @@ function reverseInfo(\Bitrix\Main\Event $event ) {
 	    * @var \Bitrix\Sale\Payment $payment
 	    * @var \Bitrix\Sale\PropertyValue $somePropValue
 	    * **/
+		$order = $event->getParameter("ENTITY");
+			  /*$comment = $order->getField('COMMENTS');
+			  if($comment){
+				  $pattern = '/\[(.+?)\]/';
+					preg_match($pattern, $comment, $matches);
+					if($matches>0){
+						\Bitrix\Main\Diag\Debug::dumpToFile($matches, "", '/upload/comments.txt');
+					}
+			  }*/
 	   if ( $_SESSION['BX_CML2_EXPORT'] ) {
-		      $order = $event->getParameter("ENTITY");
+		      
 		      if ( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] ) {
 			         //Вернем отгрузки
 			         $shipmentCollection = $order->getShipmentCollection();

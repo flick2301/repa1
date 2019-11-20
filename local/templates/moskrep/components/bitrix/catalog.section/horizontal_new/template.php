@@ -102,6 +102,7 @@ if($arParams['FOR_SEO']!='Y'){
         <?$APPLICATION->ShowViewContent('filter_in_stock_2');?>
     </div>
 </div>
+
 <?if($arResult['UF_SOPUT_SPR_ITMES']){
 	
 	foreach($arResult['UF_SOPUT_SPR_ITMES'] as $soput_itme){
