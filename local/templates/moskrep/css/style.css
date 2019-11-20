@@ -657,6 +657,10 @@
     margin-top: 25px;
 }
 
+.banner-01 {
+	overflow: hidden;
+}
+
 .banner-02 {
     margin-top: 30px;
 }

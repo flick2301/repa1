@@ -5,10 +5,11 @@ $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Мос
 ?>
 <div class="banner-01">
     
-<?$APPLICATION->IncludeComponent(
-	"d7:slider", 
-	".default", 
-	array(
+<?/*$APPLICATION->IncludeComponent(
+	"d7:slider",
+	"",
+	Array(
+
 		"IBLOCK_ID" => "6",
 		"IBLOCK_TYPE" => "banners",
 		"animSpeed" => "1300",
@@ -21,11 +22,33 @@ $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Мос
 		"slices" => "6",
 		"startSlide" => "0",
 		"text_title" => "",
-		"width" => "718",
+		"width" => "718"
+	)
+);*/?>
+
+<?$APPLICATION->IncludeComponent(
+	"idf:slider", 
+	".default", 
+	array(
+		"IBLOCK_TYPE" => "banners",
+		"IBLOCK_ID" => "6",
+		"width" => "870",
+		"height" => "279",
+		"effect" => "fold",
+		"slices" => "21",
+		"animSpeed" => "800",
+		"pauseTime" => "8000",
+		"startSlide" => "0",
+		"directionNav" => "N",
+		"controlNav" => "N",
+		"pauseOnHover" => "Y",
+		"text_title" => "",
 		"COMPONENT_TEMPLATE" => ".default"
 	),
 	false
 );?>
+
+
 </div>
 <?
 if(SITE_TEMPLATE_ID!='mobile'){
