@@ -6,9 +6,9 @@ $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Мос
 <div class="banner-01">
     
 <?$APPLICATION->IncludeComponent(
-	"d7:slider",
-	"",
-	Array(
+	"d7:slider", 
+	".default", 
+	array(
 		"IBLOCK_ID" => "6",
 		"IBLOCK_TYPE" => "banners",
 		"animSpeed" => "1300",
@@ -21,8 +21,10 @@ $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Мос
 		"slices" => "6",
 		"startSlide" => "0",
 		"text_title" => "",
-		"width" => "718"
-	)
+		"width" => "718",
+		"COMPONENT_TEMPLATE" => ".default"
+	),
+	false
 );?>
 </div>
 <?
