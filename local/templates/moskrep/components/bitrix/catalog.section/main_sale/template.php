@@ -39,7 +39,7 @@ use \Bitrix\Main\Localization\Loc;
 							<div class="product-list__presence-number"><?=($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']);?> уп.</div>
 						</div>
                                                 <?
-                                                         $price = $item['PRICES']['Распродажа']['VALUE'] ? $item['PRICES']['Распродажа']['VALUE'] : $item['PRICES']['К0 (БАЗОВАЯ НАЧАЛЬНАЯ)']['VALUE'];
+                                                         $price = $item['PRICES']['Распродажа']['VALUE'] ? $item['PRICES']['Распродажа']['VALUE'] : $item['PRICES'][ID_BASE_PRICE]['VALUE'];
                                                          $old_price = $item['PRICES']['Распродажа']['VALUE'] ? $item['PRICES']['К0 (БАЗОВАЯ НАЧАЛЬНАЯ)']['VALUE'] : 0;
                                                          ?>
 						<div class="product-list__lineflex">

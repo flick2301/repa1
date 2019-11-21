@@ -7,7 +7,6 @@
  */
 global $APPLICATION;
 
-
 $ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues($arParams["IBLOCK_ID"],$arResult['SECTION']['ID']);
     $IPROPERTY  = $ipropValues->getValues();
     
@@ -16,7 +15,7 @@ $ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues($arParams["IBL
     $APPLICATION->SetPageProperty('keywords', $IPROPERTY['ELEMENT_META_KEYWORDS']);
 
 
-$price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] : $arResult['PRICES'][ID_BASE_PRICE]['VALUE'];
+$price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] : $arResult['MIN_PRICE']['VALUE'];
 $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][ID_BASE_PRICE]['VALUE'] : 0;
 
 ?>

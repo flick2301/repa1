@@ -29,7 +29,7 @@ use \Bitrix\Main\Localization\Loc;
 						</a>
 						<a href="<?=$arElement['DETAIL_PAGE_URL']?>" class="carousel-product__title"><?=$item['NAME']?></a>
 						<div class="carousel-product__price-line">
-							<span class="carousel-product__price"><?=$item['PRICES']['Распродажа']['VALUE']?> ₽<span class="carousel-product__price-wrap"><span class="carousel-product__price-old"><?=$item['PRICES']['К0 (БАЗОВАЯ НАЧАЛЬНАЯ)']['VALUE']?> ₽</span></span></span>
+							<span class="carousel-product__price"><?=$item['PRICES']['Распродажа']['VALUE']?> ₽<span class="carousel-product__price-wrap"><span class="carousel-product__price-old"><?=$item['PRICES'][ID_BASE_PRICE]['VALUE']?> ₽</span></span></span>
 							<a href="javascript:void(0)" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$item['PRICES']['Распродажа']['VALUE']?>" rel="nofollow" class="carousel-product__btn <?=($arResult['IN_BASKET'][$item['ID']] == 'Y') ? 'active' : "";?>"></a>
 						</div>
 					</li>
