@@ -8,10 +8,13 @@ $arFilter = Array(
 	"IBLOCK_ID" => $arParams['IBLOCK_ID'], 
 	"ACTIVE"=>"Y"
 );
-$res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter, Array("PREVIEW_TEXT", "NAME", "PREVIEW_PICTURE", "CODE"));
-while($ar_fields = $res->GetNext())
-{
-	$arResult["ITEMS"][] = $ar_fields;
+$res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter, Array("ID", "IBLOCK_ID", "PREVIEW_TEXT", "NAME", "PREVIEW_PICTURE", "CODE", "PROPERTY_*"));
+while($ob = $res->GetNextElement()){ 
+ $i++;
+ $ar_fields = $ob->GetFields();  
+ $arResult["ITEMS"][$i] = $ar_fields;
+ $arProps = $ob->GetProperties();
+ $arResult["ITEMS"][$i]["PROPERTIES"] = $arProps;
 }
 
 for($i = 0; $i < count($arResult["ITEMS"]); $i++){
