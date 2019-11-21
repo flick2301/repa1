@@ -131,6 +131,7 @@
         
 	if(!empty($arResult["DELIVERY"]) || true)
 	{
+		
 		$width = ($arParams["SHOW_STORES_IMAGES"] == "Y") ? 850 : 700;
 		?>
 		<h2 class='s28-title'><?=GetMessage("SOA_TEMPL_DELIVERY")?></h2>
@@ -141,12 +142,15 @@
                 <div class='feedback-form'>
                    
                     <div class='feedback-form__left'>
+					
 		<?
 
 		foreach ($arResult["DELIVERY"] as $delivery_id => $arDelivery)
 		{
+			
 			if ($delivery_id !== 0 && intval($delivery_id) <= 0)
 			{
+				
 				foreach ($arDelivery["PROFILES"] as $profile_id => $arProfile)
 				{
 					?>

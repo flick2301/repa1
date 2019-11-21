@@ -71,14 +71,14 @@ if (!function_exists("PrintPropsForm"))
 							?>
 							<input type="hidden" name="<?=$arProperties["FIELD_NAME"]?>" value="">
 
-							<div class="bx_block r1x3 pt8">
+							<div class="bx_block r1x3 pt8" style='display:block;'>
 								<?=$arProperties["NAME"]?>
 								<?if ($arProperties["REQUIED_FORMATED"]=="Y"):?>
 									<span class="bx_sof_req">*</span>
 								<?endif;?>
 							</div>
 
-							<div class="bx_block r1x3 pt8">
+							<div class="bx_block r1x3 pt8" style='display:block;'>
 								<input type="checkbox" name="<?=$arProperties["FIELD_NAME"]?>" id="<?=$arProperties["FIELD_NAME"]?>" value="Y"<?if ($arProperties["CHECKED"]=="Y") echo " checked";?>>
 
 								<?
@@ -447,7 +447,7 @@ if (!function_exists("PrintPropsForm"))
 						<?
 						if ($arProperties["TYPE"] == "CHECKBOX")
 						{
-							?>1123
+							?>
 							<input type="hidden" name="<?=$arProperties["FIELD_NAME"]?>" value="">
 
 							<div class="bx_block r1x3 pt8" style='display:block;'>
