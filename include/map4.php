@@ -1,2 +1,1 @@
-<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2e358ce9c5c73a0d726bfac7445ae99b4484797516bc6b1adecff4ffb26de1d8&amp;width=470&amp;height=370&amp;lang=ru_UA&amp;scroll=true"></script>
-
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A7897bc149959ca515a7d85597cf186c9c167311b25f224bb2ec39ebc13b8bcd2&amp;width=470&amp;height=370&amp;lang=ru_RU&amp;scroll=true"></script>
