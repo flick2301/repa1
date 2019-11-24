@@ -59,14 +59,17 @@ function reverseInfo(\Bitrix\Main\Event $event ) {
 	    * @var \Bitrix\Sale\PropertyValue $somePropValue
 	    * **/
 		$order = $event->getParameter("ENTITY");
-			  /*$comment = $order->getField('COMMENTS');
+			  $comment = $order->getField('COMMENTS');
 			  if($comment){
-				  $pattern = '/\[(.+?)\]/';
+				  $pattern = '/\{(.+?)\}/';
 					preg_match($pattern, $comment, $matches);
 					if($matches>0){
-						\Bitrix\Main\Diag\Debug::dumpToFile($matches, "", '/upload/comments.txt');
+						\Bitrix\Main\Diag\Debug::dumpToFile($matches[1], "", '/upload/comments.txt');
+						$collection = $order->getShipmentCollection();
+						$shipment = $collection->getItemByIndex(0);
+						$shipment->setBasePriceDelivery($matches[1]);
 					}
-			  }*/
+			  }
 	   if ( $_SESSION['BX_CML2_EXPORT'] ) {
 		      
 		      if ( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] ) {
