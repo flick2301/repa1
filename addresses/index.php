@@ -41,7 +41,7 @@ $APPLICATION->SetTitle("Адреса магазинов");
 				<div class="contact__wrapper">
 					<div class="contact__text">
 						<div class="contact__first">
-							<strong>Склад и интернет-магазин<br> в г. Климовск</strong>
+							<strong>Склад и интернет-магазин<br> в г. Подольск</strong>
 							<p>Россия, Московская область, городской округ Подольск, Коледино, 1Вс3, склад #6<br> пн-пт 9:00-18:00;</p>
 						</div>
 						<div class="contact__last">
@@ -78,7 +78,7 @@ $APPLICATION->SetTitle("Адреса магазинов");
 			<ul class="requisites">
 				<li class="requisites__item">
 					<span class="requisites__title">Юридический адрес:</span>
-					<p class="requisites__info">107031, г. Москва ул. Кировоградская, дом 23А, корпус 1</p>
+					<p class="requisites__info">117534, г. Москва ул. Кировоградская, дом 23А, корпус 1</p>
 				</li>
 				<li class="requisites__item">
 					<span class="requisites__title">Фактический адрес:</span>
