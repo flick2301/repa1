@@ -60,7 +60,7 @@ $APPLICATION->SetTitle("Адреса магазинов");
 					<div class="contact__text">
 						<div class="contact__first">
 							<strong>Магазин и точка выдачи<br> в Москве</strong>
-							<p>Москва, 2-й Кабельный проезд, дом 1, блок 2, 1-ый этаж, павильон 124<br> пн-пт 9:00-18:00;</p>
+							<p>Москва, 2-й Кабельный проезд, дом 1, блок 2, 1-ый этаж, павильон 106<br> пн-пт 9:00-18:00;</p>
 						</div>
 						<div class="contact__last">
 							<a href="tel:+7 (499) 350-55-55" class="contact__phone roistat-phone">8 499 350-55-55</a>
