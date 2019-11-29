@@ -1,7 +1,9 @@
 <?
 IncludeModuleLangFile(__FILE__); // в menu.php точно так же можно использовать языковые файлы
 
-if($APPLICATION->GetGroupRight("generator")>"D") // проверка уровня доступа к модулю веб-форм
+global $USER;
+$user_id = $USER->GetID();
+if($APPLICATION->GetGroupRight("generator")>"D" || $user_id == 5) // проверка уровня доступа к модулю веб-форм
 {
   // сформируем верхний пункт меню
   

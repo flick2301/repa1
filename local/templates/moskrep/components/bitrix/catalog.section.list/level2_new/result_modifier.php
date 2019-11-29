@@ -80,10 +80,17 @@ if($arParams['REFERENCE_CHECK']=='Y'):
          
         $arFilter = Array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "ACTIVE"=>"Y", 'CODE'=>$arParams['SORTING']);
         $res = CIBlockElement::GetList(Array(), $arFilter, false, false, array('*'));
-        while($ob = $res->GetNextElement()){ 
-            
+        while($ob = $res->GetNextElement()){
+
+			           
             $arFields = $ob->GetFields();  
             $arProps = $ob->GetProperties();
+			
+			if($USER->IsAdmin()){
+				echo '<pre>';
+				//print_r($arFields);
+				echo '</pre>';
+			}
            
             $arResult['REFERENCE']['ITEM']=array_merge($arFields, $arProps);
 

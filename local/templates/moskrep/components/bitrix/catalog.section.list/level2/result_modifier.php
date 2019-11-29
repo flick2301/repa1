@@ -81,7 +81,28 @@ if($arParams['REFERENCE_CHECK']=='Y'):
             
             $arFields = $ob->GetFields();  
             $arProps = $ob->GetProperties();
-           
+			
+			$URL_SORT = false;
+			$nav = CIBlockSection::GetNavChain(false, $arFields["IBLOCK_SECTION_ID"]);
+			while($arNav = $nav->GetNext())
+			{
+				$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>SORTING_IBLOCK_ID, 'ID'=>$arNav['ID']), false, Array('UF_DIRECTORY'));
+				if($arSect = $res_sect->GetNext()){
+					
+					if($arSect['UF_DIRECTORY']){
+						if($USER->IsAdmin()){
+							$code_section = $arParams['SORTING'][count($arParams['SORTING'])-1];
+							$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], 'CODE'=>$code_section), false, Array('ID'));
+							if($parent_sec_id = $res_sect->GetNext()){
+								if($parent_sec_id['ID'] == $arSect['UF_DIRECTORY'][0])
+									$URL_SORT = true;
+							}
+						}	
+					}	
+				}
+			}
+			
+           if($URL_SORT){
             $arResult['REFERENCE']['ITEM']=array_merge($arFields, $arProps);
             if($arResult['REFERENCE']['ITEM']['DETAIL_PICTURE']){
                 $arResult['REFERENCE']['ITEM']['PICTURE'] = CFile::ResizeImageGet($arResult['REFERENCE']['ITEM']['DETAIL_PICTURE'], array('width'=>'600', 'height'=>'600'), BX_RESIZE_IMAGE_PROPORTIONAL, true);
@@ -230,7 +251,7 @@ if($arParams['REFERENCE_CHECK']=='Y'):
             }
         }
     }
-    
+    }
     
     
     
