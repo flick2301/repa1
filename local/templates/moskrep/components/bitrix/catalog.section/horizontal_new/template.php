@@ -184,7 +184,7 @@ if($arParams['FOR_SEO']!='Y'){
                                         <div class="separator-block"></div>
 										<p><?echo STORE_ID_UZHKA['1'];?><br> <?echo STORE_ID_UZHKA['2'];?></p>
 										<p>В наличии: <strong class="icon-nal"><?=$item['STORE'][STORE_ID_UZHKA[0]]['AMOUNT']?> уп.</strong></p>
-										<p>Доступно к получению: <strong><?=($item['STORE'][STORE_ID_UZHKA[0]]['AMOUNT'] && $clock<17) ? "Завтра с 9:00" : (($item['STORE'][STORE_ID_UZHKA[0]]['AMOUNT']) ? "Завтра c 14:30" : (($item['STORE'][STORE_ID_KOLEDINO[0]]['AMOUNT']) ? (($clock<17) ? "Завтра после 12:00 при заказе до 14:30" : "Завтра после 12:00 при заказе до 14:30") : "Под заказ"))?></strong></p>
+										<p>Доступно к получению: <strong><?=($item['STORE'][STORE_ID_UZHKA[0]]['AMOUNT'] && $clock<17) ? "Завтра с 9:00" : (($item['STORE'][STORE_ID_UZHKA[0]]['AMOUNT']) ? "Завтра c 14:30" : (($item['STORE'][STORE_ID_KOLEDINO[0]]['AMOUNT']) ? (($clock<17) ? "Завтра после 9:00 при заказе до 14:30" : "Завтра после 9:00 при заказе до 14:30") : "Под заказ"))?></strong></p>
 									</div>
 								</span>
 								<span class="delivery-view">

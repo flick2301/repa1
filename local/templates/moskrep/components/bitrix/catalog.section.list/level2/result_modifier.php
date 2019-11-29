@@ -90,14 +90,14 @@ if($arParams['REFERENCE_CHECK']=='Y'):
 				if($arSect = $res_sect->GetNext()){
 					
 					if($arSect['UF_DIRECTORY']){
-						if($USER->IsAdmin()){
+						
 							$code_section = $arParams['SORTING'][count($arParams['SORTING'])-1];
 							$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], 'CODE'=>$code_section), false, Array('ID'));
 							if($parent_sec_id = $res_sect->GetNext()){
 								if($parent_sec_id['ID'] == $arSect['UF_DIRECTORY'][0])
 									$URL_SORT = true;
 							}
-						}	
+							
 					}	
 				}
 			}
