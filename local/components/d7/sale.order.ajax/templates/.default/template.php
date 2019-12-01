@@ -19,6 +19,7 @@ if($USER->IsAuthorized() || $arParams["ALLOW_AUTO_REGISTER"] == "Y")
 
 $APPLICATION->SetAdditionalCSS($templateFolder."/style_cart.css");
 $APPLICATION->SetAdditionalCSS($templateFolder."/style.css");
+CJSCore::Init( 'jquery' );
 ?>
 
 <a name="order_form"></a>
@@ -286,6 +287,29 @@ if (!function_exists("cmpBySort"))
 				<script type="text/javascript">
 					top.BX('confirmorder').value = 'Y';
 					top.BX('profile_change').value = 'N';
+					
+						BX.addCustomEvent('onAjaxSuccess', function(){
+							BX.bind(BX('ORDER_PROP_10'), 'bxchange', function() {
+								
+								BX.ajax({ 
+									type: 'POST', // метод отправки
+									url: '/ajax/dadata.php', // путь к обработчику
+									data: {
+										'INN': BX("ORDER_PROP_10").value,
+									
+									},
+									dataType: 'text',
+									onsuccess: function(data){
+										console.log(data); // при успешном получении ответа от сервера, заносим полученные данные в элемент с классом answer
+									},
+									onfailure: function(data){
+										console.log(data); // выводим ошибку в консоль
+									}
+								});
+								
+							});
+						});							
+					
 				</script>
 				<?
 				die();

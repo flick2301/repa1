@@ -449,7 +449,10 @@ function IPOLSDEK_DeliveryChangeEvent(id) { //название принципи�
 	submitForm();
 }
 
+
+
 $(function() {
+	
     var offset = $("#total_info2").offset();
     var topPadding = 35;
     $(window).scroll(function() {

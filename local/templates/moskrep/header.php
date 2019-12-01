@@ -137,7 +137,7 @@ ref.parentNode.insertBefore(js, ref);}(document));
 		"CATEGORY_4" => ""
 	),
 	false
-);*/?>                          <?$APPLICATION->AddHeadScript('/local/ajax/ajax_search.js');?>
+);*/?>                          <?//$APPLICATION->AddHeadScript('/local/ajax/ajax_search.js');?>
 
     
 <!--<div class='header-search__wrap' id='header-search__result'>   
