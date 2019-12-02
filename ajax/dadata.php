@@ -1,6 +1,6 @@
 <?
 $url = 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party';
-$str = '{ "query": "7726517049" }';
+$str = '{ "query": "'.$_REQUEST['INN'].'" }';
 $ch = curl_init($url);
             
 curl_setopt ($ch, CURLOPT_POST, 1);
@@ -12,7 +12,9 @@ $output=curl_exec ($ch);
 			
 $result = curl_multi_getcontent ($ch);
 $datasearch = json_decode($output);
-echo $datasearch->suggestions[0]->data->kpp;
+$data_php = array("KPP" => $datasearch->suggestions[0]->data->kpp, "OGRN"=>$datasearch->suggestions[0]->data->ogrn, "NAME"=>$datasearch->suggestions[0]->data->management->name);
+$data_json = json_encode($data_php);
+echo json_encode($_REQUEST['INN']);
 
 curl_close ($ch);
 			?>

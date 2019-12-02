@@ -98,7 +98,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 		    <li data-tab="tab-5" class="card-tabs__item">Самовывоз</li>
                     <li data-tab="tab-6" class="card-tabs__item" style="color:#01B10E">Ваши скидки</li>
 		</ul>
-	    <div id="tab-1" class="card__tabs-list active">
+	    <div id="tab-1" class="card__tabs-list active set-default-parametr-page-cat">
                 <div class='delivery__text' itemprop="description"><?=($arResult['DETAIL_DESCRIPTION']) ? html_entity_decode($arResult['DETAIL_DESCRIPTION'], ENT_QUOTES, "UTF-8") : $arResult['NAME'];?></div>
 		<?if(count($arResult['BASE_PROPERTIES_HEAD'])):?>
                 <h2 id='chars' class="s28-title">Характеристики</h2>
@@ -131,7 +131,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                     </ul>
 		</div>
 	    </div>
-                <div id="tab-6" class="card__tabs-list">
+                <div id="tab-6" class="card__tabs-list set-default-parametr-page-cat">
                         <p class='info-paragraph'>KREP-KOMP - ведущий поставщик и производитель строительного крепежа для розничных, мелкооптовых и оптовых клиентов. С 2005 года мы предлагаем самый широкий ассортимент, доступные цены и гибкую систему скидок.</p>
 <p class='info-paragraph'>Доставка по Москве в пределах МКАД при заказе от 50000 руб. <b>БЕСПЛАТНО</b></p>
 <p class='info-paragraph'>Оптовые и накопительные скидки:</p>
@@ -161,7 +161,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
             
 	    <? include($_SERVER["DOCUMENT_ROOT"]."/kontent-elementa/delivery.php"); ?>
             
-	    <div id="tab-5" class="card__tabs-list">
+	    <div id="tab-5" class="card__tabs-list set-default-parametr-page-cat">
 		<h2 id='over' class="s28-title">Самовывоз бесплатно</h2>
                 <ul class='vivoz_items'>
 	<li data-tab='vivoz_1' class='vivoz_item active'>Москва и МО</li>
@@ -239,7 +239,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
             
             
             <?if(count($arResult['ELEMENT_VARS'])){?>
-            <div id='var_tab_1' class='variants__tabs-list active'>                
+            <div id='var_tab_1' class='variants__tabs-list'>                
 		<?
             global $bbFilter;
             $bbFilter = Array("ID" => $arResult['ELEMENT_VARS']);    
