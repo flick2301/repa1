@@ -14,7 +14,7 @@ $result = curl_multi_getcontent ($ch);
 $datasearch = json_decode($output);
 $data_php = array("KPP" => $datasearch->suggestions[0]->data->kpp, "OGRN"=>$datasearch->suggestions[0]->data->ogrn, "NAME"=>$datasearch->suggestions[0]->data->management->name);
 $data_json = json_encode($data_php);
-echo json_encode($_REQUEST['INN']);
+echo $data_json;
 
 curl_close ($ch);
 			?>

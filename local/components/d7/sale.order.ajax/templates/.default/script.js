@@ -461,3 +461,38 @@ $(function() {
 	}
 	else {$("#total_info2").stop().animate({marginTop: 33});};});
 });
+
+BX.addCustomEvent('onAjaxSuccess', function(){
+	BX.bind(BX('ORDER_PROP_37'), 'bxchange', function() {
+								
+								
+								
+								BX.ajax({ 
+									type: 'POST', // метод отправки
+									url: '/ajax/dadata.php', // путь к обработчику
+									data: {
+										'INN': BX("ORDER_PROP_37").value,
+									},
+									method: 'POST',
+									dataType: 'json',
+									timeout: 30,
+									async: true,
+									processData: true,
+									scriptsRunFirst: true,
+									emulateOnload: true,
+									start: true,
+									cache: false,
+									onsuccess: function(data){
+										
+										console.log(BX("ORDER_PROP_37").value); // при успешном получении ответа от сервера, заносим полученные данные в элемент с классом answer
+										if(data["OGRN"]){
+											BX("ORDER_PROP_38").value = data["OGRN"];
+										}
+									},
+									onfailure: function(data){
+										console.log(data); // выводим ошибку в консоль
+									}
+								});
+								
+							});			
+});

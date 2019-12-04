@@ -287,54 +287,44 @@ if (!function_exists("cmpBySort"))
 				<script type="text/javascript">
 					top.BX('confirmorder').value = 'Y';
 					top.BX('profile_change').value = 'N';
-					var js_data;
+					
 						BX.addCustomEvent('onAjaxSuccess', function(){
+							
+							
 							BX.bind(BX('ORDER_PROP_10'), 'bxchange', function() {
-								/*
+								
 								BX.ajax({ 
 									type: 'POST', // метод отправки
 									url: '/ajax/dadata.php', // путь к обработчику
 									data: {
 										'INN': BX("ORDER_PROP_10").value,
 									},
-									dataType: 'text',
+									method: 'POST',
+									dataType: 'json',
+									timeout: 30,
+									async: true,
+									processData: true,
+									scriptsRunFirst: true,
+									emulateOnload: true,
+									start: true,
+									cache: false,
 									onsuccess: function(data){
-										//js_data = JSON.parse(data);
-										console.log(data); // при успешном получении ответа от сервера, заносим полученные данные в элемент с классом answer
-										//BX("ORDER_PROP_29").value = js_data["KPP"];
+										//console.log(data['KPP']); // при успешном получении ответа от сервера, заносим полученные данные в элемент с классом answer
+										if(data["KPP"]){
+											BX("ORDER_PROP_29").value = data["KPP"];
+										}
 									},
 									onfailure: function(data){
 										console.log(data); // выводим ошибку в консоль
 									}
 								});
-								*/
+								
 								
 							});
-						});		
-
-						BX.addCustomEvent('onAjaxSuccess', function(){
-							BX.bind(BX('ORDER_PROP_37'), 'bxchange', function() {
-								/*
-								BX.ajax({ 
-									type: 'POST', // метод отправки
-									url: '/ajax/dadata.php', // путь к обработчику
-									data: {
-										'INN': BX("ORDER_PROP_37").value,
+							
+							
+						});
 									
-									},
-									dataType: 'text',
-									onsuccess: function(data){
-										js_data = JSON.parse(data);
-										console.log(data); // при успешном получении ответа от сервера, заносим полученные данные в элемент с классом answer
-										BX("ORDER_PROP_38").value = js_data["OGRN"];
-									},
-									onfailure: function(data){
-										console.log(data); // выводим ошибку в консоль
-									}
-								});
-								*/
-							});
-						});		
 					
 				</script>
 				<?

@@ -86,16 +86,22 @@ if($arParams['REFERENCE_CHECK']=='Y'):
 			$nav = CIBlockSection::GetNavChain(false, $arFields["IBLOCK_SECTION_ID"]);
 			while($arNav = $nav->GetNext())
 			{
-				$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>SORTING_IBLOCK_ID, 'ID'=>$arNav['ID']), false, Array('UF_DIRECTORY'));
+				$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>SORTING_IBLOCK_ID, 'ID'=>$arNav['ID']), false, Array('CODE', 'UF_DIRECTORY'));
 				if($arSect = $res_sect->GetNext()){
 					
 					if($arSect['UF_DIRECTORY']){
 						
 							$code_section = $arParams['SORTING'][count($arParams['SORTING'])-1];
-							$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], 'CODE'=>$code_section), false, Array('ID'));
+							$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], 'CODE'=>$code_section), false, Array('ID', 'SECTION_PAGE_URL'));
+							$dir = $APPLICATION->GetCurDir();
+							
 							if($parent_sec_id = $res_sect->GetNext()){
-								if($parent_sec_id['ID'] == $arSect['UF_DIRECTORY'][0])
+								$right_url = $parent_sec_id['SECTION_PAGE_URL'].$arFields['CODE'].'/';
+								$right_url2 = $parent_sec_id['SECTION_PAGE_URL'].str_replace("-", "_", $arFields['CODE']).'/';
+								if($parent_sec_id['ID'] == $arSect['UF_DIRECTORY'][0] && ($dir == $right_url || $dir == $right_url2)){
+									
 									$URL_SORT = true;
+								}
 							}
 							
 					}	
