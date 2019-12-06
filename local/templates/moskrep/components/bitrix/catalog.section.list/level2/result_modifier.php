@@ -121,6 +121,9 @@ if($arParams['REFERENCE_CHECK']=='Y'):
                 }
                 
             }
+			$ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues($arResult['REFERENCE']['ITEM']["IBLOCK_ID"],$arResult['REFERENCE']['ITEM']['ID']);
+			$IPROPERTY  = $ipropValues->getValues();
+			$arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE'] = $IPROPERTY['ELEMENT_PAGE_TITLE'];
            
            //$arProp_sorting - ЭТО СВОЙСТВО ПО СПРАВОЧНИКУ СОВПАДАЮЩЕЕ СО СВОЙСТВОМ КАТОЛОГА( ДИАМЕТР, ПРОЧНОСТЬ И Т.Д.)
             $cp->SetResultCacheKeys(array('REFERENCE'));

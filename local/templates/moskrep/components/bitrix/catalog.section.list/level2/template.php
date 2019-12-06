@@ -41,7 +41,7 @@ global $APPLICATION;
 		
 		?>
       
-    <h1 class="s38-title"><?=$arResult['REFERENCE']['ITEM']['H1']['VALUE']?></h1>
+    <h1 class="s38-title"><?=($arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE']) ? $arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE'] : $arResult['REFERENCE']['ITEM']['H1']['VALUE'];?></h1>
     
     <nav class="nav-sale">
     <ul class="nav-sale__items">
