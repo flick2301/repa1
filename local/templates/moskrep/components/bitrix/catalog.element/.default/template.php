@@ -161,7 +161,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
             
 	    <? include($_SERVER["DOCUMENT_ROOT"]."/kontent-elementa/delivery.php"); ?>
             
-	    <div id="tab-5" class="card__tabs-list set-default-parametr-page-cat">
+	    <div id="tab-5" class="card__tabs-list">
 		<h2 id='over' class="s28-title">Самовывоз бесплатно</h2>
                 <ul class='vivoz_items'>
 	<li data-tab='vivoz_1' class='vivoz_item active'>Москва и МО</li>
