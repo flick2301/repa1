@@ -46,19 +46,7 @@ endif;?>
 		</div>
 	</footer>
 
-<div style="display: none;">
-	<?$APPLICATION->IncludeComponent(
-	"bitrix:system.auth.form",
-	"",
-	Array(
-		"FORGOT_PASSWORD_URL" => "/personal/?forgot_password=yes",
-		"PROFILE_URL" => "/personal/private/",
-		"REGISTER_URL" => "/personal/?register=yes",
-		"SHOW_ERRORS" => "N"
-	)
-        );?>
-	
-</div>
+
 
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.min.js");?>
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/slick.min.js");?>

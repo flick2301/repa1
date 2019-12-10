@@ -42,3 +42,4 @@ const STORE_ID_UZHKA = Array('9', 'Москва, 2-й Кабельный про�
 const ID_PRICE_5 = '11';
 const ID_PRICE_10 = '12';
 const ID_PRICE_13 = '10';
+const ID_PRICE_18 = '13';

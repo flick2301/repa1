@@ -137,7 +137,7 @@ if($count_sections){
         else
         {
             $arCurSection = array();
-            $dbRes = CIBlockSection::GetList(array(), $arFilter, false, array("ID"));
+            $dbRes = CIBlockSection::GetList(array(), $arFilter, false, array("ID", 'UF_*'));
             $dbRes = new CIBlockResult($dbRes);
 
             if(defined("BX_COMP_MANAGED_CACHE"))
@@ -184,6 +184,13 @@ if($count_sections){
         );
         $this->EndViewTarget();
     }
+	
+	
+		$rsGender = CUserFieldEnum::GetList(array(), array("ID" => $arCurSection["UF_EL_LIST_TEMPL"]));
+        if($arCat = $rsGender->GetNext())
+                  $temple = $arCat["XML_ID"];
+		
+	
   
     //Получает все ID верхних каталогов, нужно чтоб вычислить $arParams["VIBOR_CATALOG_TABLE"]( ID в котором прописан
     //что разделы каталога в виде таблице( по дефолту карточками))
@@ -191,7 +198,7 @@ if($count_sections){
     $arSec = $nav->GetNext();
 
 
-    if ($isVerticalFilter==='Y' || !in_array($arSec['ID'], $arParams["VIBOR_CATALOG_TABLE"]))
+    if ($isVerticalFilter==='Y' || !in_array($arSec['ID'], $arParams["VIBOR_CATALOG_TABLE"]) || $temple == 'vertical')
 	include($_SERVER["DOCUMENT_ROOT"]."/".$this->GetFolder()."/section_vertical.php");
     else
 	include($_SERVER["DOCUMENT_ROOT"]."/".$this->GetFolder()."/section_horizontal.php");

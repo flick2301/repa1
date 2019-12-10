@@ -26,6 +26,9 @@ $GLOBALS['APPLICATION']->SetTitle(Loc::getMessage('SMS4B_MAIN_TITLE'));
             <tr>
                 <td><a href="corportal.php"><?=Loc::getMessage('SMS4B_MAIN_INDEX_MENU_6')?></a></td>
             </tr>
+            <tr>
+                <td><a href="contact.php"><?=Loc::getMessage('SMS4B_MAIN_INDEX_MENU_7')?></a></td>
+            </tr>
         </table>
     </div>
 <? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

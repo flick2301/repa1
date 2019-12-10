@@ -3,7 +3,6 @@
 use \Bitrix\Main\Localization\Loc;
 use \Bitrix\Main\Page\Asset;
 
-
 Loc::LoadMessages(__FILE__);
 ?>
 <!-- DESKTOP -->

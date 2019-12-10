@@ -152,7 +152,7 @@ $db_res = CPrice::GetList(
     array('ASC'=>'PRICE'),
     array(
         'PRODUCT_ID' => $arResult['ID'],
-        'CATALOG_GROUP_ID' => array(ID_PRICE_5, ID_PRICE_10, ID_PRICE_13),
+        'CATALOG_GROUP_ID' => array(ID_PRICE_5, ID_PRICE_10, ID_PRICE_13, ID_PRICE_18),
     )
 );
 $arResult["DOP_PRICE"] = array();
