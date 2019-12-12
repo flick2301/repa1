@@ -7,6 +7,17 @@ global $APPLICATION;
 $url = $APPLICATION->GetCurPage();
 
 $code = getSectionCode(str_replace("/index.php","",$_SERVER['REAL_FILE_PATH']).$url, -3);
+$code_l2 = getSectionCode(str_replace("/index.php","",$_SERVER['REAL_FILE_PATH']).$url, -4);
+
+$sort_element = false;
+$res = \Bitrix\Iblock\ElementTable::getList(array('filter'=>array('IBLOCK_ID'=>SORTING_IBLOCK_ID, 'CODE'=>getSectionCode(str_replace("/index.php","",$_SERVER['REAL_FILE_PATH']).$url, -2)), 'select'=>array('*')));
+if($arSort = $res->Fetch()){
+	$code = $code_l2;
+	$sort_element = true;
+}
+
+
+
 
 if($code){
 
@@ -17,15 +28,21 @@ if (!\Bitrix\Main\Loader::includeModule('iblock')) {
 }
 
 
+
 $arFilter = array(
     "IBLOCK_ID"=>CATALOG_IBLOCK_ID,
     "IBLOCK_TYPE" => 'catalog',
     "CODE" => $code,
     "ACTIVE"=>"Y"
     );
+	
+	
 
 if(CIBlockSection::GetCount($arFilter)==1){
- $code = getSectionCode(str_replace("/index.php","",$_SERVER['REAL_FILE_PATH']).$url);
+	if($sort_element)
+		$code = getSectionCode(str_replace("/index.php","",$_SERVER['REAL_FILE_PATH']).$url, -4);
+	else
+		$code = getSectionCode(str_replace("/index.php","",$_SERVER['REAL_FILE_PATH']).$url);
  
  $arFilter = array(
     "IBLOCK_ID"=>CATALOG_IBLOCK_ID,
