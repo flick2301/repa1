@@ -9,11 +9,13 @@
 	<div id="slider" class="nivoSlider">
 	<? foreach($arResult["ITEMS"] as $arItem){?>
 
+<?if($arItem["PREVIEW_PICTURE"]["src"]):?>
 <?if($arItem["PROPERTIES"]["SLIDER_LINK"]["VALUE"]):?>
 	<a href="<?=$arItem["PROPERTIES"]["SLIDER_LINK"]["VALUE"]?>"><img src="<?=$arItem["PREVIEW_PICTURE"]["src"]?>" alt="" title="<?=$arItem["PREVIEW_TEXT"]?>" /></a>
 <?else:?>
 	<img src="<?=$arItem["PREVIEW_PICTURE"]["src"]?>" alt="" title="<?=$arItem["PREVIEW_TEXT"]?>" />
 <?endif?>		
+<?endif?>
 		
 	<?}?>
 	</div>
