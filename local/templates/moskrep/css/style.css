@@ -3280,11 +3280,11 @@
 
 .card__price-first {
     font-family: 'Circe Bold';
-    font-size: 1.75rem;
+    font-size: 1.55rem;
 }
 
 .card__price-last {
-    font-size: 1.1875rem; color: #525252;
+    font-size: 1.1rem; color: #525252;
     position: relative;
 }
 
