@@ -40,7 +40,7 @@ $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Мос
 		"pauseTime" => "8000",
 		"startSlide" => "0",
 		"directionNav" => "N",
-		"controlNav" => "N",
+		"controlNav" => "Y",
 		"pauseOnHover" => "Y",
 		"text_title" => "",
 		"COMPONENT_TEMPLATE" => ".default"
