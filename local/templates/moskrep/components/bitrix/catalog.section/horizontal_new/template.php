@@ -171,20 +171,9 @@ if($arParams['FOR_SEO']!='Y'){
                     </a></span></td>
 	        <td class="blue-table__td"><?echo ($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']) ? '<span class="availability-b active">В наличии</span>' : '<span class="availability-b">Под заказ</span>';?></td>
             <td class="blue-table__td">
-								<span class="pickup-view">
-									<div class="pickup-block">
-										<strong>Самовывоз</strong>
-										<p><?echo STORE_ID_KASHIRKA['1'];?><br> <?echo STORE_ID_KASHIRKA['2'];?></p>
-										<p>В наличии: <strong class="icon-nal"><?=$item['STORE'][STORE_ID_KASHIRKA[0]]['AMOUNT']?> уп.</strong></p>
-										<p>Доступно к получению: <strong><?=($item['STORE'][STORE_ID_KASHIRKA[0]]['AMOUNT'] && $clock<17) ? "Сегодня" : (($item['STORE'][STORE_ID_KASHIRKA[0]]['AMOUNT']) ? "Завтра c 9:00" : (($item['STORE'][STORE_ID_KOLEDINO[0]]['AMOUNT']) ? (($clock<17) ? "Сегодня при заказе до 14:30" : "Завтра при заказе до 14:30")  : "Под заказ"))?></strong></p>
-										<div class="separator-block"></div>
-										<p><?echo STORE_ID_KOLEDINO['1'];?><br> <?echo STORE_ID_KOLEDINO['2'];?></p>
-										<p>В наличии: <strong class="icon-nal"><?=$item['STORE'][STORE_ID_KOLEDINO[0]]['AMOUNT']?> уп.</strong></p>
-										<p>Доступно к получению: <strong><?=($item['STORE'][STORE_ID_KOLEDINO[0]]['AMOUNT'] && $clock<17) ? "Сегодня" : (($item['STORE'][STORE_ID_KOLEDINO[0]]['AMOUNT']) ? "Завтра c 9:00" : "Под заказ")?></strong></p>
-                                        <div class="separator-block"></div>
-										<p><?echo STORE_ID_UZHKA['1'];?><br> <?echo STORE_ID_UZHKA['2'];?></p>
-										<p>В наличии: <strong class="icon-nal"><?=$item['STORE'][STORE_ID_UZHKA[0]]['AMOUNT']?> уп.</strong></p>
-										<p>Доступно к получению: <strong><?=($item['STORE'][STORE_ID_UZHKA[0]]['AMOUNT'] && $clock<16) ? "Завтра с 12:00" : (($item['STORE'][STORE_ID_UZHKA[0]]['AMOUNT']) ? "Завтра c 12:00" : (($item['STORE'][STORE_ID_KOLEDINO[0]]['AMOUNT']) ? (($clock<17) ? "Завтра после 12:00 при заказе до 16:00" : "Завтра после 12:00 при заказе до 16:00") : "Под заказ"))?></strong></p>
+								<span class="pickup-view" data-product="<?=$item['ID']?>">
+									<div id='pickup_<?=$item['ID']?>' class="pickup-block">
+										
 									</div>
 								</span>
 								<span class="delivery-view">
@@ -285,6 +274,8 @@ BX.ready(function () {
 	
 	console.log(IDs);
 	console.log(sum);
+	
+	
 });
 </script>
 

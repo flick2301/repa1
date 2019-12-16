@@ -216,9 +216,12 @@ BitrixSmallCart.prototype = {
 	{
                 var misc = [ id, quantity ];
 		
+		
+		this.refreshCart ({sbblchangeItemToCart: misc});
+		this.refreshCart ({sbblchangeItemToCart: misc});
 		BX.onCustomEvent('OnBasketChange');
 		this.refreshCart ({sbblchangeItemToCart: misc});
-                this.refreshCart ({sbblchangeItemToCart: misc});
+        console.log(misc);
 	}
 };
 

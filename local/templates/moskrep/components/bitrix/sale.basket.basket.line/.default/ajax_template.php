@@ -17,9 +17,7 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
             <?
             
             
-            if (isset($_POST['sbblchangeItemToCart'])){
-                CSaleBasket::Update($_POST['sbblchangeItemToCart'][0], array('QUANTITY'=>$_POST['sbblchangeItemToCart'][1]));            
-            }
+           
 
 
             ?>
