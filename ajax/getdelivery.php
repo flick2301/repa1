@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include/prolog_be
 CModule::IncludeModule('iblock');
 CModule::IncludeModule('catalog');
 
-
+if($_REQUEST['PICKUP']=='SHOW'):
 $ID = $_REQUEST['ID'];
 $rsStoreProduct = \Bitrix\Catalog\StoreProductTable::getList(array(
     'filter' => array('=PRODUCT_ID'=>$ID,'STORE.ACTIVE'=>'Y'),
@@ -40,5 +40,9 @@ echo '<strong>Самовывоз</strong>
 		<p>'.STORE_ID_UZHKA["1"].'<br> '.STORE_ID_UZHKA["2"].'</p>
 		<p>В наличии: <strong class="icon-nal">'.$amount['UZHKA'].' уп.</strong></p>
 		<p>Доступно к получению: <strong>'.$delivery["UZHKA"].'</strong></p>';
+elseif($_REQUEST['DELIVERY']=='SHOW'):
+echo '<strong>Доставка</strong>
+										<p>На следующий день<br> При заказе до 16:00</p>';
+endif;
 
 

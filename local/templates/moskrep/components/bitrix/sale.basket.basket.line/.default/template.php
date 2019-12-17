@@ -43,4 +43,5 @@ $this->setFrameMode( true );
 	<?=$cartId?>.closeMessage = '<?=GetMessage('TSB1_COLLAPSE')?>';
 	<?=$cartId?>.openMessage  = '<?=GetMessage('TSB1_EXPAND')?>';
 	<?=$cartId?>.activate();
+
 </script>

@@ -176,10 +176,9 @@ if($arParams['FOR_SEO']!='Y'){
 										
 									</div>
 								</span>
-								<span class="delivery-view">
-									<div class="delivery-block">
-										<strong>Доставка</strong>
-										<p>На следующий день<br> При заказе до 16:00</p>
+								<span class="delivery-view"  data-product="<?=$item['ID']?>">
+									<div id='delivery_<?=$item['ID']?>' class="delivery-block">
+										
 									</div>
 								</span>
 							</td>

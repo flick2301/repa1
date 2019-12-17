@@ -197,9 +197,9 @@ ref.parentNode.insertBefore(js, ref);}(document));
 		<?
 		
 		$APPLICATION->IncludeComponent(
-	        "bitrix:sale.basket.basket.line",
-	        "",
-	        Array(
+	"bitrix:sale.basket.basket.line", 
+	".default", 
+	array(
 		"HIDE_ON_BASKET_PAGES" => "N",
 		"PATH_TO_AUTHORIZE" => "",
 		"PATH_TO_BASKET" => SITE_DIR."basket/",
@@ -214,8 +214,16 @@ ref.parentNode.insertBefore(js, ref);}(document));
 		"SHOW_PERSONAL_LINK" => "N",
 		"SHOW_PRODUCTS" => "Y",
 		"SHOW_REGISTRATION" => "N",
-		"SHOW_TOTAL_PRICE" => "N"
-	)
+		"SHOW_TOTAL_PRICE" => "N",
+		"COMPONENT_TEMPLATE" => ".default",
+		"SHOW_DELAY" => "N",
+		"SHOW_NOTAVAIL" => "N",
+		"SHOW_IMAGE" => "Y",
+		"SHOW_PRICE" => "Y",
+		"SHOW_SUMMARY" => "Y",
+		"MAX_IMAGE_SIZE" => "70"
+	),
+	false
 );?>
         
 	</div>

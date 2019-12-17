@@ -83,6 +83,7 @@ BX.ready(function () {
 			url: '/ajax/getdelivery.php', // путь к обработчику
 			data: {
 				'ID': e.target.dataset.product,
+				'PICKUP': 'SHOW',
 			},
 			method: 'POST',
 			dataType: 'text',
@@ -108,10 +109,40 @@ BX.ready(function () {
 							
 	});
 
-	$('.delivery-view').click(function() {
+	$('.delivery-view').click(function(e) {
 		$('.pickup-block').removeClass('show');
 		$('.delivery-block').removeClass('show');
 		$(this).children('.delivery-block').addClass('show');
+		
+		var id = e.target.dataset.product;
+		console.log(e.target.dataset.product);
+								
+		BX.ajax({ 
+			type: 'POST', // метод отправки
+			url: '/ajax/getdelivery.php', // путь к обработчику
+			data: {
+				'ID': e.target.dataset.product,
+				'DELIVERY': 'SHOW',
+			},
+			method: 'POST',
+			dataType: 'text',
+			timeout: 30,
+			async: true,
+			processData: true,
+			scriptsRunFirst: true,
+			emulateOnload: true,
+			start: true,
+			cache: false,
+			onsuccess: function(data){
+				//console.log(data['KPP']); // при успешном получении ответа от сервера, заносим полученные данные в элемент с классом answer
+				$("#delivery_"+id).html(data);
+				
+
+			},
+			onfailure: function(data){
+				console.log(data); // выводим ошибку в консоль
+			}
+		});
 	});
 
         $('body').on("click",function(event){

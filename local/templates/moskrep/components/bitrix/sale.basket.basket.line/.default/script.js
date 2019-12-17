@@ -218,10 +218,8 @@ BitrixSmallCart.prototype = {
 		
 		
 		this.refreshCart ({sbblchangeItemToCart: misc});
-		this.refreshCart ({sbblchangeItemToCart: misc});
 		BX.onCustomEvent('OnBasketChange');
-		this.refreshCart ({sbblchangeItemToCart: misc});
-        console.log(misc);
+		console.log(misc);
 	}
 };
 
@@ -243,7 +241,15 @@ BX.ready(function(){
         $input.change();
         return false;
     });
-	
+	/*
+	$('.value__input').change(function(){
+		
+		var misc = [ $('.value__input').target.data.product, $('.value__input').val() ];
+		this.refreshCart ({sbblchangeItemToCart: misc});
+		console.log(misc);
+		BX.onCustomEvent('OnBasketChange');
+	});
+	*/
 	
 	$( ".pay-choice--sberbank" ).click(function() {
 		$('.header-basket-sberbank').popUp();
