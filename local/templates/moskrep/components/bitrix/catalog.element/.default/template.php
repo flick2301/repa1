@@ -206,12 +206,20 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 				    <div class="adress__link" data-tab="map2">Показать на карте</div>
 				</div>
 			    </li>
-                            <li class="adress__item">
+                <li class="adress__item">
 				<div class="adress__number">3</div>
 				<div class="adress__info">
 				    <p><?echo STORE_ID_UZHKA['1'];?><br> <?=STORE_ID_UZHKA[2]?></p>
 				    <div class="adress__pres">Наличие <?echo ($arResult['STORE'][STORE_ID_UZHKA[0]]['AMOUNT']) ? '<div class="adress__pres--yes"> '.$arResult['STORE'][STORE_ID_UZHKA[0]]['AMOUNT'].'  уп.</div>' : '<div class="adress__pres--no">Под заказ</div>';?></div>
 				    <div class="adress__link" data-tab="map4">Показать на карте</div>
+				</div>
+			    </li>
+				<li class="adress__item">
+				<div class="adress__number">4</div>
+				<div class="adress__info">
+				    <p><?echo STORE_ID_SERPUH['1'];?><br> <?=STORE_ID_SERPUH[2]?></p>
+				    <div class="adress__pres">Наличие <?echo ($arResult['STORE'][STORE_ID_SERPUH[0]]['AMOUNT']) ? '<div class="adress__pres--yes"> '.$arResult['STORE'][STORE_ID_SERPUH[0]]['AMOUNT'].'  уп.</div>' : '<div class="adress__pres--no">Под заказ</div>';?></div>
+				    <div class="adress__link" data-tab="map5">Показать на карте</div>
 				</div>
 			    </li>
                             <p>Забрать груз в пункте самовывоза на Каширском шоссе можно на следующий день. Для этого оформить заказ нужно до 15:00. 
@@ -225,6 +233,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 			    <div class="map-location active" id="map1" style="position: relative; overflow: hidden;"><?include($_SERVER["DOCUMENT_ROOT"].'/include/map1.php');?></div>
 			    <div class="map-location" id="map2" style="position: relative; overflow: hidden;"><?include($_SERVER["DOCUMENT_ROOT"].'/include/map2.php');?></div>
                 <div class="map-location" id="map4" style="position: relative; overflow: hidden;"><?include($_SERVER["DOCUMENT_ROOT"].'/include/map4.php');?></div>
+				<div class="map-location" id="map5" style="position: relative; overflow: hidden;"><?include($_SERVER["DOCUMENT_ROOT"].'/include/map5.php');?></div>
                        
                 <div class="map-location" id="sp1" style="position: relative; overflow: hidden;"><iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A147a22791efa23d9da2c37679a8d3271b26fe1ce8be56e60f81e518f84136d7d&amp;source=constructor" width="470" height="370" frameborder="0"></iframe></div>
                 

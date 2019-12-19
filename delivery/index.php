@@ -199,7 +199,7 @@ border-top: 1px solid #457fd8;
 					</tr>
 				</tbody>
 			</table>
-			<p class="info-paragraph">* - выгрузка товара, до 30 кг - 200руб. на лифте, и 50руб. за этаж, если по лестнице.</p>
+			<p class="info-paragraph">* - выгрузка товара, до 30 кг - 300руб. на лифте, и 100руб. за этаж, если по лестнице.</p>
 			<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script>
         document.addEventListener("DOMContentLoaded", ready);

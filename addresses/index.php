@@ -73,6 +73,24 @@ $APPLICATION->SetTitle("Адреса магазинов");
 				</div>
 			</div>
 			
+			<div class="contact">
+				<div class="contact__wrapper">
+					<div class="contact__text">
+						<div class="contact__first">
+							<strong>Магазин и точка выдачи<br> в Серпухове</strong>
+							<p>Московская область, город Серпухов, улица Звездная 6а, павильон №3<br> пн-пт 9:00-18:00;</p>
+						</div>
+						<div class="contact__last">
+							<a href="tel:+7 (499) 350-55-55" class="contact__phone roistat-phone">8 499 350-55-55</a>
+							<a href="skype:moskrep.ru" class="contact__skype">moskrep.ru</a>
+						</div>
+					</div>
+					<div class="contact__map">
+						<div id="map2"><?include($_SERVER["DOCUMENT_ROOT"].'/include/map5.php');?></div>
+					</div>
+				</div>
+			</div>
+			
 </div>
 			<h2 class="s28-title">ООО «КРЕП-КОМП»</h2>
 			<ul class="requisites">
