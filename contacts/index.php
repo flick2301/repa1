@@ -28,7 +28,8 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/kontent-elementa/contact_spb.php");
 				 в Москве</strong>
 				<p>
 					 г. Москва, Каширское ш., д. 7, кор. 3<br>
-					 пн-пт 9:00-18:00;
+					 пн-пт: 9:00-19:00,<br />
+					 сб: 10:00-16:00;
 				</p>
 			</div>
 			<div class="contact__last">
@@ -50,7 +51,7 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/kontent-elementa/contact_spb.php");
 				 в г. Климовск</strong>
 				<p>
 					 Россия, Московская область, городской округ Подольск, Коледино, 1Вс3, склад #6<br>
-					 пн-пт 9:00-18:00;
+					 пн-пт: 9:00-18:00;
 				</p>
 			</div>
 			<div class="contact__last">
@@ -70,7 +71,7 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/kontent-elementa/contact_spb.php");
 					<div class="contact__text">
 						<div class="contact__first">
 							<strong>Магазин и точка выдачи<br> в Москве</strong>
-							<p>Москва, 2-й Кабельный проезд, дом 1, блок 2, 1-ый этаж, павильон 106<br> пн-пт 9:00-18:00;</p>
+							<p>Москва, 2-й Кабельный проезд, дом 1, блок 2, 1-ый этаж, павильон 106<br> пн-пт: 9:00-18:00;</p>
 						</div>
 						<div class="contact__last">
 							<a href="tel:+7 (499) 350-55-55" class="contact__phone roistat-phone">8 499 350-55-55</a>
@@ -88,7 +89,7 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/kontent-elementa/contact_spb.php");
 					<div class="contact__text">
 						<div class="contact__first">
 							<strong>Магазин и точка выдачи<br> в Серпухове</strong>
-							<p>Московская область, город Серпухов, улица Звездная 6а, павильон №3<br> пн-пт 9:00-18:00;</p>
+							<p>Московская область, город Серпухов, улица Звездная 6а, павильон №3<br> пн-пт: 9:00-18:00;</p>
 						</div>
 						<div class="contact__last">
 							<a href="tel:+7 (499) 350-55-55" class="contact__phone roistat-phone">8 499 350-55-55</a>
