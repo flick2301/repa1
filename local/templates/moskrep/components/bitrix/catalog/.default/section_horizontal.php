@@ -3,7 +3,7 @@
 if($_REQUEST['section_temp'] == 'new'){
     $name_temple = 'horizontal_new';
 }else{
-    $name_temple = 'horizontal';
+    $name_temple = 'horizontal_new';
 }
 
 

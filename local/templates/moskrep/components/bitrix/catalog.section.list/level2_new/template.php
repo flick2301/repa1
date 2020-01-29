@@ -238,7 +238,8 @@ if($arResult['REFERENCE']['ITEM']['ID']!=''){?>
 //Если не справочник, а обычный раздел каталога    
 }else{
     if($IPROPERTY['SECTION_META_TITLE']==''){$APPLICATION->SetPageProperty('title', $arResult["SECTION"]["NAME"]);}?>
-<h1 class="s38-title"><?=$arResult["SECTION"]["NAME"]?></h1>
+	
+<h1 class="s38-title"><?=($arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE']) ? $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] :$arResult["SECTION"]["NAME"];?><?=$arResult["SECTION"]["NAME"]?></h1>
 <?php
 
     //Если в разделе имеются справочники

@@ -94,11 +94,12 @@ global $APPLICATION;
 		
         global $arReplacement;
         $arReplacement = $arResult['REFERENCE']['ITEM']['REPLACEMENT']['VALUE'];
+		$tmp = ($arResult['REFERENCE']['ITEM']['VERTICAL']['VALUE']=='Y') ? 'vertical' : 'horizontal';
 
 
         $intSectionID = $APPLICATION->IncludeComponent(
 					"bitrix:catalog.section",
-					"horizontal",
+					$tmp,
 					array(
 						
 						"IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -252,7 +253,7 @@ global $APPLICATION;
     
 <?else:?>
 <?if($IPROPERTY['SECTION_META_TITLE']==''){$APPLICATION->SetPageProperty('title', $arResult["SECTION"]["NAME"]);}?>
-<h1 class="s38-title"><?=$arResult["SECTION"]["NAME"]?></h1>
+<h1 class="s38-title"><?=($arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE']) ? $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] :$arResult["SECTION"]["NAME"];?></h1>
 <nav class="nav-sale">
     <ul class="nav-sale__items">
 <?

@@ -57,7 +57,7 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 		    <td class="added-product__td">
 			<div class="value added-product__value">
 			    <a href="javascript:void(0)" onclick="<?=$cartId?>.changeItemToCart(<?=$v['ID']?>, <?=$v['QUANTITY']-1?>)" rel="nofollow" class="value__minus">—</a>
-			    <input type="text" name="value__input" oninput='<?=$cartId?>.changeItemToCart(<?=$v['ID']?>, $(this).val())' value="<?=$v["QUANTITY"]?>" data-product='<?=$v['ID']?>' class="value__input">
+			    <input type="text" name="value__input" onchange='<?=$cartId?>.changeItemToCart(<?=$v['ID']?>, $(this).val())' value="<?=$v["QUANTITY"]?>" data-product='<?=$v['ID']?>' class="value__input">
 			    <a href="javascript:void(0)" onclick="<?=$cartId?>.changeItemToCart(<?=$v['ID']?>, <?=$v['QUANTITY']+1?>)" rel="nofollow" class="value__plus">+</a>
 			</div>
 		    </td>

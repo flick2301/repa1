@@ -20,8 +20,11 @@ $APPLICATION->SetPageProperty("keywords", $arResult['IPROP_VALUES']['SECTION_MET
 
 <h1 class="s38-title"><?=GetMessage('POL_CERTIFICATES_COMP_NAME')?> на <?=strtolower($arResult['SECTION']['NAME']);?></h1>
 <?foreach($arResult['ITEMS'] as $item){?>
-
 <nav class="nav-certificate">
+	<?if($item['PROPERTIES']['PDF_CERT']['VALUE']){?>
+	<?$file_arr=CFile::GetFileArray($item['PROPERTIES']['PDF_CERT']['VALUE']);?>
+		<a href='<?=CFile::GetPath($item['PROPERTIES']['PDF_CERT']['VALUE'])?>' target='_blank' class='pdf_link'>Скачать <?=$file_arr['ORIGINAL_NAME']?></a>
+	<?}?>
     <ul class="nav-certificate__items">
     <?foreach($item['PROPERTIES']['CERT_PAGE']['VALUE'] as $page_cert){
         $file = CFile::ResizeImageGet($page_cert, array('width'=>$arParams['ITEMS_PREV_PIC_W'], 'height'=>$arParams['ITEMS_PREV_PIC_H']), BX_RESIZE_IMAGE_PROPORTIONAL, true);

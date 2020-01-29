@@ -15,3 +15,9 @@ and open the template in the editor.
 .nav-sale:not(.temp2) .nav-sale__img img {
 
 }
+.pdf_link{
+	font-size:20px;
+	color:blue;
+	padding-bottom:14px;
+	
+}

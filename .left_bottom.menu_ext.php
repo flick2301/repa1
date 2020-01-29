@@ -105,6 +105,13 @@ $section = CIBlockSection::GetList(array('SORT' => 'asc'),$arFilter);
 		Array(), 
 		"" 
 	),
+	Array(
+		"Выйти из профиля", 
+		"/personal/?logout=yes", 
+		Array(), 
+		Array(), 
+		"" 
+	),
 	
 	
 	

@@ -13,6 +13,7 @@ global $APPLICATION
 ?>
 <?include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");?>
 <?$ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];?>
+
 <?$APPLICATION->SetPageProperty('title', $arResult["NAME"].", цена - купить в интернет-магазине в Москве");?>
 
 <?if(count($arResult['RELINK'])):?>
@@ -28,8 +29,13 @@ global $APPLICATION
         <?endforeach;?>
     </ul>
 </nav>
+
 <?php $this->EndViewTarget(); ?>
 <?endif;?>
+<?php
+//Параметр FOR_SEO устанавливается если это раздел справочника, а не каталога
+//А значит текст и заголовок(шапка) не берутся из каталога, а из справочника, значит условие FOR_SEO != Y
+if($arParams['FOR_SEO']!='Y'){?>
 <h1 class="s38-title"><?=($arResult['META_TITLE']) ? $arResult['META_TITLE'] :$arResult['NAME'];?></h1>
 <?if($arResult['DESCRIPTION']):?>
 <div class="catalog-head">
@@ -71,7 +77,8 @@ global $APPLICATION
     
 </div>
 <?endif;?>
-
+<?}
+	?>
 <div class="catalog-filter">
     
     <?$APPLICATION->ShowViewContent('filter_in_stock');?>
