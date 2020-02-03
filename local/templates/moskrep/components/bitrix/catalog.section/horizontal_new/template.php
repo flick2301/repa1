@@ -199,7 +199,7 @@ if($arParams['FOR_SEO']!='Y'){
 	    <td class="blue-table__td">
 		<div class="value">
 		    <a href="javascript:void(0)" rel="nofollow" class="value__minus">—</a>
-			<input type="text" name="" id="QUANTITY_<?=$item['ID']?>" value="1" class="value__input">
+			<input type="text" name="" data-quantity="<?=($item['CATALOG_QUANTITY'])?>" onchange='ChangeInputCart("<?=$item['NAME']?>", $(this))' id="QUANTITY_<?=$item['ID']?>" value="1" class="value__input">
 		    <a href="javascript:void(0)" rel="nofollow" class="value__plus">+</a>
 		</div>
 		<a href="javascript:void(0)" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>" rel="nofollow" class="blue-btn basket-btn">В корзину</a>

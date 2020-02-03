@@ -5435,3 +5435,28 @@ ol.tech {
 ol.tech li {
 	list-style-type: decimal;
 }
+.header-alert{
+    display:none;
+}
+.popUp-container .header-alert{
+    display:block !important;
+}
+.header-alert {
+    border-radius: 3px;
+    background: #fff;
+    padding: 40px;
+    height: auto;
+    position: relative;
+}
+.header-alert p {
+    color: #676767;
+    line-height: 1.375rem;
+    margin-top: 15px;
+}
+.header-alert p a {
+    color: #0c59cf;
+}
+.header-alert p a:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}

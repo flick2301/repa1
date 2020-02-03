@@ -59,6 +59,7 @@ BX.ready(function () {
                     $('.header-basket').popUp();
                 } else {
                    console.log(data);
+				   $('.header-basket-none').text(data.MESSAGE);
                    $('.header-basket-none').popUp();
                 }
             }
@@ -159,4 +160,16 @@ BX.ready(function () {
 $(".amount__select :contains("+$('.amount__info').text()+")").attr("selected", "selected");
 
 });
-
+function ChangeInputCart(name, e){
+	
+	if(e.val() > e.data("quantity"))
+	{
+		
+		
+		$('.header-basket-sberbank').html("<p>Максимальное количество позиций "+name+" в наличии <b>"+e.data("quantity")+" уп.</b></p>");
+		$('.header-basket-sberbank').popUp();
+		e.val(e.data("quantity"));
+		
+	}
+   
+}
