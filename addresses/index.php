@@ -19,77 +19,15 @@ $APPLICATION->SetTitle("Адреса магазинов");
 <p>Забрать груз в пункте самовывоза на Каширском шоссе можно на следующий день. Для этого оформить заказ нужно до 15:00. 
 
 	Суббота и Воскресенье - выходные дни.</p>
-			<div class="contact">
-				<div class="contact__wrapper">
-					<div class="contact__text">
-						<div class="contact__first">
-							<strong>Магазин и точка выдачи<br> в Москве</strong>
-							<p>г. Москва,  Каширское ш., д. 7, корп. 3<br> пн-пт 9:00-18:00;</p>
-						</div>
-						<div class="contact__last">
-							<a href="tel:+7 (499) 350-55-55" class="contact__phone roistat-phone">8 499 350-55-55</a>
-							<a href="skype:moskrep1236696" class="contact__skype">moskrep1236696</a>
-						</div>
-					</div>
-					<div class="contact__map">
-						<div id="map1"><?include($_SERVER["DOCUMENT_ROOT"].'/include/map1.php');?></div>
-					</div>
-				</div>
-			</div>
-                        
-			<div class="contact">
-				<div class="contact__wrapper">
-					<div class="contact__text">
-						<div class="contact__first">
-							<strong>Склад и интернет-магазин<br> в г. Подольск</strong>
-							<p>Россия, Московская область, городской округ Подольск, Коледино, 1Вс3, склад #6<br> пн-пт 9:00-18:00;</p>
-						</div>
-						<div class="contact__last">
-							<a href="tel:+7 (499) 350-55-55" class="contact__phone roistat-phone">8 499 350-55-55</a>
-							<a href="skype:moskrep.ru" class="contact__skype">moskrep.ru</a>
-						</div>
-					</div>
-					<div class="contact__map">
-						<div id="map2"><?include($_SERVER["DOCUMENT_ROOT"].'/include/map2.php');?></div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="contact">
-				<div class="contact__wrapper">
-					<div class="contact__text">
-						<div class="contact__first">
-							<strong>Магазин и точка выдачи<br> в Москве</strong>
-							<p>Москва, 2-й Кабельный проезд, дом 1, блок 2, 1-ый этаж, павильон 106<br> пн-пт 9:00-18:00;</p>
-						</div>
-						<div class="contact__last">
-							<a href="tel:+7 (499) 350-55-55" class="contact__phone roistat-phone">8 499 350-55-55</a>
-							<a href="skype:moskrep.ru" class="contact__skype">moskrep.ru</a>
-						</div>
-					</div>
-					<div class="contact__map">
-						<div id="map2"><?include($_SERVER["DOCUMENT_ROOT"].'/include/map4.php');?></div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="contact">
-				<div class="contact__wrapper">
-					<div class="contact__text">
-						<div class="contact__first">
-							<strong>Магазин и точка выдачи<br> в Серпухове</strong>
-							<p>Московская область, город Серпухов, улица Звездная 6а, павильон №3<br> пн-пт 9:00-18:00;</p>
-						</div>
-						<div class="contact__last">
-							<a href="tel:+7 (499) 350-55-55" class="contact__phone roistat-phone">8 499 350-55-55</a>
-							<a href="skype:moskrep.ru" class="contact__skype">moskrep.ru</a>
-						</div>
-					</div>
-					<div class="contact__map">
-						<div id="map2"><?include($_SERVER["DOCUMENT_ROOT"].'/include/map5.php');?></div>
-					</div>
-				</div>
-			</div>
+
+
+	<?$APPLICATION->IncludeComponent("d7:contact_shops",".default",Array(
+				"IBLOCK_ID" => "19", 
+				"CACHE_TYPE" => "A", 
+                "CACHE_TIME" => "3600", 
+                "CACHE_FILTER" => "N" 
+                    ), false
+    );?>	
 			
 </div>
 			<h2 class="s28-title">ООО «КРЕП-КОМП»</h2>
