@@ -65,8 +65,31 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 		    <td class="added-product__td" ><div class="added-product__close" onclick="<?=$cartId?>.removeItemFromCart(<?=$v['ID']?>)"></div></td>
 		</tr>
 		          
-            
-                
+        <?$prod_id = $v['PRODUCT_ID'];?>
+              <?if($USER->IsAdmin()){
+				
+				\Bitrix\Main\Loader::includeModule('iblock');				
+				$arFilter = Array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, 'ID'=>$v['PRODUCT_ID']);
+				$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>50), array('*'));
+				if($ob = $res->GetNextElement())
+				{
+					$arProperties = $ob->GetProperties();
+					$arArt=explode(';', trim($arProperties['SOPUTSTVUYUSHCHIE_TOVARY']['VALUE'],';'));
+					
+				}
+				  
+				$arFilter = Array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, 'PROPERTY_CML2_ARTICLE'=>$arArt);
+				$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>50), array('*'));
+				while($ob = $res->GetNextElement())
+				{
+					$Fielsd = $ob->GetFields();
+					$arProperties = $ob->GetProperties();
+					
+					//echo $Fielsd['ID'].' = '.$arProperties['CML2_ARTICLE']['VALUE'].'<br />';
+				}
+					
+			  }
+				?>
                 
 				<?endforeach?>
 			<?endforeach?>
@@ -76,6 +99,43 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 	    <a href="#" onclick="$('.popUp-container').popUp('close');" class="white-btn">Продолжить покупки</a>
 	    <a href="<?=$arParams['PATH_TO_BASKET']?>" class="blue-btn">Перейти в корзину</a>
 	</div>
+	<?if($USER->IsAdmin()){
+				
+				\Bitrix\Main\Loader::includeModule('iblock');				
+				$arFilter = Array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, 'ID'=>$v['PRODUCT_ID']);
+				$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>50), array('*'));
+				if($ob = $res->GetNextElement())
+				{
+					$arProperties = $ob->GetProperties();
+					$arArt=explode(';', trim($arProperties['SOPUTSTVUYUSHCHIE_TOVARY']['VALUE'],';'));
+					if($arProperties['SOPUTSTVUYUSHCHIE_TOVARY']['VALUE']){
+						?><div class="box-modal__title">Сопутствующие товары:</div><?
+					}
+					
+				}
+				  
+				$arFilter = Array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, 'PROPERTY_CML2_ARTICLE'=>$arArt);
+				$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>50), array('*'));
+				while($ob = $res->GetNextElement())
+				{
+					$Fielsd = $ob->GetFields();
+					$arProperties = $ob->GetProperties();
+					
+					?>
+					<div class="basket-infomedia">
+						<div class="infomedia__img"><a href="<?=$Fielsd["DETAIL_PAGE_URL"]?>"><img style='width:65px;' src="<?echo ($Fielsd["PREVIEW_PICTURE"]) ? CFile::GetPath($Fielsd["PREVIEW_PICTURE"]) : "/images/no_image.jpg";?>" alt=""></a></div>
+						<div class="infomedia__text">
+							<a href="<?=$Fielsd["DETAIL_PAGE_URL"]?>" class="infomedia__link"><?=$Fielsd["NAME"]?></a>
+							
+						</div>
+					</div>
+					<?
+					//echo $Fielsd['ID'].' = '.$arProperties['CML2_ARTICLE']['VALUE'].'<br />';
+				}
+					
+			  }
+				?>
+	
 	<div class="box-modal__separator"></div>
 		
     </div>

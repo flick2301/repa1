@@ -128,7 +128,8 @@ if($arSection = $rsSections->GetNext())
 
 $ar_result = CIBlockSection::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "ID" => $arResult["IBLOCK_SECTION_ID"]), false, $arSelect = array("*", "UF_*"));
 
-if($arSection = $ar_result->GetNext()) { 
+if($arSection = $ar_result->GetNext()) {
+	
     $arResult["RELATED"] = $arSection["UF_RELATED"];
     $arResult["SECTION_PICTURE"]=$arSection['PICTURE'];
     
