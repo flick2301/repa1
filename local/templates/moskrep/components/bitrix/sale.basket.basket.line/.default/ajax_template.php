@@ -66,6 +66,7 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 		</tr>
 		          
         <?$prod_id = $v['PRODUCT_ID'];?>
+		<?$isec_id = $v;?>
               
                 
 				<?endforeach?>
@@ -81,20 +82,55 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 	<div class="box-modal__separator"></div>
 		<?if($USER->IsAdmin()){
 				
-				\Bitrix\Main\Loader::includeModule('iblock');				
-				$arFilter = Array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, 'ID'=>$prod_id);
-				$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>50), array('*'));
-				if($ob = $res->GetNextElement())
+				
+				\Bitrix\Main\Loader::includeModule('iblock');	
+
+				$res = CIBlockElement::GetByID( $prod_id );
+				if($ar_res = $res->GetNext()) $isec_id = $ar_res['IBLOCK_SECTION_ID'];
+				
+				$arFilter = Array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, 'ID'=>$isec_id);
+				$res = CIBlockSection::GetList(Array("SORT"=>"ASC"), $arFilter, false, array('*', 'UF_*'));
+				if($ob = $res->GetNext())
 				{
-					$arProperties = $ob->GetProperties();
-					$arArt=explode(';', trim($arProperties['SOPUTSTVUYUSHCHIE_TOVARY']['VALUE'],';'));
-					 if($arProperties['SOPUTSTVUYUSHCHIE_TOVARY']['VALUE']){
+					
+					
+					foreach($ob['UF_SOPUTKA'] as $val):
+						$arVal = explode(';', trim($val,';'));
+						$arArt[$arVal[0]]=$arVal;
+						$db_props = CIBlockElement::GetProperty(CATALOG_IBLOCK_ID, $prod_id, array("sort" => "asc"), Array("CODE"=>$arVal[1]));
+						if($ar_props = $db_props->Fetch()){
+							
+							$arPROPVAL[$arVal[0]] = $ar_props["VALUE"];
+						}
+						$arSec[]=$arVal[0];
+						
+					endforeach;
+					
+					 if($ob['UF_SOPUTKA']){
                                               ?><div class="box-modal__title">Сопутствующие товары:</div><?
                                        }
 
 				}
-				  
-				$arFilter = Array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, 'PROPERTY_CML2_ARTICLE'=>$arArt);
+				
+				if($arSec){
+					$arFilter = Array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, 'CODE'=>$arSec);
+					$res = CIBlockSection::GetList(Array("SORT"=>"ASC"), $arFilter, false, array('*', 'UF_*'));
+					while($ob = $res->GetNext())
+					{
+					
+						?>
+						<div class="sorting_item">
+						<a href="javascript:void(0);" data-secid="<?=$ob['ID']?>" onclick="GetListItems(<?=$ob['ID']?>, '<?=($arArt[$ob['CODE']][1]) ? $arArt[$ob['CODE']][1] : '0';?>', '<?=($arPROPVAL[$ob['CODE']]) ? $arPROPVAL[$ob['CODE']] : '0';?>');" data-param="<?=$arArt[$ob['CODE']][1]?>" data-param2="<?=$arArt[$ob['CODE']][2]?>" class="sorting_link">
+                    
+							<span class="sorting_title"><?=$ob['NAME']?></span>
+						</a>
+					</div>
+						<?
+					}
+				}
+				
+				/*
+				$arFilter = Array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, 'PROPERTY_CML2_ARTICLE'=>$arSec);
 				$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>50), array('*'));
 				while($ob = $res->GetNextElement())
 				{
@@ -109,17 +145,35 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
                                       </div>
                                       <?
 
-					//echo $Fielsd['ID'].' = '.$arProperties['CML2_ARTICLE']['VALUE'].'<br />';
-				}
 					
+				}
+					*/
 			  }
 				?>
+				<br><br>
+				<div id='soput_carts'>
+				</div>
     </div>
 
 	<script>
 		BX.ready(function(){
 			<?=$cartId?>.fixCart();
+
 		});
+		function GetListItems (id, param1, param2)
+		{
+			
+			$.ajax({
+				type: "POST",
+				url: '/local/templates/moskrep/components/bitrix/sale.basket.basket.line/.default/ajax_soput.php',
+				data: {'ID':id, 'param1':param1, 'param2':param2},
+			
+				success: function(msg){
+					$('#soput_carts').html(msg);
+				}
+          }); 
+		  
+		}
 	</script>
 <?
 }

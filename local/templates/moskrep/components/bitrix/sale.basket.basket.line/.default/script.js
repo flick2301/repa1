@@ -211,7 +211,8 @@ BitrixSmallCart.prototype = {
 		this.itemRemoved = true;
 		BX.onCustomEvent('OnBasketChange');
 	},
-        
+	
+	       
         changeItemToCart: function (id, quantity)
 	{
                 var misc = [ id, quantity ];
@@ -248,4 +249,11 @@ BX.ready(function(){
 	$( ".pay-choice--sberbank" ).click(function() {
 		$('.header-basket-sberbank').popUp();
 	});
+	
+	function GetListItems (id, param1, param2)
+	{
+		alert(id);
+	}
+	
+	
 });
