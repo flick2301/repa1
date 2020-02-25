@@ -36,6 +36,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 <?endif;?>
 
 
+
     <div itemscope itemtype="http://schema.org/Product" class="card">
         <div style='display:none;'>
             <?if($USER->IsAuthorized()):?>

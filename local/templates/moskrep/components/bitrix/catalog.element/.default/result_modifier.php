@@ -52,8 +52,17 @@ endif;
 
 
 
+//ОБЩЕЕ КОЛИЧЕСТВО **РЕШИЛИ УБРАТЬ, ОСТАВИТЬ ТОЛЬКО КОЛЕДИНО
+//$arResult['ELEMENT_COUNT'] = $arResult['CATALOG_QUANTITY']+$arResult['CATALOG_QUANTITY_RESERVED'];
 
-$arResult['ELEMENT_COUNT'] = $arResult['CATALOG_QUANTITY']+$arResult['CATALOG_QUANTITY_RESERVED'];
+$rsStoreProduct = \Bitrix\Catalog\StoreProductTable::getList(array(
+		'filter' => array('=PRODUCT_ID'=>$arResult['ID'],'STORE.ACTIVE'=>'Y','STORE.ID'=>3),
+		'select' => array('AMOUNT','STORE_ID','STORE_TITLE' => 'STORE.TITLE'),
+	));
+	if($arStoreProduct=$rsStoreProduct->fetch())
+	{
+		$arResult['ELEMENT_COUNT'] = $arStoreProduct['AMOUNT'];
+	}
 
 
    

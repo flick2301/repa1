@@ -75,9 +75,10 @@ include($_SERVER["DOCUMENT_ROOT"].$templateFolder."/props_format.php");
             <br>
             <div class="feedback-form">
 		<?
-                
-		PrintPropsForm($arResult["ORDER_PROP"]["USER_PROPS_N"], $arParams["TEMPLATE_LOCATION"]);
+        
 		PrintPropsForm($arResult["ORDER_PROP"]["USER_PROPS_Y"], $arParams["TEMPLATE_LOCATION"]);
+		PrintPropsForm($arResult["ORDER_PROP"]["USER_PROPS_N"], $arParams["TEMPLATE_LOCATION"]);
+		
 		?>
             </div>
 	</div>

@@ -288,42 +288,7 @@ if (!function_exists("cmpBySort"))
 					top.BX('confirmorder').value = 'Y';
 					top.BX('profile_change').value = 'N';
 					
-						BX.addCustomEvent('onAjaxSuccess', function(){
-							
-							
-							BX.bind(BX('ORDER_PROP_10'), 'bxchange', function() {
-								
-								BX.ajax({ 
-									type: 'POST', // метод отправки
-									url: '/ajax/dadata.php', // путь к обработчику
-									data: {
-										'INN': BX("ORDER_PROP_10").value,
-									},
-									method: 'POST',
-									dataType: 'json',
-									timeout: 30,
-									async: true,
-									processData: true,
-									scriptsRunFirst: true,
-									emulateOnload: true,
-									start: true,
-									cache: false,
-									onsuccess: function(data){
-										//console.log(data['KPP']); // при успешном получении ответа от сервера, заносим полученные данные в элемент с классом answer
-										if(data["KPP"]){
-											BX("ORDER_PROP_29").value = data["KPP"];
-										}
-									},
-									onfailure: function(data){
-										console.log(data); // выводим ошибку в консоль
-									}
-								});
-								
-								
-							});
-							
-							
-						});
+						
 									
 					
 				</script>
@@ -359,5 +324,24 @@ if (!function_exists("cmpBySort"))
 	</div>
 
 <?endif?>
+<script>
 
+	$(document).ready(function() {
+
+		$(".example").find("input").change(function() {
+
+			var f_name = [];
+
+			for (var i = 0; i < $(this).get(0).files.length; ++i) {
+
+				f_name.push(" " + $(this).get(0).files[i].name);
+
+			}
+
+			$("#f_name").val(f_name.join(", "));
+		});
+
+	});
+
+</script>
     

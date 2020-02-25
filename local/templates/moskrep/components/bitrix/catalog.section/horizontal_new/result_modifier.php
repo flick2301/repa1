@@ -50,6 +50,7 @@ if($arSection = $rsResult->GetNext()) {
     $arResult['UF_VES_TABLE_ID'] = $arSection["UF_VES_TABLE"];
     $arResult["UF_RELATED"] = $arSection["UF_RELATED"];
     $arResult["UF_DETAIL_TEXT"] = $arSection["UF_DETAIL_TEXT"];
+	$arResult["UF_CHARS"] = $arSection["UF_CHARS"];
 }
 
 if($arResult['UF_SOPUT_SPR']){
@@ -123,7 +124,15 @@ foreach($arResult['ITEMS'] as $key=>$arItem){
     else:
         $arResult['ITEMS'][$key]['UNIT']= ' шт.';
     endif;
-
+	
+	$rsStoreProduct = \Bitrix\Catalog\StoreProductTable::getList(array(
+		'filter' => array('=PRODUCT_ID'=>$arItem['ID'],'STORE.ACTIVE'=>'Y','STORE.ID'=>3),
+		'select' => array('AMOUNT','STORE_ID','STORE_TITLE' => 'STORE.TITLE'),
+	));
+	while($arStoreProduct=$rsStoreProduct->fetch())
+	{
+		$arResult['ITEMS'][$key]['KOLEDINO'] = $arStoreProduct['AMOUNT'];
+	}
     $rsStore = CCatalogStoreProduct::GetList(array(), array('PRODUCT_ID' => $arItem['ID']), false, false, array('STORE_ID', 'AMOUNT', 'STORE_NAME'));
     while($arStore = $rsStore->Fetch()){
         $arResult['ITEMS'][$key]['STORE'][$arStore['STORE_ID']] = $arStore;
@@ -192,7 +201,15 @@ $arProp = array_diff($arProp, array(''));
 $arProp = array_diff($arProp, array('false'));
 unset($arProp['Ставки налогов']);
 unset($arProp['Базовая единица']);
-$arResult['GENERAL_PROPERTIES']=$arProp;
+if(count($arResult['UF_CHARS'])>1)
+{
+	foreach($arResult['UF_CHARS'] as $char){
+		$arVal = explode(';', trim($char,';'));
+		$arResult['GENERAL_PROPERTIES'][$arVal[0]]=$arVal[1];
+	}
+}else{
+	$arResult['GENERAL_PROPERTIES']=$arProp;
+}
 
 $arResult['PICTURE_RESIZE'] = CFile::ResizeImageGet($arResult['PICTURE']['ID'], array('width'=>200, 'height'=>200), BX_RESIZE_IMAGE_PROPORTIONAL, true);
 

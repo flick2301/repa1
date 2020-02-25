@@ -1,9 +1,7 @@
 <?
-$APPLICATION->SetTitle("Авторизация");
-?>
-<?
 define("NEED_AUTH", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+$APPLICATION->SetTitle("Авторизация");
 
 $userName = CUser::GetFullName();
 if (!$userName)

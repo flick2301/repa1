@@ -127,6 +127,10 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 					</div>
 						<?
 					}
+					?>
+					<br><br>
+				<div id='soput_carts'>
+				</div><?
 				}
 				
 				/*
@@ -150,9 +154,7 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 					*/
 			  }
 				?>
-				<br><br>
-				<div id='soput_carts'>
-				</div>
+				
     </div>
 
 	<script>

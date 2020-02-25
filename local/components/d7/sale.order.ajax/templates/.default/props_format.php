@@ -57,7 +57,9 @@ if (!function_exists("PrintPropsForm"))
 		if (!empty($arSource))
 		{
 			?>
-				<div class='feedback-form__left'>
+			
+				<div class='feedback-form__<?=(count($arSource)>3) ? 'left' : 'right';?>'>
+			
 					<?
 					foreach ($arSource as $arProperties)
 					{
@@ -103,9 +105,13 @@ if (!function_exists("PrintPropsForm"))
                                                        <input type="hidden" value="<?=$_COOKIE["roistat_visit"]?>" name="<?=$arProperties["FIELD_NAME"]?>" id="<?=$arProperties["FIELD_NAME"]?>" class="form__input"> 
                                                         <?
                                                                
-                                                    }else{
-							?>
-							
+                                                    
+													}else{
+							?>							<?if($arProperties["NAME"]=='ИНН' || $arProperties["NAME"]=='Наименование компании'){
+								$arRegProp[] = $arProperties;
+								continue;
+														
+							}?>
                                                         <span class="feedback-form__title">
                                                             <?if ($arProperties["REQUIED_FORMATED"]=="Y"):?>
 									<span class="bx_sof_req">*</span>
@@ -353,17 +359,17 @@ if (!function_exists("PrintPropsForm"))
 						elseif ($arProperties["TYPE"] == "FILE")
 						{
 							?>
-							<br/>
-							<div class="bx_block r1x3 pt8">
-								<?=$arProperties["NAME"]?>
-								<?if ($arProperties["REQUIED_FORMATED"]=="Y"):?>
+							<span class="feedback-form__title">
+                                                            <?if ($arProperties["REQUIED_FORMATED"]=="Y"):?>
 									<span class="bx_sof_req">*</span>
 								<?endif;?>
-							</div>
+                                                        <?=$arProperties["NAME"]?>:</span>
+							
 
-							<div class="bx_block r3x1">
+							<div class="bx_block r3x1 example"  style='display:block;'>
 								<?=showFilePropertyField("ORDER_PROP_".$arProperties["ID"], $arProperties, $arProperties["VALUE"], $arProperties["SIZE1"])?>
-
+								<div>Обзор...</div>
+								<input class="f_name" type="text" id="f_name" value="Файл не выбран." disabled />
 								<?
 								if (strlen(trim($arProperties["DESCRIPTION"])) > 0):
 								?>
@@ -414,15 +420,48 @@ if (!function_exists("PrintPropsForm"))
                                                 endif;
 					}
 					?>
+					
 				</div>
+				<?if(count($arSource)>3){?>
                                 <div class="feedback-form__right">
 			
-			<label class="feedback-form__label">
-			    <span class="feedback-form__title"><?=GetMessage("SOA_TEMPL_SUM_COMMENTS")?>:</span>
-                            <textarea name="ORDER_DESCRIPTION" id="ORDER_DESCRIPTION" class="form__textarea"><?=$arResult["USER_VALS"]["ORDER_DESCRIPTION"]?></textarea></div>
-			    <input type="hidden" name="" value="">
-                        </label>
-		</div>
+									<label class="feedback-form__label">
+										<span class="feedback-form__title"><?=GetMessage("SOA_TEMPL_SUM_COMMENTS")?>:</span>
+										<textarea name="ORDER_DESCRIPTION" id="ORDER_DESCRIPTION" class="form__textarea"><?=$arResult["USER_VALS"]["ORDER_DESCRIPTION"]?></textarea>
+										<input type="hidden" name="" value="">
+									</label>
+								
+								</div>
+					<?}?>
+					<?if(count($arRegProp)>0){?>
+					<h2 class="s28-title" style='width:100%'>Реквизиты</h2><br>
+					<p>Введите наименование и ИНН организации или приложите файл с карточкой компании</p><br>
+					<div class='feedback-form__left'>
+			
+					<?
+					foreach ($arRegProp as $arProperties)
+					{
+						?>
+						<label class='feedback-form__label' data-property-id-row="<?=intval(intval($arProperties["ID"]))?>">
+						<?
+						if ($arProperties["TYPE"] == "TEXT")
+						{
+							?>
+                                                        <span class="feedback-form__title">
+                                                            <?if ($arProperties["REQUIED_FORMATED"]=="Y"):?>
+									<span class="bx_sof_req">*</span>
+								<?endif;?>
+                                                        <?=$arProperties["NAME"]?>:</span>
+                                                        <input type="text" value="<?=$arProperties["VALUE"]?>" name="<?=$arProperties["FIELD_NAME"]?>" id="<?=$arProperties["FIELD_NAME"]?>" class="form__input">
+							
+							<?
+                                                        
+						}
+						?></label><?
+					}
+					?>
+					</div>
+					<?}?>
 			<?
 		}
 	}
