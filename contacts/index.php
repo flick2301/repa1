@@ -32,12 +32,12 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/kontent-elementa/contact_spb.php");
 <ul class="requisites">
 	<li class="requisites__item"> <span class="requisites__title">Юридический адрес:</span>
 	<p class="requisites__info">
-		 117534, г. Москва ул. Кировоградская, дом 23А,<br />корпус 1, эт. 1, пом. 4, ком. 24Л
+		 <?=tplvar("legal_address")?>
 	</p>
  </li>
 	<li class="requisites__item"> <span class="requisites__title">Фактический адрес:</span>
 	<p class="requisites__info">
-		 117534 г. Москва, ул. Кировоградская, дом 23А,<br />корпус 1, эт. 1, пом. 4, ком. 24Л
+		 <?=tplvar("address")?>
 	</p>
  </li>
 	<li class="requisites__item"> <span class="requisites__title">ИНН</span>
