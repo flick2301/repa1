@@ -34,11 +34,11 @@ $APPLICATION->SetTitle("Адреса магазинов");
 			<ul class="requisites">
 				<li class="requisites__item">
 					<span class="requisites__title">Юридический адрес:</span>
-					<p class="requisites__info">117534, г. Москва ул. Кировоградская, дом 23А, корпус 1</p>
+					<p class="requisites__info"><?=tplvar("legal_address")?></p>
 				</li>
 				<li class="requisites__item">
 					<span class="requisites__title">Фактический адрес:</span>
-					<p class="requisites__info">117534 г. Москва, ул. Кировоградская, дом 23А, корпус 1</p>
+					<p class="requisites__info"><?=tplvar("address")?></p>
 				</li>
 				<li class="requisites__item">
 					<span class="requisites__title">ИНН</span>
