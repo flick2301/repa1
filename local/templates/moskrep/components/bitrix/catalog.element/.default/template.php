@@ -194,7 +194,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 				<div class="adress__number">1</div>
 				<div class="adress__info">
 				    <p><?echo STORE_ID_KASHIRKA['1'];?><br> <?=STORE_ID_KASHIRKA[2]?></p>
-				    <div class="adress__pres">Наличие <?echo ($arResult['STORE'][STORE_ID_KASHIRKA[0]]['AMOUNT']) ? '<div class="adress__pres--yes"> '.$arResult['STORE'][STORE_ID_KASHIRKA[0]]['AMOUNT'].'  уп.</div>' : '<div class="adress__pres--no">Под заказ</div>';?></div>
+				    
 				    <div class="adress__link" data-tab="map1">Показать на карте</div>
 				</div>
 			    </li>
@@ -203,7 +203,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 				<div class="adress__number">2</div>
 				<div class="adress__info">
 				    <p><?=STORE_ID_KOLEDINO[1]?><br> <?=STORE_ID_KOLEDINO[2]?></p>
-				    <div class="adress__pres">Наличие <?echo ($arResult['STORE'][STORE_ID_KOLEDINO[0]]['AMOUNT']) ? '<div class="adress__pres--yes"> '.$arResult['STORE'][STORE_ID_KOLEDINO[0]]['AMOUNT'].'  уп.</div>' : '<div class="adress__pres--no">Под заказ</div>';?></div>
+				   
 				    <div class="adress__link" data-tab="map2">Показать на карте</div>
 				</div>
 			    </li>
@@ -211,7 +211,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 				<div class="adress__number">3</div>
 				<div class="adress__info">
 				    <p><?echo STORE_ID_UZHKA['1'];?><br> <?=STORE_ID_UZHKA[2]?></p>
-				    <div class="adress__pres">Наличие <?echo ($arResult['STORE'][STORE_ID_UZHKA[0]]['AMOUNT']) ? '<div class="adress__pres--yes"> '.$arResult['STORE'][STORE_ID_UZHKA[0]]['AMOUNT'].'  уп.</div>' : '<div class="adress__pres--no">Под заказ</div>';?></div>
+				    
 				    <div class="adress__link" data-tab="map4">Показать на карте</div>
 				</div>
 			    </li>
@@ -219,7 +219,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 				<div class="adress__number">4</div>
 				<div class="adress__info">
 				    <p><?echo STORE_ID_SERPUH['1'];?><br> <?=STORE_ID_SERPUH[2]?></p>
-				    <div class="adress__pres">Наличие <?echo ($arResult['STORE'][STORE_ID_SERPUH[0]]['AMOUNT']) ? '<div class="adress__pres--yes"> '.$arResult['STORE'][STORE_ID_SERPUH[0]]['AMOUNT'].'  уп.</div>' : '<div class="adress__pres--no">Под заказ</div>';?></div>
+				    
 				    <div class="adress__link" data-tab="map5">Показать на карте</div>
 				</div>
 			    </li>

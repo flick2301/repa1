@@ -115,17 +115,19 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 				if($arSec){
 					$arFilter = Array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, 'CODE'=>$arSec);
 					$res = CIBlockSection::GetList(Array("SORT"=>"ASC"), $arFilter, false, array('*', 'UF_*'));
+					$first = true;
 					while($ob = $res->GetNext())
 					{
 					
 						?>
-						<div class="sorting_item">
-						<a href="javascript:void(0);" data-secid="<?=$ob['ID']?>" onclick="GetListItems(<?=$ob['ID']?>, '<?=($arArt[$ob['CODE']][1]) ? $arArt[$ob['CODE']][1] : '0';?>', '<?=($arPROPVAL[$ob['CODE']]) ? $arPROPVAL[$ob['CODE']] : '0';?>');" data-param="<?=$arArt[$ob['CODE']][1]?>" data-param2="<?=$arArt[$ob['CODE']][2]?>" class="sorting_link">
+						<div class="sorting_item" onclick="setSelected(this);">
+						<a href="javascript:void(0);" data-secid="<?=$ob['ID']?>" onclick="GetListItems(<?=$ob['ID']?>, '<?=($arArt[$ob['CODE']][1]) ? $arArt[$ob['CODE']][1] : '0';?>', '<?=($arPROPVAL[$ob['CODE']]) ? $arPROPVAL[$ob['CODE']] : '0';?>');" data-param="<?=$arArt[$ob['CODE']][1]?>" data-param2="<?=$arArt[$ob['CODE']][2]?>" class="sorting_link <?=($first) ? 'first_link' : '';?>">
                     
 							<span class="sorting_title"><?=$ob['NAME']?></span>
 						</a>
 					</div>
 						<?
+						$first = false;
 					}
 					?>
 					<br><br>
@@ -160,6 +162,7 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 	<script>
 		BX.ready(function(){
 			<?=$cartId?>.fixCart();
+			$('.first_link').click();
 
 		});
 		function GetListItems (id, param1, param2)
@@ -175,6 +178,11 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 				}
           }); 
 		  
+		}
+		function setSelected(e)
+		{
+			jQuery(".sorting_item").removeClass("sortin_item_active");
+			jQuery(e).addClass("sortin_item_active");
 		}
 	</script>
 <?

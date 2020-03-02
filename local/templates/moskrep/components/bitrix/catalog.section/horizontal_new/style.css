@@ -4799,6 +4799,7 @@
 }
 
 .pickup-view {
+	display:none !important;
     background: url(./img/Shape-01.png) no-repeat;
     width: 26px; height: 33px;
     display: inline-block;

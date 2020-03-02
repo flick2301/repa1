@@ -5268,6 +5268,17 @@ list-style: square outside;
     display:block;
     width:600px;
 }
+
+.sortin_item_active{
+	background-color:#0c58cf !important;
+	
+}
+.sortin_item_active a{
+	font-weight:500 !important;
+    
+    color:white !important;
+	
+}
 .sorting_item{
     display:inline-flex;
     height:40px;
@@ -5282,6 +5293,7 @@ list-style: square outside;
     
    
 }
+
 .sorting_item:hover a{
     
      font-weight:500;

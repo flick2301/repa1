@@ -169,7 +169,7 @@ if($arParams['FOR_SEO']!='Y'){
             <td class="blue-table__td"><span class="articul-b"><a class="name_b" href="<?=$item['DETAIL_PAGE_URL']?>" title='<?=($item['PROPERTIES']['ROOT_NAME']['VALUE']) ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'];?>' target="_self"><?=($item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]) ? $item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] : '1';?> <?=$item['UNIT']?></a></span></td>
             <td class="blue-table__td"><span class="articul-b"><a href="<?=$item['DETAIL_PAGE_URL']?>" target="_self" title='<?=($item['PROPERTIES']['ROOT_NAME']['VALUE']) ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'];?>'><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?>
                     </a></span></td>
-	        <td class="blue-table__td"><?echo ($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']) ? '<span class="availability-b active">В наличии</span>' : '<span class="availability-b">Под заказ</span>';?></td>
+	        <td class="blue-table__td"><?echo ($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']) ? '<span class="availability-b active">В наличии</span><br>'.$item['CATALOG_QUANTITY'].' уп.' : '<span class="availability-b">Под заказ</span>';?></td>
             <td class="blue-table__td">
 								<span class="pickup-view" data-product="<?=$item['ID']?>">
 									<div id='pickup_<?=$item['ID']?>' class="pickup-block">
