@@ -6,6 +6,7 @@ BitrixSmallCart.prototype = {
 
 	activate: function ()
 	{
+		
 		this.cartElement = BX(this.cartId);
 		this.fixedPosition = this.arParams.POSITION_FIXED == 'Y';
 		if (this.fixedPosition)
@@ -34,6 +35,38 @@ BitrixSmallCart.prototype = {
 		}
 		this.setCartBodyClosure = this.closure('setCartBody');
 		BX.addCustomEvent(window, 'OnBasketChange', this.closure('refreshCart', {}));
+	},
+	activate2: function ()
+	{
+		alert('Добавлен');
+		this.cartElement = BX(this.cartId);
+		this.fixedPosition = this.arParams.POSITION_FIXED == 'Y';
+		if (this.fixedPosition)
+		{
+			this.cartClosed = true;
+			this.maxHeight = false;
+			this.itemRemoved = false;
+			this.verticalPosition = this.arParams.POSITION_VERTICAL;
+			this.horizontalPosition = this.arParams.POSITION_HORIZONTAL;
+			this.topPanelElement = BX("bx-panel");
+
+			this.fixAfterRender(); // TODO onready
+			this.fixAfterRenderClosure = this.closure('fixAfterRender');
+
+			var fixCartClosure = this.closure('fixCart');
+			this.fixCartClosure = fixCartClosure;
+
+			if (this.topPanelElement && this.verticalPosition == 'top')
+				BX.addCustomEvent(window, 'onTopPanelCollapse', fixCartClosure);
+
+			var resizeTimer = null;
+			BX.bind(window, 'resize', function() {
+				clearTimeout(resizeTimer);
+				resizeTimer = setTimeout(fixCartClosure, 200);
+			});
+		}
+		this.setCartBodyClosure = this.closure('setCartBody');
+		BX.addCustomEvent(window, 'OnBasketChange');
 	},
 
 	fixAfterRender: function ()

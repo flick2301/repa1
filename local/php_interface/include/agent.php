@@ -1,5 +1,6 @@
 <?php
 //УДАЛЕНИЕ ЭЛЕМЕНТОВ С ПУСТЫМИ ЦЕНАМИ(ЕДИНСТВЕННЫЙ СПОСОБ ЗАЧИСТКИ УСТАРЕВШИХ ПОЗИЦИЙ ИЗ 1С)
+//А ТАК ЖЕ РАНЖИРОВАНИЕ ПОЗИЦИЙ С ВНУТРЕННИМ ДИАМЕТРОМ (добавление числового значения диаметра)
 function AgentDeleteZeroElements(){
     
     if(CModule::IncludeModule('iblock')){
@@ -28,6 +29,26 @@ function AgentDeleteZeroElements(){
 		"DESCRIPTION"=>"Проверка нулевых элементов. Удалено ".count($elements)." элементов",
 		));
     }
+	
+	
+	//ДОБАВЛЕНИЕ INTEGER ВНУТ. ДИАМЕТРА
+	$arSelect = Array("ID", "IBLOCK_ID", "NAME", "DATE_ACTIVE_FROM","PROPERTY_*");//IBLOCK_ID и ID обязательно должны быть указаны, см. описание arSelectFields выше
+	$arFilter = Array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, "ACTIVE"=>"Y", "PROPERTY_DIAMETR_VNUTRENNIY_VALUE"=>"м%", "PROPERTY_DIAMETR_VNUTRENNIY_INTEGER"=>false);
+	$res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
+	while($ob = $res->GetNextElement()){ 
+
+		$arFields = $ob->GetFields();  
+		$arProps = $ob->GetProperties();
+	
+		$ELEMENT_ID = $arFields['ID'];  // код элемента
+		$PROPERTY_CODE = "DIAMETR_VNUTRENNIY_INTEGER";  // код свойства
+		$PROPERTY_VALUE = str_replace('м', '', $arProps['DIAMETR_VNUTRENNIY']['VALUE']);  // значение свойства
+
+		// Установим новое значение для данного свойства данного элемента
+		CIBlockElement::SetPropertyValuesEx($ELEMENT_ID, false, array($PROPERTY_CODE => $PROPERTY_VALUE));
+		
+	
+	}
     return "AgentDeleteZeroElements();";
 }
 function AgentCheckCatalogProps(){

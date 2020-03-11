@@ -4799,7 +4799,7 @@
 }
 
 .pickup-view {
-	display:none !important;
+	
     background: url(./img/Shape-01.png) no-repeat;
     width: 26px; height: 33px;
     display: inline-block;
@@ -4916,4 +4916,13 @@
     width: 109px !important;
 	min-width: 109px !important;
     max-width: 109px !important;
+}
+.info-nav-list__item strong {
+   background-color: transparent !important;
+   text-shadow: 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff, 2px 2px 5px #ffffff;
+}
+.info-nav-list__item span {
+   text-align: right;
+   background-color: transparent !important;
+   text-shadow: -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff, -2px 2px 5px #ffffff;
 }

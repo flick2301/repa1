@@ -6,31 +6,21 @@
 
 
 BX.ready(function () {
-    var buyBtnDetail = document.body.querySelectorAll('.basket-btn');
-	var IDs=[];
-    for (var i = 0; i < buyBtnDetail.length; i++) {
-        BX.bind(buyBtnDetail[i], 'click', BX.delegate(function (e) {
-            add2basketDetail(e)
-        }, this));
-		
-		
-	IDs.push({'id': buyBtnDetail[i].dataset.product, 'google_business_vertical': 'retail'});
-		
     
-    }
 	
 	gtag('event','view_item_list', {
 		'send_to': 'AW-958495754',
 				'items': IDs
 					});
     
-    function add2basketDetail(e) {
+    function add2basketDetailSoputka(e) {
         var id = e.target.dataset.product,
                 quantity = 1;
+				
         if (!!BX('QUANTITY_' + id)) {
             quantity = BX('QUANTITY_' + id).value;
         }
-       
+       alert(e.target.dataset.product);
         BX.ajax({
             url: window.location.href,
             data: {
@@ -43,7 +33,7 @@ BX.ready(function () {
             dataType: 'json',
             onsuccess: function (data) {
                 if (data.STATUS == 'OK') {
-                    BX.addClass(e.target, 'active');
+                    //BX.addClass(e.target, 'active2');
                    console.log(e.target.dataset.price);
                     BX.onCustomEvent('OnBasketChange');
 					ga ('send', 'event', 'Корзина', 'Добавить в корзину');
@@ -56,7 +46,8 @@ BX.ready(function () {
 							'google_business_vertical': 'retail'
 						}]
 					});
-                    $('.header-basket').popUp();
+					$('.header-basket-none').text(data.MESSAGE);
+                    //$('.header-basket').popUp();
                 } else {
                    console.log(data);
 				   $('.header-basket-none').text(data.MESSAGE);

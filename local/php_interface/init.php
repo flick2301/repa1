@@ -520,6 +520,17 @@ function OnSaleStatusOrderFunck(&$ID, &$arFields)
 	}
 }
 
+AddEventHandler("iblock", "OnBeforeIBlockElementUpdate","DoNotUpdate");
+function DoNotUpdate(&$arFields)
+{
+    if ($_REQUEST['mode']=='import')
+    {
+        unset($arFields['PREVIEW_PICTURE']);
+        unset($arFields['DETAIL_PICTURE']);
+        
+    }
+}
+
 
 	
 ?>

@@ -118,3 +118,10 @@ and open the template in the editor.
   outline: 1px solid slategrey;
 }
 
+.blue-table__td_soput
+{
+	vertical-align:middle;
+}
+.sale-category--new{
+    margin-top: 0px !important;
+}

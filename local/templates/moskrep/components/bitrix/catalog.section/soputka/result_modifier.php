@@ -113,9 +113,9 @@ while($arSection = $rsSections->GetNext())
 
 foreach($arResult['ITEMS'] as $key=>$arItem){
     if(isset($arItem['PREVIEW_PICTURE']['ID'])){
-      $file = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE']['ID'], array('width'=>100, 'height'=>100), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+      $file = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE']['ID'], array('width'=>90, 'height'=>90), BX_RESIZE_IMAGE_PROPORTIONAL, true);
     }else{
-      $file = CFile::ResizeImageGet($arResult['PICTURE']['ID'], array('width'=>100, 'height'=>100), BX_RESIZE_IMAGE_PROPORTIONAL, true);  
+      $file = CFile::ResizeImageGet($arResult['PICTURE']['ID'], array('width'=>90, 'height'=>90), BX_RESIZE_IMAGE_PROPORTIONAL, true);  
     }
     $arResult['ITEMS'][$key]['PREVIEW_PICTURE'] = $file;
     if(stripos($arItem['NAME'], 'кг') !== false):

@@ -4696,7 +4696,7 @@
 
 .sale-category--new,
 .sale-category--new .blue-table {
-    margin-top: 0;
+    margin-top: 0px !important;
 }
 
 .sale-category--new .value,
@@ -4915,4 +4915,11 @@
     width: 109px !important;
 	min-width: 109px !important;
     max-width: 109px !important;
+}
+.blue-table__td_soput
+{
+	vertical-align:middle;
+}
+#soput_carts{
+	margin-top:10px;
 }

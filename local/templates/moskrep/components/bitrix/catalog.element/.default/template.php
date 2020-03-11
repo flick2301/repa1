@@ -194,6 +194,8 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 				<div class="adress__number">1</div>
 				<div class="adress__info">
 				    <p><?echo STORE_ID_KASHIRKA['1'];?><br> <?=STORE_ID_KASHIRKA[2]?></p>
+					<p>Получение:</p>
+					<?=($arResult['ELEMENT_COUNT']) ? '<p>сегодня после 14:00 при заказе до 11:00</p><p>сегодня после 17:00 при заказе до 15:00</p>' : '<p>Уточнить</p>';?>
 				    
 				    <div class="adress__link" data-tab="map1">Показать на карте</div>
 				</div>
@@ -203,6 +205,8 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 				<div class="adress__number">2</div>
 				<div class="adress__info">
 				    <p><?=STORE_ID_KOLEDINO[1]?><br> <?=STORE_ID_KOLEDINO[2]?></p>
+					<p>Получение:</p>
+					<?=($arResult['ELEMENT_COUNT']) ? '<p>сегодня при заказе до 17:00</p>' : '<p>Уточнить</p>';?>
 				   
 				    <div class="adress__link" data-tab="map2">Показать на карте</div>
 				</div>
@@ -211,6 +215,8 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 				<div class="adress__number">3</div>
 				<div class="adress__info">
 				    <p><?echo STORE_ID_UZHKA['1'];?><br> <?=STORE_ID_UZHKA[2]?></p>
+					<p>Получение:</p>
+					<?=($arResult['ELEMENT_COUNT']) ? '<p>завтра после 13:00 при заказе до 18:00</p>' : '<p>Уточнить</p>';?>
 				    
 				    <div class="adress__link" data-tab="map4">Показать на карте</div>
 				</div>
@@ -219,6 +225,8 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 				<div class="adress__number">4</div>
 				<div class="adress__info">
 				    <p><?echo STORE_ID_SERPUH['1'];?><br> <?=STORE_ID_SERPUH[2]?></p>
+					<p>Получение:</p>
+					<?=($arResult['ELEMENT_COUNT']) ? '<p>завтра после 13:00 при заказе до 18:00</p>' : '<p>Уточнить</p>';?>
 				    
 				    <div class="adress__link" data-tab="map5">Показать на карте</div>
 				</div>
