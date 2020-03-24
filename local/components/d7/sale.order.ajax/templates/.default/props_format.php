@@ -106,6 +106,19 @@ if (!function_exists("PrintPropsForm"))
                                                         <?
                                                                
                                                     
+													}elseif($arProperties["FIELD_NAME"]=='ORDER_PROP_46'){
+														$arr_file=Array(
+														"name" => $_FILES["ORDER_PROP_44"]['name'][0],
+														"size" => $_FILES["ORDER_PROP_44"]['size'][0],
+														"tmp_name" => $_FILES["ORDER_PROP_44"]['tmp_name'][0],
+														"type" => "",
+														"old_file" => "",
+														"del" => "Y",
+														"MODULE_ID" => "iblock");
+														$fid = CFile::SaveFile($arr_file, "landings");
+													 ?>
+                                                       <input type="hidden" value="<?=$fid>0 ? $fid : $_REQUEST["hidden_id_file"];?>" name="<?=$arProperties["FIELD_NAME"]?>" id="<?=$arProperties["FIELD_NAME"]?>" class="form__input"> 
+                                                        <?	
 													}else{
 							?>							<?if($arProperties["NAME"]=='ИНН' || $arProperties["NAME"]=='Наименование компании'){
 								$arRegProp[] = $arProperties;
@@ -359,6 +372,30 @@ if (!function_exists("PrintPropsForm"))
 						elseif ($arProperties["TYPE"] == "FILE")
 						{
 							?>
+							<?
+							
+								
+								$arr_file=Array(
+														"name" => $_FILES["ORDER_PROP_44"]['name'][0],
+														"size" => $_FILES["ORDER_PROP_44"]['size'][0],
+														"tmp_name" => $_FILES["ORDER_PROP_44"]['tmp_name'][0],
+														"type" => "",
+														"old_file" => "",
+														"del" => "Y",
+														"MODULE_ID" => "iblock");
+														$fid = CFile::SaveFile($arr_file, "landings");
+								if ($fid>0):
+									
+									$arProperties["VALUE"] = $fid;
+									?><?echo CFile::ShowImage($fid, 200, 200, "border=0", "", true);
+								else:
+									$arProperties["VALUE"] = $_REQUEST["hidden_id_file"];
+									?><?echo CFile::ShowImage($_REQUEST["hidden_id_file"], 200, 200, "border=0", "", true);
+									
+								endif;
+								
+							?>
+							<input type="hidden" value=<?=$fid>0 ? $fid : $_REQUEST["hidden_id_file"];?> name="hidden_id_file">
 							<span class="feedback-form__title">
                                                             <?if ($arProperties["REQUIED_FORMATED"]=="Y"):?>
 									<span class="bx_sof_req">*</span>
@@ -520,7 +557,11 @@ if (!function_exists("PrintPropsForm"))
                                                        <input type="hidden" value="<?=$_COOKIE["roistat_visit"]?>" name="<?=$arProperties["FIELD_NAME"]?>" id="<?=$arProperties["FIELD_NAME"]?>" class="form__input"> 
                                                         <?
                                                                 
-                                                    }else{
+                                                    }elseif($arProperties["FIELD_NAME"]=='ORDER_PROP_46'){
+														?>
+                                                       <input type="hidden" value="<?=$fid>0 ? $fid : $_REQUEST["hidden_id_file"];?>" name="<?=$arProperties["FIELD_NAME"]?>" id="<?=$arProperties["FIELD_NAME"]?>" class="form__input"> 
+                                                        <?
+													}else{
 							?>
 							
                                                         <span class="feedback-form__title">

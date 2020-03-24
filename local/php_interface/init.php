@@ -308,6 +308,14 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
     if ($arProps["CODE"] == "PFLAT")
     {
       $flat = $arProps["VALUE"];   
+    }
+	if ($arProps["CODE"] == "FILE_ORG")
+    {
+      $file_org = CFile::GetPath($arProps["VALUE"]);   
+    }
+	if ($arProps["CODE"] == "FILE_ID")
+    {
+      $file_id = CFile::GetPath($arProps["VALUE"]);   
     }	
 }
 
@@ -354,6 +362,10 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
   $arFields["PREQ"] = $preq;
   $arFields["PERSON_TYPE_NAME"] = $person_type;
   $arFields["ORDER_LIST"] = $strOrderList;
+  if($file_org)
+	$arFields["FILE_ORG"] = 'https://'.$_SERVER['SERVER_NAME'].$file_org;
+  if($file_id)
+	$arFields["FILE_ORG"] = 'https://'.$_SERVER['SERVER_NAME'].$file_id;
   if ($arOrder['PRICE_DELIVERY'] && ($arOrder["DELIVERY_ID"]=='sdek:courier' || $arOrder["DELIVERY_ID"]=='sdek:pickup')) $arFields["DELIVERY_PRICE"] = "Стоимость доставки: {$arOrder['PRICE_DELIVERY']} руб <span style='color: red;'>*приблизительная стоимость (оплачивается отдельно по факту получения заказа)</span><br />";
   else $arFields["DELIVERY_PRICE"]="";
   
@@ -525,6 +537,11 @@ function DoNotUpdate(&$arFields)
 {
     if ($_REQUEST['mode']=='import')
     {
+		if($arFields['PREVIEW_PICTURE'] || $arFields['DETAIL_PICTURE'])
+		{
+			$time = date("H:i:s");
+			\Bitrix\Main\Diag\Debug::dumpToFile(array($arFields['PREVIEW_PICTURE'], $arFields['DETAIL_PICTURE'], $time), "", '/upload/log_change_pic.txt');
+		}
         unset($arFields['PREVIEW_PICTURE']);
         unset($arFields['DETAIL_PICTURE']);
         
@@ -532,5 +549,27 @@ function DoNotUpdate(&$arFields)
 }
 
 
-	
+/*Проверка If-Modified-Since и вывод 304 Not Modified */
+AddEventHandler('main', 'OnEpilog', array('CBDPEpilogHooks', 'CheckIfModifiedSince'));
+class CBDPEpilogHooks
+{
+    function CheckIfModifiedSince()
+    {
+        GLOBAL $lastModified;
+        
+        if ($lastModified)
+        {
+            header("Cache-Control: public");
+            header('Last-Modified: ' . gmdate('D, d M Y H:i:s', $lastModified) . ' GMT');
+            if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) && strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) >= $lastModified) {
+                $GLOBALS['APPLICATION']->RestartBuffer();CHTTP::SetStatus('304 Not Modified');
+                exit();
+                /*header('HTTP/1.1 304 Not Modified');
+                exit;*/
+            }
+        }else{
+			header ("Last-Modified: " . date("D, d M Y H:i:s", time()) . " GMT");
+		}
+    }
+}	
 ?>

@@ -17,6 +17,7 @@ if($USER->IsAuthorized() || $arParams["ALLOW_AUTO_REGISTER"] == "Y")
 	}
 }
 
+
 $APPLICATION->SetAdditionalCSS($templateFolder."/style_cart.css");
 $APPLICATION->SetAdditionalCSS($templateFolder."/style.css");
 CJSCore::Init( 'jquery' );
@@ -55,6 +56,8 @@ if (!function_exists("cmpBySort"))
 			return 0;
 	}
 }
+
+
 ?>
 <div class="first-column inner">
 			<ul class="breadcrumbs">

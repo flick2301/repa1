@@ -86,14 +86,6 @@ if(count($arResult['BASE_PROPERTIES'])%2){
 $arResult['BASE_PROPERTIES_UL1'] = array_slice($arResult['BASE_PROPERTIES'],0,$ul1);
 $arResult['BASE_PROPERTIES_UL2'] = array_slice($arResult['BASE_PROPERTIES'],$ul1,$ul2);
 
-if(!$arResult['DETAIL_DESCRIPTION']){
-    $arFilter = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "ID"=>$arResult["IBLOCK_SECTION_ID"]);
-    $db_list = CIBlockSection::GetList(Array("SORT"=>"ASC"), $arFilter, true);
-
-    if($ar_result = $db_list->GetNext()){
-       $arResult['DETAIL_DESCRIPTION'] = $ar_result['DESCRIPTION']; 
-    }
-}
 
 if($arResult['PROPERTIES']['ROOT_DESCRIPTION']['VALUE']['TEXT']){
 	$arResult['DETAIL_DESCRIPTION'] =$arResult['PROPERTIES']['ROOT_DESCRIPTION']['VALUE']['TEXT'];

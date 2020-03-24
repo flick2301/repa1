@@ -259,7 +259,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
             
             
             <?if(count($arResult['ELEMENT_VARS'])){?>
-            <div id='var_tab_1' class='variants__tabs-list'>                
+            <div id='var_tab_1' class='variants__tabs-list active'>                
 		<?
             global $bbFilter;
             $bbFilter = Array("ID" => $arResult['ELEMENT_VARS']);    

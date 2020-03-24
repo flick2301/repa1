@@ -321,7 +321,15 @@ if (!function_exists("PrintPropsForm"))
 									<span class="bx_sof_req">*</span>
 								<?endif;?>
 							</div>
-
+							<?
+							global $USER;
+							if(1)
+							{
+								echo '<pre>';
+								echo '123';
+								print_r($_FILES);
+								echo '</pre>';
+							}?>
 							<div class="bx_block r3x1">
 								<?=showFilePropertyField("ORDER_PROP_".$arProperties["ID"], $arProperties, $arProperties["VALUE"], $arProperties["SIZE1"])?>
 

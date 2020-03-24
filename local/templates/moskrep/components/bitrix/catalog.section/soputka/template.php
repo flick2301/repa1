@@ -141,7 +141,7 @@ BX.ready(function () {
                     //BX.addClass(e.target, 'active2');
 					BX.removeClass(e.target, 'basket-btn-soputka');
 					BX.addClass(e.target, 'basket-add');
-					e.target = 'Добавлен';
+					e.target.innerHTML = "Добавлен";
                    
                     BX.onCustomEvent('OnBasketAdd');
 					ga ('send', 'event', 'Корзина', 'Добавить в корзину');
@@ -154,8 +154,8 @@ BX.ready(function () {
 							'google_business_vertical': 'retail'
 						}]
 					});
-					$('.header-basket-none').text(data.MESSAGE);
-                    //$('.header-basket').popUp();
+					$('.header-basket-none').text('Товар добавлен');
+                    $('.header-basket-none').popUp();
                 } else {
                    console.log(data);
 				   $('.header-basket-none').text(data.MESSAGE);
