@@ -13,7 +13,7 @@ Array()
  <?if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){?>
 <h2 class="s28-title">Контакты офиса в Санкт-Петербурге:</h2>
  <br>
- <a href="tel:+7 800 200-25-91" class="contact__phone roistat-phone-spb">+7 800 200-25-91</a><br>
+ <a href="tel:+7 812 309-95-45" class="contact__phone roistat-phone-spb">+7 812 309-95-45</a><br>
  <br>
  <a href="mailto:spb@krep-komp.ru" class="contact__email">spb@krep-komp.ru</a><br>
  <?
