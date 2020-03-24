@@ -14,6 +14,9 @@ if (!empty($arResult["ORDER"]))
 		</tr>
 	</table>
 	<?
+	if($arResult["PAY_SYSTEM"]['ID'] == BY_CARD){
+		?><p>Менеджер пришлет ссылку на оплату картой после обработки заказа!</p><?
+	}
 	if (!empty($arResult["PAY_SYSTEM"]))
 	{
 		?>

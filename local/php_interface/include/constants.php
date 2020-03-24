@@ -44,3 +44,6 @@ const ID_PRICE_5 = '11';
 const ID_PRICE_10 = '12';
 const ID_PRICE_13 = '10';
 const ID_PRICE_18 = '13';
+
+//Платежные системы
+const BY_CARD = 8;
