@@ -307,6 +307,7 @@ function jivo_onLoadCallback() {
 </script>
 <!-- END JIVOSITE INTEGRATION WITH ROISTAT --> 
 <?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/jivosite.php";?>
+
 </body>
 </html>
  
