@@ -80,7 +80,7 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 	
 	
 	<div class="box-modal__separator"></div>
-		<?if($USER->IsAdmin()){
+		<?
 				
 				
 				\Bitrix\Main\Loader::includeModule('iblock');	
@@ -154,7 +154,7 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 					
 				}
 					*/
-			  }
+			  
 				?>
 				
     </div>

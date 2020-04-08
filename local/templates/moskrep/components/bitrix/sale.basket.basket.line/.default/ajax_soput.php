@@ -9,7 +9,9 @@ $request = $context->getRequest();
 if($request['ID'])
 {
 	if($request['param1'] && $request['param2']){
-		$GLOBALS['custom_filter'] = array("PROPERTY_".$request['param1']=>$request['param2']);
+		$GLOBALS['custom_filter'] = array("PROPERTY_".$request['param1']=>$request['param2'], ">CATALOG_QUANTITY"=>0);
+	}else{
+		$GLOBALS['custom_filter'] = array(">CATALOG_QUANTITY"=>0);
 	}
 	$intSectionID = $APPLICATION->IncludeComponent(
 					"bitrix:catalog.section",

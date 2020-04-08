@@ -154,8 +154,10 @@ BX.ready(function () {
 							'google_business_vertical': 'retail'
 						}]
 					});
-					$('.header-basket-none').text('Товар добавлен');
+					yaCounter29426710.reachGoal('RelatedPopup_AddToShoppingCart');
+					$('.header-basket-none').html('<div onclick="$(this).parent(".popUp-container").popUp(\'close\');" style="position:absolute; top:5px; right: 5px;" class="popUp-close"></div>Товар в корзине');
                     $('.header-basket-none').popUp();
+					$('.popUp-overlay').css({'display':'block'});
                 } else {
                    console.log(data);
 				   $('.header-basket-none').text(data.MESSAGE);

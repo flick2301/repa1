@@ -548,28 +548,5 @@ function DoNotUpdate(&$arFields)
     }
 }
 
-
-/*Проверка If-Modified-Since и вывод 304 Not Modified */
-AddEventHandler('main', 'OnEpilog', array('CBDPEpilogHooks', 'CheckIfModifiedSince'));
-class CBDPEpilogHooks
-{
-    function CheckIfModifiedSince()
-    {
-        GLOBAL $lastModified;
-        
-        if ($lastModified)
-        {
-            header("Cache-Control: public");
-            header('Last-Modified: ' . gmdate('D, d M Y H:i:s', $lastModified) . ' GMT');
-            if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) && strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) >= $lastModified) {
-                $GLOBALS['APPLICATION']->RestartBuffer();CHTTP::SetStatus('304 Not Modified');
-                exit();
-                /*header('HTTP/1.1 304 Not Modified');
-                exit;*/
-            }
-        }else{
-			header ("Last-Modified: " . date("D, d M Y H:i:s", time()) . " GMT");
-		}
-    }
-}	
+	
 ?>

@@ -37,6 +37,7 @@ $this->addExternalJs($templateFolder.'/js/component.js');
 			<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());?>
 			<h1 class="s38-title"><?$APPLICATION->ShowTitle();?></h1>
 </div>
+
 <?
 
 $jsTemplates = new Main\IO\Directory($documentRoot.$templateFolder.'/js-templates');
@@ -71,8 +72,11 @@ if (empty($arResult['ERROR_MESSAGE']))
 		{
 			?>
                     <aside class="two-column__left">
+					
 			<div class="row">
+			
 				<div class="col-xs-12" data-entity="basket-total-block"></div>
+				
 			</div>
                     </aside>
 			<?

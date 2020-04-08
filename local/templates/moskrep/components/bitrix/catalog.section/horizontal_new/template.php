@@ -89,19 +89,7 @@ if($arParams['FOR_SEO']!='Y'){
 
 }?>
 
-<div class="catalog-filter catalog-filter--new">
 
-
-    <div class="catalog-filter__item">
-        <ul class="show-list show-list--model">
-        <?$APPLICATION->ShowViewContent('filter_in_upakovka');?>
-        </ul>
-    </div>
-    <div class="catalog-filter__item" style="float:right">
-
-        <?$APPLICATION->ShowViewContent('filter_in_stock_2');?>
-    </div>
-</div>
 
 <?if($arResult['UF_SOPUT_SPR_ITMES']){
 	
@@ -117,7 +105,7 @@ if($arParams['FOR_SEO']!='Y'){
 	}
 }?>
 
-<div class="sale-category sale-category--new">
+<div class="sale-category sale-category--new" style='margin-top: 30px !important;'>
     <table class="blue-table price-category <?=($ral_in_ar) ? 'blue-table__8-rows' : 'blue-table__7-rows';?>">
 	<thead class="blue-table__thead">
             <tr class="blue-table__tr">

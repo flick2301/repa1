@@ -306,7 +306,12 @@ function jivo_onLoadCallback() {
     }
 </script>
 <!-- END JIVOSITE INTEGRATION WITH ROISTAT --> 
-<?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/jivosite.php";?>
+<script>
+        (function(w,d,u){
+                var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
+                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        })(window,document,'https://cdn.bitrix24.ru/b10220929/crm/site_button/loader_1_2qbf44.js');
+</script>
 
 </body>
 </html>
