@@ -137,16 +137,19 @@ if (!function_exists("PrintPropsForm"))
 						}
 						elseif ($arProperties["TYPE"] == "SELECT")
 						{
+							global $USER;
+							
+							if($arProperties["CODE"] != 'PERSONAL_MANAGER' || $USER->IsAdmin()){
 							?>
 							<br/>
-							<div class="bx_block r1x3 pt8">
+							<div class="bx_block r1x3 pt8" style='display:block;'>
 								<?=$arProperties["NAME"]?>
 								<?if ($arProperties["REQUIED_FORMATED"]=="Y"):?>
 									<span class="bx_sof_req">*</span>
 								<?endif;?>
 							</div>
 
-							<div class="bx_block r3x1">
+							<div class="bx_block r3x1"  style='display:block;'>
 								<select name="<?=$arProperties["FIELD_NAME"]?>" id="<?=$arProperties["FIELD_NAME"]?>" size="<?=$arProperties["SIZE1"]?>">
 									<?
 									foreach($arProperties["VARIANTS"] as $arVariants):
@@ -169,6 +172,7 @@ if (!function_exists("PrintPropsForm"))
 							</div>
 							<div style="clear: both;"></div>
 							<?
+							}
 						}
 						elseif ($arProperties["TYPE"] == "MULTISELECT")
 						{

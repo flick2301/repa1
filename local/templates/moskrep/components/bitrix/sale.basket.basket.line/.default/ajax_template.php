@@ -82,7 +82,7 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 	<div class="box-modal__separator"></div>
 		<?
 				
-				
+				if($USER->IsAdmin()){
 				\Bitrix\Main\Loader::includeModule('iblock');	
 
 				$res = CIBlockElement::GetByID( $prod_id );
@@ -133,6 +133,7 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 					<br><br>
 				<div id='soput_carts'>
 				</div><?
+				}
 				}
 				
 				/*

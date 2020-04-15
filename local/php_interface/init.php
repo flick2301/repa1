@@ -316,7 +316,23 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
 	if ($arProps["CODE"] == "FILE_ID")
     {
       $file_id = CFile::GetPath($arProps["VALUE"]);   
-    }	
+    }
+	if($arProps["CODE"] == "PERSONAL_MANAGER")
+	{
+		if($arProps['VALUE']>1)
+		{
+			global $USER;
+			
+			$userY = new CUser;
+			$fields = Array( 
+				"UF_PERSONAL_MANAGER" => array($arProps['VALUE']), 
+							); 
+			$userY->Update($USER->GetId(), $fields);
+
+
+		}
+		
+	}
 }
 
   $full_address = $country_name.", ".$city_name.($pcity ? ", ".$pcity : "").($street ? ", ".$street.", ".$house.", ".$flat : "");

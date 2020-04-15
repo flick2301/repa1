@@ -63,6 +63,10 @@ var cookie_prefix = '<?=$arResult["COOKIE_PREFIX"]?>';
             <span class="lk-form__title"><?=GetMessage('EMAIL')?><?if($arResult["EMAIL_REQUIRED"]):?><span class="starrequired">*</span><?endif?></span>
             <input type="text" name="EMAIL" value="<?=$arResult["arUser"]["EMAIL"]?>" class="form__input">
 	</label>
+	<label class="lk-form__label">
+            <span class="lk-form__title"><?=GetMessage('PERSONAL_MANAGER')?></span>
+            <input type="text" name="PERSONAL_MANAGER" value="<?=$arResult["arUser"]["PERSONAL_MANAGER"]['UF_NAME']?>" class="form__input" disabled>
+	</label>
 	
 	
 
