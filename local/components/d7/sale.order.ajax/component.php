@@ -2095,7 +2095,7 @@ if ($USER->IsAuthorized() || $arParams["ALLOW_AUTO_REGISTER"] == "Y" )
 				if (empty($arResult["ERROR"]))
 				{
 					$arResult["REDIRECT_URL"] = $APPLICATION->GetCurPageParam("ORDER_ID=".urlencode(urlencode($arOrder["ACCOUNT_NUMBER"])), Array("ORDER_ID"));
-
+					$arResult["REDIRECT_URL"] = '/order/?ORDER_ID='.$arResult["ORDER_ID"];
 					if(array_key_exists('json', $_REQUEST) && $_REQUEST['json'] == "Y" && ($USER->IsAuthorized() || $arParams["ALLOW_AUTO_REGISTER"] == "Y"))
 					{
 						if($arUserResult["CONFIRM_ORDER"] == "Y" || $arResult["NEED_REDIRECT"] == "Y")

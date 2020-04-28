@@ -95,12 +95,30 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 					
 					
 					foreach($ob['UF_SOPUTKA'] as $val):
+						
 						$arVal = explode(';', trim($val,';'));
+						
 						$arArt[$arVal[0]]=$arVal;
 						$db_props = CIBlockElement::GetProperty(CATALOG_IBLOCK_ID, $prod_id, array("sort" => "asc"), Array("CODE"=>$arVal[1]));
 						if($ar_props = $db_props->Fetch()){
 							
 							$arPROPVAL[$arVal[0]] = $ar_props["VALUE"];
+						}
+						// Если есть сопоставления данным свойств ( например Диаметр товара 4 соответсвтует Диаметру сопутки 6 )
+						if($arVal[3])
+						{
+							
+							$sravnenie = explode('|', trim($arVal[3],'|'));
+							
+							foreach($sravnenie as $srav_item)
+							{
+								$data_data = explode(':', trim($srav_item,':'));
+								if($arPROPVAL[$arVal[0]] == $data_data[0])
+								{
+									$arPROPVAL[$arVal[0]] = $data_data[1];
+									break;
+								}
+							}
 						}
 						$arSec[]=$arVal[0];
 						
@@ -121,7 +139,7 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 					
 						?>
 						<div class="sorting_item" onclick="setSelected(this);">
-						<a href="javascript:void(0);" data-secid="<?=$ob['ID']?>" onclick="GetListItems(<?=$ob['ID']?>, '<?=($arArt[$ob['CODE']][1]) ? $arArt[$ob['CODE']][1] : '0';?>', '<?=($arPROPVAL[$ob['CODE']]) ? $arPROPVAL[$ob['CODE']] : '0';?>');" data-param="<?=$arArt[$ob['CODE']][1]?>" data-param2="<?=$arArt[$ob['CODE']][2]?>" class="sorting_link <?=($first) ? 'first_link' : '';?>">
+						<a href="javascript:void(0);" data-secid="<?=$ob['ID']?>" onclick="GetListItems(<?=$ob['ID']?>, '<?=($arArt[$ob['CODE']][1]) ? $arArt[$ob['CODE']][1] : '0';?>', '<?=($arPROPVAL[$ob['CODE']]) ? $arPROPVAL[$ob['CODE']] : '0';?>');" data-param="<?=$arArt[$ob['CODE']][1]?>" data-param2="<?=$arArt[$ob['CODE']][2]?>" data-param3="" class="sorting_link <?=($first) ? 'first_link' : '';?>">
                     
 							<span class="sorting_title"><?=$ob['NAME']?></span>
 						</a>

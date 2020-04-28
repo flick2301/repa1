@@ -181,6 +181,52 @@ if (isset ($_GET['type'])){
 
 
 
+//Обработчик свойств заказа
+AddEventHandler("sale", "OnSaleComponentOrderJsData", "SaleComponentOrderJsData");
+function SaleComponentOrderJsData(&$arResult, &$arParams)
+{
+	$delivery = array();
+	$arStoreId = array();
+	
+     $dbDeliveryList = \Bitrix\Sale\Delivery\Services\Table::GetList();
+     while ($service = $dbDeliveryList->fetch()) {
+         $deliveryObj = Bitrix\Sale\Delivery\Services\Manager::createObject($service);
+         $delivery[$deliveryObj->GetId()]["NAME"] = $deliveryObj->getName();
+		 $delivery[$deliveryObj->GetId()]["ID"] = $deliveryObj->getParentId();
+     }	
+	 
+	 foreach($arResult["JS_DATA"]["DELIVERY"] AS $key=>$val) {
+	 $arResult["JS_DATA"]["DELIVERY"][$key]["GROUP"] = $delivery[$delivery[$delivery[$key]["ID"]]["ID"]]["NAME"] ? $delivery[$delivery[$delivery[$key]["ID"]]["ID"]]["NAME"] : $delivery[$delivery[$key]["ID"]]["NAME"];
+	 				if ($arResult["JS_DATA"]["DELIVERY"][$key]["GROUP"]) $arResult["JS_DATA"]["DELIVERY_GROUPS"][$arResult["JS_DATA"]["DELIVERY"][$key]["GROUP"]][] = $key; 
+	 if ($val["STORE"]) $arStoreId = array_unique(array_merge($arStoreId, $val["STORE"]));
+}
+
+//$arResult["JS_DATA"]["DELIVERY_GROUPS"] = array_unique($arResult["JS_DATA"]["DELIVERY_GROUPS"]);
+
+
+//Путкты самовывоза
+$dbList = CCatalogStore::GetList(
+			Array("SORT" => "ASC"),
+			Array("ACTIVE" => "Y", "ID" => $arStoreId),
+			false,
+			false,
+			Array("ID", "TITLE", "ADDRESS", "CODE", "DESCRIPTION", "PHONE") //Добавлена выборка по коду
+		);
+		while ($arStoreTmp = $dbList->Fetch())
+		{
+			if ($arStoreTmp["CODE"]) {
+				$arStoreTmp["DELIVERY"] = preg_replace("/[^0-9]/", "", $arStoreTmp["CODE"]);
+				$arResult["JS_DATA"]["DELIVERY"][$arStoreTmp["DELIVERY"]]["CURRENT_STORE"] = $arStoreTmp["ID"];
+				$arResult["JS_DATA"]["DELIVERY"][$arStoreTmp["DELIVERY"]]["STORE_ADDRESS"] = $arStoreTmp["ADDRESS"];
+			}
+			$arResult["JS_DATA"]["STORE_LIST"][$arStoreTmp["ID"]] = array_merge($arStoreTmp, $arResult["JS_DATA"]["STORE_LIST"][$arStoreTmp["ID"]]);
+		}
+
+	//file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arResult["JS_DATA"], true)."\n-------------".print_r($arParams, true));
+}
+
+
+
 AddEventHandler("main", "OnEpilog", "My404PageInSiteStyle");
 function My404PageInSiteStyle()
 {
@@ -363,7 +409,12 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
   if ($arPersonType)
   {
     $person_type = $arPersonType["NAME"];	
-  }  
+  }
+
+if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){
+	$arFields["SALE_EMAIL"] = 'spb@krep-komp.ru';
+	
+}
    
    //-- добавляем новые поля в массив результатов
   $arFields["ORDER_DESCRIPTION"] = $arOrder['USER_DESCRIPTION'];
@@ -564,5 +615,22 @@ function DoNotUpdate(&$arFields)
     }
 }
 
-	
+$eventManager = \Bitrix\Main\EventManager::getInstance();
+ 
+$eventManager->addEventHandlerCompatible('sale', 'OnBeforeOrderAccountNumberSet', 
+function ($orderId, $type){
+    if($type == 'siteid_orderid' && $orderId > 0){
+        $arOrder = CSaleOrder::GetByID($orderId);
+		if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru')
+			return sprintf('%s-%s', 'SPB', $orderId);
+		else
+			return sprintf('%s', $orderId);
+    }
+    return false;
+});
+ 
+$eventManager->addEventHandlerCompatible('sale', 'OnBuildAccountNumberTemplateList', 
+function (){
+   return array('CODE' => 'siteid_orderid', 'NAME' => '#SITE_ID#-#ORDER_ID#');
+});	
 ?>

@@ -79,6 +79,8 @@ ref.parentNode.insertBefore(js, ref);}(document));
 <!-- /Yandex.Metrika counter -->
     <?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/GTM.php";?>
     <?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/functions.php";?>
+	
+	<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page">  <a class="banner-link" href="https://krep-komp.ru/"><p class="banner-text"><strong>Мы работаем! Принимаем заказы на самовывоз и бесконтактную доставку. С 1 по 5 мая - выходные дни</strong></p> </a> <svg class="icon-svg -cross" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg> </div> </div>
     <header class="header inner">
 	<div class="header-wrap-top">
 	    <div class="header-logo"><a href="/" title='Купить метизы, крепежные изделия и инструмент в Москве.'><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/company_logo.php"), false, []);?></a></div>
