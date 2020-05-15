@@ -37,18 +37,16 @@ function saveInfo(\Bitrix\Main\Event $event ) {
 			         if ( !$entity->isSystem() )
 			            $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'][] = checkFields( $entity->getFields()->getValues(), Shipment::getAvailableFields() );
 			}
-		    /* Коллекцию оплат пусть удаляет  if ( $entity instanceof Payment ) {
+		      if ( $entity instanceof Payment ) {
 			         if ( !is_array( $_SESSION['BX_CML2_EXPORT']['DELETED_PAYMENTS'] )  )
 			            $_SESSION['BX_CML2_EXPORT']['DELETED_PAYMENTS'] = array();
 			         $_SESSION['BX_CML2_EXPORT']['DELETED_PAYMENTS'][] = checkFields( $entity->getFields()->getValues(), Payment::getAvailableFields() );
 			}
-			*/
 		}
 	   else {
 		      return;
 		}
 	}
-
 function reverseInfo(\Bitrix\Main\Event $event ) {
 	   /**
 	    * @var \Bitrix\Sale\Order $order
@@ -58,22 +56,8 @@ function reverseInfo(\Bitrix\Main\Event $event ) {
 	    * @var \Bitrix\Sale\Payment $payment
 	    * @var \Bitrix\Sale\PropertyValue $somePropValue
 	    * **/
-		$order = $event->getParameter("ENTITY");
-			  $comment = $order->getField('COMMENTS');
-			 /* if($comment){
-				  $pattern = '/\{(.+?)\}/';
-					preg_match($pattern, $comment, $matches);
-					if($matches>0){
-						\Bitrix\Main\Diag\Debug::dumpToFile(array($matches[1], $order->getId()), "", '/upload/comments.txt');
-						$collection = $order->getShipmentCollection();
-						$shipment = $collection->getItemByIndex(0);
-						if(is_numeric($matches[1]))
-							$shipment->setBasePriceDelivery($matches[1]);
-					}
-			  }
-			  */
 	   if ( $_SESSION['BX_CML2_EXPORT'] ) {
-		      
+		      $order = $event->getParameter("ENTITY");
 		      if ( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] ) {
 			         //Вернем отгрузки
 			         $shipmentCollection = $order->getShipmentCollection();
@@ -115,11 +99,11 @@ function reverseInfo(\Bitrix\Main\Event $event ) {
 				}
 			         unset( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] );
 			}
-			/* Коллекцию оплат пусть удаляет  if ( $entity instanceof Payment ) {
 		      if ( $_SESSION['BX_CML2_EXPORT']['DELETED_PAYMENTS'] ) {
 			         //Вернем оплаты
 			         $paymentCollection = $order->getPaymentCollection();
-			        
+			         /** @var \Bitrix\Sale\Payment $obPayment */
+			         /** @var array $paymentFields */
 			         foreach ( $_SESSION['BX_CML2_EXPORT']['DELETED_PAYMENTS'] as $paymentFields ) {
 				            $fg = true;
 				            foreach( $paymentCollection as $obPayment ) {
@@ -135,7 +119,6 @@ function reverseInfo(\Bitrix\Main\Event $event ) {
 				}
 			         unset( $_SESSION['BX_CML2_EXPORT']['DELETED_PAYMENTS'] );
 			}
-			*/
 		      //Проверим сумму заказа
 		      $paymentCollection = $order->getPaymentCollection();
 		      if ( ($sumP = $paymentCollection->getSum() ) != ($sumO = $order->getPrice() ) ) {
@@ -411,10 +394,14 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
     $person_type = $arPersonType["NAME"];	
   }
 
-if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){
-	$arFields["SALE_EMAIL"] = 'spb@krep-komp.ru';
+	if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){
+		$arFields["SALE_EMAIL"] = 'spb@krep-komp.ru';
+		$arFields["SALE_PHONE"] = '8 812 309-95-45';
 	
-}
+	}else{
+		$arFields["SALE_PHONE"] = '8 499 350-55-55';
+	}
+
    
    //-- добавляем новые поля в массив результатов
   $arFields["ORDER_DESCRIPTION"] = $arOrder['USER_DESCRIPTION'];
@@ -440,6 +427,79 @@ if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){
 //file_put_contents('/var/www/webadmin/data/www/moskrep.ru/service/text.txt', print_r($arOrder, true));	
       }
    }
+   
+   
+
+
+\Bitrix\Main\EventManager::getInstance()->addEventHandler( 
+
+    'main', 
+
+    '\Bitrix\Main\Mail\Internal\Event::OnBeforeAdd', 
+
+    'onBeforeAdd'
+
+); 
+
+
+
+function onBeforeAdd(\Bitrix\Main\Entity\Event $event)
+
+{
+
+        $fields = $event->getParameter("fields");
+		\Bitrix\Main\Diag\Debug::dumpToFile($fields, "", '/upload/sss_pay.txt');
+
+
+
+        if($fields['EVENT_NAME']='SALE_STATUS_CHANGED_R') // модифицируем только конкретное почтовое событие
+		{
+			$cFields = $fields['C_FIELDS'];
+
+			
+			if(strpos($cFields['ORDER_ACCOUNT_NUMBER_ENCODE'], 'PB'))
+			{
+				$cFields['SALE_EMAIL'] = 'spb@krep-komp.ru';
+			}
+
+            $result = new \Bitrix\Main\Entity\EventResult();
+
+			$changedFields = array(
+
+				'C_FIELDS' => $cFields,
+
+			);
+
+			$result->modifyFields($changedFields);
+
+        
+
+			return $result;
+		}elseif($fields['EVENT_NAME']='SALE_ORDER_PAID')
+		{
+			$cFields = $fields['C_FIELDS'];
+
+			
+			if(strpos($cFields['ORDER_ACCOUNT_NUMBER_ENCODE'], 'PB'))
+			{
+				$cFields['SALE_EMAIL'] = 'spb@krep-komp.ru';
+			}
+
+            $result = new \Bitrix\Main\Entity\EventResult();
+
+			$changedFields = array(
+
+				'C_FIELDS' => $cFields,
+
+			);
+
+			$result->modifyFields($changedFields);
+		}
+		
+
+}
+
+
    
    
    //Антибот регистрации на сайте
@@ -542,6 +602,7 @@ function OnSaleStatusOrderFunck(&$ID, &$arFields)
 		
 		$order = \Bitrix\Sale\Order::load($order_id);
 		
+		/*
 		//Коллекция доставок
 		$shipmentCollection = $order->getShipmentCollection();
 		$deliveryIds = $order->getDeliverySystemId();
@@ -568,7 +629,8 @@ function OnSaleStatusOrderFunck(&$ID, &$arFields)
 			'CUSTOM_PRICE_DELIVERY' => 'Y'
 		];
 		$shipment->setFields($deliveryData);
-
+		*/
+		
 		//Коллекция оплат
 		$paymentCollection = $order->getPaymentCollection();
 		$sum = $paymentCollection->getSum();
@@ -586,9 +648,9 @@ function OnSaleStatusOrderFunck(&$ID, &$arFields)
 			$payment->setField('SUM',  $order->getPrice());
 			//$payment->setField('PSA_NAME',  'Сбербанк');
 			//$payment->setField('NAME',  'Сбербанк');
-			
-			$result = $order->save();
 			$paymentCollection->addItem($payment);
+			$result = $order->save();
+			
 			\Bitrix\Main\Diag\Debug::dumpToFile($payment, "", '/upload/errors_pay.txt');
 			if(!$result->isSuccess())
 			{
@@ -632,5 +694,32 @@ function ($orderId, $type){
 $eventManager->addEventHandlerCompatible('sale', 'OnBuildAccountNumberTemplateList', 
 function (){
    return array('CODE' => 'siteid_orderid', 'NAME' => '#SITE_ID#-#ORDER_ID#');
-});	
+});
+
+
+AddEventHandler("iblock", "OnBeforeIBlockElementUpdate","SaveInOldSectionVaterland"); 
+  
+function SaveInOldSectionVaterland(&$arFields) {
+	if (@$_REQUEST['mode']=='import') {
+ 
+		$db_old_groups = CIBlockElement::GetElementGroups($arFields['ID'], true);
+
+		$all_ar_group = [];
+		while($ar_group = $db_old_groups->Fetch()) {
+
+			$all_ar_group[] = $ar_group['ID'];
+			/*
+			if(!in_array($ar_group['ID'],$arFields['IBLOCK_SECTION'])) {
+				$arFields['IBLOCK_SECTION'][]=$ar_group['ID'];
+			} 
+			*/
+
+		} 
+
+		if(count($all_ar_group)>1) {
+			$arFields['IBLOCK_SECTION'] = $all_ar_group;
+		}
+
+	}
+}	
 ?>

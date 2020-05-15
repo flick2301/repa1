@@ -1,3 +1,10 @@
+<?
+if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'):
+?>
+<script src="//code.jivosite.com/widget/ensh7gfoXm" async></script>
+<?
+else:
+?>
 <!-- BEGIN JIVOSITE CODE {literal} -->
 <script type='text/javascript'>
 (function(){ var widget_id = 'o7VH2J3rzJ';var d=document;var w=window;function l(){
@@ -8,3 +15,5 @@
   else{w.addEventListener('load',l,false);}}})();
 </script>
 <!-- {/literal} END JIVOSITE CODE -->
+<?endif;?>
+
