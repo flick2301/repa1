@@ -1,0 +1,32 @@
+.skid td:first-child{
+    width: 120px;
+    font-weight: 400;
+	text-align:center;
+    padding: 14px;
+    line-height: 1.25rem;
+    font-size: 0.9375rem;
+    color: #fff;
+    border-right: 1px solid #457fd8;
+	border-bottom: 1px solid #457fd8;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+		background:#457fd8;
+}
+.skid td:last-child{
+    width: 120px;
+
+    font-weight: 400;
+    padding: 14px;
+    line-height: 1.25rem;
+    font-size: 0.9375rem;
+    color: #000;
+    border-right: 1px solid #457fd8;
+	border-bottom: 1px solid #457fd8;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+.skid{
+		margin-top:20px;
+		border-top: 1px solid #457fd8;
+}
