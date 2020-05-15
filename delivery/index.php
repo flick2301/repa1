@@ -41,7 +41,7 @@ $APPLICATION->IncludeFile(
 <div id='tab_3' class='delivery__tabs-list'>
 <?
 $APPLICATION->IncludeFile(
- $APPLICATION->GetCurPage()."tab2.php",
+ $APPLICATION->GetCurPage()."tab3.php",
  array(),
  array("SHOW_BORDER" => true, "MODE"=>"php")
 );
