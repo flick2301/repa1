@@ -1,5 +1,11 @@
-document.addEventListener("DOMContentLoaded", ready);
-document.addEventListener("DOMContentLoaded", ready_spb);
+viewmap = false;
+$(document).on('click', "li.viewmap", function() {
+	if (!viewmap) {
+		viewmap = true;
+		ymaps.ready(init);
+		ymaps.ready(init_spb);
+	}	
+});
 
         var myMap,
             myPolygon = [];

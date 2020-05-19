@@ -96,7 +96,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 		    <li data-tab="tab-2" class="card-tabs__item">Сертификаты</li>
                     <?endif;?>
 		    <li data-tab="tab-3" class="card-tabs__item">Способы оплаты</li>
-		    <li data-tab="tab-4" class="card-tabs__item">Доставка</li>
+		    <li data-tab="tab-4" class="card-tabs__item viewmap">Доставка</li>
 		    <li data-tab="tab-5" class="card-tabs__item">Самовывоз</li>
                     <li data-tab="tab-6" class="card-tabs__item" style="color:#01B10E">Ваши скидки</li>
 		</ul>

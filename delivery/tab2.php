@@ -1,3 +1,5 @@
+<?if($arParams["MAP"]=="Y"):?><script>document.addEventListener("DOMContentLoaded", ready_spb);</script><?endif?>
+
 			<h2 class="s28-title">Тарифы доставки по городу Санкт-Петербург и ЛО</h2>
 			<table class="blue-table">
 				<thead class="blue-table__thead">

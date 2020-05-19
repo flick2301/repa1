@@ -1,3 +1,5 @@
+<?if($arParams["MAP"]=="Y"):?><script>document.addEventListener("DOMContentLoaded", ready);</script><?endif?>
+
 <p class='info-paragraph' style='color:#f39101;'>Получить груз можно на следующий день. Для этого оформить заказ нужно до 16:00.
 
 Суббота и Воскресенье - выходные дни.

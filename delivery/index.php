@@ -1,13 +1,29 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Доставка");
+
+$scheme = $request->isHttps() ? 'https' : 'http';
+
+switch (LANGUAGE_ID)
+{
+	case 'ru':
+		$locale = 'ru-RU'; break;
+	case 'ua':
+		$locale = 'ru-UA'; break;
+	case 'tk':
+		$locale = 'tr-TR'; break;
+	default:
+		$locale = 'en-US'; break;
+}
 ?>
 
 <?$APPLICATION->SetAdditionalCSS($APPLICATION->GetCurPage()."style.css", true);?>
 <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array()); ?>
 
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<script src="<?=$APPLICATION->GetCurPage()?>map.js?<?=rand()?>" type="text/javascript"></script>
+<?/*<script src="<?=$scheme?>://api-maps.yandex.ru/2.1.50/?load=package.full&lang=<?=$locale?>"></script>*/?>
+<?$api_key = htmlspecialcharsbx(Bitrix\Main\Config\Option::get('fileman', 'yandex_map_api_key'));?>
+<?$APPLICATION->AddHeadScript("{$scheme}://api-maps.yandex.ru/2.1.50/?load=package.full&lang={$locale}&apikey={$api_key}" );?>
+<?$APPLICATION->AddHeadScript($APPLICATION->GetCurPage()."map.js?".rand());?>
 
 			<h1 class="s38-title"><?=$APPLICATION->ShowTitle();?></h1>
 
@@ -23,7 +39,7 @@ $APPLICATION->SetTitle("Доставка");
 <?
 $APPLICATION->IncludeFile(
  $APPLICATION->GetCurPage()."tab1.php",
- array(),
+ array("MAP"=>"Y"),
  array("SHOW_BORDER" => true, "MODE"=>"php")
 );
 ?>
@@ -34,7 +50,7 @@ $APPLICATION->IncludeFile(
 <?
 $APPLICATION->IncludeFile(
  $APPLICATION->GetCurPage()."tab2.php",
- array(),
+ array("MAP"=>"Y"),
  array("SHOW_BORDER" => true, "MODE"=>"php")
 );
 ?>
