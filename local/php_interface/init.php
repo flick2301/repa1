@@ -62,7 +62,7 @@ function reverseInfo(\Bitrix\Main\Event $event ) {
 			         //Вернем отгрузки
 			         $shipmentCollection = $order->getShipmentCollection();
 			         $systemShipmentItemCollection = $shipmentCollection->getSystemShipment()->getShipmentItemCollection();
-			$products = array();
+					$products = array();
 			         $basket = $order->getBasket();
 			         if ($basket)
 			         {
@@ -84,9 +84,10 @@ function reverseInfo(\Bitrix\Main\Event $event ) {
 					 
 			         foreach ( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] as $shipmentFields ) {
 						 
-							 
+							
 				            $fg = false;
 				            foreach( $shipmentCollection as $obShipment ) {
+								
 					               if ($obShipment->isSystem())
 					                  continue;
 					               $usedFields = checkFields($obShipment->getFields()->getValues(), Shipment::getAvailableFields() );
@@ -94,16 +95,17 @@ function reverseInfo(\Bitrix\Main\Event $event ) {
 					                  $fg = false;
 					 //доставка с такими полями уже есть
 					}
-				            if ( $fg ) {
+				            if ( $fg || $order->getDeliveryPrice()==0) {
+								Bitrix\Main\Diag\Debug::dumpToFile(array($order->getId(), $order->getDeliveryPrice()), "", '/upload/4.txt');
 					               $shipment = $shipmentCollection->createItem();
 					               $shipment->setFields( $shipmentFields );
 					               OrderBasketShipment::updateData($order, $shipment, $products);
 					}
 					
 				}
-				Bitrix\Main\Diag\Debug::dumpToFile($_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'], "", '/upload/2.txt');
-				
+					
 			         unset( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] );
+					 Bitrix\Main\Diag\Debug::dumpToFile($_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'], "", '/upload/2.txt');
 			}
 		      if ( $_SESSION['BX_CML2_EXPORT']['DELETED_PAYMENTS'] ) {
 			         //Вернем оплаты
