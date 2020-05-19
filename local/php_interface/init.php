@@ -81,7 +81,10 @@ function reverseInfo(\Bitrix\Main\Event $event ) {
 				}
 			         /** @var \Bitrix\Sale\Shipment $obShipment */
 			         /** @var array $shipmentFields */
+					  $first = true;
 			         foreach ( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] as $shipmentFields ) {
+						 if($first){
+							 Bitrix\Main\Diag\Debug::dumpToFile($shipmentFields, "", '/upload/2.txt');
 				            $fg = true;
 				            foreach( $shipmentCollection as $obShipment ) {
 					               if ($obShipment->isSystem())
@@ -96,6 +99,8 @@ function reverseInfo(\Bitrix\Main\Event $event ) {
 					               $shipment->setFields( $shipmentFields );
 					               OrderBasketShipment::updateData($order, $shipment, $products);
 					}
+					$first = false;
+						 }
 				}
 			         unset( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] );
 			}
@@ -104,7 +109,10 @@ function reverseInfo(\Bitrix\Main\Event $event ) {
 			         $paymentCollection = $order->getPaymentCollection();
 			         /** @var \Bitrix\Sale\Payment $obPayment */
 			         /** @var array $paymentFields */
+					 $first = true;
 			         foreach ( $_SESSION['BX_CML2_EXPORT']['DELETED_PAYMENTS'] as $paymentFields ) {
+						 if($first){
+							 
 				            $fg = true;
 				            foreach( $paymentCollection as $obPayment ) {
 					               $usedFields = checkFields( $obPayment->getFields()->getValues(), Payment::getAvailableFields() );
@@ -116,11 +124,23 @@ function reverseInfo(\Bitrix\Main\Event $event ) {
 					               $payment = $paymentCollection->createItem();
 					               $payment->setFields( $paymentFields );
 					}
+					$first = false;
+						 }
 				}
 			         unset( $_SESSION['BX_CML2_EXPORT']['DELETED_PAYMENTS'] );
 			}
 		      //Проверим сумму заказа
 		      $paymentCollection = $order->getPaymentCollection();
+			  if($order->getField('STATUS_ID')=='R')
+			  {
+				  foreach ( $paymentCollection as $payment ) {
+				        $paySystemService = Bitrix\Sale\PaySystem\Manager::getObjectById(8);
+						$payment->setFields(array(
+								'PAY_SYSTEM_ID' => $paySystemService->getField("PAY_SYSTEM_ID"),
+								'PAY_SYSTEM_NAME' => $paySystemService->getField("NAME"),
+						));
+					}
+			  }
 		      if ( ($sumP = $paymentCollection->getSum() ) != ($sumO = $order->getPrice() ) ) {
 			         $diff = $sumO - $sumP;
 			         $innerPayID = Manager::getInnerPaySystemId();
@@ -633,9 +653,19 @@ function OnSaleStatusOrderFunck(&$ID, &$arFields)
 		
 		//Коллекция оплат
 		$paymentCollection = $order->getPaymentCollection();
-		$sum = $paymentCollection->getSum();
 		
-		if($sum==0){
+		
+		if($arFields["PAY_SYSTEM_ID"] != 8)
+		{
+			Bitrix\Main\Diag\Debug::dumpToFile($arFields, "", '/upload/1.txt');
+			$r = $paymentCollection[0]->setField('PAY_SYSTEM_ID', 8);
+			$r = $paymentCollection[0]->setField('PAY_SYSTEM_NAME', 'Сбербанк');
+			$r = $paymentCollection[0]->setField('XML_ID', 'bx_5d35f0eb89573');
+			$r = $paymentCollection[0]->setField('XML_ID', 'bx_5d35f0eb89573');
+			$result = $order->save();
+		}
+		
+		if(empty($paymentCollection)){
 			/*$payment = $paymentCollection->createItem(
 				\Bitrix\Sale\PaySystem\Manager::getObjectById("8")
 			);
