@@ -81,11 +81,11 @@ function reverseInfo(\Bitrix\Main\Event $event ) {
 				}
 			         /** @var \Bitrix\Sale\Shipment $obShipment */
 			         /** @var array $shipmentFields */
-					  $first = true;
+					 
 			         foreach ( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] as $shipmentFields ) {
-						 if($first){
-							 Bitrix\Main\Diag\Debug::dumpToFile($shipmentFields, "", '/upload/2.txt');
-				            $fg = true;
+						 
+							 
+				            $fg = false;
 				            foreach( $shipmentCollection as $obShipment ) {
 					               if ($obShipment->isSystem())
 					                  continue;
@@ -99,9 +99,10 @@ function reverseInfo(\Bitrix\Main\Event $event ) {
 					               $shipment->setFields( $shipmentFields );
 					               OrderBasketShipment::updateData($order, $shipment, $products);
 					}
-					$first = false;
-						 }
+					
 				}
+				Bitrix\Main\Diag\Debug::dumpToFile($_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'], "", '/upload/2.txt');
+				
 			         unset( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] );
 			}
 		      if ( $_SESSION['BX_CML2_EXPORT']['DELETED_PAYMENTS'] ) {
