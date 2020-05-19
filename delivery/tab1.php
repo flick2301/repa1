@@ -1,6 +1,3 @@
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<script src="<?=$APPLICATION->GetCurPage()?>map.js" type="text/javascript"></script>
-
 <p class='info-paragraph' style='color:#f39101;'>Получить груз можно на следующий день. Для этого оформить заказ нужно до 16:00.
 
 Суббота и Воскресенье - выходные дни.
@@ -88,7 +85,7 @@
 						<td class="blue-table__td">6 100</td>
 						<td class="blue-table__td">6 900</td>
 					</tr>
-                                        <tr class="blue-table__tr">
+                    <tr class="blue-table__tr">
 						<td class="blue-table__td">5 000 - 10 000 кг.</td>
 						<td class="blue-table__td">5 900</td>
 						<td class="blue-table__td">6 300</td>

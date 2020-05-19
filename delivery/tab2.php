@@ -58,8 +58,7 @@
 						<td class="blue-table__td">2 350</td>
 						<td class="blue-table__td">2 600</td>
 						<td class="blue-table__td">3 500</td>
-					</tr>
-<!--					
+					</tr>			
 					<tr class="blue-table__tr">
 						<td class="blue-table__td">1 000 - 3 000 кг.</td>
 						<td class="blue-table__td">2 900</td>
@@ -84,11 +83,10 @@
 						<td class="blue-table__td">7 500</td>
 						<td class="blue-table__td">8 500</td>
 					</tr>
--->					
+				
 				</tbody>
 			</table>
-			
-	<p class='info-paragraph' style='font-size:20px;'>За пределы КАД по Ленинградской области + 17 руб/км.</p>
+			<br /><br />
 	
 	
 	<div id="map_spb" style="width: 100%;height: 500px;" class="mb-30"></div>
