@@ -105,7 +105,7 @@ if($arParams['FOR_SEO']!='Y'){
 	}
 }?>
 
-<div class="sale-category sale-category--new" style='margin-top: 30px !important;'>
+<div class="sale-category sale-category--new" style='margin-top: 30px !important; <?=($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' && $ral_in_ar) ? 'width:763px' : ($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' ? 'width:741px' : '');?>'>
     <table class="blue-table price-category <?=($ral_in_ar) ? 'blue-table__8-rows' : 'blue-table__7-rows';?>">
 	<thead class="blue-table__thead">
             <tr class="blue-table__tr">
@@ -114,7 +114,9 @@ if($arParams['FOR_SEO']!='Y'){
                 <th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Фасовка</span></span></th>
 		<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Артикул</span></span></th>
                 <th class="blue-table__th"><span class="link-sorting"><span class="link-sorting__style">Наличие</span></span></th>
-		<th class="blue-table__th"><span class="link-sorting"><span class="link-sorting__style">Получение</span></span></th>
+				<?if($_SERVER['HTTP_HOST']!='spb.krep-komp.ru'):?>
+				<th class="blue-table__th"><span class="link-sorting"><span class="link-sorting__style">Получение</span></span></th>
+				<?endif;?>
                 
             <?if($ral_in_ar){?>
 		<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Цвет, RAL</span></span></th>
@@ -158,7 +160,8 @@ if($arParams['FOR_SEO']!='Y'){
             <td class="blue-table__td"><span class="articul-b"><a href="<?=$item['DETAIL_PAGE_URL']?>" target="_self" title='<?=($item['PROPERTIES']['ROOT_NAME']['VALUE']) ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'];?>'><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?>
                     </a></span></td>
 	        <td class="blue-table__td"><?echo ($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']) ? '<span class="availability-b active">'.($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']).' уп. </span>' : '<span class="availability-b">Под заказ</span>';?></td>
-            <td class="blue-table__td">
+			<?if($_SERVER['HTTP_HOST']!='spb.krep-komp.ru'):?>
+		   <td class="blue-table__td">
 								<span class="pickup-view" data-product="<?=$item['ID']?>">
 									<div id='pickup_<?=$item['ID']?>' class="pickup-block">
 										
@@ -170,6 +173,8 @@ if($arParams['FOR_SEO']!='Y'){
 									</div>
 								</span>
 							</td>
+			<?endif;?>
+			
 	<?if($ral_in_ar){?>
             <td class="blue-table__td"><div class="color-b"><i style="background: #<?=$array_rals[$item['PROPERTIES']["TSVET"]["VALUE"]]?>;"></i><?=$item['PROPERTIES']["TSVET"]["VALUE"]?></div></td>
         <?}?>
