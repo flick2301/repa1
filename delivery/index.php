@@ -4,8 +4,11 @@ $APPLICATION->SetTitle("Доставка");
 ?>
 
 <?$APPLICATION->SetAdditionalCSS($APPLICATION->GetCurPage()."style.css", true);?>
+<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array()); ?>
 
-<? $APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array()); ?>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script src="<?=$APPLICATION->GetCurPage()?>map.js?<?=rand()?>" type="text/javascript"></script>
+
 			<h1 class="s38-title"><?=$APPLICATION->ShowTitle();?></h1>
 
 <ul class='delivery_items'>
