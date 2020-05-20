@@ -269,6 +269,7 @@
 								?>
 
 								<div class="export-info__img"><img src="<?=$deliveryImgURL?>" alt=""></div>
+								<?=$arDelivery["ID"]==3 || $arDelivery["ID"]==23 || $arDelivery["ID"]==25 || $arDelivery["ID"]==29 || $arDelivery["ID"]==30 ? " <b style='color: red; font-size: 14px;'>Вход в ПВЗ только в масках и перчатках</b>" : ""?>
                                                                 <span class="export-info__title"><?= htmlspecialcharsbx($arDelivery["NAME"])?></span>
                                                                 <span class="export-info__info" data='1'><?=htmlspecialchars_decode($arDelivery["DESCRIPTION"])?></span>
                                                                 
