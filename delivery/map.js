@@ -1646,7 +1646,7 @@ coords.push([60.05023,29.964535]);
 coords.push([60.049143,29.961445]);
 coords.push([60.037981,29.956295]);
 coords.push([59.874116,29.985104]);						
-			addPolygon([coords], 'Зона 2: от 0 до 15 км', 3);			
+			addPolygon([coords], 'Зона 2: от 0 до 10 км', 3);			
                         var coords = [];
 coords.push([59.995512,30.131669]);
 coords.push([59.861785,30.131903]);
