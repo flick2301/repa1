@@ -395,7 +395,7 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
   $delivery_name = "";
   if ($arDeliv)
   {
-    $delivery_name = $arDeliv["NAME"];	
+    $delivery_name = $arDeliv["NAME"].($arOrder["DELIVERY_ID"]==3 || $arOrder["DELIVERY_ID"]==23 || $arOrder["DELIVERY_ID"]==25 || $arOrder["DELIVERY_ID"]==29 || $arOrder["DELIVERY_ID"]==30 ? " <span style='color: red;'>(Вход в ПВЗ только в масках и перчатках)</span>" : "");	
   }
   
   if ($arOrder["DELIVERY_ID"]=='sdek:courier') $delivery_name="Доставка СДЭК";
