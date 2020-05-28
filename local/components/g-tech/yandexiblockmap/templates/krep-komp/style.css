@@ -1,0 +1,29 @@
+div.map-item-list{
+ /* margin-top: 10px; */
+  font: 12px/14px Tahoma;
+  color: #454545;
+
+}
+div.map-item-list .tittle{
+  font: 13px/14px Tahoma;
+  color: #8d8585;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+div.map-iblock-tittle{
+  font: 13px/14px Tahoma;
+  color: #8d8585;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+div.map-item-list .map-item{
+  height: 100%;
+  border-bottom: 1px solid #ccc;
+  padding: 5px 0;
+}
+div.map-item-list .map-item a{
+  color: #840a2d;
+}

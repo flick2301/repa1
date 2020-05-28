@@ -1,0 +1,25 @@
+table, tr, th, td{
+  margin: 0;
+  padding: 0;
+  background: none;
+  /*border: 1px solid #454545;*/
+}
+
+table.table th{
+  background: #ccc;
+  padding: 5px 10px;
+  /*border: 1px solid #454545;*/
+}
+table.table{
+  border-collapse: collapse;
+}
+table.table td{
+  padding: 5px 10px;
+  /*border: 1px solid #454545;*/
+  background: #fff;
+}
+table.table tr{
+  padding: 5px 10px;
+  /*border: 1px solid #454545;*/
+  background: #fff;
+}
