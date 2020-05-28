@@ -71,7 +71,7 @@ if (!function_exists("cmpBySort"))
 			<div class="basket-info" id='total_info2'>
 				<ul class="basket-info__items">
 					<li class="basket-info__item"><span>Общий вес:</span><i></i><strong><?=$arResult["ORDER_WEIGHT_FORMATED"]?></strong></li>
-					<li class="basket-info__item"><span>Доставка:</span><i></i><strong><?=$arResult["DELIVERY_PRICE_FORMATED"]?></strong></li>
+					<li class="basket-info__item delivery_cost"><span>Доставка:</span><i></i><strong><?=$arResult["DELIVERY_PRICE_FORMATED"]?></strong></li>
 					<li class="basket-info__item"><span>Стоимость:</span><i></i><strong><?=$arResult["ORDER_PRICE_FORMATED"]?></strong></li>
 				</ul>
 				

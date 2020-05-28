@@ -275,7 +275,7 @@
                                                                 
                                                                
                                                                 <ul class="basket-info__items">
-                                                                    <li class="basket-info__item"><span>Стоимость:</span><i></i><strong><?echo ($arDelivery["ID"]=='2' || $arDelivery["ID"]=='24') ? "Уточняйте у менеджера" : $arDelivery["PRICE_FORMATED"];?></strong></li>
+                                                                    <li class="basket-info__item"><span>Стоимость:</span><i></i><strong><?echo ($arDelivery["ID"]=='2' || $arDelivery["ID"]=='28' || $arDelivery["ID"]=='24') ? "Уточняйте у менеджера" : $arDelivery["PRICE_FORMATED"];?></strong></li>
                                                                     <li class="basket-info__item"><span>Срок доставки:</span><i></i><strong><?=$arDelivery["PERIOD_TEXT"]?></strong></li>
                                                                 </ul>
 								

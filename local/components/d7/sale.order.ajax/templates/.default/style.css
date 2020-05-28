@@ -631,3 +631,6 @@ div#order_form_content .errortext {
 	padding: 0 8px;
 	width: 150px;
 }
+#total_info2 .delivery_cost {
+	display: none!important;
+}

@@ -95,7 +95,7 @@ $bShowNameWithPicture = ($bDefaultColumns) ? true : false; // flat to show name 
                       <div class="basket-info" id='total_info'>
 				<ul class="basket-info__items">
 					<li class="basket-info__item"><span>Общий вес:</span><i></i><strong><?=$arResult["ORDER_WEIGHT_FORMATED"]?></strong></li>
-					<li class="basket-info__item"><span>Доставка:</span><i></i><strong><?=$arResult["DELIVERY_PRICE_FORMATED"]?></strong></li>
+					<li class="basket-info__item delivery_cost"><span>Доставка:</span><i></i><strong><?=$arResult["DELIVERY_PRICE_FORMATED"]?></strong></li>
 					<li class="basket-info__item"><span>Стоимость:</span><i></i><strong><?=$arResult["ORDER_PRICE_FORMATED"]?></strong></li>
 				</ul>
 				

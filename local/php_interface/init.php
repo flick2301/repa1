@@ -755,4 +755,26 @@ function SaveInOldSectionVaterland(&$arFields) {
 
 	}
 }	
+
+
+//ПЕЧАТЬ В ЧЕКАХ КОДА НОМЕНКЛАТУРЫ
+
+AddEventHandler("sale", "OnSaleCheckPrepareData", "OnSaleCheckPrepareDataHandler");
+
+function OnSaleCheckPrepareDataHandler($a, $str)
+{
+	
+	
+	foreach($a['PRODUCTS'] as $key=>$product)
+	{
+		if($product['PRODUCT_ID']==44497)
+		{
+			$a['PRODUCTS'][$key]["NAME"] = '2400001323807 '.$product['NAME'] ;
+		}
+
+	}
+	Bitrix\Main\Diag\Debug::dumpToFile($a, "", '/upload/5.txt');
+	return $a;
+		
+}
 ?>
