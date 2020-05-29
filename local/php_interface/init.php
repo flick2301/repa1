@@ -769,7 +769,7 @@ function OnSaleCheckPrepareDataHandler($a, $str)
 	{
 		if($product['PRODUCT_ID']==44497)
 		{
-			$a['PRODUCTS'][$key]["NAME"] = '2400001323807 '.$product['NAME'] ;
+			//$a['PRODUCTS'][$key]["NOMENCLATURE_CODE"] = __int64 4144676f705371;
 		}
 
 	}
