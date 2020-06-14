@@ -81,9 +81,11 @@ if($res=$ar_result->GetNext()){
     $rsGender = CUserFieldEnum::GetList(array(), array("ID" => $res["UF_SEC_LIST_TEMPL"]));
         if($arCat = $rsGender->GetNext())
                   $temple = $arCat["XML_ID"];
-			  
-		$subsections[] = $res["UF_SUBSECTION_ID"];
-		$subsections[] = $res["UF_OTHER_SECTION"];
+		if($res["UF_SUBSECTION_ID"])
+			$subsections[] = $res["UF_SUBSECTION_ID"];
+		if($res["UF_OTHER_SECTION"])
+			$subsections[] = $res["UF_OTHER_SECTION"];
+	
 		
 }
 if($_REQUEST['section_temp'] == 'new' || $temple=='ANKERA'){
