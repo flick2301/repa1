@@ -81,6 +81,10 @@ if($res=$ar_result->GetNext()){
     $rsGender = CUserFieldEnum::GetList(array(), array("ID" => $res["UF_SEC_LIST_TEMPL"]));
         if($arCat = $rsGender->GetNext())
                   $temple = $arCat["XML_ID"];
+			  
+		$subsections[] = $res["UF_SUBSECTION_ID"];
+		$subsections[] = $res["UF_OTHER_SECTION"];
+		
 }
 if($_REQUEST['section_temp'] == 'new' || $temple=='ANKERA'){
     $name_temple = 'level2_new';
@@ -88,12 +92,12 @@ if($_REQUEST['section_temp'] == 'new' || $temple=='ANKERA'){
     $name_temple = 'level2';
 }
 
-if($count_sections){ 
+if($count_sections || !empty($subsections)){ 
             
             $APPLICATION->IncludeComponent('bitrix:catalog.section.list', $name_temple, [
                 'IBLOCK_ID' => $arParams['IBLOCK_ID'],
                 'SECTION_ID' => $arResult["VARIABLES"]["SECTION_ID"],
-                "SECTION_USER_FIELDS" => array("UF_OTHER_SECTION", "UF_SEC_LIST_TEMPL"),
+                "SECTION_USER_FIELDS" => array("UF_OTHER_SECTION", "UF_SEC_LIST_TEMPL", "UF_SECTION_ID", "UF_SUBSECTION_ID"),
                 'COUNT_ELEMENTS' => $arParams['SECTION_COUNT_ELEMENTS'],
                 'TOP_DEPTH' => $arParams['SECTION_TOP_DEPTH'],
                 'SECTION_URL' => $arResult['FOLDER'] . $arResult['URL_TEMPLATES']['section'],

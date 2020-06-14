@@ -770,10 +770,11 @@ function OnSaleCheckPrepareDataHandler($a, $str)
 		if($product['PRODUCT_ID']==44497)
 		{
 			//$a['PRODUCTS'][$key]["NOMENCLATURE_CODE"] = __int64 4144676f705371;
+			Bitrix\Main\Diag\Debug::dumpToFile($a, "", '/upload/5.txt');
 		}
 
 	}
-	Bitrix\Main\Diag\Debug::dumpToFile($a, "", '/upload/5.txt');
+	
 	return $a;
 		
 }
