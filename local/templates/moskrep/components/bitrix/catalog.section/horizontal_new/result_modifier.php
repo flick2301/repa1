@@ -51,6 +51,14 @@ if($arSection = $rsResult->GetNext()) {
     $arResult["UF_RELATED"] = $arSection["UF_RELATED"];
     $arResult["UF_DETAIL_TEXT"] = $arSection["UF_DETAIL_TEXT"];
 	$arResult["UF_CHARS"] = $arSection["UF_CHARS"];
+	foreach($arSection["UF_SURFACE"] AS $surface) {
+		$res = CIBlockElement::GetByID($surface);
+		if ($ar_res = $res->GetNext()) {
+			$ar_res["IMG"] = CFile::GetPath($ar_res["PREVIEW_PICTURE"]);
+			$arResult["UF_SURFACE"][] = $ar_res;
+		}
+	}	
+	
 }
 
 if($arResult['UF_SOPUT_SPR']){

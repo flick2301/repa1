@@ -5517,3 +5517,39 @@ ol.tech li {
 .header {
     padding-top: 75px;
 }
+.blue-block {
+	background: #0c59cf;
+	color: #fff;
+	padding: 12px 15px;
+}
+.surface-block-container {
+	margin-right: -20px;
+	overflow: hidden;
+}
+.surface-block {
+	float: left;
+	width: 25%;
+	height: 250px;
+	text-align: center;
+	margin-top: 20px;
+}
+.surface-inblock {
+	margin-right: 20px;
+	height: inherit;	
+}
+.surface-block .surface-image {
+	height: 80%;
+}
+.surface-block .surface-name {
+	height: 20%;
+	background: #457fd8;
+	color: #fff;
+	font-size: 18px;
+	vertical-align: middle;
+}
+.surface-block .surface-name span {
+	display: block;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);	
+}

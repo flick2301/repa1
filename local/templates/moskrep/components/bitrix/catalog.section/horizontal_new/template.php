@@ -242,7 +242,19 @@ while($arSection = $db_list->GetNext()) {
 </ul>
 <?}?>
 
-
+<?if(count($arResult["UF_SURFACE"])):?>
+<div class="blue-block">Типы оснований</div>
+<div class="surface-block-container">
+<?foreach($arResult["UF_SURFACE"] AS $surface):?>
+<div class="surface-block">
+<div class="surface-inblock">
+<div class="surface-image" style="background: url(<?=$surface["IMG"]?>) no-repeat;"></div>
+<div class="surface-name"><span><?=$surface["NAME"]?></span></div>
+</div>
+</div>
+<?endforeach?>
+</div>
+<?endif?>
 
 <?if($arResult['UF_DETAIL_TEXT']):?>
 <div class='set-default-parametr-page-cat'><?=html_entity_decode($arResult['UF_DETAIL_TEXT'], ENT_QUOTES, "UTF-8");?></div>
