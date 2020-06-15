@@ -66,8 +66,7 @@ $arFilter = array(
 $section = CIBlockSection::GetList(array('SORT' => 'asc'),$arFilter, false, array('*', 'UF_SYM_LINK'));
    
 	
-if($USER->isAdmin())
-	echo 1;
+
 	while ($sectionOb = $section->GetNext()) {
 		if($sectionOb['UF_SYM_LINK'])
 			$url_section = $sectionOb['UF_SYM_LINK'];
