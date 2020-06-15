@@ -63,15 +63,19 @@ $arFilter = array(
     "ACTIVE"=>"Y"
 );
 
-$section = CIBlockSection::GetList(array('SORT' => 'asc'),$arFilter);
+$section = CIBlockSection::GetList(array('SORT' => 'asc'),$arFilter, false, array('*', 'UF_SYM_LINK'));
    
 	
-
+if($USER->isAdmin())
+	echo 1;
 	while ($sectionOb = $section->GetNext()) {
-		
+		if($sectionOb['UF_SYM_LINK'])
+			$url_section = $sectionOb['UF_SYM_LINK'];
+		else
+			$url_section = $sectionOb['SECTION_PAGE_URL'];
         $aMenuLinks[] = Array(
 		$sectionOb['NAME'],
-		$sectionOb['SECTION_PAGE_URL'],
+		$url_section,
 		Array("PARENT_NAME" => $id_sec['NAME']),
 		Array(),
 		""
