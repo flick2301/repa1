@@ -4689,7 +4689,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 				input = BX.create('DIV', {
 					props: {className: 'feedback-form__left'},
 					children: [
-						BX.create('LABEL', {props: {className: 'bx-soa-custom-label'}, html: this.params.MESS_PERSON_TYPE}),
+						BX.create('LABEL', {props: {className: 'bx-soa-custom-label person_type_label'}, html: this.params.MESS_PERSON_TYPE}),
 						BX.create('BR')
 					]
 				});

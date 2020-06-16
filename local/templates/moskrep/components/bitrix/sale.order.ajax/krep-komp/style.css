@@ -147,6 +147,9 @@
 #bx-soa-order-form .label_block {
 	height: 30px;
 }
+#bx-soa-order-form .person_type_label {
+	margin: 20px 0;
+}
 #bx-soa-order-form .bx-soa-pp-company.label_block {
 	height: 46px;
 }
