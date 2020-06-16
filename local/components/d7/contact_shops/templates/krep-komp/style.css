@@ -1,0 +1,319 @@
+#shops {
+	border: 1px solid #d5d5d5;
+}
+#shops {
+	overflow: hidden;
+}
+#shops ul.left {
+	float: left;
+	width: 250px;
+	height: 600px;
+	display: block;
+	border-right: 1px solid #d5d5d5;
+	overflow-y: auto;
+}
+#shops ul.left li {
+	display: block;
+	padding: 10px;
+	border-bottom: 1px solid #d5d5d5;
+	cursor: pointer;
+	overflow: hidden;
+}
+#shops ul.left li:last-child {
+	border-bottom: transparent;
+}
+#shops ul.left li:hover {
+	background: #f5f5f5;
+}
+#shops ul.left li.active {
+	background: #f0f0f0;
+}
+#shops ul.left li div.label {
+	width: 10px;
+	height: 10px;
+	float: left;
+	margin-right: 10px;
+	border-radius: 10px;
+	position: relative;
+	top: 2px;
+}
+#shops ul.left li .line-btn {
+	margin: 12px 0;
+	font-size: 14px;
+	text-align: left;
+	justify-content: left;
+}
+#shops ul.left li .line-btn .blue-btn {
+	height: 30px;
+	width: 80%;
+}
+.inblock .line-btn {
+	margin: 12px 0;
+	font-size: 14px;
+	text-align: left;
+	justify-content: left;
+}
+.inblock .line-btn .blue-btn {
+	height: 30px;
+}
+.inblock div.label {
+	width: 10px;
+	height: 10px;
+	float: left;
+	margin-right: 7px;
+	border-radius: 10px;
+	position: relative;
+	top: 5px;
+}
+#shops ul.left li span {
+	color: #999;
+}
+#current_shop_table {
+	margin: 20px 0 40px;	
+	width: 100%;
+}
+#current_shop_table th, #current_shop_table td {
+	padding: 10px;	
+	text-align: center;
+	font-size: 18px;
+}
+#current_shop_table th:first-child, #current_shop_table td:first-child {
+	padding: 10px 10px 10px 0;	
+	text-align: left;
+}
+#current_shop_table th:last-child, #current_shop_table td:last-child {
+	padding: 10px 0 10px 10px;	
+	text-align: right;
+}
+#shop_table {
+	margin: 20px 0;
+}
+#shop_table th, #shop_table td {
+	padding: 7px 10px 7px 7px;
+	text-align: left;
+	vertical-align: middle;	
+}
+#shop_table th {
+	background: #d5d5d5;
+	font-weight: normal;
+}
+#shop_table td {
+	padding: 10px 10px 10px 7px;
+	border-bottom: 2px solid #d5d5d5;
+}
+#shop_table td:first-child {
+	padding-right: 0;
+}
+#shop_table td.nowrap {
+	white-space: nowrap;
+}
+#shop_table td.gray {
+	color: #999;
+}
+#shop_table div.label {
+	width: 10px;
+	height: 10px;
+	float: left;
+	margin-right: 10px;
+	border-radius: 10px;
+	position: relative;
+	top: 2px;
+}
+#shops #map {
+	height: 600px;	
+	margin-left: 250px;
+}
+#shop #map {
+	height: 400px;	
+	margin-left: 360px;
+	border: 1px solid #d5d5d5;
+}
+#shop .left {
+	float: left;
+	width: 339px;
+	height: 400px;
+	overflow: hidden;
+}
+#shop .left .slider-for img {
+	width: 339px;
+}
+#shop .left .slider-nav {
+	margin-top: 20px;
+	width: 349px;
+}
+#shop .left .slider-nav div.box {
+	width: 114px;
+}
+#shop .left .slider-nav img {
+	width: 104px;
+}
+#shop .how {
+	width: 100%;
+	clear: both;
+	overflow: hidden;
+	margin-top: 30px;
+}
+#shop .how h2 {
+	float: left;
+	font-size: 24px;
+	margin-top: 10px;
+	font-weight: bold;
+}
+#shop .how h3 {
+	font-size: 20px;
+	color: #f39101;
+	width: 100%;
+	clear: both;
+	margin: 30px 0;
+	font-weight: bold;
+}	
+#shop .how .blue-btn {
+	height: 40px;
+	padding-left: 30px;
+	padding-right: 0;
+	background-image: url(images/print.svg);
+	background-repeat: no-repeat;
+	background-size: 30px;
+	background-position: 20px 50%;
+}
+#shop .how .scheme {
+	width: 70%;
+	display: block;
+	clear: both;
+	margin-top: -10px;
+}
+#click_scheme {
+	display: block;
+	margin: 30px 0 0;
+	padding: 3px 0;
+	padding-left: 37px;
+	font-size: 20px;
+	color: #0c59cf;
+	text-decoration: underline;
+	background-image: url(images/play_blue.svg);
+	background-repeat: no-repeat;
+	background-size: contain;	
+}
+#click_scheme:hover {
+	text-decoration: none;
+}
+#popup-window-titlebar-scheme {
+	display: none;	
+}
+.popup-window.popup-window-with-titlebar {
+	padding: 15px;
+}
+.scheme-title-bar {
+	font-size: 16px;
+	position: relative;
+	top: 15px;
+	color: #0c59cf;
+}
+.popup-window {
+	border-radius: 10px;
+}
+#scheme_text {
+	display: none;
+}
+#scheme_text video {
+	width: 560px;
+	margin-bottom: 20px;
+	clear: both;
+	display: block;
+}
+#shop .car {
+	margin-top: 30px;
+}
+#shop .print {
+	display: none;
+}
+.print_btn {
+	visibility: hidden;
+}
+
+
+@media print {
+body > *:not(main) {
+    display: none;
+}
+.map {
+    width: 400px;
+    height: 300px;
+    background-image: url('http://maps.googleapis.com/maps/api/staticmap?center=Wien+Floridsdorf&zoom=13&scale=false&size=400x300&maptype=roadmap&format=png&visual_refresh=true');
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}	
+.noprint {
+    display: none!important;
+	visibility: hidden!important;
+	opacity: 0!important;
+}	
+#bx-panel, #bannerIsWork, .breadcrumbs, .header, .two-column__left, .footer, #click_scheme, #jivo-iframe-container, jdiv, h2.s28-title, .requisites {
+    display: none!important;	
+	visibility: hidden!important;
+	opacity: 0!important;	
+}
+h1.s38-title {
+	font-size: 22px;
+	margin-top: -30px!important;
+	position: relative;
+	z-index: 1000;	
+}
+#shop .how {
+	position: relative;
+	top: -50px;
+}
+#qr {
+	float: left;
+	height: 200px;
+	width: 200px;
+	margin: 20px 20px 20px 0;
+}
+#shop .how .scheme {
+	margin-bottom: -10px;
+	margin-left: 10px;
+	margin-top: 10px;
+	float: right;
+	width: 540px;
+	clear: right;
+}
+.two-column.inner, .two-column__right {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+#current_shop_table {
+    margin: 10px 0 10px;
+}
+#current_shop_table th, #current_shop_table td {
+	padding: 5px;
+}
+#current_shop_table th:first-child, #current_shop_table td:first-child {
+	padding: 5px 5px 5px 0;	
+}
+#current_shop_table th:last-child, #current_shop_table td:last-child {
+	padding: 5px 0 5px 5px;	
+}
+#shop .how h3 {
+	margin: 10px 0;
+}	
+#shop .afoot, #shop .car {
+	margin-top: 0px;
+	line-height: 24px;
+	font-size: 18px;
+}
+#shop #map {
+	border: none;
+}
+#shop .print {
+	display: block;
+}
+[class*="ymaps-2"][class*="-ground-pane"] {
+  -webkit-filter: saturate(500%) grayscale(50%) contrast(110%);
+          filter: saturate(500%) grayscale(50%) contrast(110%);
+}
+[class="scheme"] {
+  -webkit-filter: saturate(250%) grayscale(50%);
+          filter: saturate(250%) grayscale(50%);
+}
+}

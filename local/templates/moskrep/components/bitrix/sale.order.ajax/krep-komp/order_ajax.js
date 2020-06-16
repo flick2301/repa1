@@ -117,6 +117,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			this.pickUpHiddenBlockNode = BX(parameters.pickUpBlockId + '-hidden');
 			this.propsBlockNode = BX(parameters.propsBlockId);
 			this.propsHiddenBlockNode = BX(parameters.propsBlockId + '-hidden');
+			this.lat = '';
+			this.lon = '';
 			
 			if (parameters.displayBasket=="N") this.basketBlockNode = "";//Убрана корзина
 
@@ -170,9 +172,13 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 		/**
 		 * Send ajax request with order data and executes callback by action
 		 */
-		sendRequest: function(action, actionData)
+		sendRequest: function(action, actionData, unsetDelivery)
 		{
+			if (unsetDelivery) this.unsetDelivery();
+			
 			var form;
+			
+			//alert(this.lon);
 
 			if (!this.startLoader())
 				return;
@@ -209,11 +215,13 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			}
 			else
 			{
+				var data = this.getData(action, actionData);
+
 				BX.ajax({
 					method: 'POST',
 					dataType: 'json',
 					url: this.ajaxUrl,
-					data: this.getData(action, actionData),
+					data: data,
 					onsuccess: BX.delegate(function(result) {
 						if (result.redirect && result.redirect.length)
 							document.location.href = result.redirect;
@@ -2093,7 +2101,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 		 * Showing active data in certain block node
 		 */
 		show: function(node)
-		{
+		{ 
+			if (node.className == 'bx-soa-section bx-active') return; //Убрано сворачивание блоков
 			if (!node || !node.id || this.activeSectionId == node.id)
 				return;
 
@@ -4659,6 +4668,10 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
 			return personTypes.sort(function(a, b){return parseInt(a.SORT) - parseInt(b.SORT)});
 		},
+		
+		unsetDelivery: function() {
+			$("#soa-property-34, #soa-property-35, #address_street, #address_house, #address_flat, #delivery_lat, #delivery_lon").val('');
+		},
 
 		getPersonTypeControl: function(node)
 		{
@@ -4707,7 +4720,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 				node.appendChild(BX.create('SELECT', {
 					props: {name: 'PERSON_TYPE', className: 'form-control'},
 					children: options,
-					events: {change: BX.proxy(this.sendRequest, this)}
+					//events: {change: BX.proxy(this.sendRequest, this)}
+					events: {change: this.sendRequest.bind(this, '', '', true)}
 				}));
 
 				this.regionBlockNotEmpty = true;
@@ -5393,8 +5407,10 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			this.initialized.delivery = true;
 		},
 		
-		selectDeliveryGroupAction: function(deliveryGroup, change)
+		selectDeliveryGroupAction: function(deliveryGroup, change, unsetDelivery)
 		{
+			if (unsetDelivery) this.unsetDelivery();
+
 			$('#select_delivery_group li').removeClass('active');
 			$("#select_delivery_group li." + deliveryGroup).addClass('active');
 			
@@ -5470,7 +5486,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 				}
 				
 				for (var key in this.result.DELIVERY_GROUPS) {
-				    delivery_groups.push(BX.create('LI', {props: {className: key + ((this.deliveryTypes[key].indexOf(parseInt(this.currentDelivery)) !== -1) ? ' active' : ''), id: key}, html: deliveryNames[key] ? deliveryNames[key] : 'Дополнительно', events: {click: this.selectDeliveryGroupAction.bind(this, key, 1)}}));
+					let active = this.deliveryTypes[key].indexOf(parseInt(this.currentDelivery)) !== -1 ? true : false; 
+				    delivery_groups.push(BX.create('LI', {props: {className: key + (active ? ' active' : ''), id: key}, html: deliveryNames[key] ? deliveryNames[key] : 'Дополнительно', events:  active ? {} : {click: this.selectDeliveryGroupAction.bind(this, key, 1, true)}}));
 				}
 				
 
@@ -5514,7 +5531,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 				return;
 
 			var deliveryItemsContainer = BX.create('DIV', {props: {className: ''}}),
-				deliveryItemNode, deliveryItemNodeArray = [], k, deliveryAddress;
+				deliveryItemNode, deliveryItemNodeArray = [], k, deliveryAddress, deliveryMap;
 
 			for (k = 0; k < this.deliveryPagination.currentPage.length; k++)
 			{ 	
@@ -5528,6 +5545,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
 			if (this.deliveryPagination.show)
 				this.showPagination('delivery', deliveryItemsContainer);
+
 			
 			
 			if (this.deliveryGroupID(this.currentDelivery)=='delivery_delivery' || this.currentDelivery==20 || this.currentDelivery==24) { //Если выбрана доставка по адресу
@@ -5557,7 +5575,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 											id: 'address_street',
 											type: 'text',
 											name: 'address_street',
-											value: '',
+											value: this.result.DELIVERY_ADDRESS.address_street ? this.result.DELIVERY_ADDRESS.address_street : '',
 											autocomplete: 'off'
 										},
 										events: {input: this.editAddress.bind(this), keyup: this.editAddress.bind(this)}
@@ -5590,7 +5608,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 											id: 'address_house',
 											type: 'text',
 											name: 'address_house',
-											value: '',
+											value: this.result.DELIVERY_ADDRESS.address_house ? this.result.DELIVERY_ADDRESS.address_house : '',
 											autocomplete: 'off'
 										},
 											events: {input: this.editAddress.bind(this), keyup: this.editAddress.bind(this)}
@@ -5623,7 +5641,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 											id: 'address_flat',
 											type: 'text',
 											name: 'address_flat',
-											value: '',
+											value: this.result.DELIVERY_ADDRESS.address_flat ? this.result.DELIVERY_ADDRESS.address_flat : '',
 											autocomplete: 'off'
 										},
 										events: {input: this.editAddress.bind(this), keyup: this.editAddress.bind(this)}
@@ -5631,11 +5649,68 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 									],
 								}),		
 									],
-								}),	
+								}),								
 						]});
+						
+						
+				deliveryMap	= BX.create('DIV', {
+									attrs: {},
+									props: {
+										className: 'map_block',
+									},
+									children: [
+									
+									BX.create('DIV', {
+									attrs: {},
+									props: {
+										id: 'delivery_map',
+									},
+									style: {height: this.result.DELIVERY_ADDRESS.delivery_lat && this.result.DELIVERY_ADDRESS.delivery_lon ? '400px' : ''}
+									}),	
+									BX.create('DIV', {
+									attrs: {},
+									props: {
+										id: 'coords_info',
+									},
+									style: {display: 'none'},
+									children: [
+									
+										BX.create('INPUT', {
+										attrs: {},
+										props: {
+											id: 'delivery_lat',
+											type: 'text',
+											name: 'delivery_lat',
+											value: this.result.DELIVERY_ADDRESS.delivery_lat ? this.result.DELIVERY_ADDRESS.delivery_lat : '',
+											autocomplete: 'off'
+										},
+										events: {input: this.editAddress.bind(this), keyup: this.editAddress.bind(this)}
+										}),
+										BX.create('INPUT', {
+										attrs: {},
+										props: {
+											id: 'delivery_lon',
+											type: 'text',
+											name: 'delivery_lon',
+											value: this.result.DELIVERY_ADDRESS.delivery_lon ? this.result.DELIVERY_ADDRESS.delivery_lon : '',
+											autocomplete: 'off'
+										},
+										events: {input: this.editAddress.bind(this), keyup: this.editAddress.bind(this)}
+										}),										
+									
+									],
+									}),										
+									],									
+					});	
 				
 				
 				deliveryItemsContainer.appendChild(deliveryAddress);
+				deliveryItemsContainer.appendChild(deliveryMap);
+				
+				
+				if (this.result.DELIVERY_ADDRESS.delivery_lat && this.result.DELIVERY_ADDRESS.delivery_lon) {
+					getMap(this.result.DELIVERY_ADDRESS.delivery_lat, this.result.DELIVERY_ADDRESS.delivery_lon);
+				}
 			}	
 else if (this.currentDelivery=='!24') {//Закрыто, резервнное поле доставки
 deliveryAddress = BX.create('div', {props: {id: 'delivery_other_address'},
@@ -5816,6 +5891,7 @@ if (logotype && logotype.src_2x) {
 						]}) : null						
 				]
 			});
+			
 
 			if (currentDelivery.PRICE > 0)
 			{

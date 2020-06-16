@@ -3,11 +3,22 @@ BX.ready(function() {
 	$("body").click(function() {
 		$("#bx-soa-order-form .bx-sls .dropdown-block").removeClass("active"); 
 	});		
+	
 	$("#bx-soa-order-form .bx-sls .dropdown-block").click(function(event) {
 		$(this).addClass("active"); 
 		event.stopPropagation();
-	});
+	});	
+	
+	$(document).on('click', '.dropdown-item-text', function() {
+		BX.Sale.OrderAjaxComponent.unsetDelivery();
+	});	
+	
+	$(document).on('click', '.bx-soa-section, .bx-soa-section-title-container, .bx-soa-section-title, .bx-soa-section-title-count', function(event) {
+		//event.preventDefault();
+		//event.stopPropagation();
+	});		
 });
+
 
 
 BX.saleOrderAjax = { // bad solution, actually, a singleton at the page

@@ -3,25 +3,27 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Адреса магазинов");
 ?>
 <? $APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array()); ?>
-			<h1 class="s38-title"><?=$APPLICATION->ShowTitle();?></h1>
+			<?if(!$_REQUEST["ID"]):?><h1 class="s38-title"><?=$APPLICATION->ShowTitle();?></h1><?endif?>
+
+<?if(!$_REQUEST["ID"]):?>
 <ul class='delivery_items'>
 	<li data-tab='vivoz_1' class='delivery_item active'>Москва и МО</li>
-	<li data-tab='vivoz_2' class='delivery_item spb'>Санкт-Петербург</li>
-
+	<li data-tab='vivoz_2' class='delivery_item city2565 city2631 spb'>Санкт-Петербург</li>
 </ul>
+<?endif?>
 
-<div id='vivoz_2' class='delivery__tabs-list spb'> 
+<div id='vivoz_2' class='delivery__tabs-list city2565 city2631 spb'> 
 
 <?require_once($_SERVER["DOCUMENT_ROOT"] . "/kontent-elementa/contact_spb.php");?>
 
 </div>
 <div id='vivoz_1' class='delivery__tabs-list active'> 
-<p>Забрать груз в пункте самовывоза на Каширском шоссе можно на следующий день. Для этого оформить заказ нужно до 15:00. 
+<?if(!$_REQUEST["ID"]):?><p>Забрать груз в пункте самовывоза на Каширском шоссе можно на следующий день. Для этого оформить заказ нужно до 15:00. 
 
 	Суббота и Воскресенье - выходные дни.</p>
+<?endif?>
 
-
-	<?$APPLICATION->IncludeComponent("d7:contact_shops",".default",Array(
+	<?$APPLICATION->IncludeComponent("d7:contact_shops","krep-komp",Array(
 				"IBLOCK_ID" => "19", 
 				"CACHE_TYPE" => "A", 
                 "CACHE_TIME" => "3600", 

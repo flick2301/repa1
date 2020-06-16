@@ -216,7 +216,7 @@ $dbList = CCatalogStore::GetList(
 			Array("ACTIVE" => "Y", "ID" => $arStoreId),
 			false,
 			false,
-			Array("ID", "TITLE", "ADDRESS", "CODE", "DESCRIPTION", "PHONE") //Добавлена выборка по коду
+			Array("ID", "TITLE", "ADDRESS", "CODE", "DESCRIPTION", "PHONE", "SCHEDULE", "IMAGE_ID") //Добавлена выборка по коду
 		);
 		while ($arStoreTmp = $dbList->Fetch())
 		{
@@ -224,11 +224,109 @@ $dbList = CCatalogStore::GetList(
 				$arStoreTmp["DELIVERY"] = preg_replace("/[^0-9]/", "", $arStoreTmp["CODE"]);
 				$arResult["JS_DATA"]["DELIVERY"][$arStoreTmp["DELIVERY"]]["CURRENT_STORE"] = $arStoreTmp["ID"];
 				$arResult["JS_DATA"]["DELIVERY"][$arStoreTmp["DELIVERY"]]["STORE_ADDRESS"] = $arStoreTmp["ADDRESS"];
+				$arResult["JS_DATA"]["DELIVERY"][$arStoreTmp["DELIVERY"]]["STORE_SCHEDULE"] = $arStoreTmp["SCHEDULE"];
+				$arResult["JS_DATA"]["DELIVERY"][$arStoreTmp["DELIVERY"]]["STORE_PHONE"] = $arStoreTmp["PHONE"];
+				$arResult["JS_DATA"]["DELIVERY"][$arStoreTmp["DELIVERY"]]["STORE_DESCRIPTION"] = $arStoreTmp["DESCRIPTION"];
+				
+			if ($arStoreTmp["IMAGE_ID"] > 0)
+				$arResult["JS_DATA"]["DELIVERY"][$arStoreTmp["DELIVERY"]]["STORE_IMAGE"] = CFile::GetFileArray($arStoreTmp["IMAGE_ID"]);
+			else
+				$arResult["JS_DATA"]["DELIVERY"][$arStoreTmp["DELIVERY"]]["STORE_IMAGE"] = null;				
 			}
 			$arResult["JS_DATA"]["STORE_LIST"][$arStoreTmp["ID"]] = array_merge($arStoreTmp, $arResult["JS_DATA"]["STORE_LIST"][$arStoreTmp["ID"]]);
 		}
+		
+		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["address_street"] = htmlspecialchars($_REQUEST['order']['address_street']);
+		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["address_house"] = htmlspecialchars($_REQUEST['order']['address_house']);
+		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["address_flat"] = htmlspecialchars($_REQUEST['order']['address_flat']);
+		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["delivery_lat"] = htmlspecialchars($_REQUEST['order']['delivery_lat']);
+		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["delivery_lon"] = htmlspecialchars($_REQUEST['order']['delivery_lon']);		
+		
+		$delivery_price = $_REQUEST['order']['ORDER_PROP_34'] ? $_REQUEST['order']['ORDER_PROP_34'] : $_REQUEST['order']['ORDER_PROP_35'];
+		
+		if ($delivery_price) {
+			
+			$delivery_price = preg_replace("/[^0-9]+/", "", $delivery_price);
+			$formatted_delivery_price = CurrencyFormat($delivery_price, 'RUB');
+			$total_price = $delivery_price + $arResult["JS_DATA"]["TOTAL"]["ORDER_PRICE"];
+			
+		$arResult["JS_DATA"]["DELIVERY"][2]["PRICE"] = $delivery_price;
+		$arResult["JS_DATA"]["DELIVERY"][2]["PRICE_FORMATED"] = $formatted_delivery_price;
+		$arResult["JS_DATA"]["DELIVERY"][28]["PRICE"] = $delivery_price;
+		$arResult["JS_DATA"]["DELIVERY"][28]["PRICE_FORMATED"] = $formatted_delivery_price;		
+		$arResult["JS_DATA"]["DELIVERY_PRICE"] = $delivery_price;
+		$arResult["JS_DATA"]["DELIVERY_PRICE_FORMATED"] = $formatted_delivery_price;		
+		$arResult["JS_DATA"]["TOTAL"]["DELIVERY_PRICE"] = $delivery_price;
+		$arResult["JS_DATA"]["TOTAL"]["DELIVERY_PRICE_FORMATED"] = $formatted_delivery_price;			
+		$arResult["JS_DATA"]["TOTAL"]["DELIVERY_PRICE"] = $delivery_price;
+		$arResult["JS_DATA"]["TOTAL"]["DELIVERY_PRICE_FORMATED"] = $formatted_delivery_price;			
+		$arResult["JS_DATA"]["TOTAL"]["ORDER_TOTAL_PRICE"] = $total_price;
+		$arResult["JS_DATA"]["TOTAL"]["ORDER_TOTAL_PRICE_FORMATED"] = CurrencyFormat($total_price, 'RUB');
+		}
 
 	//file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arResult["JS_DATA"], true)."\n-------------".print_r($arParams, true));
+}
+
+
+//Заказ добавлен
+use Bitrix\Main;
+Main\EventManager::getInstance()->addEventHandler(
+    'sale',
+    'OnSaleOrderBeforeSaved',
+    'bxOnSaleOrderBeforeSaved'
+);
+
+
+function bxOnSaleOrderBeforeSaved(Main\Event $event)
+{
+
+    /** @var \Bitrix\Sale\Order $order */
+    $order = $event->getParameter("ENTITY");
+
+    /** @var \Bitrix\Sale\PropertyValueCollection $propertyCollection */
+    $propertyCollection = $order->getPropertyCollection();
+
+    $propsData = [];
+
+
+    /**
+     * Собираем все свойства и их значения в массив
+     * @var \Bitrix\Sale\PropertyValue $propertyItem
+     */
+    foreach ($propertyCollection as $propertyItem) {
+        if (!empty($propertyItem->getField("CODE"))) {
+            $props[$propertyItem->getField("CODE")]["VALUE"] = trim($propertyItem->getValue());
+        }
+    }
+	
+	$delivery_price = $order->getDeliveryPrice() ? $order->getDeliveryPrice() : 0;
+	
+
+if ($props['DELIVERY_PRICE']['VALUE']) {
+	
+	$delivery_price = $props['DELIVERY_PRICE']['VALUE'];//К точному времени
+
+
+$deliveryCollection = $order->getShipmentCollection()->getNotSystemItems();
+
+foreach ($deliveryCollection as $shipment) {
+            if ($shipment->getDeliveryId() == 2) {
+			//if ($shipment->getDeliveryId() == 11) $delivery_price+=400;
+				$shipment->setField("BASE_PRICE_DELIVERY", $delivery_price);			
+				$shipment->setField('PRICE_DELIVERY', $delivery_price);
+				$shipment->setField("CUSTOM_PRICE_DELIVERY", "Y");
+            }
+			else {
+				$shipment->setField("BASE_PRICE_DELIVERY", 0);				
+				$shipment->setField('PRICE_DELIVERY', 0);
+				$shipment->setField("CUSTOM_PRICE_DELIVERY", "Y");
+			}
+	}
+}
+ 
+   //file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt',  file_get_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt').$order->getField("ID").": ".$order->getPrice()."---------------\n".$delivery_price."---------------\n".$order->getDeliveryPrice()."\n".print_r($props, true)."\n++++++++++++++");
+
+	//if ($props["IDCONTACT"]['VALUE']) file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt',  $order->getPrice()."---------------\n".$delivery_price."---------------\n".print_r($did, true));
 }
 
 

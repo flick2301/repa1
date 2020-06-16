@@ -303,6 +303,9 @@ $APPLICATION->SetAdditionalCSS('/bitrix/css/main/themes/'.$arParams['TEMPLATE_TH
 $APPLICATION->SetAdditionalCSS($templateFolder.'/style.css', true);
 $this->addExternalJs($templateFolder.'/order_ajax.js');
 $this->addExternalJs($templateFolder.'/scripts/dadata.js');
+$this->addExternalJs('/delivery/areas.js');
+$this->addExternalJs($templateFolder.'/scripts/map.js');
+$this->addExternalJs('https://map.krep-komp.ru/js/script.js');
 \Bitrix\Sale\PropertyValueCollection::initJs();
 $this->addExternalJs($templateFolder.'/script.js');
 ?>
@@ -614,7 +617,9 @@ else
 		{
 			$this->addExternalJs($templateFolder.'/scripts/yandex_maps.js');
 			?>
-			<script src="<?=$scheme?>://api-maps.yandex.ru/2.1.50/?load=package.full&lang=<?=$locale?>"></script>
+			<?/*<script src="<?=$scheme?>://api-maps.yandex.ru/2.1.50/?load=package.full&lang=<?=$locale?>"></script>*/?>
+<?//$api_key = htmlspecialcharsbx(Main\Config\Option::get('fileman', 'yandex_map_api_key'));?>
+<script src="<?=$scheme?>://api-maps.yandex.ru/2.1.50/?load=package.full&lang=<?=$locale?>&apikey=<?=$api_key?>"></script>			
 			<script>
 				(function bx_ymaps_waiter(){
 					if (typeof ymaps !== 'undefined' && BX.Sale && BX.Sale.OrderAjaxComponent)
