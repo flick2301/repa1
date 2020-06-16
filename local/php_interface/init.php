@@ -310,7 +310,7 @@ if ($props['DELIVERY_PRICE']['VALUE']) {
 $deliveryCollection = $order->getShipmentCollection()->getNotSystemItems();
 
 foreach ($deliveryCollection as $shipment) {
-            if ($shipment->getDeliveryId() == 2) {
+if ($shipment->getDeliveryId() == 2 || $shipment->getDeliveryId() == 28) {
 			//if ($shipment->getDeliveryId() == 11) $delivery_price+=400;
 				$shipment->setField("BASE_PRICE_DELIVERY", $delivery_price);			
 				$shipment->setField('PRICE_DELIVERY', $delivery_price);
