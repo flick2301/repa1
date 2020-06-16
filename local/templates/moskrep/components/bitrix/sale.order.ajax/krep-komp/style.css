@@ -72,8 +72,8 @@
 .form-group.bx-soa-customer-field[data-property-id-row="19"],
 .form-group.bx-soa-customer-field[data-property-id-row="26"],
 .form-group.bx-soa-customer-field[data-property-id-row="27"],
-/*.form-group.bx-soa-customer-field[data-property-id-row="34"],
-.form-group.bx-soa-customer-field[data-property-id-row="35"],*/
+.form-group.bx-soa-customer-field[data-property-id-row="48"],
+.form-group.bx-soa-customer-field[data-property-id-row="49"],
 #bx-soa-pickup, #bx-soa-basket, .alert-warning, .pull-left.btn-default.btn-md, .pull-right.btn-default.btn-md, .bx-soa-editstep, .bx-soa-section-title-count, #bx-soa-paysystem .bx-soa-pp-desc-container, .form-group.bx-soa-customer-field[data-property-id-row="30"] {
 	display: none!important;
 }
