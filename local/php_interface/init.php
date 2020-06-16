@@ -242,7 +242,7 @@ $dbList = CCatalogStore::GetList(
 		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["delivery_lat"] = htmlspecialchars($_REQUEST['order']['delivery_lat']);
 		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["delivery_lon"] = htmlspecialchars($_REQUEST['order']['delivery_lon']);		
 		
-		$delivery_price = $_REQUEST['order']['ORDER_PROP_34'] ? $_REQUEST['order']['ORDER_PROP_34'] : $_REQUEST['order']['ORDER_PROP_35'];
+		$delivery_price = $_REQUEST['order']['ORDER_PROP_34'] ? $_REQUEST['order']['ORDER_PROP_48'] : $_REQUEST['order']['ORDER_PROP_49'];
 		
 		if ($delivery_price) {
 			

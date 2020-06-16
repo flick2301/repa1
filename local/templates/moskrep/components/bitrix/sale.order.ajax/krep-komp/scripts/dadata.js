@@ -237,7 +237,7 @@ var result = deliveryCost.init({
 	
 	//getMap(result.lat, result.lon); //Показ карты
 	
-$("#soa-property-34, #soa-property-35").val(result.cost);	
+$("#soa-property-48, #soa-property-49").val(result.cost);	
 //alert(JSON.stringify(result));
 			
 			BX.Sale.OrderAjaxComponent.sendRequest();
