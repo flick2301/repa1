@@ -2,8 +2,10 @@ $(document).ready(function() {
 	
 	var timerId;
 	var timerHouseId;
+	var timerFlatId;
 	var token = "6286a42bb8f394fa4346875f691f7b28a9db6b63";
 	var getResult = false;
+	var setPrice = false;
 	
 	$(document).on('keyup', '#address_street', function(event) {
 		
@@ -51,13 +53,22 @@ $(document).ready(function() {
 			timerHouseId = setTimeout(function() { get_ajax(search, 'house'); }, 500);  		
 		}
 		//else changeClose('address_street');
-	});		
+	});	
+
+$(document).on('keyup', '#address_flat', function(e) {
+		
+	if (!setPrice && $('#address_id_street').val()) {
+		clearTimeout(timerFlatId);
+		timerFlatId = setTimeout(function() { setDeliveryPrice($('#address_full_street').val(), $('#address_id_street').val()); setPrice = false; }, 2000); 	
+	}
+});
 	
 	$(document).on('click', '#change_address_house div', function(e) {
 		$('#address_house').val(($(this).text()));
 		BX.Sale.OrderAjaxComponent.editAddress(true);
 		changeClose('address_house');
 		setDeliveryPrice($(this).attr('rel'), $(this).attr('id'));
+		setPrice = true;
 
 		e.stopPropagation();
 	});	
@@ -170,8 +181,6 @@ function suggest(query, locations, to_bound) {
 	
   var serviceUrl = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
   
-  console.log(locations);
-  
   var request = {
     "query": query,
 	"count": 50,
@@ -200,18 +209,27 @@ function suggest(query, locations, to_bound) {
 }	
 
 
-function get_coords(query) {
+function get_coords(query, id) {
 	
-  var serviceUrl = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
+  var serviceUrl = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";  
+  var locations = []; 
+  
+if (id) {
+		locations[0] = {
+            "country_iso_code": "RU",
+        };
+		locations[1] = {
+            "country_iso_code": "RU",
+        };	
+		
+	locations[0].fias_id = id;
+	locations[1].fias_id = id;
+}
   
   var request = {
     "query": query,
 	"count": 1,
-	"locations": [
-        {
-            "country_iso_code": "RU",
-        },	
-    ],
+	"locations": locations,
     "locations_boost": [{
         "kladr_id": "77"
     }],
@@ -240,7 +258,7 @@ function setDeliveryPrice(rel, id) {
 	
 	if (BX.Sale.OrderAjaxComponent.currentDelivery!=2 && BX.Sale.OrderAjaxComponent.currentDelivery!=28) return;
 	
-		var coords = get_coords(rel);
+		var coords = get_coords(rel, id);
 		
 	coords
   	.done(function(response) {
