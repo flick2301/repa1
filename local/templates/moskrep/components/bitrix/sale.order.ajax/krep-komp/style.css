@@ -68,8 +68,8 @@
 	color: #fff;
 	text-decoration: none;
 }
-/*.form-group.bx-soa-customer-field[data-property-id-row="7"],
-.form-group.bx-soa-customer-field[data-property-id-row="19"],*/
+.form-group.bx-soa-customer-field[data-property-id-row="7"],
+.form-group.bx-soa-customer-field[data-property-id-row="19"],
 div[data-property-id-row="5"],
 div[data-property-id-row="17"],
 .form-group.bx-soa-customer-field[data-property-id-row="26"],
@@ -226,6 +226,9 @@ div[data-property-id-row="17"],
 }
 #bx-soa-order-form #delivery_address {
 	margin-top: 10px;
+}
+#bx-soa-order-form .bx-soa-customer-field #address_full_street, #bx-soa-order-form .bx-soa-customer-field #address_id_street {
+	display: none;	
 }
 #bx-soa-order-form .bx-soa-customer-field #address_street, #bx-soa-order-form .bx-soa-customer-field #address_full_street, #bx-soa-order-form .bx-soa-customer-field #address_id_street {
 	width: 460px;

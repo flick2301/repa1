@@ -21,6 +21,7 @@ $(document).ready(function() {
 	$(document).on('click', '#change_address_street div', function(e) {
 		$('#address_street').val(($(this).attr('rel')));
 		$('#address_full_street').val(($(this).text()));
+		$('#address_id_street').val(($(this).attr('id')));
 		BX.Sale.OrderAjaxComponent.editAddress(true);
 		changeClose('address_street');
 		getResult = true;
@@ -77,7 +78,7 @@ $(document).ready(function() {
 	
 		var city = explode(", ", $('#bx-soa-order-form .bx-ui-sls-container .bx-ui-sls-fake').attr('title'));	
 		var street = $('#address_street').val();
-		var fullstreet = $('#address_street').val();
+		var idstreet = $('#address_id_street').val();
 		street = street.replace(/(ул )|(пр\-кт )|( пер)|( б\-р)/, '');
 		
 		if (city[0]) {
@@ -90,9 +91,9 @@ $(document).ready(function() {
 			locations[1].street = street;
 		}	
 		
-		if (to_bound=='house' && fullstreet) {
-			locations[0].fullstreet = fullstreet;
-			locations[1].fullstreet = fullstreet;
+		if (to_bound=='house' && idstreet) {
+			locations[0].street_fias_id = idstreet;
+			locations[1].street_fias_id = idstreet;
 		}	
 		
 	var promise = suggest(search, locations, to_bound);
@@ -106,7 +107,7 @@ $(document).ready(function() {
 		response.suggestions.forEach(function(item, i, arr) {
 			switch(to_bound) {
 				case 'street':
-					if (item.data.street && item.data.street != null) result.push({value: item.data.street_type == 'ул' ? item.data.street : item.data.street_with_type, full: item.value});
+					if (item.data.street && item.data.street != null) result.push({value: item.data.street_type == 'ул' ? item.data.street : item.data.street_with_type, full: item.value, fias_id: item.data.fias_id});
 				break;
 				case 'house':
 					if (item.data.house && item.data.house != null) result.push({value:item.data.house, full: item.value});

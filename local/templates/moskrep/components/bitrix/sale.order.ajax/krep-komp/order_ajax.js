@@ -5513,7 +5513,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 		
 		editAddress: function(full) {
 			var address = "";
-			if ($('#address_full_street').val() && full) {
+			if ($('#address_full_street').val() && full && typeof full !== 'object') {
 				address += " " + $('#address_full_street').val();
 			}				
 			else {
