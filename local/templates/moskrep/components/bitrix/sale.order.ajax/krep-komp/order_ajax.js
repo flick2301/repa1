@@ -5511,9 +5511,9 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			
 		},
 		
-		editAddress: function(full) {
+		editAddress: function(clear) {
 			var address = "";
-			if ($('#address_full_street').val() && full && typeof full !== 'object') {
+			if ($('#address_full_street').val() && (!clear || typeof clear === 'object')) {
 				address += " " + $('#address_full_street').val();
 			}				
 			else {
@@ -5583,7 +5583,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 											value: this.result.DELIVERY_ADDRESS.address_street ? this.result.DELIVERY_ADDRESS.address_street : '',
 											autocomplete: 'off'
 										},
-										events: {input: this.editAddress.bind(this), keyup: this.editAddress.bind(this)}
+										events: {input: this.editAddress.bind(this), keyup: this.editAddress.bind(this, true)}
 										}),
 										BX.create('INPUT', {
 										attrs: {},

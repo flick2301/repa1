@@ -24,7 +24,7 @@ $(document).ready(function() {
 		$('#address_street').val(($(this).attr('rel')));
 		$('#address_full_street').val(($(this).text()));
 		$('#address_id_street').val(($(this).attr('id')));
-		BX.Sale.OrderAjaxComponent.editAddress(true);
+		BX.Sale.OrderAjaxComponent.editAddress();
 		changeClose('address_street');
 		getResult = true;
 		//setDeliveryPrice($(this).attr('rel'));
@@ -65,7 +65,7 @@ $(document).on('keyup', '#address_flat', function(e) {
 	
 	$(document).on('click', '#change_address_house div', function(e) {
 		$('#address_house').val(($(this).text()));
-		BX.Sale.OrderAjaxComponent.editAddress(true);
+		BX.Sale.OrderAjaxComponent.editAddress();
 		changeClose('address_house');
 		setDeliveryPrice($(this).attr('rel'), $(this).attr('id'));
 		setPrice = true;
