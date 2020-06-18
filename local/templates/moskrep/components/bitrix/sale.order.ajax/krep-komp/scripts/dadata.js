@@ -30,6 +30,11 @@ $(document).ready(function() {
 		e.stopPropagation();
 	});
 	
+	$(document).on('keyup', '#address_street', function(event) {
+		$('#address_full_street').val('');
+		$('#address_id_street').val('');
+	});
+	
 	$(document).on('keyup', '#address_house', function(event) {
 		
 		//if (!getResult) return; //Eсли не выбрана улица из списка
@@ -52,7 +57,7 @@ $(document).ready(function() {
 		$('#address_house').val(($(this).text()));
 		BX.Sale.OrderAjaxComponent.editAddress(true);
 		changeClose('address_house');
-		setDeliveryPrice($(this).attr('rel'));
+		setDeliveryPrice($(this).attr('rel'), $(this).attr('id'));
 
 		e.stopPropagation();
 	});	
@@ -110,7 +115,7 @@ $(document).ready(function() {
 					if (item.data.street && item.data.street != null) result.push({value: item.data.street_type == 'ул' ? item.data.street : item.data.street_with_type, full: item.value, fias_id: item.data.fias_id});
 				break;
 				case 'house':
-					if (item.data.house && item.data.house != null) result.push({value:item.data.house, full: item.value});
+					if (item.data.house && item.data.house != null) result.push({value:item.data.house, full: item.value, fias_id: item.data.fias_id});
 				break;				
 			}
 		});
@@ -131,7 +136,7 @@ $(document).ready(function() {
 					children.push(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.value, id: item.fias_id}, text: item.full}));
 				break;
 				case 'house':
-					children.push(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.full}, text: item.value}));
+					children.push(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.full, id: item.fias_id}, text: item.value}));
 				break;				
 			}									
 								});									
@@ -231,7 +236,7 @@ function get_coords(query) {
 }	
 
 //Расчет стоимости доставки
-function setDeliveryPrice(rel) {
+function setDeliveryPrice(rel, id) {
 	
 	if (BX.Sale.OrderAjaxComponent.currentDelivery!=2 && BX.Sale.OrderAjaxComponent.currentDelivery!=28) return;
 	

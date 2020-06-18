@@ -5602,7 +5602,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 											id: 'address_id_street',
 											type: 'text',
 											name: 'address_id_street',
-											value: this.result.DELIVERY_ADDRESS.address_full_street ? this.result.DELIVERY_ADDRESS.address_full_street : '',
+											value: this.result.DELIVERY_ADDRESS.address_id_street ? this.result.DELIVERY_ADDRESS.address_id_street : '',
 											autocomplete: 'off'
 										},
 										events: {input: this.editAddress.bind(this), keyup: this.editAddress.bind(this)}
