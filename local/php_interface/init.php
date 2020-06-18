@@ -238,6 +238,7 @@ $dbList = CCatalogStore::GetList(
 		
 		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["address_street"] = htmlspecialchars($_REQUEST['order']['address_street']);
 		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["address_full_street"] = htmlspecialchars($_REQUEST['order']['address_full_street']);
+		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["address_id_street"] = htmlspecialchars($_REQUEST['order']['address_id_street']);
 		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["address_house"] = htmlspecialchars($_REQUEST['order']['address_house']);
 		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["address_flat"] = htmlspecialchars($_REQUEST['order']['address_flat']);
 		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["delivery_lat"] = htmlspecialchars($_REQUEST['order']['delivery_lat']);

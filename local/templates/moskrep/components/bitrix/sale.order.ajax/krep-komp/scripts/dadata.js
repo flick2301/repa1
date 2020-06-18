@@ -19,8 +19,9 @@ $(document).ready(function() {
 	});	
 	
 	$(document).on('click', '#change_address_street div', function(e) {
-		$('#address_street').val(($(this).text()));
-		BX.Sale.OrderAjaxComponent.editAddress();
+		$('#address_street').val(($(this).attr('rel')));
+		$('#address_full_street').val(($(this).text()));
+		BX.Sale.OrderAjaxComponent.editAddress(true);
 		changeClose('address_street');
 		getResult = true;
 		//setDeliveryPrice($(this).attr('rel'));
@@ -48,7 +49,7 @@ $(document).ready(function() {
 	
 	$(document).on('click', '#change_address_house div', function(e) {
 		$('#address_house').val(($(this).text()));
-		BX.Sale.OrderAjaxComponent.editAddress();
+		BX.Sale.OrderAjaxComponent.editAddress(true);
 		changeClose('address_house');
 		setDeliveryPrice($(this).attr('rel'));
 
@@ -76,6 +77,7 @@ $(document).ready(function() {
 	
 		var city = explode(", ", $('#bx-soa-order-form .bx-ui-sls-container .bx-ui-sls-fake').attr('title'));	
 		var street = $('#address_street').val();
+		var fullstreet = $('#address_street').val();
 		street = street.replace(/(ул )|(пр\-кт )|( пер)|( б\-р)/, '');
 		
 		if (city[0]) {
@@ -86,6 +88,11 @@ $(document).ready(function() {
 		if (to_bound=='house' && street) {
 			locations[0].street = street;
 			locations[1].street = street;
+		}	
+		
+		if (to_bound=='house' && fullstreet) {
+			locations[0].fullstreet = fullstreet;
+			locations[1].fullstreet = fullstreet;
 		}	
 		
 	var promise = suggest(search, locations, to_bound);
@@ -120,7 +127,7 @@ $(document).ready(function() {
 									
 			switch(to_bound) {
 				case 'street':
-					children.push(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.full}, text: item.full}));
+					children.push(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.value, id: item.fias_id}, text: item.full}));
 				break;
 				case 'house':
 					children.push(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.full}, text: item.value}));
