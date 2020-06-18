@@ -30,7 +30,8 @@ $(document).ready(function() {
 	
 	$(document).on('keyup', '#address_house', function(event) {
 		
-		if (!getResult) return;
+		//if (!getResult) return; //Eсли не выбрана улица из списка
+		if (!$('#address_street').val()) return;
 		
 	var search = $(this).val();	
 	
@@ -115,8 +116,16 @@ $(document).ready(function() {
 									
 								var children = [];
 								
-								result.forEach(function(item, i, arr) {									
-									children.push(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.full}, text: item.value}));
+								result.forEach(function(item, i, arr) {
+									
+			switch(to_bound) {
+				case 'street':
+					children.push(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.full}, text: item.full}));
+				break;
+				case 'house':
+					children.push(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.full}, text: item.value}));
+				break;				
+			}									
 								});									
 									
 									var change = BX.create('DIV', {props: {id: 'change_' + target}, style: {'borderBottomLeftRadius':'4px', 'borderBottomRightRadius':'4px'}, children: children});
@@ -147,6 +156,8 @@ $(document).ready(function() {
 function suggest(query, locations, to_bound) {
 	
   var serviceUrl = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
+  
+  console.log(locations);
   
   var request = {
     "query": query,

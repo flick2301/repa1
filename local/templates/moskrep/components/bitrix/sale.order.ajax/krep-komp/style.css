@@ -230,6 +230,9 @@ div[data-property-id-row="17"],
 #bx-soa-order-form .bx-soa-customer-field #address_street {
 	width: 460px;
 }
+#bx-soa-order-form .bx-soa-customer-field #address_full_street {
+	width: 460px;
+}
 #bx-soa-order-form .bx-soa-customer-field #address_house {
 	width: 150px;
 }

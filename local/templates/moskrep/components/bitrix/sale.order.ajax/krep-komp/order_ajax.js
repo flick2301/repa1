@@ -4670,7 +4670,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 		},
 		
 		unsetDelivery: function() {
-			$("#soa-property-34, #soa-property-35, #address_street, #address_house, #address_flat, #delivery_lat, #delivery_lon").val('');
+			$("#soa-property-34, #soa-property-35, #address_street, #address_full_street, #address_house, #address_flat, #delivery_lat, #delivery_lon").val('');
 		},
 
 		getPersonTypeControl: function(node)
@@ -5580,6 +5580,17 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 										},
 										events: {input: this.editAddress.bind(this), keyup: this.editAddress.bind(this)}
 										}),
+										BX.create('INPUT', {
+										attrs: {},
+										props: {
+											id: 'address_full_street',
+											type: 'text',
+											name: 'address_full_street',
+											value: this.result.DELIVERY_ADDRESS.address_full_street ? this.result.DELIVERY_ADDRESS.address_full_street : '',
+											autocomplete: 'off'
+										},
+										events: {input: this.editAddress.bind(this), keyup: this.editAddress.bind(this)}
+										}),										
 									],
 								}),		
 									],
