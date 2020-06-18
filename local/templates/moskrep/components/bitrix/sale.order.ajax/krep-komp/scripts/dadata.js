@@ -158,7 +158,7 @@ $(document).on('keyup', '#address_flat', function(e) {
 								else {
 									BX.cleanNode(BX('change_' + target));	
 									result.forEach(function(item, i, arr) {		
-										BX("change_" + target).appendChild(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.full}, text: item.value}));	
+										BX("change_" + target).appendChild(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.value}, text: item.full}));	
 									});	
 								}
 								
