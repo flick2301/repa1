@@ -37,7 +37,7 @@ $this->addExternalCss($templateFolder."/slick/slick-theme.css");
 	if (typeof shop=='undefined') shop = [];
 	if (typeof myPlacemark=='undefined') myPlacemark = [];
 	if (typeof myPlacemark2565=='undefined') myPlacemark2565 = [];
-	if (typeof myPlacemark2631=='undefined') myPlacemark2631 = [];	
+	if (typeof myPlacemark2565=='undefined') myPlacemark2631 = [];	
 	if (typeof myMap=='undefined') myMap = {};		
 	section_id = '<?=$arParams["SECTION_ID"] ? $arParams["SECTION_ID"] : "9999"?>';
 	select_city = '<?=$arResult['SELECT']?>';
@@ -144,10 +144,10 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 <?foreach($arResult["ITEMS"] AS $key=>$item):?>
 <li rel="<?=$item["ID"]?>" class="item">
 <?if($item["PROP"]["COLOR"]["VALUE"]):?><div class="label" style="background: <?=$item["PROP"]["COLOR"]["VALUE"]?>;"></div><?endif?>
-<?=htmlspecialchars_decode($item["PROP"]["ADDRESS"]["VALUE"])?><br /><br />
+<?=htmlspecialchars_decode($item["PROP"]["ADDRESS"]["VALUE"])?><br />
 <span>
 <?=$item["PROP"]["TYPE"]["VALUE"]?><br />
-<?=$item["PREVIEW_TEXT"]?>
+<span><?=$item["PREVIEW_TEXT"]?></span>
 </span>
 
 <div class="line-btn">
@@ -163,7 +163,7 @@ shop.push({id: <?=$item["ID"]?>, balloon: true, lat: <?=$item["PROP"]["LAT"]["VA
 <div id="map<?=$arParams["SECTION_ID"]?>"></div>
 </div>
 
-<table class="shop_table" id="shop_table<?=$arParams["SECTION_ID"]?>">
+<table id="shop_table<?=$arParams["SECTION_ID"]?>">
 <tr>
 <th></th>
 <th>Адрес</th>

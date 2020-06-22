@@ -18,6 +18,8 @@
 	border-bottom: 1px solid #d5d5d5;
 	cursor: pointer;
 	overflow: hidden;
+	font-size: 14px;
+	line-height: 18px;
 }
 #shops ul.left li:last-child {
 	border-bottom: transparent;
@@ -66,7 +68,14 @@
 	top: 5px;
 }
 #shops ul.left li span {
-	color: #999;
+	color: #676767;
+	font-size: 14px;
+	line-height: 18px;
+}
+#shops ul.left li span span {
+	color: #149000;
+	font-size: 14px;
+	line-height: 18px;
 }
 #current_shop_table {
 	margin: 20px 0 40px;	
@@ -84,9 +93,6 @@
 #current_shop_table th:last-child, #current_shop_table td:last-child {
 	padding: 10px 0 10px 10px;	
 	text-align: right;
-}
-.shop_table {
-	width: 100%;
 }
 #shop_table {
 	margin: 20px 0;
@@ -124,7 +130,33 @@
 }
 #shops #map {
 	height: 600px;	
-	margin-left: 250px;
+	margin-left: 270px;
+}
+/* Let's get this party started */
+#shops ul.left::-webkit-scrollbar {
+    width: 3px;
+}
+ /* Track */
+#shops ul.left::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0 rgba(0,0,0,0); 
+    -webkit-border-radius: 0;
+    border-radius: 0;
+	background: #e7e7e7;
+}
+/* Handle */
+#shops ul.left::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    background: #0c59cf; 
+   -webkit-box-shadow: inset 0 0 0 rgba(0,0,0,0);
+   height: 60px;
+   max-height: 60px;
+}
+#shops ul.left::-webkit-scrollbar-button {
+	height: 20px;
+}
+#shops ul.left::-webkit-scrollbar-thumb:hover {
+  background: rgba(12,89,207,0.7);
 }
 #shop #map {
 	height: 400px;	
