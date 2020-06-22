@@ -70,10 +70,12 @@
 }
 .form-group.bx-soa-customer-field[data-property-id-row="7"],
 .form-group.bx-soa-customer-field[data-property-id-row="19"],
+div[data-property-id-row="5"],
+div[data-property-id-row="17"],
 .form-group.bx-soa-customer-field[data-property-id-row="26"],
 .form-group.bx-soa-customer-field[data-property-id-row="27"],
-/*.form-group.bx-soa-customer-field[data-property-id-row="34"],
-.form-group.bx-soa-customer-field[data-property-id-row="35"],*/
+.form-group.bx-soa-customer-field[data-property-id-row="48"],
+.form-group.bx-soa-customer-field[data-property-id-row="49"],
 #bx-soa-pickup, #bx-soa-basket, .alert-warning, .pull-left.btn-default.btn-md, .pull-right.btn-default.btn-md, .bx-soa-editstep, .bx-soa-section-title-count, #bx-soa-paysystem .bx-soa-pp-desc-container, .form-group.bx-soa-customer-field[data-property-id-row="30"] {
 	display: none!important;
 }
@@ -225,7 +227,10 @@
 #bx-soa-order-form #delivery_address {
 	margin-top: 10px;
 }
-#bx-soa-order-form .bx-soa-customer-field #address_street {
+#bx-soa-order-form .bx-soa-customer-field #address_full_street, #bx-soa-order-form .bx-soa-customer-field #address_id_street {
+	display: none;	
+}
+#bx-soa-order-form .bx-soa-customer-field #address_street, #bx-soa-order-form .bx-soa-customer-field #address_full_street, #bx-soa-order-form .bx-soa-customer-field #address_id_street {
 	width: 460px;
 }
 #bx-soa-order-form .bx-soa-customer-field #address_house {

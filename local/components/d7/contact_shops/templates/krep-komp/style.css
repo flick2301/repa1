@@ -85,6 +85,9 @@
 	padding: 10px 0 10px 10px;	
 	text-align: right;
 }
+.shop_table {
+	width: 100%;
+}
 #shop_table {
 	margin: 20px 0;
 }

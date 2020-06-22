@@ -18,6 +18,10 @@
 	font-size: 0px;
 	line-height: 0px;
 }
+.feedback-form__label[data-property-id-row="48"],
+.feedback-form__label[data-property-id-row="49"] {
+	display: none!important;
+}
 #order_form_div input[type="text"],
 #order_form_div input[type="password"],
 #order_form_div textarea,

@@ -237,12 +237,14 @@ $dbList = CCatalogStore::GetList(
 		}
 		
 		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["address_street"] = htmlspecialchars($_REQUEST['order']['address_street']);
+		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["address_full_street"] = htmlspecialchars($_REQUEST['order']['address_full_street']);
+		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["address_id_street"] = htmlspecialchars($_REQUEST['order']['address_id_street']);
 		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["address_house"] = htmlspecialchars($_REQUEST['order']['address_house']);
 		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["address_flat"] = htmlspecialchars($_REQUEST['order']['address_flat']);
 		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["delivery_lat"] = htmlspecialchars($_REQUEST['order']['delivery_lat']);
 		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["delivery_lon"] = htmlspecialchars($_REQUEST['order']['delivery_lon']);		
 		
-		$delivery_price = $_REQUEST['order']['ORDER_PROP_34'] ? $_REQUEST['order']['ORDER_PROP_34'] : $_REQUEST['order']['ORDER_PROP_35'];
+		$delivery_price = $_REQUEST['order']['ORDER_PROP_34'] ? $_REQUEST['order']['ORDER_PROP_48'] : $_REQUEST['order']['ORDER_PROP_49'];
 		
 		if ($delivery_price) {
 			
@@ -310,7 +312,7 @@ if ($props['DELIVERY_PRICE']['VALUE']) {
 $deliveryCollection = $order->getShipmentCollection()->getNotSystemItems();
 
 foreach ($deliveryCollection as $shipment) {
-            if ($shipment->getDeliveryId() == 2) {
+if ($shipment->getDeliveryId() == 2 || $shipment->getDeliveryId() == 28) {
 			//if ($shipment->getDeliveryId() == 11) $delivery_price+=400;
 				$shipment->setField("BASE_PRICE_DELIVERY", $delivery_price);			
 				$shipment->setField('PRICE_DELIVERY', $delivery_price);

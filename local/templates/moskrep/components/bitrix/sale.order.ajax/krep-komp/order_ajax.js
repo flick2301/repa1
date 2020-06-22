@@ -4670,7 +4670,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 		},
 		
 		unsetDelivery: function() {
-			$("#soa-property-34, #soa-property-35, #address_street, #address_house, #address_flat, #delivery_lat, #delivery_lon").val('');
+			$("#soa-property-34, #soa-property-35, #address_street, #address_full_street, #address_id_street, #address_house, #address_flat, #delivery_lat, #delivery_lon").val('');
 		},
 
 		getPersonTypeControl: function(node)
@@ -5511,10 +5511,15 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			
 		},
 		
-		editAddress: function() {
+		editAddress: function(clear) {
 			var address = "";
-			if ($('#bx-soa-order-form .bx-ui-sls-container .bx-ui-sls-fake').attr('title')) address += $('#bx-soa-order-form .bx-ui-sls-container .bx-ui-sls-fake').attr('title').match(/^[A-zА-я\-\.]+, /);
-			if ($('#address_street').val()) address += " " + $('#address_street').val();
+			if ($('#address_full_street').val() && (!clear || typeof clear === 'object')) {
+				address += " " + $('#address_full_street').val();
+			}				
+			else {
+				if ($('#bx-soa-order-form .bx-ui-sls-container .bx-ui-sls-fake').attr('title')) address += $('#bx-soa-order-form .bx-ui-sls-container .bx-ui-sls-fake').attr('title').match(/^[A-zА-я\-\.]+, /);
+				if ($('#address_street').val()) address += " " + $('#address_street').val();
+			}
 			if ($('#address_house').val()) address += ", д. " + $('#address_house').val();
 			if ($('#address_flat').val()) address += ", кв. " + $('#address_flat').val();
 			$("#soa-property-7, #soa-property-19").val(address);
@@ -5578,8 +5583,30 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 											value: this.result.DELIVERY_ADDRESS.address_street ? this.result.DELIVERY_ADDRESS.address_street : '',
 											autocomplete: 'off'
 										},
-										events: {input: this.editAddress.bind(this), keyup: this.editAddress.bind(this)}
+										events: {input: this.editAddress.bind(this), keyup: this.editAddress.bind(this, true)}
 										}),
+										BX.create('INPUT', {
+										attrs: {},
+										props: {
+											id: 'address_full_street',
+											type: 'text',
+											name: 'address_full_street',
+											value: this.result.DELIVERY_ADDRESS.address_full_street ? this.result.DELIVERY_ADDRESS.address_full_street : '',
+											autocomplete: 'off'
+										},
+										events: {input: this.editAddress.bind(this), keyup: this.editAddress.bind(this)}
+										}),		
+										BX.create('INPUT', {
+										attrs: {},
+										props: {
+											id: 'address_id_street',
+											type: 'text',
+											name: 'address_id_street',
+											value: this.result.DELIVERY_ADDRESS.address_id_street ? this.result.DELIVERY_ADDRESS.address_id_street : '',
+											autocomplete: 'off'
+										},
+										events: {input: this.editAddress.bind(this), keyup: this.editAddress.bind(this)}
+										}),											
 									],
 								}),		
 									],

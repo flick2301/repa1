@@ -2,8 +2,10 @@ $(document).ready(function() {
 	
 	var timerId;
 	var timerHouseId;
+	var timerFlatId;
 	var token = "6286a42bb8f394fa4346875f691f7b28a9db6b63";
 	var getResult = false;
+	var setPrice = false;
 	
 	$(document).on('keyup', '#address_street', function(event) {
 		
@@ -19,7 +21,9 @@ $(document).ready(function() {
 	});	
 	
 	$(document).on('click', '#change_address_street div', function(e) {
-		$('#address_street').val(($(this).text()));
+		$('#address_street').val(($(this).attr('rel')));
+		$('#address_full_street').val(($(this).text()));
+		$('#address_id_street').val(($(this).attr('id')));
 		BX.Sale.OrderAjaxComponent.editAddress();
 		changeClose('address_street');
 		getResult = true;
@@ -28,9 +32,15 @@ $(document).ready(function() {
 		e.stopPropagation();
 	});
 	
+	$(document).on('keyup', '#address_street', function(event) {
+		$('#address_full_street').val('');
+		$('#address_id_street').val('');
+	});
+	
 	$(document).on('keyup', '#address_house', function(event) {
 		
-		if (!getResult) return;
+		//if (!getResult) return; //Eсли не выбрана улица из списка
+		if (!$('#address_street').val()) return;
 		
 	var search = $(this).val();	
 	
@@ -43,13 +53,22 @@ $(document).ready(function() {
 			timerHouseId = setTimeout(function() { get_ajax(search, 'house'); }, 500);  		
 		}
 		//else changeClose('address_street');
-	});		
+	});	
+
+$(document).on('keyup', '#address_flat', function(e) {
+		
+	if (!setPrice && $('#address_id_street').val()) {
+		clearTimeout(timerFlatId);
+		timerFlatId = setTimeout(function() { setDeliveryPrice($('#address_full_street').val(), $('#address_id_street').val()); setPrice = false; }, 2000); 	
+	}
+});
 	
 	$(document).on('click', '#change_address_house div', function(e) {
 		$('#address_house').val(($(this).text()));
 		BX.Sale.OrderAjaxComponent.editAddress();
 		changeClose('address_house');
-		setDeliveryPrice($(this).attr('rel'));
+		setDeliveryPrice($(this).attr('rel'), $(this).attr('id'));
+		setPrice = true;
 
 		e.stopPropagation();
 	});	
@@ -75,6 +94,7 @@ $(document).ready(function() {
 	
 		var city = explode(", ", $('#bx-soa-order-form .bx-ui-sls-container .bx-ui-sls-fake').attr('title'));	
 		var street = $('#address_street').val();
+		var idstreet = $('#address_id_street').val();
 		street = street.replace(/(ул )|(пр\-кт )|( пер)|( б\-р)/, '');
 		
 		if (city[0]) {
@@ -85,6 +105,11 @@ $(document).ready(function() {
 		if (to_bound=='house' && street) {
 			locations[0].street = street;
 			locations[1].street = street;
+		}	
+		
+		if (to_bound=='house' && idstreet) {
+			locations[0].street_fias_id = idstreet;
+			locations[1].street_fias_id = idstreet;
 		}	
 		
 	var promise = suggest(search, locations, to_bound);
@@ -98,10 +123,10 @@ $(document).ready(function() {
 		response.suggestions.forEach(function(item, i, arr) {
 			switch(to_bound) {
 				case 'street':
-					if (item.data.street && item.data.street != null) result.push({value: item.data.street_type == 'ул' ? item.data.street : item.data.street_with_type, full: item.value});
+					if (item.data.street && item.data.street != null) result.push({value: item.data.street_type == 'ул' ? item.data.street : item.data.street_with_type, full: item.value, fias_id: item.data.fias_id});
 				break;
 				case 'house':
-					if (item.data.house && item.data.house != null) result.push({value:item.data.house, full: item.value});
+					if (item.data.house && item.data.house != null) result.push({value:item.data.house, full: item.value, fias_id: item.data.fias_id});
 				break;				
 			}
 		});
@@ -115,8 +140,16 @@ $(document).ready(function() {
 									
 								var children = [];
 								
-								result.forEach(function(item, i, arr) {									
-									children.push(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.full}, text: item.value}));
+								result.forEach(function(item, i, arr) {
+									
+			switch(to_bound) {
+				case 'street':
+					children.push(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.value, id: item.fias_id}, text: item.full}));
+				break;
+				case 'house':
+					children.push(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.full, id: item.fias_id}, text: item.value}));
+				break;				
+			}									
 								});									
 									
 									var change = BX.create('DIV', {props: {id: 'change_' + target}, style: {'borderBottomLeftRadius':'4px', 'borderBottomRightRadius':'4px'}, children: children});
@@ -125,7 +158,7 @@ $(document).ready(function() {
 								else {
 									BX.cleanNode(BX('change_' + target));	
 									result.forEach(function(item, i, arr) {		
-										BX("change_" + target).appendChild(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.full}, text: item.value}));	
+										BX("change_" + target).appendChild(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.value}, text: item.full}));	
 									});	
 								}
 								
@@ -176,18 +209,27 @@ function suggest(query, locations, to_bound) {
 }	
 
 
-function get_coords(query) {
+function get_coords(query, id) {
 	
-  var serviceUrl = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
+  var serviceUrl = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";  
+  var locations = []; 
+  
+if (id) {
+		locations[0] = {
+            "country_iso_code": "RU",
+        };
+		locations[1] = {
+            "country_iso_code": "RU",
+        };	
+		
+	locations[0].fias_id = id;
+	locations[1].fias_id = id;
+}
   
   var request = {
     "query": query,
 	"count": 1,
-	"locations": [
-        {
-            "country_iso_code": "RU",
-        },	
-    ],
+	"locations": locations,
     "locations_boost": [{
         "kladr_id": "77"
     }],
@@ -212,11 +254,11 @@ function get_coords(query) {
 }	
 
 //Расчет стоимости доставки
-function setDeliveryPrice(rel) {
+function setDeliveryPrice(rel, id) {
 	
 	if (BX.Sale.OrderAjaxComponent.currentDelivery!=2 && BX.Sale.OrderAjaxComponent.currentDelivery!=28) return;
 	
-		var coords = get_coords(rel);
+		var coords = get_coords(rel, id);
 		
 	coords
   	.done(function(response) {
@@ -237,7 +279,7 @@ var result = deliveryCost.init({
 	
 	//getMap(result.lat, result.lon); //Показ карты
 	
-$("#soa-property-34, #soa-property-35").val(result.cost);	
+$("#soa-property-48, #soa-property-49").val(result.cost);	
 //alert(JSON.stringify(result));
 			
 			BX.Sale.OrderAjaxComponent.sendRequest();
