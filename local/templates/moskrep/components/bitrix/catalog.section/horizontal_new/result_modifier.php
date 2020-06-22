@@ -222,4 +222,6 @@ if(count($arResult['UF_CHARS'])>1)
 $arResult['PICTURE_RESIZE'] = CFile::ResizeImageGet($arResult['PICTURE']['ID'], array('width'=>200, 'height'=>200), BX_RESIZE_IMAGE_PROPORTIONAL, true);
 
 
-    
+if($arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD']){
+	$arResult['EXTRA_FIELD'] = CIBlockProperty::GetList([], Array("ACTIVE"=>"Y", "IBLOCK_ID"=>$arParams["IBLOCK_ID"], 'CODE'=>$arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD']))->GetNext();
+} 

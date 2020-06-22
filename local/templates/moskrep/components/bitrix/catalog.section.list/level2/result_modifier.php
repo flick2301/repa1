@@ -314,3 +314,12 @@ while($arRelink = $relinkList->fetch()){
 }
 
 }
+if($arResult['SECTION']["UF_DOP_SETTINGS"])
+{
+	foreach($arResult['SECTION']["UF_DOP_SETTINGS"] as $extra_setting)
+	{
+        $val_enum = CUserFieldEnum::GetList(Array("DEF"=>"DESC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], "ID"=>$extra_setting))->GetNext();
+		$_POST['ENUM_LIST'][$val_enum['XML_ID']] = true;
+	}
+}
+

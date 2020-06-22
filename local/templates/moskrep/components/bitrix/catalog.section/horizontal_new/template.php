@@ -17,7 +17,7 @@ if($arParams['FOR_SEO']!='Y'){
 	
 	
     ?>
-
+<?if(!$_POST['ENUM_LIST']['ELEMENTS']){?>
 <h1 class="s38-title"><?=($arResult['META_TITLE']) ? $arResult['META_TITLE'] :$arResult['NAME'];?></h1>
 <?if($arResult['DESCRIPTION']):?>
 <div class="catalog-view">
@@ -103,10 +103,10 @@ if($arParams['FOR_SEO']!='Y'){
                 </div>
 <?
 	}
+}
 }?>
-
 <div class="sale-category sale-category--new" style='margin-top: 30px !important; <?=($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' && $ral_in_ar) ? 'width:763px' : ($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' ? 'width:741px' : '');?>'>
-    <table class="blue-table price-category <?=($ral_in_ar) ? 'blue-table__8-rows' : 'blue-table__7-rows';?>">
+    <table class="blue-table price-category <?=($ral_in_ar || $arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD']) ? 'blue-table__8-rows' : 'blue-table__7-rows';?>">
 	<thead class="blue-table__thead">
             <tr class="blue-table__tr">
                 <th class="blue-table__th blue-table__name"><span class='link-sorting'><span class="link-sorting__style">Размер,мм</span></span></th>
@@ -119,7 +119,10 @@ if($arParams['FOR_SEO']!='Y'){
 				<?endif;?>
                 
             <?if($ral_in_ar){?>
-		<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Цвет, RAL</span></span></th>
+				<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Цвет, RAL</span></span></th>
+            <?}?>
+			<?if($arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD']){?>
+				<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style"><?=$arResult['EXTRA_FIELD']['NAME']?></span></span></th>
             <?}?>
                 
 		<th class="blue-table__th blue-table__price"><span class='link-sorting'><span class="link-sorting__style">Стоимость</span></span></th>
@@ -178,6 +181,9 @@ if($arParams['FOR_SEO']!='Y'){
 	<?if($ral_in_ar){?>
             <td class="blue-table__td"><div class="color-b"><i style="background: #<?=$array_rals[$item['PROPERTIES']["TSVET"]["VALUE"]]?>;"></i><?=$item['PROPERTIES']["TSVET"]["VALUE"]?></div></td>
         <?}?>
+		<?if($arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD']){?>
+            <td class="blue-table__td"><div class="color-b"><?=$item['PROPERTIES'][$arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD']]["VALUE"]?></div></td>
+        <?}?>
             
 	    <td class="blue-table__td blue-table__price">
 	        <span class="price-b"><?echo number_format($price, 2, '.', ' ');?> ₽</span>
@@ -219,7 +225,8 @@ if($arParams['FOR_SEO']!='Y'){
 
 <?
 
-
+if(!$_POST['ENUM_LIST']['ELEMENTS'])
+{
 if($arResult["UF_RELATED"]){
 ?>
 <h2 class="s28-title">Сопутствующие товары</h2>
@@ -259,7 +266,7 @@ while($arSection = $db_list->GetNext()) {
 <?if($arResult['UF_DETAIL_TEXT']):?>
 <div class='set-default-parametr-page-cat'><?=html_entity_decode($arResult['UF_DETAIL_TEXT'], ENT_QUOTES, "UTF-8");?></div>
 <?endif;?>
-
+<?}?>
 <script>
 BX.ready(function () {
     var buyBtnDetail = document.body.querySelectorAll('.basket-btn');
