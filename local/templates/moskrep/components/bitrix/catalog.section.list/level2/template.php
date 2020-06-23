@@ -314,6 +314,8 @@ if($arResult['SORTING']['SECTION_ID']){
     }
 }
 ?>
+<?if($_POST['ENUM_LIST']['ELEMENTS'])
+	require_once __DIR__."/include_parts/section_table.php";?>
 <div class='set-default-parametr-page-cat'>
 <?=$arResult['SECTION']['DESCRIPTION']?>
 </div>
