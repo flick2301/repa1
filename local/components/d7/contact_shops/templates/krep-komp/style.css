@@ -1,5 +1,5 @@
 #shops {
-	border: 1px solid #d5d5d5;
+	border: 0px solid #d5d5d5;
 }
 #shops {
 	overflow: hidden;
@@ -9,13 +9,13 @@
 	width: 250px;
 	height: 600px;
 	display: block;
-	border-right: 1px solid #d5d5d5;
+	border-right: 0px solid #d5d5d5;
 	overflow-y: auto;
 }
 #shops ul.left li {
 	display: block;
 	padding: 10px;
-	border-bottom: 1px solid #d5d5d5;
+	border-bottom: 0px solid #d5d5d5;
 	cursor: pointer;
 	overflow: hidden;
 	font-size: 14px;
@@ -49,6 +49,17 @@
 	height: 30px;
 	width: 80%;
 }
+.inblock {
+	font-size: 14px;
+}
+.inblock .type {
+	color: #676767; 
+	font-size: 14px;
+}
+.inblock .preview {
+	color: #149000;
+	font-size: 14px;
+}	
 .inblock .line-btn {
 	margin: 12px 0;
 	font-size: 14px;
@@ -82,20 +93,25 @@
 	width: 100%;
 }
 #current_shop_table th, #current_shop_table td {
-	padding: 10px;	
+	padding: 10px 10px 0 10px;	
 	text-align: center;
-	font-size: 18px;
+	font-size: 16px;
+	line-height: 18px;
 }
+#current_shop_table th {
+	font-size: 20px;
+	line-height: 29px;
+}	
 #current_shop_table th:first-child, #current_shop_table td:first-child {
-	padding: 10px 10px 10px 0;	
+	padding: 10px 10px 0 0;	
 	text-align: left;
 }
 #current_shop_table th:last-child, #current_shop_table td:last-child {
-	padding: 10px 0 10px 10px;	
+	padding: 10px 0 0 10px;	
 	text-align: right;
 }
 #shop_table {
-	margin: 20px 0;
+	margin: 20px 0;	
 }
 #shop_table th, #shop_table td {
 	padding: 7px 10px 7px 7px;
@@ -109,6 +125,8 @@
 #shop_table td {
 	padding: 10px 10px 10px 7px;
 	border-bottom: 2px solid #d5d5d5;
+	font-size: 14px;
+	line-height: 18px;		
 }
 #shop_table td:first-child {
 	padding-right: 0;
@@ -118,6 +136,9 @@
 }
 #shop_table td.gray {
 	color: #999;
+}
+#shop_table td.blue {
+	color: #0c59cf;
 }
 #shop_table div.label {
 	width: 10px;
@@ -161,7 +182,7 @@
 #shop #map {
 	height: 400px;	
 	margin-left: 360px;
-	border: 1px solid #d5d5d5;
+	border: 0px solid #d5d5d5;
 }
 #shop .left {
 	float: left;
@@ -190,44 +211,50 @@
 }
 #shop .how h2 {
 	float: left;
-	font-size: 24px;
-	margin-top: 10px;
+	font-size: 20px;
+	line-height: 29px;
 	font-weight: bold;
+	font-family: 'Circe Regular';
 }
 #shop .how h3 {
-	font-size: 20px;
-	color: #f39101;
+	font-size: 16px;
+	line-height: 18px;
+	color: #0c59cf;
 	width: 100%;
 	clear: both;
-	margin: 30px 0;
+	margin: 0 0 10px 0;
 	font-weight: bold;
+	font-family: 'Circe Regular';
 }	
 #shop .how .blue-btn {
-	height: 40px;
-	padding-left: 30px;
+	height: 36px;
+	padding-left: 20px;
 	padding-right: 0;
 	background-image: url(images/print.svg);
 	background-repeat: no-repeat;
-	background-size: 30px;
-	background-position: 20px 50%;
+	background-size: 25px;
+	background-position: 10px 50%;
+	width: 160px;
 }
 #shop .how .scheme {
 	width: 70%;
 	display: block;
 	clear: both;
-	margin-top: -10px;
+	margin-top: 0;
 }
 #click_scheme {
 	display: block;
 	margin: 30px 0 0;
 	padding: 3px 0;
-	padding-left: 37px;
-	font-size: 20px;
+	padding-left: 32px;
+	font-size: 16px;
+	line-height: 18px;
 	color: #0c59cf;
 	text-decoration: underline;
-	background-image: url(images/play_blue.svg);
+	background-image: url(images/cam.svg);
 	background-repeat: no-repeat;
 	background-size: contain;	
+	background-position: 0 -2px;
 }
 #click_scheme:hover {
 	text-decoration: none;
@@ -257,7 +284,7 @@
 	display: block;
 }
 #shop .car {
-	margin-top: 30px;
+	margin: 10px 0 30px;
 }
 #shop .print {
 	display: none;
@@ -302,15 +329,16 @@ h1.s38-title {
 	float: left;
 	height: 200px;
 	width: 200px;
-	margin: 20px 20px 20px 0;
+	margin: 30px;
 }
 #shop .how .scheme {
 	margin-bottom: -10px;
 	margin-left: 10px;
 	margin-top: 10px;
 	float: right;
-	width: 540px;
+	width: 570px;
 	clear: right;
+	page-break-after: always;
 }
 .two-column.inner, .two-column__right {
 	width: 100%;

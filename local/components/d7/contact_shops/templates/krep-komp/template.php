@@ -117,7 +117,7 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 
 <?endif?>
 <div class="car noprint">
-<?=$item["PROP"]["CAR"]["~VALUE"]["TEXT"]?>
+<?=$item["PROP"]["CAR"]["VALUE"]["TEXT"]?>
 </div>
 <?endif?>
 
@@ -156,7 +156,7 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 	
 </li>
 <script>
-shop.push({id: <?=$item["ID"]?>, balloon: true, lat: <?=$item["PROP"]["LAT"]["VALUE"]?>, lon: <?=$item["PROP"]["LON"]["VALUE"]?>, color: '<?if($item["PROP"]["COLOR"]["VALUE"]):?><div class="label" style="background: <?=$item["PROP"]["COLOR"]["VALUE"]?>;"></div><?endif?>', name: '<?=$item["PROP"]["TYPE"]["VALUE"]?>', address: '<?=htmlspecialchars_decode($item["PROP"]["ADDRESS"]["VALUE"])?>', text: '<?=$item["PREVIEW_TEXT"] ? "<br />Режим работы: ".preg_replace("/[^A-zА-я0-9\,:\-\<\> ]+/u", "", $item["PREVIEW_TEXT"]) : ""?><div class="line-btn"><a href="<?=$APPLICATION->GetCurPageParam("ID=".$item["ID"])?>" class="blue-btn">Перейти к магазину</a></div>'});
+shop.push({id: <?=$item["ID"]?>, balloon: true, lat: <?=$item["PROP"]["LAT"]["VALUE"]?>, lon: <?=$item["PROP"]["LON"]["VALUE"]?>, color: '<?if($item["PROP"]["COLOR"]["VALUE"]):?><div class="label" style="background: <?=$item["PROP"]["COLOR"]["VALUE"]?>;"></div><?endif?>', name: '<?=$item["PROP"]["TYPE"]["VALUE"]?>', address: '<?=htmlspecialchars_decode($item["PROP"]["ADDRESS"]["VALUE"])?>', text: '<?=$item["PREVIEW_TEXT"] ? "<div class=\'type\'>".$item["PROP"]["TYPE"]["VALUE"]."</div><span class=\'preview\'>Режим работы: ".preg_replace("/[^A-zА-я0-9\,:\-\<\> ]+/u", "", $item["PREVIEW_TEXT"]) : ""?></span><div class="line-btn"><a href="<?=$APPLICATION->GetCurPageParam("ID=".$item["ID"])?>" class="blue-btn">Перейти к магазину</a></div>'});
 </script>
 <?endforeach?>
 </ul>
@@ -174,8 +174,8 @@ shop.push({id: <?=$item["ID"]?>, balloon: true, lat: <?=$item["PROP"]["LAT"]["VA
 <?foreach($arResult["ITEMS"] AS $key=>$item):?>
 <tr rel="<?=$item["ID"]?>">
 <td><div class="label" style="background: <?=$item["PROP"]["COLOR"]["VALUE"]?>;"></div></td>
-<td><?=htmlspecialchars_decode ($item["PROP"]["ADDRESS"]["VALUE"])?></td>
-<td class="gray nowrap"><?=$item["PROP"]["TYPE"]["VALUE"]?></td>
+<td class="blue"><?=htmlspecialchars_decode ($item["PROP"]["ADDRESS"]["VALUE"])?></td>
+<td class="nowrap"><?=$item["PROP"]["TYPE"]["VALUE"]?></td>
 <td class="nowrap"><?=$item["PREVIEW_TEXT"]?></td>
 </tr>
 <?endforeach?>
