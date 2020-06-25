@@ -147,7 +147,10 @@ $(document).on('keyup', '#address_flat', function(e) {
 					children.push(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.value, id: item.fias_id}, text: item.full}));
 				break;
 				case 'house':
-					children.push(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.full, id: item.fias_id}, text: item.value}));
+					item.fully = item.full.replace(/.+\,(.+)$/, '$1');
+					item.fully = item.fully.replace(/ д/, '');
+					if (!item.fully) item.fully = item.value;
+					children.push(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.full, id: item.fias_id}, text: item.fully}));
 				break;				
 			}									
 								});									
@@ -157,9 +160,19 @@ $(document).on('keyup', '#address_flat', function(e) {
 								}
 								else {
 									BX.cleanNode(BX('change_' + target));	
-									result.forEach(function(item, i, arr) {		
-										BX("change_" + target).appendChild(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.value}, text: item.full}));	
-									});	
+									result.forEach(function(item, i, arr) {	
+			switch(to_bound) {						
+				case 'street':									
+										BX("change_" + target).appendChild(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.value, id: item.fias_id}, text: item.full}));
+				break;
+				case 'house':	
+					item.fully = item.full.replace(/.+\,(.+)$/, '$1');
+					item.fully = item.fully.replace(/ д/, '');
+					if (!item.fully) item.fully = item.value;
+					BX("change_" + target).appendChild(BX.create('DIV', {props: {className: ''}, attrs: {rel: item.full, id: item.fias_id}, text: item.fully}));	
+				break;	
+			}
+				});	
 								}
 								
 								$("#" + target).css({'borderBottomLeftRadius':'0px', 'borderBottomRightRadius':'0px'});
