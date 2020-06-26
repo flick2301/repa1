@@ -12,6 +12,8 @@
 						<th class="blue-table__th">Зона - 3</th>
 						<th class="blue-table__th">Зона - 4</th>
 						<th class="blue-table__th">Зона - 5</th>
+						<th class="blue-table__th">Зона - 6</th>
+						<th class="blue-table__th">Зона - 7</th>						
 					</tr>
 				</thead>
 				<tbody class="blue-table__tbody">
@@ -22,6 +24,8 @@
 						<td class="blue-table__td">800</td>
 						<td class="blue-table__td">1 300</td>
 						<td class="blue-table__td">1 900</td>
+						<td class="blue-table__td">3 600</td>
+						<td class="blue-table__td">5 200</td>						
 					</tr>
 					<tr class="blue-table__tr">
 						<td class="blue-table__td">15 - 30 кг.</td>
@@ -30,6 +34,8 @@
 						<td class="blue-table__td">1 000</td>
 						<td class="blue-table__td">1 600</td>
 						<td class="blue-table__td">2 300</td>
+						<td class="blue-table__td">4 500</td>
+						<td class="blue-table__td">6 500</td>						
 					</tr>
 					<tr class="blue-table__tr">
 						<td class="blue-table__td">30 - 100 кг.</td>
@@ -38,6 +44,8 @@
 						<td class="blue-table__td">1 300</td>
 						<td class="blue-table__td">1 900</td>
 						<td class="blue-table__td">2 700</td>
+						<td class="blue-table__td">5 200</td>
+						<td class="blue-table__td">7 200</td>							
 					</tr>
 					<tr class="blue-table__tr">
 						<td class="blue-table__td">100 - 200 кг.</td>
@@ -46,6 +54,8 @@
 						<td class="blue-table__td">1 700</td>
 						<td class="blue-table__td">2 300</td>
 						<td class="blue-table__td">3 000</td>
+						<td class="blue-table__td">6 000</td>
+						<td class="blue-table__td">8 000</td>							
 					</tr>
 					<tr class="blue-table__tr">
 						<td class="blue-table__td">200 - 500 кг.</td>
@@ -54,6 +64,8 @@
 						<td class="blue-table__td">2 600</td>
 						<td class="blue-table__td">3 250</td>
 						<td class="blue-table__td">4 000</td>
+						<td class="blue-table__td">7 500</td>
+						<td class="blue-table__td">9 000</td>							
 					</tr>
 					<tr class="blue-table__tr">
 						<td class="blue-table__td">500 - 1 000 кг.</td>
@@ -62,6 +74,8 @@
 						<td class="blue-table__td">3 300</td>
 						<td class="blue-table__td">3 900</td>
 						<td class="blue-table__td">4 700</td>
+						<td class="blue-table__td">9 000</td>
+						<td class="blue-table__td">11 000</td>							
 					</tr>
 					<tr class="blue-table__tr">
 						<td class="blue-table__td">1 000 - 3 000 кг.</td>
@@ -70,6 +84,8 @@
 						<td class="blue-table__td">3 800</td>
 						<td class="blue-table__td">4 500</td>
 						<td class="blue-table__td">5 500</td>
+						<td class="blue-table__td">10 000</td>
+						<td class="blue-table__td">12 000</td>							
 					</tr>
 					<tr class="blue-table__tr">
 						<td class="blue-table__td">3 000 - 5 000 кг.</td>
@@ -78,6 +94,8 @@
 						<td class="blue-table__td">5 200</td>
 						<td class="blue-table__td">6 100</td>
 						<td class="blue-table__td">6 900</td>
+						<td class="blue-table__td">12 000</td>
+						<td class="blue-table__td">15 000</td>							
 					</tr>
                     <tr class="blue-table__tr">
 						<td class="blue-table__td">5 000 - 10 000 кг.</td>
@@ -86,6 +104,8 @@
 						<td class="blue-table__td">6 800</td>
 						<td class="blue-table__td">7 500</td>
 						<td class="blue-table__td">8 500</td>
+						<td class="blue-table__td">15 000</td>
+						<td class="blue-table__td">19 000</td>							
 					</tr>
 				</tbody>
 			</table>
