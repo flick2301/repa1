@@ -14,10 +14,10 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/include/agent.php')
 // #
 // # Константы
 // #
-if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' || $_SERVER['HTTP_HOST']=='krep-komp.ru')
-	include_once($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/include/constants.php');
-else
+if(strstr($_SERVER['HTTP_HOST'], "dev"))
 	include_once($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/include/dev_constants.php');
+else
+	include_once($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/include/constants.php');
 
 
 ?>
