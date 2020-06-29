@@ -157,7 +157,9 @@ function reverseInfo(\Bitrix\Main\Event $event ) {
 		}
 	}
 
-if(file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/constants.php"))
+if (strstr($_SERVER['HTTP_HOST'], "dev") && file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/dev_constants.php"))
+		require_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/dev_constants.php");
+elseif(file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/constants.php"))
         require_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/constants.php");
 
 if(file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/agent.php"))
@@ -208,6 +210,13 @@ function SaleComponentOrderJsData(&$arResult, &$arParams)
 }
 
 //$arResult["JS_DATA"]["DELIVERY_GROUPS"] = array_unique($arResult["JS_DATA"]["DELIVERY_GROUPS"]);
+
+//Доставка день в день и по субботам
+$curtime = date(H)*60 + (int)date(i);
+$offtime = 14*60 + 30;
+
+if ($curtime > $offtime) unset($arResult["JS_DATA"]["DELIVERY"][ID_DELIVERY_DAYTODAY]);
+if (($curtime > $offtime && date(N)==5) || date(N) > 5) unset($arResult["JS_DATA"]["DELIVERY"][ID_DELIVERY_SUNDAY]);
 
 
 //Путкты самовывоза

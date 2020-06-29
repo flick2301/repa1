@@ -2,8 +2,11 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Новая страница");
 ?>
-<script type="text/javascript" src="http://map.krep-komp.ru/js/test.js"></script>
-<script>
-</script>
+<?php
+$curtime = date(H)*60 + (int)date(i);
+$offtime = 14*60 + 30;
+//echo $curtime;
+echo date(N);
+?>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

@@ -48,6 +48,6 @@ const ID_PRICE_18 = '13';
 //Платежные системы
 const BY_CARD = 8;
 
-const ID_DELIVERY_DAYTODAY = 36;
-const ID_DELIVERY_SUNDAY = 37;
-const SHOPS_SPB = 2631;
+const ID_DELIVERY_DAYTODAY = 34;
+const ID_DELIVERY_SUNDAY = 35;
+const SHOPS_SPB = 2565;
