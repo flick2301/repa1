@@ -26,7 +26,7 @@ var myMap, myPolygon = [];
             iconCaption: lat + ', ' + lon
         }));
 		
-            loadPolygons();
+            loadPolygons(BX.Sale.OrderAjaxComponent.currentDelivery!=ID_DELIVERY_DAYTODAY && BX.Sale.OrderAjaxComponent.currentDelivery!=ID_DELIVERY_SUNDAY ? false : true);
 			loadPolygons_spb();
         }
 

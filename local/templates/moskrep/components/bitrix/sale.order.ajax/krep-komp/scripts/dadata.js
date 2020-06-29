@@ -269,7 +269,7 @@ if (id) {
 //Расчет стоимости доставки
 function setDeliveryPrice(rel, id) {
 	
-	if (BX.Sale.OrderAjaxComponent.currentDelivery!=2 && BX.Sale.OrderAjaxComponent.currentDelivery!=28) return;
+	if (BX.Sale.OrderAjaxComponent.currentDelivery!=2 && BX.Sale.OrderAjaxComponent.currentDelivery!=28 && BX.Sale.OrderAjaxComponent.currentDelivery!=ID_DELIVERY_DAYTODAY && BX.Sale.OrderAjaxComponent.currentDelivery!=ID_DELIVERY_SUNDAY) return;
 	
 		var coords = get_coords(rel, id);
 		
@@ -279,16 +279,30 @@ function setDeliveryPrice(rel, id) {
 			BX.Sale.OrderAjaxComponent.lat = response.suggestions[0].data.geo_lat;
 			BX.Sale.OrderAjaxComponent.lon = response.suggestions[0].data.geo_lon;
 			
+			var delivery_id = BX.Sale.OrderAjaxComponent.currentDelivery;
+			//if (delivery_id==ID_DELIVERY_DAYTODAY || delivery_id==ID_DELIVERY_SUNDAY) delivery_id = 2;
+			
+			var weight = BX.Sale.OrderAjaxComponent.result.TOTAL.ORDER_WEIGHT ? BX.Sale.OrderAjaxComponent.result.TOTAL.ORDER_WEIGHT/1000 : 10;
+			
 var result = deliveryCost.init({
 		lat: response.suggestions[0].data.geo_lat,
 		lon: response.suggestions[0].data.geo_lon,
-		weight: BX.Sale.OrderAjaxComponent.result.TOTAL.ORDER_WEIGHT ? BX.Sale.OrderAjaxComponent.result.TOTAL.ORDER_WEIGHT/1000 : 10,
+		weight: weight,
 		price: BX.Sale.OrderAjaxComponent.result.TOTAL.ORDER_PRICE,
-		delivery_id: BX.Sale.OrderAjaxComponent.currentDelivery,
+		delivery_id: delivery_id,
 	});
 	
 	$('#delivery_lat').val(result.lat);
 	$('#delivery_lon').val(result.lon);
+	
+	if (delivery_id==ID_DELIVERY_DAYTODAY || delivery_id==ID_DELIVERY_SUNDAY) {
+		if (weight <= 15) result.cost = 350;
+		else if (weight > 15 && weight <= 30) result.cost = 450;
+		else if (weight > 30 && weight <= 100) result.cost = 800;
+		else if (weight > 100 && weight <= 300) result.cost = 1300;
+	}
+	
+	if (!result.cost) result.cost = 0;
 	
 	//getMap(result.lat, result.lon); //Показ карты
 	
