@@ -269,7 +269,7 @@ if (id) {
 //Расчет стоимости доставки
 function setDeliveryPrice(rel, id) {
 	
-	if (BX.Sale.OrderAjaxComponent.currentDelivery!=2 && BX.Sale.OrderAjaxComponent.currentDelivery!=28) return;
+	if (BX.Sale.OrderAjaxComponent.currentDelivery!=2 && BX.Sale.OrderAjaxComponent.currentDelivery!=28 && BX.Sale.OrderAjaxComponent.currentDelivery!=ID_DELIVERY_DAYTODAY && BX.Sale.OrderAjaxComponent.currentDelivery!=ID_DELIVERY_SUNDAY) return;
 	
 		var coords = get_coords(rel, id);
 		
@@ -279,12 +279,14 @@ function setDeliveryPrice(rel, id) {
 			BX.Sale.OrderAjaxComponent.lat = response.suggestions[0].data.geo_lat;
 			BX.Sale.OrderAjaxComponent.lon = response.suggestions[0].data.geo_lon;
 			
+			var delivery_id = BX.Sale.OrderAjaxComponent.currentDelivery;
+			
 var result = deliveryCost.init({
 		lat: response.suggestions[0].data.geo_lat,
 		lon: response.suggestions[0].data.geo_lon,
 		weight: BX.Sale.OrderAjaxComponent.result.TOTAL.ORDER_WEIGHT ? BX.Sale.OrderAjaxComponent.result.TOTAL.ORDER_WEIGHT/1000 : 10,
 		price: BX.Sale.OrderAjaxComponent.result.TOTAL.ORDER_PRICE,
-		delivery_id: BX.Sale.OrderAjaxComponent.currentDelivery,
+		delivery_id: delivery_id,
 	});
 	
 	$('#delivery_lat').val(result.lat);
