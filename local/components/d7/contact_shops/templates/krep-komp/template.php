@@ -37,7 +37,7 @@ $this->addExternalCss($templateFolder."/slick/slick-theme.css");
 	if (typeof shop=='undefined') shop = [];
 	if (typeof myPlacemark=='undefined') myPlacemark = [];
 	if (typeof myPlacemark2565=='undefined') myPlacemark2565 = [];
-	if (typeof myPlacemark2565=='undefined') myPlacemark2631 = [];	
+	if (typeof myPlacemark2631=='undefined') myPlacemark2631 = [];	
 	if (typeof myMap=='undefined') myMap = {};		
 	section_id = '<?=$arParams["SECTION_ID"] ? $arParams["SECTION_ID"] : "9999"?>';
 	select_city = '<?=$arResult['SELECT']?>';
