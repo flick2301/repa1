@@ -125,7 +125,7 @@ if($arParams['FOR_SEO']!='Y'){
 				<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style"><?=$arResult['EXTRA_FIELD']['NAME']?></span></span></th>
             <?}?>
                 
-		<th class="blue-table__th blue-table__price"><span class='link-sorting'><span class="link-sorting__style">Стоимость</span></span></th>
+		<th class="blue-table__th blue-table__price"><span class='link-sorting'><span class="link-sorting__style">Цена (с НДС)</span></span></th>
 		<th class="blue-table__th">Купить</th>
 	    </tr>
 	</thead>
