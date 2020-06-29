@@ -4670,7 +4670,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 		},
 		
 		unsetDelivery: function() {
-			$("#soa-property-34, #soa-property-35, #address_street, #address_full_street, #address_id_street, #address_house, #address_flat, #delivery_lat, #delivery_lon").val('');
+			$("#soa-property-" + ORDER_PROPERTY_DELIVERY_PRICE1 + ", #soa-property-" + ORDER_PROPERTY_DELIVERY_PRICE2 + ", #address_street, #address_full_street, #address_id_street, #address_house, #address_flat, #delivery_lat, #delivery_lon").val('');
 		},
 
 		getPersonTypeControl: function(node)
@@ -6116,7 +6116,7 @@ for (var key in this.result.DELIVERY_GROUPS) {
 							className: 'bx-soa-pp-company-checkbox form__radio',
 							value: deliveryId,
 							checked: checked, 
-						}
+						},
 					}),
 				]}),
 				],
@@ -6224,7 +6224,9 @@ for (var key in this.result.DELIVERY_GROUPS) {
 		},
 
 		selectDelivery: function(event)
-		{
+		{ 	
+			this.unsetDelivery();
+		
 			if (!this.orderBlockNode)
 				return;
 
