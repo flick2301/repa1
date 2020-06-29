@@ -251,12 +251,12 @@ $dbList = CCatalogStore::GetList(
 		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["address_house"] = htmlspecialchars($_REQUEST['order']['address_house']);
 		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["address_flat"] = htmlspecialchars($_REQUEST['order']['address_flat']);
 		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["delivery_lat"] = htmlspecialchars($_REQUEST['order']['delivery_lat']);
-		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["delivery_lon"] = htmlspecialchars($_REQUEST['order']['delivery_lon']);		
+		$arResult["JS_DATA"]["DELIVERY_ADDRESS"]["delivery_lon"] = htmlspecialchars($_REQUEST['order']['delivery_lon']);	
 		
-		$delivery_price = $_REQUEST['order']['ORDER_PROP_34'] ? $_REQUEST['order']['ORDER_PROP_48'] : $_REQUEST['order']['ORDER_PROP_49'];
+		$delivery_price = $_REQUEST['order']['ORDER_PROP_' . ORDER_PROPERTY_DELIVERY_PRICE1] ? $_REQUEST['order']['ORDER_PROP_' . ORDER_PROPERTY_DELIVERY_PRICE1] : $_REQUEST['order']['ORDER_PROP_' . ORDER_PROPERTY_DELIVERY_PRICE2];
 		
 		if ($delivery_price) {
-			
+
 			$delivery_price = preg_replace("/[^0-9]+/", "", $delivery_price);
 			$formatted_delivery_price = CurrencyFormat($delivery_price, 'RUB');
 			$total_price = $delivery_price + $arResult["JS_DATA"]["TOTAL"]["ORDER_PRICE"];

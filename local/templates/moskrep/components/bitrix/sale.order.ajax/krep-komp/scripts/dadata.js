@@ -292,7 +292,7 @@ var result = deliveryCost.init({
 	
 	//getMap(result.lat, result.lon); //Показ карты
 	
-$("#soa-property-48, #soa-property-49").val(result.cost);	
+$('#soa-property-' + ORDER_PROPERTY_DELIVERY_PRICE1 + ', #soa-property-' + ORDER_PROPERTY_DELIVERY_PRICE2).val(result.cost);	
 //alert(JSON.stringify(result));
 			
 			BX.Sale.OrderAjaxComponent.sendRequest();

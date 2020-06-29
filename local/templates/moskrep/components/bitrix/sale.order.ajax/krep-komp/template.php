@@ -551,6 +551,9 @@ else
 	$messages = Loc::loadLanguageFile(__FILE__);
 	?>
 	<script>
+	var ORDER_PROPERTY_DELIVERY_PRICE1 = <?=ORDER_PROPERTY_DELIVERY_PRICE1?>;
+	var ORDER_PROPERTY_DELIVERY_PRICE2 = <?=ORDER_PROPERTY_DELIVERY_PRICE2?>;
+	
 		BX.message(<?=CUtil::PhpToJSObject($messages)?>);
 		BX.Sale.OrderAjaxComponent.init({
 			result: <?=CUtil::PhpToJSObject($arResult['JS_DATA'])?>,
