@@ -51,13 +51,29 @@ if($arSection = $rsResult->GetNext()) {
     $arResult["UF_RELATED"] = $arSection["UF_RELATED"];
     $arResult["UF_DETAIL_TEXT"] = $arSection["UF_DETAIL_TEXT"];
 	$arResult["UF_CHARS"] = $arSection["UF_CHARS"];
+	$arResult["UF_DOP_SETTINGS"] = $arSection["UF_DOP_SETTINGS"];
+	$arResult["UF_EXTRA_FIELD"] = $arSection["UF_EXTRA_FIELD"];
 	foreach($arSection["UF_SURFACE"] AS $surface) {
 		$res = CIBlockElement::GetByID($surface);
 		if ($ar_res = $res->GetNext()) {
 			$ar_res["IMG"] = CFile::GetPath($ar_res["PREVIEW_PICTURE"]);
 			$arResult["UF_SURFACE"][] = $ar_res;
 		}
-	}	
+	}
+	if($arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD']){
+		
+		$arCode = explode(';', $arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD']);
+		foreach($arCode as $code)
+		{
+			$arResult['EXTRA_FIELD'][] = CIBlockProperty::GetList([], Array("ACTIVE"=>"Y", "IBLOCK_ID"=>$arParams["IBLOCK_ID"], 'CODE'=>$code))->GetNext();
+		}
+	}elseif($arResult['UF_EXTRA_FIELD']){
+		$arCode = explode(';', $arResult['UF_EXTRA_FIELD']);
+		foreach($arCode as $code)
+		{
+			$arResult['EXTRA_FIELD'][] = CIBlockProperty::GetList([], Array("ACTIVE"=>"Y", "IBLOCK_ID"=>$arParams["IBLOCK_ID"], 'CODE'=>$code))->GetNext();
+		}
+	}
 	
 }
 
@@ -222,6 +238,11 @@ if(count($arResult['UF_CHARS'])>1)
 $arResult['PICTURE_RESIZE'] = CFile::ResizeImageGet($arResult['PICTURE']['ID'], array('width'=>200, 'height'=>200), BX_RESIZE_IMAGE_PROPORTIONAL, true);
 
 
-if($arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD']){
-	$arResult['EXTRA_FIELD'] = CIBlockProperty::GetList([], Array("ACTIVE"=>"Y", "IBLOCK_ID"=>$arParams["IBLOCK_ID"], 'CODE'=>$arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD']))->GetNext();
-} 
+if($arResult["UF_DOP_SETTINGS"])
+{
+	foreach($arResult['UF_DOP_SETTINGS'] as $extra_setting)
+	{
+        $val_enum = CUserFieldEnum::GetList(Array("DEF"=>"DESC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], "ID"=>$extra_setting))->GetNext();
+		$arResult['ENUM_LIST'][$val_enum['XML_ID']] = true;
+	}
+}

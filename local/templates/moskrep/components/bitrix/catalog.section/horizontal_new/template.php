@@ -89,8 +89,6 @@ if($arParams['FOR_SEO']!='Y'){
 
 }?>
 
-
-
 <?if($arResult['UF_SOPUT_SPR_ITMES']){
 	
 	foreach($arResult['UF_SOPUT_SPR_ITMES'] as $soput_itme){
@@ -112,21 +110,28 @@ if($arParams['FOR_SEO']!='Y'){
                 <th class="blue-table__th blue-table__name"><span class='link-sorting'><span class="link-sorting__style">Размер,мм</span></span></th>
                 
                 <th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Фасовка</span></span></th>
-		<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Артикул</span></span></th>
-                <th class="blue-table__th"><span class="link-sorting"><span class="link-sorting__style">Наличие</span></span></th>
-				<?if($_SERVER['HTTP_HOST']!='spb.krep-komp.ru'):?>
-				<th class="blue-table__th"><span class="link-sorting"><span class="link-sorting__style">Получение</span></span></th>
-				<?endif;?>
+				<?if(!$arResult['ENUM_LIST']['TURN_OFF_ARTICUL'] && !$_POST['ENUM_LIST']['TURN_OFF_ARTICUL'])
+				{?>
+				<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Артикул</span></span></th>
+				<?}?>
+                <?if(!$arResult['ENUM_LIST']['TURN_OFF_DELIVERY'] && !$_POST['ENUM_LIST']['TURN_OFF_DELIVERY'])
+				{?>
+					<?if($_SERVER['HTTP_HOST']!='spb.krep-komp.ru'):?>
+					<th class="blue-table__th"><span class="link-sorting"><span class="link-sorting__style">Получение</span></span></th>
+					<?endif;?>
+				<?}?>
                 
             <?if($ral_in_ar){?>
 				<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Цвет, RAL</span></span></th>
             <?}?>
-			<?if($arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD']){?>
-				<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style"><?=$arResult['EXTRA_FIELD']['NAME']?></span></span></th>
-            <?}?>
-                
-		<th class="blue-table__th blue-table__price"><span class='link-sorting'><span class="link-sorting__style">Цена (с НДС)</span></span></th>
-		<th class="blue-table__th">Купить</th>
+			<?if($arResult['EXTRA_FIELD']){
+				foreach($arResult['EXTRA_FIELD'] as $field){?>
+				<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style"><?=$field['NAME']?></span></span></th>
+				<?}
+			}?>
+            <th class="blue-table__th"><span class="link-sorting"><span class="link-sorting__style">Наличие</span></span></th>    
+			<th class="blue-table__th blue-table__price"><span class='link-sorting'><span class="link-sorting__style">Цена (с НДС)</span></span></th>
+			<th class="blue-table__th">Купить</th>
 	    </tr>
 	</thead>
     <tbody class="blue-table__tbody">
@@ -160,9 +165,13 @@ if($arParams['FOR_SEO']!='Y'){
             ?>
            
             <td class="blue-table__td"><span class="articul-b"><a class="name_b" href="<?=$item['DETAIL_PAGE_URL']?>" title='<?=($item['PROPERTIES']['ROOT_NAME']['VALUE']) ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'];?>' target="_self"><?=($item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]) ? $item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] : '1';?> <?=$item['UNIT']?></a></span></td>
-            <td class="blue-table__td"><span class="articul-b"><a href="<?=$item['DETAIL_PAGE_URL']?>" target="_self" title='<?=($item['PROPERTIES']['ROOT_NAME']['VALUE']) ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'];?>'><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?>
+            <?if(!$arResult['ENUM_LIST']['TURN_OFF_ARTICUL'] && !$_POST['ENUM_LIST']['TURN_OFF_ARTICUL'])
+				{?>
+			<td class="blue-table__td"><span class="articul-b"><a href="<?=$item['DETAIL_PAGE_URL']?>" target="_self" title='<?=($item['PROPERTIES']['ROOT_NAME']['VALUE']) ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'];?>'><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?>
                     </a></span></td>
-	        <td class="blue-table__td"><?echo ($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']) ? '<span class="availability-b active">'.($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']).' уп. </span>' : '<span class="availability-b">Под заказ</span>';?></td>
+			<?}?>
+	        <?if(!$arResult['ENUM_LIST']['TURN_OFF_DELIVERY'] && !$_POST['ENUM_LIST']['TURN_OFF_DELIVERY'])
+				{?>
 			<?if($_SERVER['HTTP_HOST']!='spb.krep-komp.ru'):?>
 		   <td class="blue-table__td">
 								<span class="pickup-view" data-product="<?=$item['ID']?>">
@@ -177,14 +186,17 @@ if($arParams['FOR_SEO']!='Y'){
 								</span>
 							</td>
 			<?endif;?>
+				<?}?>
 			
-	<?if($ral_in_ar){?>
+		<?if($ral_in_ar){?>
             <td class="blue-table__td"><div class="color-b"><i style="background: #<?=$array_rals[$item['PROPERTIES']["TSVET"]["VALUE"]]?>;"></i><?=$item['PROPERTIES']["TSVET"]["VALUE"]?></div></td>
         <?}?>
-		<?if($arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD']){?>
-            <td class="blue-table__td"><div class="color-b"><?=$item['PROPERTIES'][$arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD']]["VALUE"]?></div></td>
-        <?}?>
-            
+		<?if($arResult['EXTRA_FIELD']){
+			foreach($arResult['EXTRA_FIELD'] as $field){?>
+            <td class="blue-table__td"><div class="color-b"><?=$item['PROPERTIES'][$field['CODE']]["VALUE"]?></div></td>
+			<?}
+		}?>
+        <td class="blue-table__td"><?echo ($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']) ? '<span class="availability-b active">'.($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']).' уп. </span>' : '<span class="availability-b">Под заказ</span>';?></td>    
 	    <td class="blue-table__td blue-table__price">
 	        <span class="price-b"><?echo number_format($price, 2, '.', ' ');?> ₽</span>
                 <?echo ($old_price) ? '<span class="carousel-product__price-old">'.number_format($old_price, 2, '.', ' ').' ₽</span>': '';?> 
