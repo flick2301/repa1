@@ -224,6 +224,7 @@ if ($curtime > $offtime) unset($arResult["JS_DATA"]["DELIVERY"][ID_DELIVERY_DAYT
 if (($curtime > $offtime && date(N)==5) || date(N) > 5) unset($arResult["JS_DATA"]["DELIVERY"][ID_DELIVERY_SUNDAY]);
 
 
+
 //Путкты самовывоза
 $dbList = CCatalogStore::GetList(
 			Array("SORT" => "ASC"),

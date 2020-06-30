@@ -113,3 +113,31 @@
 
         <div id="map" style="width: 100%;height: 500px;" class="mb-30"></div>
 		
+					<h2 class="s28-title">Тарифы доставок "День в день" и "Доставка по субботам"<br />(в пределах МКАД)</h2>
+			<table class="blue-table" style="display: table; min-width: 300px;">
+				<thead class="blue-table__thead">
+					<tr class="blue-table__tr">
+						<th class="blue-table__th" style="width: 50%;">Масса груза</th>
+						<th class="blue-table__th" style="width: 50%;">Зона - 1</th>					
+					</tr>
+				</thead>
+				<tbody class="blue-table__tbody">
+					<tr class="blue-table__tr">
+						<td class="blue-table__td" style="width: 50%;">0 - 15 кг.</td>
+						<td class="blue-table__td" style="width: 50%;">350</td>					
+					</tr>
+					<tr class="blue-table__tr">
+						<td class="blue-table__td" style="width: 50%;">15 - 30 кг.</td>
+						<td class="blue-table__td" style="width: 50%;">450</td>					
+					</tr>
+					<tr class="blue-table__tr">
+						<td class="blue-table__td" style="width: 50%;">30 - 100 кг.</td>
+						<td class="blue-table__td" style="width: 50%;">800</td>					
+					</tr>
+					<tr class="blue-table__tr">
+						<td class="blue-table__td" style="width: 50%;">100 - 300 кг.</td>
+						<td class="blue-table__td" style="width: 50%;">2300</td>					
+					</tr>
+				</tbody>
+			</table>				
+		

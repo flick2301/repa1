@@ -1,4 +1,7 @@
-       function loadPolygons() {
+       function loadPolygons(main) {
+		   
+		   if (!main) {
+		   
 						var coords = [];
 coords.push([54.787267, 39.354897]);
 coords.push([54.8301, 39.37687]);
@@ -1260,6 +1263,7 @@ coords.push([55.135975, 39.11936]);
                         coords.push([55.45574214179675, 37.571892214720805]);
                         coords.push([55.45118794150743, 37.57390662611232]);
                         addPolygon([coords], 'Зона 2: от 0 до 15 км', 5);
+}						
                                                             var coords = [];
                         coords.push([55.60845319457445, 37.49447552262111]);
                         coords.push([55.6135913490628, 37.488613938376574]);
