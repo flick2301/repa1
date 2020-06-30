@@ -301,7 +301,7 @@ var result = deliveryCost.init({
 		if (weight <= 15) result.cost = 350;
 		else if (weight > 15 && weight <= 30) result.cost = 450;
 		else if (weight > 30 && weight <= 100) result.cost = 800;
-		else if (weight > 100 && weight <= 300) result.cost = 1300;
+		else if (weight > 100 && weight <= 300) result.cost = 2300;
 	}
 	
 	if (!result.cost) result.cost = 0;
