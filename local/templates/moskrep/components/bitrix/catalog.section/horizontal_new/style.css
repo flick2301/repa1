@@ -2068,9 +2068,14 @@
 
 .sale-category .blue-table__tr .blue-table__th:nth-child(3),
 .sale-category .blue-table__tr .blue-table__td:nth-child(3) {
-    width: 99px;
+    width: 88px;
+    padding: 14px 5px;
     text-align: center;
     vertical-align: middle;
+	/*width: 99px;
+    text-align: center;
+    vertical-align: middle;
+	*/
 }
 
 .sale-category .blue-table__tr .blue-table__th:nth-child(4),

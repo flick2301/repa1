@@ -104,7 +104,7 @@ if($arParams['FOR_SEO']!='Y'){
 }
 }?>
 <div class="sale-category sale-category--new" style='margin-top: 30px !important; <?=($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' && $ral_in_ar) ? 'width:763px' : ($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' ? 'width:741px' : '');?>'>
-    <table class="blue-table price-category <?=($ral_in_ar || $arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD']) ? 'blue-table__8-rows' : 'blue-table__7-rows';?>">
+    <table class="blue-table price-category <?=($ral_in_ar || $arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD'] || $arResult['EXTRA_FIELD']) ? 'blue-table__8-rows' : 'blue-table__7-rows';?>">
 	<thead class="blue-table__thead">
             <tr class="blue-table__tr">
                 <th class="blue-table__th blue-table__name"><span class='link-sorting'><span class="link-sorting__style">Размер,мм</span></span></th>
@@ -193,7 +193,7 @@ if($arParams['FOR_SEO']!='Y'){
         <?}?>
 		<?if($arResult['EXTRA_FIELD']){
 			foreach($arResult['EXTRA_FIELD'] as $field){?>
-            <td class="blue-table__td"><div class="color-b"><?=$item['PROPERTIES'][$field['CODE']]["VALUE"]?></div></td>
+            <td class="blue-table__td"><div class="color-b"><?=mb_strimwidth($item['PROPERTIES'][$field['CODE']]["VALUE"], 0, 12, "...");?></div></td>
 			<?}
 		}?>
         <td class="blue-table__td"><?echo ($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']) ? '<span class="availability-b active">'.($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']).' уп. </span>' : '<span class="availability-b">Под заказ</span>';?></td>    
