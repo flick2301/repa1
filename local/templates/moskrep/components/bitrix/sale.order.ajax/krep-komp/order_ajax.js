@@ -4949,7 +4949,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			if (!this.result.PAY_SYSTEM || this.result.PAY_SYSTEM.length <= 0)
 				return;
 
-			var paySystemItemsContainer = BX.create('DIV', {props: {className: 'col-sm-7 bx-soa-pp-item-container'}, children: [BX.create('BR')]}),
+			var paySystemItemsContainer = BX.create('DIV', {props: {className: 'col-sm-7 bx-soa-pp-item-container'}, children: [BX.create('BR'), BX.create('DIV', {props: {className: 'attention_payment' + (this.currentDelivery!=3 ? ' d-none' : '')}, text: 'Уважаемые покупатели, обращаем ваше внимание, что самовывоз со склада в  Коледино осуществляется ТОЛЬКО по предварительной оплате картой на сайте, либо посредством безналичного расчета'})]}),
 				paySystemItemNode, i;
 
 			for (i = 0; i < this.paySystemPagination.currentPage.length; i++)

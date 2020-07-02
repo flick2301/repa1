@@ -4,6 +4,9 @@
 *:before, *:after {
     box-sizing: inherit;
 }
+.d-none {
+	display: none;
+}
 #bx-soa-order * {
     box-sizing: border-box;
 }
@@ -1913,4 +1916,9 @@ label[data-bx-user-consent] a{
 }
 label[data-bx-user-consent] input{
     margin-top: 2px;
+}
+.attention_payment {
+	margin-bottom: 20px;
+	margin-left: 10px;
+	color: #f39101;
 }
