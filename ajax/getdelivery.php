@@ -50,7 +50,7 @@ echo '<strong>Самовывоз</strong>
 		';
 elseif($_REQUEST['DELIVERY']=='SHOW'):
 echo '<strong>Доставка</strong>
-										<p>На следующий день<br> При заказе до 18:00</p>';
+										<p>Сегодня<br> При заказе до 14:30</p>';
 endif;
 
 
