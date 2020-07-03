@@ -76,6 +76,8 @@ global $APPLICATION;
                 <?endforeach;?>
             </ul>
         </nav>
+		<?if($_POST['ENUM_LIST']['ELEMENTS'])
+			require_once __DIR__."/include_parts/section_table.php";?>
     <?endif;?>
     <?if($arResult['REFERENCE']['ITEM']['PICTURE']){?>
     <div class="catalog-head__photo photo__seo">
@@ -243,6 +245,7 @@ global $APPLICATION;
                 </div>
             </div>
         <?}?>
+		
 		
 		<div class='set-default-parametr-page-cat'>
 <?=$arResult['REFERENCE']['ITEM']['PREVIEW_TEXT']?>

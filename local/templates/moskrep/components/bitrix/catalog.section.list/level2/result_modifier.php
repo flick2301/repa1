@@ -147,6 +147,17 @@ if($arParams['REFERENCE_CHECK']=='Y'):
                 }
 
             }
+			
+			//ПРОВЕРКА ЧТО ТАБЛИЦА ОБЩАЯ
+			if($arResult['REFERENCE']['ITEM']["UF_DOP_SETTINGS"])
+			{
+				
+				foreach($arResult['REFERENCE']['ITEM']["UF_DOP_SETTINGS"]["VALUE_XML_ID"] as $extra_setting)
+				{
+					
+					$_POST['ENUM_LIST'][$extra_setting] = true;
+				}
+			}
 
         }
 
@@ -231,6 +242,7 @@ if($arParams['REFERENCE_CHECK']=='Y'):
 
         //НАЛИЧИЕ У СПРАВОЧНИКА ВЕРХНИХ ПРИЛИНКОВАННЫХ РАЗДЕЛОВ(SECTIONS_TOP)
         if(count($arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE'])>1) {
+			
 
             $rsResult = CIBlockSection::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "ID" => $arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE']), false, array("*", "IPROPERTY_VALUES"));
             while ($rSection = $rsResult->GetNext()) {

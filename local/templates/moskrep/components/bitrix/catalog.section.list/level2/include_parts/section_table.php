@@ -11,6 +11,14 @@ $rsGender = CUserFieldEnum::GetList(array(), array("ID" => $aSection["UF_SEC_LIS
 	
 	
 }?>
+<?
+global $arrFilter2;
+
+if(count($arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE'])>1) {
+	
+$arrFilter2 = array("SECTION_ID" => $arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE']);
+}
+?>
 <?$intSectionID = $APPLICATION->IncludeComponent(
 					"bitrix:catalog.section",
 					"horizontal_new",
@@ -32,7 +40,7 @@ $rsGender = CUserFieldEnum::GetList(array(), array("ID" => $aSection["UF_SEC_LIS
 						"SECTION_ID_VARIABLE" => $arParams["SECTION_ID_VARIABLE"],
 						"PRODUCT_QUANTITY_VARIABLE" => $arParams["PRODUCT_QUANTITY_VARIABLE"],
 						"PRODUCT_PROPS_VARIABLE" => $arParams["PRODUCT_PROPS_VARIABLE"],
-						"FILTER_NAME" => $arParams["FILTER_NAME"],
+						"FILTER_NAME" => 'arrFilter2',
 						"CACHE_TYPE" => $arParams["CACHE_TYPE"],
 						"CACHE_TIME" => $arParams["CACHE_TIME"],
 						"CACHE_FILTER" => $arParams["CACHE_FILTER"],
