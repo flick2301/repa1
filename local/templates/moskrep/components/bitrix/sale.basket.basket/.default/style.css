@@ -2195,7 +2195,7 @@ h2.basket-item-info-name {
     font-size: 1rem; color: #e24d4d;
     font-family: 'Circe ExtraBold';
     position: absolute;
-    left: 0; top: 0;
+    left: 0; top: 4px;
 }
 
 .value__plus_basket {
