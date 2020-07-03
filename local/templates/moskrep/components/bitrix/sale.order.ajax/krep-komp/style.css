@@ -7,6 +7,12 @@
 .d-none {
 	display: none;
 }
+.bx-green .btn.btn-default {
+	margin: 10px 0!important;
+	padding: 8px 20px 7px;
+	font-size: 15px;
+	line-height: 15px;
+}
 #bx-soa-order * {
     box-sizing: border-box;
 }
