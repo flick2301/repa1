@@ -1606,7 +1606,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 		},
 
 		prepareLocations: function(locations)
-		{
+		{console.log(locations);
 			this.locations = {};
 			this.cleanLocations = {};
 
