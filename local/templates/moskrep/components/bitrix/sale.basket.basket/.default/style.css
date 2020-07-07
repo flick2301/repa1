@@ -2220,3 +2220,12 @@ h2.basket-item-info-name {
 .t-basket-value .value__plus_basket {
     height: 38px;
 }
+.t-basket-price {
+	white-space: nowrap;
+}
+.blue-table__td:last-child {
+	text-align: center;
+}
+.t-basket-delete {
+	margin: auto;
+}

@@ -107,7 +107,7 @@ if($arParams['FOR_SEO']!='Y'){
     <table class="blue-table price-category <?=($ral_in_ar || $arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD'] || $arResult['EXTRA_FIELD']) ? 'blue-table__8-rows' : 'blue-table__7-rows';?>">
 	<thead class="blue-table__thead">
             <tr class="blue-table__tr">
-                <th class="blue-table__th blue-table__name"><span class='link-sorting'><span class="link-sorting__style">Размер,мм</span></span></th>
+                <th class="blue-table__th blue-table__name"><span class='link-sorting'><span class="link-sorting__style">Размер, мм</span></span></th>
                 
                 <th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Фасовка</span></span></th>
 				<?if(!$arResult['ENUM_LIST']['TURN_OFF_ARTICUL'] && !$_POST['ENUM_LIST']['TURN_OFF_ARTICUL'])
