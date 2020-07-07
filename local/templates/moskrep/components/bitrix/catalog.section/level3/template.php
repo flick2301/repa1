@@ -27,7 +27,7 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 	    <tr class="blue-table__tr">
 		<th class="blue-table__th blue-table__name"><span class='link-sorting'><span class="link-sorting__style">Наименование</span></span></a></th>
 		<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Артикул</span></span></a></th>
-		<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Размер,мм</span></span></a></th>
+		<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Размер, мм</span></span></a></th>
                 <?if($ral_in_ar){?>
 		<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Цвет, RAL</span></span></a></th>
                 <?}?>
