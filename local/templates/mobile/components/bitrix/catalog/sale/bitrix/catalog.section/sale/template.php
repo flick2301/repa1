@@ -27,7 +27,7 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 	<div class="sale-category__date">Распродажа <span><?=$arResult['SALE_PRICE_DATE']?></span></div>
 	<a href="<?=$arResult['OVER_URL']?>" class="link-all">Все <?=$arResult['NAME']?></a>
     </div>
-    <table class="blue-table price-category">
+    <table class="blue-table full price-category">
 	<thead class="blue-table__thead">
             <tr class="blue-table__tr">
 		<th class="blue-table__th"><a href="javascript:void(0);" class="link-sorting sorting-name"><span class="link-sorting__style sort-down">Наименование</span></a></th>

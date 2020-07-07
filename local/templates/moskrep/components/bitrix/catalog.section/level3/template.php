@@ -22,7 +22,7 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 
 
 <div class="sale-category">
-    <table class="blue-table price-category">
+    <table class="blue-table full price-category">
 	<thead class="blue-table__thead">
 	    <tr class="blue-table__tr">
 		<th class="blue-table__th blue-table__name"><span class='link-sorting'><span class="link-sorting__style">Наименование</span></span></a></th>

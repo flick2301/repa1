@@ -89,7 +89,7 @@ if($arParams['FOR_SEO']!='Y'){
 }?>
 
 <div class="sale-category">
-    <table class="blue-table price-category">
+    <table class="blue-table full price-category">
 	<thead class="blue-table__thead">
             <tr class="blue-table__tr">
                 <th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Размер, мм</span></span></th>

@@ -5552,3 +5552,25 @@ ol.tech li {
 	top: 50%;
 	transform: translateY(-50%);	
 }
+
+
+
+/*Переделка таблиц товара*/
+.blue-table.full {
+	display: table;
+}
+.blue-table.full .blue-table__thead, .blue-table.full .blue-table__tbody {
+	display: table-row-group;
+}
+.blue-table.full .blue-table__td, .blue-table.full .blue-table td, .blue-table.full .blue-table th {
+    display: table-cell;
+}
+.blue-table.full .blue-table__tr {
+		display: table-row;
+}
+
+
+
+
+
+
