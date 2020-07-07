@@ -931,7 +931,7 @@ class SaleOrderEvents
             $arProperty = $property->getProperty();
 
             if ($arProperty['TYPE'] === 'LOCATION' && array_key_exists($arProperty['ID'],$arUserResult["ORDER_PROP"]) && !$request->getPost("ORDER_PROP_".$arProperty['ID']) && (!is_array($arOrder=$request->getPost("order")) || !$arOrder["ORDER_PROP_".$arProperty['ID']])) {
-                if (strstr($_SERVER['HTTP_HOST'], "spb") && $arUserResult["ORDER_PROP"][$arProperty['ID']]==CURRENT_CITY_CODE) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE.(strstr($_SERVER['HTTP_HOST'], "spb") ? "_SPB" : "");
+                if (strstr($_SERVER['HTTP_HOST'], "spb") && $arUserResult["ORDER_PROP"][$arProperty['ID']]==CURRENT_CITY_CODE) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_SPB;
             }
         }
     }
