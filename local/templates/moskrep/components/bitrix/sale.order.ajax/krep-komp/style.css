@@ -1927,4 +1927,5 @@ label[data-bx-user-consent] input{
 	margin-bottom: 20px;
 	margin-left: 10px;
 	color: #f39101;
+	display: none;
 }
