@@ -139,6 +139,8 @@ if($arParams['FOR_SEO']!='Y'){
 			
 				
 <?php
+	//if ($_SERVER['REQUEST_URI']=="/krepezh/samorezy/samorezy_po_derevu/ostrye_pd/") file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arResult['SIZES'], true));
+
     foreach($arResult['SIZES'] as $key=>$size){
         
         $index=0;

@@ -335,3 +335,4 @@ if($arResult['SECTION']["UF_DOP_SETTINGS"])
 	}
 }
 
+if (count($arResult["REFERENCE"]["ITEM"])) $GLOBALS["REFERENCE"] = $arResult["REFERENCE"]["ITEM"];

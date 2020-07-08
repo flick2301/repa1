@@ -77,6 +77,16 @@ if($arSection = $rsResult->GetNext()) {
 	
 }
 
+if (!count($arResult['EXTRA_FIELD']) && $GLOBALS["REFERENCE"]["UF_EXTRA_FIELD"]["VALUE"]) {
+		$arCode = explode(';', $GLOBALS["REFERENCE"]["UF_EXTRA_FIELD"]["VALUE"]);
+		foreach($arCode as $code)
+		{
+			$arResult['EXTRA_FIELD'][] = CIBlockProperty::GetList([], Array("ACTIVE"=>"Y", "IBLOCK_ID"=>$arParams["IBLOCK_ID"], 'CODE'=>$code))->GetNext();
+		}	
+}
+
+//if ($_SERVER['REQUEST_URI']=="/krepezh/samorezy/samorezy_po_derevu/ostrye_pd/") file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arResult["ITEMS"][0]["PROPERTIES"], true));
+
 if($arResult['UF_SOPUT_SPR']){
 	$rsResult = CIBlockElement::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ID" => $arResult["UF_SOPUT_SPR"]), false, false, array("*"));
 	while($arElement = $rsResult->GetNext()) { 
