@@ -122,9 +122,6 @@ $section_values=$ipropSectionValues->getValues();
 $arResult['META_TITLE']=$section_values['SECTION_PAGE_TITLE'];
 
 
-
-
-
 //ВЫЧИСЛЯЕМ ДОСТУПНЫЕ РАЗМЕРЫ ДЛЯ ОТОБРАЖЕНИЯ
 $arFilter = array("IBLOCK_ID" => $arParams['IBLOCK_ID'], "ID"=>$arTempID);
 $rsSections = CIBlockSection::GetList(array('ID' => 'ASC'), $arFilter, false, array("IBLOCK_ID", "UF_SEC_LIST_SIZES"));
@@ -145,7 +142,7 @@ while($arSection = $rsSections->GetNext())
 
 }
 //ВЫЧИСЛЯЕМ ДОСТУПНЫЕ РАЗМЕРЫ ДЛЯ ОТОБРАЖЕНИЯ(КОНЕЦ)
-
+//if ($_SERVER['REQUEST_URI']=="/krepezh/samorezy/samorezy_po_derevu/ostrye_pd/") file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arResult['ITEMS'], true));
 foreach($arResult['ITEMS'] as $key=>$arItem){
     if(isset($arItem['PREVIEW_PICTURE']['ID'])){
       $file = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE']['ID'], array('width'=>150, 'height'=>150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
@@ -188,7 +185,7 @@ foreach($arResult['ITEMS'] as $key=>$arItem){
 
     //Получаем массив из размеров
     $ar_size = array();
-    if(count($arSizes)>0){
+if(count($arSizes)>0 && (count($arSizes)!=1 || $arSizes[0]!='DIAMETR_VNUTRENNIY')){
         foreach($arSizes as $size){
             $ar_size[] = $arItem['PROPERTIES'][$size]["VALUE"];
         }
@@ -202,6 +199,7 @@ foreach($arResult['ITEMS'] as $key=>$arItem){
 			$arItem['PROPERTIES']['DIAMETR_VNUTRENNIY']["VALUE"]
         );
     }
+	
 	
     $sizes = array_diff($ar_size, ['']);
     if(count($arSizes) === 1 && $arSizes['0']=='DIAMETR') {
