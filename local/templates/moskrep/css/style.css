@@ -5568,7 +5568,45 @@ ol.tech li {
 .blue-table.full .blue-table__tr {
 		display: table-row;
 }
-
+.blue-table.full .blue-table__td:nth-child(2) {
+	padding: 14px;
+}
+.blue-table.full .blue-table__td.blue-table__price {
+	padding-bottom: 0;
+	padding-top: 8px;
+}
+.blue-table.full .blue-table__td .price-b {
+	white-space: nowrap;
+}
+.blue-table.full .item_img_block {
+	background: #fff;
+	border: 1px solid #dfdfdf;
+	position: absolute;
+	margin-left: -176px;
+	margin-top: -35px;
+	display: none;
+}
+.blue-table.full .blue-table__tr:nth-child(1) .item_img_block {
+	margin-top: -34px;	
+}
+.blue-table.full .item_img_block img {
+	width: 150px;
+}
+.blue-table.full .item_img_block div {
+	width: 150px;
+	padding: 5px;
+	box-sizing: padding-box;
+	font-size: 12px;
+	line-height: 15px;
+	background: #0c59cf;
+	color: #fff;
+}
+.blue-table.full .blue-table__tr:hover .item_img_block {
+	display: block;
+}
+.blue-table.full .blue-table__tr .blue-table__td:nth-child(1):hover + .blue-table__td:nth-child(2) .item_img_block {
+	display: none!important;
+}	
 
 
 

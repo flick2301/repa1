@@ -2097,7 +2097,7 @@
     width: 99px;
     text-align: center;
     vertical-align: middle;
-    padding: 14px !important;
+    padding: 14px;
 }
 
 .sale-category .blue-table__tr .blue-table__th:nth-child(7),

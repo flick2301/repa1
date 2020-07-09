@@ -155,7 +155,7 @@ if($arParams['FOR_SEO']!='Y'){
         
         <tr class="blue-table__tr">
             <?if($index==0){?>
-            <td rowspan='<?=count($size);?>' class="blue-table__td"><strong class="name-b"><?=$item['SIZES']?>
+            <td rowspan='<?=count($size);?>' class="blue-table__td"><strong class="!name-b"><?=$item['SIZES']?>
                     <div class="name-b__photo">
                         <img src="<?=$item['PREVIEW_PICTURE']['src']?>" alt='<?=$item['IPROPERTY_VALUES']['ELEMENT_PREVIEW_PICTURE_FILE_ALT']?>' />
                     </div>
@@ -166,10 +166,16 @@ if($arParams['FOR_SEO']!='Y'){
             $index++;
             ?>
            
-            <td class="blue-table__td"><span class="articul-b"><a class="name_b" href="<?=$item['DETAIL_PAGE_URL']?>" title='<?=($item['PROPERTIES']['ROOT_NAME']['VALUE']) ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'];?>' target="_self"><?=($item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]) ? $item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] : '1';?> <?=$item['UNIT']?></a></span></td>
+            <td class="blue-table__td">
+					<div class="item_img_block">
+					<img src="<?=$item['PREVIEW_PICTURE']['src']?>" alt='<?=$item['IPROPERTY_VALUES']['ELEMENT_PREVIEW_PICTURE_FILE_ALT']?>' />
+					<div><?=($item['PROPERTIES']['ROOT_NAME']['VALUE']) ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'];?></div>
+					</div>
+			<span class="articul-b">
+			<a class="name_b" href="<?=$item['DETAIL_PAGE_URL']?>" target="_self"><?=($item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]) ? $item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] : '1';?> <?=$item['UNIT']?></a></span></td>
             <?if(!$arResult['ENUM_LIST']['TURN_OFF_ARTICUL'] && !$_POST['ENUM_LIST']['TURN_OFF_ARTICUL'])
 				{?>
-			<td class="blue-table__td"><span class="articul-b"><a href="<?=$item['DETAIL_PAGE_URL']?>" target="_self" title='<?=($item['PROPERTIES']['ROOT_NAME']['VALUE']) ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'];?>'><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?>
+			<td class="blue-table__td"><span class="articul-b"><a href="<?=$item['DETAIL_PAGE_URL']?>" target="_self"><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?>
                     </a></span></td>
 			<?}?>
 	        <?if(!$arResult['ENUM_LIST']['TURN_OFF_DELIVERY'] && !$_POST['ENUM_LIST']['TURN_OFF_DELIVERY'])
