@@ -5571,6 +5571,13 @@ ol.tech li {
 .blue-table.full .blue-table__td:nth-child(2) {
 	padding: 14px;
 }
+.blue-table.full .blue-table__td:last-child {
+	text-align: center;
+	padding: 14px 5px;
+}
+.blue-table.full .blue-table__td:last-child div, .blue-table.full .blue-table__td:last-child a {
+	margin: auto;
+}
 .blue-table.full .blue-table__td.blue-table__price {
 	padding-bottom: 0;
 	padding-top: 8px;
