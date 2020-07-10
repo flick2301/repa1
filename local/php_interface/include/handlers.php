@@ -271,6 +271,10 @@ $dbList = CCatalogStore::GetList(
 		$arResult["JS_DATA"]["DELIVERY"][2]["PRICE_FORMATED"] = $formatted_delivery_price;
 		$arResult["JS_DATA"]["DELIVERY"][28]["PRICE"] = $delivery_price;
 		$arResult["JS_DATA"]["DELIVERY"][28]["PRICE_FORMATED"] = $formatted_delivery_price;		
+		$arResult["JS_DATA"]["DELIVERY"][ID_DELIVERY_DAYTODAY]["PRICE"] = $delivery_price;
+		$arResult["JS_DATA"]["DELIVERY"][ID_DELIVERY_DAYTODAY]["PRICE_FORMATED"] = $formatted_delivery_price;
+		$arResult["JS_DATA"]["DELIVERY"][ID_DELIVERY_SUNDAY]["PRICE"] = $delivery_price;
+		$arResult["JS_DATA"]["DELIVERY"][ID_DELIVERY_SUNDAY]["PRICE_FORMATED"] = $formatted_delivery_price;				
 		$arResult["JS_DATA"]["DELIVERY_PRICE"] = $delivery_price;
 		$arResult["JS_DATA"]["DELIVERY_PRICE_FORMATED"] = $formatted_delivery_price;		
 		$arResult["JS_DATA"]["TOTAL"]["DELIVERY_PRICE"] = $delivery_price;
@@ -327,7 +331,7 @@ if ($props['DELIVERY_PRICE']['VALUE']) {
 $deliveryCollection = $order->getShipmentCollection()->getNotSystemItems();
 
 foreach ($deliveryCollection as $shipment) {
-if ($shipment->getDeliveryId() == 2 || $shipment->getDeliveryId() == 28) {
+if ($shipment->getDeliveryId() == 2 || $shipment->getDeliveryId() == 28 || $shipment->getDeliveryId() == ID_DELIVERY_DAYTODAY || $shipment->getDeliveryId() == ID_DELIVERY_SUNDAY) {
 			//if ($shipment->getDeliveryId() == 11) $delivery_price+=400;
 				$shipment->setField("BASE_PRICE_DELIVERY", $delivery_price);			
 				$shipment->setField('PRICE_DELIVERY', $delivery_price);
