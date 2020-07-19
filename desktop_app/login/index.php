@@ -4,6 +4,7 @@
  * @global CMain $APPLICATION
  */
 use Bitrix\Main\Authentication\ApplicationPasswordTable as ApplicationPasswordTable;
+use Bitrix\Main\Context;
 
 if ($_SERVER["REQUEST_METHOD"] == "OPTIONS")
 {
@@ -13,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "OPTIONS")
 	die('');
 }
 
+define("BX_SKIP_USER_LIMIT_CHECK", true);
 define("ADMIN_SECTION",false);
 require($_SERVER["DOCUMENT_ROOT"]."/desktop_app/headers.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
@@ -92,6 +94,17 @@ if ($result !== true || !$USER->IsAuthorized())
 if ($USER->IsAuthorized() && !isAccessAllowed())
 {
 	sendResponse(["success" => false, "code" => "blocked_type", "reason" => 'Access denied for this type of user'], "401 Unauthorized");
+	exit;
+}
+
+if (
+	\Bitrix\Main\Loader::includeModule('bitrix24') &&
+	strpos(Context::getCurrent()->getRequest()->getUserAgent(), 'Bitrix24.Disk') !== false &&
+	\Bitrix\Bitrix24\Limits\User::isUserRestricted($USER->GetID())
+)
+{
+	header('Access-Control-Allow-Origin: *');
+	sendResponse(["success" => false, "code" => "restricted_access"], "401 Unauthorized");
 	exit;
 }
 
@@ -195,7 +208,7 @@ function sendResponse(array $answer, string $httpCode = '200 OK')
 function isAccessAllowed()
 {
 	global $USER;
-	
+
 	if ($USER->IsAdmin())
 	{
 		return true;
