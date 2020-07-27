@@ -11,7 +11,7 @@ $this->setFrameMode( true );
 	var <?=$cartId?> = new BitrixSmallCart;
 </script>
 
-<div class="header-basket" id="<?=$cartId?>">
+<div class="client-widget__cart header-basket" id="<?=$cartId?>">
 	<?
         
 	/** @var \Bitrix\Main\Page\FrameBuffered $frame */

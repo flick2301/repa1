@@ -1,1 +1,1 @@
-<img alt='Магазин крепежа «КРЕП-КОМП».' src="/include/logo_krep-komp_big.png">
+<img class="website-logo__image" srcset="/local/templates/moskrep/assets/design/website-logo/krep-komp.png, /local/templates/moskrep/assets/design/website-logo/krep-komp@2x.png 2x" src="/local/templates/moskrep/assets/design/website-logo/krep-komp.png" width="225" height="80" alt="">

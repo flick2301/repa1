@@ -1,7 +1,31 @@
 
 			
 		</div>
+		
+		<?if($APPLICATION->GetCurPage() !== "/"){?>
+		<aside class="basic-layout__sidebar">
+            <!--table-of-contents-->
+		<?$APPLICATION->IncludeComponent(
+            "bitrix:menu",
+            "left_bottom",
+            Array(
+            "ROOT_MENU_TYPE" => "left_bottom", 
+            "MAX_LEVEL" => "1", 
+            "CHILD_MENU_TYPE" => "left_bottom", 
+            "USE_EXT" => "Y",
+            "VIBOR_CATALOG_TABLE" => array(
+			
+			0 => "2411",
+                        1 => "2403",
+                        3 => "",
+                        )
+     )
+	);?>
+	<!--see-also-widget-->
+         </aside>
+		<?}?>
 	</div>
+	</main>
         <?
 if (CSite::InDir('/index.php') && SITE_ID!='s2'){
     ?>
@@ -196,7 +220,7 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
     </div>
 </div>
 <?}?>
-<footer class="footer">
+<footer class="basic-layout__footer">
     <div class="footer-wrapper inner">
 	<nav class="nav-footer">
 	    <?$APPLICATION->IncludeComponent(
@@ -268,6 +292,15 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/fancybox.min.js");?>
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/common.js");?>
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.cookie.js");?>
+
+<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/jquery-3.4.1.min.js");?>
+<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/global.scripts.min.js?v=XXXXXXa");?>
+<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/jquery.icheck-1.0.2.min.js?v=XXXXXXa");?>
+<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa");?>
+<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/jquery.slick-1.9.0.min.js?v=XXXXXXa");?>
+<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa");?>
+
+   <script>var tabs=new Tabby("[data-tabby-tabs]")</script>
 
 
 <?
