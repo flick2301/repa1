@@ -40,7 +40,7 @@ ref.parentNode.insertBefore(js, ref);}(document));
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.css", true);
     //    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/fancybox.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/styles/global.styles.min.css?v=XXXXXXa", true);
-$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/a-icons/manifest.webmanifest", true);	
+	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/a-icons/manifest.webmanifest", true);	
 
 		
 	?>
