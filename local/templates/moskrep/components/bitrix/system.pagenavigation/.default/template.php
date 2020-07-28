@@ -32,51 +32,46 @@ $strNavQueryStringFull = str_replace('bxajaxid='.$_REQUEST['bxajaxid'], '', $str
 
 
 	
-<div style='display:none;'><?=$strNavQueryString?></div>
-	<nav class="catalog-pagination">
+
+            <!--pages-nav-->
+            <div class="basic-layout__module pages-nav">
 
 	<?if ($arResult["NavPageNomer"] > 1):?>
 
 	
-	<a rel="nofollow" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=1" target="_self" class="catalog-pagination__first">В начало</a>
+	<a class="pages-nav__fast" rel="nofollow" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=1" target="_self">В начало</a>
 									
-	<ul class="catalog-pagination__items">
-                        <li class="catalog-pagination__item"><a rel="nofollow" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]-1)?>" target="_self" class="catalog-pagination__link catalog-pagination__link--prev"></a>	
+	<ul class="pages-nav__list">
+                        <li class="pages-nav__item"><a rel="nofollow" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]-1)?>" target="_self" class="pages-nav__link">&lt;</a>	
 			
 	<?else:?>
-        <a href="#" rel="nofollow" target="_self" class="catalog-pagination__first">В начало</a>
-          <ul class="catalog-pagination__items">
-	    <li class="catalog-pagination__item"><a href="#" rel="nofollow" target="_self" class="catalog-pagination__link catalog-pagination__link--prev"></a>	
+        <a href="#" rel="nofollow" target="_self" class="pages-nav__fast">В начало</a>
+          <ul class="pages-nav__list">
+	    <li class="pages-nav__item"><a href="#" rel="nofollow" target="_self" class="pages-nav__link">&lt;</a>	
 	<?endif?>
          
                 
 	<?while($arResult["nStartPage"] <= $arResult["nEndPage"]):?>
 
 		<?if ($arResult["nStartPage"] == $arResult["NavPageNomer"]):?>
-                        <li class="catalog-pagination__item" ><a href="#"  target="_self" class="catalog-pagination__link active"><?=$arResult["nStartPage"]?></a></li>
+                        <li class="pages-nav__item is-active" ><a href="#"  target="_self" class="pages-nav__link"><?=$arResult["nStartPage"]?></a></li>
 		<?elseif($arResult["nStartPage"] == 1 && $arResult["bSavePage"] == false):?>
-                        <li class="catalog-pagination__item"><a  href="<?=$arResult["sUrlPath"]?><?=$strNavQueryStringFull?>" target="_self" class="catalog-pagination__link"><?=$arResult["nStartPage"]?></a></li>
+                        <li class="pages-nav__item"><a  href="<?=$arResult["sUrlPath"]?><?=$strNavQueryStringFull?>" target="_self" class="pages-nav__link"><?=$arResult["nStartPage"]?></a></li>
 		<?else:?>
-                        <li class="catalog-pagination__item"><a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=$arResult["nStartPage"]?>" target="_self" class="catalog-pagination__link"><?=$arResult["nStartPage"]?></a></li>
+                        <li class="pages-nav__item"><a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=$arResult["nStartPage"]?>" target="_self" class="pages-nav__link"><?=$arResult["nStartPage"]?></a></li>
 		<?endif?>
 		<?$arResult["nStartPage"]++?>
 	<?endwhile?>
                 <?if($arResult["NavPageNomer"] < $arResult["NavPageCount"]):?>
-                <li class="catalog-pagination__item"><a rel="nofollow" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]+1)?>" target="_self" class="catalog-pagination__link catalog-pagination__link--next"></a></li>
+                <li class="pages-nav__item"><a rel="nofollow" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]+1)?>" target="_self" class="pages-nav__link">&gt;</a></li>
                 </ul>
-                <a rel="nofollow" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=$arResult["NavPageCount"]?>" target="_self" class="catalog-pagination__last">В конец</a>
+                <a rel="nofollow" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=$arResult["NavPageCount"]?>" target="_self" class="pages-nav__fast">В конец</a>
                 <?else:?>
-		<li class="catalog-pagination__item"><a rel="nofollow" href="#" class="catalog-pagination__link catalog-pagination__link--next"></a></li>
+		<li class="pages-nav__item"><a rel="nofollow" href="#" class="pages-nav__link">&gt;</a></li>
 	        </ul>
-        <a rel="nofollow" href="#" target="_self" class="catalog-pagination__last">В конец</a>
+        <a rel="nofollow" href="#" target="_self" class="pages-nav__fast">В конец</a>
                 <?endif?>
-                
-
-	
-
-
-
-
-
-</nav>
+				
+            </div>
+            <!--pages-nav-->
 
