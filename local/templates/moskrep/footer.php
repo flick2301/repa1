@@ -24,8 +24,7 @@
 	<!--see-also-widget-->
          </aside>
 		<?}?>
-	</div>
-	</main>
+	
         <?
 if (CSite::InDir('/index.php') && SITE_ID!='s2'){
     ?>
@@ -220,52 +219,57 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
     </div>
 </div>
 <?}?>
+	</div>
+</main>
 <footer class="basic-layout__footer">
-    <div class="footer-wrapper inner">
-	<nav class="nav-footer">
-	    <?$APPLICATION->IncludeComponent(
-        "bitrix:menu",
-        "bottom_menu",
-        Array(
-         "ROOT_MENU_TYPE" => "bottom", 
-         "MAX_LEVEL" => "3", 
-         "CHILD_MENU_TYPE" => "bottom", 
-         "USE_EXT" => "Y" 
-     )
-);?>
-	</nav>
-	<div class="contacts-footer">
-	    <?if(SITE_ID=='s1'):?>
-	    <p class="contacts-footer__slogan">Интернет-магазин крепежа, метизов и инструмента «КРЕП-КОМП»</p>
-	    <?elseif(SITE_ID=='s2'):?>
-	    <p class="contacts-footer__slogan">Интернет-магазин крепежа, метизов и инструмента «МОСКРЕП»</p>
-	    <?endif;?>
-            <div class="contacts-footer__phone">Телефон: 
+    <div class="basic-layout__section">
+	<!--website-about-->
+         <div class="website-about">
+            <div class="website-about__nav">
+				<nav class="fast-nav">
+				<?$APPLICATION->IncludeComponent(
+				"bitrix:menu",
+				"bottom_menu",
+				Array(
+				"ROOT_MENU_TYPE" => "bottom", 
+				"MAX_LEVEL" => "3", 
+				"CHILD_MENU_TYPE" => "bottom", 
+				"USE_EXT" => "Y" 
+				)
+				);?>
+				</nav>
+			</div>
+			<div class="website-about__info">
+				<!--project-contact-->
+				<div class="website-about__contact project-contact">
+					<?if(SITE_ID=='s1'):?>
+						<p class="project-contact__desc">Интернет-магазин крепежа, метизов и инструмента «КРЕП-КОМП»</p>
+					<?elseif(SITE_ID=='s2'):?>
+						<p class="project-contact__desc">Интернет-магазин крепежа, метизов и инструмента «МОСКРЕП»</p>
+					<?endif;?>
+					<p class="project-contact__data">Телефон: 
                     <?if($_SERVER['HTTP_HOST']!='spb.krep-komp.ru'){?>
-                    <span class="roistat-phone"><?
-                    $APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/telephone.php"), false);
-                    ?></span><?
+                    <a class="project-contact__link roistat-phone"  href="tel:8 499 350-55-55">
+                    8 499 350-55-55
+                    </a><?
                     }else{?>
-                    <span class="roistat-phone-spb"><?
-                    $APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/tel_spb.php"), false);?>
-                    </span>
+                    <a class="project-contact__link roistat-phone-spb" href="tel:8 812 309-95-45">8 812 309-95-45 
+                    </a>
                     <?}?>
-                </div>
-	    <div class="contacts-footer__mail">e-mail: <a class='footer_email' href="mailto:<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/email.php"), false);?>"><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/email.php"), false);?></a></div>
-	</div>
-	<div class="copyright-footer">
-	    <?if(SITE_ID=='s1'):?>
-	    <p>Информация на сайте krep-komp.ru не является публичной офертой. Указанные цены действуют только при оформлении заказа через интернет-магазин krep-komp.ru.</p>
-<!-- <p>Обнаружив ошибку или неточность в тексте или описании товара, выделите ее и нажмите Shift+Enter.</p> -->
-	    <p>© 2005 — 2020<br> Интернет-магазин «КРЕП-КОМП» <?=$_SERVER['HTTP_HOST']!='spb.krep-komp.ru' ? 'Москва' : 'Санкт-Петербург';?></p>
-	    <?elseif(SITE_ID=='s2'):?>
-	    <p>Информация на сайте moskrep.ru не является публичной офертой. Указанные цены действуют только при оформлении заказа через интернет-магазин moskrep.ru.</p>
-<!-- <p>Обнаружив ошибку или неточность в тексте или описании товара, выделите ее и нажмите Shift+Enter.</p> -->
-	    <p>© 2005 — 2020<br> Интернет-магазин «МОСКРЕП» Москва</p>
-	    <?endif;?>
-	</div>
+					</p>
+				</div>
+               <!--project-contact-->
+               <!--project-copy-->
+				<div class="website-about__copy project-copy">
+					<p class="project-copy__text">Информация на сайте krep-komp.ru не является публичной офертой. Указанные цены действуют только при оформлении заказа через интернет-магазин krep-komp.ru</p>
+					<p class="project-copy__text">© 2005 – 2020 Интернет-магазин «КРЕП-КОМП» <?=$_SERVER['HTTP_HOST']!='spb.krep-komp.ru' ? 'Москва' : 'Санкт-Петербург';?></p>
+				</div>
+               <!--project-copy-->
+			</div>
+        </div>
+        <!--website-about-->
     </div>
-</footer>
+ </footer>
 
 <div style="display: none;">
 	<?$APPLICATION->IncludeComponent(
@@ -286,12 +290,12 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 
 
 
-<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.min.js");?>
-<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/slick.min.js");?>
-<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.popup.js");?>
-<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/fancybox.min.js");?>
-<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/common.js");?>
-<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.cookie.js");?>
+<?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.min.js");?>
+<?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/slick.min.js");?>
+<?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.popup.js");?>
+<?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/fancybox.min.js");?>
+<?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/common.js");?>
+<?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.cookie.js");?>
 
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/jquery-3.4.1.min.js");?>
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/global.scripts.min.js?v=XXXXXXa");?>
@@ -319,28 +323,12 @@ $APPLICATION->SetPageProperty('description', '«КРЕП-КОМП» - ведущ
         }
     }
 ?>
-<?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/roistat.php";?>
-<?
-$rel_can = $APPLICATION->GetPageProperty('url_canon_relink');
-if($rel_can=='Y')
-	$APPLICATION->AddViewContent('page_url', str_replace("-", '_', str_replace('index.php', '', $APPLICATION->GetCurPage(true))));
-else
-	$APPLICATION->AddViewContent('page_url', str_replace('index.php', '', $APPLICATION->GetCurPage(true)));
-?>
-
-<!-- BEGIN JIVOSITE INTEGRATION WITH ROISTAT -->
-<script type='text/javascript'>
-var getCookie = window.getCookie = function (name) {
-    var matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
-return matches ? decodeURIComponent(matches[1]) : undefined;
-};
-function jivo_onLoadCallback() {
-    jivo_api.setUserToken(getCookie('roistat_visit'));
-    }
-</script>
-<!-- END JIVOSITE INTEGRATION WITH ROISTAT --> 
-
-<?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/jivosite.php";?>
+	<script src="/local/templates/moskrep/assets/scripts/jquery-3.4.1.min.js"></script>
+   <script src="/local/templates/moskrep/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="/local/templates/moskrep/assets/scripts/jquery.icheck-1.0.2.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="/local/templates/moskrep/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="/local/templates/moskrep/assets/scripts/jquery.slick-1.9.0.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="/local/templates/moskrep/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa" defer="defer"></script>
 </body>
 </html>
  
