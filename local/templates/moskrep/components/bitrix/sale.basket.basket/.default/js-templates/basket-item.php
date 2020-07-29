@@ -43,43 +43,76 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 ?>
 <script>console.log({{ID}});</script>
 <script id="basket-item-template" type="text/html">
-    
-	<tr class="blue-table__tr" id="basket-item-{{ID}}" data-entity="basket-item" data-id="{{ID}}">
-		{{^SHOW_RESTORE}}
-            <td class="blue-table__td">
-		<div class="basket-infomedia">
+
+
+
+
+                  <div class="catalog-feed__table" id="basket-item-{{ID}}" data-entity="basket-item" data-id="{{ID}}">
+{{^SHOW_RESTORE}}
+
                     {{#SHOW_LOADING}}
 			<div class="basket-items-list-item-overlay"></div>
 		    {{/SHOW_LOADING}}
-		    <div class="infomedia__img"><a href="{{DETAIL_PAGE_URL}}"><img src="{{{IMAGE_URL}}}{{^IMAGE_URL}}<?=$templateFolder?>/images/no_photo.png{{/IMAGE_URL}}" alt=""></a></div>
-		    <div class="infomedia__text">
-			<a href="{{DETAIL_PAGE_URL}}" class="infomedia__link">{{NAME}}</a>
-			<span class="infomedia__articul">Артикул: {{ARTICLE}}</span>
-		    </div>
-		</div>
-	    </td>
-	    <td class="blue-table__td"><div class="t-basket-price">{{{PRICE_NUMBER_FORMAT}}}</div></td>
-            <td class="blue-table__td"><div class="t-basket-kg">{{WEIGHT}}</div></td>
-            <td class="blue-table__td">
-		<div class="value t-basket-value" data-entity="basket-item-quantity-block">
-		    <a href='javascript:void(0);' class="value__minus_basket" data-entity="basket-item-quantity-minus">—</a>
-		    <input type="text" class="value__input" value="{{QUANTITY}}"
-							{{#NOT_AVAILABLE}} disabled="disabled"{{/NOT_AVAILABLE}}
+			
+                     <!--cart-table-->
+                     <section class="cart-table">
+                        <div class="cart-table__column cart-table__column--global">
+                           <div class="cart-table__title">Наименование<small>:</small></div>
+                           <div class="cart-table__content">
+                              <!--product-in-table-->
+                              <div class="product-in-table">
+                                 <div class="product-in-table__about">
+                                    <h3 class="product-in-table__title"><a class="product-in-table__link" href="{{DETAIL_PAGE_URL}}">{{NAME}}</a></h3>
+                                    <p class="product-in-table__number">Артикул: {{ARTICLE}}</p>
+                                 </div>
+                                 <div class="product-in-table__cover">
+                                    <img class="product-in-table__image" src="{{{IMAGE_URL}}}{{^IMAGE_URL}}<?=$templateFolder?>/images/no_photo.png{{/IMAGE_URL}}" width="107" height="80" alt="{{NAME}}">
+                                 </div>
+                              </div>
+                              <!--product-in-table-->
+                           </div>
+                        </div>
+                        <div class="cart-table__column cart-table__column--basic">
+                           <div class="cart-table__title">Цена<small>:</small></div>
+                           <div class="cart-table__content">
+                              <p class="cart-table__price">{{{PRICE_NUMBER_FORMAT}}} ₽</p>
+                           </div>
+                        </div>
+                        <div class="cart-table__column cart-table__column--basic">
+                           <div class="cart-table__title">Вес / Объём<small>:</small></div>
+                           <div class="cart-table__content">
+                              <p class="cart-table__desc">{{WEIGHT}}</p>
+                           </div>
+                        </div>
+                        <div class="cart-table__column cart-table__column--value">
+                           <div class="cart-table__title">Количество<small>:</small></div>
+                           <div class="cart-table__content">
+                              <!--change-value-->
+                              <div class="change-value" data-entity="basket-item-quantity-block">
+                                 <button class="change-value__button change-value__button--minus" data-entity="basket-item-quantity-minus">−</button>
+                                 <input class="change-value__input" type="text" name="change-value__input" value="{{QUANTITY}}" {{#NOT_AVAILABLE}} disabled="disabled"{{/NOT_AVAILABLE}}
 							data-value="{{QUANTITY}}" data-entity="basket-item-quantity-field"
 							id="basket-item-quantity-{{ID}}">
-		    <a href='javascript:void(0);' class="value__plus_basket" data-entity="basket-item-quantity-plus">+</a>
-		</div>
-	    </td>
-            
-            <td class="blue-table__td"><div class="t-basket-price">{{SUM_PRICE}}</div></td>
-        
-            <td class="blue-table__td"><span class="t-basket-delete" data-entity="basket-item-delete"></span></td>
-		
-		
-			
-			
-			
-		
-		{{/SHOW_RESTORE}}
-	</tr>
+                                 <button class="change-value__button change-value__button--plus" data-entity="basket-item-quantity-plus">+</button>
+                              </div>
+                              <!--change-value-->
+                           </div>
+                        </div>
+                        <div class="cart-table__column cart-table__column--total">
+                           <div class="cart-table__title">Сумма<small>:</small></div>
+                           <div class="cart-table__content">
+                              <p class="cart-table__total">{{SUM_PRICE}} ₽</p>
+                           </div>
+                        </div>
+                        <div class="cart-table__column cart-table__column--delete">
+                           <div class="cart-table__title">Удалить</div>
+                           <div class="cart-table__content">
+                              <button class="catalog-table__delete" data-entity="basket-item-delete"><i class="colored-close-icon catalog-table__delete"></i></button>
+                           </div>
+                        </div>
+                     </section>
+                     <!--cart-table-->
+					 {{/SHOW_RESTORE}}
+                  </div>
+				  
 </script>
