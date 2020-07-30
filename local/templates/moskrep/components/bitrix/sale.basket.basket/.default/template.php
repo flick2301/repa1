@@ -35,35 +35,13 @@ $displayModeClass = $arParams['DISPLAY_MODE'] === 'compact' ? ' basket-items-lis
 
 if (empty($arResult['ERROR_MESSAGE']))
 {
-	
-    
-
-	if ($arResult['BASKET_ITEM_MAX_COUNT_EXCEEDED'])
-	{
-		?>
-		<div id="basket-item-message">
-			<?=Loc::getMessage('SBB_BASKET_ITEM_MAX_COUNT_EXCEEDED', array('#PATH#' => $arParams['PATH_TO_BASKET']))?>
-		</div>
-		<?
-	}
 	?>
 	
 
-		
- <main class="basic-layout__common" id="basket-root">
 		<div class="basic-layout__columns basic-layout__columns--reverse basic-layout__columns--special">
-			<div class="basic-layout__content">
             <!--crumbs-nav-->
 			<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());?> 
 			<!--crumbs-nav-->
-			</div>
-			<div class="basic-layout__sidebar basic-layout__sidebar--special">
-            <!--back-to-page-->
-            <div class="back-to-page">
-               <a class="back-to-page__link" href="/"><i class="simple-back-icon back-to-page__icon"></i>Главная страница</a>
-            </div>
-            <!--back-to-page-->
-         </div>   
 		</div>
 		
       <div class="basic-layout__section">
@@ -80,6 +58,16 @@ if (empty($arResult['ERROR_MESSAGE']))
 		
       <div class="basic-layout__columns">
          <div class="basic-layout__content">	
+		 
+		 
+	<?if ($arResult['BASKET_ITEM_MAX_COUNT_EXCEEDED'])
+	{
+		?>
+		<div id="basket-item-message">
+			<?=Loc::getMessage('SBB_BASKET_ITEM_MAX_COUNT_EXCEEDED', array('#PATH#' => $arParams['PATH_TO_BASKET']))?>
+		</div>
+		<?
+	}?>		 
 
 		 
             <!--catalog-feed-->

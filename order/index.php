@@ -1,7 +1,9 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Title");
-?><?$APPLICATION->IncludeComponent(
+?>
+<div class="basic-layout__columns">
+<?$APPLICATION->IncludeComponent(
 	"bitrix:sale.order.ajax", 
 	"krep-komp", 
 	array(
@@ -131,4 +133,6 @@ $APPLICATION->SetTitle("Title");
 		"MESS_ORDER_DESC" => "Комментарии к заказу:"
 	),
 	false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?>
+<div>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

@@ -13,8 +13,13 @@
 $this->setFrameMode(true);
 ?>
 
-
-
+            <!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
+            </header>
+            <!--page-heading-->
+			
+			
 
             <!--simple-article-->
             <div class="basic-layout__module simple-article">

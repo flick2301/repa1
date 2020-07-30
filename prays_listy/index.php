@@ -3,6 +3,12 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Скачать Прайс-лист");
 ?>
 
+            <!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
+            </header>
+            <!--page-heading-->
+
 <?// подключаем пространство имен класса HighloadBlockTable и даём ему псевдоним HLBT для удобной работы
 use Bitrix\Highloadblock\HighloadBlockTable as HLBT;
 // id highload-инфоблока

@@ -5,7 +5,8 @@
 		
 			<?$page_footer_menu = Array(
 				"/", 
-				"/basket/"
+				"/basket/",
+				"/order/",
 			);
 			?>
 			
