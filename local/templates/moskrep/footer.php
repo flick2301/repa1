@@ -1,6 +1,4 @@
-<?if($APPLICATION->GetCurPage() !== "/basket/" && $APPLICATION->GetCurPage() !== "/order/" && ERROR_404 != 'Y'):?>    
-    </main>
-<?endif?>
+
 			
 		</div>
 		
