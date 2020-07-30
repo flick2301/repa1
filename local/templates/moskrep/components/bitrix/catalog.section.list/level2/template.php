@@ -19,17 +19,18 @@ global $APPLICATION;
 
 <?if(count($arResult['RELINK'])):?>
     <?php $this->SetViewTarget('RELINK'); ?>
-    <nav class="nav-aside">
-        <strong class="nav-aside__title">Смотрите также:</strong>
-        <ul class="nav-aside__items">
-
-            <?foreach($arResult['RELINK'] as $relink):?>
-
-                <li class="nav-aside__item"><a href="<?=$relink['AKCEPTOR']?>" title="" class="nav-aside__link"><?=$relink['ANKOR']?></a></li>
-
-            <?endforeach;?>
-        </ul>
-    </nav>
+	<!--see-also-widget-->
+	<div class="basic-layout__module see-also-widget">
+               <h4 class="see-also-widget__title">Смотрите также:</h4>
+               <ul class="see-also-widget__list">
+				<?foreach($arResult['RELINK'] as $relink):?>
+                  <li class="see-also-widget__item">
+                     <a class="see-also-widget__link" href="<?=$relink['AKCEPTOR']?>"><?=$relink['ANKOR']?></a>
+                  </li>
+				<?endforeach;?>
+				</ul>
+    </div>
+	<!--see-also-widget-->
     <?php $this->EndViewTarget(); ?>
 <?endif;?>
 
@@ -41,41 +42,54 @@ global $APPLICATION;
 		
 		?>
       
-    <h1 class="s38-title"><?=($arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE']) ? $arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE'] : $arResult['REFERENCE']['ITEM']['H1']['VALUE'];?></h1>
     
-    <nav class="nav-sale">
-    <ul class="nav-sale__items">
+    <!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?=($arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE']) ? $arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE'] : $arResult['REFERENCE']['ITEM']['H1']['VALUE'];?></h1>
+			</header>
+	<!--page-heading-->
+    <!--catalog-feed-->
+    <div class="basic-layout__module catalog-feed">
+        <div class="catalog-feed__list">
 <?
     foreach ($arResult['DOP_SECTIONS'] as &$arSection)
     {
 ?>
-        <li class="nav-sale__item">
-            <a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="nav-sale__link">
-                <div class="nav-sale__img">
-                    <img src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
+        <div class="catalog-feed__item">
+			<!--catalog-card-->
+			<section class="catalog-card">
+				<h3 class="catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></h3>
+                <div class="catalog-card__cover">
+                    <img class="catalog-card__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>
-                <span class="nav-sale__title"><span><?=$arSection['NAME']?></span></span>
-            </a>
-        </li>
+            </section>
+		</div>
     <?}?>		
-    </ul>
-</nav>
+		</div>
+	</div>
+	<!--catalog-feed-->
 
     <?if($arResult['TOP_SECTIONS']):?>
-        <nav class="nav-sale">
-            <ul class="nav-sale__items">
+        <!--catalog-feed-->
+		<div class="basic-layout__module catalog-feed">
+			<div class="catalog-feed__list">
                 <?foreach ($arResult['TOP_SECTIONS'] as &$arSection):?>
-                    <llist-number__titlei class="nav-sale__item">
-                        <a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="nav-sale__link">
-                            <div class="nav-sale__img">
-                                <img src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
+                    <div class="catalog-feed__item">
+					<!--catalog-card-->
+					<section class="catalog-card">
+					<h3 class="catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></h3>
+                            <div class="catalog-card__cover">
+                                <img class="catalog-card__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                             </div>
-                            <span class="nav-sale__title"><span><?=$arSection['NAME']?></span></span>
-                        </a>
-                    </llist-number__titlei>
+            
+					</section>
+					<!--catalog-card-->
+					</div>
+   
                 <?endforeach;?>
-            </ul>
-        </nav>
+            </div>
+		</div>
+		<!--catalog-feed-->
 		<?if($_POST['ENUM_LIST']['ELEMENTS'])
 			require_once __DIR__."/include_parts/section_table.php";?>
     <?endif;?>
@@ -86,9 +100,13 @@ global $APPLICATION;
         </a>
     </div>
     <?}?>
-    <div class='set-default-parametr-page-cat'>
+<!--simple-article-->
+        <div class="basic-layout__module simple-article">
+            <div class="simple-article__content wysiwyg-block">
 <?=$arResult['REFERENCE']['ITEM']['DETAIL_TEXT']?>
-    </div>
+			</div>	
+		</div>
+<!--simple-article-->
     <?
 
     if($arResult['REFERENCE']['ITEM']['DIRECTORY']){
@@ -247,79 +265,103 @@ global $APPLICATION;
         <?}?>
 		
 		
-		<div class='set-default-parametr-page-cat'>
+<!--simple-article-->
+        <div class="basic-layout__module simple-article">
+            <div class="simple-article__content wysiwyg-block">
 <?=$arResult['REFERENCE']['ITEM']['PREVIEW_TEXT']?>
-	</div>
+			</div>	
+		</div>
+<!--simple-article-->
 
 				<?}
     ?>
     
 <?else:?>
 <?if($IPROPERTY['SECTION_META_TITLE']==''){$APPLICATION->SetPageProperty('title', $arResult["SECTION"]["NAME"]);}?>
-<h1 class="s38-title"><?=($arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE']) ? $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] :$arResult["SECTION"]["NAME"];?></h1>
-<nav class="nav-sale">
-    <ul class="nav-sale__items">
+<!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?=($arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE']) ? $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] :$arResult["SECTION"]["NAME"];?></h1>
+            </header>
+ <!--page-heading-->
+<!--catalog-feed-->
+    <div class="basic-layout__module catalog-feed">
+        <div class="catalog-feed__list">
 <?
     foreach ($arResult['SECTIONS'] as &$arSection)
     {
-        
-?>
-        <li class="nav-sale__item">
-            <a href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="nav-sale__link">
-                <div class="nav-sale__img">
-                    <img src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
+    ?>
+		<div class="catalog-feed__item">
+		<!--catalog-card-->
+        <section class="catalog-card">
+            <h3 class="catalog-card__title"><a href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></h3>
+                <div class="catalog-card__cover">
+                    <img class="catalog-card__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>
-                <span class="nav-sale__title"><span><?=$arSection['NAME']?></span></span>
-            </a>
-        </li>
+            
+        </section>
+		<!--catalog-card-->
+		</div>
     <?}?>
     <?php
     if(count($arResult['SORTING']['ROOT_ELEMENTS'])){
         foreach($arResult['SORTING']['ROOT_ELEMENTS'] as $dop_section){
             ?>
-        <li class="nav-sale__item">
-            <a href="<?=($dop_section['LINK_TARGET']['VALUE']) ? $dop_section['LINK_TARGET']['VALUE'] : $dop_section['CODE'].'/';?>" target="_self" title='<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="nav-sale__link">
-                <div class="nav-sale__img">
-                    <img src="<?=$dop_section['PICTURE']['src']?>" alt="<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
+        <div class="catalog-feed__item">
+		<!--catalog-card-->
+        <section class="catalog-card">
+            <h3 class="catalog-card__title"><a href="<?=($dop_section['LINK_TARGET']['VALUE']) ? $dop_section['LINK_TARGET']['VALUE'] : $dop_section['CODE'].'/';?>" target="_self" title='<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$dop_section['H1']["VALUE"]?></a></h3>
+                <div class="catalog-card__cover">
+                    <img class="catalog-card__image" width="262" height="197" src="<?=$dop_section['PICTURE']['src']?>" alt="<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>
-                <span class="nav-sale__title"><span><?=$dop_section['H1']["VALUE"]?></span></span>
-            </a>
-        </li>
+            
+        </section>
+		<!--catalog-card-->
+		</div>
     <?php
             
         }
         
     }
     ?>
-    </ul>
-</nav>
+		</div>
+    </div>
+    <!--catalog-feed-->
 
 
 <?
 if($arResult['SORTING']['SECTION_ID']){
+	?>
+	<!--category-block-->
+            <div class="basic-layout__module category-block">
+	<?
     foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
         
         ?>
-        <h2 class="s28-title"><?=$sortSection["NAME"]?></h2>
-        <ul class="list-number">
+        <h3 class="category-block__title"><?=$sortSection["NAME"]?></h3>
+        <ul class="category-block__list">
         <?$i=0;?>
         <?foreach($sortSection['ITEMS'] as $sort_item):?>
             <?$i++;?>
-            <li class="list-number__item">
-                <a href="<?=($sort_item['LINK_TARGET']['VALUE']) ? $sort_item['LINK_TARGET']['VALUE'] : $sort_item['CODE'].'/';?>" <?=($sort_item['LINK_TARGET']['VALUE']) ? "target='_self'" : "";?> class="list-number__link">
-                    <span class="adress__number"><?=$i?></span>
-                    <span class="list-number__title"><?=$sort_item['NAME']?></span>
+            <li class="category-block__item">
+                <a href="<?=($sort_item['LINK_TARGET']['VALUE']) ? $sort_item['LINK_TARGET']['VALUE'] : $sort_item['CODE'].'/';?>" <?=($sort_item['LINK_TARGET']['VALUE']) ? "target='_self'" : "";?> class="category-block__link">
+                    <?=$sort_item['NAME']?>
                 </a>
             </li>
 	<?endforeach;?>
         </ul>
         <?
     }
+	?></div>
+	<!--category-block--><?
 }
 ?>
 <?if($_POST['ENUM_LIST']['ELEMENTS'])
 	require_once __DIR__."/include_parts/section_table.php";?>
-<div class='set-default-parametr-page-cat'>
-<?=$arResult['SECTION']['DESCRIPTION']?>
-</div>
+<!--simple-article-->
+        <div class="basic-layout__module simple-article">
+            <div class="simple-article__content wysiwyg-block">
+				<?=$arResult['SECTION']['DESCRIPTION']?>
+			</div>	
+		</div>
+<!--simple-article-->
 <?endif?>

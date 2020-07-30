@@ -116,7 +116,7 @@ ref.parentNode.insertBefore(js, ref);}(document));
                 
                 ?>
                     <?if(SITE_ID!='s2'):?>
-                <div id='geoloc-widget'>
+                <div class='geoloc-widget' id='geoloc-widget'>
                 <? require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>
                 </div>
                     <?endif;?>
@@ -352,29 +352,11 @@ ref.parentNode.insertBefore(js, ref);}(document));
            
                 
             <?=$APPLICATION->ShowViewContent("related_menu_element");?>
-            <?=$APPLICATION->ShowViewContent('RELINK');?>
-            <?=$APPLICATION->ShowViewContent("smart_filter");?>
             <?if($APPLICATION->GetCurPage() == "/catalog/"):
                 $APPLICATION->SetPageProperty("title", "Интернет-магазин \"КРЕП-КОМП\"");
             endif;?>
 			
-			<?$page_notitle = Array(
-				"/", 
-				"/about/"
-			);
-			?>
 			
-			<?if (!in_array($APPLICATION->GetCurPage(), $page_notitle))
-			{
-			?>
-			<!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
-            </header>
-            <!--page-heading-->
-			<?
-			}
-			?>
 			
             <?if(0):?>            
             <div class="aside-contacts">

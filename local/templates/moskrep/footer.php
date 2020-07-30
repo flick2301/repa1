@@ -21,7 +21,9 @@
                         )
      )
 	);?>
-	<!--see-also-widget-->
+	
+	<?=$APPLICATION->ShowViewContent('RELINK');?>
+	<?=$APPLICATION->ShowViewContent("smart_filter");?>
          </aside>
 		<?}?>
 	

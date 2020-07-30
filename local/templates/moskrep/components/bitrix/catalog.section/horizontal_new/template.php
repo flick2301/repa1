@@ -18,57 +18,47 @@ if($arParams['FOR_SEO']!='Y'){
 	
     ?>
 <?if(!$_POST['ENUM_LIST']['ELEMENTS']){?>
-<h1 class="s38-title"><?=($arResult['META_TITLE']) ? $arResult['META_TITLE'] :$arResult['NAME'];?></h1>
+<!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?=($arResult['META_TITLE']) ? $arResult['META_TITLE'] :$arResult['NAME'];?></h1>
+            </header>
+<!--page-heading-->
 <?if($arResult['DESCRIPTION']):?>
-<div class="catalog-view">
-    <div class="catalog-view__photo">
-        <a href="<?=$arResult['PICTURE']['SRC']?>"  onclick="javascript:void();" rel="catalog-photo" class="catalog-photo-view__link">
-            <img src="<?=$arResult['PICTURE_RESIZE']['src']?>" alt="<?=$arResult['NAME']?>">
-        </a>
-    </div>
-    <div class="catalog-view__text">
-        <?
-        //ТОЛЬКО ПЕРВЫЙ ПАРАГРАФ $paragraph_first(ПОКА НЕ НУЖНО
-        if(strpos(html_entity_decode($arResult['DESCRIPTION'], ENT_QUOTES, "UTF-8"), '</p>')):
-        $paragraph=explode('<p>', html_entity_decode($arResult['DESCRIPTION'], ENT_QUOTES, "UTF-8"));
-        $paragraph_first=explode('</p>', $paragraph[1]);
-        $paragraph_first=$paragraph_first[0];
-        else:
-            
-          $paragraph_first =html_entity_decode($arResult['DESCRIPTION'], ENT_QUOTES, "UTF-8"); 
-        endif;
-?>		<div class='catalog-view__head'>
-        <?=$arResult['DESCRIPTION']?>
-		</div>
-		
-		<a href="javascript:void(0);" class="catalog-head__more">Подробнее</a>
-    </div>
+	<div class="basic-layout__module catalog-desc">
+        <div class="catalog-desc__cover">
+            <img class="catalog-desc__image" src="<?=$arResult['PICTURE']['SRC']?>" width="226" height="170" alt="">
+        </div>
+		<p class="catalog-desc__about">
+        <?=strip_tags($arResult['DESCRIPTION']);?>
+		</p>
 	
     <?if($arResult['GENERAL_PROPERTIES']){?>
-    <nav class="info-nav-list">
-	<ul class="info-nav-list__items">
+    <!--product-data-->
+        <div class="catalog-desc__data product-data">
+            <ul class="product-data__list">
             <?foreach($arResult['GENERAL_PROPERTIES'] as $key=>$value){
             ?>
-		<li class="info-nav-list__item"><strong><?=$key?></strong><span><?=$value?></span></li>
+				<li class="product-data__item"><p class="product-data__name"><?=$key?></p><p class="product-data__text"><?=$value?></p></li>
 		
             <?}?>
+			</ul>
+		
         <?if($arResult['CERT_URL']):?>
-            <nav class="info-nav cert">
-                <span class="info-nav__title">Информация:</span>
+            <div class="product-data__more">
+                <p class="product-data__title">Информация:</p>
                 <ul class="info-nav__items">
                     <?if($arResult['CERT_URL']):?>
-                        <li class="info-nav__item"><a href="<?=$arResult['CERT_URL'];?>" title='Сертификаты на <?=$arResult['CERT_NAME'];?>' class="info-nav__link">Сертификаты на <?=$arResult['CERT_NAME'];?></a></li>
+                        <a class="product-data__link" href="<?=$arResult['CERT_URL'];?>" title='Сертификаты на <?=$arResult['CERT_NAME'];?>'>Сертификаты на <?=$arResult['CERT_NAME'];?></a>
                     <?endif;?>
 
                 </ul>
-            </nav>
+            </div>
         <?endif;?>
-	</ul>
-    </nav>
+		</div>
+	<!--product-data-->
     <?}?>
-
-    
 </div>
+<!--catalog-desc-->
 <?endif;?>
 
 
