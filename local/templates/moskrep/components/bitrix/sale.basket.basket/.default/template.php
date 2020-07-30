@@ -22,6 +22,8 @@ $this->addExternalJs($templateFolder.'/js/action-pool.js');
 $this->addExternalJs($templateFolder.'/js/filter.js');
 $this->addExternalJs($templateFolder.'/js/component.js');
 
+$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/hc-sticky-2.2.3.min.js?v=XXXXXXa");
+
 $jsTemplates = new Main\IO\Directory($documentRoot.$templateFolder.'/js-templates');
 /** @var Main\IO\File $jsTemplate */
 foreach ($jsTemplates->getChildren() as $jsTemplate)
@@ -35,7 +37,7 @@ if (empty($arResult['ERROR_MESSAGE']))
 {
 	
     
-/*
+
 	if ($arResult['BASKET_ITEM_MAX_COUNT_EXCEEDED'])
 	{
 		?>
@@ -46,26 +48,34 @@ if (empty($arResult['ERROR_MESSAGE']))
 	}
 	?>
 	
-		<?
-		if (
-			$arParams['BASKET_WITH_ORDER_INTEGRATION'] !== 'Y'
-			&& in_array('top', $arParams['TOTAL_BLOCK_DISPLAY'])
-		)
-		{
-			?>
-                    <aside class="two-column__left">
-					
-			<div class="row">
-			
-				<div class="col-xs-12" data-entity="basket-total-block"></div>
-				
-			</div>
-                    </aside>
-			<?
-		}*/
-		?>
 
 		
+ <main class="basic-layout__common" id="basket-root">
+		<div class="basic-layout__columns basic-layout__columns--reverse basic-layout__columns--special">
+			<div class="basic-layout__content">
+            <!--crumbs-nav-->
+			<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());?> 
+			<!--crumbs-nav-->
+			</div>
+			<div class="basic-layout__sidebar basic-layout__sidebar--special">
+            <!--back-to-page-->
+            <div class="back-to-page">
+               <a class="back-to-page__link" href="/"><i class="simple-back-icon back-to-page__icon"></i>Главная страница</a>
+            </div>
+            <!--back-to-page-->
+         </div>   
+		</div>
+		
+      <div class="basic-layout__section">
+         <!--page-heading-->
+			<!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
+            </header>
+            <!--page-heading-->
+         <!--page-heading-->
+      </div>
+	  	
 
 		
       <div class="basic-layout__columns">
@@ -74,20 +84,9 @@ if (empty($arResult['ERROR_MESSAGE']))
 		 
             <!--catalog-feed-->
             <div class="basic-layout__module catalog-feed">
-               <div class="catalog-feed__list">					
-                        <table class="blue-table basket" >
-                            <thead class="blue-table__thead">
-                                <tr class="blue-table__tr">
-                                    <th class="blue-table__th">Наименование товара</th>
-                                    <th class="blue-table__th">Цена, руб.</th>
-                                    <th class="blue-table__th">Вес / Объём</th>
-                                    <th class="blue-table__th">Количество</th>
-                                    <th class="blue-table__th">Сумма, руб.</th>
-                                    <th class="blue-table__th">Удалить</th>
-                                </tr>
-                            </thead>
-                            <tbody class="blue-table__tbody" id="basket-item-table"></tbody>
-                        </table>
+               <div class="catalog-feed__list" id="basket-item-table">					
+			   
+
                </div>
             </div>
             <!--catalog-feed-->						
@@ -131,9 +130,9 @@ if (empty($arResult['ERROR_MESSAGE']))
 		
 		
 		
-		         <aside class="basic-layout__sidebar" id="in-cart-total-trigger">
+		         <?/*<aside class="basic-layout__sidebar" id="in-cart-total-trigger">
             <!--in-cart-total-->
-            <div class="in-cart-total" id="in-cart-total">
+            <div class="in-cart-total" id="in-cart-total" data-entity="basket-total-block">
                <ul class="in-cart-total__list">
                   <li class="in-cart-total__item">
                      <p class="in-cart-total__name">Общий вес</p>
@@ -149,7 +148,25 @@ if (empty($arResult['ERROR_MESSAGE']))
                </div>
             </div>
             <!--in-cart-total-->
+         </aside>*/?>
+		 
+		 
+		<?
+		if (
+			$arParams['BASKET_WITH_ORDER_INTEGRATION'] !== 'Y'
+			&& in_array('top', $arParams['TOTAL_BLOCK_DISPLAY'])
+		)
+		{
+			?>
+ <aside class="basic-layout__sidebar" id="in-cart-total-trigger">
+            <!--in-cart-total-->
+            <div class="in-cart-total" id="in-cart-total" data-entity="basket-total-block">
+            </div>
+            <!--in-cart-total-->
          </aside>
+			<?
+		}
+		?>		 
 		 
 			
 		<!--/div-->	

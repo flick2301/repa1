@@ -2,7 +2,14 @@
 			
 		</div>
 		
-		<?if($APPLICATION->GetCurPage() !== "/"){?>
+		
+			<?$page_footer_menu = Array(
+				"/", 
+				"/basket/"
+			);
+			?>
+			
+<?if (!in_array($APPLICATION->GetCurPage(), $page_footer_menu)):?>
 		<aside class="basic-layout__sidebar">
             <!--table-of-contents-->
 		<?$APPLICATION->IncludeComponent(
@@ -25,7 +32,7 @@
 	<?=$APPLICATION->ShowViewContent('RELINK');?>
 	<?=$APPLICATION->ShowViewContent("smart_filter");?>
          </aside>
-		<?}?>
+<?endif?>
 	
         <?
 if (CSite::InDir('/index.php') && SITE_ID!='s2'){
