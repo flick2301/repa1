@@ -13,6 +13,10 @@ Asset::getInstance()->addJs("/bitrix/components/bitrix/sale.order.payment.change
 Loc::loadMessages(__FILE__);
 
 ?>
+<br />
+
+            <div class="basic-layout__module catalog-feed">
+               <div class="catalog-feed__list">
 
 <?
 
@@ -70,59 +74,58 @@ else
                 
                 $paymentChangeData = array();
 		$orderHeaderStatus = null;
-                ?><table class="blue-table lk">
-                    <thead class="blue-table__thead">
-                        <tr class="blue-table__tr">
-			    <th class="blue-table__th">Номер заказа</th>
-                            <th class="blue-table__th">Дата заказа</th>
-                            <th class="blue-table__th">Статус заказа</th>
-                            <th class="blue-table__th">Статус оплаты</th>
-                            <th class="blue-table__th">Сумма заказа</th>
-			</tr>
-                    </thead><?
+ 
 		foreach ($arResult['ORDERS'] as $key => $order)
 		{
                 ?>
-                    <tr class="blue-table__tr">
-						<td class="blue-table__td">
-                                                    <span class="lk-number">
-                                                        <a class="lk-number" href="<?=$order['ORDER']['URL_TO_DETAIL']?>">
-                                                        <?=Loc::getMessage('SPOL_TPL_ORDER')?>
+				
+				
+                  <div class="catalog-feed__table">				
+                     <!--orders-table-->
+                     <section class="orders-table">
+                        <div class="orders-table__column orders-table__column--order">
+                           <div class="orders-table__title">Номер заказа<small>:</small></div>
+                           <h3 class="orders-table__content"><a class="orders-table__link" href="<?=$order['ORDER']['URL_TO_DETAIL']?>"><?=Loc::getMessage('SPOL_TPL_ORDER')?>
 							<?=Loc::getMessage('SPOL_TPL_NUMBER_SIGN').$order['ORDER']['ACCOUNT_NUMBER']?>
-                                                        </a>
-                                                    </span>
-                                                </td>
-						<td class="blue-table__td">
-                                                    <span class="lk-date">
-                                                        <?=$order['ORDER']['DATE_INSERT']->format($arParams['ACTIVE_DATE_FORMAT'])?>
-                                                    </span>
-                                                </td>
-						<td class="blue-table__td">
-                                                    <span class="lk-order">
-                                                         <?=$arResult['STATUS'][$order['ORDER']["STATUS_ID"]]?>
-                                                    </span>
-                                                </td>
-						<td class="blue-table__td">
-                                                    <span class="lk-pay">
-                                                 <?foreach ($order['PAYMENT'] as $payment)
-						  {
-                                                     ?>
-                                                 
-                                                        <?=$payment['PAY_SYSTEM_NAME']?>
-                                                  <?}?>
-                                                    </span>
-                                                </td>
-						<td class="blue-table__td">
-                                                    <span class="lk-price">
-                                                        <?=$order['ORDER']['FORMATED_PRICE']?>
-                                                    </span>
-                                                </td>
-					</tr>
+                        </a></h3>
+                        </div>
+                        <div class="orders-table__column orders-table__column--date">
+                           <div class="orders-table__title">Дата заказа<small>:</small></div>
+                           <div class="orders-table__content">
+                              <p class="orders-table__desc"><?=$order['ORDER']['DATE_INSERT']->format($arParams['ACTIVE_DATE_FORMAT'])?></p>
+                           </div>
+                        </div>
+                        <div class="orders-table__column orders-table__column--basic">
+                           <div class="orders-table__title">Статус заказа<small>:</small></div>
+                           <div class="orders-table__content orders-table__content--status">
+                              <p class="orders-table__desc"><?=$arResult['STATUS'][$order['ORDER']["STATUS_ID"]]?></p>
+                           </div>
+                        </div>
+                        <div class="orders-table__column orders-table__column--basic">
+                           <div class="orders-table__title">Статус оплаты<small>:</small></div>
+                           <div class="orders-table__content">
+                              <?foreach ($order['PAYMENT'] as $payment):?><p class="orders-table__desc orders-table__desc--basic"><?=$payment['PAY_SYSTEM_NAME']?></p><?endforeach?>
+                           </div>
+                        </div>
+                        <div class="orders-table__column orders-table__column--total">
+                           <div class="orders-table__title">Сумма заказа<small>:</small></div>
+                           <div class="orders-table__content">
+                              <p class="orders-table__desc"><?=$order['ORDER']['FORMATED_PRICE']?> ₽</p>
+                           </div>
+                        </div>
+                     </section>
+                     <!--orders-table-->		
+	</div> 					 
+				
                                        
                 <?
                 }
-                ?></table>            
-                
+                ?>
+				    
+
+
+</div>				
+</div>                
                    
    
 	<?

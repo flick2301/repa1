@@ -2,8 +2,14 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Персональный раздел");
 ?><?$APPLICATION->AddChainItem("Мои заказы", "");?>
-<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());?>
-<h1 class="s38-title"><?=$APPLICATION->ShowTitle();?></h1><?$APPLICATION->IncludeComponent(
+
+            <!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?=$APPLICATION->ShowTitle();?></h1>
+            </header>
+            <!--page-heading-->
+
+<?$APPLICATION->IncludeComponent(
 	"bitrix:sale.personal.order", 
 	".default", 
 	array(
