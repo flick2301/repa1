@@ -73,7 +73,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			this.socServiceHiddenNode = false;
 			this.currentDelivery = '';
 			this.currentStore;
-			this.deliveryMapContainer = BX.create('DIV', {props: {className: 'col-sm-8 bx-soa-pp-map-container'}});
+			this.deliveryMapContainer = BX.create('DIV', {props: {className: 'col-lg-8 bx-soa-pp-map-container'}});
 			this.addScheme = {};
 		},
 
@@ -5546,7 +5546,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 				deliveryItemsContainer.appendChild(deliveryItemNode);
 			}
 			
-			BX.addClass(deliveryItemsContainer, 'col-sm-' + (this.deliveryGroupID(this.currentDelivery)=='delivery_pickup' ? 4 : 7) + ' bx-soa-pp-item-container');
+			BX.addClass(deliveryItemsContainer, 'col-lg-' + (this.deliveryGroupID(this.currentDelivery)=='delivery_pickup' ? 4 : 7) + ' bx-soa-pp-item-container');
 
 			if (this.deliveryPagination.show)
 				this.showPagination('delivery', deliveryItemsContainer);
@@ -5815,7 +5815,7 @@ deliveryAddress = BX.create('div', {props: {id: 'delivery_other_address'},
 			if (!this.result.DELIVERY)
 				return;
 
-			var deliveryInfoContainer = BX.create('DIV', {props: {className: 'col-sm-' + (this.deliveryGroupID(this.currentDelivery)=='delivery_pickup' ? '12 margin' : '5') + ' bx-soa-pp-desc-container'}}),
+			var deliveryInfoContainer = BX.create('DIV', {props: {className: 'col-lg-' + (this.deliveryGroupID(this.currentDelivery)=='delivery_pickup' ? '12 margin' : '5') + ' bx-soa-pp-desc-container'}}),
 				currentDelivery, logotype, name, logoNode,
 				subTitle, label, title, price, period, storeAdress,
 				clear, infoList, extraServices, extraServicesNode;
@@ -8564,7 +8564,7 @@ for (var key in this.result.DELIVERY_GROUPS) {
 			{
 				this.totalInfoBlockNode.appendChild(
 					BX.create('DIV', {
-						props: {className: 'bx-soa-cart-total-button-container' + (!showOrderButton ? ' visible-xs' : '')},
+						props: {className: 'bx-soa-cart-total-button-container d-none-important' + (!showOrderButton ? ' visible-xs' : '')},
 						children: [
 							BX.create('A', {
 								props: {
