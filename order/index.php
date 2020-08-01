@@ -27,7 +27,7 @@ $APPLICATION->SetTitle("Title");
 		"PATH_TO_AUTH" => "/auth/",
 		"PATH_TO_BASKET" => "/basket/",
 		"PATH_TO_PAYMENT" => "payment.php",
-		"PATH_TO_PERSONAL" => "index.php",
+		"PATH_TO_PERSONAL" => "/personal/",
 		"PAY_FROM_ACCOUNT" => "N",
 		"PAY_SYSTEMS_PER_PAGE" => "33",
 		"PICKUPS_PER_PAGE" => "33",
