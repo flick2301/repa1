@@ -89,10 +89,13 @@ else
 							<?=Loc::getMessage('SPOL_TPL_NUMBER_SIGN').$order['ORDER']['ACCOUNT_NUMBER']?>
                         </a></h3>
                         </div>
+						<?
+						 $date = (array) $order['ORDER']['DATE_INSERT'];
+						?>
                         <div class="orders-table__column orders-table__column--date">
                            <div class="orders-table__title">Дата заказа<small>:</small></div>
                            <div class="orders-table__content">
-                              <p class="orders-table__desc"><?=$order['ORDER']['DATE_INSERT']->format($arParams['ACTIVE_DATE_FORMAT'])?></p>
+                              <p class="orders-table__desc"><?/*=$order['ORDER']['DATE_INSERT']->format($arParams['ACTIVE_DATE_FORMAT'])*/?><?=preg_replace("/:[0-9]{2}$/", "", $order['ORDER']['DATE_INSERT']->toString())?></p>
                            </div>
                         </div>
                         <div class="orders-table__column orders-table__column--basic">

@@ -7,10 +7,13 @@
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 	die();
 ?>
-<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());?>
-<h1 class="s38-title"><?=$APPLICATION->ShowTitle();?></h1>
 
-<div class="lk-form">
+            <!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?=$APPLICATION->ShowTitle();?></h1>
+            </header>
+            <!--page-heading-->
+
 
 <?ShowError($arResult["strProfileError"]);?>
 <?
@@ -42,15 +45,17 @@ var cookie_prefix = '<?=$arResult["COOKIE_PREFIX"]?>';
 <input type="hidden" name="ID" value=<?=$arResult["ID"]?> />
 
 
+            <!--user-account-->
+            <div class="user-account">
 
-	
-	
-	
-	
+ 	
 	<?if($arResult['CAN_EDIT_PASSWORD']):?>
-	         <label class="lk-form__label">
-                    <span class="lk-form__title"><?=GetMessage('NEW_PASSWORD_REQ')?>:</span>
-		    <input type="password" name="NEW_PASSWORD" value="" class="form__input">
+
+               <div class="user-account__item">
+                  <label class="user-account__label" for="user-account__password"><?=GetMessage('NEW_PASSWORD_REQ')?></label>
+                  <input class="simple-input user-account__input" type="password" name="NEW_PASSWORD" id="user-account__password" autocomplete="off" value="">
+               </div>	
+	
 		 
 <?if($arResult["SECURE_AUTH"]):?>
 				<span class="bx-auth-secure" id="bx_auth_secure" title="<?echo GetMessage("AUTH_SECURE_NOTE")?>" style="display:none">
@@ -59,23 +64,29 @@ var cookie_prefix = '<?=$arResult["COOKIE_PREFIX"]?>';
 				<noscript>
 				<span class="bx-auth-secure" title="<?echo GetMessage("AUTH_NONSECURE_NOTE")?>">
 					<div class="bx-auth-secure-icon bx-auth-secure-unlock"></div>
-				</span>
+				</span>			
 				</noscript>
 <script type="text/javascript">
 document.getElementById('bx_auth_secure').style.display = 'inline-block';
-</script>
-                 		
+</script> 
 	
 <?endif?>
-</label>
+
 	
-        <label class="lk-form__label">
-            <span class="lk-form__title"><?=GetMessage('NEW_PASSWORD_CONFIRM')?>:</span>
-            <input type="password" name="NEW_PASSWORD_CONFIRM" autocomplete="off" value="" class="form__input">
-	</label>
+               <div class="user-account__item">
+                  <label class="user-account__label" for="user-account__confirm"><?=GetMessage('NEW_PASSWORD_CONFIRM')?></label>
+                  <input class="simple-input user-account__input" type="password" name="NEW_PASSWORD_CONFIRM" id="user-account__confirm" autocomplete="off" value="">
+               </div>	
+			   
+               <div class="user-account__footer">
+                  <input onclick="BX.submit(BX('form_lk'));" class="main-button main-button--plus user-account__submit" type="button" value="Сохранить">
+               </div>	   
+			   
+  
 <?endif?>
 
-
+            </div>
+            <!--user-account-->
 
 
 	
@@ -109,7 +120,4 @@ document.getElementById('bx_auth_secure').style.display = 'inline-block';
 	<?// ******************** /User properties ***************************************************?>
 	<!--<p><?echo $arResult["GROUP_POLICY"]["PASSWORD_REQUIREMENTS"];?></p>
 	<p><input type="submit" id="form_submit" name="save"  value="<?=(($arResult["ID"]>0) ? GetMessage("MAIN_SAVE") : GetMessage("MAIN_ADD"))?>">&nbsp;&nbsp;<input type="reset" value="<?=GetMessage('MAIN_RESET');?>"></p>-->
-        <a href="javascript:void(0);" onclick="BX.submit(BX('form_lk'));"class="blue-btn lk-form__btn">Сохранить</a>
 </form>
-
-</div>
