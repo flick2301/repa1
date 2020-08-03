@@ -4,7 +4,9 @@ $APPLICATION->SetPageProperty("title", "Сертификаты соответс�
 $APPLICATION->SetPageProperty("keywords", "сертификаты, крепеж, строительный крепеж, крепежные изделия, москреп, метизы, саморезы, анкера, дюбеля, анкерные болты, гвозди, абразивы, инструменты");
 $APPLICATION->SetPageProperty("description", "Сертификаты на крепежные изделия от производителя КРЕП-КОМП в интернет-магазине крепежа и метизов с доставкой по Москве, Московской области и всей России");
 $APPLICATION->SetTitle("Сертификаты соответствия");
-?><?$APPLICATION->IncludeComponent(
+?>
+
+<?$APPLICATION->IncludeComponent(
 	"d7:certificates",
 	".default",
 	array(
@@ -36,12 +38,15 @@ $APPLICATION->SetTitle("Сертификаты соответствия");
 		"SET_TITLE" => "Y",	// Устанавливать заголовок страницы
 		"USE_REVIEW" => "N",	// USE_REVIEW
 	)
-);?> <?
+);?> 
+
+<?
 $rsSites = CSite::GetByID("s1");
 $arSite = $rsSites->Fetch();
-
 ?>
-<div class="content-feedback" style="display: none;">
+
+
+<?/*<div class="content-feedback">
     <?$APPLICATION->IncludeComponent(
 	"d7:main.feedback",
 	"",
@@ -60,4 +65,6 @@ $arSite = $rsSites->Fetch();
             "USE_CAPTCHA" => "N",	// Использовать защиту от автоматических сообщений (CAPTCHA) для неавторизованных пользователей
 	)
     );?>
-</div><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+</div>*/?>
+
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
