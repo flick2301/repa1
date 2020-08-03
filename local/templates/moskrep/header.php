@@ -34,7 +34,7 @@ ref.parentNode.insertBefore(js, ref);}(document));
    <title><?$APPLICATION->ShowTitle();?></title>
 
 	<?$APPLICATION->ShowHead();?>
-        <?CJSCore::Init(array('jquery'));?>
+        <?CJSCore::Init(array('jquery3'));?>
 	<?
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/reset.css", true);
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.css", true);
@@ -44,6 +44,8 @@ ref.parentNode.insertBefore(js, ref);}(document));
 
 		
 	?>
+	
+	
 	<link rel="manifest" href="assets/a-icons/manifest.webmanifest">
 	<link rel="icon" sizes="32x32" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/favicon-32.png">
 	<link rel="icon" sizes="96x96" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/favicon-96.png">
