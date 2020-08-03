@@ -6,17 +6,8 @@ const MY_HL_BLOCK_ID = 3;
 const MY_HL_BLOCK_META_ID=7;
 //подключаем модуль highloadblock
 CModule::IncludeModule('highloadblock');
-//Напишем функцию получения экземпляра класса:
-function GetEntityDataClass($HlBlockId) {
-    if (empty($HlBlockId) || $HlBlockId < 1)
-    {
-        return false;
-    }
-    $hlblock = HLBT::getById($HlBlockId)->fetch();   
-    $entity = HLBT::compileEntity($hlblock);
-    $entity_data_class = $entity->getDataClass();
-    return $entity_data_class;
-}
+
+
 
 
 $entity_data_class = GetEntityDataClass(MY_HL_BLOCK_ID);

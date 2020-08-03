@@ -3,6 +3,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 
 
 global $APPLICATION;
+global $DEFAULT_STORE_ID;
 include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 
@@ -116,9 +117,9 @@ if($arParams['FOR_SEO']!='Y'){
 				<?}?>
                 <?if(!$arResult['ENUM_LIST']['TURN_OFF_DELIVERY'] && !$_POST['ENUM_LIST']['TURN_OFF_DELIVERY'])
 				{?>
-					<?if($_SERVER['HTTP_HOST']!='spb.krep-komp.ru'):?>
+					
 					<th class="blue-table__th"><span class="link-sorting"><span class="link-sorting__style">Получение</span></span></th>
-					<?endif;?>
+					
 				<?}?>
                 
             <?if($ral_in_ar){?>
@@ -180,7 +181,7 @@ if($arParams['FOR_SEO']!='Y'){
 			<?}?>
 	        <?if(!$arResult['ENUM_LIST']['TURN_OFF_DELIVERY'] && !$_POST['ENUM_LIST']['TURN_OFF_DELIVERY'])
 				{?>
-			<?if($_SERVER['HTTP_HOST']!='spb.krep-komp.ru'):?>
+			
 		   <td class="blue-table__td">
 								<span class="pickup-view" data-product="<?=$item['ID']?>">
 									<div id='pickup_<?=$item['ID']?>' class="pickup-block">
@@ -193,7 +194,7 @@ if($arParams['FOR_SEO']!='Y'){
 									</div>
 								</span>
 							</td>
-			<?endif;?>
+			
 				<?}?>
 			
 		<?if($ral_in_ar){?>
@@ -204,7 +205,8 @@ if($arParams['FOR_SEO']!='Y'){
             <td class="blue-table__td"><div class="color-b"><?=mb_strimwidth($item['PROPERTIES'][$field['CODE']]["VALUE"], 0, 12, "...");?></div></td>
 			<?}
 		}?>
-        <td class="blue-table__td"><?echo ($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']) ? '<span class="availability-b active">'.($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']).' уп. </span>' : '<span class="availability-b">Под заказ</span>';?></td>    
+        <td class="blue-table__td">
+		<?echo ($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) ? '<span class="availability-b active">'.($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']).' уп. </span>' : '<span class="availability-b">Под заказ</span>';?></td>    
 	    <td class="blue-table__td blue-table__price">
 	        <span class="price-b"><?echo number_format($price, 2, '.', ' ');?> ₽</span>
                 <?echo ($old_price) ? '<span class="carousel-product__price-old">'.number_format($old_price, 2, '.', ' ').' ₽</span>': '';?> 
@@ -218,7 +220,7 @@ if($arParams['FOR_SEO']!='Y'){
 	    <td class="blue-table__td">
 		<div class="value">
 		    <a href="javascript:void(0)" rel="nofollow" class="value__minus">—</a>
-			<input type="text" name="" data-quantity="<?=($item['KOLEDINO'])?>" onchange='ChangeInputCart("<?=$item['NAME']?>", $(this))' id="QUANTITY_<?=$item['ID']?>" value="1" class="value__input">
+			<input type="text" name="" data-quantity="<?=($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT'])?>" onchange='ChangeInputCart("<?=$item['NAME']?>", $(this))' id="QUANTITY_<?=$item['ID']?>" value="1" class="value__input">
 		    <a href="javascript:void(0)" rel="nofollow" class="value__plus">+</a>
 		</div>
 		<a href="javascript:void(0)" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>" rel="nofollow" class="blue-btn basket-btn">В корзину</a>

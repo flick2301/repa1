@@ -10,6 +10,11 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/include/handlers.ph
 // # Агенты
 // #
 include_once($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/include/agent.php');
+
+// #
+// # Функции
+// #
+include_once($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/include/functions.php');
  
 // #
 // # Константы

@@ -39,7 +39,14 @@ const STORE_ID_KASHIRKA = Array('7', 'г. Москва, Каширское ш., 
 const STORE_ID_KOLEDINO = Array('3', 'МО, округ Подольск, Коледино, 1Вс3, склад #6', 'пн-пт 9:00-18:00; сб-вс выходной', 'МО, округ Подольоск,<br> Коледино, 1Вс3, склад #6');
 const STORE_ID_UZHKA = Array('9', 'Москва, 2-й Кабельный проезд, дом 1, блок 2, 1-ый этаж, павильон №106', 'пн-пт 9:00-18:00; сб-вс выходной');
 const STORE_ID_SERPUH = Array('10', 'Московская область, город Серпухов, улица Звездная 6а, павильон №3', 'пн-пт 9:00-18:00; сб-вс выходной');
-
+if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){
+	global $DEFAULT_STORE_ID; 
+	$DEFAULT_STORE_ID= 12;
+}
+else{
+	global $DEFAULT_STORE_ID; 
+	$DEFAULT_STORE_ID= 3;
+}
 const ID_PRICE_5 = '11';
 const ID_PRICE_10 = '12';
 const ID_PRICE_13 = '10';

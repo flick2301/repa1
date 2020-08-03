@@ -4,11 +4,7 @@ $APPLICATION->SetPageProperty("title", "Контакты Креп-Комп");
 $APPLICATION->SetPageProperty("keywords", "контакты Креп-Комп");
 $APPLICATION->SetPageProperty("description", "Контакты компании Креп-Комп");
 $APPLICATION->SetTitle("Контакты");
-?><?$APPLICATION->IncludeComponent(
-	"bitrix:breadcrumb",
-	"",
-Array()
-);?>
+?>
 <h1 class="s38-title"><?=$APPLICATION->ShowTitle();?></h1>
  <?if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){?>
 <h2 class="s28-title">Контакты офиса в Санкт-Петербурге:</h2>

@@ -9,7 +9,8 @@
  * @var string $templateName
  * @var string $componentPath
  */
-global $APPLICATION
+global $APPLICATION;
+global $DEFAULT_STORE_ID;
 ?>
 <?include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");?>
 <?$ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];?>
@@ -136,11 +137,11 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
 					<div class="product-list__info">						
 					<div class="product-list__lineflex">
 						<div class="product-list__delivery">Доставка <span class="product-list__day">Завтра</span></div>
-						<div class="product-list__presence"><?echo ($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']) ? 'В наличии' : 'Под заказ';?></div>
+						<div class="product-list__presence"><?echo ($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) ? 'В наличии' : 'Под заказ';?></div>
 					</div>
 					<div class="product-list__lineflex">
 						<div class="product-list__pickup">Самовывоз <span class="product-list__day">Сегодня</span></div>
-						<div class="product-list__presence-number<?echo ($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']=='0') ? "_disable" : "";?>"><?echo $item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED'];?> уп.</div>
+						<div class="product-list__presence-number<?echo ($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']=='0') ? "_disable" : "";?>"><?echo $item['STORE'][$DEFAULT_STORE_ID]['AMOUNT'];?> уп.</div>
 					</div>
 					<div class="product-list__lineflex">
 						<div class="product-list__price"><?echo number_format($price, 2, '.', ' ');?> ₽

@@ -13,17 +13,7 @@ use Bitrix\Main\Loader;
 CModule::IncludeModule('highloadblock');
 if (!Loader::includeModule($module_id))
     return;
-//Напишем функцию получения экземпляра класса:
-function GetEntityDataClass($HlBlockId) {
-    if (empty($HlBlockId) || $HlBlockId < 1)
-    {
-        return false;
-    }
-    $hlblock = HLBT::getById($HlBlockId)->fetch();   
-    $entity = HLBT::compileEntity($hlblock);
-    $entity_data_class = $entity->getDataClass();
-    return $entity_data_class;
-}
+
 
 
 

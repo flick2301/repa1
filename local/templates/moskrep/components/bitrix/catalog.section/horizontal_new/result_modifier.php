@@ -10,21 +10,6 @@ $module_id = 'relink.table';
 
 use Bitrix\Main\Loader;
 
-//подключаем модуль highloadblock
-CModule::IncludeModule('highloadblock');
-//Напишем функцию получения экземпляра класса:
-function GetEntityDataClass($HlBlockId) {
-    if (empty($HlBlockId) || $HlBlockId < 1)
-    {
-        return false;
-    }
-    $hlblock = HLBT::getById($HlBlockId)->fetch();   
-    $entity = HLBT::compileEntity($hlblock);
-    $entity_data_class = $entity->getDataClass();
-    return $entity_data_class;
-}
-
-
 
 $nav = CIBlockSection::GetNavChain(false, $arResult['ID']);
 while($nw = $nav->Fetch()){

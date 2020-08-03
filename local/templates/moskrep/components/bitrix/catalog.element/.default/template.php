@@ -6,6 +6,7 @@
  * and open the template in the editor.
  */
 global $APPLICATION;
+global $DEFAULT_STORE_ID;
 
 $ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues($arParams["IBLOCK_ID"],$arResult['SECTION']['ID']);
     $IPROPERTY  = $ipropValues->getValues();
@@ -69,10 +70,11 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
             <?endif;?>
 		    <a href="javascript:void(0)" id='main_link' data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' rel="nofollow" class="blue-btn card__btn">Добавить в корзину</a>
 		</div>
+		
 		<ul class="basket-info__items">
 		    <li class="basket-info__item basket-info--car"><span>Доставка</span><i></i><strong>от 290 руб.</strong></li>
-		    <li class="basket-info__item basket-info--nal"><span>Наличие</span><i></i><strong class="baskey-info<?=($arResult['ELEMENT_COUNT']) ? '__green': '';?>"><?=($arResult['ELEMENT_COUNT']) ?  $arResult['ELEMENT_COUNT'].' уп.' : 'нет (<a href="#packs" class="card__link-dashed_packs">другие упаковки</a>)';?></strong></li>
-		    <li class="basket-info__item basket-info--home"><span>Самовывоз</span><i></i><strong><?echo ($arResult['ELEMENT_COUNT']) ? ' сегодня, бесплатно' : 'на заказ';?></strong></li>
+		    <li class="basket-info__item basket-info--nal"><span>Наличие</span><i></i><strong class="baskey-info<?=($arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) ? '__green': '';?>"><?=($arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) ?  $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT'].' уп.' : 'нет (<a href="#packs" class="card__link-dashed_packs">другие упаковки</a>)';?></strong></li>
+		    <li class="basket-info__item basket-info--home"><span>Самовывоз</span><i></i><strong><?echo ($arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) ? ' сегодня, бесплатно' : 'на заказ';?></strong></li>
 		</ul>
 		<a href="#over"  rel="nofollow" target="_self" data-tab="tab-5" class="card__link-dashed_over">Адреса магазинов</a>
 		    <?if(count($arResult['BASE_PROPERTIES_HEAD'])):?>
