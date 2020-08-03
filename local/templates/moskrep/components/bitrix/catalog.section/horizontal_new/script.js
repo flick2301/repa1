@@ -6,7 +6,7 @@
 
 
 BX.ready(function () {
-    var buyBtnDetail = document.body.querySelectorAll('.basket-btn');
+    var buyBtnDetail = document.body.querySelectorAll('.catalog-table__cart');
 	var IDs=[];
     for (var i = 0; i < buyBtnDetail.length; i++) {
         BX.bind(buyBtnDetail[i], 'click', BX.delegate(function (e) {
@@ -30,7 +30,7 @@ BX.ready(function () {
         if (!!BX('QUANTITY_' + id)) {
             quantity = BX('QUANTITY_' + id).value;
         }
-       
+       console.log(e);
         BX.ajax({
             url: window.location.href,
             data: {

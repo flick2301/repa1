@@ -309,7 +309,7 @@ $APPLICATION->SetPageProperty("component", "catalog");
 	),
 	false
 );?>
-<div class="content-feedback">
+
 	 <?$APPLICATION->IncludeComponent(
 	"d7:main.feedback",
 	"",
@@ -321,5 +321,5 @@ $APPLICATION->SetPageProperty("component", "catalog");
 		"USE_CAPTCHA" => "N"
 	)
 );?>
-</div>
+
 <br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

@@ -301,7 +301,9 @@ ref.parentNode.insertBefore(js, ref);}(document));
 );?>
 					
 			
-			<div class="website-navbar__primary">
+			
+		</div>
+		<div class="website-navbar__primary">
                <!--main-nav-->
                <nav class="main-nav">
                   <h4 class="main-nav__title" data-sreader>Навигация</h4>
@@ -320,7 +322,6 @@ ref.parentNode.insertBefore(js, ref);}(document));
 					</div>
 				</nav>
 			</div>
-		</div>
 	</div>
     </header>
     

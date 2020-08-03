@@ -301,9 +301,9 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 
 <?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.min.js");?>
 <?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/slick.min.js");?>
-<?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.popup.js");?>
+<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.popup.js");?>
 <?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/fancybox.min.js");?>
-<?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/common.js");?>
+<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/common.js");?>
 <?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.cookie.js");?>
 
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/jquery-3.4.1.min.js");?>
@@ -338,6 +338,8 @@ $APPLICATION->SetPageProperty('description', '«КРЕП-КОМП» - ведущ
    <script src="/local/templates/moskrep/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="/local/templates/moskrep/assets/scripts/jquery.slick-1.9.0.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="/local/templates/moskrep/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="/local/templates/moskrep/js/jquery.popup.js" defer="defer"></script>
+   <script src="/local/templates/moskrep/js/common.js" defer="defer"></script>
 </body>
 </html>
  

@@ -14,7 +14,8 @@ $this->setFrameMode(true);
 
 
 ?>
-<div class="main-filter">
+<div class="main-filter basic-layout__module catalog-filter is-disabled" id="catalog-filter">
+	<button class="catalog-filter__close" id="catalog-filter__close"><i class="simple-close-icon"></i>Закрыть</button>
 	<div class="bx-filter-section container-fluid">
 		<div class="row"><div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-12<?endif?> bx-filter-title"><?echo GetMessage("CT_BCSF_FILTER_TITLE")?></div></div>
 		<form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" class="smartfilter">
