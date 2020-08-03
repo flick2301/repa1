@@ -33,7 +33,7 @@ $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Мос
 
 
 
-<!--
+
 <?
 if(SITE_TEMPLATE_ID!='mobile'){
 global $arrFilter;
@@ -196,6 +196,8 @@ $arrFilter['!CATALOG_PRICE_8'] = false;
 );?>
 
 <?}?>
--->
+
+
+
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

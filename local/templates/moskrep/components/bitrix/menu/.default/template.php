@@ -42,7 +42,7 @@ foreach($arResult as $arItem):
 	
 
 			<?if ($arItem["DEPTH_LEVEL"] == 1):?>
-			<li class="nav-catalog__item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="nav-catalog__link"><?=$arItem["TEXT"]?></a></li>
+			<li class="nav-catalog__item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="catalog-nav__lvl1-toggle"><?=$arItem["TEXT"]?></a></li>
 				
 		<?elseif($arItem["DEPTH_LEVEL"] == 2):?>
 			<li class="catalog-level-two__item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="catalog-level-two__link"><?=$arItem["TEXT"]?></a></li>

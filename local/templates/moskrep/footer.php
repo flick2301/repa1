@@ -1,6 +1,9 @@
-
 			
 		</div>
+		<?if (CSite::InDir('/index.php') && SITE_ID!='s2'){
+    ?>
+	<div class="basic-layout__sidebar"></div>
+<?}?>
 		
 		
 			<?$page_footer_menu = Array(
@@ -34,11 +37,13 @@
 	<?=$APPLICATION->ShowViewContent("smart_filter");?>
          </aside>
 <?endif?>
-	
-        <?
+
+</div>
+		        <?
 if (CSite::InDir('/index.php') && SITE_ID!='s2'){
     ?>
-	<div class="inner">
+	
+	<div class="basic-layout__section">
 		<div class="banner-02"><?$APPLICATION->IncludeComponent(
 	"d7:slider",
 	"",
@@ -229,7 +234,9 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
     </div>
 </div>
 <?}?>
-	</div>
+	
+
+	
 </main>
 <footer class="basic-layout__footer">
     <div class="basic-layout__section">
