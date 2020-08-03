@@ -21,73 +21,137 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 ?>
 <?if(count($arResult['RELINK'])):?>
     <?php $this->SetViewTarget('RELINK'); ?>
-    <nav class="nav-aside">
-        <strong class="nav-aside__title">Смотрите также:</strong>
-        <ul class="nav-aside__items">
-
-            <?foreach($arResult['RELINK'] as $relink):?>
-
-                <li class="nav-aside__item"><a href="<?=$relink['AKCEPTOR']?>" title="" class="nav-aside__link"><?=$relink['ANKOR']?></a></li>
-
-            <?endforeach;?>
-        </ul>
-    </nav>
+	<!--see-also-widget-->
+	<div class="basic-layout__module see-also-widget">
+               <h4 class="see-also-widget__title">Смотрите также:</h4>
+               <ul class="see-also-widget__list">
+				<?foreach($arResult['RELINK'] as $relink):?>
+                  <li class="see-also-widget__item">
+                     <a class="see-also-widget__link" href="<?=$relink['AKCEPTOR']?>"><?=$relink['ANKOR']?></a>
+                  </li>
+				<?endforeach;?>
+				</ul>
+    </div>
+	<!--see-also-widget-->
     <?php $this->EndViewTarget(); ?>
 <?endif;?>
 
+<!--page-heading-->
+    <header class="basic-layout__module page-heading">
+        <h1 class="page-heading__title"><?=$arResult['NAME']?></h1>
+    </header>
+<!--page-heading-->
 
-
-    <div itemscope itemtype="http://schema.org/Product" class="card">
-        <div style='display:none;'>
-            <?if($USER->IsAuthorized()):?>
-            <div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][0]?> ₽</b> при заказе от 20 000 руб.</div><br>
-            <div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][1]?> ₽</b> при заказе от 100 000 руб.</div><br>
-            <div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][2]?> ₽</b> при заказе от 500 000 руб.</div>
-            <?endif;?>
+    <div itemscope itemtype="http://schema.org/Product" class="basic-layout__module product-page">
+		<div class="product-page__main">
+                  <div class="product-page__gallery">
+                     <!--product-gallery-->
+                     <div class="product-gallery" data-gallery-popup>
+                        <a class="product-gallery__link" href="<?=$arResult['DETAIL_PICTURE']['SRC'];?>" rel="gallery_card" title='<? echo ($arResult["IPROPERTY_VALUES"]['ELEMENT_DETAIL_PICTURE_FILE_TITLE'] ? $arResult["IPROPERTY_VALUES"]['ELEMENT_DETAIL_PICTURE_FILE_TITLE'] : "Moskrep.ru - ".$arResult["SECTION"]["NAME"]." ".$arResult["NAME"].", купить в интернет-магазине - цена, фото");?>'>
+                           <p class="product-gallery__cover"><img class="product-gallery__image" itemprop="image" src="<?=$arResult['PREVIEW_PICTURE']['src'];?>" alt="<?=$arResult['NAME']?>" width="582" height="437" alt=""></p>
+                           <p data-sreader>Увеличить</p>
+                        </a>
+                     </div>
+                     <!--product-gallery-->
+                  </div>
+                  <div class="product-page__about">
+                     <!--product-purchase-->
+                     <div class="product-purchase">
+                        <p class="product-purchase__price"><?echo number_format($price, 2, '.', ' ');?> ₽</p>
+                        <button class="main-button main-button--plus product-purchase__button"><i class="simple-cart-icon product-purchase__icon" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' rel="nofollow"></i>Добавить в корзину</button>
+                     </div>
+                     <!--product-purchase-->
+                     <!--product-data-->
+                     <div class="product-page__data product-data">
+                        <div class="product-data__section">
+                           <ul class="product-data__list">
+                              <li class="product-data__item">
+                                 <p class="product-data__name"><i class="simple-car-icon product-data__icon"></i>Доставка</p>
+                                 <p class="product-data__text">от 290 руб.</p>
+                              </li>
+                              <li class="product-data__item">
+                                 <p class="product-data__name"><i class="simple-available-icon product-data__icon"></i>Наличие</p>
+                                 <p class="product-data__text"><?=($arResult['ELEMENT_COUNT']) ?  $arResult['ELEMENT_COUNT'].' уп.' : 'нет в наличии'?></p>
+                              </li>
+                              <li class="product-data__item">
+                                 <p class="product-data__name"><i class="simple-home-icon product-data__icon"></i>Самовывоз</p>
+                                 <p class="product-data__text"><?echo ($arResult['ELEMENT_COUNT']) ? ' сегодня, бесплатно' : 'на заказ';?></p>
+                              </li>
+                           </ul>
+                           <div class="product-data__info">
+                              <a class="product-data__scroll" href="/">Адреса магазинов</a>
+                           </div>
+                        </div>
+                        <div class="product-data__section">
+						<?if(count($arResult['BASE_PROPERTIES_HEAD'])):?>
+                           <ul class="product-data__list">
+							<?foreach($arResult['BASE_PROPERTIES_HEAD'] as $arProp){?>
+                              <li class="product-data__item">
+                                 <p class="product-data__name"><?=$arProp['NAME']?></p>
+                                 <p class="product-data__text"><?=$arProp['VALUE']?></p>
+                              </li>
+							<?}?>
+							</ul>
+                        <?endif;?>
+                           
+                           <div class="product-data__info">
+                              <a class="product-data__scroll" href="#chars" rel="nofollow" data-tab="tab-1">Все характеристики</a>
+                           </div>
+                        </div>
+                     </div>
+                     <!--product-data-->
+                  </div>
         </div>
-        <h1 itemprop="name" class="s38-title"><?=$arResult['NAME']?></h1><br>
-	<div class="card__articul">Артикул: <span class="card__articul-name"><?=$arResult['PROPERTIES']['CML2_ARTICLE']['VALUE']?></span></div>
-	<div class="card__top">
-	    <div class="card__photo"><a href="<?=$arResult['DETAIL_PICTURE']['SRC'];?>" onclick="javascript:void();" rel="gallery_card" title='<? echo ($arResult["IPROPERTY_VALUES"]['ELEMENT_DETAIL_PICTURE_FILE_TITLE'] ? $arResult["IPROPERTY_VALUES"]['ELEMENT_DETAIL_PICTURE_FILE_TITLE'] : "Moskrep.ru - ".$arResult["SECTION"]["NAME"]." ".$arResult["NAME"].", купить в интернет-магазине - цена, фото");?>' class="card__photo-link"><img itemprop="image" src="<?=$arResult['PREVIEW_PICTURE']['src'];?>" alt="<?=$arResult['NAME']?>"></a></div>
-	    <div class="card-small-info">
-		<div class="card__price">
-		    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="card__price-wrap">
-                        <div class="card__price-first">
-                            <meta  itemprop="price" content='<?echo number_format($price, 2, '.', ' ');?>'>
-                            <meta itemprop="priceCurrency" content='RUB'>
-                            <?echo number_format($price, 2, '.', ' ');?> ₽</div>
-                        <?if($old_price){?>
-			<div class="card__price-last"><?echo number_format($old_price, 2, '.', ' ');?> ₽</div>
-                        <?}?>
-		    </div>
-                    <?if($USER->IsAuthorized()):?>
-                    <br>
-            <div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][0]?> ₽</b> при заказе от 20000 ₽</div><br>
-            <div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][1]?> ₽</b> при заказе от 100000 ₽</div><br>
-            <div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][2]?> ₽</b> при заказе от 500000 ₽</div><br>
-			<div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][3]?> ₽</b> при заказе от 5000000 ₽</div>
-            <?endif;?>
-		    <a href="javascript:void(0)" id='main_link' data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' rel="nofollow" class="blue-btn card__btn">Добавить в корзину</a>
-		</div>
-		<ul class="basket-info__items">
-		    <li class="basket-info__item basket-info--car"><span>Доставка</span><i></i><strong>от 290 руб.</strong></li>
-		    <li class="basket-info__item basket-info--nal"><span>Наличие</span><i></i><strong class="baskey-info<?=($arResult['ELEMENT_COUNT']) ? '__green': '';?>"><?=($arResult['ELEMENT_COUNT']) ?  $arResult['ELEMENT_COUNT'].' уп.' : 'нет (<a href="#packs" class="card__link-dashed_packs">другие упаковки</a>)';?></strong></li>
-		    <li class="basket-info__item basket-info--home"><span>Самовывоз</span><i></i><strong><?echo ($arResult['ELEMENT_COUNT']) ? ' сегодня, бесплатно' : 'на заказ';?></strong></li>
-		</ul>
-		<a href="#over"  rel="nofollow" target="_self" data-tab="tab-5" class="card__link-dashed_over">Адреса магазинов</a>
-		    <?if(count($arResult['BASE_PROPERTIES_HEAD'])):?>
-                    
-                    <ul class="basket-info__items card__pos">
-                    <?foreach($arResult['BASE_PROPERTIES_HEAD'] as $arProp){?>
+        <!--product-tabs-->
+               <div class="product-page__tabs product-tabs">
+                  <ul class="product-tabs__list" data-product-page-tabs>
+                     <li class="product-tabs__item">
+                        <a class="product-tabs__toggle" href="#description" data-tabby-default>Описание</a>
+                     </li>
+					 <?if(count($arResult['CERT_PICTURE'])):?>
+                     <li class="product-tabs__item">
+                        <a class="product-tabs__toggle" href="#certify">Сертификаты</a>
+                     </li>
+					 <?endif;?>
+                     <li class="product-tabs__item">
+                        <a class="product-tabs__toggle" href="#payment">Способы оплаты</a>
+                     </li>
+                     <li class="product-tabs__item">
+                        <a class="product-tabs__toggle" href="#delivery">Доставка</a>
+                     </li>
+                     <li class="product-tabs__item">
+                        <a class="product-tabs__toggle" href="#pickup">Самовывоз</a>
+                     </li>
+                     <li class="product-tabs__item">
+                        <a class="product-tabs__toggle product-tabs__toggle--special" href="#discount">Ваши скидки</a>
+                     </li>
+                  </ul>
+               </div>
+        <!--product-tabs-->
+        <div class="product-page__section" id="description">
+                  <h2 class="product-page__title">Характеристики</h2>
+                  <!--product-data-->
+                  <div class="product-page__specs product-data product-data--specs">
+                     <ul class="product-data__list">
+					 <?foreach($arResult['BASE_PROPERTIES_UL1'] as $arProp){?>
+                        <li class="product-data__item">
+                           <p class="product-data__name"><?=$arProp['NAME']?></p>
+                           <p class="product-data__text"><?=$arProp['VALUE']?></p>
+                        </li>
+					 <?}?>
+					 <?foreach($arResult['BASE_PROPERTIES_UL2'] as $arProp){?>
+                        <li class="product-data__item">
+                           <p class="product-data__name"><?=$arProp['NAME']?></p>
+                           <p class="product-data__text"><?=$arProp['VALUE']?></p>
+                        </li>
+					 <?}?>
                         
-                            <li class="basket-info__item"><span><?=$arProp['NAME']?></span><i></i><strong><?=$arProp['VALUE']?></strong></li>
-                       
-		    <?}?>
-		    </ul>
-		    <a href="#chars" rel="nofollow" data-tab="tab-1" class="card__link-dashed">Все характеристики</a>
-                    <?endif;?>
-	    </div>
-	</div>
+                     </ul>
+                     <p class="product-data__info"><?=$arResult['NAME']?></p>
+                  </div>
+                  <!--product-data-->
+        </div>
+	
 	<div class="card__middle">
 	    <div class="card-tabs">
 		<ul class="card-tabs__items">
