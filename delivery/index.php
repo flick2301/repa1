@@ -28,7 +28,11 @@ switch (LANGUAGE_ID)
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa");?>
 
 
-
+            <!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
+            </header>
+            <!--page-heading-->
 
 
 

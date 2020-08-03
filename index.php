@@ -3,37 +3,18 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Интернет-магазин \"Москреп\"");
 $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Москреп\"");
 ?>
-<div class="banner-01">
+
     
-<?/*$APPLICATION->IncludeComponent(
-	"d7:slider",
-	"",
-	Array(
-
-		"IBLOCK_ID" => "6",
-		"IBLOCK_TYPE" => "banners",
-		"animSpeed" => "1300",
-		"controlNav" => "N",
-		"directionNav" => "N",
-		"effect" => "fade",
-		"height" => "246",
-		"pauseOnHover" => "N",
-		"pauseTime" => "4000",
-		"slices" => "6",
-		"startSlide" => "0",
-		"text_title" => "",
-		"width" => "718"
-	)
-);*/?>
-
+<!--intro-slider-->
+<div class="basic-layout__module intro-slider">		   
 <?$APPLICATION->IncludeComponent(
-	"idf:slider", 
+	"d7:slider_new", 
 	".default", 
 	array(
 		"IBLOCK_TYPE" => "banners",
 		"IBLOCK_ID" => "6",
-		"width" => "870",
-		"height" => "279",
+		"width" => "904",
+		"height" => "290",
 		"effect" => "fold",
 		"slices" => "21",
 		"animSpeed" => "800",
@@ -47,9 +28,12 @@ $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Мос
 	),
 	false
 );?>
-
-
 </div>
+<!--intro-slider-->
+
+
+
+<!--
 <?
 if(SITE_TEMPLATE_ID!='mobile'){
 global $arrFilter;
@@ -212,5 +196,6 @@ $arrFilter['!CATALOG_PRICE_8'] = false;
 );?>
 
 <?}?>
+-->
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

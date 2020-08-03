@@ -7,6 +7,12 @@ use Bitrix\Main\Application;
 use Bitrix\Main\Web\Cookie; 
 ?>
 
+            <!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
+            </header>
+            <!--page-heading-->
+
             <div class="basic-layout__module simple-article">
                <div class="simple-article__content">
                   <!--payment-option-->

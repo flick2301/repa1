@@ -11,6 +11,12 @@ $APPLICATION->SetTitle("Контакты");
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa");?>
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa");?>
 
+            <!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
+            </header>
+            <!--page-heading-->
+
             <!--simple-article-->
             <div class="basic-layout__module simple-article">
                <!--content-tabs-->
