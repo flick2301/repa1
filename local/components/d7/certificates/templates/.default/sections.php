@@ -1,35 +1,30 @@
-<? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
+<? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();?>
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());
-global $APPLICATION;
-
-?>
-
-
-
-<h1 class="s38-title"><?=$APPLICATION->ShowTitle();?></h1>
-
-<nav class="nav-sale">
-    <ul class="nav-sale__items">
-    <?foreach($arResult['SECTIONS'] as $section){
-		//print_r(CFile::GetPath($section['PICTURE']));
-        $file = CFile::ResizeImageGet($section['PICTURE'], array('width'=>$arParams['LIST_PREV_PIC_W_L2'], 'height'=>$arParams['ITEMS_PREV_PIC_H']), BX_RESIZE_IMAGE_PROPORTIONAL, true);    
-    ?>			
-        <li class="nav-sale__item">
-            
-	    <a href="<?=$section['SECTION_PAGE_URL']?>" class="nav-sale__link">
-	        <div class="nav-sale__img"><img src="<?=$file['src']?>" alt="<?=$section['NAME']?>"></div>
-	        <span class="nav-sale__title"><span><?=$section['NAME']?></span></span>
-	    </a>
-	</li>
-    <?}?>
-    </ul>
-</nav>
+            <!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?=$APPLICATION->ShowTitle();?></h1>
+            </header>
+            <!--page-heading-->
 			
+            <!--catalog-feed-->
+            <div class="basic-layout__module catalog-feed">
+               <div class="catalog-feed__list">
+    <?foreach($arResult['SECTIONS'] as $section):?>	
+	<?$file = CFile::ResizeImageGet($section['PICTURE'], array('width'=>$arParams['LIST_PREV_PIC_W_L2'], 'height'=>$arParams['ITEMS_PREV_PIC_H']), BX_RESIZE_IMAGE_PROPORTIONAL, true);?>	
+                  <div class="catalog-feed__item">
+                     <!--catalog-card-->
+                     <section class="catalog-card">
+                        <h3 class="catalog-card__title"><a class="catalog-card__link" href="<?=$section['SECTION_PAGE_URL']?>"><?=$section['NAME']?></a></h3>
+                        <div class="catalog-card__cover">
+                           <img class="catalog-card__image" src="<?=$file['src']?>" width="262" height="197" alt="<?=$section['NAME']?>">
+                        </div>
+                     </section>
+                     <!--catalog-card-->
+                  </div>
+	<?endforeach?>			  
+               </div>
+            </div>
+            <!--catalog-feed-->				  
+
 
 
