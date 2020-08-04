@@ -12,7 +12,7 @@
 				"/order/",
 			);
 			?>
-			
+		
 <?if (!in_array($APPLICATION->GetCurPage(), $page_footer_menu)):?>
 		<aside class="basic-layout__sidebar">
             <!--table-of-contents-->
@@ -71,8 +71,11 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 	
 
 
-    <div class="popular-categories">
-	<h2 class="h2-title-s30">Распродажа метизов, строительного крепежа и крепежных изделий</h2>
+         <!--sales-slider-->
+         <div class="basic-layout__module sales-slider">
+            <div class="sales-slider__header">
+               <h2 class="sales-slider__title">Распродажа метизов, строительного крепежа и крепежных изделий</h2>
+            </div>
             <?$APPLICATION->IncludeComponent(
 	     "bitrix:catalog.section.list",
 	     "main",
@@ -93,20 +96,30 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 		"TOP_DEPTH" => "1",
 		"VIEW_MODE" => "LINE"
 	         )
-            );?>
-			
+            );?>	
     </div>
-    <div class="products-tabs">
-	<ul class="products-tabs__items">
-	    <!--<li data-tab="tab-1" class="products-tabs__item active">Популярные товары</li>-->
-	    <li data-tab="tab-2" class="products-tabs__item active">Товары со скидкой</li>
-	    <li data-tab="tab-3" class="products-tabs__item">Новинки</li>
-	</ul>
-	<!--<div id="tab-1" class="product-tabs-list active">
-            
-				
-	</div>-->
-	<div id="tab-2" class="product-tabs-list active">
+	<!--sales-slider-->
+	
+	
+	
+	
+         <!--special-products-->
+         <div class="basic-layout__module special-products">
+            <!--widget-tabs-->
+            <div class="special-products__tabs widget-tabs">
+               <ul class="widget-tabs__list" data-tabby-tabs>
+                  <li class="widget-tabs__item">
+                     <a class="widget-tabs__toggle" href="#sale" data-tabby-default>Товары со скидкой</a>
+                  </li>
+                  <li class="widget-tabs__item">
+                     <a class="widget-tabs__toggle" href="#new">Новинки</a>
+                  </li>
+               </ul>
+            </div>
+            <!--widget-tabs-->
+			
+
+<div class="special-products__list" id="sale">
 	   <?
             global $arrFilter;
             $arrFilter['!CATALOG_PRICE_'.NUMBER_SALE_PRICE] = false;
@@ -182,7 +195,10 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 	    false
         );?>
 	</div>
-	<div id="tab-3" class="product-tabs-list">
+	
+	
+	
+	<div class="special-products__list" id="new">
             <?$APPLICATION->IncludeComponent(
 	    "bitrix:catalog.section", 
 	    "main_sale", 

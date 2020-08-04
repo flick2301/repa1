@@ -14,52 +14,46 @@ use \Bitrix\Main\Localization\Loc;
 
 ?>
 
-				<ul class="product-list__items">
-<?
-		foreach ($arResult['ITEMS'] as $item)
-		{
-			?>
-			<li class="product-list__item" >
-                            
-                            
-                            <?$res = CIBlockElement::GetList(array(), array('ID'=>$item["ID"]), false, false, array('ID', 'IBLOCK_ID', 'NAME', 'DETAIL_PAGE_URL'));
-                                  $arElement = $res->GetNext();
-?>
-                            
-						<a href="<?=$arElement['DETAIL_PAGE_URL']?>" class="product-list__img">
-                                                    <?if($item['PROPERTIES']['novelty']['VALUE_XML_ID']=='Y'){?><div class="product-list__novelty">Новинка</div><?}?>
-                                                    <img src="<?echo ($item['PREVIEW_PICTURE']['SRC']) ? $item['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg";?>" alt="<?=$item['PREVIEW_PICTURE']['DESCRIPTION']?>"></a>
-						<a href="<?=$arElement['DETAIL_PAGE_URL']?>" class="product-list__title"><?=$item['NAME']?></a>
-						<div class="product-list__lineflex">
-							<div class="product-list__delivery">Доставка <span class="product-list__day">Завтра</span></div>
-							<div class="product-list__presence">Наличие</div>
-						</div>
-						<div class="product-list__lineflex">
-							<div class="product-list__pickup">Самовывоз <span class="product-list__day">Сегодня</span></div>
-							<div class="product-list__presence-number"><?=($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']);?> уп.</div>
-						</div>
-                                                <?
-                                                         $price = $item['PRICES']['Распродажа']['VALUE'] ? $item['PRICES']['Распродажа']['VALUE'] : $item['PRICES'][ID_BASE_PRICE]['VALUE'];
-                                                         $old_price = $item['PRICES']['Распродажа']['VALUE'] ? $item['PRICES']['К0 (БАЗОВАЯ НАЧАЛЬНАЯ)']['VALUE'] : 0;
-                                                         ?>
-						<div class="product-list__lineflex">
-							<div class="product-list__price"><?echo number_format($price, 2, '.', ' ');?> ₽
-                                                        <?if($old_price){
-                                                            ?><span class="carousel-product__price-old"><?echo number_format($old_price, 2, '.', ' ');?> ₽</span><?
-                                                        }?></div>
-							<a href="javascript:void(0)" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$item['PRICES']['Распродажа']['VALUE']?>" rel="nofollow" class="product-list__btn blue-btn">В корзину</a>
-						</div>
-					
-                            
-                            
-                                
-						
-					</li>
-			
-			<?
-		}
-		?>
 
-					
-				</ul>
-		
+<?foreach ($arResult['ITEMS'] as $item):?>
+<?$res = CIBlockElement::GetList(array(), array('ID'=>$item["ID"]), false, false, array('ID', 'IBLOCK_ID', 'NAME', 'DETAIL_PAGE_URL'));
+$arElement = $res->GetNext();?>
+
+               <div class="special-products__item">
+                  <!--product-card-->
+                  <section class="product-card">
+                     <div class="product-card__header">
+                        <h3 class="product-card__title"><a class="product-card__link" href="<?=$arElement['DETAIL_PAGE_URL']?>">Cаморез кровельный 4,8х35 RAL5021, синияя вода (250шт) Фасовка</a></h3>
+                        <img class="product-card__image" src="<?echo ($item['PREVIEW_PICTURE']['SRC']) ? $item['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg";?>" width="200" height="150" alt="">
+                     </div>
+                     <div class="product-card__content">
+                        <div class="product-card__block">
+                           <p class="product-card__delivery"><i class="simple-car-icon product-card__icon"></i><span class="product-card__text">Доставка</span><span class="product-card__date">Завтра</span></p>
+                           <p class="product-card__delivery"><i class="simple-home-icon product-card__icon"></i><span class="product-card__text">Самовывоз</span><span class="product-card__date">Сегодня</span></p>
+                        </div>
+                        <div class="product-card__block">
+                           <p class="product-card__available"><span class="product-card__state">В наличии</span></p>
+                           <p class="product-card__available"><i class="simple-state-yes-icon product-card__icon product-card__icon--state"></i><span class="product-card__text"><?=($item['CATALOG_QUANTITY'] + $item['CATALOG_QUANTITY_RESERVED']);?> уп.</span></p>
+                        </div>
+                     </div>
+					 
+                                                <?
+                                                    $price = $item['PRICES']['Распродажа']['VALUE'] ? $item['PRICES']['Распродажа']['VALUE'] : $item['PRICES'][ID_BASE_PRICE]['VALUE'];
+                                                    $old_price = $item['PRICES']['Распродажа']['VALUE'] ? $item['PRICES']['К0 (БАЗОВАЯ НАЧАЛЬНАЯ)']['VALUE'] : 0;
+                                                ?>					 
+                     <div class="product-card__footer">
+                        <div class="product-card__price"><?echo number_format($price, 2, '.', ' ');?> ₽</div>
+						<?if($old_price && false):?>
+                        <div class="product-card__price"><?echo number_format($old_price, 2, '.', ' ');?> ₽</div>
+						<?endif?>
+                                         
+                        <button class="main-button main-button--mini product-card__button" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$item['PRICES']['Распродажа']['VALUE']?>">В корзину</button>
+                     </div>
+                  </section>
+                  <!--product-card-->
+               </div>
+			   
+<?endforeach?>
+
+
+
