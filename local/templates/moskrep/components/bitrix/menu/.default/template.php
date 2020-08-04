@@ -2,9 +2,12 @@
 
 <?if (!empty($arResult)):?>
 
-			<nav class="nav-catalog<?echo (CSite::InDir('/index.php') ? ' nav-catalog--main' : '');?>">
-				<a href="javascript:void(0)" class="nav-catalog__btn<?echo (CSite::InDir('/index.php') ? ' active' : '');?>">Каталог товаров</a>
-				<ul class="nav-catalog__items<?echo (CSite::InDir('/index.php') ? ' active' : '');?>">
+			<nav class="catalog-nav<?echo (CSite::InDir('/index.php') ? ' nav-catalog--main' : '');?>">
+				<h4 class="catalog-nav__title" data-sreader>Каталог товаров</h4>
+                  <button class="main-button main-button--plus catalog-nav__toggle<?echo (CSite::InDir('/index.php') ? ' catalog-nav__toggle--special' : '');?>" id="catalog-nav__toggle"><i class="simple-menu-icon main-button__icon"></i>Каталог товаров</button>
+                  <div class="catalog-nav__wrap" id="catalog-nav__wrap">
+                     <button class="catalog-nav__close" id="catalog-nav__close"><i class="colored-close-icon"></i>Закрыть</button>
+				<ul class="catalog-nav__list<?echo (CSite::InDir('/index.php') ? ' active' : '');?>">
 
 <?
 $previousLevel = 0;
@@ -18,16 +21,20 @@ foreach($arResult as $arItem):
 	<?if ($arItem["IS_PARENT"]):?>
 
 		<?if ($arItem["DEPTH_LEVEL"] == 1):?>
-			<li class="nav-catalog__item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>"  class="nav-catalog__link"><?=$arItem["TEXT"]?></a>
-				<div class="catalog-level-two__wrap">
-							<ul class="catalog-level-two__items">
+			<li class="catalog-nav__item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>"  class="catalog-nav__lvl1-toggle"><?=$arItem["TEXT"]?></a>
+				<!--lvl2-->
+                <div class="catalog-nav__lvl2">
+                    <button class="catalog-nav__back" data-lvl2-back><i class="catalog-back-icon"></i>Назад</button>
+					<ul class="catalog-nav__lvl2-list">
 		<?elseif($arItem["DEPTH_LEVEL"] == 2):?>
-			<li class="catalog-level-two__item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="catalog-level-two__link"><?=$arItem["TEXT"]?></a>
-				<div class="catalog-level-three__wrap">
-										<div class="catalog-level-three__title"><?=$arItem["TEXT"]?></div>
-										<ul class="catalog-level-three__items">
+			<li class="catalog-nav__lvl2-item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="catalog-nav__lvl2-toggle"><?=$arItem["TEXT"]?><i class="catalog-more-icon"></i></a>
+				<!--lvl3-->
+				<div class="catalog-nav__lvl3">
+					<button class="catalog-nav__back" data-lvl3-back><i class="catalog-back-icon"></i>Назад</button>
+										<div class="catalog-nav__lvl3-title"><?=$arItem["TEXT"]?></div>
+										<ul class="catalog-nav__lvl3-list">
 		<?else:?>
-		      <li class="catalog-level-three__item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="catalog-level-three__link"><?=$arItem["TEXT"]?></a></li>
+		      <li class="catalog-nav__lvl3-item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="catalog-nav__lvl3-link"><?=$arItem["TEXT"]?></a></li>
 		<?endif?>
 
 	<?else:?>
@@ -35,12 +42,12 @@ foreach($arResult as $arItem):
 	
 
 			<?if ($arItem["DEPTH_LEVEL"] == 1):?>
-			<li class="nav-catalog__item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="nav-catalog__link"><?=$arItem["TEXT"]?></a></li>
+			<li class="nav-catalog__item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="catalog-nav__lvl1-toggle"><?=$arItem["TEXT"]?></a></li>
 				
 		<?elseif($arItem["DEPTH_LEVEL"] == 2):?>
-			<li class="catalog-level-two__item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="catalog-level-two__link"><?=$arItem["TEXT"]?></a></li>
+			<li class="catalog-nav__lvl2-item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="catalog-nav__lvl2-link"><?=$arItem["TEXT"]?></a></li>
 		<?else:?>
-		      <li class="catalog-level-three__item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="catalog-level-three__link"><?=$arItem["TEXT"]?></a></li>
+		      <li class="catalog-nav__lvl3-item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="catalog-nav__lvl3-link"><?=$arItem["TEXT"]?></a></li>
 		<?endif?>
 		
 		
@@ -63,6 +70,7 @@ foreach($arResult as $arItem):
 <?endif?>
 
 </ul>
+</div>
 </nav>
 
 <?endif?>

@@ -14,6 +14,8 @@ if ($arParams["SET_TITLE"] == "Y")
 }
 ?>
 
+<div>
+
 <? if (!empty($arResult["ORDER"])): ?>
 
 	<table class="sale_order_full_table">
@@ -178,3 +180,6 @@ while ($arItems = $dbBasketItems->Fetch())
 	</table>
 
 <? endif ?>
+
+
+</div>

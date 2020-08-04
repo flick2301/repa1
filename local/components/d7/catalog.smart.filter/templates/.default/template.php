@@ -17,7 +17,8 @@ $this->setFrameMode(true);
 <?
 include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 ?>
-<div class="main-filter">
+<div class="main-filter basic-layout__module catalog-filter is-disabled" id="catalog-filter">
+<button class="catalog-filter__close" id="catalog-filter__close"><i class="simple-close-icon"></i>Закрыть</button>
     <?if($arParams['MOBILE_VERSION']=='Y'):?>
     <div class="filter-close"></div>
     <div class="s18-title no-padding"><?echo GetMessage("CT_BCSF_FILTER_TITLE")?></div>

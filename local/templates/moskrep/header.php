@@ -24,25 +24,36 @@ ref.parentNode.insertBefore(js, ref);}(document));
        
     
     <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <meta name="yandex-verification" content="94ad628889e9793a" />
     <meta name="google-site-verification" content="tCyUZcBpb8WKtkt8O1XsKiMEeBQpIFTPY-N9GDFfIv0" />
     
-   <title><?$APPLICATION->ShowTitle();?></title>
+	<meta name="robots" content="index,follow">
+    <meta name="apple-mobile-web-app-title" content="Главная страница – Krep-Komp">
+    <meta name="theme-color" content="#0C58CF">
+    <title><?$APPLICATION->ShowTitle();?></title>
 
 	<?$APPLICATION->ShowHead();?>
         <?CJSCore::Init(array('jquery'));?>
 	<?
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/reset.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.css", true);
-        $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/fancybox.css", true);
-		
-		
-		
+       $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/fancybox.css", true);
+	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/styles/global.styles.min.css?v=XXXXXXa", true);
 	?>
 	
+	<link rel="manifest" href="assets/a-icons/manifest.webmanifest">
+	<link rel="icon" sizes="32x32" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/favicon-32.png">
+	<link rel="icon" sizes="96x96" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/favicon-96.png">
+	<link rel="icon" sizes="16x16" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/favicon-16.png">
+	
+	<!--appicons-->
+   <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-iphone.png" sizes="60x60">
+   <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-ipad.png" sizes="76x76">
+   <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-iphone@2x.png" sizes="120x120">
+   <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-ipad@2x.png" sizes="152x152">
 
-
-   <link rel='canonical' href='https://<?=$_SERVER["SERVER_NAME"]?><?=$APPLICATION->ShowViewContent('page_url');?>' />
+	<link rel='canonical' href='https://<?=$_SERVER["SERVER_NAME"]?><?=$APPLICATION->ShowViewContent('page_url');?>' />
 
     
     <!--[if (lt IE 9)&(!IEMobile 7)]><script src="js/html5support.js"></script><![endif]-->
@@ -55,10 +66,14 @@ ref.parentNode.insertBefore(js, ref);}(document));
     if (d.head) d.head.appendChild(s);
   })(document);
 </script>
+
 <?require_once($_SERVER["DOCUMENT_ROOT"]."/include/counters.php");?>
+<?if($APPLICATION->GetCurPage() == "/"):?>
+<style>@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=cyrillic);body{margin:0;font-family:'Open Sans',sans-serif;font-weight:400;letter-spacing:0;background-color:#fff;background-image:none}.project{max-width:660px;margin:0 auto;line-height:24px}.project *{font-family:'Open Sans',sans-serif}.project h1{margin:0;padding:34px 16px 25px;font-size:30px;font-weight:600;text-align:center;text-transform:capitalize}.project h2{margin:0 16px 12px;font-size:17px;font-weight:600}.project q{font-style:normal}.project q,.project q:lang(en){quotes:'\201C''\201D''\2018''\2019'}.project q:lang(ru){quotes:'\00AB''\00BB''\201E''\201C'}.project q::after,.project q::before{font-weight:600;color:#06aaf5}.project a{padding:0 10px;line-height:36px;color:#06aaf5;white-space:nowrap;text-decoration:underline}.js-no-touch .project a:hover,.project a:active{color:#28292b;text-decoration:none}.project .list{width:100%;margin:0;font-size:17px;padding:8px 0 24px}.project .list li{display:flex;flex-direction:column;padding:5px 0 7px}.project .list li:nth-of-type(2n+1){background-color:#f5f5f6}.project .name{padding:8px 16px}.project .action{display:flex;margin-top:-8px;padding:0 6px}@media (min-width:531px){.project{padding:0 40px}.project h1{padding-right:20px;padding-left:20px}.project h2{margin-right:0;margin-left:0}.project .list li{padding-right:4px;padding-left:4px}}@media (min-width:741px){.project{padding:12px 40px}.project a{padding:0 16px;line-height:40px}.project .list li{flex-direction:row;justify-content:space-between;padding-bottom:6px}.project .action{margin-top:0}}</style>
+<?endif?>
 </head>
 <?$APPLICATION->ShowPanel();?>
-<body>
+<body class="basic-layout basic-layout--default" id="basic-layout">
 
     <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
@@ -79,21 +94,30 @@ ref.parentNode.insertBefore(js, ref);}(document));
 <!-- /Yandex.Metrika counter -->
     <?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/GTM.php";?>
     <?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/functions.php";?>
+	<header class="basic-layout__header">
 	
-	<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page">  <a class="banner-link" href="https://krep-komp.ru/"><p class="banner-text"><strong style='font-weight: 500; position: relative; top: 1px;'>Мы работаем! Принимаем заказы на самовывоз и бесконтактную доставку. <span style='color: #f39101;'><!--В связи с голосованием по поправкам в Конституцию, 1 июля - выходной день.--></span></strong></p> </a> <svg class="icon-svg -cross" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg> </div> </div>
-    <header class="header inner">
-	<div class="header-wrap-top">
-	    <div class="header-logo"><a href="/" title='Купить метизы, крепежные изделия и инструмент в Москве.'><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/company_logo.php"), false, []);?></a></div>
-	    <div class="header-search">
+	<!--<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page">  <a class="banner-link" href="https://krep-komp.ru/"><p class="banner-text"><strong style='font-weight: 500; position: relative; top: 1px;'>Мы работаем! Принимаем заказы на самовывоз и бесконтактную доставку. <span style='color: #f39101;'></span></strong></p> </a> <svg class="icon-svg -cross" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg> </div> </div>-->
+    <div class="basic-layout__section">
+	<!--eshop-panel-->
+        <div class="eshop-panel">
+			<div class="eshop-panel__brand">
+			<!--website-logo-->
+			<div class="website-logo">
+				<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/company_logo.php"), false, []);?>
+				<a class="website-logo__link" href="/">На главную</a>
+			</div>
+			<!--website-logo-->
+            </div>
+			<div class="eshop-panel__search">
                 <?if(1){
                 $request = Application::getInstance()->getContext()->getRequest();
                 $name = $request->getCookieList();
                 
                 ?>
                     <?if(SITE_ID!='s2'):?>
-                <div id='geo_block'>
+                
                 <? require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>
-                </div>
+                
                     <?endif;?>
                 <?}?>
 		<?/*$APPLICATION->IncludeComponent(
@@ -170,33 +194,23 @@ ref.parentNode.insertBefore(js, ref);}(document));
 	),
 	false
 );?>
-
-                <div id='title_sr' style='display: none; position: absolute; top: 156px; width: 570px;' class='title-search-result'>
-                </div>
-                
-		    <div class="header-search__fade"></div>
 		</div>
-		
-		<div class="header-contacts">
-                    <?if($_SERVER['HTTP_HOST']!='spb.krep-komp.ru'){?>
-						<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/tel_header.php"), false, []);?>
-                    <?}else{?>
-						<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/tel_header_spb.php"), false, []);?>
-                    <?}?>
-                    <div class="header-contacts__schedule"><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/opening_hours.php"), false, []);?></div>
-					<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/email_header.php"), false, []);?>
-		</div>
-                <div class='header-lk'>
-	<?
-        global $USER;
-        if ($USER->IsAuthorized()){ 
-            ?><a href="/personal/" class="lk__btn">Кабинет</a><?
-        }else{
-            ?><a href="javascript:void(0);" class="login__btn">Вход</a><?
-        }
-        ?>
-                </div>
-		<?
+               
+		<div class="eshop-panel__user">
+               <!--client-widget-->
+               <div class="client-widget">
+					<div class="client-widget__user">
+					<?
+					global $USER;
+					if ($USER->IsAuthorized()){ 
+						?><a class="client-widget__link" href="/personal/" data-sign-in-form-trigger><i class="simple-user-icon client-widget__icon"></i>Кабинет</a><?
+					}else{
+						?><a href="javascript:void(0);" class="client-widget__link login__btn" data-sign-in-form-trigger><i class="simple-user-icon client-widget__icon"></i>Вход</a><?
+					}
+					?>
+					</div>
+					
+					<?
 		
 		$APPLICATION->IncludeComponent(
 	"bitrix:sale.basket.basket.line", 
@@ -227,9 +241,34 @@ ref.parentNode.insertBefore(js, ref);}(document));
 	),
 	false
 );?>
+			
+				
+			</div>
+		</div>
+		<div class="eshop-panel__contact">
+               <!--contact-widget-->
+               <div class="contact-widget">
+                    <?if($_SERVER['HTTP_HOST']!='spb.krep-komp.ru'){?>
+						<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/tel_header.php"), false, []);?>
+                    <?}else{?>
+						<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/tel_header_spb.php"), false, []);?>
+                    <?}?>
+                    <p class="contact-widget__schedule"><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/opening_hours.php"), false, []);?></p>
+					<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/email_header.php"), false, []);?>
+				</div>
+		</div>
+              
+		
         
 	</div>
-	<div class="header-wrap-bottom">
+	<!--eshop-panel-->
+</div>
+	<div class="basic-layout__section">
+         <!--website-navbar-->
+         <div class="website-navbar">
+            <div class="website-navbar__catalog">
+               <!--catalog-nav-->
+               
 			
 	<?$APPLICATION->IncludeComponent(
 	"bitrix:menu", 
@@ -262,7 +301,14 @@ ref.parentNode.insertBefore(js, ref);}(document));
 );?>
 					
 			
-	    <nav class="nav-main">
+			
+		</div>
+		<div class="website-navbar__primary">
+               <!--main-nav-->
+               <nav class="main-nav">
+                  <h4 class="main-nav__title" data-sreader>Навигация</h4>
+                  <div class="main-nav__wrap is-disabled" id="main-nav__wrap">
+                     <button class="main-nav__close" id="main-nav__close"><i class="simple-close-icon"></i>Закрыть</button>
 	<?$APPLICATION->IncludeComponent(
         "bitrix:menu",
         "top_menu",
@@ -272,39 +318,47 @@ ref.parentNode.insertBefore(js, ref);}(document));
          "CHILD_MENU_TYPE" => "top", 
          "USE_EXT" => "Y" 
      )
-);?>	
-		
-	    </nav>
+		);?>	
+					</div>
+				</nav>
+			</div>
 	</div>
     </header>
     
 <?if($APPLICATION->GetCurPage() !== "/basket/" && $APPLICATION->GetCurPage() !== "/order/" && ERROR_404 != 'Y'):?>    
-    <div class="two-column inner">
-	<aside class="two-column__left">
-           <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "parent", array());?> 
-            <?$APPLICATION->IncludeComponent(
-            "bitrix:menu",
-            "left_bottom",
-            Array(
-            "ROOT_MENU_TYPE" => "left_bottom", 
-            "MAX_LEVEL" => "1", 
-            "CHILD_MENU_TYPE" => "left_bottom", 
-            "USE_EXT" => "Y",
-            "VIBOR_CATALOG_TABLE" => array(
-			
-			0 => "2411",
-                        1 => "2403",
-                        3 => "",
-                        )
-     )
-);?>
+    <main class="basic-layout__common">
+	<?if($APPLICATION->GetCurPage() !== "/")
+	{
+		?>
+		<div class="basic-layout__columns basic-layout__columns--reverse basic-layout__columns--special">
+			<div class="basic-layout__content">
+            <!--crumbs-nav-->
+			<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());?> 
+			<!--crumbs-nav-->
+			</div>
+			<div class="basic-layout__sidebar basic-layout__sidebar--special">
+            <!--back-to-page-->
+            <div class="back-to-page">
+               <a class="back-to-page__link" href="/"><i class="simple-back-icon back-to-page__icon"></i>Главная страница</a>
+            </div>
+            <!--back-to-page-->
+         </div>
+            
+		</div>
+	<?
+	}
+	?>
+      <div class="basic-layout__columns basic-layout__columns--reverse">
+         <div class="basic-layout__content">
+           
                 
             <?=$APPLICATION->ShowViewContent("related_menu_element");?>
-            <?=$APPLICATION->ShowViewContent('RELINK');?>
-            <?=$APPLICATION->ShowViewContent("smart_filter");?>
             <?if($APPLICATION->GetCurPage() == "/catalog/"):
                 $APPLICATION->SetPageProperty("title", "Интернет-магазин \"КРЕП-КОМП\"");
             endif;?>
+			
+			
+			
             <?if(0):?>            
             <div class="aside-contacts">
 	        <div class="aside-contacts__adres-wrap">
@@ -322,15 +376,17 @@ ref.parentNode.insertBefore(js, ref);}(document));
 		</div>
 	    </div>
             <?endif;?>
-        </aside>
-        <div id="basket-root" class="two-column__right">
+        
+        
 <?else:?>
-        <div id="basket-root" class='two-column reverse inner'>
+        
             
         
        
 <?endif;?>
         
+		
+		
        
 
   

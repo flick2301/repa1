@@ -74,23 +74,23 @@ if(count($arResult_sort)){
 //we can't use $APPLICATION->SetAdditionalCSS() here because we are inside the buffered function GetNavChain()
 
 
-$strReturn .= '<ul itemscope itemtype="http://schema.org/BreadcrumbList" class="breadcrumbs">';
+$strReturn .= '<ul itemscope itemtype="http://schema.org/BreadcrumbList" class="crumbs-nav">';
 
 
 $itemSize = count($arResult);
 for($index = 0; $index < $itemSize; $index++)
 {
 	$title = htmlspecialcharsex($arResult[$index]["TITLE"]);
-	$arrow = ($index > 0? ' / ' : '');
+	//$arrow = ($index > 0? ' / ' : '');
 
 	if($arResult[$index]["LINK"] <> "" && $index != $itemSize-1)
 	{
 		$strReturn .= $arrow.'
 			<li itemprop="itemListElement" itemscope
-      itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
+      itemtype="http://schema.org/ListItem" class="crumbs-nav__item">
 				
-				<a itemprop="item" title="'.$title.'" href="'.$arResult[$index]["LINK"].'" target="_self"  class="breadcrumbs__link">
-					<span itemprop="name">'.$title.'</span>
+				<a itemprop="item" title="'.$title.'" href="'.$arResult[$index]["LINK"].'" target="_self"  class="crumbs-nav__page crumbs-nav__page--link">
+					'.$title.'
 				</a>
 				
 			</li>';
@@ -99,9 +99,9 @@ for($index = 0; $index < $itemSize; $index++)
 	{
 		$strReturn .= $arrow.'
 			<li itemprop="itemListElement" itemscope
-      itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
+      itemtype="http://schema.org/ListItem" class="crumbs-nav__item">
 				
-				<span itemprop="name" class="breadcrumbs__last">'.$title.'</span>
+				<p itemprop="name" class="crumbs-nav__page crumbs-nav__page--last">'.$title.'</p>
 				
 			</li>';
 	}

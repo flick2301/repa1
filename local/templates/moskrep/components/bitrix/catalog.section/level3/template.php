@@ -30,8 +30,14 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 <?php
 	//if ($_SERVER['REQUEST_URI']=="/krepezh/samorezy/samorezy_po_derevu/ostrye_pd/") file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arResult['SIZES'], true));
 
-    foreach($arResult['ITEMS'] as $items){
-                   
+
+    foreach($arResult['SIZES'] as $key=>$size){
+        
+        $index=0;
+        foreach ($size as $item)
+        {
+			
+
             $price = $item['PRICES'][ID_SALE_PRICE]['VALUE'] ? $item['PRICES'][ID_SALE_PRICE]['VALUE'] : $item['MIN_PRICE']['VALUE'];
             $old_price = $item['PRICES'][ID_SALE_PRICE]['VALUE'] ? $item['PRICES'][ID_BASE_PRICE]['VALUE'] : 0;
         ?>
@@ -146,7 +152,9 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 		</div>
 			
 <?php
-        
+
+        }
+
     }
 ?>
 

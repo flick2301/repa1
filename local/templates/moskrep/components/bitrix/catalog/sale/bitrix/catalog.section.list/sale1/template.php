@@ -10,25 +10,32 @@ $this->setFrameMode(true);
 ?>
 
 
-
-<h1 class="s38-title"><?=$APPLICATION->GetTitle();?></h1>
-<nav class="nav-sale">
-    <ul class="nav-sale__items">
-<?
-    foreach ($arResult['SECTIONS'] as &$arSection)
-    {
-?>
-        <li class="nav-sale__item">
-            <a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" class="nav-sale__link">
-                <div class="nav-sale__lable">sale</div>
-                <div class="nav-sale__img">
-                    <img src="<?=$arSection['PICTURE']['src']?>" alt="">
-                </div>
-                <span class="nav-sale__title"><span><?=$arSection['NAME']?></span></span>
-            </a>
-        </li>
-    <?}?>		
-    </ul>
-</nav>
+<!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?=$APPLICATION->GetTitle();?></h1>
+            </header>
+<!--page-heading-->
+<!--catalog-feed-->
+            <div class="basic-layout__module catalog-feed">
+               <div class="catalog-feed__list">
+			   <?
+				foreach ($arResult['SECTIONS'] as &$arSection)
+				{
+				?>
+                  <div class="catalog-feed__item">
+                     <!--catalog-card-->
+                     <section class="catalog-card">
+                        <h3 class="catalog-card__title"><a class="catalog-card__link" href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self"><?=$arSection['NAME']?></a></h3>
+                        <p class="catalog-card__badge">Sale</p>
+                        <div class="catalog-card__cover">
+                           <img class="catalog-card__image" src="<?=$arSection['PICTURE']['src']?>" width="262" height="197" alt="">
+                        </div>
+                     </section>
+                     <!--catalog-card-->
+                  </div>
+				<?}?>
+				</div>
+			</div>
+<!--catalot-feed-->
 
 

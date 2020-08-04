@@ -1,4 +1,3 @@
-
 BasketPoolQuantity = function()
 {
 	this.processing = false;

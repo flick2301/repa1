@@ -18,24 +18,43 @@ switch (LANGUAGE_ID)
 ?>
 
 <?$APPLICATION->SetAdditionalCSS($APPLICATION->GetCurPage()."style.css", true);?>
-<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array()); ?>
-
 <?/*<script src="<?=$scheme?>://api-maps.yandex.ru/2.1.50/?load=package.full&lang=<?=$locale?>"></script>*/?>
 <?$api_key = htmlspecialcharsbx(Bitrix\Main\Config\Option::get('fileman', 'yandex_map_api_key'));?>
 <?$APPLICATION->AddHeadScript("{$scheme}://api-maps.yandex.ru/2.1.50/?load=package.full&lang={$locale}&apikey={$api_key}" );?>
 <?$APPLICATION->AddHeadScript($APPLICATION->GetCurPage()."map.js?".rand());?>
 
-			<h1 class="s38-title"><?=$APPLICATION->ShowTitle();?></h1>
 
-<ul class='delivery_items'>
-	<li data-tab='tab_1' class='delivery_item active'>Москва и МО</li>
-	<li data-tab='tab_2' class='delivery_item spb'>Санкт-Петербург и ЛО</li>
-	<li data-tab='tab_3' class='delivery_item'>Доставка по России</li>
-</ul>
-
+            <!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
+            </header>
+            <!--page-heading-->
 
 
-<div id='tab_1' class='delivery__tabs-list active'>
+
+            <!--simple-article-->
+            <div class="basic-layout__module simple-article">
+               <!--content-tabs-->
+               <div class="simple-article__tabs content-tabs">
+                  <ul class="content-tabs__list" data-delivery-tabs>
+                     <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#moscow" data-tabby-default>Москва и МО</a>
+                     </li>
+                     <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#piter">Санкт-Петербург и ЛО</a>
+                     </li>
+                     <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#russia">Доставка по России</a>
+                     </li>
+                  </ul>
+               </div>
+			   
+
+			   
+			   
+               <!--content-tabs-->
+               <div class="simple-article__content" id="moscow">
+                  <div class="simple-article__section wysiwyg-block">
 <?
 $APPLICATION->IncludeFile(
  $APPLICATION->GetCurPage()."tab1.php",
@@ -43,10 +62,12 @@ $APPLICATION->IncludeFile(
  array("SHOW_BORDER" => true, "MODE"=>"php")
 );
 ?>
-</div>
-
-
-<div id='tab_2' class='delivery__tabs-list spb'>
+                  </div>
+               </div>
+			   
+			   
+               <div class="simple-article__content" id="piter">
+                  <div class="simple-article__section wysiwyg-block">
 <?
 $APPLICATION->IncludeFile(
  $APPLICATION->GetCurPage()."tab2.php",
@@ -54,10 +75,11 @@ $APPLICATION->IncludeFile(
  array("SHOW_BORDER" => true, "MODE"=>"php")
 );
 ?>
-</div>
-
-
-<div id='tab_3' class='delivery__tabs-list'>
+                  </div>
+               </div>
+			   
+               <div class="simple-article__content" id="russia">
+                  <div class="simple-article__section wysiwyg-block">
 <?
 $APPLICATION->IncludeFile(
  $APPLICATION->GetCurPage()."tab3.php",
@@ -65,7 +87,15 @@ $APPLICATION->IncludeFile(
  array("SHOW_BORDER" => true, "MODE"=>"php")
 );
 ?>
-</div>
+                  </div>
+               </div>
+			   
+            </div>
+            <!--simple-article-->
+			
+			
 
+   <script>$(document).ready(function(){var tabs=new Tabby("[data-delivery-tabs]");});</script>
 
+   
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

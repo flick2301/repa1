@@ -1,3 +1,12 @@
+.notetext, .errortext {
+	position: relative;
+	height: 50px;
+	top: 20px;
+}
+
+
+
+
 .profile-block-hidden
 {
 	display: none;

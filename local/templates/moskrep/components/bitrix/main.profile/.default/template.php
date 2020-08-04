@@ -8,11 +8,12 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 	die();
 ?>
 
-<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());?>
+            <!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?=$APPLICATION->ShowTitle();?></h1>
+            </header>
+            <!--page-heading-->
 
-<h1 class="s38-title"><?=$APPLICATION->ShowTitle();?></h1>
-
-<div class="lk-form">
 
 <?ShowError($arResult["strProfileError"]);?>
 <?
@@ -44,30 +45,34 @@ var cookie_prefix = '<?=$arResult["COOKIE_PREFIX"]?>';
 <input type="hidden" name="ID" value=<?=$arResult["ID"]?> />
 
 
+            <!--user-account-->
+            <div class="user-account">
+               <div class="user-account__item">
+                  <label class="user-account__label" for="user-account__name"><?=GetMessage('NAME')?></label>
+                  <input class="simple-input user-account__input" type="text" name="NAME" id="user-account__name" value="<?=$arResult["arUser"]["NAME"]?>">
+               </div>
+               <div class="user-account__item">
+                  <label class="user-account__label" for="user-account__surname"><?=GetMessage('LAST_NAME')?></label>
+                  <input class="simple-input user-account__input" type="text" name="LAST_NAME" id="user-account__surname" value="<?=$arResult["arUser"]["LAST_NAME"]?>">
+               </div>
+               <div class="user-account__item">
+                  <label class="user-account__label" for="user-account__midname"><?=GetMessage('SECOND_NAME')?></label>
+                  <input class="simple-input user-account__input" type="text" name="SECOND_NAME" id="user-account__midname" value="<?=$arResult["arUser"]["SECOND_NAME"]?>">
+               </div>
+               <div class="user-account__item">
+                  <label class="user-account__label" for="user-account__email"><?=GetMessage('EMAIL')?><?if($arResult["EMAIL_REQUIRED"]):?><span class="starrequired">*</span><?endif?></label>
+                  <input class="simple-input user-account__input" type="text" name="EMAIL" id="user-account__email" value="<?=$arResult["arUser"]["EMAIL"]?>">
+               </div>
+               <div class="user-account__item">
+                  <label class="user-account__label" for="user-account__personal"><?=GetMessage('PERSONAL_MANAGER')?></label>
+                  <input class="simple-input user-account__input" type="text" name="PERSONAL_MANAGER" id="user-account__personal" value="<?=$arResult["arUser"]["PERSONAL_MANAGER"]['UF_NAME']?>">
+               </div>			   
+               <div class="user-account__footer">
+                  <input onclick="BX.submit(BX('form_lk'));" class="main-button main-button--plus user-account__submit" type="button" value="Сохранить">
+               </div>
+            </div>
+            <!--user-account-->
 
-	
-	
-	<label class="lk-form__label">
-            <span class="lk-form__title"><?=GetMessage('NAME')?>:</span>
-            <input type="text" name="NAME" value="<?=$arResult["arUser"]["NAME"]?>" class="form__input">
-	</label>
-        <label class="lk-form__label">
-            <span class="lk-form__title"><?=GetMessage('LAST_NAME')?>:</span>
-            <input type="text" name="LAST_NAME" value="<?=$arResult["arUser"]["LAST_NAME"]?>" class="form__input">
-	</label>
-        <label class="lk-form__label">
-            <span class="lk-form__title"><?=GetMessage('SECOND_NAME')?>:</span>
-            <input type="text" name="SECOND_NAME" value="<?=$arResult["arUser"]["SECOND_NAME"]?>" class="form__input">
-	</label>
-        <label class="lk-form__label">
-            <span class="lk-form__title"><?=GetMessage('EMAIL')?><?if($arResult["EMAIL_REQUIRED"]):?><span class="starrequired">*</span><?endif?></span>
-            <input type="text" name="EMAIL" value="<?=$arResult["arUser"]["EMAIL"]?>" class="form__input">
-	</label>
-	<label class="lk-form__label">
-            <span class="lk-form__title"><?=GetMessage('PERSONAL_MANAGER')?></span>
-            <input type="text" name="PERSONAL_MANAGER" value="<?=$arResult["arUser"]["PERSONAL_MANAGER"]['UF_NAME']?>" class="form__input" disabled>
-	</label>
-	
 	
 
 
@@ -103,7 +108,6 @@ var cookie_prefix = '<?=$arResult["COOKIE_PREFIX"]?>';
 	<?endif;?>
 	<?// ******************** /User properties ***************************************************?>
 	
-        <a href="javascript:void(0);" onclick="BX.submit(BX('form_lk'));"class="blue-btn lk-form__btn">Сохранить</a>
+        
 </form>
 
-</div>

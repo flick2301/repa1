@@ -7,6 +7,11 @@ and open the template in the editor.
     Created on : 24.10.2018, 13:19:36
     Author     : pol
 */
+a.client-widget__link.noitems {
+	text-decoration: none!important;
+	opacity: 0.4;
+}
+
 .box-modal{
     display:none;
 }
@@ -124,4 +129,8 @@ and open the template in the editor.
 }
 .sale-category--new{
     margin-top: 0px !important;
+}
+.header-basket-none
+{
+	    margin: 0 0 0 0 !important;
 }

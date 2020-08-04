@@ -70,8 +70,6 @@ if ($isFilter)
 		$arCurSection = array();
 }
 
-$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());
-
 //Выявляем, есть ли секции в секции
 $count_sections = CIBlockSection::GetCount(Array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], "SECTION_ID"=>$arResult["VARIABLES"]["SECTION_ID"]));
 

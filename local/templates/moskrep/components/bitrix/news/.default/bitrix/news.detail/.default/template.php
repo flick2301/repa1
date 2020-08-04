@@ -13,9 +13,20 @@
 $this->setFrameMode(true);
 ?>
 
-<div class="set-default-parametr-page-cat">
+            <!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
+            </header>
+            <!--page-heading-->
+			
+			
+
+            <!--simple-article-->
+            <div class="basic-layout__module simple-article">
+               <div class="simple-article__content wysiwyg-block">
+
 	<?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arResult["DETAIL_PICTURE"])):?>
-		<img
+		<p><img
 			class="detail_picture"
 			border="0"
 			src="<?=$arResult["DETAIL_PICTURE"]["SRC"]?>"
@@ -23,51 +34,15 @@ $this->setFrameMode(true);
 			height="<?=$arResult["DETAIL_PICTURE"]["HEIGHT"]?>"
 			alt="<?=$arResult["DETAIL_PICTURE"]["ALT"]?>"
 			title="<?=$arResult["DETAIL_PICTURE"]["TITLE"]?>"
-			/>
+			/></p>
 	<?endif?>
-	<?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?>
-		<span class="news-date-time"><?=$arResult["DISPLAY_ACTIVE_FROM"]?></span>
-	<?endif;?>
-        <h1 class='s38-title'><?=$arResult["NAME"]?></h1><br>
-	<?if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arResult["FIELDS"]["PREVIEW_TEXT"]):?>
-		<p><?=$arResult["FIELDS"]["PREVIEW_TEXT"];unset($arResult["FIELDS"]["PREVIEW_TEXT"]);?></p>
-	<?endif;?>
-	<?if($arResult["NAV_RESULT"]):?>
-		<?if($arParams["DISPLAY_TOP_PAGER"]):?><?=$arResult["NAV_STRING"]?><br /><?endif;?>
-		<?echo $arResult["NAV_TEXT"];?>
-		<?if($arParams["DISPLAY_BOTTOM_PAGER"]):?><br /><?=$arResult["NAV_STRING"]?><?endif;?>
-	<?elseif(strlen($arResult["DETAIL_TEXT"])>0):?>
+	
+	<?if(strlen($arResult["DETAIL_TEXT"])>0):?>
 		<?echo $arResult["DETAIL_TEXT"];?>
 	<?else:?>
 		<?echo $arResult["PREVIEW_TEXT"];?>
 	<?endif?>
-	<div style="clear:both"></div>
-	<br />
-	<?foreach($arResult["FIELDS"] as $code=>$value):
-		if ('PREVIEW_PICTURE' == $code || 'DETAIL_PICTURE' == $code)
-		{
-			?><?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?
-			if (!empty($value) && is_array($value))
-			{
-				?><img border="0" src="<?=$value["SRC"]?>" width="<?=$value["WIDTH"]?>" height="<?=$value["HEIGHT"]?>"><?
-			}
-		}
-		else
-		{
-			?><?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?=$value;?><?
-		}
-		?><br />
-	<?endforeach;
-	foreach($arResult["DISPLAY_PROPERTIES"] as $pid=>$arProperty):?>
-
-		<?=$arProperty["NAME"]?>:&nbsp;
-		<?if(is_array($arProperty["DISPLAY_VALUE"])):?>
-			<?=implode("&nbsp;/&nbsp;", $arProperty["DISPLAY_VALUE"]);?>
-		<?else:?>
-			<?=$arProperty["DISPLAY_VALUE"];?>
-		<?endif?>
-		<br />
-	<?endforeach;
+	<?
 	if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y")
 	{
 		?>
@@ -91,4 +66,12 @@ $this->setFrameMode(true);
 		<?
 	}
 	?>
-</div>
+               </div>
+               <div class="simple-article__footer">
+                  <a class="second-button second-button--mini" href="<?=$arParams["BACK_URL"]?>"><?=GetMessage("T_NEWS_DETAIL_BACK")?></a>
+                  <?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?><p class="simple-article__date">Дата публикации: <time datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arItem["DISPLAY_ACTIVE_FROM"])?>"><?=$arResult["DISPLAY_ACTIVE_FROM"]?></time></p><?endif;?>
+		
+	
+               </div>
+            </div>
+            <!--simple-article-->

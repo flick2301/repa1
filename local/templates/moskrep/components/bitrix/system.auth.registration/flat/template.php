@@ -19,7 +19,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 //one css for all system.auth.* forms
 $APPLICATION->SetAdditionalCSS("/bitrix/css/main/system.auth/flat/style.css");
 ?>
-<div class="bx-authform">
+<div class="bx-authform user-account">
 
 <?
 if(!empty($arParams["~AUTH_RESULT"])):
@@ -37,7 +37,7 @@ if(!empty($arParams["~AUTH_RESULT"])):
 <?endif?>
 
 <noindex>
-	<form method="post" action="<?=$arResult["AUTH_URL"]?>" name="bform" enctype="multipart/form-data">
+	<form method="post"  id="form_lk" action="<?=$arResult["AUTH_URL"]?>" name="bform" enctype="multipart/form-data">
             <input id="check" name="check" type="hidden" value="" />
 <?if($arResult["BACKURL"] <> ''):?>
 		<input type="hidden" name="backurl" value="<?=$arResult["BACKURL"]?>" />
@@ -45,61 +45,50 @@ if(!empty($arParams["~AUTH_RESULT"])):
 		<input type="hidden" name="AUTH_FORM" value="Y" />
 		<input type="hidden" name="TYPE" value="REGISTRATION" />
 
-		<div class="bx-authform-formgroup-container">
-			<div class="bx-authform-label-container"><?=GetMessage("AUTH_NAME")?></div>
-			<div class="bx-authform-input-container">
-				<input type="text" name="USER_NAME" maxlength="255" value="<?=$arResult["USER_NAME"]?>" />
-			</div>
-		</div>
+		
+               <div class="user-account__item">
+                  <label class="user-account__label" for="user-account__name"><?=GetMessage("AUTH_NAME")?></label>
+                  <input class="simple-input user-account__input" type="text" name="USER_NAME" id="user-account__name" value="<?=$arResult["USER_NAME"]?>">
+               </div>	
 
-		<div class="bx-authform-formgroup-container">
-			<div class="bx-authform-label-container"><?=GetMessage("AUTH_LAST_NAME")?></div>
-			<div class="bx-authform-input-container">
-				<input type="text" name="USER_LAST_NAME" maxlength="255" value="<?=$arResult["USER_LAST_NAME"]?>" />
-			</div>
-		</div>
+               <div class="user-account__item">
+                  <label class="user-account__label" for="user-account__lastname"><?=GetMessage("AUTH_LAST_NAME")?></label>
+                  <input class="simple-input user-account__input" type="text" name="USER_LAST_NAME" id="user-account__lastname" value="<?=$arResult["USER_LAST_NAME"]?>">
+               </div>	
 
-		<div class="bx-authform-formgroup-container">
-			<div class="bx-authform-label-container"><span class="bx-authform-starrequired">*</span><?=GetMessage("AUTH_LOGIN_MIN")?></div>
-			<div class="bx-authform-input-container">
-				<input type="text" name="USER_LOGIN" maxlength="255" value="<?=$arResult["USER_LOGIN"]?>" />
-			</div>
-		</div>
+			    <div class="user-account__item">
+                  <label class="user-account__label" for="user-account__login"><?=GetMessage("AUTH_LOGIN_MIN")?><span class="bx-authform-starrequired">*</span></label>
+                  <input class="simple-input user-account__input" type="text" name="USER_LOGIN" id="user-account__login" value="<?=$arResult["USER_LOGIN"]?>">
+               </div>		
 
-		<div class="bx-authform-formgroup-container">
-			<div class="bx-authform-label-container"><span class="bx-authform-starrequired">*</span><?=GetMessage("AUTH_PASSWORD_REQ")?></div>
-			<div class="bx-authform-input-container">
+			    <div class="user-account__item">
+                  <label class="user-account__label" for="user-account__pass"><?=GetMessage("AUTH_PASSWORD_REQ")?><span class="bx-authform-starrequired">*</span></label>
+                  <input class="simple-input user-account__input" type="password" name="USER_PASSWORD" id="user-account__pass" value="<?=$arResult["USER_PASSWORD"]?>" autocomplete="off">
+               </div>	
 <?if($arResult["SECURE_AUTH"]):?>
-				<div class="bx-authform-psw-protected" id="bx_auth_secure" style="display:none"><div class="bx-authform-psw-protected-desc"><span></span><?echo GetMessage("AUTH_SECURE_NOTE")?></div></div>
-
+				<div class="bx-authform-psw-protected" id="bx_auth_secure" style="display:none"><div class="bx-authform-psw-protected-desc"><span></span><?echo GetMessage("AUTH_SECURE_NOTE")?></div></div>	
 <script type="text/javascript">
 document.getElementById('bx_auth_secure').style.display = '';
 </script>
 <?endif?>
-				<input type="password" name="USER_PASSWORD" maxlength="255" value="<?=$arResult["USER_PASSWORD"]?>" autocomplete="off" />
-			</div>
-		</div>
 
-		<div class="bx-authform-formgroup-container">
-			<div class="bx-authform-label-container"><span class="bx-authform-starrequired">*</span><?=GetMessage("AUTH_CONFIRM")?></div>
-			<div class="bx-authform-input-container">
-<?if($arResult["SECURE_AUTH"]):?>
-				<div class="bx-authform-psw-protected" id="bx_auth_secure_conf" style="display:none"><div class="bx-authform-psw-protected-desc"><span></span><?echo GetMessage("AUTH_SECURE_NOTE")?></div></div>
+		<div class="user-account__item">
+        <label class="user-account__label" for="user-account__passconfirm"><?=GetMessage("AUTH_CONFIRM")?><span class="bx-authform-starrequired">*</span></label>
+        <input class="simple-input user-account__input" type="password" name="USER_CONFIRM_PASSWORD" id="user-account__passconfirm" value="<?=$arResult["USER_CONFIRM_PASSWORD"]?>" autocomplete="off">	</div>	
 
+<?if($arResult["SECURE_AUTH"]):?>		
+<div class="bx-authform-psw-protected" id="bx_auth_secure_conf" style="display:none"><div class="bx-authform-psw-protected-desc"><span></span><?echo GetMessage("AUTH_SECURE_NOTE")?></div></div>	
 <script type="text/javascript">
 document.getElementById('bx_auth_secure_conf').style.display = '';
 </script>
 <?endif?>
-				<input type="password" name="USER_CONFIRM_PASSWORD" maxlength="255" value="<?=$arResult["USER_CONFIRM_PASSWORD"]?>" autocomplete="off" />
-			</div>
-		</div>
 
-		<div class="bx-authform-formgroup-container">
-			<div class="bx-authform-label-container"><?if($arResult["EMAIL_REQUIRED"]):?><span class="bx-authform-starrequired">*</span><?endif?><?=GetMessage("AUTH_EMAIL")?></div>
-			<div class="bx-authform-input-container">
-				<input type="text" name="USER_EMAIL" maxlength="255" value="<?=$arResult["USER_EMAIL"]?>" />
-			</div>
-		</div>
+			    <div class="user-account__item">
+                  <label class="user-account__label" for="user-account__email"><?=GetMessage("AUTH_EMAIL")?><span class="bx-authform-starrequired">*</span></label>
+                  <input class="simple-input user-account__input" type="text" name="USER_EMAIL" id="user-account__email" value="<?=$arResult["USER_EMAIL"]?>">
+               </div><br />	
+
+
 
 <?if($arResult["USER_PROPERTIES"]["SHOW"] == "Y"):?>
 	<?foreach ($arResult["USER_PROPERTIES"]["DATA"] as $FIELD_NAME => $arUserField):?>
@@ -126,6 +115,7 @@ $APPLICATION->IncludeComponent(
 	<?endforeach;?>
 <?endif;?>
 <?if ($arResult["USE_CAPTCHA"] == "Y"):?>
+
 		<input type="hidden" name="captcha_sid" value="<?=$arResult["CAPTCHA_CODE"]?>" />
 
 		<div class="bx-authform-formgroup-container">
@@ -133,8 +123,8 @@ $APPLICATION->IncludeComponent(
 				<span class="bx-authform-starrequired">*</span><?=GetMessage("CAPTCHA_REGF_PROMT")?>
 			</div>
 			<div class="bx-captcha"><img src="/bitrix/tools/captcha.php?captcha_sid=<?=$arResult["CAPTCHA_CODE"]?>" width="180" height="40" alt="CAPTCHA" /></div>
-			<div class="bx-authform-input-container">
-				<input type="text" name="captcha_word" maxlength="50" value="" autocomplete="off"/>
+			<div class="user-account__item">
+				<input type="text" style="max-width: 180px;" class="simple-input user-account__input" name="captcha_word" maxlength="50" value="" autocomplete="off"/>
 			</div>
 		</div>
 
@@ -166,11 +156,11 @@ $APPLICATION->IncludeComponent(
 				);?>
 			</div>
 		</div>
-		<div class="bx-authform-formgroup-container">
-			<input type="submit" onclick="document.getElementById('check').value = 'stopSpam_yes';" class="btn btn-primary" name="Register" value="<?=GetMessage("AUTH_REGISTER")?>" />
-		</div>
 
-		<hr class="bxe-light">
+
+               <div class="user-account__footer">
+                  <input type="submit" onclick="document.getElementById('check').value = 'stopSpam_yes';" class="main-button main-button--plus user-account__submit" type="button" name="Register" value="<?=GetMessage("AUTH_REGISTER")?>">
+               </div>	
 
 		<div class="bx-authform-description-container">
 			<?echo $arResult["GROUP_POLICY"]["PASSWORD_REQUIREMENTS"];?>

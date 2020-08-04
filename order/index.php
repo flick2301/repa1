@@ -1,7 +1,9 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Title");
-?><?$APPLICATION->IncludeComponent(
+?>
+<div class="basic-layout__columns">
+<?$APPLICATION->IncludeComponent(
 	"bitrix:sale.order.ajax", 
 	"krep-komp", 
 	array(
@@ -25,7 +27,7 @@ $APPLICATION->SetTitle("Title");
 		"PATH_TO_AUTH" => "/auth/",
 		"PATH_TO_BASKET" => "/basket/",
 		"PATH_TO_PAYMENT" => "payment.php",
-		"PATH_TO_PERSONAL" => "index.php",
+		"PATH_TO_PERSONAL" => "/personal/",
 		"PAY_FROM_ACCOUNT" => "N",
 		"PAY_SYSTEMS_PER_PAGE" => "33",
 		"PICKUPS_PER_PAGE" => "33",
@@ -131,4 +133,6 @@ $APPLICATION->SetTitle("Title");
 		"MESS_ORDER_DESC" => "Комментарии к заказу:"
 	),
 	false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?>
+<div>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

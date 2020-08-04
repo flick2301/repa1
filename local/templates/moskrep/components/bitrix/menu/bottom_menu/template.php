@@ -2,8 +2,8 @@
 
 <?if (!empty($arResult)):?>
 
-			
-				<ul class="nav-footer__items">
+			<h4 class="fast-nav__title" data-sreader>Доп навигация</h4>
+				<ul class="fast-nav__list">
 
 <?
 
@@ -13,7 +13,7 @@ foreach($arResult as $arItem):
 		
 			
 				
-		    <li class="nav-footer__item"><a href="<?=$arItem['LINK']?>" class="nav-footer__link"><?=$arItem["TEXT"]?></a></li>
+		    <li class="fast-nav__item"><a href="<?=$arItem['LINK']?>" class="fast-nav__link"><?=$arItem["TEXT"]?></a></li>
 	
 	
 <?endforeach?>

@@ -18,58 +18,49 @@ if($arParams['FOR_SEO']!='Y'){
 	
 	
     ?>
-<?if(!$_POST['ENUM_LIST']['ELEMENTS']){?>
-<h1 class="s38-title"><?=($arResult['META_TITLE']) ? $arResult['META_TITLE'] :$arResult['NAME'];?></h1>
+	
+<?if(!$_POST['ENUM_LIST']['ELEMENTS'] && !$arParams["DISABLE_HEADER"]=='Y'){?>
+<!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?=($arResult['META_TITLE']) ? $arResult['META_TITLE'] :$arResult['NAME'];?></h1>
+            </header>
+<!--page-heading-->
 <?if($arResult['DESCRIPTION']):?>
-<div class="catalog-view">
-    <div class="catalog-view__photo">
-        <a href="<?=$arResult['PICTURE']['SRC']?>"  onclick="javascript:void();" rel="catalog-photo" class="catalog-photo-view__link">
-            <img src="<?=$arResult['PICTURE_RESIZE']['src']?>" alt="<?=$arResult['NAME']?>">
-        </a>
-    </div>
-    <div class="catalog-view__text">
-        <?
-        //ТОЛЬКО ПЕРВЫЙ ПАРАГРАФ $paragraph_first(ПОКА НЕ НУЖНО
-        if(strpos(html_entity_decode($arResult['DESCRIPTION'], ENT_QUOTES, "UTF-8"), '</p>')):
-        $paragraph=explode('<p>', html_entity_decode($arResult['DESCRIPTION'], ENT_QUOTES, "UTF-8"));
-        $paragraph_first=explode('</p>', $paragraph[1]);
-        $paragraph_first=$paragraph_first[0];
-        else:
-            
-          $paragraph_first =html_entity_decode($arResult['DESCRIPTION'], ENT_QUOTES, "UTF-8"); 
-        endif;
-?>		<div class='catalog-view__head'>
-        <?=$arResult['DESCRIPTION']?>
-		</div>
-		
-		<a href="javascript:void(0);" class="catalog-head__more">Подробнее</a>
-    </div>
+	<div class="basic-layout__module catalog-desc">
+        <div class="catalog-desc__cover">
+            <img class="catalog-desc__image" src="<?=$arResult['PICTURE']['SRC']?>" width="226" height="170" alt="">
+        </div>
+		<p class="catalog-desc__about">
+        <?=strip_tags($arResult['DESCRIPTION']);?>
+		</p>
 	
     <?if($arResult['GENERAL_PROPERTIES']){?>
-    <nav class="info-nav-list">
-	<ul class="info-nav-list__items">
+    <!--product-data-->
+        <div class="catalog-desc__data product-data">
+            <ul class="product-data__list">
             <?foreach($arResult['GENERAL_PROPERTIES'] as $key=>$value){
             ?>
-		<li class="info-nav-list__item"><strong><?=$key?></strong><span><?=$value?></span></li>
+				<li class="product-data__item"><p class="product-data__name"><?=$key?></p><p class="product-data__text"><?=$value?></p></li>
 		
             <?}?>
+			</ul>
+		
         <?if($arResult['CERT_URL']):?>
-            <nav class="info-nav cert">
-                <span class="info-nav__title">Информация:</span>
+            <div class="product-data__more">
+                <p class="product-data__title">Информация:</p>
                 <ul class="info-nav__items">
                     <?if($arResult['CERT_URL']):?>
-                        <li class="info-nav__item"><a href="<?=$arResult['CERT_URL'];?>" title='Сертификаты на <?=$arResult['CERT_NAME'];?>' class="info-nav__link">Сертификаты на <?=$arResult['CERT_NAME'];?></a></li>
+                        <a class="product-data__link" href="<?=$arResult['CERT_URL'];?>" title='Сертификаты на <?=$arResult['CERT_NAME'];?>'>Сертификаты на <?=$arResult['CERT_NAME'];?></a>
                     <?endif;?>
 
                 </ul>
-            </nav>
+            </div>
         <?endif;?>
-	</ul>
-    </nav>
+		</div>
+	<!--product-data-->
     <?}?>
-
-    
 </div>
+<!--catalog-desc-->
 <?endif;?>
 
 
@@ -89,54 +80,44 @@ if($arParams['FOR_SEO']!='Y'){
 //ШАПКА ТАБЛИЦЫ
 
 }?>
-
+<!--catalog-feed-->
+    <div class="basic-layout__module catalog-feed">
 <?if($arResult['UF_SOPUT_SPR_ITMES']){
-	
-	foreach($arResult['UF_SOPUT_SPR_ITMES'] as $soput_itme){
+	?>
+	        <div class="catalog-feed__other">
+		<?
+		foreach($arResult['UF_SOPUT_SPR_ITMES'] as $soput_itme){
 		?>
-<div class="sorting_item">
-    <a href="<?=$soput_itme['CODE']?>/" class="sorting_link">
-                    
-                        <span class="sorting_title"><?=$soput_itme['NAME']?></span>
-                    </a>
-                </div>
+					<div class="catalog-feed__child">
+                     <!--category-card-->
+                     <div class="category-card">
+                        <p class="category-card__title"><a class="category-card__link" href="<?=$soput_itme['CODE']?>/"><?=$soput_itme['NAME']?></a></p>
+                        <div class="category-card__cover">
+                          <!-- <img class="category-card__image" src="uploads/category-card/cover-01.jpg" width="120" height="76" alt=""> -->
+                        </div>
+                     </div>
+                     <!--category-card-->
+					</div>
+
 <?
-	}
+		}
+				?></div>
+			
+		<!--catalog-feed--><?	
+
+	}?>
+			<div class="catalog-feed__tabs">
+                  <button class="catalog-feed__filter" id="catalog-filter-trigger"><i class="simple-filter-icon"></i>Фильтр</button>
+            </div>	
+<?
 }
-}?>
-<div class="sale-category sale-category--new" style='margin-top: 30px !important; <?=($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' && $ral_in_ar) ? 'width:763px' : ($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' ? 'width:741px' : '');?>'>
-    <table class="blue-table full price-category <?=($ral_in_ar || $arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD'] || $arResult['EXTRA_FIELD']) ? 'blue-table__8-rows' : 'blue-table__7-rows';?>">
-	<thead class="blue-table__thead">
-            <tr class="blue-table__tr">
-                <th class="blue-table__th blue-table__name"><span class='link-sorting'><span class="link-sorting__style">Размер, мм</span></span></th>
-                
-                <th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Фасовка</span></span></th>
-				<?if(!$arResult['ENUM_LIST']['TURN_OFF_ARTICUL'] && !$_POST['ENUM_LIST']['TURN_OFF_ARTICUL'])
-				{?>
-				<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Артикул</span></span></th>
-				<?}?>
-                <?if(!$arResult['ENUM_LIST']['TURN_OFF_DELIVERY'] && !$_POST['ENUM_LIST']['TURN_OFF_DELIVERY'])
-				{?>
-					
-					<th class="blue-table__th"><span class="link-sorting"><span class="link-sorting__style">Получение</span></span></th>
-					
-				<?}?>
-                
-            <?if($ral_in_ar){?>
-				<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style">Цвет, RAL</span></span></th>
-            <?}?>
-			<?if($arResult['EXTRA_FIELD']){
-				foreach($arResult['EXTRA_FIELD'] as $field){?>
-				<th class="blue-table__th"><span class='link-sorting'><span class="link-sorting__style"><?=$field['NAME']?></span></span></th>
-				<?}
-			}?>
-            <th class="blue-table__th"><span class="link-sorting"><span class="link-sorting__style">Наличие</span></span></th>    
-			<th class="blue-table__th blue-table__price"><span class='link-sorting'><span class="link-sorting__style">Цена (с НДС)</span></span></th>
-			<th class="blue-table__th">Купить</th>
-	    </tr>
-	</thead>
-    <tbody class="blue-table__tbody">
-						
+
+?>
+				
+    <div class="catalog-feed__list">
+	
+    
+				
 			
 				
 <?php
@@ -153,81 +134,117 @@ if($arParams['FOR_SEO']!='Y'){
             $old_price = $item['PRICES'][ID_SALE_PRICE]['VALUE'] ? $item['PRICES'][ID_BASE_PRICE]['VALUE'] : 0;
         ?>
         
-        
-        <tr class="blue-table__tr">
-            <?if($index==0){?>
-            <td rowspan='<?=count($size);?>' class="blue-table__td"><strong class="!name-b"><?=$item['SIZES']?>
-                    <div class="name-b__photo">
-                        <img src="<?=$item['PREVIEW_PICTURE']['src']?>" alt='<?=$item['IPROPERTY_VALUES']['ELEMENT_PREVIEW_PICTURE_FILE_ALT']?>' />
+        <div class="catalog-feed__table">
+            <!--catalog-table-->
+                <section class="catalog-table">
+				
+					<div class="catalog-table__column catalog-table__column--basic <?=$index>0 ? " is-merged" : "";?>">
+                        <div class="catalog-table__title">Размер, мм<small>:</small></div>
+                        <h3 class="catalog-table__content"><span class="catalog-table__desc"><strong><?=$item['SIZES']?></strong></span></h3>
                     </div>
-                </strong></td>
-	    <?
-            
-            }
+        
+            <?
             $index++;
             ?>
-           
-            <td class="blue-table__td">
-					<div class="item_img_block">
-					<img src="<?=$item['PREVIEW_PICTURE']['src']?>" alt='<?=$item['IPROPERTY_VALUES']['ELEMENT_PREVIEW_PICTURE_FILE_ALT']?>' />
-					<div><?=($item['PROPERTIES']['ROOT_NAME']['VALUE']) ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'];?></div>
-					</div>
-			<span class="articul-b">
-			<a class="name_b" href="<?=$item['DETAIL_PAGE_URL']?>" target="_self"><?=($item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]) ? $item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] : '1';?> <?=$item['UNIT']?></a></span></td>
+					<div class="catalog-table__column catalog-table__column--basic">
+                        <div class="catalog-table__title">Фасовка<small>:</small></div>
+                        <div class="catalog-table__content">
+                            <a class="catalog-table__link" href="<?=$item['DETAIL_PAGE_URL']?>" target="_self"><?=($item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]) ? $item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] : '1';?> <?=$item['UNIT']?></a>
+                        </div>
+                    </div>
+            
             <?if(!$arResult['ENUM_LIST']['TURN_OFF_ARTICUL'] && !$_POST['ENUM_LIST']['TURN_OFF_ARTICUL'])
 				{?>
-			<td class="blue-table__td"><span class="articul-b"><a href="<?=$item['DETAIL_PAGE_URL']?>" target="_self"><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?>
-                    </a></span></td>
+					<div class="catalog-table__column catalog-table__column--basic">
+                        <div class="catalog-table__title">Артикул<small>:</small></div>
+                        <div class="catalog-table__content">
+                            <a class="catalog-table__link" href="<?=$item['DETAIL_PAGE_URL']?>" target="_self"><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?></a>
+                        </div>
+                    </div>
+			
 			<?}?>
 	        <?if(!$arResult['ENUM_LIST']['TURN_OFF_DELIVERY'] && !$_POST['ENUM_LIST']['TURN_OFF_DELIVERY'])
 				{?>
 			
-		   <td class="blue-table__td">
-								<span class="pickup-view" data-product="<?=$item['ID']?>">
-									<div id='pickup_<?=$item['ID']?>' class="pickup-block">
+
+					<div class="catalog-table__column catalog-table__column--basic">
+						<div class="catalog-table__title">Получение<small>:</small></div>
+                        <div class="catalog-table__content">
+                            <span class="pickup-view" data-product="<?=$item['ID']?>">
+									<div id='pickup_<?=$item['ID']?>' style='display:none' class="pickup-block">
 										
 									</div>
 								</span>
 								<span class="delivery-view"  data-product="<?=$item['ID']?>">
-									<div id='delivery_<?=$item['ID']?>' class="delivery-block">
+									<div id='delivery_<?=$item['ID']?>' style='display:none' class="delivery-block">
 										
 									</div>
 								</span>
-							</td>
-			
+
+                        </div>
+					</div>
+										
 				<?}?>
 			
 		<?if($ral_in_ar){?>
-            <td class="blue-table__td"><div class="color-b"><i style="background: #<?=$array_rals[$item['PROPERTIES']["TSVET"]["VALUE"]]?>;"></i><?=$item['PROPERTIES']["TSVET"]["VALUE"]?></div></td>
+					<div class="catalog-table__column catalog-table__column--color">
+                        <div class="catalog-table__title">Цвет, RAL<small>:</small></div>
+                           <div class="catalog-table__content">
+							<div class="color-b" width="34" height="19"><i style="background: #<?=$array_rals[$item['PROPERTIES']["TSVET"]["VALUE"]]?>;"></i></div>
+                            <p class="catalog-table__desc"><?=$item['PROPERTIES']["TSVET"]["VALUE"]?></p>
+                        </div>
+                    </div>
+            
         <?}?>
 		<?if($arResult['EXTRA_FIELD']){
 			foreach($arResult['EXTRA_FIELD'] as $field){?>
-            <td class="blue-table__td"><div class="color-b"><?=mb_strimwidth($item['PROPERTIES'][$field['CODE']]["VALUE"], 0, 12, "...");?></div></td>
+					<div class="catalog-table__column catalog-table__column--color">
+                        <div class="catalog-table__title"><?=$field['NAME']?><small>:</small></div>
+                           <div class="catalog-table__content">
+								<p class="catalog-table__desc"><?=mb_strimwidth($item['PROPERTIES'][$field['CODE']]["VALUE"], 0, 12, "...");?></p>
+                        </div>
+					</div>
+            
 			<?}
 		}?>
-        <td class="blue-table__td">
-		<?echo ($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) ? '<span class="availability-b active">'.($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']).' уп. </span>' : '<span class="availability-b">Под заказ</span>';?></td>    
-	    <td class="blue-table__td blue-table__price">
-	        <span class="price-b"><?echo number_format($price, 2, '.', ' ');?> ₽</span>
-                <?echo ($old_price) ? '<span class="carousel-product__price-old">'.number_format($old_price, 2, '.', ' ').' ₽</span>': '';?> 
-				<?if($item['PRICE_FOR_ONE']){?>
-					<br><span class="price-b" style="font-size: 0.8rem;line-height: 1.9;color: darkslategray;font-family: inherit;color: #6d6d6d;">
-						<?=$item['PRICE_FOR_ONE']?> ₽ за <?=$item['UNIT']?>
-					</span>
-				<?}?>
-		
-            </td>
-	    <td class="blue-table__td">
-		<div class="value">
-		    <a href="javascript:void(0)" rel="nofollow" class="value__minus">—</a>
-			<input type="text" name="" data-quantity="<?=($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT'])?>" onchange='ChangeInputCart("<?=$item['NAME']?>", $(this))' id="QUANTITY_<?=$item['ID']?>" value="1" class="value__input">
-		    <a href="javascript:void(0)" rel="nofollow" class="value__plus">+</a>
-		</div>
-		<a href="javascript:void(0)" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>" rel="nofollow" class="blue-btn basket-btn">В корзину</a>
-	    </td>
-	</tr>
+
+					<div class="catalog-table__column catalog-table__column--state">
+                           <div class="catalog-table__title">Наличие<small>:</small></div>
+                           <div class="catalog-table__content">
+							<?if($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT'])
+							{?>
+								<p class="catalog-table__state"><i class="simple-state-yes-icon catalog-table__available"></i><?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?> уп.</p>
+							<?}else{?>
+								<p class="catalog-table__state catalog-table__state--notafs">Под заказ</p>
+							<?}?>
+                           </div>
+                    </div>
+					
+					<div class="catalog-table__column catalog-table__column--to-cart">
+                           <div class="catalog-table__title">Стоимость<small>:</small></div>
+                           <div class="catalog-table__content catalog-table__content--to-cart">
+                              <!--price-in-table-->
+                              <div class="price-in-table">
+                                 <p class="price-in-table__actual"><?=number_format($price, 2, '.', ' ');?> ₽</p>
+								 <?if($old_price){?>
+								 <p class="price-in-table__legacy"><?=number_format($old_price, 2, '.', ' ');?> ₽</p>
+								 <?}?>
+								 <?if($item['PRICE_FOR_ONE']){?>
+                                 <p class="price-in-table__units"><?=$item['PRICE_FOR_ONE']?> ₽ за <?=$item['UNIT']?></p>
+								 <?}?>
+                              </div>
+                              <!--price-in-table-->
+							  <input type="hidden" name="" data-quantity="<?=($item['KOLEDINO'])?>" onchange='ChangeInputCart("<?=$item['NAME']?>", $(this))' id="QUANTITY_<?=$item['ID']?>" value="1" class="value__input">
+                              <button class="catalog-table__to-cart" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"><i class="colored-cart-icon catalog-table__cart" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"></i>Добавить в корзину</button>
+                           </div>
+                    </div>
+            
+	   
+	
                                                         
-						
+		</section>
+        <!--catalog-table-->
+		</div>
 			
 <?php
         }
@@ -235,8 +252,8 @@ if($arParams['FOR_SEO']!='Y'){
 ?>
 
 					
-    </tbody>
-</table>
+    
+</div>
 </div>
 
 
@@ -247,28 +264,31 @@ if($arParams['FOR_SEO']!='Y'){
 
 <?
 
-if(!$_POST['ENUM_LIST']['ELEMENTS'])
+if(!$_POST['ENUM_LIST']['ELEMENTS'] && !$arParams["DISABLE_HEADER"]=='Y')
 {
 if($arResult["UF_RELATED"]){
 ?>
-<h2 class="s28-title">Сопутствующие товары</h2>
+<div class="catalog-feed__other">
 <ul class="card-nav-product"><?
 $arFilter = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "ID"=>$arResult["UF_RELATED"], false, array("*"));
 $db_list = CIBlockSection::GetList(Array("SORT"=>"ASC"), $arFilter, true);
 while($arSection = $db_list->GetNext()) {
     $renderImage = CFile::ResizeImageGet($arSection["PICTURE"], Array("width" => 72, "height" => 72), BX_RESIZE_IMAGE_EXACT, false); 
-    ?><li class="card-nav-product__item">
-        <a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" class="card-nav-product__link">
-            <div class="card-nav-img">
-              
-                <img src="<?=$renderImage['src']?>"  alt="">
-            </div>
-            <div class="card-nav-text"><?=$arSection['NAME']?></div>
-        </a>
-    </li><?
+    ?>
+		<div class="catalog-feed__child">
+                     <!--category-card-->
+                     <div class="category-card">
+                        <p class="category-card__title"><a class="category-card__link" href="<?=$arSection['SECTION_PAGE_URL']?>"><?=$arSection['NAME']?><</a></p>
+                        <div class="category-card__cover">
+                           <img class="category-card__image" src="<?=$renderImage['src']?>" width="120" height="76" alt=""> 
+                        </div>
+                     </div>
+                     <!--category-card-->
+		</div>
+	<?
 }
 ?>
-</ul>
+</div>
 <?}?>
 
 <?if(count($arResult["UF_SURFACE"])):?>
@@ -286,7 +306,13 @@ while($arSection = $db_list->GetNext()) {
 <?endif?>
 
 <?if($arResult['UF_DETAIL_TEXT']):?>
-<div class='set-default-parametr-page-cat'><?=html_entity_decode($arResult['UF_DETAIL_TEXT'], ENT_QUOTES, "UTF-8");?></div>
+<!--simple-article-->
+            <div class="basic-layout__module simple-article">
+               <div class="simple-article__content wysiwyg-block">
+			   <?=html_entity_decode($arResult['UF_DETAIL_TEXT'], ENT_QUOTES, "UTF-8");?>
+			   </div>
+            </div>
+            <!--simple-article-->
 <?endif;?>
 <?}?>
 <script>
