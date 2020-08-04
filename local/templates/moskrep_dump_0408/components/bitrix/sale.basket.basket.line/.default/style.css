@@ -1,0 +1,127 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24.10.2018, 13:19:36
+    Author     : pol
+*/
+.box-modal{
+    display:none;
+}
+.popUp-container .box-modal{
+    display:block !important;
+}
+.popUp-container .header-basket__link{
+    display:none !important;
+}
+.header-basket-none{
+    display:none;
+}
+.header-basket-sberbank{
+    display:none;
+}
+.header-form-feedback{
+    display:none;
+}
+.popUp-container .header-basket-none{
+    display:block !important;
+}
+.popUp-container .header-basket-sberbank{
+    display:block !important;
+}
+.popUp-container .header-form-feedback{
+    display:block !important;
+}
+
+
+.header-basket-none {
+    border-radius: 3px;
+    background: #fff;
+    padding: 40px;
+    height: auto;
+    position: relative;
+}
+
+.header-basket-none p {
+    color: #676767;
+    line-height: 1.375rem;
+    margin-top: 15px;
+}
+
+.header-basket-none p a {
+    color: #0c59cf;
+}
+
+.header-basket-none p a:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.header-basket-sberbank {
+    border-radius: 3px;
+    background: #fff;
+    padding: 40px;
+    height: auto;
+    position: relative;
+}
+
+.header-basket-sberbank p {
+    color: #676767;
+    line-height: 1.375rem;
+    margin-top: 15px;
+}
+
+.header-basket-sberbank p a {
+    color: #0c59cf;
+}
+
+.header-basket-sberbank p a:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+.header-form-feedback {
+    border-radius: 3px;
+    background: #fff;
+    padding: 40px;
+    height: auto;
+    position: relative;
+}
+.header-form-feedback p {
+    color: #676767;
+    line-height: 1.375rem;
+    margin-top: 15px;
+}
+
+.header-form-feedback p a {
+    color: #0c59cf;
+}
+
+.header-form-feedback p a:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+#soput_carts{
+	height: 300px; overflow-y: scroll; 
+	     
+    scrollbar-width:  thin;  /* толщина */
+}
+#soput_carts::-webkit-scrollbar {
+    width: 1em;
+}
+#soput_carts::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+#soput_carts::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+.blue-table__td_soput
+{
+	vertical-align:middle;
+}
+.sale-category--new{
+    margin-top: 0px !important;
+}
