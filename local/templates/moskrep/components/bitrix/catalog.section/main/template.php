@@ -13,31 +13,35 @@ use \Bitrix\Main\Localization\Loc;
  */
 
 ?>
-<h1 class='s38-title'>Магазин крепежа, метизов и инструментов</h1>
-<div class="carousel-product">
-				<ul class="carousel-product__items">
-<?
-		foreach ($arResult['ITEMS'] as $item)
-		{
-			?>
-			<li class="carousel-product__item" alt=''>
-                                <?$res = CIBlockElement::GetList(array(), array('ID'=>$item["ID"]), false, false, array('ID', 'IBLOCK_ID', 'NAME', 'DETAIL_PAGE_URL'));
-                                  $arElement = $res->GetNext();
-?>
-						<a href="<?=$arElement['DETAIL_PAGE_URL']?>" class="carousel-product__link">
-							<div class="carousel-product__img"><img src="<?echo ($item['PREVIEW_PICTURE']['SRC']) ? $item['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg";?>" id="img_<?=$item['ID']?>" alt="<?=$item['PREVIEW_PICTURE']['DESCRIPTION']?>"></div>
-						</a>
-						<a href="<?=$arElement['DETAIL_PAGE_URL']?>" class="carousel-product__title"><?=$item['NAME']?></a>
-						<div class="carousel-product__price-line">
-							<span class="carousel-product__price"><?=$item['PRICES']['Распродажа']['VALUE']?> ₽<span class="carousel-product__price-wrap"><span class="carousel-product__price-old"><?=$item['PRICES'][ID_BASE_PRICE]['VALUE']?> ₽</span></span></span>
-							<a href="javascript:void(0)" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$item['PRICES']['Распродажа']['VALUE']?>" rel="nofollow" class="carousel-product__btn <?=($arResult['IN_BASKET'][$item['ID']] == 'Y') ? 'active' : "";?>"></a>
-						</div>
-					</li>
-			
-			<?
-		}
-		?>
 
-					
-				</ul>
-			</div>
+            <!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title">Магазин крепежа, метизов и инструментов</h1>
+            </header>
+            <!--page-heading-->
+
+
+            <!--product-slider-->
+            <div class="basic-layout__module product-slider">
+               <div class="product-slider__list" id="product-slider__list">
+			   <?foreach ($arResult['ITEMS'] as $item):?>
+                                <?$res = CIBlockElement::GetList(array(), array('ID'=>$item["ID"]), false, false, array('ID', 'IBLOCK_ID', 'NAME', 'DETAIL_PAGE_URL'));
+                                  $arElement = $res->GetNext();?>			   
+                  <div class="product-slider__item">
+                     <!--product-card-->
+                     <section class="product-card product-card--lite">
+                        <div class="product-card__header">
+                           <h3 class="product-card__title"><a class="product-card__link" href="<?=$arElement['DETAIL_PAGE_URL']?>"><?=$item['NAME']?></a></h3>
+                           <img id="img_<?=$item['ID']?>" class="product-card__image" src="<?echo ($item['PREVIEW_PICTURE']['SRC']) ? $item['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg";?>" width="179" height="134" alt="<?=$item['PREVIEW_PICTURE']['DESCRIPTION']?>">
+                        </div>
+                        <div class="product-card__footer">
+                           <div class="product-card__price"><?=$item['PRICES']['Распродажа']['VALUE']?> ₽<del><?=$item['PRICES'][ID_BASE_PRICE]['VALUE']?> ₽</del></div>
+                           <button data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$item['PRICES']['Распродажа']['VALUE']?>" class="main-button product-card__to-cart <?=($arResult['IN_BASKET'][$item['ID']] == 'Y') ? 'active' : "";?>"><i class="simple-cart-icon"></i>В корзину</button>
+                        </div>
+                     </section>
+                     <!--product-card-->
+                  </div>			   
+			   <?endforeach?>
+               </div>
+            </div>
+            <!--product-slider-->			   

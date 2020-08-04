@@ -25,7 +25,7 @@ switch (LANGUAGE_ID)
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/global.scripts.min.js?v=XXXXXXa");?>
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/jquery.icheck-1.0.2.min.js?v=XXXXXXa");?>
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa");?>
-<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa");?>
+
 
 
             <!--page-heading-->

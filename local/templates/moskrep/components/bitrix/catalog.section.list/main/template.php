@@ -12,8 +12,11 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-?><ul class="popular-categories__items"><?
-			foreach ($arResult['SECTIONS'] as &$arSection)
+?>
+
+
+            <div class="sales-slider__list" id="sales-slider__list">
+<?foreach ($arResult['SECTIONS'] as &$arSection)
 			{
 				
                                 
@@ -31,18 +34,17 @@ $this->setFrameMode(true);
 							: $arSection["NAME"]
 						)
 					);
-				?><li class="popular-categories__item">
-				<a
-					href="<? echo $arSection['SECTION_PAGE_URL']; ?>"
-					class="popular-categories__link"
-					
-					title="<? echo $arSection['NAME']; ?>"
-				>
-                                    <div class="popular-categories__img"><img src="<?=$arSection['PICTURE']["SRC"]?>" width="168" alt=""></div>
-                                    <span class="popular-categories__title"><? echo $arSection['NAME']; ?></span>
-                                </a>
-				<?
-			}
-                        ?></ul><?
-			unset($arSection);
-			
+?>			
+               <div class="sales-slider__item">
+                  <!--catalog-card-->
+                  <section class="catalog-card catalog-card--lite">
+                     <h3 class="catalog-card__title"><a class="catalog-card__link" href="<? echo $arSection['SECTION_PAGE_URL']; ?>"><? echo $arSection['NAME']; ?></a></h3>
+                     <div class="catalog-card__cover">
+                        <img class="catalog-card__image" src="<?=$arSection['PICTURE']["SRC"]?>" width="165" height="124" alt="">
+                     </div>
+                  </section>
+                  <!--catalog-card-->
+               </div>
+			<?} unset($arSection);?>			   
+			   </div>
+

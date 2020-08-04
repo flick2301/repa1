@@ -197,7 +197,7 @@ $arrFilter['!CATALOG_PRICE_8'] = false;
 
 <?}?>
 
-
+<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/global.scripts.min.js?v=XXXXXXa");?>
 
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
