@@ -18,7 +18,7 @@ if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true)die();
 
     <div class="send-a-request__header">
         <h3 class="send-a-request__title">Отправить заявку</h3>
-		<div class="popUp-close"></div>
+		
     
 
 <?if(!empty($arResult["ERROR_MESSAGE"]))
