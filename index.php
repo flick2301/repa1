@@ -197,7 +197,7 @@ $arrFilter['!CATALOG_PRICE_8'] = false;
 
 <?}?>
 
-<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/global.scripts.min.js?v=XXXXXXa");?>
+ <script>$(document).ready(function(){var tabs=new Tabby("[data-tabby-tabs]");});</script>
 
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

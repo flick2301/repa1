@@ -41,10 +41,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 	}
 }
 ?>
-<script>console.log({{ID}});</script>
 <script id="basket-item-template" type="text/html">
-
-
 
 
                   <div class="catalog-feed__table" id="basket-item-{{ID}}" data-entity="basket-item" data-id="{{ID}}">

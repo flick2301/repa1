@@ -56,7 +56,7 @@ if (empty($arResult['ERROR_MESSAGE']))
 	  	
 
 		
-      <div class="basic-layout__columns">
+      <div class="basic-layout__columns" id="basket-root">
          <div class="basic-layout__content">	
 		 
 		 
@@ -117,26 +117,7 @@ if (empty($arResult['ERROR_MESSAGE']))
 		
 		
 		
-		
-		         <?/*<aside class="basic-layout__sidebar" id="in-cart-total-trigger">
-            <!--in-cart-total-->
-            <div class="in-cart-total" id="in-cart-total" data-entity="basket-total-block">
-               <ul class="in-cart-total__list">
-                  <li class="in-cart-total__item">
-                     <p class="in-cart-total__name">Общий вес</p>
-                     <p class="in-cart-total__text">35.8 кг</p>
-                  </li>
-                  <li class="in-cart-total__item">
-                     <p class="in-cart-total__name">Стоимость</p>
-                     <p class="in-cart-total__text">11 736.90 ₽</p>
-                  </li>
-               </ul>
-               <div class="in-cart-total__footer">
-                  <a class="main-button main-button--plus in-cart-total__submit" href="/">Оформить заказ</a>
-               </div>
-            </div>
-            <!--in-cart-total-->
-         </aside>*/?>
+
 		 
 		 
 		<?
@@ -146,18 +127,35 @@ if (empty($arResult['ERROR_MESSAGE']))
 		)
 		{
 			?>
+			
+			
  <aside class="basic-layout__sidebar" id="in-cart-total-trigger">
             <!--in-cart-total-->
             <div class="in-cart-total" id="in-cart-total" data-entity="basket-total-block">
+               <ul class="in-cart-total__list" data-entity="basket-checkout-aligner">
+                  <li class="in-cart-total__item">
+                     <p class="in-cart-total__name">Общий вес</p>
+                     <p class="in-cart-total__text"></p>
+                  </li>
+                  <li class="in-cart-total__item">
+                     <p class="in-cart-total__name">Стоимость</p>
+                     <p class="in-cart-total__text" data-entity="basket-total-price"></p>
+                  </li>
+               </ul>
+               <div class="in-cart-total__footer">
+                  <a class="main-button main-button--plus in-cart-total__submit" data-entity="basket-checkout-button" href="javascript:void(0);">Оформить заказ</a>
+               </div>			
             </div>
             <!--in-cart-total-->
          </aside>
 			<?
 		}
 		?>		 
-		 
-			
-		<!--/div-->	
+
+
+
+
+
 		
 
 	<?
@@ -196,4 +194,4 @@ else
 {
 	ShowError($arResult['ERROR_MESSAGE']);
 }
-?>
+?></div><br /><br />

@@ -345,7 +345,6 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 <?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/jquery.slick-1.9.0.min.js?v=XXXXXXa");?>
 <?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa");?>
 
-   
 
 
 <?
@@ -364,7 +363,7 @@ $APPLICATION->SetPageProperty('description', '«КРЕП-КОМП» - ведущ
         }
     }
 ?>
-   <script src="/local/templates/moskrep/js/jquery.min.js"></script>
+
    <script src="/local/templates/moskrep/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="/local/templates/moskrep/assets/scripts/jquery.icheck-1.0.2.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="/local/templates/moskrep/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa" defer="defer"></script>
@@ -375,8 +374,7 @@ $APPLICATION->SetPageProperty('description', '«КРЕП-КОМП» - ведущ
    <script src="/local/templates/moskrep/js/slick.min.js" defer="defer"></script>
    <script src="/local/templates/moskrep/js/fancybox.min.js" defer="defer"></script>
    <script src="/local/templates/moskrep/js/jquery.cookie.js" defer="defer"></script>
-   <script src="/local/templates/moskrep/assets/scripts/jquery.magnificpopup-1.1.0.min.js?v=XXXXXXa" defer="defer"></script>
-   <script>var tabs=new Tabby("[data-tabby-tabs]")</script>
+
 </body>
 </html>
  
