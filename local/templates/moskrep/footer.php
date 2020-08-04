@@ -43,8 +43,11 @@
 if (CSite::InDir('/index.php') && SITE_ID!='s2'){
     ?>
 	
-	<div class="basic-layout__section">
-		<div class="banner-02"><?$APPLICATION->IncludeComponent(
+<div class="basic-layout__section">	
+	
+         <!--promo-block-->
+         <div class="basic-layout__module promo-block">
+<?$APPLICATION->IncludeComponent(
 	"d7:slider",
 	"",
 	Array(
@@ -54,7 +57,7 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 		"controlNav" => "N",
 		"directionNav" => "N",
 		"effect" => "fade",
-		"height" => "477",
+		"height" => "496",
 		"pauseOnHover" => "N",
 		"pauseTime" => "4000",
 		"slices" => "6",
@@ -62,7 +65,12 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 		"text_title" => "",
 		"width" => "1170"
 	)
-);?></div>
+);?>			
+         </div>
+         <!--promo-block-->	
+	
+
+
     <div class="popular-categories">
 	<h2 class="h2-title-s30">Распродажа метизов, строительного крепежа и крепежных изделий</h2>
             <?$APPLICATION->IncludeComponent(
