@@ -34,7 +34,7 @@ ref.parentNode.insertBefore(js, ref);}(document));
     <title><?$APPLICATION->ShowTitle();?></title>
 
 	<?$APPLICATION->ShowHead();?>
-        <?CJSCore::Init(array('jquery3'));?>
+        <?CJSCore::Init(array('jquery'));?>
 	<?
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/reset.css", true);
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.css", true);
@@ -115,9 +115,9 @@ ref.parentNode.insertBefore(js, ref);}(document));
                 
                 ?>
                     <?if(SITE_ID!='s2'):?>
-                <div class='geoloc-widget' id='geoloc-widget'>
+                
                 <? require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>
-                </div>
+                
                     <?endif;?>
                 <?}?>
 		<?/*$APPLICATION->IncludeComponent(
@@ -241,9 +241,10 @@ ref.parentNode.insertBefore(js, ref);}(document));
 	),
 	false
 );?>
+			
+				
 			</div>
 		</div>
-		
 		<div class="eshop-panel__contact">
                <!--contact-widget-->
                <div class="contact-widget">

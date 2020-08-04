@@ -6,6 +6,7 @@
 
 
 BX.ready(function () {
+	
     var buyBtnDetail = document.body.querySelectorAll('.catalog-table__cart');
 	var IDs=[];
     for (var i = 0; i < buyBtnDetail.length; i++) {

@@ -125,3 +125,7 @@ and open the template in the editor.
 .sale-category--new{
     margin-top: 0px !important;
 }
+.header-basket-none
+{
+	    margin: 0 0 0 0 !important;
+}

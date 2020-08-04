@@ -60,7 +60,8 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                      <!--product-purchase-->
                      <div class="product-purchase">
                         <p class="product-purchase__price"><?echo number_format($price, 2, '.', ' ');?> ₽</p>
-                        <button data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' class="main-button main-button--plus product-purchase__button"><i class="simple-cart-icon product-purchase__icon" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' rel="nofollow"></i>Добавить в корзину</button>
+						 <a href="javascript:void(0)" id='main_link' data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' rel="nofollow" class="blue-btn card__btn">Добавить в корзину</a>
+                        <a href='javascript::void()' data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' class="main-button main-button--plus product-purchase__button"><i class="simple-cart-icon product-purchase__icon" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' rel="nofollow"></i>Добавить в корзину</a>
                      </div>
                      <!--product-purchase-->
                      <!--product-data-->
@@ -619,66 +620,16 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 
        
 
-<script>$(document).ready(function () {
+<script>BX.ready(function () {
 	
 	
 	
-	var buyBtnDetail = document.body.querySelectorAll('.product-purchase__button');
-	var IDs=[];
-    for (var i = 0; i < buyBtnDetail.length; i++) {
-        BX.bind(buyBtnDetail[i], 'click', BX.delegate(function (e) {
-            add2basketDetail(e)
-        }, this));
-		
-		
-	IDs.push({'id': buyBtnDetail[i].dataset.product, 'google_business_vertical': 'retail'});
-		
+	var buyBtnDetail = document.body.querySelectorAll('.blue-btn');
+	
     
-    }
     
         
-    function add2basketDetail(e) {
-        var id = e.target.dataset.product,
-                quantity = 1;
-				
-        if (!!BX('QUANTITY_' + id)) {
-            quantity = BX('QUANTITY_' + id).value;
-        }
-       console.log(e);
-        BX.ajax({
-            url: window.location.href,
-            data: {
-                action: 'ADD2BASKET',
-                ajax_basket: 'Y',
-                quantity: quantity,
-                id: e.target.dataset.product
-            },
-            method: 'POST',
-            dataType: 'json',
-            onsuccess: function (data) {
-                if (data.STATUS == 'OK') {
-                    BX.addClass(e.target, 'active');
-                   console.log(e.target.dataset.price);
-                    BX.onCustomEvent('OnBasketChange');
-					ga ('send', 'event', 'Корзина', 'Добавить в корзину');
-					gtag('event','add_to_cart', {
-						'send_to': 'AW-958495754',
-						'value': e.target.dataset.price,
-						'items': [
-						{
-							'id':  e.target.dataset.product, 
-							'google_business_vertical': 'retail'
-						}]
-					});
-                    $('.header-basket').popUp();
-                } else {
-                   console.log(data);
-				   $('.header-basket-none').text(data.MESSAGE);
-                   $('.header-basket-none').popUp();
-                }
-            }
-        }); 
-    }
+ 
     
     
     

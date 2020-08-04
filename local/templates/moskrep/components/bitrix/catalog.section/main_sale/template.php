@@ -55,5 +55,3 @@ $arElement = $res->GetNext();?>
 			   
 <?endforeach?>
 
-
-

@@ -45,9 +45,9 @@ foreach($arResult as $arItem):
 			<li class="nav-catalog__item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="catalog-nav__lvl1-toggle"><?=$arItem["TEXT"]?></a></li>
 				
 		<?elseif($arItem["DEPTH_LEVEL"] == 2):?>
-			<li class="catalog-level-two__item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="catalog-level-two__link"><?=$arItem["TEXT"]?></a></li>
+			<li class="catalog-nav__lvl2-item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="catalog-nav__lvl2-link"><?=$arItem["TEXT"]?></a></li>
 		<?else:?>
-		      <li class="catalog-level-three__item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="catalog-level-three__link"><?=$arItem["TEXT"]?></a></li>
+		      <li class="catalog-nav__lvl3-item" data='<?=$arItem['DISPLAY_ITEM']?>'><a href="<?=$arItem['LINK']?>" class="catalog-nav__lvl3-link"><?=$arItem["TEXT"]?></a></li>
 		<?endif?>
 		
 		
