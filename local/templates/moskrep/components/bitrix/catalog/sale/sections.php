@@ -17,7 +17,7 @@ $this->setFrameMode(true);
 
 ?>
 
-<? $APPLICATION->IncludeComponent("bitrix:breadcrumb", "sale", array()); ?>
+
             <? $APPLICATION->IncludeComponent('bitrix:catalog.section.list', 'sale1', [
                 'IBLOCK_ID' => $arParams['IBLOCK_ID'],
                 'COUNT_ELEMENTS' => $arParams['SECTION_COUNT_ELEMENTS'],

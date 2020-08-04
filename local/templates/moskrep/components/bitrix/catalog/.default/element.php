@@ -29,7 +29,7 @@ endif;
 */
 
 
-$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());
+
 
 if (isset($arParams['USE_COMMON_SETTINGS_BASKET_POPUP']) && $arParams['USE_COMMON_SETTINGS_BASKET_POPUP'] == 'Y')
 {
