@@ -22,10 +22,6 @@ switch (LANGUAGE_ID)
 <?$api_key = htmlspecialcharsbx(Bitrix\Main\Config\Option::get('fileman', 'yandex_map_api_key'));?>
 <?$APPLICATION->AddHeadScript("{$scheme}://api-maps.yandex.ru/2.1.50/?load=package.full&lang={$locale}&apikey={$api_key}" );?>
 <?$APPLICATION->AddHeadScript($APPLICATION->GetCurPage()."map.js?".rand());?>
-<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/global.scripts.min.js?v=XXXXXXa");?>
-<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/jquery.icheck-1.0.2.min.js?v=XXXXXXa");?>
-<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa");?>
-
 
 
             <!--page-heading-->
@@ -99,7 +95,7 @@ $APPLICATION->IncludeFile(
 			
 			
 
+   <script>$(document).ready(function(){var tabs=new Tabby("[data-delivery-tabs]");});</script>
 
-<script>var tabs=new Tabby("[data-delivery-tabs]")</script>
    
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
