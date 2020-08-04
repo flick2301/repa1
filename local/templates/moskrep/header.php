@@ -34,7 +34,7 @@ ref.parentNode.insertBefore(js, ref);}(document));
    <title><?$APPLICATION->ShowTitle();?></title>
 
 	<?$APPLICATION->ShowHead();?>
-        <?CJSCore::Init(array('jquery'));?>
+        <?CJSCore::Init();?>
 	<?
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/reset.css", true);
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.css", true);

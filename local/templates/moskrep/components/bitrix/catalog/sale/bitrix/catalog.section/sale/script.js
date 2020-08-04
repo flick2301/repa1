@@ -6,7 +6,7 @@
 
 
 BX.ready(function () {
-    var buyBtnDetail = document.body.querySelectorAll('.basket-btn');
+    var buyBtnDetail = document.body.querySelectorAll('.catalog-table__cart');
 
     for (var i = 0; i < buyBtnDetail.length; i++) {
         BX.bind(buyBtnDetail[i], 'click', BX.delegate(function (e) {

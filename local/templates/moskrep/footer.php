@@ -348,6 +348,9 @@ $APPLICATION->SetPageProperty('description', '«КРЕП-КОМП» - ведущ
    <script src="/local/templates/moskrep/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="/local/templates/moskrep/js/jquery.popup.js" defer="defer"></script>
    <script src="/local/templates/moskrep/js/common.js" defer="defer"></script>
+   <script src="/local/templates/moskrep/js/slick.min.js" defer="defer"></script>
+   <script src="/local/templates/moskrep/js/fancybox.min.js" defer="defer"></script>
+   <script src="/local/templates/moskrep/js/jquery.cookie.js" defer="defer"></script>
 </body>
 </html>
  

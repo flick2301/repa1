@@ -7,6 +7,8 @@
  */
 global $APPLICATION;
 
+CJSCore::Init(array("ajax"));
+
 $ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues($arParams["IBLOCK_ID"],$arResult['SECTION']['ID']);
     $IPROPERTY  = $ipropValues->getValues();
     
@@ -58,7 +60,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                      <!--product-purchase-->
                      <div class="product-purchase">
                         <p class="product-purchase__price"><?echo number_format($price, 2, '.', ' ');?> ₽</p>
-                        <button class="main-button main-button--plus product-purchase__button"><i class="simple-cart-icon product-purchase__icon" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' rel="nofollow"></i>Добавить в корзину</button>
+                        <button data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' class="main-button main-button--plus product-purchase__button"><i class="simple-cart-icon product-purchase__icon" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' rel="nofollow"></i>Добавить в корзину</button>
                      </div>
                      <!--product-purchase-->
                      <!--product-data-->
@@ -151,179 +153,198 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                   </div>
                   <!--product-data-->
         </div>
-	
-	<div class="card__middle">
-	    <div class="card-tabs">
-		<ul class="card-tabs__items">
-		    <li data-tab="tab-1" class="card-tabs__item active">Описание</li>
-                    <?if(count($arResult['CERT_PICTURE'])):?>
-		    <li data-tab="tab-2" class="card-tabs__item">Сертификаты</li>
-                    <?endif;?>
-		    <li data-tab="tab-3" class="card-tabs__item">Способы оплаты</li>
-		    <li data-tab="tab-4" class="card-tabs__item viewmap">Доставка</li>
-		    <li data-tab="tab-5" class="card-tabs__item">Самовывоз</li>
-                    <li data-tab="tab-6" class="card-tabs__item" style="color:#01B10E">Ваши скидки</li>
-		</ul>
-	    <div id="tab-1" class="card__tabs-list active">
-		<?if(count($arResult['BASE_PROPERTIES_HEAD'])):?>
-                <h2 id='chars' class="s28-title">Характеристики</h2>
-		<div class="info__items-wrap">
-		    <ul class="basket-info__items">
-                    <?foreach($arResult['BASE_PROPERTIES_UL1'] as $arProp){?>
-                       
-                            <li class="basket-info__item"><span><?=$arProp['NAME']?></span><i></i><strong><?=$arProp['VALUE']?></strong></li>
-                        
-                    <?}?>
-                    
-		    <?foreach($arResult['BASE_PROPERTIES_UL2'] as $arProp){?>
-                        
-                            <li class="basket-info__item"><span><?=$arProp['NAME']?></span><i></i><strong><?=$arProp['VALUE']?></strong></li>
-                        
-                    <?}?>
-		    </ul>
-		</div>
-                <?endif;?>         
-		 <div class='delivery__text  set-default-parametr-page-cat' itemprop="description"><?=($arResult['DETAIL_DESCRIPTION']) ? html_entity_decode($arResult['DETAIL_DESCRIPTION'], ENT_QUOTES, "UTF-8") : $arResult['NAME'];?></div>
 		
-                
-	    </div>
-	    <div id="tab-2" class="card__tabs-list">
-		<div class="carousel-certeficate">
-		    <ul class="carousel-certeficate__items">
-                        <?foreach($arResult['CERT_PICTURE'] as $cert){?>
-                        <li class="carousel-certeficate__item">
-			    <a href="<?=$cert['BIG_PIC']?>" rel="gallery_img" class="nav-certificate__link"><img src="<?=$cert['src']?>" alt=""></a>
-			</li>
-                        <?}?>
-                    </ul>
-		</div>
-	    </div>
-                <div id="tab-6" class="card__tabs-list set-default-parametr-page-cat">
-                        <p class='info-paragraph'>KREP-KOMP - ведущий поставщик и производитель строительного крепежа для розничных, мелкооптовых и оптовых клиентов. С 2005 года мы предлагаем самый широкий ассортимент, доступные цены и гибкую систему скидок.</p>
-<p class='info-paragraph'>Доставка по Москве в пределах МКАД при заказе от 50000 руб. <b>БЕСПЛАТНО</b></p>
-<p class='info-paragraph'>Оптовые и накопительные скидки:</p>
-
-<table class='skid' >
-	<tr >
-		<td><b>5%</b></td>
-		<td >от 20 000 руб</td>
-	</tr>
-	<tr >
-		<td ><b>10%</b></td>
-		<td >от 100 000 руб</td>
-	</tr>
-	<tr>
-		<td ><b>13%</b></td>
-		<td >от 500 000 руб</td>
-	</tr>
-        <tr>
-		<td ><b>18%</b></td>
-		<td >от 1 000 000 руб<br>* скидка предоставляется при условии выполнения ежеквартальных закупкок на сумму от 5 000 000 руб.</td>
-	</tr>
-</table>
-
-<p class='info-paragraph'>Оформите заказ на сайте, и менеджер пересчитает его стоимость с учётом вашей скидки.</p>
-                    </div>
-	    <? include($_SERVER["DOCUMENT_ROOT"]."/kontent-elementa/var_payment.php"); ?>
+		<div class="product-page__section" id="certify">
+                  <div class="product-page__block" data-gallery-popup>
+					<?foreach($arResult['CERT_PICTURE'] as $cert){?>
+                     <div class="product-page__column">
+                        <!--certify-card-->
+                        <div class="certify-card">
+                           <a class="certify-card__link" href="<?=$cert['BIG_PIC']?>">
+                              <p class="certify-card__cover"><img class="certify-card__image" src="<?=$cert['src']?>" width="265" height="375" alt=""></p>
+                              <p data-sreader>Увеличить</p>
+                           </a>
+                        </div>
+                        <!--certify-card-->
+                     </div>
+					<?}?>
+                     
+                  </div>
+        </div>
+		
+		 <? include($_SERVER["DOCUMENT_ROOT"]."/kontent-elementa/var_payment.php"); ?>
             
-	    <? include($_SERVER["DOCUMENT_ROOT"]."/kontent-elementa/delivery.php"); ?>
-            
-	    <div id="tab-5" class="card__tabs-list">
-		<h2 id='over' class="s28-title">Самовывоз бесплатно</h2>
-                <ul class='vivoz_items'>
-	<li data-tab='vivoz_1' class='vivoz_item active'>Москва и МО</li>
-	<li data-tab='vivoz_2' class='vivoz_item spb'>Санкт-Петербург</li>
-        
-
-</ul>
-		<div class="card-maps">
-		    <div class="card-maps__adress">
-			<ul class="adress__items">
-			    
-                           <div id='vivoz_2' class='vivoz__tabs-list spb'>
-                               
-                            <li class="adress__item">
-				<div class="adress__number">SP1</div>
-				<div class="adress__info">
-                                    <p>Санкт-Петербург, улица Магнитогорская 21<br>Пн - Пт: c 09:00 до 18:00; Сб: 10:00-16:00</p>
-				    
-				    <div class="adress__link" data-tab="sp1">Показать на карте</div>
-				</div>
-			    </li>
-            
-                            <p>Забрать груз можно уже на следующий день в точке самовывоза на ул. Магнитогорская. Для этого оформить заказ нужно до 15:00 с понедельника по пятницу. Суббота и Воскресенье - выходные дни. Если получить груз нужно в другом пункте выдачи - получить его можно только через день. Доставка по городу оплачивается дополнительно и включается в счет.</p>
+	    <? require_once($_SERVER["DOCUMENT_ROOT"].$templateFolder."/delivery.php"); ?>
+		
+		<div class="product-page__section" id="pickup">
+                  <h2 class="product-page__title">Самовывоз бесплатно</h2>
+                  <!--simple-article-->
+                  <div class="basic-layout__module simple-article">
+                     <!--content-tabs-->
+                     <div class="product-widget__tabs content-tabs">
+                        <ul class="content-tabs__list" data-pickup-tabs>
+                           <li class="content-tabs__item">
+                              <a class="content-tabs__toggle" href="#pickup-moscow" data-tabby-default>Москва и МО</a>
+                           </li>
+                           <li class="content-tabs__item">
+                              <a class="content-tabs__toggle" href="#pickup-piter">Санкт-Петербург</a>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--content-tabs-->
+                     <div class="simple-article__content" id="pickup-moscow">
+                        <div class="simple-article__pickup">
+                           <div class="simple-article__main">
+                              <div class="simple-article__section pickup-block">
+                                 <p class="pickup-block__marker">1</p>
+                                 <div class="pickup-block__main">
+                                    <p class="pickup-block__text"><?echo STORE_ID_KASHIRKA['1'];?></p>
+                                    <p class="pickup-block__text"><?=STORE_ID_KASHIRKA[2]?></p>
+                                    <p class="pickup-block__info">Получение:</p>
+                                    <ul class="pickup-block__list simple-list">
+									<?=($arResult['ELEMENT_COUNT']) ? '<li class="pickup-block__item">сегодня после 14:00 при заказе до 11:00</li><li class="pickup-block__item">сегодня после 17:00 при заказе до 15:00</li>' : '<li class="pickup-block__item">Уточнить</li>';?>
+                                    </ul>
+                                    <button class="pickup-block__open-map" id="maps-trigger-01">Показать на карте</button>
+                                 </div>
+                              </div>
+                              <div class="simple-article__section pickup-block">
+                                 <p class="pickup-block__marker">2</p>
+                                 <div class="pickup-block__main">
+                                    <p class="pickup-block__text"><?=STORE_ID_KOLEDINO[1]?></p>
+                                    <p class="pickup-block__text"><?=STORE_ID_KOLEDINO[2]?></p>
+                                    <p class="pickup-block__info">Получение:</p>
+                                    <ul class="pickup-block__list simple-list">
+                                       <?=($arResult['ELEMENT_COUNT']) ? '<li class="pickup-block__item">сегодня при заказе до 17:00</li>' : '<li class="pickup-block__item">Уточнить</li>';?>
+                                    </ul>
+                                    <button class="pickup-block__open-map" id="maps-trigger-02">Показать на карте</button>
+                                 </div>
+                              </div>
+                              <div class="simple-article__section pickup-block">
+                                 <p class="pickup-block__marker">3</p>
+                                 <div class="pickup-block__main">
+                                    <p class="pickup-block__text"><?echo STORE_ID_UZHKA['1'];?></p>
+                                    <p class="pickup-block__text"><?echo STORE_ID_UZHKA['2'];?></p>
+                                    <p class="pickup-block__info">Получение:</p>
+                                    <ul class="pickup-block__list simple-list">
+										<?=($arResult['ELEMENT_COUNT']) ? '<li class="pickup-block__item">завтра после 13:00 при заказе до 18:00</li>' : '<li class="pickup-block__item">Уточнить</li>';?>
+                                       
+                                    </ul>
+                                    <button class="pickup-block__open-map" id="maps-trigger-03">Показать на карте</button>
+                                 </div>
+                              </div>
+                              <div class="simple-article__section pickup-block">
+                                 <p class="pickup-block__marker">4</p>
+                                 <div class="pickup-block__main">
+                                    <p class="pickup-block__text"><?=STORE_ID_SERPUH[1]?></p>
+                                    <p class="pickup-block__text"><?=STORE_ID_SERPUH[2]?></p>
+                                    <p class="pickup-block__info">Получение:</p>
+                                    <ul class="pickup-block__list simple-list">
+                                       <?=($arResult['ELEMENT_COUNT']) ? '<li class="pickup-block__item">завтра после 13:00 при заказе до 18:00</li>' : '<li class="pickup-block__item">Уточнить</li>';?>
+                                    </ul>
+                                    <button class="pickup-block__open-map" id="maps-trigger-04">Показать на карте</button>
+                                 </div>
+                              </div>
+                              <div class="simple-article__footer">
+                                 <p>Забрать груз в пункте самовывоза на Каширском шоссе можно на следующий день. Для этого оформить заказ нужно до 15:00. Суббота и Воскресенье - выходные дни.</p>
+                              </div>
                            </div>
-                           <div id='vivoz_1' class='vivoz__tabs-list active'>  
-                            <li class="adress__item">
-				<div class="adress__number">1</div>
-				<div class="adress__info">
-				    <p><?echo STORE_ID_KASHIRKA['1'];?><br> <?=STORE_ID_KASHIRKA[2]?></p>
-					<p>Получение:</p>
-					<?=($arResult['ELEMENT_COUNT']) ? '<p>сегодня после 14:00 при заказе до 11:00</p><p>сегодня после 17:00 при заказе до 15:00</p>' : '<p>Уточнить</p>';?>
-				    
-				    <div class="adress__link" data-tab="map1">Показать на карте</div>
-				</div>
-			    </li>
-                            
-			    <li class="adress__item">
-				<div class="adress__number">2</div>
-				<div class="adress__info">
-				    <p><?=STORE_ID_KOLEDINO[1]?><br> <?=STORE_ID_KOLEDINO[2]?></p>
-					<p>Получение:</p>
-					<?=($arResult['ELEMENT_COUNT']) ? '<p>сегодня при заказе до 17:00</p>' : '<p>Уточнить</p>';?>
-				   
-				    <div class="adress__link" data-tab="map2">Показать на карте</div>
-				</div>
-			    </li>
-                <li class="adress__item">
-				<div class="adress__number">3</div>
-				<div class="adress__info">
-				    <p><?echo STORE_ID_UZHKA['1'];?><br> <?=STORE_ID_UZHKA[2]?></p>
-					<p>Получение:</p>
-					<?=($arResult['ELEMENT_COUNT']) ? '<p>завтра после 13:00 при заказе до 18:00</p>' : '<p>Уточнить</p>';?>
-				    
-				    <div class="adress__link" data-tab="map4">Показать на карте</div>
-				</div>
-			    </li>
-				<li class="adress__item">
-				<div class="adress__number">4</div>
-				<div class="adress__info">
-				    <p><?echo STORE_ID_SERPUH['1'];?><br> <?=STORE_ID_SERPUH[2]?></p>
-					<p>Получение:</p>
-					<?=($arResult['ELEMENT_COUNT']) ? '<p>завтра после 13:00 при заказе до 18:00</p>' : '<p>Уточнить</p>';?>
-				    
-				    <div class="adress__link" data-tab="map5">Показать на карте</div>
-				</div>
-			    </li>
-                            <p>Забрать груз в пункте самовывоза на Каширском шоссе можно на следующий день. Для этого оформить заказ нужно до 15:00. 
-
-                                Суббота и Воскресенье - выходные дни.</p>
+                           <div class="simple-article__maps">
+                              <div class="pickup-maps is-active" id="pickup-maps-01" data-pickup-maps>
+                                 <script src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A625507974d4d143dfc3082f31cfe436fb4ffdf548210a4ea3a6086f80e3805d4&amp;amp;width=100%&amp;amp;height=366&amp;amp;lang=ru_RU&amp;amp;scroll=true" async></script>
+                              </div>
+                              <div class="pickup-maps" id="pickup-maps-02" data-pickup-maps>
+                                 <script src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A9f57f6af4a5f287322eab5e90b142e37ef689f4dedd4dad7dcd35867eb10639f&amp;amp;width=100%&amp;amp;height=366&amp;amp;lang=ru_RU&amp;amp;scroll=true" async></script>
+                              </div>
+                              <div class="pickup-maps" id="pickup-maps-03" data-pickup-maps>
+                                 <script src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A7897bc149959ca515a7d85597cf186c9c167311b25f224bb2ec39ebc13b8bcd2&amp;amp;width=100%&amp;amp;height=366&amp;amp;lang=ru_RU&amp;amp;scroll=true" async></script>
+                              </div>
+                              <div class="pickup-maps" id="pickup-maps-04" data-pickup-maps>
+                                 <script src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Acfdcfe91111c9ff07c8cdd73241e97f87f46ab875d8ce1a07269ca9593aaf944&amp;amp;width=100%&amp;amp;height=366&amp;amp;lang=ru_RU&amp;amp;scroll=true" async></script>
+                              </div>
                            </div>
-			</ul>
-		    </div>
-                    
-		    <div class="card-maps__location">
-			    <div class="map-location active" id="map1" style="position: relative; overflow: hidden;"><?include($_SERVER["DOCUMENT_ROOT"].'/include/map1.php');?></div>
-			    <div class="map-location" id="map2" style="position: relative; overflow: hidden;"><?include($_SERVER["DOCUMENT_ROOT"].'/include/map2.php');?></div>
-                <div class="map-location" id="map4" style="position: relative; overflow: hidden;"><?include($_SERVER["DOCUMENT_ROOT"].'/include/map4.php');?></div>
-				<div class="map-location" id="map5" style="position: relative; overflow: hidden;"><?include($_SERVER["DOCUMENT_ROOT"].'/include/map5.php');?></div>
-                       
-                <div class="map-location" id="sp1" style="position: relative; overflow: hidden;"><iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A147a22791efa23d9da2c37679a8d3271b26fe1ce8be56e60f81e518f84136d7d&amp;source=constructor" width="470" height="370" frameborder="0"></iframe></div>
-                
-                        
-            </div>
-		</div>
-	    </div>
+                        </div>
+                     </div>
+                     <div class="simple-article__content" id="pickup-piter">
+                        <div class="simple-article__pickup">
+                           <div class="simple-article__main">
+                              <div class="simple-article__section pickup-block">
+                                 <p class="pickup-block__marker">SP1</p>
+                                 <div class="pickup-block__main">
+                                    <p class="pickup-block__text">Санкт-Петербург, улица Магнитогорская 21</p>
+                                    <p class="pickup-block__text">Пн - Пт: c 09:00 до 18:00; Сб: 10:00-16:00</p>
+                                 </div>
+                              </div>
+                              <div class="simple-article__footer">
+                                 <p>Забрать груз можно уже на следующий день в точке самовывоза на ул. Магнитогорская. Для этого оформить заказ нужно до 15:00 с понедельника по пятницу. Суббота и Воскресенье - выходные дни. Если получить груз нужно в другом пункте выдачи - получить его можно только через день. Доставка по городу оплачивается дополнительно и включается в счет.</p>
+                              </div>
+                           </div>
+                           <div class="simple-article__maps">
+                              <div class="pickup-maps is-active">
+                                 <script src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa806ad6dec02c427303feb640071a9eb6a3f60ea63e7892d5475723a45dbcefb&amp;amp;width=100%&amp;amp;height=366&amp;amp;lang=ru_RU&amp;amp;scroll=true" async></script>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!--simple-article-->
+               </div>
+			   <div class="product-page__section" id="discount">
+                  <!--simple-article-->
+                  <div class="basic-layout__module simple-article">
+                     <div class="simple-article__content wysiwyg-block">
+                        <p>KREP-KOMP - ведущий поставщик и производитель строительного крепежа для розничных, мелкооптовых и оптовых клиентов. С 2005 года мы предлагаем самый широкий ассортимент, доступные цены и гибкую систему скидок.</p>
+                        <p>Доставка по Москве в пределах МКАД при заказе от 50000 руб. <strong>БЕСПЛАТНО</strong></p>
+                        <h3>Оптовые и накопительные скидки:</h3>
+                        <div class="special-table special-table--lite">
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <th>5%</th>
+                                    <td>от 20 000 руб</td>
+                                 </tr>
+                                 <tr>
+                                    <th>10%</th>
+                                    <td>от 100 000 руб</td>
+                                 </tr>
+                                 <tr>
+                                    <th>13%</th>
+                                    <td>от 500 000 руб</td>
+                                 </tr>
+                                 <tr>
+                                    <th>18%</th>
+                                    <td>от 1 000 000 руб<br>* скидка предоставляется при условии выполнения ежеквартальных закупкок на сумму от 5 000 000 руб.</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <p>Оформите заказ на сайте, и менеджер пересчитает его стоимость с учётом вашей скидки.</p>
+                     </div>
+                  </div>
+                  <!--simple-article-->
+               </div>
+			</div>
+			<!--product-page-->
+		
+	
+			<div class="basic-layout__module product-widget">
+               <!--content-tabs-->
+               <div class="product-widget__tabs content-tabs">
+                  <ul class="content-tabs__list" data-product-widget-tabs>
+                     <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#packaging" data-tabby-default>Варианты упаковки</a>
+                     </li>
+                     <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#other">С этим товаром смотрят</a>
+                     </li>
+                  </ul>
+               </div>
+               <!--content-tabs-->
             
-            <ul class="variants_items">
-                <li data-tab="var_tab_1" class="variants_item active">Варианты упаковки</li>
-                <li data-tab="var_tab_2" class="variants_item">С этим товаром смотрят</li>
-                
-            </ul>
-            
-            
+            <!--product-widget-->
+            <div class="basic-layout__module product-widget">
+               <!--content-tabs-->
             <?if(count($arResult['ELEMENT_VARS'])){?>
-            <div id='var_tab_1' class='variants__tabs-list active'>                
+            <div class="product-widget__content" id="packaging">               
 		<?
             global $bbFilter;
             $bbFilter = Array("ID" => $arResult['ELEMENT_VARS']);    
@@ -341,6 +362,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 			1 => "",
 		),
                 "USE_FILTER" =>"Y",
+				'DISABLE_HEADER' => 'Y',
 		"FILTER_NAME" => "bbFilter",
 		"INCLUDE_SUBSECTIONS" => "A",
 		"SHOW_ALL_WO_SECTION" => "N",
@@ -457,7 +479,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 
             </div>
             
-            <div id='var_tab_2' class='variants__tabs-list'>
+            <div class="product-widget__content" id="other">
 		<?
             global $baFilter;
             $baFilter = Array("ID" => $arResult['ELEMENT_NEXT']);    
@@ -476,6 +498,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 		),
                 "USE_FILTER" =>"Y",
 		"FILTER_NAME" => "baFilter",
+		'DISABLE_HEADER' => 'Y',
 		"INCLUDE_SUBSECTIONS" => "A",
 		"SHOW_ALL_WO_SECTION" => "N",
 		"CUSTOM_FILTER" => "",
@@ -587,38 +610,78 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 );
 ?>
             </div>
+			<!--content-tabs-->
+		</div>
+		<!--product-widget-->
+               
 	</div>
-        </div>
-        <?if($arResult["RELATED"]){?>
-	<h2 class="s28-title">Сопутствующие товары</h2>
-	<ul class="card-nav-product">
-            <?
-            $arFilter = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "ID"=>$arResult["RELATED"], false, array("*"));
-            $db_list = CIBlockSection::GetList(Array("SORT"=>"ASC"), $arFilter, true);
-            while($arSection = $db_list->GetNext()) {
-            $renderImage = CFile::ResizeImageGet($arSection["PICTURE"], Array("width" => 72, "height" => 72), BX_RESIZE_IMAGE_EXACT, false); 
-            ?>
-	    <li class="card-nav-product__item">
-		<a href="<?=$arSection['SECTION_PAGE_URL']?>" class="card-nav-product__link">
-		    <div class="card-nav-img"><img src="<?=$renderImage['src']?>" alt=""></div>
-		    <div class="card-nav-text"><?=$arSection['NAME']?></div>
-		</a>
-	    </li>
-            <?}?>
-	</ul>
-        <?$this->SetViewTarget("related_menu_element");?>
-            <nav class="nav-aside nav-aside--yellow">
-		<strong class="nav-aside__title">Рекомендуемые разделы</strong>
-		    <ul class="nav-aside__items">
-                        <?
-                        $db_list = CIBlockSection::GetList(Array("SORT"=>"ASC"), $arFilter, true);
-                        while($arSection = $db_list->GetNext()) {?>
-			<li class="nav-aside__item"><a href="<?=$arSection['SECTION_PAGE_URL']?>" class="nav-aside__link"><?=$arSection['NAME']?></a></li>
-                        <?}?>
-					
-		    </ul>
-	    </nav>
-        <?$this->EndViewTarget();?>
-        <?}?>
-    </div>
+	<br><br>
 
+       
+
+<script>$(document).ready(function () {
+	
+	
+	
+	var buyBtnDetail = document.body.querySelectorAll('.product-purchase__button');
+	var IDs=[];
+    for (var i = 0; i < buyBtnDetail.length; i++) {
+        BX.bind(buyBtnDetail[i], 'click', BX.delegate(function (e) {
+            add2basketDetail(e)
+        }, this));
+		
+		
+	IDs.push({'id': buyBtnDetail[i].dataset.product, 'google_business_vertical': 'retail'});
+		
+    
+    }
+    
+        
+    function add2basketDetail(e) {
+        var id = e.target.dataset.product,
+                quantity = 1;
+				
+        if (!!BX('QUANTITY_' + id)) {
+            quantity = BX('QUANTITY_' + id).value;
+        }
+       console.log(e);
+        BX.ajax({
+            url: window.location.href,
+            data: {
+                action: 'ADD2BASKET',
+                ajax_basket: 'Y',
+                quantity: quantity,
+                id: e.target.dataset.product
+            },
+            method: 'POST',
+            dataType: 'json',
+            onsuccess: function (data) {
+                if (data.STATUS == 'OK') {
+                    BX.addClass(e.target, 'active');
+                   console.log(e.target.dataset.price);
+                    BX.onCustomEvent('OnBasketChange');
+					ga ('send', 'event', 'Корзина', 'Добавить в корзину');
+					gtag('event','add_to_cart', {
+						'send_to': 'AW-958495754',
+						'value': e.target.dataset.price,
+						'items': [
+						{
+							'id':  e.target.dataset.product, 
+							'google_business_vertical': 'retail'
+						}]
+					});
+                    $('.header-basket').popUp();
+                } else {
+                   console.log(data);
+				   $('.header-basket-none').text(data.MESSAGE);
+                   $('.header-basket-none').popUp();
+                }
+            }
+        }); 
+    }
+    
+    
+    
+});</script>
+<script src="/local/templates/moskrep/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa"></script>
+   <script>var tabs=new Tabby("[data-product-page-tabs]");tabs=new Tabby("[data-delivery-tabs]"),tabs=new Tabby("[data-pickup-tabs]"),tabs=new Tabby("[data-product-widget-tabs]")</script>
