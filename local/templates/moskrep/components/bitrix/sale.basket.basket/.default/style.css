@@ -3,6 +3,12 @@
 	src: url(font/bitrixrub-regular.ttf) format("truetype");
 	font-weight: normal
 }
+.errortext {
+	display: block;
+	margin: 30px auto;
+	text-align: center;
+	font-size: 18px;
+}
 
 .t-basket-delete {
 	display: block;

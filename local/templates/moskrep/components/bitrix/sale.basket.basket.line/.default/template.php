@@ -45,3 +45,4 @@ $this->setFrameMode( true );
 	<?=$cartId?>.activate();
 
 </script>
+

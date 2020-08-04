@@ -448,11 +448,14 @@
 
 		showItemsCount: function()
 		{
+			
+			if (!this.result.BASKET_ITEMS_COUNT) window.location.href="/";
+			
 			var itemCountNode = this.getEntity(
 				this.getCacheNode(this.ids.itemListWrapper),
 				'basket-items-count',
 				'[data-filter="all"]'
-			);
+			);		
 
 			if (BX.type.isDomNode(itemCountNode))
 			{
