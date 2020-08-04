@@ -60,8 +60,8 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                      <!--product-purchase-->
                      <div class="product-purchase">
                         <p class="product-purchase__price"><?echo number_format($price, 2, '.', ' ');?> ₽</p>
-						 <a href="javascript:void(0)" id='main_link' data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' rel="nofollow" class="blue-btn card__btn">Добавить в корзину</a>
-                        <a href='javascript::void()' data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' class="main-button main-button--plus product-purchase__button"><i class="simple-cart-icon product-purchase__icon" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' rel="nofollow"></i>Добавить в корзину</a>
+						
+                        <a href='javascript::void(0)' data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' class="main-button main-button--plus product-purchase__button"><i class="simple-cart-icon product-purchase__icon" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' rel="nofollow"></i>Добавить в корзину</a>
                      </div>
                      <!--product-purchase-->
                      <!--product-data-->
@@ -617,22 +617,8 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                
 	</div>
 	<br><br>
+     
 
-       
 
-<script>BX.ready(function () {
-	
-	
-	
-	var buyBtnDetail = document.body.querySelectorAll('.blue-btn');
-	
-    
-    
-        
- 
-    
-    
-    
-});</script>
 <script src="/local/templates/moskrep/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa"></script>
    <script>var tabs=new Tabby("[data-product-page-tabs]");tabs=new Tabby("[data-delivery-tabs]"),tabs=new Tabby("[data-pickup-tabs]"),tabs=new Tabby("[data-product-widget-tabs]")</script>
