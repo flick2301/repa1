@@ -364,7 +364,7 @@ $APPLICATION->SetPageProperty('description', '«КРЕП-КОМП» - ведущ
         }
     }
 ?>
-	<script src="/local/templates/moskrep/assets/scripts/jquery-3.4.1.min.js"></script>
+   <script src="/local/templates/moskrep/assets/scripts/jquery-3.4.1.min.js"></script>
    <script src="/local/templates/moskrep/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="/local/templates/moskrep/assets/scripts/jquery.icheck-1.0.2.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="/local/templates/moskrep/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa" defer="defer"></script>
