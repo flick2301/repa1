@@ -217,7 +217,6 @@
 }
 
 #added-basket {
-    width: 634px;
     padding: 30px 30px 40px 30px;
 }
 
@@ -564,4 +563,63 @@
 
 .blue-btn:hover {
     background: #2671e4;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 640px) {
+	.popUp-container .line-btn {
+		display: block;
+	}
+	.popUp-container .line-btn .white-btn, .popUp-container .line-btn .blue-btn {
+		display: block;
+		float: none;
+		clear: both;
+		width: 100%;
+		height: auto;
+		text-align: center;
+		padding: 10px 0;	
+		margin: 10px 0 0;	
+	}
+	#bx_basket1, #bx_basket1 tbody, #bx_basket1 thead, #bx_basket1 tr {
+		display: block;
+	}
+	#bx_basket1 tr th {
+		display: none;
+	}
+	#bx_basket1 tr td.added-product__td {
+		float: left;
+	}
+	#bx_basket1 tr td.added-product__td:first-child {
+		display: block;
+		width: 100%;
+		clear: both;
+		float: none;
+	}
+	#bx_basket1 tr td.added-product__td:last-child {
+		float: right;
+	}
+	.added-product__close:before {
+		content: "Удалить";
+		position: absolute;
+		margin-left: -75px;
+		color: #0c59cf;
+	}
+	.added-product__price {
+		margin-left: 20px;
+	}
 }
