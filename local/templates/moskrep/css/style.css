@@ -621,5 +621,6 @@
 	}
 	.added-product__price {
 		margin-left: 20px;
+		margin-top: 1px;
 	}
 }
