@@ -1,0 +1,11 @@
+.header-contacts__mail {
+    margin-top: 4px;
+    color: #0c59cf;
+}
+.eshop-panel__search .geolocation {
+	margin-top: -95px;
+	white-space: nowrap;
+}
+.geolocation a:after {
+    top: 5px;
+}
