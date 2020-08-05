@@ -152,7 +152,7 @@ ref.parentNode.insertBefore(js, ref);}(document));
 
 <?$APPLICATION->IncludeComponent(
 	"webcreature:dsearch.ajax", 
-	"krep-komp", 
+	"krep-komp_old", 
 	array(
 		"ARTNO" => "CML2_ARTICLE",
 		"CATEGORY" => array(
@@ -166,7 +166,7 @@ ref.parentNode.insertBefore(js, ref);}(document));
 		"SIZE" => "8",
 		"STAT" => "Y",
 		"STAT_LIMIT" => "10000",
-		"COMPONENT_TEMPLATE" => "krep-komp"
+		"COMPONENT_TEMPLATE" => "krep-komp_old"
 	),
 	false
 );?>

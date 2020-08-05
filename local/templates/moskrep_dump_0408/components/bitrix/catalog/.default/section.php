@@ -169,7 +169,7 @@ if($count_sections || !empty($subsections)){
         $this->SetViewTarget("smart_filter");
     
         $APPLICATION->IncludeComponent(
-        "d7:catalog.smart.filter",
+        "d7_old:catalog.smart.filter",
         "",
         Array(
             "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
