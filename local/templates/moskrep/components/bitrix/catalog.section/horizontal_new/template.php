@@ -270,8 +270,9 @@ if(!$_POST['ENUM_LIST']['ELEMENTS'] && !$arParams["DISABLE_HEADER"]=='Y')
 {
 if($arResult["UF_RELATED"]){
 ?>
+<br><br>
 <div class="catalog-feed__other">
-<ul class="card-nav-product"><?
+<?
 $arFilter = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "ID"=>$arResult["UF_RELATED"], false, array("*"));
 $db_list = CIBlockSection::GetList(Array("SORT"=>"ASC"), $arFilter, true);
 while($arSection = $db_list->GetNext()) {
@@ -280,7 +281,7 @@ while($arSection = $db_list->GetNext()) {
 		<div class="catalog-feed__child">
                      <!--category-card-->
                      <div class="category-card">
-                        <p class="category-card__title"><a class="category-card__link" href="<?=$arSection['SECTION_PAGE_URL']?>"><?=$arSection['NAME']?><</a></p>
+                        <p class="category-card__title"><a class="category-card__link" href="<?=$arSection['SECTION_PAGE_URL']?>"><?=$arSection['NAME']?></a></p>
                         <div class="category-card__cover">
                            <img class="category-card__image" src="<?=$renderImage['src']?>" width="120" height="76" alt=""> 
                         </div>
