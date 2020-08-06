@@ -9,3 +9,6 @@
 .geolocation a:after {
     top: 5px;
 }
+#fancybox-close {
+     right: -35px;
+}	

@@ -96,7 +96,7 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 <h3>На автомобиле</h3>
 
 <div class="car print">
-<?=$item["PROP"]["CAR"]["VALUE"]["TEXT"]?>
+<?=$item["PROP"]["CAR"]["~VALUE"]["TEXT"]?>
 </div>
 
 <div id="qr" class="print"></div>
@@ -117,11 +117,11 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 
 <?endif?>
 <div class="car noprint">
-<?=$item["PROP"]["CAR"]["VALUE"]["TEXT"]?>
+<?=$item["PROP"]["CAR"]["~VALUE"]["TEXT"]?>
 </div>
 <?endif?>
 
-<?if($item["PROP"]["AFOOT"]["VALUE"]["TEXT"]):?>
+<?if($item["PROP"]["AFOOT"]["~VALUE"]["TEXT"]):?>
 <h3>Пешком</h3>
 <div class="afoot">
 <?=$item["PROP"]["AFOOT"]["~VALUE"]["TEXT"]?>
