@@ -378,6 +378,10 @@ h1.s38-title {
 #shop .print {
 	display: block;
 }
+.shop_table {
+	width: 100%;
+}
+
 [class*="ymaps-2"][class*="-ground-pane"] {
   -webkit-filter: saturate(500%) grayscale(50%) contrast(110%);
           filter: saturate(500%) grayscale(50%) contrast(110%);
@@ -386,4 +390,61 @@ h1.s38-title {
   -webkit-filter: saturate(250%) grayscale(50%);
           filter: saturate(250%) grayscale(50%);
 }
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 685px) {
+.catalog-table__column--basic.is-merged h3 strong {	
+	display: inherit;
+}
+.shop_table tr td:nth-child(3), .shop_table tr th:nth-child(3) {
+	display: none;
+}
+#shops ul.left {
+	display: block;
+	float: none;	
+	width: 100%;
+}
+#shops #map {
+	margin-left: 0;
+}
+#shop #map {
+    margin-left: 0;
+	clear: both;
+}	
+#shops ul.left {
+    overflow-y: hidden;
+	margin-bottom: 20px;
+}
+#shops ul.left li .line-btn .blue-btn {
+	WIDTH: 100%;
+}
+/* Let's get this party started */
+#shops ul.left::-webkit-scrollbar {
+    opacity: 0;
+}
+ /* Track */
+#shops ul.left::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0 #fff; 
+	background: #fff;
+}
+/* Handle */
+#shops ul.left::-webkit-scrollbar-thumb {
+    background: #fff; 
+   -webkit-box-shadow: #fff;
+}
+#shops ul.left::-webkit-scrollbar-button {
+	background: #fff;
+}
+#shops ul.left::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}	
 }

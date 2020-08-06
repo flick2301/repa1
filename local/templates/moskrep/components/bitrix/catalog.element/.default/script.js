@@ -1,6 +1,6 @@
 BX.ready(function () {
     
-    var buyBtnDetail = document.body.querySelectorAll('.main-button--plus');
+    var buyBtnDetail = document.body.querySelectorAll('.product-purchase__button');
 
     for (var i = 0; i < buyBtnDetail.length; i++) {
         BX.bind(buyBtnDetail[i], 'click', BX.delegate(function (e) {

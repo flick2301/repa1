@@ -82,10 +82,6 @@
     margin-bottom: 25px;
 }
 
-.shop_table {
-	width: 100%;
-}
-
 
 
 
@@ -109,20 +105,5 @@
 @media (max-width: 685px) {
 .catalog-table__column--basic.is-merged h3 strong {	
 	display: inherit;
-}
-.shop_table tr td:nth-child(3), .shop_table tr th:nth-child(3) {
-	display: none;
-}
-#shops ul.left {
-	display: block;
-	float: none;	
-	width: 100%;
-}
-#shops #map {
-	margin-left: 0;
-}
-#shop #map {
-    margin-left: 0;
-	clear: both;
-}	
+}		
 }
