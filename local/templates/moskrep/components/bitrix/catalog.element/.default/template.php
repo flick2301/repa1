@@ -45,6 +45,8 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
     </header>
 <!--page-heading-->
 
+<div class="card__articul">Артикул: <span class="card__articul-name"><?=$arResult['PROPERTIES']['CML2_ARTICLE']['VALUE']?></span></div>
+
     <div itemscope itemtype="http://schema.org/Product" class="basic-layout__module product-page">
 		<div class="product-page__main">
                   <div class="product-page__gallery">
