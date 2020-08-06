@@ -12,3 +12,20 @@
 #fancybox-close {
      right: -35px;
 }	
+.catalog-table__column--basic.groupped {
+}
+.catalog-table__column--basic.is-merged h3 strong {
+	display: none;
+}
+
+
+
+
+
+
+
+@media (max-width: 685px) {
+.catalog-table__column--basic.is-merged h3 strong {	
+	display: inherit;
+}	
+}

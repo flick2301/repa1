@@ -138,10 +138,12 @@ if($arParams['FOR_SEO']!='Y'){
             <!--catalog-table-->
                 <section class="catalog-table">
 				
-					<div class="catalog-table__column catalog-table__column--basic <?=$index>0 ? " is-merged" : "";?>">
+				
+					<div class="catalog-table__column catalog-table__column--basic <?=$index>0 ? " is-merged" : "groupped";?>">
                         <div class="catalog-table__title">Размер, мм<small>:</small></div>
                         <h3 class="catalog-table__content"><span class="catalog-table__desc"><strong><?=$item['SIZES']?></strong></span></h3>
                     </div>
+					
         
             <?
             $index++;
@@ -198,7 +200,7 @@ if($arParams['FOR_SEO']!='Y'){
         <?}?>
 		<?if($arResult['EXTRA_FIELD']){
 			foreach($arResult['EXTRA_FIELD'] as $field){?>
-					<div class="catalog-table__column catalog-table__column--color">
+					<div class="catalog-table__column catalog-table__column--basic">
                         <div class="catalog-table__title"><?=$field['NAME']?><small>:</small></div>
                            <div class="catalog-table__content">
 								<p class="catalog-table__desc"><?=mb_strimwidth($item['PROPERTIES'][$field['CODE']]["VALUE"], 0, 12, "...");?></p>
