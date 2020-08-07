@@ -347,8 +347,8 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
             <!--product-widget-->
             <div class="basic-layout__module product-widget">
                <!--content-tabs-->
-            <?if(count($arResult['ELEMENT_VARS'])){?>
-            <div class="product-widget__content" id="packaging">               
+            <div class="product-widget__content" id="packaging">   			   
+            <?if(count($arResult['ELEMENT_VARS'])){?>            
 		<?
             global $bbFilter;
             $bbFilter = Array("ID" => $arResult['ELEMENT_VARS']);    
