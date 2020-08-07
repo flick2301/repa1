@@ -8,11 +8,11 @@
 				<thead>
 					<tr>
 						<th>Масса груза</th>
-						<th>Зона - 1</th>
-						<th>Зона - 2</th>
-						<th>Зона - 3</th>
-						<th>Зона - 4</th>
-						<th>Зона - 5</th>
+						<th>Зона 1</th>
+						<th>Зона 2</th>
+						<th>Зона 3</th>
+						<th>Зона 4</th>
+						<th>Зона 5</th>
 					</tr>
 				</thead>
 				<tbody class="blue-table__tbody">
