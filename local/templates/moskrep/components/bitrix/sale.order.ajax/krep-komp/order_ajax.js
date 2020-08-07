@@ -6659,7 +6659,7 @@ for (var key in this.result.DELIVERY_GROUPS) {
 		{
 			pickUpContent.appendChild(BX.create('DIV', {
 				props: {id: 'pickUpMap'},
-				style: {width: '100%', marginBottom: '10px'}
+				style: {marginBottom: '10px'}
 			}));
 		},
 
