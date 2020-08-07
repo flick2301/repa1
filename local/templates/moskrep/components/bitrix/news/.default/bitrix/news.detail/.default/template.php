@@ -65,11 +65,27 @@ $this->setFrameMode(true);
 		</div>
 		<?
 	}
+	
+	$month = array(
+		"01" => "января",
+		"02" => "февраля",
+		"03" => "марта",
+		"04" => "апреля",
+		"05" => "мая",
+		"06" => "июня",
+		"07" => "июля",
+		"08" => "августа",
+		"09" => "сентября",
+		"10" => "октября",
+		"11" => "ноября",
+		"12" => "декабря",
+	);
 	?>
                </div>
+		   
                <div class="simple-article__footer">
                   <a class="second-button second-button--mini" href="<?=$arParams["BACK_URL"]?>"><?=GetMessage("T_NEWS_DETAIL_BACK")?></a>
-                  <?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?><p class="simple-article__date">Дата публикации: <time datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arItem["DISPLAY_ACTIVE_FROM"])?>"><?=$arResult["DISPLAY_ACTIVE_FROM"]?></time></p><?endif;?>
+                  <?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?><p class="simple-article__date">Дата публикации: <time datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arResult["DISPLAY_ACTIVE_FROM"])?>"><?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${1} ". $month["02"]." \${3}", $arResult["DISPLAY_ACTIVE_FROM"])?></time></p><?endif;?>
 		
 	
                </div>
