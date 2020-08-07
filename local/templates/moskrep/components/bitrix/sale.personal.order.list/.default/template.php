@@ -115,7 +115,7 @@ else
                         <div class="orders-table__column orders-table__column--total">
                            <div class="orders-table__title">Сумма заказа<small>:</small></div>
                            <div class="orders-table__content">
-                              <p class="orders-table__desc"><?=$order['ORDER']['FORMATED_PRICE']?> ₽</p>
+                              <p class="orders-table__desc"><?=$order['ORDER']['FORMATED_PRICE']?></p>
                            </div>
                         </div>
                      </section>
