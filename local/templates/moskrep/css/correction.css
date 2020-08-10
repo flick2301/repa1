@@ -89,9 +89,78 @@
     margin-bottom: 25px;
 }
 
+.blue-block {
+	background: #0c59cf;
+	color: #fff;
+	padding: 12px 15px;
+	margin-top: 20px;
+}
+.surface-block-container {
+	margin-right: -20px;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+.surface-block {
+	float: left;
+	width: 25%;
+	height: 250px;
+	text-align: center;
+	margin-top: 20px;
+}
+.surface-inblock {
+	margin-right: 20px;
+	height: inherit;	
+}
+.surface-block .surface-image {
+	height: 80%;
+}
+.surface-block .surface-name {
+	height: 20%;
+	background: #457fd8;
+	color: #fff;
+	font-size: 18px;
+	vertical-align: middle;
+	padding: 0 10px;
+}
+.surface-block .surface-name span {
+	display: block;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);	
+}
 
-
-
+table.tech {
+	margin: 20px 0 30px;
+	border: 1px solid #1e1e1e;
+}
+table.tech td {
+}	
+table.tech th, table.tech td {
+	text-align: center;
+	padding: 10px;
+	border: 1px solid #1e1e1e;	
+}	
+table.tech .dark td {
+    background-color: #eee;
+}
+table.tech th {
+    background-color: #eee;
+	text-shadow: 0 1px 0 rgba(255,255,255,.5);
+	border-top: 1px solid #1e1e1e;
+    border-bottom: 1px solid #1e1e1e;
+}	
+.tech_title {
+    margin-top: 20px;
+    margin-left: 30px;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 16px;
+}	
+ol.tech {
+}
+ol.tech li {
+	list-style-type: decimal;
+}
 
 
 
@@ -105,7 +174,7 @@
 
 
 @media (max-width: 800px) {
-.global-search__hint.global-search__hint--lite.moskrep_submit {
+.global-search__hint.global-search__hint--lite.moskrep_submit, .surface-block, .tech_title, table.tech {
 	display: none;
 }
 }
