@@ -4,7 +4,7 @@
 
 			<h2>Тарифы доставки по городу Санкт-Петербург и ЛО</h2>
 			<div class="simple-table">
-			<table class="blue-table">
+			<table>
 				<thead>
 					<tr>
 						<th>Масса груза</th>
@@ -15,7 +15,7 @@
 						<th>Зона 5</th>
 					</tr>
 				</thead>
-				<tbody class="blue-table__tbody">
+				<tbody>
 					<tr>
 						<td>0 - 15 кг</td>
 						<td>490</td>
