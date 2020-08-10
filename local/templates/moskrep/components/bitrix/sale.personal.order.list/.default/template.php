@@ -13,6 +13,13 @@ Asset::getInstance()->addJs("/bitrix/components/bitrix/sale.order.payment.change
 Loc::loadMessages(__FILE__);
 
 ?>
+
+            <!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?=$APPLICATION->ShowTitle();?></h1>
+            </header>
+            <!--page-heading-->
+
 <br />
 
             <div class="basic-layout__module catalog-feed">
