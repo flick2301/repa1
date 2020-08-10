@@ -326,8 +326,9 @@ ref.parentNode.insertBefore(js, ref);}(document));
 	</div>
     </header>
     
-<?if($APPLICATION->GetCurPage() !== "/basket/" && $APPLICATION->GetCurPage() !== "/order/" && ERROR_404 != 'Y'):?>    
+  
     <main class="basic-layout__common">
+	<?if($APPLICATION->GetCurPage() !== "/basket/" && $APPLICATION->GetCurPage() !== "/order/"):?>  	
 	<?if($APPLICATION->GetCurPage() !== "/")
 	{
 		?>
