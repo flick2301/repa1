@@ -11,7 +11,7 @@ $APPLICATION->SetTitle("Страница не найдена");?>
 
             <!--page-heading-->
             <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
+               <h1 class="page-heading__title">Страница не найдена</h1>
             </header>
             <!--page-heading-->	
 	
