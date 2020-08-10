@@ -27,7 +27,10 @@ while($ar_fields = $res->GetNext()){
     }
 }
 //КОНЕЦ ПРОВЕРКИ
-
+$rsStore = CCatalogStoreProduct::GetList(array(), array('PRODUCT_ID' => $arResult['ID']), false, false, array('STORE_ID', 'AMOUNT', 'STORE_NAME'));
+    while($arStore = $rsStore->Fetch()){
+        $arResult['STORE'][$arStore['STORE_ID']] = $arStore;
+    }
 //ВЫЧИСЛЯЕМ ЕДИНИЦЫ ИЗМЕРЕНИЯ
 if(stripos($arResult['NAME'], 'кг') !== false):
     $arResult['UNIT'] = ' кг';
