@@ -1,6 +1,6 @@
 BX.ready(function () {
     
-    var buyBtnDetail = document.body.querySelectorAll('.main-button--plus');
+    var buyBtnDetail = document.body.querySelectorAll('.product-purchase__button');
 
     for (var i = 0; i < buyBtnDetail.length; i++) {
         BX.bind(buyBtnDetail[i], 'click', BX.delegate(function (e) {
@@ -17,9 +17,8 @@ BX.ready(function () {
         if (!!BX('QUANTITY_' + id)) {
             quantity = BX('QUANTITY_' + id).value;
         }
-       if(e.target.dataset.quantity){
-           quantity=1;
-       }
+       if(e.target.dataset.quantity >= quantity)
+		{
         BX.ajax({
             url: window.location.href,
             data: {
@@ -53,7 +52,8 @@ BX.ready(function () {
                    $('.header-basket-none').popUp();
                 }
             }
-        }); 
+        });
+		}else{$('.header-basket-none').popUp();}		
     }
     
     

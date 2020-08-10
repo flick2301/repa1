@@ -138,10 +138,12 @@ if($arParams['FOR_SEO']!='Y'){
             <!--catalog-table-->
                 <section class="catalog-table">
 				
-					<div class="catalog-table__column catalog-table__column--basic <?=$index>0 ? " is-merged" : "";?>">
+				
+					<div class="catalog-table__column catalog-table__column--basic <?=$index>0 ? " is-merged" : "groupped";?>">
                         <div class="catalog-table__title">Размер, мм<small>:</small></div>
                         <h3 class="catalog-table__content"><span class="catalog-table__desc"><strong><?=$item['SIZES']?></strong></span></h3>
                     </div>
+					
         
             <?
             $index++;
@@ -198,7 +200,7 @@ if($arParams['FOR_SEO']!='Y'){
         <?}?>
 		<?if($arResult['EXTRA_FIELD']){
 			foreach($arResult['EXTRA_FIELD'] as $field){?>
-					<div class="catalog-table__column catalog-table__column--color">
+					<div class="catalog-table__column catalog-table__column--basic">
                         <div class="catalog-table__title"><?=$field['NAME']?><small>:</small></div>
                            <div class="catalog-table__content">
 								<p class="catalog-table__desc"><?=mb_strimwidth($item['PROPERTIES'][$field['CODE']]["VALUE"], 0, 12, "...");?></p>
@@ -234,8 +236,8 @@ if($arParams['FOR_SEO']!='Y'){
 								 <?}?>
                               </div>
                               <!--price-in-table-->
-							  <input type="hidden" name="" data-quantity="<?=($item['KOLEDINO'])?>" onchange='ChangeInputCart("<?=$item['NAME']?>", $(this))' id="QUANTITY_<?=$item['ID']?>" value="1" class="value__input">
-                              <button class="catalog-table__to-cart" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"><i class="colored-cart-icon catalog-table__cart" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"></i>Добавить в корзину</button>
+							  <input type="hidden" name="" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" onchange='ChangeInputCart("<?=$item['NAME']?>", $(this))' id="QUANTITY_<?=$item['ID']?>" value="1" class="value__input">
+                              <button class="catalog-table__to-cart" data-product="<?=$item['ID']?>" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"><i class="colored-cart-icon catalog-table__cart" data-product="<?=$item['ID']?>" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"></i>Добавить в корзину</button>
                            </div>
                     </div>
             
@@ -268,8 +270,9 @@ if(!$_POST['ENUM_LIST']['ELEMENTS'] && !$arParams["DISABLE_HEADER"]=='Y')
 {
 if($arResult["UF_RELATED"]){
 ?>
+<br><br>
 <div class="catalog-feed__other">
-<ul class="card-nav-product"><?
+<?
 $arFilter = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "ID"=>$arResult["UF_RELATED"], false, array("*"));
 $db_list = CIBlockSection::GetList(Array("SORT"=>"ASC"), $arFilter, true);
 while($arSection = $db_list->GetNext()) {
@@ -278,7 +281,7 @@ while($arSection = $db_list->GetNext()) {
 		<div class="catalog-feed__child">
                      <!--category-card-->
                      <div class="category-card">
-                        <p class="category-card__title"><a class="category-card__link" href="<?=$arSection['SECTION_PAGE_URL']?>"><?=$arSection['NAME']?><</a></p>
+                        <p class="category-card__title"><a class="category-card__link" href="<?=$arSection['SECTION_PAGE_URL']?>"><?=$arSection['NAME']?></a></p>
                         <div class="category-card__cover">
                            <img class="category-card__image" src="<?=$renderImage['src']?>" width="120" height="76" alt=""> 
                         </div>

@@ -117,7 +117,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                         </div>
                         <div class="product-card__footer">
                            <div class="product-card__price"><?echo number_format($price, 2, '.', ' ');?> ₽</div>
-                           <button data-product="<?=$item['ID']?>" old-price="<?=$price?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>" class="main-button main-button--mini product-card__button">В корзину</button>
+                           <button data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-product="<?=$item['ID']?>" old-price="<?=$price?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>" class="main-button main-button--mini product-card__button">В корзину</button>
                         </div>
                      </section>
                      <!--product-card-->

@@ -80,14 +80,16 @@ else
                 ?>
 				
 				
-                  <div class="catalog-feed__table">				
+                  <div class="catalog-feed__table myorders">				
                      <!--orders-table-->
                      <section class="orders-table">
                         <div class="orders-table__column orders-table__column--order">
                            <div class="orders-table__title">Номер заказа<small>:</small></div>
+						   <div class="orders-table__content">
                            <h3 class="orders-table__content"><a class="orders-table__link" href="<?=$order['ORDER']['URL_TO_DETAIL']?>"><?=Loc::getMessage('SPOL_TPL_ORDER')?>
 							<?=Loc::getMessage('SPOL_TPL_NUMBER_SIGN').$order['ORDER']['ACCOUNT_NUMBER']?>
                         </a></h3>
+						 </div>
                         </div>
 						<?
 						 $date = (array) $order['ORDER']['DATE_INSERT'];
@@ -113,7 +115,7 @@ else
                         <div class="orders-table__column orders-table__column--total">
                            <div class="orders-table__title">Сумма заказа<small>:</small></div>
                            <div class="orders-table__content">
-                              <p class="orders-table__desc"><?=$order['ORDER']['FORMATED_PRICE']?> ₽</p>
+                              <p class="orders-table__desc"><?=$order['ORDER']['FORMATED_PRICE']?></p>
                            </div>
                         </div>
                      </section>

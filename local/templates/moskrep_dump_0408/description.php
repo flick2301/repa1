@@ -1,6 +1,6 @@
 <?
 $arTemplate = array (
-  'NAME' => 'moskrep',
+  'NAME' => 'moskrep_dump',
   'DESCRIPTION' => '',
   'SORT' => '',
   'TYPE' => '',

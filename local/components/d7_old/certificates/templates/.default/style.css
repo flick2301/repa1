@@ -1,0 +1,23 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19.10.2018, 10:53:26
+    Author     : pol
+*/
+
+.certs{
+    height:380px !important;
+}
+
+.nav-sale:not(.temp2) .nav-sale__img img {
+
+}
+.pdf_link{
+	font-size:20px;
+	color:blue;
+	padding-bottom:14px;
+	
+}

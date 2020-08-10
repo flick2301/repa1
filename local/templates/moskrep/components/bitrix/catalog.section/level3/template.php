@@ -46,7 +46,7 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
             <!--catalog-table-->
                 <section class="catalog-table">
 				
-					<div class="catalog-table__column catalog-table__column--basic <?=$index>0 ? " is-merged" : "";?>">
+					<div class="catalog-table__column catalog-table__column--basic <?=$index>0 ? " is-merged" : "groupped";?>">
                         <div class="catalog-table__title">Размер, мм<small>:</small></div>
                         <h3 class="catalog-table__content"><span class="catalog-table__desc"><strong><?=$item['SIZES']?></strong></span></h3>
                     </div>
@@ -104,7 +104,7 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
         <?}?>
 		<?if($arResult['EXTRA_FIELD']){
 			foreach($arResult['EXTRA_FIELD'] as $field){?>
-					<div class="catalog-table__column catalog-table__column--color">
+					<div class="catalog-table__column catalog-table__column--basic">
                         <div class="catalog-table__title"><?=$field['NAME']?><small>:</small></div>
                            <div class="catalog-table__content">
 								<p class="catalog-table__desc"><?=mb_strimwidth($item['PROPERTIES'][$field['CODE']]["VALUE"], 0, 12, "...");?></p>
@@ -139,8 +139,8 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 								 <?}?>
                               </div>
                               <!--price-in-table-->
-							  <input type="hidden" name="" data-quantity="<?=($item['KOLEDINO'])?>" onchange='ChangeInputCart("<?=$item['NAME']?>", $(this))' id="QUANTITY_<?=$item['ID']?>" value="1" class="value__input">
-                              <button class="catalog-table__to-cart" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"><i class="colored-cart-icon catalog-table__cart" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"></i>Добавить в корзину</button>
+							  <input type="hidden" name="" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" onchange='ChangeInputCart("<?=$item['NAME']?>", $(this))' id="QUANTITY_<?=$item['ID']?>" value="1" class="value__input">
+                              <button class="catalog-table__to-cart" data-product="<?=$item['ID']?>" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"><i class="colored-cart-icon catalog-table__cart" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-price="<?=$price?>"></i>Добавить в корзину</button>
                            </div>
                     </div>
             

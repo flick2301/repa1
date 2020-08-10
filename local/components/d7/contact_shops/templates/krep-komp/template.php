@@ -51,7 +51,19 @@ $this->addExternalCss($templateFolder."/slick/slick-theme.css");
 <div id="shop<?=$arParams["SECTION_ID"]?>">
 <?foreach($arResult["ITEMS"] AS $key=>$item):?>
 <?$APPLICATION->AddChainItem(preg_replace("/\&lt;[A-z\/ ]+\&gt;/", ", ", $item["PROP"]["ADDRESS"]["VALUE"]));?>
+
+<?if(SITE_TEMPLATE_ID=='moskrep'):?>
+            <!--page-heading-->
+            <header class="basic-layout__module page-heading">
+               <h1 class="page-heading__title"><?=$item["NAME"]?><br /><?=preg_replace("/\&lt;[A-z\/ ]+\&gt;/", ", ", $item["PROP"]["ADDRESS"]["VALUE"])?></h1>
+            </header>
+            <!--page-heading-->
+<?else:?>
 <h1 class="s38-title"><?=$item["NAME"]?><br /><?=preg_replace("/\&lt;[A-z\/ ]+\&gt;/", ", ", $item["PROP"]["ADDRESS"]["VALUE"])?></h1>
+<?endif?>
+
+
+
 <table id="current_shop_table<?=$arParams["SECTION_ID"]?>">
 <tr>
 <th>Время работы</th>
@@ -96,7 +108,7 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 <h3>На автомобиле</h3>
 
 <div class="car print">
-<?=$item["PROP"]["CAR"]["VALUE"]["TEXT"]?>
+<?=$item["PROP"]["CAR"]["~VALUE"]["TEXT"]?>
 </div>
 
 <div id="qr" class="print"></div>
@@ -117,11 +129,11 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 
 <?endif?>
 <div class="car noprint">
-<?=$item["PROP"]["CAR"]["VALUE"]["TEXT"]?>
+<?=$item["PROP"]["CAR"]["~VALUE"]["TEXT"]?>
 </div>
 <?endif?>
 
-<?if($item["PROP"]["AFOOT"]["VALUE"]["TEXT"]):?>
+<?if($item["PROP"]["AFOOT"]["~VALUE"]["TEXT"]):?>
 <h3>Пешком</h3>
 <div class="afoot">
 <?=$item["PROP"]["AFOOT"]["~VALUE"]["TEXT"]?>
@@ -163,7 +175,7 @@ shop.push({id: <?=$item["ID"]?>, balloon: true, lat: <?=$item["PROP"]["LAT"]["VA
 <div id="map<?=$arParams["SECTION_ID"]?>"></div>
 </div>
 
-<table id="shop_table<?=$arParams["SECTION_ID"]?>">
+<table id="shop_table<?=$arParams["SECTION_ID"]?>" class="shop_table">
 <tr>
 <th></th>
 <th>Адрес</th>

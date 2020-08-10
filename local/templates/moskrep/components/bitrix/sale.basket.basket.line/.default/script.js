@@ -246,13 +246,14 @@ BitrixSmallCart.prototype = {
 	},
 	
 	       
-        changeItemToCart: function (id, quantity)
+        changeItemToCart: function (id, quantity, count=0)
 	{
                 var misc = [ id, quantity ];
 		
 		
 		this.refreshCart ({sbblchangeItemToCart: misc});
 		BX.onCustomEvent('OnBasketChange');
+		
 		
 	}
 };

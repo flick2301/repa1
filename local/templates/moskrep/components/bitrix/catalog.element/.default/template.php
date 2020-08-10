@@ -45,6 +45,8 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
     </header>
 <!--page-heading-->
 
+<div class="card__articul">Артикул: <span class="card__articul-name"><?=$arResult['PROPERTIES']['CML2_ARTICLE']['VALUE']?></span></div>
+
     <div itemscope itemtype="http://schema.org/Product" class="basic-layout__module product-page">
 		<div class="product-page__main">
                   <div class="product-page__gallery">
@@ -62,7 +64,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                      <div class="product-purchase">
                         <p class="product-purchase__price"><?echo number_format($price, 2, '.', ' ');?> ₽</p>
 						
-                        <a href='javascript::void(0)' data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' class="main-button main-button--plus product-purchase__button"><i class="simple-cart-icon product-purchase__icon" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>" data-quantity='1' rel="nofollow"></i>Добавить в корзину</a>
+                        <a href='javascript::void(0)' data-quantity="<?=$arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>"  class="main-button main-button--plus product-purchase__button"><i class="simple-cart-icon product-purchase__icon" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>"  data-quantity="<?=$arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" rel="nofollow"></i>Добавить в корзину</a>
                      </div>
                      <!--product-purchase-->
                      <!--product-data-->
@@ -345,8 +347,8 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
             <!--product-widget-->
             <div class="basic-layout__module product-widget">
                <!--content-tabs-->
-            <?if(count($arResult['ELEMENT_VARS'])){?>
-            <div class="product-widget__content" id="packaging">               
+            <div class="product-widget__content" id="packaging">   			   
+            <?if(count($arResult['ELEMENT_VARS'])){?>            
 		<?
             global $bbFilter;
             $bbFilter = Array("ID" => $arResult['ELEMENT_VARS']);    

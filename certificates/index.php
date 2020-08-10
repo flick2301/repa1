@@ -5,9 +5,9 @@ $APPLICATION->SetPageProperty("keywords", "сертификаты, крепеж,
 $APPLICATION->SetPageProperty("description", "Сертификаты на крепежные изделия от производителя КРЕП-КОМП в интернет-магазине крепежа и метизов с доставкой по Москве, Московской области и всей России");
 $APPLICATION->SetTitle("Сертификаты соответствия");
 ?>
-
+<?$component = (SITE_TEMPLATE_ID=='moskrep') ? "d7:certificates" : "d7_old:certificates";?>
 <?$APPLICATION->IncludeComponent(
-	"d7:certificates",
+	$component,
 	".default",
 	array(
 	"ADD_GROUP_PERMISSIONS" => array(	// ADD_GROUP_PERMISSIONS

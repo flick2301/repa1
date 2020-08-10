@@ -309,7 +309,7 @@ $APPLICATION->SetPageProperty("component", "catalog");
 	),
 	false
 );?>
-
+<?if(SITE_TEMPLATE_ID=='moskrep'){?>
 	 <?$APPLICATION->IncludeComponent(
 	"d7:main.feedback",
 	"",
@@ -321,5 +321,17 @@ $APPLICATION->SetPageProperty("component", "catalog");
 		"USE_CAPTCHA" => "N"
 	)
 );?>
-
+<?}else{?>
+<?$APPLICATION->IncludeComponent(
+	"d7_old:main.feedback",
+	"",
+	Array(
+		"EMAIL_TO" => "moskrep-market@yandex.ru",
+		"EVENT_MESSAGE_ID" => array(0=>"7",),
+		"OK_TEXT" => "Спасибо, ваше сообщение отправлено.",
+		"REQUIRED_FIELDS" => array(0=>"NAME",1=>"EMAIL",2=>"MESSAGE",),
+		"USE_CAPTCHA" => "N"
+	)
+);?>
+<?}?>
 <br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

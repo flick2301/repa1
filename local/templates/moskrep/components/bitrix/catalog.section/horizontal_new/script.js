@@ -31,6 +31,8 @@ BX.ready(function () {
         if (!!BX('QUANTITY_' + id)) {
             quantity = BX('QUANTITY_' + id).value;
         }
+		if(e.target.dataset.quantity >= quantity)
+		{
        console.log(e);
         BX.ajax({
             url: window.location.href,
@@ -65,6 +67,7 @@ BX.ready(function () {
                 }
             }
         }); 
+		}else{$('.header-basket-none').popUp();}
     }
 
 
