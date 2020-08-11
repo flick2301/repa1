@@ -178,6 +178,43 @@ ol.tech li {
 	background: url(/local/templates/moskrep/assets/design/website-logo/krep-komp.svg) no-repeat 0% 50%;
 	background-size: contain;
 }
+.catalog-table .item_img_block {
+	background: #fff;
+	border: 1px solid #dfdfdf;
+	border-radius: 2px;
+	position: absolute;
+	margin-left: -151px;
+	margin-top: 0;
+	z-index: 20;
+	display: none;
+}
+.catalog-feed__table:first-child .catalog-table .item_img_block {
+	margin-top: 51px;
+}
+.catalog-table .item_img_block img {
+	width: 150px;
+}
+.catalog-table .item_img_block div {
+	width: 150px;
+	padding: 5px;
+	box-sizing: padding-box;
+	font-size: 12px;
+	line-height: 15px;
+	background: #0c59cf;
+	color: #fff;
+}
+.catalog-table:hover .item_img_block {
+	display: block;
+}
+.catalog-table .catalog-table__column:first-child:hover .item_img_block {
+	display: none;
+}
+.catalog-table .blue-table__tr .blue-table__td:nth-child(1):hover + .blue-table__td:nth-child(2) .item_img_block {
+	display: none!important;
+}	
+.client-widget__link.login__btn::before {
+	display: none;
+}
 
 
 
@@ -188,7 +225,11 @@ ol.tech li {
 
 
 
-
+@media (max-width: 1200px) {
+.catalog-table .item_img_block {
+	display: none!important;
+}
+}
 @media (max-width: 800px) {
 .global-search__hint.global-search__hint--lite.moskrep_submit, .surface-block, .tech_title, table.tech {
 	display: none;
