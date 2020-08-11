@@ -21,6 +21,24 @@ js.src='https://antisovetnic.ru/anti/'+escape(id);
 ref.parentNode.insertBefore(js, ref);}(document));
 </script>
 	<!--АНТИСОВЕТНИК-->  
+	
+<?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
+<?
+$APPLICATION->IncludeFile(
+ "/include/counters_header_spb.php",
+ array(),
+ array("SHOW_BORDER" => true, "MODE"=>"php")
+);
+?>
+<?else:?>
+<?
+$APPLICATION->IncludeFile(
+ "/include/counters_header.php",
+ array(),
+ array("SHOW_BORDER" => true, "MODE"=>"php")
+);
+?>
+<?endif?>  	
        
     
     <meta charset="utf-8">
@@ -55,29 +73,30 @@ ref.parentNode.insertBefore(js, ref);}(document));
     if (d.head) d.head.appendChild(s);
   })(document);
 </script>
-<?require_once($_SERVER["DOCUMENT_ROOT"]."/include/counters.php");?>
+
 </head>
 <?$APPLICATION->ShowPanel();?>
 <body>
 
-    <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+<?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
+<?
+$APPLICATION->IncludeFile(
+ "/include/counters_spb.php",
+ array(),
+ array("SHOW_BORDER" => true, "MODE"=>"php")
+);
+?>
+<?else:?>
+<?
+$APPLICATION->IncludeFile(
+ "/include/counters.php",
+ array(),
+ array("SHOW_BORDER" => true, "MODE"=>"php")
+);
+?>
+<?endif?> 
 
-   ym(29426710, "init", {
-        id:29426710,
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-        webvisor:true,
-        ecommerce:"dataLayer"
-   });
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/29426710" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-    <?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/GTM.php";?>
+
     <?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/functions.php";?>
 	
 	<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page">  <a class="banner-link" href="https://krep-komp.ru/"><p class="banner-text"><strong style='font-weight: 500; position: relative; top: 1px;'>Мы работаем! Принимаем заказы на самовывоз и бесконтактную доставку. <span style='color: #f39101;'><!--В связи с голосованием по поправкам в Конституцию, 1 июля - выходной день.--></span></strong></p> </a> <svg class="icon-svg -cross" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg> </div> </div>

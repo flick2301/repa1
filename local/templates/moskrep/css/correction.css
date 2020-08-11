@@ -215,7 +215,9 @@ ol.tech li {
 .client-widget__link.login__btn::before {
 	display: none;
 }
-
+.not-decoration {
+	text-decoration: none!important;
+}
 
 
 

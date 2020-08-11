@@ -22,6 +22,21 @@
    clientId = tracker.get('clientId');
    ga('set', 'dimension2', clientId); });
    ga('send', 'pageview');
+   <?
+   global $USER;
+   $userID = $USER->GetID();
+   if(isset($userID))
+   {
+	   ?>ga('set', 'userId', '<?=$userID?>');
+		
+	   <?
+   }else{
+	   ?>
+	   ga('set', 'userId', 'auto');
+			
+			<?
+   }
+	?>	
       </script>
  <!-- /Google Analitycs -->
  

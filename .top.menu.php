@@ -4,7 +4,7 @@ $aMenuLinks = Array(
 		"Ваши скидки", 
 		"/vashi_skidki/", 
 		Array(), 
-		Array("color"=>"#f39101"), 
+		Array("color"=>"#0c59cf"), 
 		"" 
 	),
 	Array(
