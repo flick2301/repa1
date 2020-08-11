@@ -126,23 +126,21 @@ $APPLICATION->IncludeFile(
 			<div class="eshop-panel__brand">
 			<!--website-logo-->
 			<div class="website-logo">
-				<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/company_logo.php"), false, []);?>
+				<?//$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/company_logo.php"), false, []);?>
 				<a class="website-logo__link" href="/">На главную</a>
 			</div>
 			<!--website-logo-->
             </div>
+			
 			<div class="eshop-panel__search">
-                <?if(1){
+                <?
                 $request = Application::getInstance()->getContext()->getRequest();
-                $name = $request->getCookieList();
-                
+                $name = $request->getCookieList();               
                 ?>
-                    <?if(SITE_ID!='s2'):?>
-                
-                <? require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>
-                
+                    <?if(SITE_ID!='s2'):?>                
+                <?require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>             
                     <?endif;?>
-                <?}?>
+
 		<?/*$APPLICATION->IncludeComponent(
 	"d7:search.title", 
 	"catalog", 
