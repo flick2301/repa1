@@ -239,3 +239,6 @@ if($arResult["UF_DOP_SETTINGS"])
 		$arResult['ENUM_LIST'][$val_enum['XML_ID']] = true;
 	}
 }
+
+\Bitrix\Main\Loader::includeModule('dev2fun.opengraph');
+\Dev2fun\Module\OpenGraph::Show($arResult['ID'],'section'); 

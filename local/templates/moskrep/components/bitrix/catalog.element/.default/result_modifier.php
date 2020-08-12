@@ -212,3 +212,5 @@ $arResult['ELEMENT_NEXT'] = array_merge(array_slice($arElements, $indexElement, 
 $arResult['ELEMENT_NEXT'] = array_slice($arElements, $indexElement, 3);
 }
 
+\Bitrix\Main\Loader::includeModule('dev2fun.opengraph');
+\Dev2fun\Module\OpenGraph::Show($arResult['ID'],'element'); 

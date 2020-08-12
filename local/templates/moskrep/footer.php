@@ -373,6 +373,22 @@ $APPLICATION->SetPageProperty('description', '«КРЕП-КОМП» - ведущ
    <script src="/local/templates/moskrep/js/common.js" defer="defer"></script>
    <script src="/local/templates/moskrep/js/slick.min.js" defer="defer"></script>
    <script src="/local/templates/moskrep/js/jquery.cookie.js" defer="defer"></script>
+   
+   <?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/roistat.php";?>
+   
+   <!-- BEGIN JIVOSITE INTEGRATION WITH ROISTAT -->
+<script type='text/javascript'>
+var getCookie = window.getCookie = function (name) {
+    var matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+return matches ? decodeURIComponent(matches[1]) : undefined;
+};
+function jivo_onLoadCallback() {
+    jivo_api.setUserToken(getCookie('roistat_visit'));
+    }
+</script>
+<!-- END JIVOSITE INTEGRATION WITH ROISTAT --> 
+
+<?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/jivosite.php";?>
 
 </body>
 </html>
