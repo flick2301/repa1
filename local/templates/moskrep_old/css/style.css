@@ -5615,8 +5615,12 @@ ol.tech li {
 .blue-table.full .blue-table__tr .blue-table__td:nth-child(1):hover + .blue-table__td:nth-child(2) .item_img_block {
 	display: none!important;
 }	
-
-
+.not-decoration {
+	text-decoration: none!important;
+}
+.is-active .nav-main__link {
+	color: #f39101;
+}
 
 
 
