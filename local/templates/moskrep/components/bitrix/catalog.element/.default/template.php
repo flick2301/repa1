@@ -25,7 +25,6 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 <script>
 $(document).ready(function(){
     $(document).on("click","#chars_href", function (event) {	
-	
         event.preventDefault();
         var id  = $(this).attr('href'),
             top = $(id).offset().top;
