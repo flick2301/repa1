@@ -85,7 +85,7 @@ $APPLICATION->IncludeFile(
 <?
 $APPLICATION->IncludeFile(
  $APPLICATION->GetCurPage()."tab3.php",
- array(),
+ array("SHOW_FRAME"=>"Y"),
  array("SHOW_BORDER" => true, "MODE"=>"php")
 );
 ?>
