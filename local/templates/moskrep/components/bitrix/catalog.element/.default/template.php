@@ -20,8 +20,20 @@ $ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues($arParams["IBL
 
 $price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] : $arResult['MIN_PRICE']['VALUE'];
 $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][ID_BASE_PRICE]['VALUE'] : 0;
-
 ?>
+
+<script>
+$(document).ready(function(){
+    $(document).on("click","#chars_href", function (event) {	
+	
+        event.preventDefault();
+        var id  = $(this).attr('href'),
+            top = $(id).offset().top;
+        $('body,html').animate({scrollTop: top}, 1500);
+    });
+});
+</script>
+
 <?if(count($arResult['RELINK'])):?>
     <?php $this->SetViewTarget('RELINK'); ?>
 	<!--see-also-widget-->
@@ -85,7 +97,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                               </li>
                            </ul>
                            <div class="product-data__info">
-                              <a class="product-data__scroll" href="/">Адреса магазинов</a>
+                              <a class="product-data__scroll" href="/addresses/">Адреса магазинов</a>
                            </div>
                         </div>
                         <div class="product-data__section">
@@ -101,7 +113,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                         <?endif;?>
                            
                            <div class="product-data__info">
-                              <a class="product-data__scroll" href="#chars" rel="nofollow" data-tab="tab-1">Все характеристики</a>
+                              <a id="chars_href" class="product-data__scroll" href="#desc" rel="nofollow" data-tab="tab-1">Все характеристики</a>
                            </div>
                         </div>
                      </div>
@@ -109,7 +121,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                   </div>
         </div>
         <!--product-tabs-->
-               <div class="product-page__tabs product-tabs">
+               <div class="product-page__tabs product-tabs" id="desc">
                   <ul class="product-tabs__list" data-product-page-tabs>
                      <li class="product-tabs__item">
                         <a class="product-tabs__toggle" href="#description" data-tabby-default>Описание</a>
@@ -135,7 +147,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                </div>
         <!--product-tabs-->
         <div class="product-page__section" id="description">
-                  <h2 class="product-page__title">Характеристики</h2>
+                  <h2 id="chars" class="product-page__title">Характеристики</h2>
                   <!--product-data-->
                   <div class="product-page__specs product-data product-data--specs">
                      <ul class="product-data__list">
