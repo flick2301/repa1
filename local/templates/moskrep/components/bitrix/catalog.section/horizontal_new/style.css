@@ -4824,12 +4824,12 @@
     padding: 20px;
     text-align: left;
     z-index: 9;
-    display: none;
+    display: none !important;
     box-shadow: 0px 0px 9px -1px #ccc;
 }
 
 .pickup-block.show {
-    display: block;
+    display: block !important;
 }
 
 .pickup-block:before {

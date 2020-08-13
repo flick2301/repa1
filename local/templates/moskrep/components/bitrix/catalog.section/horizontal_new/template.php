@@ -176,18 +176,20 @@ if($arParams['FOR_SEO']!='Y'){
 			
 
 					<div class="catalog-table__column catalog-table__column--basic">
+					
+									
 						<div class="catalog-table__title">Получение<small>:</small></div>
                         <div class="catalog-table__content">
                             <span class="pickup-view" data-product="<?=$item['ID']?>">
-									<div id='pickup_<?=$item['ID']?>' style='display:none' class="pickup-block">
+									<div id='pickup_<?=$item['ID']?>' class="pickup-block">
 										
 									</div>
-								</span>
-								<span class="delivery-view"  data-product="<?=$item['ID']?>">
+							</span>
+							<span class="delivery-view"  data-product="<?=$item['ID']?>">
 									<div id='delivery_<?=$item['ID']?>' style='display:none' class="delivery-block">
 										
 									</div>
-								</span>
+							</span>
 
                         </div>
 					</div>

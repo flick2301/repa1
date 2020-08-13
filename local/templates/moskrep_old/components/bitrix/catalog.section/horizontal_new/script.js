@@ -74,7 +74,7 @@ BX.ready(function () {
 
 		$('.pickup-block').removeClass('show');
 		$('.delivery-block').removeClass('show');
-		$(this).children('.pickup-block').addClass('show');
+		//$(this).children('.pickup-block').addClass('show');
 		
 		var id = e.target.dataset.product;
 		console.log(e.target.dataset.product);
@@ -98,6 +98,7 @@ BX.ready(function () {
 			onsuccess: function(data){
 				//console.log(data['KPP']); // при успешном получении ответа от сервера, заносим полученные данные в элемент с классом answer
 				$("#pickup_"+id).html(data);
+				$("#pickup_"+id).addClass('show');
 				
 
 			},
