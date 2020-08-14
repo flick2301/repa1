@@ -218,8 +218,12 @@ ol.tech li {
 .not-decoration {
 	text-decoration: none!important;
 }
-
-
+.pickup-view, .delivery-view {
+	cursor: pointer;
+}
+.catalog-table {
+	overflow: visible;
+}
 
 
 

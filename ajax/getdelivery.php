@@ -39,6 +39,7 @@ $delivery_new['KOLEDINO'] = $amount['KOLEDINO'] ? '<p><b>сегодня</b></p>'
 $delivery_new['UZHKA'] = $amount['KOLEDINO'] ? '<p>завтра после 13:00 при заказе до 18:00</p>' : '<p>Уточнить</p>';
 $delivery_new['STORE_ID_SERPUH'] = $amount['KOLEDINO'] ? '<p>завтра после 13:00 при заказе до 18:00</p>' : '<p>Уточнить</p>';
 $delivery_SPB = $amount_SPB ? '<p>завтра после 13:00 при заказе до 18:00</p>' : '<p>Уточнить</p>';
+
 if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru')
 {
 	echo '<strong>Самовывоз</strong>
