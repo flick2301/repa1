@@ -186,7 +186,7 @@ if($arParams['FOR_SEO']!='Y'){
 									</div>
 							</span>
 							<span class="delivery-view"  data-product="<?=$item['ID']?>">
-									<div id='delivery_<?=$item['ID']?>' style='display:none' class="delivery-block">
+									<div id='delivery_<?=$item['ID']?>' class="delivery-block">
 										
 									</div>
 							</span>
