@@ -1,3 +1,12 @@
+.orange {
+	color: #f39101;
+}
+.blue {
+	color: #0c59cf;
+}
+.underline {
+	text-decoration: underline;
+}
 .header-contacts__mail {
     margin-top: 4px;
     color: #0c59cf;
@@ -223,6 +232,9 @@ ol.tech li {
 }
 .catalog-table {
 	overflow: visible;
+}
+.privacy {
+	margin-top: 5px;
 }
 #banner_block {
 	padding: 0;
