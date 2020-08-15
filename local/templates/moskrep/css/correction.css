@@ -236,6 +236,9 @@ ol.tech li {
 .privacy {
 	margin-top: 5px;
 }
+.simple-article__content.wysiwyg-block {
+	margin: 20px 0;
+}
 #banner_block {
 	padding: 0;
 	border-spacing: 0;
