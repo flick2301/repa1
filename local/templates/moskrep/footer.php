@@ -45,6 +45,11 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 	
 <div class="basic-layout__section">	
 	
+            <div class="sales-slider__header">
+               <h2 class="sales-slider__title">Интернет-магазин строительного крепежа "КРЕП-КОМП"</h2>
+            </div>
+			
+	
          <!--promo-block-->
          <div class="basic-layout__module promo-block">
 <?$APPLICATION->IncludeComponent(
@@ -68,14 +73,19 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 );?>			
          </div>
          <!--promo-block-->	
+		 
+			<table id="banner_block">
+			<tr>
+			<td><div>Полный ассортимент крепежа доступен на складе</div></td>
+			<td><div>Получите заказ в этот же день с доставкой по Москве и области</div></td>
+			<td><div>"КРЕП-КОМП" - главный оптовый поставщик крепежа в России</div></td>
+			<tr>
+			</table>		
 	
 
 
          <!--sales-slider-->
          <div class="basic-layout__module sales-slider">
-            <div class="sales-slider__header">
-               <h2 class="sales-slider__title">Распродажа метизов, строительного крепежа и крепежных изделий</h2>
-            </div>
             <?$APPLICATION->IncludeComponent(
 	     "bitrix:catalog.section.list",
 	     "main",

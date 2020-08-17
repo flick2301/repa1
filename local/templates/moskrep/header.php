@@ -49,6 +49,7 @@ $APPLICATION->IncludeFile(
 	<meta name="robots" content="index,follow">
     <meta name="apple-mobile-web-app-title" content="Главная страница – Krep-Komp">
     <meta name="theme-color" content="#0C58CF">
+	<meta name="viewport" content="width=device-width; initial-scale=1.0">
     <title><?$APPLICATION->ShowTitle();?></title>
 
 	<?$APPLICATION->ShowHead();?>
@@ -72,6 +73,13 @@ $APPLICATION->IncludeFile(
    <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-ipad.png" sizes="76x76">
    <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-iphone@2x.png" sizes="120x120">
    <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-ipad@2x.png" sizes="152x152">
+   <?
+   $browser = get_browser();
+    if(strtolower($browser->browser) == 'safari') {
+        echo '<link href="'.SITE_TEMPLATE_PATH.'/css/safari.css" rel="stylesheet" type="text/css" />';
+    }
+	?>
+   
 
 	<link rel='canonical' href='https://<?=$_SERVER["SERVER_NAME"]?><?=$APPLICATION->ShowViewContent('page_url');?>' />
 
@@ -96,7 +104,6 @@ $APPLICATION->IncludeFile(
 </head>
 <?$APPLICATION->ShowPanel();?>
 <body class="basic-layout basic-layout--default" id="basic-layout">
-
 <?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
 <?
 $APPLICATION->IncludeFile(
