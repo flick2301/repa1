@@ -170,7 +170,9 @@ foreach($arResult['ITEMS'] as $key=>$arItem){
 
     //Получаем массив из размеров
     $ar_size = array();
+	
 if(count($arSizes)>0 && (count($arSizes)!=1 || $arSizes[0]!='DIAMETR_VNUTRENNIY')){
+	
         foreach($arSizes as $size){
             $ar_size[] = $arItem['PROPERTIES'][$size]["VALUE"];
         }

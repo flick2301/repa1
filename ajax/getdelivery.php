@@ -38,6 +38,7 @@ $delivery_new['KASHIRKA'] = $amount['KOLEDINO'] ? '<p>сегодня после 
 $delivery_new['KOLEDINO'] = $amount['KOLEDINO'] ? '<p><b>сегодня</b></p>' : '<p>Уточнить</p>';
 $delivery_new['UZHKA'] = $amount['KOLEDINO'] ? '<p>завтра после 13:00 при заказе до 18:00</p>' : '<p>Уточнить</p>';
 $delivery_new['STORE_ID_SERPUH'] = $amount['KOLEDINO'] ? '<p>завтра после 13:00 при заказе до 18:00</p>' : '<p>Уточнить</p>';
+$delivery_new['STORE_ID_KOPTEVSKAYA'] = $amount['KOLEDINO'] ? '<p>завтра после 14:00 при заказе до 17:30</p>' : '<p>Уточнить</p>';
 $delivery_SPB = $amount_SPB ? '<p>завтра после 13:00 при заказе до 18:00</p>' : '<p>Уточнить</p>';
 
 if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru')
@@ -54,6 +55,9 @@ if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru')
 		
         <div class="separator-block"></div>
 		<p>'.STORE_ID_UZHKA["1"].'<br> '.STORE_ID_UZHKA["2"].'</p><p>Получение:</p>'.$delivery_new['UZHKA'].'
+		
+		<div class="separator-block"></div>
+		<p>'.STORE_ID_KOPTEVSKAYA["1"].'<br> '.STORE_ID_KOPTEVSKAYA["2"].'</p><p>Получение:</p>'.$delivery_new['STORE_ID_KOPTEVSKAYA'].'
 		
 		<div class="separator-block"></div>
 		<p>'.STORE_ID_SERPUH["1"].'<br> '.STORE_ID_SERPUH["2"].'</p><p>Получение:</p>'.$delivery_new['STORE_ID_SERPUH'].'
