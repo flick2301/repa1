@@ -91,4 +91,14 @@ dataLayer.push({
 });	
 	}
 }
+
+
+function dataLayerProduct(name) {
+	dataLayer.push({
+		'event':'krepkomp',
+		'eventCategory':'Карточка товара', 
+		'eventAction': name, // Наименование товара, указанное в блоке с превью товара или в таблице со списком товаров
+		'eventLabel':'нажатие' 
+	});
+}
 /*События dataLayer*/

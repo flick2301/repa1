@@ -23,7 +23,7 @@ $arElement = $res->GetNext();?>
                   <!--product-card-->
                   <section class="product-card">
                      <div class="product-card__header">
-                        <h3 class="product-card__title"><a class="product-card__link" href="<?=$arElement['DETAIL_PAGE_URL']?>">Cаморез кровельный 4,8х35 RAL5021, синияя вода (250шт) Фасовка</a></h3>
+                        <h3 class="product-card__title"><a class="product-card__link" href="<?=$arElement['DETAIL_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", $item['NAME'])?>')"><?=$item['NAME']?></a></h3>
                         <img class="product-card__image" src="<?echo ($item['PREVIEW_PICTURE']['SRC']) ? $item['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg";?>" width="200" height="150" alt="">
                      </div>
                      <div class="product-card__content">

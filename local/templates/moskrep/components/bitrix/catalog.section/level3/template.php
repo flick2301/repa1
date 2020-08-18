@@ -63,7 +63,7 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 					<div class="catalog-table__column catalog-table__column--basic">
                         <div class="catalog-table__title">Фасовка<small>:</small></div>
                         <div class="catalog-table__content">
-                            <a class="catalog-table__link" href="<?=$item['DETAIL_PAGE_URL']?>" target="_self"><?=($item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]) ? $item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] : '1';?> <?=$item['UNIT']?></a>
+                            <a class="catalog-table__link" href="<?=$item['DETAIL_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", $item['PROPERTIES']['ROOT_NAME']['VALUE'] ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'])?>')" target="_self"><?=($item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]) ? $item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] : '1';?> <?=$item['UNIT']?></a>
                         </div>
                     </div>
             
@@ -72,7 +72,7 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 					<div class="catalog-table__column catalog-table__column--basic">
                         <div class="catalog-table__title">Артикул<small>:</small></div>
                         <div class="catalog-table__content">
-                            <a class="catalog-table__link" href="<?=$item['DETAIL_PAGE_URL']?>" target="_self"><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?></a>
+                            <a class="catalog-table__link" href="<?=$item['DETAIL_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", $item['PROPERTIES']['ROOT_NAME']['VALUE'] ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'])?>')" target="_self"><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?></a>
                         </div>
                     </div>
 			

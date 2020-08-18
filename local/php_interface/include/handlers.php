@@ -655,7 +655,7 @@ function OnBeforeUserRegisterHandler(&$arFields)
     $tttfile=$_SERVER['DOCUMENT_ROOT'].'/service/spam_txt.php';
     file_put_contents($tttfile, "<pre>".print_r($_REQUEST,1)."</pre>\n",FILE_APPEND);
 
-    
+    $arFields["LOGIN"] = $arFields["EMAIL"];
     if($_REQUEST['AUTH_FORM']=="Y")
     {
        if ($_REQUEST['_ym_uid'] == ''){

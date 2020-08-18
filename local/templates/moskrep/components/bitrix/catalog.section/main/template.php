@@ -31,7 +31,7 @@ use \Bitrix\Main\Localization\Loc;
                      <!--product-card-->
                      <section class="product-card product-card--lite">
                         <div class="product-card__header">
-                           <h3 class="product-card__title"><a class="product-card__link" href="<?=$arElement['DETAIL_PAGE_URL']?>"><?=$item['NAME']?></a></h3>
+                           <h3 class="product-card__title"><a class="product-card__link" href="<?=$arElement['DETAIL_PAGE_URL']?>"  onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", $item['NAME'])?>')"><?=$item['NAME']?></a></h3>
                            <img id="img_<?=$item['ID']?>" class="product-card__image" src="<?echo ($item['PREVIEW_PICTURE']['SRC']) ? $item['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg";?>" width="179" height="134" alt="<?=$item['PREVIEW_PICTURE']['DESCRIPTION']?>">
                         </div>
                         <div class="product-card__footer">
