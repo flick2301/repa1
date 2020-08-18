@@ -12,9 +12,22 @@ $(document).ready(function() {
 			'eventLabel':'нажатие' 
 		});
 	});	
+	
+	//Авторизация
+	$(document).on('click', '#form_lk .user-account__submit', function() {
+		if($('#user-account__login').val() && $('#user-account__pass').val()) dataLayerSendFormAuth(true);
+		else dataLayerSendFormAuth(false);
+	});	
+
+	$(document).on('click', '#form_auth .login-btn', function() {
+		if($('#form_auth input[name=USER_LOGIN]').val() && $('#form_auth input[name=USER_PASSWORD]').val()) dataLayerSendFormAuth(true);
+		else dataLayerSendFormAuth(false);
+	});	
+
+
+	
 });
 /*События dataLayer*/
-
 
 
 
@@ -31,5 +44,25 @@ function dataLayerSendForm() {
 		'eventAction':'форма', 
 		'eventLabel': url // URL-адрес страницы, на которой была отправлена форма
 	});
+}
+
+//отправка формы авторизации (успех)
+function dataLayerSendFormAuth(result) {
+	if (result) {
+dataLayer.push({
+	'event':'krepkomp',
+	'eventCategory':'Авторизация', 
+	'eventAction':'форма', 
+	'eventLabel':'успешно' // Статус отправки заполненной формы пользователем
+});		
+	}
+	else {
+dataLayer.push({
+	'event':'krepkomp',
+	'eventCategory':'Авторизация', 
+	'eventAction':'форма', 
+    'eventLabel':'неуспешно' // Статус отправки заполненной формы пользователем
+});		
+	}
 }
 /*События dataLayer*/
