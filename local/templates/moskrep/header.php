@@ -61,6 +61,8 @@ $APPLICATION->IncludeFile(
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/styles/global.styles.min.css?v=XXXXXXa", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.css", true);	
 	if (IPHONE=="Y") $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/iphone.css", true);	
+	
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");
 	?>
 	
 	<link rel="manifest" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/manifest.webmanifest">

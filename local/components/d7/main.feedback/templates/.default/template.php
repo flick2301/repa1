@@ -38,6 +38,9 @@ if(strlen($arResult["OK_MESSAGE"]) > 0)
 {
     ?><div class='header-form-feedback'><?=$arResult["OK_MESSAGE"]?></div>
 		<script>
+	
+dataLayerSendForm();//Отправка формы в DataLayer	
+		
 		$(document).ready(function(){
 		$('.header-form-feedback').popUp();
 		});</script><p><?=$arResult["OK_MESSAGE"]?></p>
