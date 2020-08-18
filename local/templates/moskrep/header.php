@@ -74,10 +74,9 @@ $APPLICATION->IncludeFile(
    <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-iphone@2x.png" sizes="120x120">
    <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-ipad@2x.png" sizes="152x152">
    <?
-   $browser = get_browser();
-    if(strtolower($browser->browser) == 'safari') {
-		$safari = 'SAFARI';
-        echo '<link href="'.SITE_TEMPLATE_PATH.'/css/safari.css" rel="stylesheet" type="text/css" />';
+   $user_agent = $_SERVER["HTTP_USER_AGENT"];
+    if (strpos($user_agent, "Safari") !== false) {
+		echo '<link href="'.SITE_TEMPLATE_PATH.'/css/safari.css" rel="stylesheet" type="text/css" />';
     }
 	?>
    
