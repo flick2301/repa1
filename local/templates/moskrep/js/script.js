@@ -14,7 +14,7 @@ $(document).ready(function() {
 	});	
 	
 	//Авторизация
-	$(document).on('click', '#form_lk .user-account__submit', function() {
+	$(document).on('click', '#form_lk .user-account__submit[name=Auth]', function() {
 		if($('#user-account__login').val() && $('#user-account__pass').val()) dataLayerSendFormAuth(true);
 		else dataLayerSendFormAuth(false);
 	});	
@@ -23,6 +23,12 @@ $(document).ready(function() {
 		if($('#form_auth input[name=USER_LOGIN]').val() && $('#form_auth input[name=USER_PASSWORD]').val()) dataLayerSendFormAuth(true);
 		else dataLayerSendFormAuth(false);
 	});	
+	
+	//Регистрация
+	$(document).on('click', '#form_lk .user-account__submit[name=Register]', function() {
+		if($('#user-account__login').val() && $('#user-account__pass').val() && $('#user-account__passconfirm').val() && $('#user-account__email').val() && $('#form_auth input[name=captcha_word]').val()) dataLayerSendFormRegister(true);
+		else dataLayerSendFormRegister(false);
+	});		
 
 
 	
@@ -46,7 +52,7 @@ function dataLayerSendForm() {
 	});
 }
 
-//отправка формы авторизации (успех)
+//отправка формы авторизации
 function dataLayerSendFormAuth(result) {
 	if (result) {
 dataLayer.push({
@@ -63,6 +69,26 @@ dataLayer.push({
 	'eventAction':'форма', 
     'eventLabel':'неуспешно' // Статус отправки заполненной формы пользователем
 });		
+	}
+}
+
+//отправка формы регистрации
+function dataLayerSendFormRegister(result) {
+	if (result) {
+dataLayer.push({
+	'event':'krepkomp',
+	'eventCategory':'Регистрация', 
+	'eventAction':'форма', 
+    'eventLabel':'успешно' // Статус отправки заполненной формы пользователем
+});	
+	}
+	else {
+dataLayer.push({
+	'event':'krepkomp',
+	'eventCategory':'Регистрация', 
+	'eventAction':'форма', 
+    'eventLabel':'неуспешно' // Статус отправки заполненной формы пользователем
+});	
 	}
 }
 /*События dataLayer*/
