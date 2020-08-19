@@ -39,6 +39,20 @@ if ($arParams["SET_TITLE"] == "Y")
 	</table>
 	
 <script>
+
+dataLayer.push({
+	'event':'krepkomp',
+		'eventCategory':'Заказ', 
+		'eventAction':'подтверждение',  
+    'eventLabel':'<?=$arResult["ORDER"]["ACCOUNT_NUMBER"]?>', // Номер заказа, указанный на странице с информацией об успешно созданном заказе
+    'eventValue':'<?=$arResult["ORDER"]["PRICE"]?>'  // Общая стоимость оформленного заказа
+});
+
+
+
+
+
+
 window.onload = function() {
 
 yaCounter29426710.reachGoal('BUY');

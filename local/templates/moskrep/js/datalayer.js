@@ -137,6 +137,9 @@ dataLayer.push({
 }
 
 function dataLayerSendOrder(sum) {
+	
+	sum = sum.replace(/[^0-9\.]+/, '');
+	
 dataLayer.push({
 	'event':'krepkomp',
 	'eventCategory':'Оформление заказа', 

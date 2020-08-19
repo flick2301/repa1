@@ -8556,7 +8556,8 @@ for (var key in this.result.DELIVERY_GROUPS) {
 			this.totalInfoBlockNode.append(
 					BX.create('A', {props: {className: 'main-button main-button--plus in-cart-total__submit', id: 'ORDER_CONFIRM_BUTTON', href: 'javascript:void(0)',}, text: "Оформить заказ",
 													events: {
-									click: BX.proxy(this.clickOrderSaveAction, this)
+									//click: BX.proxy(this.clickOrderSaveAction, this)
+									click: BX.delegate(function(){dataLayerSendOrder(total.ORDER_TOTAL_PRICE_FORMATED); this.clickOrderSaveAction();}, this)
 					}}),
 			);		
 
