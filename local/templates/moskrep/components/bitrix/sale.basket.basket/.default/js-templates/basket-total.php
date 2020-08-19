@@ -18,10 +18,10 @@ use Bitrix\Main\Localization\Loc;
                   </li>
                   <li class="in-cart-total__item">
                      <p class="in-cart-total__name">Стоимость</p>
-                     <p class="in-cart-total__text" data-entity="basket-total-price">{{{PRICE_FORMATED}}} ₽</p>
+                     <p class="in-cart-total__text" data-entity="basket-total-price">{{{PRICE_FORMATED}}}</p>
                   </li>
                </ul>
                <div class="in-cart-total__footer">
-                  <a class="main-button main-button--plus in-cart-total__submit" data-entity="basket-checkout-button" href="javascript:void(0);">Оформить заказ</a>
+                  <a onclick="dataLayerToOrder('{{{PRICE_FORMATED}}}')" class="main-button main-button--plus in-cart-total__submit" data-entity="basket-checkout-button" href="javascript:void(0);">Оформить заказ</a>
                </div>
 </script>

@@ -143,7 +143,7 @@ if (empty($arResult['ERROR_MESSAGE']))
                   </li>
                </ul>
                <div class="in-cart-total__footer">
-                  <a class="main-button main-button--plus in-cart-total__submit" data-entity="basket-checkout-button" href="javascript:void(0);">Оформить заказ</a>
+                  <a onclick="dataLayerToOrder()" class="main-button main-button--plus in-cart-total__submit" data-entity="basket-checkout-button" href="javascript:void(0);">Оформить заказ</a>
                </div>			
             </div>
             <!--in-cart-total-->

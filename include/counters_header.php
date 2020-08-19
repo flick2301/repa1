@@ -41,7 +41,7 @@
 
 
 <!--Дополнение GA-->
-ga(function(tracker) {
+/*ga(function(tracker) {
     function guid() {
       function s4() {
         return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
@@ -54,8 +54,8 @@ ga(function(tracker) {
 
       return result;
     }
-
-   ga('set', 'dimension5', guid());	
+}
+   ga('set', 'dimension5', guid());	*/
  <!--Дополнение GA--> 
    
       </script>

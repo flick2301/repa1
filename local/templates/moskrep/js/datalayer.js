@@ -32,12 +32,14 @@ $(document).ready(function() {
 
 	
 });
-/*События dataLayer*/
 
 
 
 
-/*События dataLayer*/
+
+
+
+
 //отправка формы
 function dataLayerSendForm() {
 		url = window.location.href;
@@ -101,7 +103,7 @@ function dataLayerProduct(name) {
 	});
 }
 
-function dataLayerAddBasket(name, price, quantity) {console.log(price);
+function dataLayerAddBasket(name, price, quantity) {
 dataLayer.push({
 	'event':'krepkomp',
 		'eventCategory':'Корзина', 
@@ -109,5 +111,37 @@ dataLayer.push({
     'eventLabel': name,  // Наименование товара, указанное в блоке, из которого пользователь добавляет его в корзину
     'eventValue': price, // Цена товара, указанная в блоке, из которого пользователь добавляет его в корзину. Пример: 562.35
     'quantity': quantity  // Количество товаров, которые пользователь добавил в корзину
+});
+}
+
+function dataLayerToBasket() {
+dataLayer.push({
+	'event':'krepkomp',
+	'eventCategory':'Корзина', 
+	'eventAction':'нажатие',  
+    'eventLabel': window.location.href  // URL-адрес страницы, с которой пользователь переходи в корзину
+});
+}
+
+function dataLayerToOrder(sum) {
+	
+	sum = sum.replace(/[^0-9\.]+/, '');
+	
+dataLayer.push({
+	'event':'krepkomp',
+	'eventCategory':'Оформление заказа', 
+	'eventAction':'оформить заказ',  
+    'eventLabel':'нажатие',
+    'eventValue': sum // Общая стоимость заказа, указанная на странице, с которой пользователь переходит на страницу оформления заказа
+});
+}
+
+function dataLayerSendOrder(sum) {
+dataLayer.push({
+	'event':'krepkomp',
+	'eventCategory':'Оформление заказа', 
+	'eventAction':'оформить заказ',  
+    'eventLabel':'нажатие',
+    'eventValue': sum // Общая стоимость оформленного заказа
 });
 }

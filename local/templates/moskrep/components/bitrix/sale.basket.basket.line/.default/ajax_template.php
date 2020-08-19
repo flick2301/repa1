@@ -81,7 +81,7 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
         </table>
         <div class="line-btn">
 	    <a href="#" onclick="$('.popUp-container').popUp('close');" class="white-btn">Продолжить покупки</a>
-	    <a href="<?=$arParams['PATH_TO_BASKET']?>" class="blue-btn">Перейти в корзину</a>
+	    <a onclick="dataLayerToBasket()" href="<?=$arParams['PATH_TO_BASKET']?>" class="blue-btn">Перейти в корзину</a>
 	</div>
 	
 	
