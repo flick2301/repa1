@@ -1,4 +1,3 @@
-/*События dataLayer*/
 $(document).ready(function() {
 	//Клик по телефонам
 	$(document).on('click', 'a.roistat-phone', function() {
@@ -101,4 +100,14 @@ function dataLayerProduct(name) {
 		'eventLabel':'нажатие' 
 	});
 }
-/*События dataLayer*/
+
+function dataLayerAddBasket(name, price, quantity) {console.log(price);
+dataLayer.push({
+	'event':'krepkomp',
+		'eventCategory':'Корзина', 
+		'eventAction':'Добавить в корзину',  
+    'eventLabel': name,  // Наименование товара, указанное в блоке, из которого пользователь добавляет его в корзину
+    'eventValue': price, // Цена товара, указанная в блоке, из которого пользователь добавляет его в корзину. Пример: 562.35
+    'quantity': quantity  // Количество товаров, которые пользователь добавил в корзину
+});
+}

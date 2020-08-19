@@ -58,7 +58,7 @@ global $APPLICATION;
         <div class="catalog-feed__item">
 			<!--catalog-card-->
 			<section class="catalog-card">
-				<h3 class="catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", $arSection['NAME'])?>')" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></h3>
+				<h3 class="catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></h3>
                 <div class="catalog-card__cover">
                     <img class="catalog-card__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>
@@ -77,7 +77,7 @@ global $APPLICATION;
                     <div class="catalog-feed__item">
 					<!--catalog-card-->
 					<section class="catalog-card">
-					<h3 class="catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", $arSection['NAME'])?>')" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></h3>
+					<h3 class="catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></h3>
                             <div class="catalog-card__cover">
                                 <img class="catalog-card__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                             </div>
@@ -183,6 +183,12 @@ global $APPLICATION;
 						"MESS_BTN_LAZY_LOAD" => $arParams["~MESS_BTN_LAZY_LOAD"],
 						"LOAD_ON_SCROLL" => $arParams["LOAD_ON_SCROLL"],
 
+						"REPLACEMENT" => $arResult['REFERENCE']['ITEM']['REPLACEMENT']['VALUE'],
+						"DISPLAY_TOP_PAGER" => 'N',
+						"DISPLAY_BOTTOM_PAGER" => "Y",
+
+
+
 						"OFFERS_CART_PROPERTIES" => $arParams["OFFERS_CART_PROPERTIES"],
 						"OFFERS_FIELD_CODE" => $arParams["LIST_OFFERS_FIELD_CODE"],
 						"OFFERS_PROPERTY_CODE" => $arParams["LIST_OFFERS_PROPERTY_CODE"],
@@ -190,10 +196,9 @@ global $APPLICATION;
 						"OFFERS_SORT_ORDER" => $arParams["OFFERS_SORT_ORDER"],
 						"OFFERS_SORT_FIELD2" => $arParams["OFFERS_SORT_FIELD2"],
 						"OFFERS_SORT_ORDER2" => $arParams["OFFERS_SORT_ORDER2"],
-						"OFFERS_LIMIT" => $arParams["LIST_OFFERS_LIMIT"],
+						"OFFERS_LIMIT" => '0',
 
-						"SECTION_ID" => $arResult['SECTION']['ID'],
-						"SECTION_CODE" => $arResult['SECTION']['CODE'],
+						"SECTION_ID" => $arResult['REFERENCE']['ITEM']['DIRECTORY'],
 						"SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
 						"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],
 						"USE_MAIN_ELEMENT_SECTION" => $arParams["USE_MAIN_ELEMENT_SECTION"],
@@ -202,7 +207,7 @@ global $APPLICATION;
 						'CURRENCY_ID' => $arParams['CURRENCY_ID'],
 						'HIDE_NOT_AVAILABLE' => $arParams["HIDE_NOT_AVAILABLE"],
 						'HIDE_NOT_AVAILABLE_OFFERS' => $arParams["HIDE_NOT_AVAILABLE_OFFERS"],
-
+"DISABLE_HEADER"=>'Y',
 						'LABEL_PROP' => $arParams['LABEL_PROP'],
 						'LABEL_PROP_MOBILE' => $arParams['LABEL_PROP_MOBILE'],
 						'LABEL_PROP_POSITION' => $arParams['LABEL_PROP_POSITION'],
@@ -305,7 +310,7 @@ global $APPLICATION;
 		<div class="catalog-feed__item">
 		<!--catalog-card-->
         <section class="catalog-card">
-            <h3 class="catalog-card__title"><a href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", $arSection['NAME'])?>')" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></h3>
+            <h3 class="catalog-card__title"><a href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></h3>
                 <div class="catalog-card__cover">
                     <img class="catalog-card__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>
@@ -321,7 +326,7 @@ global $APPLICATION;
         <div class="catalog-feed__item">
 		<!--catalog-card-->
         <section class="catalog-card">
-            <h3 class="catalog-card__title"><a href="<?=($dop_section['LINK_TARGET']['VALUE']) ? $dop_section['LINK_TARGET']['VALUE'] : $dop_section['CODE'].'/';?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", $arSection['NAME'])?>')" target="_self" title='<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$dop_section['H1']["VALUE"]?></a></h3>
+            <h3 class="catalog-card__title"><a href="<?=($dop_section['LINK_TARGET']['VALUE']) ? $dop_section['LINK_TARGET']['VALUE'] : $dop_section['CODE'].'/';?>" target="_self" title='<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$dop_section['H1']["VALUE"]?></a></h3>
                 <div class="catalog-card__cover">
                     <img class="catalog-card__image" width="262" height="197" src="<?=$dop_section['PICTURE']['src']?>" alt="<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>

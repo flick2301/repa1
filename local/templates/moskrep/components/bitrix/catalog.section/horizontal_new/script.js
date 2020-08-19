@@ -61,7 +61,7 @@ BX.ready(function () {
 					});
                     $('.header-basket').popUp();
                 } else {
-                   console.log(data);
+                   
 				   $('.header-basket-none').text(data.MESSAGE);
                    $('.header-basket-none').popUp();
                 }

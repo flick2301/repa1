@@ -31,6 +31,13 @@ $(document).ready(function(){
         $('body,html').animate({scrollTop: top}, 1500);
     });
 });
+
+dataLayer.push({
+	'event':'krepkomp',
+	'eventCategory':'Карточка товара', 
+	'eventAction':'<?=$arResult["NAME"]?>', // Наименование товара, указанное на просматриваемой странице 
+    'eventLabel':'просмотр' 
+});
 </script>
 
 <?if(count($arResult['RELINK'])):?>
