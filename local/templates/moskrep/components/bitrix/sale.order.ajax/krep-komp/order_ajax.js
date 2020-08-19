@@ -2508,6 +2508,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
 			errorContainer = section.querySelector('.alert.alert-danger');
 			this.hasErrorSection[section.id] = errorContainer && errorContainer.style.display != 'none';
+			
+
 
 			switch (section.id)
 			{
