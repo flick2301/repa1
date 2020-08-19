@@ -29,6 +29,23 @@ $(document).ready(function() {
 		else dataLayerSendFormRegister(false);
 	});		
 
+//Заполнение формы заказа
+$(document).on('focusout', '#bx-soa-order input[type=text], #bx-soa-order textarea', function() {
+	var label = $('#bx-soa-order label[for=' + $(this).attr('id') + ']').text();
+	if (label && $(this).val()) dataLayerTypeOrder(label, $(this).val());
+});
+$(document).on('focusout', '#address_street', function() {	
+	if ($(this).val()) dataLayerTypeOrder('Улица', $(this).val());
+});
+$(document).on('focusout', '#address_house', function() {		
+	if ($(this).val()) dataLayerTypeOrder('Дом', $(this).val());
+});
+$(document).on('focusout', '#address_flat', function() {		
+	if ($(this).val()) dataLayerTypeOrder('Квартира', $(this).val());
+});
+$(document).on('click', '.dropdown-item.bx-ui-sls-variant', function() {		
+	if ($(this).text()) dataLayerTypeOrder('Город', $(this).text());
+});
 
 	
 });
@@ -93,7 +110,7 @@ dataLayer.push({
 	}
 }
 
-
+//Показ карточки товара
 function dataLayerProduct(name) {
 	dataLayer.push({
 		'event':'krepkomp',
@@ -103,6 +120,7 @@ function dataLayerProduct(name) {
 	});
 }
 
+//Добавление в корзину
 function dataLayerAddBasket(name, price, quantity) {
 dataLayer.push({
 	'event':'krepkomp',
@@ -114,6 +132,7 @@ dataLayer.push({
 });
 }
 
+//Переход в корзину
 function dataLayerToBasket() {
 dataLayer.push({
 	'event':'krepkomp',
@@ -123,6 +142,20 @@ dataLayer.push({
 });
 }
 
+//Заполнение полей заказа
+function dataLayerTypeOrder(name, val) {
+	
+	name = name.replace(':', '');
+	
+dataLayer.push({
+	'event':'krepkomp',
+	'eventCategory':'Оформление заказа', 
+	'eventAction':'форма',  
+    'eventLabel': name // Обозначение поля, которое заполняет пользователь. Например: ФИО/email и тд
+});
+}
+
+//Переход заказ
 function dataLayerToOrder(sum) {
 	
 	sum = sum.replace(/[^0-9\.]+/, '');
@@ -136,6 +169,7 @@ dataLayer.push({
 });
 }
 
+//Отправка заказ
 function dataLayerSendOrder(sum) {
 	
 	sum = sum.replace(/[^0-9\.]+/, '');

@@ -52,7 +52,12 @@ $APPLICATION->IncludeFile(
 	<meta name="viewport" content="width=device-width; initial-scale=1.0">
     <title><?$APPLICATION->ShowTitle();?></title>
 
-	<?$APPLICATION->ShowHead();?>
+	<meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CHARSET?>" />  
+<?$APPLICATION->ShowMeta("robots")?>
+<?$APPLICATION->ShowMeta("description")?>
+<?$APPLICATION->ShowCSS()?>
+<?$APPLICATION->ShowHeadStrings()?>
+<?$APPLICATION->ShowHeadScripts()?> 
         <?CJSCore::Init(array('jquery'));?>
 	<?
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/reset.css", true);
