@@ -24,10 +24,17 @@
    ga('send', 'pageview');
    <?
    global $USER;
-   $userID = $USER->GetID();
-   if(isset($userID))
+   $rsUser = CUser::GetByID($USER->GetId());
+	$arUser = $rsUser->Fetch();
+   if(isset($arUser["PERSONAL_PHONE"]))
    {
-	   ?>ga('set', 'userId', '<?=$userID?>');
+	   $queryUrl = 'https://team.krep-komp.ru/rest/1/rdgiynh922m6xmy9/crm.contact.list';
+		$data = array(
+			'filter' => array("PHONE" => $arUser["PERSONAL_PHONE"]),
+			'select' => array("ID")
+		);
+		$res = getContact($queryUrl, $data);
+	   ?>ga('set', 'userId', '<?=$res["result"][0]["ID"]?>');
 		
 	   <?
    }else{
@@ -60,7 +67,7 @@ ga(function(tracker) {
 
 
 <!--Дополнение GA-->
-ga(function(tracker) {
+/*ga(function(tracker) {
     function guid() {
       function s4() {
         return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
@@ -75,7 +82,7 @@ ga(function(tracker) {
     }
 });
 
-   ga('set', 'dimension5', guid());	
+   ga('set', 'dimension5', guid());*/
  <!--Дополнение GA--> 
    
       </script>
@@ -99,6 +106,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-W2BJX6S');</script>
 <!-- End Google Tag Manager -->
+
+<script>
+<?if(isset($arUser["PERSONAL_PHONE"])):?>
+dataLayer.push({  
+    'UID':'<?=$res["result"][0]["ID"]?>' // Уникальный идентификатор пользователя взятый из CRM Bitrix24
+});
+<?endif;?>
+</script>
 
 
 <!-- Yandex.Metrika counter -->
