@@ -38,10 +38,8 @@
    }
 	?>
 
-
-
-<!--Дополнение GA-->
-/*ga(function(tracker) {
+<!--Дополнение GA2-->
+ga(function(tracker) {
     function guid() {
       function s4() {
         return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
@@ -54,8 +52,30 @@
 
       return result;
     }
-}
-   ga('set', 'dimension5', guid());	*/
+});
+	
+   ga('set', 'dimension2', tracker.get('clientId'));
+   ga('set', 'dimension5', guid());
+<!--Дополнение GA2-->
+
+
+<!--Дополнение GA-->
+ga(function(tracker) {
+    function guid() {
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+      }
+
+      result = '';
+
+      for(i=0; i<8; i++)
+        result += s4();
+
+      return result;
+    }
+});
+
+   ga('set', 'dimension5', guid());	
  <!--Дополнение GA--> 
    
       </script>
