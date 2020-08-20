@@ -46,7 +46,7 @@
 	?>
 
 <!--Дополнение GA2-->
-ga(function(tracker) {
+/*ga(function(tracker) {
     function guid() {
       function s4() {
         return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
@@ -62,12 +62,12 @@ ga(function(tracker) {
 });
 	
    ga('set', 'dimension2', tracker.get('clientId'));
-   ga('set', 'dimension5', guid());
+   ga('set', 'dimension5', guid());*/
 <!--Дополнение GA2-->
 
 
 <!--Дополнение GA-->
-/*ga(function(tracker) {
+ga(function(tracker) {
     function guid() {
       function s4() {
         return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
@@ -82,7 +82,7 @@ ga(function(tracker) {
     }
 });
 
-   ga('set', 'dimension5', guid());*/
+   ga('set', 'dimension5', guid());
  <!--Дополнение GA--> 
    
       </script>
@@ -133,3 +133,53 @@ dataLayer.push({
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/29426710" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+
+
+<!--json-ld-->
+<script type="application/ld+json">
+			{
+			  "@context": "http://schema.org",
+			  "@type": "Organization",
+			  "name" : "Интернет-магазин строительного крепежа «КРЕП-КОМП»",
+			  "address": {
+					"@type" : "PostalAddress",
+					"streetAddress": "Варшавское шоссе, 148, этаж 5, офис 501",
+					"postalCode" : "117519",
+					"addressLocality" : "Москва"
+			 },
+			"telephone": "+7(499) 350-55-55",
+			"email": "sale@krep-komp.ru"
+			}
+		</script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "https://krep-komp.ru/",
+  "logo": "https://krep-komp.ru/local/templates/moskrep/assets/design/website-logo/krep-komp.svg",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "+7(499) 350-55-55",
+    "contactType": "customer service"
+  }]
+}
+</script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "name": "Интернет-магазин строительного крепежа «КРЕП-КОМП»",
+  "url": "https://krep-komp.ru/",
+  "sameAs": [
+    "https://spb.krep-komp.ru/",
+    "https://vk.com/moskrep",
+    "https://www.facebook.com/moskrep",
+    "https://ok.ru/group/54538959192067"
+  ]
+}
+</script>
+<!--json-ld-->
