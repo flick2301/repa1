@@ -232,6 +232,10 @@ ol.tech li {
 }
 .catalog-table {
 	overflow: visible;
+	margin-bottom: 20px;
+}
+.catalog-table .catalog-table__title {
+	z-index: 1;
 }
 .privacy {
 	margin-top: 5px;
