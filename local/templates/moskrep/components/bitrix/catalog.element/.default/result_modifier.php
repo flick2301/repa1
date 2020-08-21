@@ -3,7 +3,9 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 require_once($_SERVER["DOCUMENT_ROOT"]."/local/modules/relink.table/lib/table.php");
 $module_id = 'relink.table';
 
-
+/*$cp = $this->__component; // объект компонента
+if (is_object($cp))
+   $cp->SetResultCacheKeys(array('TIMESTAMP_X'));*/
 
 
 use Bitrix\Main\Loader;

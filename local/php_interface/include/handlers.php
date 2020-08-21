@@ -961,6 +961,38 @@ class CUserEx
    }
 }
 
+
+
+// обработка If-Modified-Since
+/*AddEventHandler('main', 'OnEpilog', array('CBDPEpilogHooks', 'CheckIfModifiedSince'));
+
+class CBDPEpilogHooks
+{
+   function CheckIfModifiedSince()
+   {
+      GLOBAL $lastModified;
+      if ($lastModified)
+      {
+         header('Last-Modified: '.gmdate('D, d M Y H:i:s', $lastModified).' GMT');
+         $arr = apache_request_headers();
+         foreach ($arr as $header => $value)
+         {
+            if ($header == 'If-Modified-Since')
+            {
+               $ifModifiedSince = strtotime($value);
+               if ($ifModifiedSince > $lastModified)
+               {
+                  $GLOBALS['APPLICATION']->RestartBuffer();
+                  CHTTP::SetStatus('304 Not Modified');
+               }
+            }
+         }
+      }
+   }
+}*/
+
+
+
 /*
 AddEventHandler("iblock", "OnBeforeIBlockElementAdd", "AddElementOrSectionCode"); 
 AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", "AddElementOrSectionCode"); 
