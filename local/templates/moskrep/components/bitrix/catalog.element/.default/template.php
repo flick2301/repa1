@@ -115,7 +115,19 @@ dataLayer.push({
                   <div class="product-page__about">
                      <!--product-purchase-->
                      <div class="product-purchase">
+						<?if($old_price){?>
+						<p class="card__price-last"><?echo number_format($old_price, 2, '.', ' ');?> ₽</p>
+                        <?}?>					 
                         <p class="product-purchase__price"><?echo number_format($price, 2, '.', ' ');?> ₽</p>
+
+            <?if($USER->IsAuthorized()):?>
+			<div class='card-price-dop-contaiber'>
+            <?if($arResult["DOP_PRICE"][0]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][0]?> ₽</b> при заказе от 20000 ₽</div><br><?endif?>
+            <?if($arResult["DOP_PRICE"][1]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][1]?> ₽</b> при заказе от 100000 ₽</div><br><?endif?>
+            <?if($arResult["DOP_PRICE"][2]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][2]?> ₽</b> при заказе от 500000 ₽</div><br><?endif?>
+			<?if($arResult["DOP_PRICE"][3]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][3]?> ₽</b> при заказе от 5000000 ₽</div><?endif?>
+			</div>
+            <?endif;?>
 						
                         <a href='javascript::void(0)' onclick="dataLayerAddBasket('<?=str_replace(Array("\"", "'"), "", $arResult['NAME'])?>', '<?=$price?>', 1)" data-quantity="<?=$arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>"  class="main-button main-button--plus product-purchase__button"><i class="simple-cart-icon product-purchase__icon" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>"  data-quantity="<?=$arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" rel="nofollow"></i>Добавить в корзину</a>
                      </div>
