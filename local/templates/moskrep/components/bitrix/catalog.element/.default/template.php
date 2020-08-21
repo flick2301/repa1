@@ -20,6 +20,8 @@ $ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues($arParams["IBL
 
 $price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] : $arResult['MIN_PRICE']['VALUE'];
 $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][ID_BASE_PRICE]['VALUE'] : 0;
+
+$scheme = CMain::isHttps() ? 'https' : 'http';
 ?>
 
 <script>
@@ -39,6 +41,39 @@ dataLayer.push({
     'eventLabel':'просмотр' 
 });
 </script>
+
+<!--json-ld-->
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "<?=$arResult['NAME']?>",
+      "image": [
+        "<?=$scheme?>://<?=$_SERVER['HTTP_HOST']?><?=$arResult['DETAIL_PICTURE']['SRC'];?>"
+       ],
+      "description": "<?=trim($arResult['PREVIEW_TEXT'])?>",
+      "sku": "<?=trim($arResult['PROPERTIES']['CML2_ARTICLE']['VALUE'])?>",
+	  "mpn": "",
+      "brand": {
+        "@type": "Brand",
+        "name": "<?=$arResult['PROPERTIES']['BREND']['VALUE']?>"
+      },	  
+      "offers": {
+        "@type": "Offer",
+        "url": "<?=$scheme?>://<?=$_SERVER['HTTP_HOST']?><?=$arResult['DETAIL_PAGE_URL']?>",	
+        "priceCurrency": "RUB",
+        "price": "<?=$price?>",
+        "itemCondition": "https://schema.org/UsedCondition",
+        "availability": "http://schema.org/<?=$arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT'] ? 'InStock' : 'OutOfStock'?>",
+        "seller": {
+          "@type": "Organization",
+          "name": "КРЕП-КОМП"
+        }
+      }
+	}
+    </script>
+<!--json-ld-->
+
 
 <?if(count($arResult['RELINK'])):?>
     <?php $this->SetViewTarget('RELINK'); ?>
@@ -65,7 +100,7 @@ dataLayer.push({
 
 <div class="card__articul">Артикул: <span class="card__articul-name"><?=$arResult['PROPERTIES']['CML2_ARTICLE']['VALUE']?></span></div>
 
-    <div itemscope itemtype="http://schema.org/Product" class="basic-layout__module product-page">
+    <div itemscope class="basic-layout__module product-page">
 		<div class="product-page__main">
                   <div class="product-page__gallery">
                      <!--product-gallery-->

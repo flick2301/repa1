@@ -87,7 +87,8 @@ if($res=$ar_result->GetNext()){
 		
 }
 if($_REQUEST['section_temp'] == 'new' || $temple=='ANKERA'){
-    $name_temple = 'level2_new';
+    //$name_temple = 'level2_new';
+	$name_temple = 'level2';
 }else{
     $name_temple = 'level2';
 }
