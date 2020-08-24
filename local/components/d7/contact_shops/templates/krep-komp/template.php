@@ -86,13 +86,14 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 <?if(is_array($item["IMG"])):?>
 			<div class="slider slider-for">
 <?foreach($item["IMG"] AS $img):?>
-<div><a href="<?=$img?>" rel="gallery_card"><img src="<?=$img?>" alt="<?=$item["PROP"]["PAYMENT_NAME"]["NAME"]?>" /></a></div>
+<div><a href="<?=$img?>" rel="gallery_card"><img src="<?=$img?>" alt="<?=["NAME"]?>" title="<?=$item["NAME"]?>" /></a></div>
 <?endforeach?>			
 			</div>
 <script>img_count = <?=count($item["IMG"]) ? count($item["IMG"]) : 0?></script>			
 			<div class="slider slider-nav">			
 <?foreach($item["IMG"] AS $img):?>
-<div class="box"><img src="<?=$img?>" alt="<?=$item["PROP"]["PAYMENT_NAME"]["NAME"]?>" /></div>
+<?$num++?>
+<div class="box"><img src="<?=$img?>" alt="<?=$item["NAME"]?> <?=sprintf("%02d", $num)?>" title="<?=$item["NAME"]?> <?=sprintf("%02d", $num)?>" /></div>
 <?endforeach?>			
 </div>
 <?endif?>
@@ -114,7 +115,7 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 <div id="qr" class="print"></div>
 
 <?if($item["SCHEME"]):?>
-	<img class="scheme" src="<?=$item["SCHEME"]?>" alt="<?=preg_replace("/\&lt;[A-z\/ ]+\&gt;/", "", $item["PROP"]["ADDRESS"]["VALUE"])?>" />
+	<img class="scheme" src="<?=$item["SCHEME"]?>" alt="<?=preg_replace("/\&lt;[A-z\/ ]+\&gt;/", "", $item["PROP"]["ADDRESS"]["VALUE"])?>" title="<?=preg_replace("/\&lt;[A-z\/ ]+\&gt;/", "", $item["PROP"]["ADDRESS"]["VALUE"])?>" />
 <?endif?>
 
 <?if($item["PROP"]["YOUTUBE"]["VALUE"]["TEXT"] || $item["VIDEO"]):?>

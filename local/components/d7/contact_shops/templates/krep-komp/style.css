@@ -209,6 +209,7 @@
 }
 #shop .left .slider-nav img {
 	width: 104px;
+	cursor: pointer;
 }
 #shop .how {
 	width: 100%;
