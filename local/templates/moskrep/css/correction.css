@@ -232,7 +232,6 @@ ol.tech li {
 }
 .catalog-table {
 	overflow: visible;
-	margin-bottom: 20px;
 }
 .catalog-table .catalog-table__title {
 	z-index: 1;
@@ -289,7 +288,9 @@ ol.tech li {
 #payment {
 	padding-top: 20px;
 }
-
+#feedback_form {
+	margin-top: 20px;
+}
 
 
 

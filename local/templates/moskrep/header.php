@@ -54,7 +54,9 @@ $APPLICATION->IncludeFile(
 
 	<meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CHARSET?>" />  
 <?$APPLICATION->ShowMeta("robots")?>
+<?if(!($_REQUEST['PAGEN_1'] > 1)):?>
 <?$APPLICATION->ShowMeta("description")?>
+<?endif;?>
 <?$APPLICATION->ShowCSS()?>
 <?$APPLICATION->ShowHeadStrings()?>
 <?$APPLICATION->ShowHeadScripts()?> 
@@ -88,7 +90,7 @@ $APPLICATION->IncludeFile(
 	?>
    
 
-	<link rel='canonical' href='https://<?=$_SERVER["SERVER_NAME"]?><?=$APPLICATION->ShowViewContent('page_url');?>' />
+	<link rel='canonical' href='https://<?=$_SERVER["SERVER_NAME"]?><?=$APPLICATION->GetCurPage(false);?>' />
 
     
     <!--[if (lt IE 9)&(!IEMobile 7)]><script src="js/html5support.js"></script><![endif]-->

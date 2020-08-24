@@ -4,7 +4,7 @@
                      <!--delivery-option-->
                      <div class="delivery-option">
                         <div class="delivery-option__about">
-                           <img class="delivery-option__image" src="<?=SITE_TEMPLATE_PATH?>/uploads/delivery-option/company-01.jpg" width="402" height="165" alt="">
+                           <img class="delivery-option__image" src="<?=SITE_TEMPLATE_PATH?>/uploads/delivery-option/company-01.jpg" width="402" height="165" alt="Деловые линии" title="Деловые линии" />
                            <p class="delivery-option__desc">Мы производим бесплатную доставку заказа до офиса компании "Деловые линии" в г. Подольск</p>
                         </div>
                         <div class="delivery-option__widget">
@@ -18,7 +18,7 @@
                      <!--delivery-option-->
                      <div class="delivery-option">
                         <div class="delivery-option__about">
-                           <img class="delivery-option__image" src="<?=SITE_TEMPLATE_PATH?>/uploads/delivery-option/company-02.jpg" width="402" height="165" alt="">
+                           <img class="delivery-option__image" src="<?=SITE_TEMPLATE_PATH?>/uploads/delivery-option/company-02.jpg" width="402" height="165" alt="ПЭК" title="ПЭК" />
                            <p class="delivery-option__desc">Мы производим бесплатную доставку заказа до подольского офиса компании "ПЭК"</p>
                         </div>
                         <div class="delivery-option__widget">
@@ -32,7 +32,7 @@
                      <!--delivery-option-->
                      <div class="delivery-option">
                         <div class="delivery-option__about">
-                           <img class="delivery-option__image" src="<?=SITE_TEMPLATE_PATH?>/uploads/delivery-option/company-03.jpg" width="402" height="165" alt="">
+                           <img class="delivery-option__image" src="<?=SITE_TEMPLATE_PATH?>/uploads/delivery-option/company-03.jpg" width="402" height="165" alt="Vozovoz" title="Vozovoz" />
                            <p class="delivery-option__desc">Мы производим бесплатную доставку заказа до подольского офиса компании "Возовоз"</p>
                         </div>
                         <div class="delivery-option__widget	
