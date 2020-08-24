@@ -60,7 +60,7 @@ $this->setFrameMode(true);
                         </div>
                         <div class="article-card__cover">
                            <?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arItem["PREVIEW_PICTURE"])):?>
-						   <img class="article-card__image" src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>" width="301" height="226" alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>">
+						   <img class="article-card__image" src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>" width="301" height="226" alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>" title="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>">
 						   <?endif;?>
                         </div>
                      </section>

@@ -29,7 +29,7 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
             <div class="basic-layout__module catalog-feed">
 				<div class="catalog-feed__about">
                   <!--download-file-->
-                  <p class="download-file"><img class="download-file__icon" src="/local/templates/moskrep/assets/design/download-file/xls.svg" width="36" height="36" alt=""><a class="second-button second-button--mini download-file__button" href="<?=$arResult['SALE_PRICE_LINK']?>">Скачать прайс</a><span class="download-file__date"><?=$arResult['SALE_PRICE_DATE']?></span></p>
+                  <p class="download-file"><img class="download-file__icon" src="/local/templates/moskrep/assets/design/download-file/xls.svg" width="36" height="36" alt="Скачать прайс" title="Скачать прайс" /><a class="second-button second-button--mini download-file__button" href="<?=$arResult['SALE_PRICE_LINK']?>">Скачать прайс</a><span class="download-file__date"><?=$arResult['SALE_PRICE_DATE']?></span></p>
                   <!--download-file-->
                   <a href="<?=$arResult['OVER_URL']?>" class="other-button catalog-feed__more"><i class="simple-go-to-icon other-button__icon"></i>Перейти в каталог</a>
                </div>
