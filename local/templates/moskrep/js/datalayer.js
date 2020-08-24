@@ -1,8 +1,8 @@
 $(document).ready(function() {
 	//Клик по телефонам
-	$(document).on('click', 'a.roistat-phone', function() {
+	$(document).on('click', 'a.roistat-phone, article .contact-block__link--phone', function() {
 		
-		current_phone = $(this).attr('href').replace(/[^0-9\+]+/, '');
+		current_phone = $(this).attr('href').replace(/[^0-9\+]+/, ''); 
 		
 		dataLayer.push({
 			'event':'krepkomp',

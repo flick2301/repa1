@@ -146,7 +146,7 @@ $APPLICATION->SetTitle("Контакты");
 
 
 
-<script>var tabs=new Tabby("[data-contact-tabs]")</script>
+<script>$(document).ready(function(){var tabs=new Tabby("[data-contact-tabs]");});</script>
 <?}else{?>
 
 <?$APPLICATION->IncludeComponent(
