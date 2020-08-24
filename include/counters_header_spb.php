@@ -1,5 +1,5 @@
 <!-- Google Analitycs -->
- <script type="text/javascript">
+ <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -100,7 +100,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
     <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
+<script>
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
@@ -114,7 +114,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         ecommerce:"dataLayer"
    });
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/29426710" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript><div><img src="https://mc.yandex.ru/watch/29426710" style="position:absolute; left:-9999px;" alt="YM" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
 

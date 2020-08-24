@@ -11,6 +11,22 @@ Loc::LoadMessages(__FILE__);
 <html xml:lang="<?=LANGUAGE_ID?>" lang="<?=LANGUAGE_ID?>">
 <head>
 
+	<meta charset="<?=LANG_CHARSET?>">
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CHARSET?>" />-->
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
+    <meta name="yandex-verification" content="94ad628889e9793a" />
+    <meta name="google-site-verification" content="tCyUZcBpb8WKtkt8O1XsKiMEeBQpIFTPY-N9GDFfIv0" />
+    <meta name="apple-mobile-web-app-title" content="Главная страница – Krep-Komp" />
+    <meta name="theme-color" content="#0C58CF" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+	
+<?$APPLICATION->ShowMeta("robots")?>
+<?if(!($_REQUEST['PAGEN_1'] > 1)):?>
+<?$APPLICATION->ShowMeta("description")?>
+<?endif;?>	
+
+    <title><?$APPLICATION->ShowTitle();?></title>
+
   	<!--АНТИСОВЕТНИК-->
 	<script data-skip-moving='true'>
 (function(d) {
@@ -41,22 +57,8 @@ $APPLICATION->IncludeFile(
 ?>
 <?endif?>       
     
-    <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <meta name="yandex-verification" content="94ad628889e9793a" />
-    <meta name="google-site-verification" content="tCyUZcBpb8WKtkt8O1XsKiMEeBQpIFTPY-N9GDFfIv0" />
-    
-	<meta name="robots" content="index,follow">
-    <meta name="apple-mobile-web-app-title" content="Главная страница – Krep-Komp">
-    <meta name="theme-color" content="#0C58CF">
-	<meta name="viewport" content="width=device-width; initial-scale=1.0">
-    <title><?$APPLICATION->ShowTitle();?></title>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CHARSET?>" />  
-<?$APPLICATION->ShowMeta("robots")?>
-<?if(!($_REQUEST['PAGEN_1'] > 1)):?>
-<?$APPLICATION->ShowMeta("description")?>
-<?endif;?>
+
 <?$APPLICATION->ShowCSS()?>
 <?$APPLICATION->ShowHeadStrings()?>
 <?$APPLICATION->ShowHeadScripts()?> 
@@ -104,6 +106,13 @@ $APPLICATION->IncludeFile(
   })(document);
 </script>
 
+<!-- calltouch -->
+<script type="text/javascript">
+(function(w,d,n,c){w.CalltouchDataObject=n;w[n]=function(){w[n]["callbacks"].push(arguments)};if(!w[n]["callbacks"]){w[n]["callbacks"]=[]}w[n]["loaded"]=false;if(typeof c!=="object"){c=[c]}w[n]["counters"]=c;for(var i=0;i<c.length;i+=1){p(c[i])}function p(cId){var a=d.getElementsByTagName("script")[0],s=d.createElement("script"),i=function(){a.parentNode.insertBefore(s,a)};s.type="text/javascript";s.async=true;s.src="https://mod.calltouch.ru/init.js?id="+cId;if(w.opera=="[object Opera]"){d.addEventListener("DOMContentLoaded",i,false)}else{i()}}})(window,document,"ct","9hgftwpz");
+</script>
+<!-- calltouch -->
+
+
 
 <?if($APPLICATION->GetCurPage() == "/" && false):?>
 <style>@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=cyrillic);body{margin:0;font-family:'Open Sans',sans-serif;font-weight:400;letter-spacing:0;background-color:#fff;background-image:none}.project{max-width:660px;margin:0 auto;line-height:24px}.project *{font-family:'Open Sans',sans-serif}.project h1{margin:0;padding:34px 16px 25px;font-size:30px;font-weight:600;text-align:center;text-transform:capitalize}.project h2{margin:0 16px 12px;font-size:17px;font-weight:600}.project q{font-style:normal}.project q,.project q:lang(en){quotes:'\201C''\201D''\2018''\2019'}.project q:lang(ru){quotes:'\00AB''\00BB''\201E''\201C'}.project q::after,.project q::before{font-weight:600;color:#06aaf5}.project a{padding:0 10px;line-height:36px;color:#06aaf5;white-space:nowrap;text-decoration:underline}.js-no-touch .project a:hover,.project a:active{color:#28292b;text-decoration:none}.project .list{width:100%;margin:0;font-size:17px;padding:8px 0 24px}.project .list li{display:flex;flex-direction:column;padding:5px 0 7px}.project .list li:nth-of-type(2n+1){background-color:#f5f5f6}.project .name{padding:8px 16px}.project .action{display:flex;margin-top:-8px;padding:0 6px}@media (min-width:531px){.project{padding:0 40px}.project h1{padding-right:20px;padding-left:20px}.project h2{margin-right:0;margin-left:0}.project .list li{padding-right:4px;padding-left:4px}}@media (min-width:741px){.project{padding:12px 40px}.project a{padding:0 16px;line-height:40px}.project .list li{flex-direction:row;justify-content:space-between;padding-bottom:6px}.project .action{margin-top:0}}</style>
@@ -111,8 +120,12 @@ $APPLICATION->IncludeFile(
 
 
 </head>
-<?$APPLICATION->ShowPanel();?>
+
+
 <body class="basic-layout basic-layout--default" id="basic-layout">
+
+<?$APPLICATION->ShowPanel();?>
+
 <?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
 <?
 $APPLICATION->IncludeFile(
