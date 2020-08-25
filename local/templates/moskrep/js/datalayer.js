@@ -14,7 +14,7 @@ $(document).ready(function() {
 	
 	//Авторизация
 	$(document).on('click', '#form_lk .user-account__submit[name=Auth]', function() {
-		if($('#user-account__login').val() && $('#user-account__pass').val()) dataLayerSendFormAuth(true);
+		if($('#user-account__login').val() && $('#user-account__pass').val() && checkUser($('#user-account__login').val(), $('#user-account__pass').val())) dataLayerSendFormAuth(true);
 		else dataLayerSendFormAuth(false);
 	});	
 
@@ -187,4 +187,17 @@ dataLayer.push({
     'eventLabel':'нажатие',
     'eventValue': sum // Общая стоимость оформленного заказа
 });
+}
+
+//Проверка пользователя
+function checkUser(login, pass) {
+		BX.ajax({
+			url: '/ajax/checkuser.php',
+			method: 'POST',
+			dataType: 'html',
+			data: {login, pass},
+			onsuccess: function(data){
+				console.log(data);
+           },
+		});
 }
