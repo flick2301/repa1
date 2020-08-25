@@ -23,7 +23,7 @@ $arElement = $res->GetNext();?>
                   <!--product-card-->
                   <section class="product-card">
                      <div class="product-card__header">
-                        <h3 class="product-card__title"><a class="product-card__link" href="<?=$arElement['DETAIL_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", $item['NAME'])?>')"><?=$item['NAME']?></a></h3>
+                        <h3 class="product-card__title"><a class="product-card__link" href="<?=$arElement['DETAIL_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['NAME']))?>')"><?=$item['NAME']?></a></h3>
                         <img class="product-card__image" src="<?echo ($item['PREVIEW_PICTURE']['SRC']) ? $item['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg";?>" width="200" height="150" alt="">
                      </div>
                      <div class="product-card__content">
@@ -47,7 +47,7 @@ $arElement = $res->GetNext();?>
                         <div class="product-card__price"><?echo number_format($old_price, 2, '.', ' ');?> ₽</div>
 						<?endif?>
                                          
-                        <button onclick="dataLayerAddBasket('<?=str_replace(Array("\"", "'"), "", $item['NAME'])?>', '<?=$item['PRICES']['Распродажа']['VALUE'] ? $item['PRICES']['Распродажа']['VALUE'] : $price?>', 1)" class="main-button main-button--mini product-card__button" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$item['PRICES']['Распродажа']['VALUE']?>">В корзину</button>
+                        <button onclick="dataLayerAddBasket('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['NAME']))?>', '<?=$item['PRICES']['Распродажа']['VALUE'] ? $item['PRICES']['Распродажа']['VALUE'] : $price?>', 1)" class="main-button main-button--mini product-card__button" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$item['PRICES']['Распродажа']['VALUE']?>">В корзину</button>
                      </div>
                   </section>
                   <!--product-card-->

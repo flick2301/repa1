@@ -310,7 +310,7 @@ global $APPLICATION;
 		<div class="catalog-feed__item">
 		<!--catalog-card-->
         <section class="catalog-card">
-            <h3 class="catalog-card__title"><a href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", $arSection['NAME'])?>');"><?=$arSection['NAME']?></a></h3>
+            <h3 class="catalog-card__title"><a href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($arSection['NAME']))?>');"><?=$arSection['NAME']?></a></h3>
                 <div class="catalog-card__cover">
                     <img class="catalog-card__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>

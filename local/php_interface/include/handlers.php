@@ -684,13 +684,13 @@ function ChangeMyContent(&$content)
      $replace = array(
         'Санкт-Петербурге',
         'Санкт-Петербурге и ЛО',
-        '<span class="roistat-phone-spb">8 812 309-95-45</span>'
+        '<span>8 812 309-95-45</span>'
     );  
    }else{
      $replace = array(
         'Москве',
         'Москве и МО',
-        '<span class="roistat-phone">8 499 350-55-55</span>'
+        '<span>8 499 350-55-55</span>'
     );    
    }
     
