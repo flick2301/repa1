@@ -59,43 +59,7 @@ yaCounter29426710.reachGoal('BUY');
     
 window.dataLayer = window.dataLayer || [];
 	
-dataLayer.push({
-    "ecommerce": {
-        "purchase": {
-            "actionField": {
-                "id" : "<?=$arResult["ORDER_ID"]?>"
-            },
-            "products": [
-			<?
-$arBasketItems = array();
 
-$dbBasketItems = CSaleBasket::GetList(
-     array(
-          "NAME" => "ASC",
-          "ID" => "ASC"
-          ),
-     array(
-         
-        "ORDER_ID" => $arResult["ORDER_ID"]
-          ),
-        false,
-        false,
-        array("ID", "CALLBACK_FUNC", "MODULE", "PRODUCT_ID", "QUANTITY", "DELAY", "CAN_BUY", "PRICE", "WEIGHT", "PRODUCT_PROVIDER_CLASS", "NAME")
-                );
-while ($arItems = $dbBasketItems->Fetch())
-{?>
-                {
-                    "id": "<?=$arItems['PRODUCT_ID']?>",
-                    "name": "<?=$arItems['NAME']?>",
-                    "price": <?=$arItems['PRICE']?>,
-					"quantity": <?=$arItems['QUANTITY']?>
-                   
-                },
-<?}?>  
-            ]
-        }
-    }
-});
 
 }
 </script>	

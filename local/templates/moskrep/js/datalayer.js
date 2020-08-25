@@ -158,7 +158,7 @@ dataLayer.push({
 //Переход заказ
 function dataLayerToOrder(sum) {
 	
-	sum = sum.replace(/[^0-9\.]+/, '');
+	sum = sum.replace(/[^+\d\.]/g, '');
 	
 dataLayer.push({
 	'event':'krepkomp',
@@ -172,7 +172,7 @@ dataLayer.push({
 //Отправка заказ
 function dataLayerSendOrder(sum) {
 	
-	sum = sum.replace(/[^0-9\.]+/, '');
+	sum = sum.replace(/[^+\d\.]/g, '');
 	
 dataLayer.push({
 	'event':'krepkomp',
