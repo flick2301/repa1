@@ -46,7 +46,12 @@ $(document).on('focusout', '#address_flat', function() {
 $(document).on('click', '.dropdown-item.bx-ui-sls-variant', function() {		
 	if ($(this).text()) dataLayerTypeOrder('Город', $(this).text());
 });
-
+$(document).on('click', '#bx-soa-order .usertype label', function() {		
+	dataLayerTypeOrder('Покупатель', $(this).children('span').text());
+});
+$(document).on('click', '#bx-soa-paysystem label', function() {		
+	dataLayerTypeOrder('Платежная система', $(this).children('span').text()); 
+});
 	
 });
 
@@ -146,7 +151,8 @@ dataLayer.push({
 function dataLayerTypeOrder(name, val) {
 	
 	name = name.replace(':', '');
-	
+	name = name.replace(/^\* /, '');
+
 dataLayer.push({
 	'event':'krepkomp',
 	'eventCategory':'Оформление заказа', 
