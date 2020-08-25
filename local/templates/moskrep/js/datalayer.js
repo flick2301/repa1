@@ -191,13 +191,19 @@ dataLayer.push({
 
 //Проверка пользователя
 function checkUser(login, pass) {
+	
+	result = false;
+	
 		BX.ajax({
+			async: false,
 			url: '/ajax/checkuser.php',
 			method: 'POST',
 			dataType: 'html',
 			data: {login, pass},
 			onsuccess: function(data){
-				console.log(data);
+				if (data) result = data;
            },
 		});
+		
+		if (result) return result;
 }

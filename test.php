@@ -1,14 +1,10 @@
 <?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Новая страница");
-?>
+//if (!$_POST['login'] || !$_POST['pass']) die();
+require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include/prolog_before.php");
 
-<?if(IPHONE=="Y"):?>
-IPHONE
-<?endif?>
+global $USER;
+if (!is_object($USER)) $USER = new CUser;
 
-<?if(IPHONE=="N"):?>
-...
-<?endif?>
-
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+$arAuthResult = $USER->Login("kolobets", "DENIS1980");
+$result = $APPLICATION->arAuthResult = $arAuthResult;
+if (!is_array($result) && $result==true) echo $result;
