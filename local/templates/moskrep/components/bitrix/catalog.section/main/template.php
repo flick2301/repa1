@@ -36,7 +36,7 @@ use \Bitrix\Main\Localization\Loc;
                         </div>
                         <div class="product-card__footer">
                            <div class="product-card__price"><?=$item['PRICES']['Распродажа']['VALUE']?> ₽<del><?=$item['PRICES'][ID_BASE_PRICE]['VALUE']?> ₽</del></div>
-                           <button onclick="dataLayerAddBasket('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['NAME']))?>', '<?=$item['PRICES']['Распродажа']['VALUE']?>', 1)" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$item['PRICES']['Распродажа']['VALUE']?>" class="main-button product-card__to-cart <?=($arResult['IN_BASKET'][$item['ID']] == 'Y') ? 'active' : "";?>"><i data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$item['PRICES']['Распродажа']['VALUE']?>" class="simple-cart-icon"></i>В корзину</button>
+                           <button data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$item['PRICES']['Распродажа']['VALUE']?>" class="main-button product-card__to-cart <?=($arResult['IN_BASKET'][$item['ID']] == 'Y') ? 'active' : "";?>"><i data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$item['PRICES']['Распродажа']['VALUE']?>" class="simple-cart-icon"></i>В корзину</button>
                         </div>
                      </section>
                      <!--product-card-->

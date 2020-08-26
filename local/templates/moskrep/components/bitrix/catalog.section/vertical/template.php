@@ -102,8 +102,8 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                      <!--product-card-->
                      <section class="product-card">
                         <div class="product-card__header">
-                           <h3 class="product-card__title"><a class="product-card__link" href="<?=$item['DETAIL_PAGE_URL']?>" title='<?=$item['IPROPERTY_VALUES']['TITLE_HREF_MINI_CART']?>' target="_self"><?=$item['NAME']?></a></h3>
-                           <img class="product-card__image" src="<?=$item['PREVIEW_PICTURE']['src']?>" width="200" height="150" alt="">
+                           <h3 class="product-card__title"><a class="product-card__link" href="<?=$item['DETAIL_PAGE_URL']?>" title='<?=$item['IPROPERTY_VALUES']['TITLE_HREF_MINI_CART']?>' target="_self" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['NAME']))?>')"><?=$item['NAME']?></a></h3>
+                           <img class="product-card__image" src="<?=$item['PREVIEW_PICTURE']['src']?>" width="200" height="150" alt="<?=$item['NAME']?>">
                         </div>
                         <div class="product-card__content">
                            <div class="product-card__block">
@@ -117,7 +117,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                         </div>
                         <div class="product-card__footer">
                            <div class="product-card__price"><?echo number_format($price, 2, '.', ' ');?> ₽</div>
-                           <button onclick="dataLayerAddBasket('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['NAME']))?>', '<?=$price?>', 1)" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-product="<?=$item['ID']?>" old-price="<?=$price?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>" class="main-button main-button--mini product-card__button">В корзину</button>
+                           <button data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-product="<?=$item['ID']?>" old-price="<?=$price?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>" class="main-button main-button--mini product-card__button">В корзину</button>
                         </div>
                      </section>
                      <!--product-card-->
@@ -163,9 +163,9 @@ while($arSection = $db_list->GetNext()) {
 		<div class="catalog-feed__child">
                      <!--category-card-->
                      <div class="category-card">
-                        <p class="category-card__title"><a class="category-card__link" href="<?=$arSection['SECTION_PAGE_URL']?>"><?=$arSection['NAME']?><</a></p>
+                        <p class="category-card__title"><a class="category-card__link" href="<?=$arSection['SECTION_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($arSection['NAME']))?>')"><?=$arSection['NAME']?></a></p>
                         <div class="category-card__cover">
-                           <img class="category-card__image" src="<?=$renderImage['src']?>" width="120" height="76" alt=""> 
+                           <img class="category-card__image" src="<?=$renderImage['src']?>" width="120" height="76" alt="<?=$arSection['NAME']?>"> 
                         </div>
                      </div>
                      <!--category-card-->

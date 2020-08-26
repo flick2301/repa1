@@ -40,7 +40,8 @@ BX.ready(function () {
                     BX.addClass(e.target, 'active');
                    
                     BX.onCustomEvent('OnBasketChange');
-                    console.log(data);
+					dataLayerAddBasket(e.target.dataset.name, e.target.dataset.price, quantity);
+                    //console.log(data);
                     $('.header-basket').popUp();
                 } else {
                    console.log(data);

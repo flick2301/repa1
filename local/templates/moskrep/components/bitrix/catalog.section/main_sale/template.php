@@ -47,7 +47,7 @@ $arElement = $res->GetNext();?>
                         <div class="product-card__price"><?echo number_format($old_price, 2, '.', ' ');?> ₽</div>
 						<?endif?>
                                          
-                        <button onclick="dataLayerAddBasket('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['NAME']))?>', '<?=$item['PRICES']['Распродажа']['VALUE'] ? $item['PRICES']['Распродажа']['VALUE'] : $price?>', 1)" class="main-button main-button--mini product-card__button" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$item['PRICES']['Распродажа']['VALUE']?>">В корзину</button>
+                        <button class="main-button main-button--mini product-card__button" data-product="<?=$item['ID']?>" data-name="<?=$item['NAME']?>" data-price="<?=$item['PRICES']['Распродажа']['VALUE']?>">В корзину</button>
                      </div>
                   </section>
                   <!--product-card-->

@@ -33,7 +33,8 @@ BX.ready(function () {
         }
 		if(e.target.dataset.quantity >= quantity)
 		{
-       console.log(e);
+			//console.log(e);
+			
         BX.ajax({
             url: window.location.href,
             data: {
@@ -49,6 +50,7 @@ BX.ready(function () {
                     BX.addClass(e.target, 'active');
                    
                     BX.onCustomEvent('OnBasketChange');
+					dataLayerAddBasket(e.target.dataset.name, e.target.dataset.price, quantity);
 					/*ga ('send', 'event', 'Корзина', 'Добавить в корзину');
 					gtag('event','add_to_cart', {
 						'send_to': 'AW-958495754',

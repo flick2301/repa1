@@ -169,7 +169,7 @@ function dataLayerToOrder(sum) {
 	
 dataLayer.push({
 	'event':'krepkomp',
-	'eventCategory':'Оформление заказа', 
+	'eventCategory':'Корзина', 
 	'eventAction':'оформить заказ',  
     'eventLabel':'нажатие',
     'eventValue': sum // Общая стоимость заказа, указанная на странице, с которой пользователь переходит на страницу оформления заказа

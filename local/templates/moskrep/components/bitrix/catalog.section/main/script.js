@@ -45,6 +45,7 @@ BX.ready(function () {
 						}]
 					});
                     BX.onCustomEvent('OnBasketChange');
+					dataLayerAddBasket(e.target.dataset.name, e.target.dataset.price, quantity);
                     $('.header-basket').popUp();
                 } else {
                    console.log(data);
