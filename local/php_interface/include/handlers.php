@@ -829,6 +829,20 @@ function DoNotUpdate(&$arFields)
     }
 }
 
+AddEventHandler("iblock", "OnBeforeIBlockSectionUpdate", "DoNotUpdateSectionActivate"); 
+function DoNotUpdateSectionActivate(&$arFields)
+{
+	
+	$doNotUpdateActivates = [2777, 2779, 2780, 2781, 2782, 2783, 2784, 2785, 2802, 2803, 2558];
+	if ($_REQUEST['type'] == 'catalog')
+    {
+		if(in_array($arFields["ID"], $doNotUpdateActivates))
+					$arFields["ACTIVE"] = "Y";
+	
+        
+    }
+}
+
 $eventManager = \Bitrix\Main\EventManager::getInstance();
  
 $eventManager->addEventHandlerCompatible('sale', 'OnBeforeOrderAccountNumberSet', 

@@ -51,7 +51,7 @@ dataLayerSendForm();//Отправка формы в DataLayer
 
 
         yaCounter29426710.reachGoal('SendMessage');
-		ga('send', 'event', 'Сообщения', 'Отправка сообщение');
+		//ga('send', 'event', 'Сообщения', 'Отправка сообщение');
 
     };
 

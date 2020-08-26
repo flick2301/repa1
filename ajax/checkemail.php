@@ -1,12 +1,11 @@
 <?
-//if (!$_POST['login'] || !$_POST['pass']) die();
+if (!$_POST['email']) die();
 require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include/prolog_before.php");
-
 
 $filter = Array
 (
     "ACTIVE"              => "Y",
-    "EMAIL"               => "kolobets@mail.ru",
+    "EMAIL"               => str_replace(Array("<", ">"), Array("", ""), $_POST['email']),
 );
 $rsUsers = CUser::GetList(($by="personal_country"), ($order="desc"), $filter); // выбираем пользователей
 $is_filtered = $rsUsers->is_filtered; // отфильтрована ли выборка ?

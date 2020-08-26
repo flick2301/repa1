@@ -180,10 +180,11 @@ if(count($arSizes)>0 && (count($arSizes)!=1 || $arSizes[0]!='DIAMETR_VNUTRENNIY'
 
         $ar_size = array(
             $arItem['PROPERTIES']["DIAMETR"]["VALUE"],
+			$arItem['PROPERTIES']['DIAMETR_VNUTRENNIY']["VALUE"],
             $arItem['PROPERTIES']["VYSOTA"]["VALUE"],
             $arItem['PROPERTIES']["SHIRINA"]["VALUE"],
             $arItem['PROPERTIES']["DLINA"]["VALUE"],
-			$arItem['PROPERTIES']['DIAMETR_VNUTRENNIY']["VALUE"]
+			
         );
     }
 	

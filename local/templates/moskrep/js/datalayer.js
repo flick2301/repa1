@@ -24,9 +24,10 @@ $(document).ready(function() {
 	});	
 	
 	//Регистрация
-	$(document).on('click', '#form_lk .user-account__submit[name=Register]', function() {
-		if($('#user-account__login').val() && $('#user-account__pass').val() && $('#user-account__passconfirm').val() && $('#user-account__email').val() && $('#form_auth input[name=captcha_word]').val()) dataLayerSendFormRegister(true);
+	$(document).on('click', '#form_lk .user-account__submit[name=Register]', function(e) {
+		if($('#user-account__login').val() && $('#user-account__pass').val() && $('#user-account__passconfirm').val() && $('#user-account__email').val() && !checkEmail($('#user-account__email').val()) && validateEmail($('#user-account__email').val()) && $('#captcha_word_registration').val()) dataLayerSendFormRegister(true);
 		else dataLayerSendFormRegister(false);
+		//e.preventDefault();
 	});		
 
 //Заполнение формы заказа
@@ -206,4 +207,29 @@ function checkUser(login, pass) {
 		});
 		
 		if (result) return result;
+}
+
+//Проверка email
+function checkEmail(email) {
+	
+	result = false;
+	
+		BX.ajax({
+			async: false,
+			url: '/ajax/checkemail.php',
+			method: 'POST',
+			dataType: 'html',
+			data: {email},
+			onsuccess: function(data){
+				if (data) result = data;
+           },
+		});
+		
+		if (result) return result;
+}
+
+//Валидация email
+function validateEmail(email) {
+   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+   return reg.test(email);
 }
