@@ -306,7 +306,7 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
                     8 499 350-55-55
                     </a><?
                     }else{?>
-                    <a class="project-contact__link roistat-phone-spb" href="tel:8 812 309-95-45">8 812 309-95-45 
+                    <a class="project-contact__link roistat-phone-spb" href="tel:8812309-95-45">8 812 309-95-45 
                     </a>
                     <?}?>
 					</p>

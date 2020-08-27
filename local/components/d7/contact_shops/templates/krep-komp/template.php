@@ -186,7 +186,7 @@ shop.push({id: <?=$item["ID"]?>, balloon: true, lat: <?=$item["PROP"]["LAT"]["VA
 
 <?foreach($arResult["ITEMS"] AS $key=>$item):?>
 <tr rel="<?=$item["ID"]?>">
-<td><div class="label" style="background: <?=$item["PROP"]["COLOR"]["VALUE"]?>;"></div></td>
+<td><div class="label" style="background: <?=$item["PROP"]["COLOR"]["VALUE"] ? $item["PROP"]["COLOR"]["VALUE"] : "transparent"?>;"></div></td>
 <td class="blue"><?=htmlspecialchars_decode ($item["PROP"]["ADDRESS"]["VALUE"])?></td>
 <td class="nowrap"><?=$item["PROP"]["TYPE"]["VALUE"]?></td>
 <td class="nowrap"><?=$item["PREVIEW_TEXT"]?></td>
