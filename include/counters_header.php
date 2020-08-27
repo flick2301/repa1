@@ -131,7 +131,6 @@ dataLayer.push({
         ecommerce:"dataLayer"
    });
 </script>
-<div><noscript><img src="https://mc.yandex.ru/watch/29426710" style="position:absolute; left:-9999px;" alt="YM" /></noscript></div>
 <!-- /Yandex.Metrika counter -->
 
 

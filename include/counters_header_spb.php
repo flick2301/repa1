@@ -114,7 +114,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         ecommerce:"dataLayer"
    });
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/29426710" style="position:absolute; left:-9999px;" alt="YM" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
 

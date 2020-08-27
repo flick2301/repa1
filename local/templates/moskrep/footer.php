@@ -300,7 +300,7 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 					<?endif;?>
 					<p class="project-contact__data">Телефон: 
                     <?if($_SERVER['HTTP_HOST']!='spb.krep-komp.ru'){?>
-                    <a class="project-contact__link roistat-phone"  href="tel:8 499 350-55-55">
+                    <a class="project-contact__link roistat-phone"  href="tel:8499350-55-55">
                     8 499 350-55-55
                     </a><?
                     }else{?>
