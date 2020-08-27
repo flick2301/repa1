@@ -28,7 +28,9 @@ $(document).ready(function() {
 		if($('#user-account__login').val() && $('#user-account__pass').val() && $('#user-account__passconfirm').val() && $('#user-account__email').val() && !checkEmail($('#user-account__email').val()) && validateEmail($('#user-account__email').val()) && $('#captcha_word_registration').val()) dataLayerSendFormRegister(true);
 		else dataLayerSendFormRegister(false);
 		//e.preventDefault();
-	});		
+	});	
+
+usertype = "";	
 
 //Заполнение формы заказа
 $(document).on('focusout', '#bx-soa-order input[type=text], #bx-soa-order textarea', function() {
@@ -47,12 +49,24 @@ $(document).on('focusout', '#address_flat', function() {
 $(document).on('click', '.dropdown-item.bx-ui-sls-variant', function() {		
 	if ($(this).text()) dataLayerTypeOrder('Город', $(this).text());
 });
-$(document).on('click', '#bx-soa-order .usertype label', function() {		
-	dataLayerTypeOrder('Покупатель', $(this).children('span').text());
+$(document).on('click', '#bx-soa-order .usertype label', function() {	
+	if (usertype != $(this).children('span').text()) {
+		dataLayerTypeOrder('Покупатель', $(this).children('span').text());	
+	}
+	usertype = $(this).children('span').text();
 });
 $(document).on('click', '#bx-soa-paysystem label', function() {		
 	dataLayerTypeOrder('Платежная система', $(this).children('span').text()); 
 });
+$(document).on('click', '#select_delivery_group li', function() {		
+	dataLayerTypeOrder('Группы доставки', $(this).text()); 
+	console.log($(this).text());
+});
+$(document).on('click', '#bx-soa-delivery label', function() {		
+	dataLayerTypeOrder('Тип доставки', $(this).children('span').text()); 
+	console.log($(this).children('span').text());
+});
+p
 	
 });
 
