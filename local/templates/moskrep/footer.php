@@ -75,11 +75,13 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
          <!--promo-block-->	
 		 
 			<table id="banner_block">
+			<tbody>
 			<tr>
 			<td><div>Полный ассортимент крепежа доступен на складе</div></td>
 			<td><div>Получите заказ в этот же день с доставкой по Москве и области</div></td>
 			<td><div>"КРЕП-КОМП" - главный оптовый поставщик крепежа в России</div></td>
-			<tr>
+			</tr>
+			</tbody>
 			</table>		
 	
 

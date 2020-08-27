@@ -152,6 +152,11 @@ $APPLICATION->IncludeFile(
 	<header class="basic-layout__header">
 	<?=$safari?>
 	<!--<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page">  <a class="banner-link" href="https://krep-komp.ru/"><p class="banner-text"><strong style='font-weight: 500; position: relative; top: 1px;'>Мы работаем! Принимаем заказы на самовывоз и бесконтактную доставку. <span style='color: #f39101;'></span></strong></p> </a> <svg class="icon-svg -cross" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg> </div> </div>-->
+	
+	
+	
+	
+	
     <div class="basic-layout__section">
 	<!--eshop-panel-->
         <div class="eshop-panel">
@@ -316,6 +321,8 @@ $APPLICATION->IncludeFile(
 	</div>
 	<!--eshop-panel-->
 </div>
+
+
 	<div class="basic-layout__section">
          <!--website-navbar-->
          <div class="website-navbar">
@@ -356,6 +363,8 @@ $APPLICATION->IncludeFile(
 			
 			
 		</div>
+		
+		
 		<div class="website-navbar__primary">
                <!--main-nav-->
                <nav class="main-nav">
@@ -375,6 +384,7 @@ $APPLICATION->IncludeFile(
 					</div>
 				</nav>
 			</div>
+	</div>
 	</div>
     </header>
     

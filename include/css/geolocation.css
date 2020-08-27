@@ -1,18 +1,16 @@
-.geolocation{
-    display: block;
-    position: absolute;
-    margin-top: -30px;
-}
-.geolocation.moskrep{
+.geolocation {
     display: block;
     position: absolute;
     margin-top: -80px;
 }
-.geolocation a{
+.geolocation.moskrep {
+    margin-top: -30px;
+}
+.geolocation a {
   color:#0c59cf;
   text-decoration:underline;
 }
-.geolocation a:hover{
+.geolocation a:hover {
     text-decoration: none;
 }
 .geolocation a:after {
@@ -29,7 +27,7 @@
     border-top: 8px solid #0c59cf;
 }
 
-#geolocation{
+#geolocation {
     display:none;
     position:absolute;
     border-radius: 3px;
@@ -40,11 +38,11 @@
     background: white;
     z-index:100000;
 }
-#geolocation .white-btn, #geolocation .blue-btn{
+#geolocation .white-btn, #geolocation .blue-btn {
     width:120px;
     height:40px;
 }
-.geo select{
+.geo select {
     width: 350px;
     height: 40px;
     padding: 0 0 0 12px;
@@ -52,8 +50,6 @@
     font-size: 16px;
 }
 .geo::before {
-    
-    
     position: absolute;
     top: 0;
     right: 0;
@@ -66,13 +62,13 @@
     background: #da00e0;
     pointer-events: none;
 }
- .geo select option:hover {
+.geo select option:hover {
     background: #da00e0;
 }
 
 .geo:hover::before {
     background: #9b03a0;
 }
-.geo{
+.geo {
     margin: 20px 0 20px 0;
 }
