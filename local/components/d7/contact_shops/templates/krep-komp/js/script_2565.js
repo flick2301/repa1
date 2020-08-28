@@ -11,13 +11,13 @@ if (select_city) {
 	ymaps.ready(init2565);
 	
 	$(document).on('click', '#shops2565 li', function() {
-		//alert($(this).attr('rel'));
+		//alert($(this).attr('data-rel'));
 		$('#shops2565 li').removeClass('active');
 		$(this).addClass('active');
 		unsetPlacemark2565();
 		closeBallon2565();
-		myPlacemark2565[$(this).attr('rel')].options.set('iconImageHref', '/images/shop_label_current.png');
-		myMap2565.setCenter([myPlacemark2565[$(this).attr('rel')].options.get('lat'), myPlacemark2565[$(this).attr('rel')].options.get('lon')], zoom[2565]);
+		myPlacemark2565[$(this).attr('data-rel')].options.set('iconImageHref', '/images/shop_label_current.png');
+		myMap2565.setCenter([myPlacemark2565[$(this).attr('data-rel')].options.get('lat'), myPlacemark2565[$(this).attr('data-rel')].options.get('lon')], zoom[2565]);
 	});
 	
    
@@ -76,23 +76,23 @@ shop.forEach(function(entry) {
         .add('click', function (e) {
             // Ссылку на объект, вызвавший событие,
             // можно получить из поля 'target'.
-            if(!$('#shops2565 li[rel=' + entry.id +']').hasClass('active')) e.get('target').options.set('iconImageHref', '/images/shop_label_current.png');
+            if(!$('#shops2565 li[data-rel=' + entry.id +']').hasClass('active')) e.get('target').options.set('iconImageHref', '/images/shop_label_current.png');
         })	
         .add('mouseenter', function (e) {
             // Ссылку на объект, вызвавший событие,
             // можно получить из поля 'target'.
-            if(!$('#shops2565 li[rel=' + entry.id +']').hasClass('active')) e.get('target').options.set('iconImageHref', '/images/shop_label_active.png');
+            if(!$('#shops2565 li[data-rel=' + entry.id +']').hasClass('active')) e.get('target').options.set('iconImageHref', '/images/shop_label_active.png');
         })
         .add('mouseleave', function (e) {
-            if(!$('#shops2565 li[rel=' + entry.id +']').hasClass('active')) e.get('target').options.set('iconImageHref', '/images/shop_label.png');
+            if(!$('#shops2565 li[data-rel=' + entry.id +']').hasClass('active')) e.get('target').options.set('iconImageHref', '/images/shop_label.png');
         }); 
 		
 		if (entry.balloon) myPlacemark2565[entry.id].events.add('balloonopen', function (e) {	
 			unsetPlacemark2565();
 			e.get('target').options.set('iconImageHref', '/images/shop_label_current.png');
 			$('#shops2565 li').removeClass('active');
-			$('#shops2565 li[rel=' + entry.id +']').addClass('active');
-			$('#shops2565 li[rel=' + entry.id +']').scrollIntoView(false);
+			$('#shops2565 li[data-rel=' + entry.id +']').addClass('active');
+			$('#shops2565 li[data-rel=' + entry.id +']').scrollIntoView(false);
         })	
 		.add('balloonclose', function (e) {
 			e.get('target').options.set('iconImageHref', '/images/shop_label.png');

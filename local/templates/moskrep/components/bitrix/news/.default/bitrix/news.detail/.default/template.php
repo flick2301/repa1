@@ -43,7 +43,7 @@ $scheme = CMain::isHttps() ? 'https' : 'http';
 	<?endif?>
 <div itemprop="articleBody">	
 	<?if(strlen($arResult["DETAIL_TEXT"])>0):?>
-		<?echo $arResult["DETAIL_TEXT"];?>
+		<?echo str_replace(Array("<p>", "</p>"), Array("", ""), $arResult["DETAIL_TEXT"]);?>
 	<?else:?>
 		<?echo $arResult["PREVIEW_TEXT"];?>
 	<?endif?>
@@ -91,7 +91,7 @@ $scheme = CMain::isHttps() ? 'https' : 'http';
 		   
                <div class="simple-article__footer">
                   <a class="second-button second-button--mini" href="<?=$arParams["BACK_URL"]?>"><?=GetMessage("T_NEWS_DETAIL_BACK")?></a>
-                  <?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?><p class="simple-article__date" itemprop="datePublished" datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arResult["DISPLAY_ACTIVE_FROM"])?>T16:20:30+00:00">Дата публикации: <time datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arResult["DISPLAY_ACTIVE_FROM"])?>"><?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${1} ". $month["02"]." \${3}", $arResult["DISPLAY_ACTIVE_FROM"])?></time></p><?endif;?>
+                  <?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?><p class="simple-article__date" itemprop="datePublished" <?/*datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arResult["DISPLAY_ACTIVE_FROM"])?>T16:20:30+00:00"*/?>>Дата публикации: <time datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arResult["DISPLAY_ACTIVE_FROM"])?>"><?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${1} ". $month["02"]." \${3}", $arResult["DISPLAY_ACTIVE_FROM"])?></time></p><?endif;?>
 		
 	
                </div>

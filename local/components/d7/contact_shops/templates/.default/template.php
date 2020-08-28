@@ -17,7 +17,7 @@
                            </li><?endif?>
                         </ul>
                      </div>
-                     <div class="contact-block__maps" id="map<?=($key + 1)?>">
+                     <div class="contact-block__maps" id="map<?=$arParams["SECTION_ID"]?><?=($key + 1)?>">
                         <?=$item["DETAIL_TEXT"]?>
                      </div>
                   </article>

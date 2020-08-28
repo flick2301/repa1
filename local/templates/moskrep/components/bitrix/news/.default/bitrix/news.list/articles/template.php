@@ -47,9 +47,11 @@ $this->setFrameMode(true);
 						   <time datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arItem["DISPLAY_ACTIVE_FROM"])?> 10:42">
 						  <?echo $arItem["DISPLAY_ACTIVE_FROM"]?></time>
 						  </p><?endif;?>
-                           <p class="article-card__desc"><?if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arItem["PREVIEW_TEXT"]):?>
-			<?echo $arItem["PREVIEW_TEXT"];?>
-		<?endif;?></p>
+                           <p class="article-card__desc">
+						   <?if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arItem["PREVIEW_TEXT"]):?>
+						   <?echo strip_tags($arItem["PREVIEW_TEXT"]);?>
+						   <?endif;?>
+						   </p>
                            <?if(!$arParams["HIDE_LINK_WHEN_NO_DETAIL"] || ($arItem["DETAIL_TEXT"] && $arResult["USER_HAVE_ACCESS"])):?>
 						   <a class="main-button main-button--mini article-card__button" href="<?=$arItem["DETAIL_PAGE_URL"]?>">
 						   <?endif;?>

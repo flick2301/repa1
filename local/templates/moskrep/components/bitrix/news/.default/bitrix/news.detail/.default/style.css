@@ -11,3 +11,6 @@ div.news-detail img.detail_picture
 {
 	color:#486DAA;
 }
+.simple-article__content h2 {
+	margin-top: 20px;
+}

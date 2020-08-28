@@ -40,7 +40,7 @@ $strNavQueryStringFull = str_replace('bxajaxid='.$_REQUEST['bxajaxid'], '', $str
 
 	
 	<a class="pages-nav__fast" rel="nofollow" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=1" target="_self">В начало</a>
-	<link rel="prev" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]-1)?>" />	
+	<!--<link rel="prev" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]-1)?>" />-->
 	<ul class="pages-nav__list">
                         <li class="pages-nav__item"><a rel="nofollow" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]-1)?>" target="_self" class="pages-nav__link">&lt;</a>	
 			
@@ -63,7 +63,7 @@ $strNavQueryStringFull = str_replace('bxajaxid='.$_REQUEST['bxajaxid'], '', $str
 		<?$arResult["nStartPage"]++?>
 	<?endwhile?>
                 <?if($arResult["NavPageNomer"] < $arResult["NavPageCount"]):?>
-				<link rel="next" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]+1)?>" />
+				<!--<link rel="next" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]+1)?>" />-->
                 <li class="pages-nav__item"><a rel="nofollow" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]+1)?>" target="_self" class="pages-nav__link">&gt;</a></li>
                 </ul>
                 <a rel="nofollow" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=$arResult["NavPageCount"]?>" target="_self" class="pages-nav__fast">В конец</a>

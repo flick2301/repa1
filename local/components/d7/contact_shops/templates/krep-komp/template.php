@@ -86,7 +86,7 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 <?if(is_array($item["IMG"])):?>
 			<div class="slider slider-for">
 <?foreach($item["IMG"] AS $img):?>
-<div><a href="<?=$img?>" rel="gallery_card"><img src="<?=$img?>" alt="<?=["NAME"]?>" title="<?=$item["NAME"]?>" /></a></div>
+<div><a href="<?=$img?>" data-rel="gallery_card"><img src="<?=$img?>" alt="<?=["NAME"]?>" title="<?=$item["NAME"]?>" /></a></div>
 <?endforeach?>			
 			</div>
 <script>img_count = <?=count($item["IMG"]) ? count($item["IMG"]) : 0?></script>			
@@ -155,7 +155,7 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 <div id="shops<?=$arParams["SECTION_ID"]?>">
 <ul class="left">
 <?foreach($arResult["ITEMS"] AS $key=>$item):?>
-<li rel="<?=$item["ID"]?>" class="item">
+<li data-rel="<?=$item["ID"]?>" class="item">
 <?if($item["PROP"]["COLOR"]["VALUE"]):?><div class="label" style="background: <?=$item["PROP"]["COLOR"]["VALUE"]?>;"></div><?endif?>
 <?=htmlspecialchars_decode($item["PROP"]["ADDRESS"]["VALUE"])?><br />
 <span>
@@ -185,7 +185,7 @@ shop.push({id: <?=$item["ID"]?>, balloon: true, lat: <?=$item["PROP"]["LAT"]["VA
 </tr>
 
 <?foreach($arResult["ITEMS"] AS $key=>$item):?>
-<tr rel="<?=$item["ID"]?>">
+<tr data-rel="<?=$item["ID"]?>">
 <td><div class="label" style="background: <?=$item["PROP"]["COLOR"]["VALUE"] ? $item["PROP"]["COLOR"]["VALUE"] : "transparent"?>;"></div></td>
 <td class="blue"><?=htmlspecialchars_decode ($item["PROP"]["ADDRESS"]["VALUE"])?></td>
 <td class="nowrap"><?=$item["PROP"]["TYPE"]["VALUE"]?></td>
