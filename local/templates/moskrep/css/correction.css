@@ -294,7 +294,6 @@ ol.tech li {
 
 
 
-
 @media (max-width: 1200px) {
 .catalog-table .item_img_block {
 	display: none!important;
@@ -321,6 +320,14 @@ ol.tech li {
 	vertical-align: middle;
 }
 }
+@media (max-width: 990.98px) {
+#catalog-filter {
+	overflow-y: scroll;
+}
+#catalog-filter-trigger {
+	padding-top: 11px;
+}
+}
 @media (max-width: 800px) {
 .global-search__hint.global-search__hint--lite.moskrep_submit, .surface-block, .tech_title, table.tech {
 	display: none;
@@ -329,5 +336,28 @@ ol.tech li {
 @media (max-width: 685px) {
 .catalog-table__column--basic.is-merged h3 strong {	
 	display: inherit;
-}		
+}
+#bx_basket1 .added-product__close {
+	position: relative;
+	top: -20px;
+}	
+#added-basket {
+	width: 95%;
+/* Firefox */
+height: -moz-calc(100% - 10px);
+/* WebKit */
+height: -webkit-calc(100% - 10px);
+/* Opera */
+height: -o-calc(100% - 10px);
+/* Standard */
+height: calc(100% - 10px);	
+}	
+#bx_basket1 td, #bx_basket1 th, #bx_basket1 .line-btn {
+	display: block;
+	width: 100%;
+}
+#bx_basket1 .line-btn a {
+	width: 100%;
+	margin-top: 15px;
+}
 }
