@@ -58,16 +58,18 @@ $(document).on('click', '#bx-soa-order .usertype label', function() {
 $(document).on('click', '#bx-soa-paysystem label', function() {		
 	dataLayerTypeOrder('Платежная система', $(this).children('span').text()); 
 });
-$(document).on('click', '#select_delivery_group li', function() {		
-	dataLayerTypeOrder('Группы доставки', $(this).text()); 
-	console.log($(this).text());
+$(document).on('click', '#select_delivery_group > li', function() {		
+	if (usertype != $(this).text()) {
+		dataLayerTypeOrder('Группы доставки', $(this).text()); 
+	}
+	usertype = $(this).text();	
 });
-$(document).on('click', '#bx-soa-delivery label', function() {		
-	dataLayerTypeOrder('Тип доставки', $(this).children('span').text()); 
-	console.log($(this).children('span').text());
+$(document).on('click', '#bx-soa-delivery label', function(e) {		
+	var target = e.target;
+	if ($(target).hasClass('radio__text')) {
+		dataLayerTypeOrder('Тип доставки', $(this).children('span').text()); 
+	}
 });
-p
-	
 });
 
 
