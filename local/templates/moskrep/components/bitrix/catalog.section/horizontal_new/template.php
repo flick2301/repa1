@@ -316,7 +316,7 @@ while($arSection = $db_list->GetNext()) {
 </div>
 <?endif?>
 
-<?if($arResult['UF_DETAIL_TEXT']):?>
+<?if($arResult['UF_DETAIL_TEXT'] && !($_REQUEST['PAGEN_1'] > 1)):?>
 <!--simple-article-->
             <div class="basic-layout__module simple-article">
                <div class="simple-article__content wysiwyg-block">
