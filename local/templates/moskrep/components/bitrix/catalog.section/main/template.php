@@ -26,13 +26,14 @@ use \Bitrix\Main\Localization\Loc;
                <div class="product-slider__list" id="product-slider__list">
 			   <?foreach ($arResult['ITEMS'] as $item):?>
                                 <?$res = CIBlockElement::GetList(array(), array('ID'=>$item["ID"]), false, false, array('ID', 'IBLOCK_ID', 'NAME', 'DETAIL_PAGE_URL'));
-                                  $arElement = $res->GetNext();?>			   
+                                  $arElement = $res->GetNext();
+								  $count++;?>			   
                   <div class="product-slider__item">
                      <!--product-card-->
                      <section class="product-card product-card--lite">
                         <div class="product-card__header">
                            <h3 class="product-card__title"><a class="product-card__link" href="<?=$arElement['DETAIL_PAGE_URL']?>"  onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['NAME']))?>')"><?=$item['NAME']?></a></h3>
-                           <img id="img_<?=$item['ID']?>" class="product-card__image" src="<?echo ($item['PREVIEW_PICTURE']['SRC']) ? $item['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg";?>" width="179" height="134" alt="<?=$item['PREVIEW_PICTURE']['DESCRIPTION']?>">
+                           <img id="img_<?=$item['ID']?>" class="product-card__image" <?=$count > 4 ? "data-" : ""?>src="<?echo ($item['PREVIEW_PICTURE']['SRC']) ? $item['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg";?>" width="179" height="134" alt="<?=$item['PREVIEW_PICTURE']['DESCRIPTION']?>">
                         </div>
                         <div class="product-card__footer">
                            <div class="product-card__price"><?=$item['PRICES']['Распродажа']['VALUE']?> ₽<del><?=$item['PRICES'][ID_BASE_PRICE]['VALUE']?> ₽</del></div>

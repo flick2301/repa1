@@ -291,6 +291,15 @@ ol.tech li {
 #feedback_form {
 	margin-top: 20px;
 }
+.product-slider div img[data-src] {
+	display: none;
+}
+
+
+
+
+
+
 
 
 
