@@ -14,12 +14,18 @@ $(document).ready(function() {
 	
 	//Авторизация
 	$(document).on('click', '#form_lk .user-account__submit[name=Auth]', function() {
-		if($('#user-account__login').val() && $('#user-account__pass').val() && checkUser($('#user-account__login').val(), $('#user-account__pass').val())) dataLayerSendFormAuth(true);
+		if($('#user-account__login').val() && $('#user-account__pass').val()) {
+			var uid = checkUser($('#user-account__login').val(), $('#user-account__pass').val());
+			if (uid) dataLayerSendFormAuth(uid);
+		}
 		else dataLayerSendFormAuth(false);
 	});	
 
 	$(document).on('click', '#form_auth .login-btn', function() {
-		if($('#form_auth input[name=USER_LOGIN]').val() && $('#form_auth input[name=USER_PASSWORD]').val()) dataLayerSendFormAuth(true);
+		if($('#form_auth input[name=USER_LOGIN]').val() && $('#form_auth input[name=USER_PASSWORD]').val()) {
+			var uid = checkUser($('#form_auth input[name=USER_LOGIN]').val(), $('#form_auth input[name=USER_PASSWORD]').val());
+			if (uid)  dataLayerSendFormAuth(uid);
+		}	
 		else dataLayerSendFormAuth(false);
 	});	
 	
@@ -94,7 +100,12 @@ function dataLayerSendForm() {
 
 //отправка формы авторизации
 function dataLayerSendFormAuth(result) {
+	
 	if (result) {
+		dataLayer.push({  
+			'UID': result // Уникальный идентификатор пользователя взятый из CRM Bitrix24
+		});		
+
 dataLayer.push({
 	'event':'krepkomp',
 	'eventCategory':'Авторизация', 
@@ -221,7 +232,7 @@ function checkUser(login, pass) {
 				if (data) result = data;
            },
 		});
-		
+
 		if (result) return result;
 }
 

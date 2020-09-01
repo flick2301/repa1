@@ -642,7 +642,7 @@ function onBeforeAdd(\Bitrix\Main\Entity\Event $event)
 }
 
 
-   
+/* 
    
    //Антибот регистрации на сайте
 AddEventHandler("main", "OnBeforeUserRegister", "OnBeforeUserRegisterHandler");
@@ -667,6 +667,7 @@ function OnBeforeUserRegisterHandler(&$arFields)
 
     
 }
+*/
    
    
 AddEventHandler("main", "OnEndBufferContent", "ChangeMyContent");
@@ -969,7 +970,7 @@ class CUserEx
          $arFields["LOGIN"] = $user["LOGIN"];
       /*else $arFields["LOGIN"] = "";*/
    }
-   function OnBeforeUserRegister($arFields)
+   function OnBeforeUserRegister(&$arFields)
    {
       $arFields["LOGIN"] = $arFields["EMAIL"];
    }
