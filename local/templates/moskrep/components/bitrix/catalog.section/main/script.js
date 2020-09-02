@@ -54,28 +54,13 @@ BX.ready(function () {
             }
         }); 
     }
-    
- 
- $(document).on('click', '.product-slider .slick-prev', function() {
-	for (i=$('.product-slider .slick-active').attr('data-slick-index'); i<($('.product-slider .slick-active').attr('data-slick-index') + 4); i++) {
-		$('.product-slider [data-slick-index=' + i +'] img').attr('src', $('.product-slider [data-slick-index=' + i +'] img').attr('data-src'));
-		$('.product-slider [data-slick-index=' + i +'] img').removeAttr('data-src');
-	}
-	 
-    $('.product-slider .slick-active img').each(function() {
+	
+	
+ $(document).on('click', '.product-slider .slick-prev, .product-slider .slick-next', function() {	
+     $('.product-slider div img').each(function() {
         $(this).attr('src', $(this).attr('data-src'));
 		$(this).removeAttr('data-src');
     });	 
- });   
-   
- $(document).on('click', '.product-slider .slick-next', function() {
-    $('.product-slider .slick-active img').each(function() {
-        $(this).attr('src', $(this).attr('data-src'));
-		$(this).removeAttr('data-src');
-    });	 
- });  
-        
-    
-    
+ });      
 
 });

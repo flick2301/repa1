@@ -292,7 +292,10 @@ ol.tech li {
 	margin-top: 20px;
 }
 .product-slider div img[data-src] {
-	display: none;
+	visibility: hidden;
+}
+#sales-slider__list div img[data-src] {
+	visibility: hidden;
 }
 
 

@@ -960,6 +960,9 @@ class SaleOrderEvents
 AddEventHandler("main", "OnBeforeUserLogin", Array("CUserEx", "OnBeforeUserLogin"));
 AddEventHandler("main", "OnBeforeUserRegister", Array("CUserEx", "OnBeforeUserRegister"));
 AddEventHandler("main", "OnBeforeUserRegister", Array("CUserEx", "OnBeforeUserUpdate"));
+AddEventHandler("main", "OnBeforeUserAdd", Array("CUserEx", "OnBeforeUserRegister"));
+
+
 class CUserEx
 {
    function OnBeforeUserLogin($arFields)
@@ -970,9 +973,11 @@ class CUserEx
          $arFields["LOGIN"] = $user["LOGIN"];
       /*else $arFields["LOGIN"] = "";*/
    }
-   function OnBeforeUserRegister(&$arFields)
+   public static function OnBeforeUserRegister(&$arFields)
    {
+	   
       $arFields["LOGIN"] = $arFields["EMAIL"];
+	  
    }
 }
 
