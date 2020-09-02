@@ -297,8 +297,9 @@ ol.tech li {
 #sales-slider__list div img[data-src] {
 	visibility: hidden;
 }
-
-
+#intro-slider__list img[data-src] {
+	visibility: hidden;
+}
 
 
 

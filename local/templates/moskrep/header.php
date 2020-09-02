@@ -92,6 +92,7 @@ $APPLICATION->IncludeFile(
 	if (IPHONE=="Y") $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/iphone.css", true);	
 	
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/datalayer.js");
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");
 	?>
 	
 
