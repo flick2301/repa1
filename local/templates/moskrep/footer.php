@@ -380,7 +380,7 @@ $APPLICATION->SetPageProperty('description', '«КРЕП-КОМП» - ведущ
    
 
 
-<?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/jivosite.php";?>
+<?global $USER; if ($USER->GetID()!=1) include_once $_SERVER["DOCUMENT_ROOT"] . "/include/jivosite.php";?>
 
 </body>
 </html>
