@@ -307,6 +307,18 @@ ol.tech li {
 #intro-slider__list img[data-src] {
 	visibility: hidden;
 }
+#sales-slider__list .catalog-card__cover {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;	
+	background: #fff;
+}
+#sales-slider__list .catalog-card {
+	height: 247px;
+}
+
+
 
 
 

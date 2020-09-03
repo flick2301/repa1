@@ -3,16 +3,6 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Персональный раздел");
 ?><?$APPLICATION->AddChainItem("Мои заказы", "");?>
 
-<?if($_REQUEST['register'] == 'yes'):?>
-	<script>
-		dataLayerSendFormRegister(true);
-		
-setTimeout(function() {
-	window.location.href="/personal/private/";
-}, 1000);		
-	</script>	
-<?endif?>
-
 
 <?if($_REQUEST['access'] == ''):?>
 <?if(SITE_TEMPLATE_ID=='moskrep'){?>
@@ -111,7 +101,7 @@ setTimeout(function() {
 <?}?>
 <?else:?>
 <script>
-window.location.replace('https://krep-komp.ru/personal/');
+//window.location.replace('https://krep-komp.ru/personal/');
 </script>
 <?endif;?>
  <br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
