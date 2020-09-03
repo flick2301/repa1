@@ -94,7 +94,17 @@ $APPLICATION->IncludeFile(
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/datalayer.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");
 	?>
-	
+
+   <script src="/local/templates/moskrep/js/fancybox.min.js" defer="defer"></script>
+   <script src="/local/templates/moskrep/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="/local/templates/moskrep/assets/scripts/jquery.icheck-1.0.2.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="/local/templates/moskrep/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="/local/templates/moskrep/assets/scripts/jquery.slick-1.9.0.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="/local/templates/moskrep/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="/local/templates/moskrep/js/jquery.popup.js" defer="defer"></script>
+   <script src="/local/templates/moskrep/js/common.js" defer="defer"></script>
+   <script src="/local/templates/moskrep/js/slick.min.js" defer="defer"></script>
+   <script src="/local/templates/moskrep/js/jquery.cookie.js" defer="defer"></script>	
 
 
     
