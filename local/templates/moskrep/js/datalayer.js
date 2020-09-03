@@ -31,6 +31,7 @@ $(document).ready(function() {
 	
 	//Регистрация
 	$(document).on('click', '#form_lk .user-account__submit[name=Register]', function(e) {
+		return;//Переведено на параметр
 		if($('#user-account__login').val() && $('#user-account__pass').val().length >= 5 && $('#user-account__passconfirm').val().length >= 5 && ($('#user-account__pass').val() == $('#user-account__passconfirm').val()) && $('#user-account__email').val() && !checkEmail($('#user-account__email').val()) && validateEmail($('#user-account__email').val()) && $('#captcha_word_registration').val()) dataLayerSendFormRegister(true);
 		else dataLayerSendFormRegister(false);
 		//e.preventDefault();

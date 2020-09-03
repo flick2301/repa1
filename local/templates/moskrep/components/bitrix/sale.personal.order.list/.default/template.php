@@ -110,13 +110,13 @@ else
                         <div class="orders-table__column orders-table__column--basic">
                            <div class="orders-table__title">Статус заказа<small>:</small></div>
                            <div class="orders-table__content orders-table__content--status">
-                              <p class="orders-table__desc"><?=$arResult['STATUS'][$order['ORDER']["STATUS_ID"]]?></p>
+                              <p class="orders-table__desc<?if($order['ORDER']["STATUS_ID"]=="F"):?> orders-table__desc--valid<?endif?>"><?=$arResult['STATUS'][$order['ORDER']["STATUS_ID"]]?></p>
                            </div>
                         </div>
                         <div class="orders-table__column orders-table__column--basic">
                            <div class="orders-table__title">Статус оплаты<small>:</small></div>
                            <div class="orders-table__content">
-                              <?foreach ($order['PAYMENT'] as $payment):?><p class="orders-table__desc orders-table__desc--basic"><?=$payment['PAY_SYSTEM_NAME']?></p><?endforeach?>
+                              <?foreach ($order['PAYMENT'] as $payment):?><p class="orders-table__desc orders-table__desc--basic<?if($payment["PAY_SYSTEM_ID"]==8):?> orders-table__desc--valid<?endif?>"><?=$payment['PAY_SYSTEM_NAME']?></p><?endforeach?>
                            </div>
                         </div>
                         <div class="orders-table__column orders-table__column--total">

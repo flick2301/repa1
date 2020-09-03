@@ -25,7 +25,7 @@ use \Bitrix\Main\Localization\Loc;
             <div class="basic-layout__module product-slider">
                <div class="product-slider__list" id="product-slider__list">
 			   <?foreach ($arResult['ITEMS'] as $item):?>
-                                <?$res = CIBlockElement::GetList(array(), array('ID'=>$item["ID"]), false, false, array('ID', 'IBLOCK_ID', 'NAME', 'DETAIL_PAGE_URL'));
+                                <?$res = CIBlockElement::GetList(array(), array('ID'=>$item["ID"]), false, false, array('ID', 'IBLOCK_ID', 'NAME', 'DETAIL_PAGE_URL', 'IBLOCK_SECTION_ID'));
                                   $arElement = $res->GetNext();
 								  $count++;?>			   
                   <div class="product-slider__item">

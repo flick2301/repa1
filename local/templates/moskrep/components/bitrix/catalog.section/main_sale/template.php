@@ -16,7 +16,7 @@ use \Bitrix\Main\Localization\Loc;
 
 
 <?foreach ($arResult['ITEMS'] as $item):?>
-<?$res = CIBlockElement::GetList(array(), array('ID'=>$item["ID"]), false, false, array('ID', 'IBLOCK_ID', 'NAME', 'DETAIL_PAGE_URL'));
+<?$res = CIBlockElement::GetList(array(), array('ID'=>$item["ID"]), false, false, array('ID', 'IBLOCK_ID', 'NAME', 'DETAIL_PAGE_URL', 'IBLOCK_SECTION_ID'));
 $arElement = $res->GetNext();?>
 
                <div class="special-products__item">
