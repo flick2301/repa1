@@ -271,6 +271,7 @@ $APPLICATION->IncludeFile(
 					<div class="client-widget__user">
 					<?
 					global $USER;
+					if ($USER->GetID()==1) $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/administrator.css", true);
 					if ($USER->IsAuthorized()){ 
 						?><a class="client-widget__link" href="/personal/"><i class="simple-user-icon client-widget__icon"></i>Кабинет</a><?
 					}else{
