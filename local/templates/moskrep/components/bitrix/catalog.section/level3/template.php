@@ -29,11 +29,13 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 				
 <?php
 	//if ($_SERVER['REQUEST_URI']=="/krepezh/samorezy/samorezy_po_derevu/ostrye_pd/") file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arResult['SIZES'], true));
-
+	
+		$size_index=0;
 
     foreach($arResult['SIZES'] as $key=>$size){
         
         $index=0;
+		$size_index++;		
         foreach ($size as $item)
         {
 			
@@ -110,7 +112,8 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
         <?}?>
 		<?if($arResult['EXTRA_FIELD']){
 			foreach($arResult['EXTRA_FIELD'] as $field){?>
-					<div class="catalog-table__column catalog-table__column--basic">
+					<div class="catalog-table__column catalog-table__column--basic" data-code="<?=$field['CODE']?>"><?$item['PROPERTIES'][$field['CODE']]["VALUE"] ? $view[$field['CODE']]=true : "";?>
+					<?=$size_index==count($arResult['SIZES']) && $index==count($size) && !$view[$field['CODE']] ? "<script>$('.catalog-table__column[data-code=\"{$field['CODE']}\"]').hide();</script>" : ""?>
                         <div class="catalog-table__title"><?=$field['NAME']?><small>:</small></div>
                            <div class="catalog-table__content">
 								<p class="catalog-table__desc"><?=mb_strimwidth($item['PROPERTIES'][$field['CODE']]["VALUE"], 0, 12, "...");?></p>

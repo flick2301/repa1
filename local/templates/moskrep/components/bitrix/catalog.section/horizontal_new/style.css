@@ -1,3 +1,46 @@
+.size-b {
+    font-size: 14px;
+    font-size: 0.875rem; color: #676767;
+}
+
+.articul-b {
+    font-size: 14px;
+    font-size: 0.875rem; color: #676767;
+}
+
+.col-b {
+    font-size: 14px;
+    font-size: 0.875rem; color: #000;
+}
+
+.color-b {
+    font-size: 14px;
+    font-size: 0.875rem; color: #000;
+}
+
+.color-b i {
+    border-radius: 3px;
+    width: 30px; height: 24px;
+    display: block;
+    margin: 0 auto 8px;
+}
+
+.price-b {
+    font-family: 'Circe Bold';
+    font-size: 18px;
+    font-size: 1.125rem; color: #000;
+}
+
+.availability-b {
+    display: block;
+    font-size: 14px;
+    font-size: 0.875rem; color: #8b8b8b;
+    margin-top: 8px;
+}
+
+.availability-b.active {
+    color: #6fc83e;
+}
 .pickup-view {
 	
     background: url(./img/Shape-01.png) no-repeat;
