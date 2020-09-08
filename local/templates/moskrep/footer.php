@@ -1,5 +1,8 @@
 			
 		</div>
+		
+
+		
 		<?if (CSite::InDir('/index.php') && SITE_ID!='s2'){
     ?>
 	<div class="basic-layout__sidebar"></div>
@@ -357,6 +360,9 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 <?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa");?>
 <?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/jquery.slick-1.9.0.min.js?v=XXXXXXa");?>
 <?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa");?>
+
+
+
 
 
 

@@ -86,16 +86,16 @@ $APPLICATION->IncludeFile(
 	<?
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/reset.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.css", true);
-    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/fancybox.css", true);
+    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/jquery.fancybox.min.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/styles/global.styles.min.css?v=XXXXXXa", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.css", true);	
 	if (IPHONE=="Y") $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/iphone.css", true);	
 	
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.fancybox.min.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/datalayer.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");
 	?>
-
-   <script src="/local/templates/moskrep/js/fancybox.min.js" defer="defer"></script>
+	
    <script src="/local/templates/moskrep/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="/local/templates/moskrep/assets/scripts/jquery.icheck-1.0.2.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="/local/templates/moskrep/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa" defer="defer"></script>
@@ -104,8 +104,7 @@ $APPLICATION->IncludeFile(
    <script src="/local/templates/moskrep/js/jquery.popup.js" defer="defer"></script>
    <script src="/local/templates/moskrep/js/common.js" defer="defer"></script>
    <script src="/local/templates/moskrep/js/slick.min.js" defer="defer"></script>
-   <script src="/local/templates/moskrep/js/jquery.cookie.js" defer="defer"></script>	
-
+   <script src="/local/templates/moskrep/js/jquery.cookie.js" defer="defer"></script>		
 
     
     <!--[if (lt IE 9)&(!IEMobile 7)]><script src="js/html5support.js"></script><![endif]-->

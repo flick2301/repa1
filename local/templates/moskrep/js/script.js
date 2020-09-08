@@ -5,4 +5,8 @@ setTimeout(function(){
 		$(this).removeAttr('data-src');
     });
 }, 4000);
+
+$("a[data-rel=gallery_card]").fancybox();
+$("a[data-rel=gallery_img]").fancybox();
+$("a[data-rel=catalog-photo]").fancybox();
 });

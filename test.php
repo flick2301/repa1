@@ -1,15 +1,29 @@
 <?
-//if (!$_POST['login'] || !$_POST['pass']) die();
-require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include/prolog_before.php");
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+$APPLICATION->SetTitle("Интернет-магазин \"Москреп\"");
+$APPLICATION->SetPageProperty("title", "Интернет-магазин \"Москреп\"");
+?>
 
+            <?$APPLICATION->IncludeComponent(
+	     "bitrix:catalog.section.list",
+	     "main",
+	     Array(
+		"ADD_SECTIONS_CHAIN" => "N",
+		"CACHE_GROUPS" => "N",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"COUNT_ELEMENTS" => "N",
+		"IBLOCK_ID"=>CATALOG_IBLOCK_ID,
+		"IBLOCK_TYPE" => "catalog",
+		"SECTION_CODE" => "samorezy",
+		"SECTION_FIELDS" => array("",""),
+		"SECTION_ID" => $_REQUEST["SECTION_ID"],
+		"SECTION_URL" => "",
+		"SECTION_USER_FIELDS" => array("",""),
+		"SHOW_PARENT_NAME" => "Y",
+		"TOP_DEPTH" => "1",
+		"VIEW_MODE" => "LINE"
+	         )
+            );?>	
 
-$filter = Array
-(
-    "ACTIVE"              => "Y",
-    "EMAIL"               => "kolobets@mail.ru",
-);
-$rsUsers = CUser::GetList(($by="personal_country"), ($order="desc"), $filter); // выбираем пользователей
-$is_filtered = $rsUsers->is_filtered; // отфильтрована ли выборка ?
-$rsUsers->NavStart(1); // разбиваем постранично по 50 записей
-echo $rsUsers->NavPrint(GetMessage("PAGES")); // печатаем постраничную навигацию
-while($rsUsers->NavNext(true, "f_")) echo true;	
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

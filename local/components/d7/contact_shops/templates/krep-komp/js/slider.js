@@ -1,4 +1,4 @@
-$(document).on('ready', function() {
+$(document).ready(function() {
 	
 	if ((img_count - 3) > 0) initialSlide = 1;
 	else initialSlide = 0

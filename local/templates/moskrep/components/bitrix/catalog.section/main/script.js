@@ -3,8 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 BX.ready(function () {
     var buyBtnDetail = document.body.querySelectorAll('.simple-cart-icon');
 
