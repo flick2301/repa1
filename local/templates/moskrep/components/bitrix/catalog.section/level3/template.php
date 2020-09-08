@@ -84,12 +84,12 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 						<div class="catalog-table__title">Получение<small>:</small></div>
                         <div class="catalog-table__content">
                             <span class="pickup-view" data-product="<?=$item['ID']?>">
-									<div id='pickup_<?=$item['ID']?>' style='display:none' class="pickup-block">
+									<div id='pickup_<?=$item['ID']?>' class="pickup-block">
 										
 									</div>
 								</span>
 								<span class="delivery-view"  data-product="<?=$item['ID']?>">
-									<div id='delivery_<?=$item['ID']?>' style='display:none' class="delivery-block">
+									<div id='delivery_<?=$item['ID']?>' class="delivery-block">
 										
 									</div>
 								</span>
