@@ -91,7 +91,7 @@ $APPLICATION->IncludeFile(
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.css", true);	
 	if (IPHONE=="Y") $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/iphone.css", true);	
 	
-	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.fancybox.min.js");
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.fancybox.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/datalayer.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");
 	?>
@@ -358,14 +358,11 @@ $APPLICATION->IncludeFile(
 		"DELAY" => "N",
 		"ALLOW_MULTI_SELECT" => "N",
 		"VIBOR_CATALOG_TABLE" => array(
-			0 => "1603",
-			1 => "1649",
-			2 => "1951",
-			3 => "2312",
-			4 => "2354",
-			6 => "2411",
-                        7 => "2403",
-                        8 => "",
+			
+			1 => "2312",
+			2 => "2411",
+            3 => "2403",
+            4 => "",
 		)
 	),
 	false

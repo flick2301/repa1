@@ -1792,7 +1792,7 @@
       self.checkSrcset(slide);
 
       // This will be wrapper containing both ghost and actual image
-      slide.$content = $('<div class="fancybox-content"></div>')
+      slide.$content = $('<div class="fancybox-content"><button data-fancybox-close class="fancybox-button fancybox-button--close fancybox-button--close-new" title="Закрыть"><img src="/local/templates/moskrep/img/close.svg" alt="Закрыть" title="Закрыть" /></button></div>')
         .addClass("fancybox-is-hidden")
         .appendTo(slide.$slide.addClass("fancybox-slide--image"));
 
