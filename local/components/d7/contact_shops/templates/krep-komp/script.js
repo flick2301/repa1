@@ -37,6 +37,11 @@ $(document).ready(function() {
 		height:200,
 		text: window.location.href
 	});	
+	
+	$(document).on('click', '.shop .box', function(e) {
+		e.preventDefault();
+		e.stopPropagation();		
+	});	
 
 });	
 

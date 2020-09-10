@@ -48,7 +48,7 @@ $this->addExternalCss($templateFolder."/slick/slick-theme.css");
 
 
 <?if($_REQUEST["ID"]):?>
-<div id="shop<?=$arParams["SECTION_ID"]?>">
+<div id="shop<?=$arParams["SECTION_ID"]?>" class="shop">
 <?foreach($arResult["ITEMS"] AS $key=>$item):?>
 <?$APPLICATION->AddChainItem(preg_replace("/\&lt;[A-z\/ ]+\&gt;/", ", ", $item["PROP"]["ADDRESS"]["VALUE"]));?>
 
@@ -86,14 +86,14 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 <?if(is_array($item["IMG"])):?>
 			<div class="slider slider-for">
 <?foreach($item["IMG"] AS $img):?>
-<div><a href="<?=$img?>" data-rel="gallery_card"><img src="<?=$img?>" alt="<?=["NAME"]?>" title="<?=$item["NAME"]?>" /></a></div>
+<div><a data-fancybox="images" href="<?=$img?>" data-rel="gallery_card"><img src="<?=$img?>" alt="<?=["NAME"]?>" title="<?=$item["NAME"]?>" /></a></div>
 <?endforeach?>			
 			</div>
 <script>img_count = <?=count($item["IMG"]) ? count($item["IMG"]) : 0?></script>			
 			<div class="slider slider-nav">			
 <?foreach($item["IMG"] AS $img):?>
 <?$num++?>
-<div class="box"><img src="<?=$img?>" alt="<?=$item["NAME"]?> <?=sprintf("%02d", $num)?>" title="<?=$item["NAME"]?> <?=sprintf("%02d", $num)?>" /></div>
+<div class="box"><a href="<?=$img?>"><img src="<?=$img?>" alt="<?=$item["NAME"]?> <?=sprintf("%02d", $num)?>" title="<?=$item["NAME"]?> <?=sprintf("%02d", $num)?>" /></a></div>
 <?endforeach?>			
 </div>
 <?endif?>

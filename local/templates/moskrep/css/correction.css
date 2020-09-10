@@ -327,9 +327,6 @@ ol.tech li {
 .basic-layout__module+.basic-layout__module {
 	margin-bottom: 20px;
 }
-.fancybox-button--close {
-	display: none;
-}
 .fancybox-button--close-new {
 	display: inline-block;
 	top: -32px;
@@ -342,8 +339,6 @@ ol.tech li {
 .fancybox-button--close-new:hover {
 	opacity: 1;
 }
-
-
 
 
 
