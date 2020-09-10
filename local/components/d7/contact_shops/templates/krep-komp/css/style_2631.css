@@ -295,93 +295,6 @@
 }
 
 
-@media print {
-body > *:not(main) {
-    display: none;
-}
-.map {
-    width: 400px;
-    height: 300px;
-    background-image: url('http://maps.googleapis.com/maps/api/staticmap?center=Wien+Floridsdorf&zoom=13&scale=false&size=400x300&maptype=roadmap&format=png&visual_refresh=true');
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-}	
-.noprint {
-    display: none!important;
-	visibility: hidden!important;
-	opacity: 0!important;
-}	
-#bx-panel, #bannerIsWork, .breadcrumbs, .header, .two-column__left, .footer, #click_scheme, #jivo-iframe-container, jdiv, h2.s28-title, .requisites {
-    display: none!important;	
-	visibility: hidden!important;
-	opacity: 0!important;	
-}
-h1.s38-title {
-	font-size: 22px;
-	margin-top: -30px!important;
-	position: relative;
-	z-index: 1000;	
-}
-#shop2631 .how {
-	position: relative;
-	top: -50px;
-}
-#qr {
-	float: left;
-	height: 200px;
-	width: 200px;
-	margin: 30px;
-}
-#shop2631 .how .scheme {
-	margin-bottom: -10px;
-	margin-left: 10px;
-	margin-top: 10px;
-	float: right;
-	width: 570px;
-	clear: right;
-	page-break-after: always;
-}
-.two-column.inner, .two-column__right {
-	width: 100%;
-	padding: 0;
-	margin: 0;
-}
-#current_shop_table2631 {
-    margin: 10px 0 10px;
-}
-#current_shop_table2631 th, #current_shop_table2631 td {
-	padding: 5px;
-}
-#current_shop_table2631 th:first-child, #current_shop_table2631 td:first-child {
-	padding: 5px 5px 5px 0;	
-}
-#current_shop_table2631 th:last-child, #current_shop_table2631 td:last-child {
-	padding: 5px 0 5px 5px;	
-}
-#shop2631 .how h3 {
-	margin: 10px 0;
-}	
-#shop2631 .afoot, #shop2631 .car {
-	margin-top: 0px;
-	line-height: 24px;
-	font-size: 18px;
-}
-#shop2631 #map2631 {
-	border: none;
-}
-#shop2631 .print {
-	display: block;
-}
-[class*="ymaps-2"][class*="-ground-pane"] {
-  -webkit-filter: saturate(500%) grayscale(50%) contrast(110%);
-          filter: saturate(500%) grayscale(50%) contrast(110%);
-}
-[class="scheme"] {
-  -webkit-filter: saturate(250%) grayscale(50%);
-          filter: saturate(250%) grayscale(50%);
-}
-}
-
 
 
 
@@ -440,4 +353,95 @@ h1.s38-title {
 #shops2631 ul.left::-webkit-scrollbar-thumb:hover {
   background: #fff;
 }	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media print {
+.noprint {
+    display: none!important;
+	visibility: hidden!important;
+	opacity: 0!important;
+}
+.map {
+    width: 400px;
+    height: 300px;
+    background-image: url('http://maps.googleapis.com/maps/api/staticmap?center=Wien+Floridsdorf&zoom=13&scale=false&size=400x300&maptype=roadmap&format=png&visual_refresh=true');
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}	
+#shop2631 .print {
+	display: block;
+}
+#bx-panel {
+	display: none!important;	
+}
+header, footer, aside, .crumbs-nav, nav, .main-nav, .basic-layout__header, .basic-layout__section, .simple-article__content, #shop2631 .slider-nav {
+	display: none!important;
+}
+header.basic-layout__module {
+	display: block!important;
+	padding: 0!important;
+	margin: 0!important;	
+	margin-top: -200px!important;	
+}
+body, #content, #shop, .basic-layout__content, main, basic-layout__content {
+	padding: 0!important;
+	margin: 0!important;
+}
+h1.page-heading__title {
+	font-size: 20px;
+	padding-top: 0;
+}
+#shop2631 #map2631 , #shop2631 #map2631  div, #shop2631 #map2631  ymaps {
+	width: 100%!important;
+	margin: 0;
+	padding: 0;
+	float: none;
+	height: 400px!important;
+}
+#shop2631 .how h3 {
+	margin-top: 10px;
+}
+#shop2631 .left {
+	width: 64%!important;
+	height: auto;
+}
+#shop2631 .left div{
+	width: 100%!important;
+}
+#shop2631 .left img {
+	width: 100%!important;
+	display: block;
+}
+#shop2631 .left .slick-initialized .slick-slide {
+	width: 800px;
+}
+#qr {
+	float: right;
+	height: 200px;
+	width: 200px;
+}
+#shop2631 .how h3 {
+	margin-top: 20px;
+}
+
+[class*="ymaps-2"][class*="-ground-pane"] {
+  -webkit-filter: saturate(500%) grayscale(50%) contrast(110%);
+          filter: saturate(500%) grayscale(50%) contrast(110%);
+}
+[class="scheme"] {
+  -webkit-filter: saturate(250%) grayscale(50%);
+          filter: saturate(250%) grayscale(50%);
+}
 }

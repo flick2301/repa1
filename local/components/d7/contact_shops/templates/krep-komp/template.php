@@ -82,7 +82,12 @@ $this->addExternalCss($templateFolder."/slick/slick-theme.css");
 shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["VALUE"]?>, lon: <?=$item["PROP"]["LON"]["VALUE"]?>, color: '<?if($item["PROP"]["COLOR"]["VALUE"]):?><div class="label" style="background: <?=$item["PROP"]["COLOR"]["VALUE"]?>;"></div><?endif?>', name: '<?=$item["PROP"]["TYPE"]["VALUE"]?>', address: '<?=htmlspecialchars_decode($item["PROP"]["ADDRESS"]["VALUE"])?>', text: '<?=$item["PREVIEW_TEXT"] ? "<br />Режим работы: ".preg_replace("/[^A-zА-я0-9\,:\-\<\> ]+/u", "", $item["PREVIEW_TEXT"]) : ""?><div class="line-btn"><a href="<?=$APPLICATION->GetCurPageParam("ID=".$item["ID"])?>" class="blue-btn">Перейти к магазину</a></div>'});
 </script>
 
+<div class="onpage">
+
+<div id="qr" class="print"></div>
+
 <div class="left">
+
 <?if(is_array($item["IMG"])):?>
 			<div class="slider slider-for">
 <?foreach($item["IMG"] AS $img):?>
@@ -99,6 +104,7 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 <?endif?>
 </div>
 <div id="map<?=$arParams["SECTION_ID"]?>"></div>
+</div>
 
 <div class="how">
 <h2 class="noprint">Как добраться</h2>
@@ -112,7 +118,6 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 <?=$item["PROP"]["CAR"]["~VALUE"]["TEXT"]?>
 </div>
 
-<div id="qr" class="print"></div>
 
 <?if($item["SCHEME"]):?>
 	<img class="scheme" src="<?=$item["SCHEME"]?>" alt="<?=preg_replace("/\&lt;[A-z\/ ]+\&gt;/", "", $item["PROP"]["ADDRESS"]["VALUE"])?>" title="<?=preg_replace("/\&lt;[A-z\/ ]+\&gt;/", "", $item["PROP"]["ADDRESS"]["VALUE"])?>" />
