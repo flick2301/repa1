@@ -94,6 +94,12 @@ $APPLICATION->IncludeFile(
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.fancybox.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/datalayer.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");
+	
+		global $USER;
+		if ($USER->GetID()==1) {
+			$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/administrator.css", true);	
+			$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/administrator.js");
+		}	
 	?>
 	
    <script src="/local/templates/moskrep/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>
@@ -270,7 +276,6 @@ $APPLICATION->IncludeFile(
 					<div class="client-widget__user">
 					<?
 					global $USER;
-					if ($USER->GetID()==1) $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/administrator.css", true);
 					if ($USER->IsAuthorized()){ 
 						?><a class="client-widget__link" href="/personal/"><i class="simple-user-icon client-widget__icon"></i>Кабинет</a><?
 					}else{

@@ -317,6 +317,9 @@ ol.tech li {
 #sales-slider__list .catalog-card {
 	height: 247px;
 }
+.catalog-feed__item .catalog-card {
+	z-index: 0;
+}
 #bx-soa-total .main-button {
 	color: #fff;
 	text-decoration: none;
