@@ -188,14 +188,14 @@
   background: rgba(12,89,207,0.7);
 }
 #shop #map {
-	height: 400px;	
+	height: 352px;	
 	margin-left: 360px;
 	border: 0px solid #d5d5d5;
 }
 #shop .left {
 	float: left;
 	width: 339px;
-	height: 400px;
+	height: 355px;
 	overflow: hidden;
 }
 #shop .left .slider-for img {
@@ -414,9 +414,14 @@ h1.s38-title {
 	display: block;
 	float: none;	
 	width: 100%;
+	height: auto;
 }
 #shops #map {
 	margin-left: 0;
+	height: 400px;
+}
+#shop .left {
+	margin-bottom: 20px;	
 }
 #shop #map {
     margin-left: 0;
@@ -427,7 +432,7 @@ h1.s38-title {
 	margin-bottom: 20px;
 }
 #shops ul.left li .line-btn .blue-btn {
-	WIDTH: 100%;
+	width: 100%;
 }
 /* Let's get this party started */
 #shops ul.left::-webkit-scrollbar {
