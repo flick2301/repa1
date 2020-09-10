@@ -719,7 +719,7 @@ AddEventHandler('main', 'OnEpilog', array('CMainHandlers', 'OnEpilogHandler'));
 class CMainHandlers { 
    public static function OnEpilogHandler() {
       if (isset($_GET['PAGEN_1']) && intval($_GET['PAGEN_1'])>0) {
-         $title = $GLOBALS['APPLICATION']->GetPageProperty('title');
+         $title = $GLOBALS['APPLICATION']->getTitle();
          $GLOBALS['APPLICATION']->SetPageProperty('title', $title.' (страница '.intval($_GET['PAGEN_1']).')');
       }
    }
