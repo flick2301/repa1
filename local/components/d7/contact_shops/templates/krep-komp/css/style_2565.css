@@ -183,9 +183,7 @@
 #shop2565 #map2565 {
 	height: 352px;	
 	margin-left: 360px;
-	border: 0px solid #d5d5d5;
-	width: 100%;
-	overflow: hidden;	
+	border: 0px solid #d5d5d5;	
 }
 #shop2565 .left {
 	float: left;
