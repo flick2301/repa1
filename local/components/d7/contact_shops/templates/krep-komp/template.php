@@ -91,7 +91,7 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 <?if(is_array($item["IMG"])):?>
 			<div class="slider slider-for">
 <?foreach($item["IMG"] AS $img):?>
-<div><a data-fancybox="images" href="<?=$img?>" data-rel="gallery_card"><img src="<?=$img?>" alt="<?=["NAME"]?>" title="<?=$item["NAME"]?>" /></a></div>
+<div><a data-fancybox="Магазин <?=["NAME"]?>" href="<?=$img?>" data-rel="gallery_card"><img src="<?=$img?>" alt="<?=["NAME"]?>" title="<?=$item["NAME"]?>" /></a></div>
 <?endforeach?>			
 			</div>
 <script>img_count = <?=count($item["IMG"]) ? count($item["IMG"]) : 0?></script>			

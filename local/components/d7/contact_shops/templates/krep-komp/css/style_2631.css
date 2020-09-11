@@ -184,6 +184,8 @@
 	height: 352px;	
 	margin-left: 360px;
 	border: 0px solid #d5d5d5;
+	width: 100%;
+	overflow: hidden;	
 }
 #shop2631 .left {
 	float: left;
@@ -215,7 +217,7 @@
 	font-size: 20px;
 	line-height: 29px;
 	font-weight: bold;
-	font-family: 'Circe Regular';
+	font-family: Circe,sans-serif;
 }
 #shop2631 .how h3 {
 	font-size: 16px;
@@ -225,7 +227,7 @@
 	clear: both;
 	margin: 0 0 10px 0;
 	font-weight: bold;
-	font-family: 'Circe Regular';
+	font-family: Circe,sans-serif;
 }	
 #shop2631 .how .blue-btn {
 	height: 36px;
@@ -238,10 +240,11 @@
 	width: 160px;
 }
 #shop2631 .how .scheme {
-	width: 70%;
+	width: 100%;
 	display: block;
 	clear: both;
 	margin-top: 0;
+	border: solid 1px #dedede;
 }
 #click_scheme2631 {
 	display: block;
