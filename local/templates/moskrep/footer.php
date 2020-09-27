@@ -24,7 +24,7 @@
             "left_bottom",
             Array(
             "ROOT_MENU_TYPE" => "left_bottom", 
-            "MAX_LEVEL" => "1", 
+            "MAX_LEVEL" => "2", 
             "CHILD_MENU_TYPE" => "left_bottom", 
             "USE_EXT" => "Y",
             "VIBOR_CATALOG_TABLE" => array(

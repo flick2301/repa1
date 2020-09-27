@@ -9,14 +9,14 @@ while ($arSection = $rsSections->Fetch())
 $delete=true;
 
 foreach($arResult as $key=>$arItem):
-    if($arItem['DEPTH_LEVEL'] == 1):
+    if($arItem['DEPTH_LEVEL'] < 3):
         $delete=false;
     endif;
     if($arItem['DEPTH_LEVEL'] == 1 && in_array($arItem['TEXT'], $arText)):
       $delete=true;  
     endif;
     if($delete)
-        unset($arResult[$key]);
+        //unset($arResult[$key]);
     if($arItem['LINK']=='/krepezh/ankera/anker_shpilka/'){
         array_splice($arResult, $key, 0, array(array("TEXT"=>"Химический анкер", "LINK"=> "/krepezh/ankera/khimicheskiy_anker/", "SELECTED"=> false, "PERMISSION"=>"X",  "IS_PARENT"=> false, "IS_PARENT"=> false, "DEPTH_LEVEL"=>'3'), array("TEXT"=>"Анкер регулировочный", "LINK"=> "/krepezh/ankera/anker_regulirovochnyy/", "SELECTED"=> false, "PERMISSION"=>"X",  "IS_PARENT"=> false, "IS_PARENT"=> false,  "DEPTH_LEVEL"=>'3')));
 

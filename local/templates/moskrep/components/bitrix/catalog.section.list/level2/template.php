@@ -300,6 +300,33 @@ global $APPLICATION;
                <h1 class="page-heading__title"><?=($arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE']) ? $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] :$arResult["SECTION"]["NAME"];?></h1>
             </header>
  <!--page-heading-->
+ <?
+if($arResult['SORTING']['SECTION_ID']){
+	?>
+	<!--category-block-->
+            <div class="basic-layout__module category-block">
+	<?
+    foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
+        
+        ?>
+        <h3 class="category-block__title"><?=$sortSection["NAME"]?></h3>
+        <ul class="category-block__list">
+        <?$i=0;?>
+        <?foreach($sortSection['ITEMS'] as $sort_item):?>
+            <?$i++;?>
+            <li class="category-block__item">
+                <a href="<?=($sort_item['LINK_TARGET']['VALUE']) ? $sort_item['LINK_TARGET']['VALUE'] : $sort_item['CODE'].'/';?>" <?=($sort_item['LINK_TARGET']['VALUE']) ? "target='_self'" : "";?> class="category-block__link">
+                    <?=$sort_item['NAME']?>
+                </a>
+            </li>
+	<?endforeach;?>
+        </ul>
+        <?
+    }
+	?></div>
+	<!--category-block--><?
+}
+?>
 <!--catalog-feed-->
     <div class="basic-layout__module catalog-feed">
         <div class="catalog-feed__list">
@@ -345,33 +372,7 @@ global $APPLICATION;
     <!--catalog-feed-->
 
 
-<?
-if($arResult['SORTING']['SECTION_ID']){
-	?>
-	<!--category-block-->
-            <div class="basic-layout__module category-block">
-	<?
-    foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
-        
-        ?>
-        <h3 class="category-block__title"><?=$sortSection["NAME"]?></h3>
-        <ul class="category-block__list">
-        <?$i=0;?>
-        <?foreach($sortSection['ITEMS'] as $sort_item):?>
-            <?$i++;?>
-            <li class="category-block__item">
-                <a href="<?=($sort_item['LINK_TARGET']['VALUE']) ? $sort_item['LINK_TARGET']['VALUE'] : $sort_item['CODE'].'/';?>" <?=($sort_item['LINK_TARGET']['VALUE']) ? "target='_self'" : "";?> class="category-block__link">
-                    <?=$sort_item['NAME']?>
-                </a>
-            </li>
-	<?endforeach;?>
-        </ul>
-        <?
-    }
-	?></div>
-	<!--category-block--><?
-}
-?>
+
 <?if($_POST['ENUM_LIST']['ELEMENTS'])
 	require_once __DIR__."/include_parts/section_table.php";?>
 <!--simple-article-->

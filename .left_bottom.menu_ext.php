@@ -75,10 +75,25 @@ $section = CIBlockSection::GetList(array('SORT' => 'asc'),$arFilter, false, arra
         $aMenuLinks[] = Array(
 		$sectionOb['NAME'],
 		$url_section,
+		Array("PARENT_NAME" => $id_sec['NAME'], 'IS_PARENT'=>true),
+		Array(),
+		""
+	);
+	
+	$sub_section = CIBlockSection::GetList(array('SORT' => 'asc'),["IBLOCK_ID"=>CATALOG_IBLOCK_ID,"IBLOCK_TYPE"=>'catalog',"SECTION_ID" => $sectionOb['ID'],"ACTIVE"=>"Y"], false, array('*', 'UF_SYM_LINK'));
+	while ($sub_sectionOb = $sub_section->GetNext()) {
+		if($sub_sectionOb['UF_SYM_LINK'])
+			$url_section = $sub_sectionOb['UF_SYM_LINK'];
+		else
+			$url_section = $sub_sectionOb['SECTION_PAGE_URL'];
+        $aMenuLinks[] = Array(
+		$sub_sectionOb['NAME'],
+		$url_section,
 		Array("PARENT_NAME" => $id_sec['NAME']),
 		Array(),
 		""
 	);
+	}
 		
 	}
 
