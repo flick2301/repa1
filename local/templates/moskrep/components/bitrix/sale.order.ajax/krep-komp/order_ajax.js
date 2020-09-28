@@ -167,6 +167,14 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			{
 				this.initUserConsent();
 			}
+			
+			$('div[data-property-id-row="50"').addClass('hidden');
+	$('div[data-property-id-row="51"').addClass('hidden');
+	ga(function(tracker) {
+   clientId = tracker.get('clientId');
+   
+   $('#soa-property-50').val(clientId); 
+   $('#soa-property-51').val(clientId);});
 		},
 
 		/**
@@ -355,6 +363,13 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			BX.bind(BX('store-' + currentstore), 'click', BX.proxy(this.selectStore, this));
 			this.maps && this.maps.selectBalloon(currentstore);
 
+	$('div[data-property-id-row="50"').addClass('hidden');
+	$('div[data-property-id-row="51"').addClass('hidden');
+	ga(function(tracker) {
+   clientId = tracker.get('clientId');
+   
+   $('#soa-property-50').val(clientId); 
+   $('#soa-property-51').val(clientId);});
 			return true;
 		},
 

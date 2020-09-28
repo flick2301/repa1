@@ -20,12 +20,17 @@
    var clientId='';
    ga(function(tracker) {
    clientId = tracker.get('clientId');
+   
    ga('set', 'dimension2', clientId); });
    ga('send', 'pageview');
    <?
    global $USER;
+   global $APPLICATION;
+   global $userEmail;
+   
    $rsUser = CUser::GetByID($USER->GetId());
 	$arUser = $rsUser->Fetch();
+	$userEmail = $arUser["EMAIL"];
    if(isset($arUser["PERSONAL_PHONE"]))
    {
 	   $queryUrl = 'https://team.krep-komp.ru/rest/1/rdgiynh922m6xmy9/crm.contact.list';
@@ -114,6 +119,19 @@ dataLayer.push({
 });
 <?endif;?>
 </script>
+<?if($APPLICATION->GetCurPage() == "/"):?>
+<!-- Criteo Homepage dataLayer -->
+<script>
+        var dataLayer = dataLayer || [];
+        dataLayer.push({  
+            'event': 'crto_homepage',
+            crto: {             
+                'email': '<?=$arUser["EMAIL"]?>' // может быть пустой строкой
+            }
+        });
+</script>
+<!-- END Criteo Homepage dataLayer -->
+<?endif;?>
 
 
 <!-- Yandex.Metrika counter -->

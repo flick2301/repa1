@@ -687,6 +687,18 @@ dataLayer.push({
 	<br><br>
      
 </div>
-
+<?global $userEmail;?>
+<!-- Criteo Product dataLayer -->
+<script type='text/javascript'>
+        var dataLayer = dataLayer || [];
+        dataLayer.push({            
+            'event': 'crto_productpage',
+            crto: {             
+                'email': '<?=$userEmail?>',
+                'products': ['<?=$arResult["ID"]?>']
+            }
+        });
+</script>
+<!-- END Criteo Product dataLayer -->
 <script src="/local/templates/moskrep/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa"></script>
    <script>var tabs=new Tabby("[data-product-page-tabs]");tabs=new Tabby("[data-delivery-tabs]"),tabs=new Tabby("[data-pickup-tabs]"),tabs=new Tabby("[data-product-widget-tabs]")</script>

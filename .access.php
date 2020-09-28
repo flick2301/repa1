@@ -1,4 +1,5 @@
 <?
+$PERM["video"]["*"]="R";
 $PERM["certificates"]["8"]="X";
 $PERM["kontent-elementa"]["8"]="W";
 $PERM["about"]["8"]="X";

@@ -19,7 +19,8 @@ if(count($arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE'])>1) {
 $arrFilter2 = array("SECTION_ID" => $arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE']);
 }
 ?>
-<?$intSectionID = $APPLICATION->IncludeComponent(
+<?
+/*$intSectionID = $APPLICATION->IncludeComponent(
 					"bitrix:catalog.section",
 					"horizontal_new",
 					array(
@@ -155,5 +156,5 @@ $arrFilter2 = array("SECTION_ID" => $arResult['REFERENCE']['ITEM']['SECTIONS_TOP
 					)
 					
 				);
-				
+				*/
 				?>

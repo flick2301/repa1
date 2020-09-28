@@ -24,10 +24,21 @@
    ga('send', 'pageview');
    <?
    global $USER;
-   $userID = $USER->GetID();
-   if(isset($userID))
+   global $APPLICATION;
+   global $userEmail;
+   
+   $rsUser = CUser::GetByID($USER->GetId());
+	$arUser = $rsUser->Fetch();
+	$userEmail = $arUser["EMAIL"];
+   if(isset($arUser["PERSONAL_PHONE"]))
    {
-	   ?>ga('set', 'userId', '<?=$userID?>');
+	   $queryUrl = 'https://team.krep-komp.ru/rest/1/rdgiynh922m6xmy9/crm.contact.list';
+		$data = array(
+			'filter' => array("PHONE" => $arUser["PERSONAL_PHONE"]),
+			'select' => array("ID")
+		);
+		$res = getContact($queryUrl, $data);
+	   ?>ga('set', 'userId', '<?=$res["result"][0]["ID"]?>');
 		
 	   <?
    }else{
@@ -36,7 +47,7 @@
 			
 			<?
    }
-	?>	
+	?>
 	
 <!--Дополнение GA2-->
 /*ga(function(tracker) {
@@ -98,6 +109,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-W2BJX6S');</script>
 <!-- End Google Tag Manager -->
+
+
+<script>
+<?if(isset($arUser["PERSONAL_PHONE"])):?>
+dataLayer.push({  
+    'UID':'<?=$res["result"][0]["ID"]?>' // Уникальный идентификатор пользователя взятый из CRM Bitrix24
+});
+<?endif;?>
+</script>
+<?if($APPLICATION->GetCurPage() == "/"):?>
+<!-- Criteo Homepage dataLayer -->
+<script>
+        var dataLayer = dataLayer || [];
+        dataLayer.push({  
+            'event': 'crto_homepage',
+            crto: {             
+                'email': '<?=$arUser["EMAIL"]?>' // может быть пустой строкой
+            }
+        });
+</script>
+<!-- END Criteo Homepage dataLayer -->
+<?endif;?>
 
     <!-- Yandex.Metrika counter -->
 <script>

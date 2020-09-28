@@ -1036,3 +1036,21 @@ function AddElementOrSectionCode(&$arFields) {
    }
 }
 */
+
+
+AddEventHandler('main', 'OnEpilog', 'OnEpilogHandler');  
+
+function OnEpilogHandler() {
+            if ( isset($_GET['PAGEN_1']) && (intval($_GET['PAGEN_1'])>0) && (!defined('ERROR_404')) ) {
+        $title = $GLOBALS['APPLICATION']->GetProperty('title');
+                 $GLOBALS['APPLICATION']->SetPageProperty('title', $title.' (страница '.intval($_GET['PAGEN_1']).')');
+        $description = $GLOBALS['APPLICATION']->GetProperty('description');
+        $GLOBALS['APPLICATION']->SetPageProperty('description', $description.' (страница '.intval($_GET['PAGEN_1']).')');        
+     }
+	 if ( isset($_GET['PAGEN_5']) && (intval($_GET['PAGEN_5'])>0) && (!defined('ERROR_404')) ) {
+        $title = $GLOBALS['APPLICATION']->GetProperty('title');
+                 $GLOBALS['APPLICATION']->SetPageProperty('title', $title.' (страница '.intval($_GET['PAGEN_5']).')');
+        $description = $GLOBALS['APPLICATION']->GetProperty('description');
+        $GLOBALS['APPLICATION']->SetPageProperty('description', $description.' (страница '.intval($_GET['PAGEN_5']).')');        
+     }
+  }

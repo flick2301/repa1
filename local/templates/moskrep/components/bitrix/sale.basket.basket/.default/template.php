@@ -43,7 +43,31 @@ if (empty($arResult['ERROR_MESSAGE']))
 			<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());?> 
 			<!--crumbs-nav-->
 		</div>
-		
+		<?global $userEmail;?>
+<!-- Criteo Basket/Cart dataLayer -->
+<script type='text/javascript'>
+        var dataLayer = dataLayer || [];
+        dataLayer.push({
+            'event': 'crto_basketpage',            
+            crto: {             
+                'email': '<?=$userEmail?>',                           
+                'products': [
+				<?foreach($arResult['CITRO'] as $citroItem)
+				{
+					?>
+				{
+                    id: '<?=$citroItem["ID"]?>',
+                    price: '<?=$citroItem["PRICE"]?>',              
+                    quantity: '<?=$citroItem["QUANTITY"]?>'
+                },
+				<?
+				}
+				?>
+               ]
+            }
+        });
+</script>
+<!-- END Criteo Basket/Cart dataLayer -->
       <div class="basic-layout__section">
          <!--page-heading-->
 			<!--page-heading-->

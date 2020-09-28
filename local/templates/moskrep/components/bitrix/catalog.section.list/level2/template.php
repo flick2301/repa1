@@ -375,10 +375,12 @@ if($arResult['SORTING']['SECTION_ID']){
 <?if($_POST['ENUM_LIST']['ELEMENTS'])
 	require_once __DIR__."/include_parts/section_table.php";?>
 <!--simple-article-->
+	<?if(!($_REQUEST['PAGEN_1'] > 1)):?>
         <div class="basic-layout__module simple-article">
             <div class="simple-article__content wysiwyg-block">
 				<?=$arResult['SECTION']['DESCRIPTION']?>
 			</div>	
 		</div>
+	<?endif;?>
 <!--simple-article-->
 <?endif?>

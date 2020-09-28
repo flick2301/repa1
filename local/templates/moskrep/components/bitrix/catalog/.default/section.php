@@ -187,6 +187,7 @@ if($count_sections || !empty($subsections)){
         ),
         false
         );
+		
         $this->EndViewTarget();
     }
 	

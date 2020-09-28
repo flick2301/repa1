@@ -21,11 +21,12 @@ Loc::LoadMessages(__FILE__);
 	<meta name="viewport" content="width=device-width; initial-scale=1.0" />
 	
 <?$APPLICATION->ShowMeta("robots")?>
-<?if(!($_REQUEST['PAGEN_1'] > 1)):?>
-<?$APPLICATION->ShowMeta("description")?>
-<?endif;?>	
+<title><?$APPLICATION->ShowTitle();?></title>
 
-    <title><?$APPLICATION->ShowTitle();?></title>
+<?$APPLICATION->ShowMeta("description")?>
+
+
+    
 	
 	<link rel="manifest" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/manifest.webmanifest" />
 	<link rel="icon" sizes="32x32" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/favicon-32.png" />
@@ -180,7 +181,7 @@ $APPLICATION->IncludeFile(
 			<!--website-logo-->
 			<div class="website-logo">
 				<?//$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/company_logo.php"), false, []);?>
-				<a class="website-logo__link" href="/">На главную</a>
+				<a class="website-logo__link" href="<?=($APPLICATION->GetCurPage() != "/") ? '/' : 'javascript::void();'?>">На главную</a>
 			</div>
 			<!--website-logo-->
             </div>

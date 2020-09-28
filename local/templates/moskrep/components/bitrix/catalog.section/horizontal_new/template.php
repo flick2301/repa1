@@ -261,6 +261,7 @@ if($arParams['FOR_SEO']!='Y'){
 		</div>
 			
 <?php
+		$arProductsID .= '"'.$item['ID'].'",';
         }
     }
 ?>
@@ -307,6 +308,7 @@ while($arSection = $db_list->GetNext()) {
 <?}?>
 
 <?if(count($arResult["UF_SURFACE"])):?>
+
 <div class="blue-block">Типы оснований</div>
 <div class="surface-block-container">
 <?foreach($arResult["UF_SURFACE"] AS $surface):?>
@@ -352,5 +354,19 @@ BX.ready(function () {
 	
 });
 </script>
+
+<?global $userEmail;?>
+<!-- Criteo Category / Listing dataLayer -->
+<script type='text/javascript'>
+        var dataLayer = dataLayer || [];
+        dataLayer.push({            
+            'event': 'crto_listingpage',
+            crto: {             
+                'email': '<?=$userEmail?>', //может быть пустой строкой
+                'products': [<?=$arProductsID?>]
+            }
+        });
+</script>
+<!-- END Criteo Category / Listing dataLayer -->
 
 		

@@ -16,7 +16,9 @@ BX.ready(function() {
 	$(document).on('click', '.bx-soa-section, .bx-soa-section-title-container, .bx-soa-section-title, .bx-soa-section-title-count', function(event) {
 		//event.preventDefault();
 		//event.stopPropagation();
-	});		
+	});	
+	
+	
 });
 
 
