@@ -6,7 +6,7 @@ setTimeout(function(){
     });
 }, 4000);
 
-$("a[data-rel=gallery_card]").fancybox({arrows: false, toolbar: false, loop: true});
+$("a[data-rel=gallery_card]").fancybox({arrows: true, toolbar: false, loop: true});
 $("a[data-rel=gallery_img]").fancybox({arrows: false, toolbar: false, loop: true});
 $("a[data-rel=catalog-photo]").fancybox({arrows: false, toolbar: false, loop: true});
 });
