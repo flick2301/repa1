@@ -4,9 +4,7 @@ $APPLICATION->SetTitle("Ваши скидки");
 ?>
 <? //$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array()); ?>
 
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title">Ваши скидки</h1>
-            </header>
+<?globalGetTitle("Ваши скидки")?>
 
             <div class="basic-layout__module simple-article">
                <div class="simple-article__content wysiwyg-block">

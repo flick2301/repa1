@@ -43,11 +43,9 @@ global $APPLICATION;
 		?>
       
     
-    <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?=($arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE']) ? $arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE'] : $arResult['REFERENCE']['ITEM']['H1']['VALUE'];?></h1>
-			</header>
-	<!--page-heading-->
+	<?globalGetTitle($arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE'] ? $arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE'] : $arResult['REFERENCE']['ITEM']['H1']['VALUE'])?>
+
+	
     <!--catalog-feed-->
     <div class="basic-layout__module catalog-feed">
         <div class="catalog-feed__list">
@@ -58,7 +56,7 @@ global $APPLICATION;
         <div class="catalog-feed__item">
 			<!--catalog-card-->
 			<section class="catalog-card">
-				<h3 class="catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></h3>
+				<div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></div>
                 <div class="catalog-card__cover">
                     <img class="catalog-card__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>
@@ -77,7 +75,7 @@ global $APPLICATION;
                     <div class="catalog-feed__item">
 					<!--catalog-card-->
 					<section class="catalog-card">
-					<h3 class="catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></h3>
+					<div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></div>
                             <div class="catalog-card__cover">
                                 <img class="catalog-card__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                             </div>
@@ -310,7 +308,7 @@ global $APPLICATION;
 		<div class="catalog-feed__item">
 		<!--catalog-card-->
         <section class="catalog-card">
-            <h3 class="catalog-card__title"><a href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($arSection['NAME']))?>');"><?=$arSection['NAME']?></a></h3>
+            <div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($arSection['NAME']))?>');"><?=$arSection['NAME']?></a></div>
                 <div class="catalog-card__cover">
                     <img class="catalog-card__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>
@@ -326,7 +324,7 @@ global $APPLICATION;
         <div class="catalog-feed__item">
 		<!--catalog-card-->
         <section class="catalog-card">
-            <h3 class="catalog-card__title"><a href="<?=($dop_section['LINK_TARGET']['VALUE']) ? $dop_section['LINK_TARGET']['VALUE'] : $dop_section['CODE'].'/';?>" target="_self" title='<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$dop_section['H1']["VALUE"]?></a></h3>
+            <div class="div_flex_h3 catalog-card__title"><a href="<?=($dop_section['LINK_TARGET']['VALUE']) ? $dop_section['LINK_TARGET']['VALUE'] : $dop_section['CODE'].'/';?>" target="_self" title='<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$dop_section['H1']["VALUE"]?></a></div>
                 <div class="catalog-card__cover">
                     <img class="catalog-card__image" width="262" height="197" src="<?=$dop_section['PICTURE']['src']?>" alt="<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>
@@ -354,7 +352,7 @@ if($arResult['SORTING']['SECTION_ID']){
     foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
         
         ?>
-        <h3 class="category-block__title"><?=$sortSection["NAME"]?></h3>
+        <div class="div_h3 category-block__title"><?=$sortSection["NAME"]?></div>
         <ul class="category-block__list">
         <?$i=0;?>
         <?foreach($sortSection['ITEMS'] as $sort_item):?>

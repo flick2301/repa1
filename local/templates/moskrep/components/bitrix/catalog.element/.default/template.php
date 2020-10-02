@@ -92,11 +92,7 @@ dataLayer.push({
     <?php $this->EndViewTarget(); ?>
 <?endif;?>
 
-<!--page-heading-->
-    <header class="basic-layout__module page-heading">
-        <h1 class="page-heading__title"><?=$arResult['NAME']?></h1>
-    </header>
-<!--page-heading-->
+<?globalGetTitle($arResult['NAME'])?>
 
 <div class="card__articul">Артикул: <span class="card__articul-name"><?=$arResult['PROPERTIES']['CML2_ARTICLE']['VALUE']?></span></div>
 

@@ -53,11 +53,9 @@ $this->addExternalCss($templateFolder."/slick/slick-theme.css");
 <?$APPLICATION->AddChainItem(preg_replace("/\&lt;[A-z\/ ]+\&gt;/", ", ", $item["PROP"]["ADDRESS"]["VALUE"]));?>
 
 <?if(SITE_TEMPLATE_ID=='moskrep'):?>
-            <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?=$item["NAME"]?><br /><?=preg_replace("/\&lt;[A-z\/ ]+\&gt;/", ", ", $item["PROP"]["ADDRESS"]["VALUE"])?></h1>
-            </header>
-            <!--page-heading-->
+
+<?globalGetTitle($item["NAME"]."<br />".preg_replace("/\&lt;[A-z\/ ]+\&gt;/", ", ", $item["PROP"]["ADDRESS"]["VALUE"]))?>
+
 <?else:?>
 <h1 class="s38-title"><?=$item["NAME"]?><br /><?=preg_replace("/\&lt;[A-z\/ ]+\&gt;/", ", ", $item["PROP"]["ADDRESS"]["VALUE"])?></h1>
 <?endif?>

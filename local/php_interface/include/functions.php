@@ -32,4 +32,19 @@ function getContact($url, $data)
     return json_decode($date, true);
 }
 
+//Вывести заголовок
+function globalGetTitle($title = "") {
+	
+	global $APPLICATION;
+	
+	echo "<!--page-heading-->
+		<header class=\"basic-layout__module page-heading\">             
+			<h1>{$title}"; 
+			
+			if (!$title) $APPLICATION->ShowTitle();
+			
+			echo "</h1>
+            </header>
+			<!--page-heading-->";
+}
 ?>

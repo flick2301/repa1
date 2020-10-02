@@ -10,11 +10,7 @@ $APPLICATION->SetPageProperty("keywords", $arResult['IPROP_VALUES']['SECTION_MET
 ?>
 
 
-            <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?=GetMessage('POL_CERTIFICATES_COMP_NAME')?> на <?=strtolower($arResult['SECTION']['NAME']);?></h1>
-            </header>
-            <!--page-heading-->
+<?globalGetTitle()?>
 			
             <!--simple-article-->
             <div class="basic-layout__module simple-article">

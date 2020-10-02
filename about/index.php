@@ -4,11 +4,9 @@ $APPLICATION->SetTitle("О магазине");
 ?>
 
 <?if(SITE_TEMPLATE_ID=='moskrep'){?>
-            <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title">Наша компания – ведущий поставщик строительного крепежа на территории РФ</h1>
-            </header>
-            <!--page-heading-->
+
+<?globalGetTitle("Наша компания – ведущий поставщик строительного крепежа на территории РФ")?>			
+			
             <!--simple-article-->
             <div class="basic-layout__module simple-article">
                <div class="simple-article__content wysiwyg-block">

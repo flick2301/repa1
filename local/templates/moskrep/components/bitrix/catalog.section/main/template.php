@@ -14,11 +14,8 @@ use \Bitrix\Main\Localization\Loc;
 
 ?>
 
-            <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title">Магазин крепежа, метизов и инструментов</h1>
-            </header>
-            <!--page-heading-->
+  <?globalGetTitle("Магазин крепежа, метизов и инструментов")?>
+
 
 
             <!--product-slider-->
@@ -32,7 +29,7 @@ use \Bitrix\Main\Localization\Loc;
                      <!--product-card-->
                      <section class="product-card product-card--lite">
                         <div class="product-card__header">
-                           <h3 class="product-card__title"><a class="product-card__link" href="<?=$arElement['DETAIL_PAGE_URL']?>"  onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['NAME']))?>')"><?=$item['NAME']?></a></h3>
+                           <div class="div_h3 product-card__title"><a class="product-card__link" href="<?=$arElement['DETAIL_PAGE_URL']?>"  onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['NAME']))?>')"><?=$item['NAME']?></a></div>
                            <img id="img_<?=$item['ID']?>" class="product-card__image" <?=$count > 4 ? "data-" : ""?>src="<?echo ($item['PREVIEW_PICTURE']['SRC']) ? $item['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg";?>" width="179" height="134" alt="<?=$item['PREVIEW_PICTURE']['DESCRIPTION']?>">
                         </div>
                         <div class="product-card__footer">

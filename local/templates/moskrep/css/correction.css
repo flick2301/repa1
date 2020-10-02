@@ -1,3 +1,27 @@
+h1 {
+    line-height: 1;
+    font-size: 32px;
+}
+.div_h1, .div_h2, .div_h3, .div_h4, .div_h5, .div_h6 {
+    margin: 0;
+    text-rendering: optimizeLegibility;
+}
+.div_h3 {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.div_flex_h3 {
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+	margin-bottom: 0;
+}
+
 .orange {
 	color: #f39101;
 }
@@ -345,9 +369,11 @@ ol.tech li {
 
 
 
-
-
-
+@media (min-width: 741px) {
+h1 {
+    font-size: 38px;
+}
+}
 @media (max-width: 1200px) {
 .catalog-table .item_img_block {
 	display: none!important;

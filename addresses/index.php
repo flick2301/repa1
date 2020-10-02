@@ -17,11 +17,8 @@ $APPLICATION->SetTitle("Адреса магазинов");
 
 <?if(!$_REQUEST["ID"]):?>
 
-            <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
-            </header>
-            <!--page-heading-->
+<?globalGetTitle()?>
+
 
 <ul class='delivery_items'>
 	<li data-tab='vivoz_1' class='delivery_item active'>Москва и МО</li>

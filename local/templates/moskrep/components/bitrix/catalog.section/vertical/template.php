@@ -38,11 +38,10 @@ global $DEFAULT_STORE_ID;
 //Параметр FOR_SEO устанавливается если это раздел справочника, а не каталога
 //А значит текст и заголовок(шапка) не берутся из каталога, а из справочника, значит условие FOR_SEO != Y
 if($arParams['FOR_SEO']!='Y'){?>
-<!--page-heading-->
-    <header class="basic-layout__module page-heading">
-        <h1 class="page-heading__title"><?=($arResult['META_TITLE']) ? $arResult['META_TITLE'] :$arResult['NAME'];?></h1>
-    </header>
-<!--page-heading-->
+
+<?globalGetTitle($arResult['META_TITLE'] ? $arResult['META_TITLE'] : $arResult['NAME'])?>
+
+
 <?if($arResult['DESCRIPTION']):?>
 <!--catalog-desc-->
             <div class="basic-layout__module catalog-desc">

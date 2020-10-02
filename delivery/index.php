@@ -26,11 +26,7 @@ if(SITE_TEMPLATE_ID=='moskrep'){
 
 
 
-            <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
-            </header>
-            <!--page-heading-->
+<?globalGetTitle()?>
 
 
 

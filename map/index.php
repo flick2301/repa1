@@ -3,11 +3,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Карта сайта");
 ?>
 
-            <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
-            </header>
-            <!--page-heading-->
+<?globalGetTitle()?>
 
 <div class="user_sitemap">			
 <?

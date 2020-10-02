@@ -20,11 +20,9 @@ if($arParams['FOR_SEO']!='Y'){
     ?>
 	
 <?if(!$_POST['ENUM_LIST']['ELEMENTS'] && !$arParams["DISABLE_HEADER"]=='Y'){?>
-<!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?=($arResult['META_TITLE']) ? $arResult['META_TITLE'] :$arResult['NAME'];?></h1>
-            </header>
-<!--page-heading-->
+
+<?globalGetTitle($arResult['META_TITLE'] ? $arResult['META_TITLE'] : $arResult['NAME'])?>
+
 <?if($arResult['DESCRIPTION']):?>
 	<div class="basic-layout__module catalog-desc">
         <div class="catalog-desc__cover">

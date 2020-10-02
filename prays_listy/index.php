@@ -10,11 +10,8 @@ const MY_HL_BLOCK_META_ID=7;
 CModule::IncludeModule('highloadblock');
 ?>
 <?if(SITE_TEMPLATE_ID=='moskrep'){?>
-            <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
-            </header>
-            <!--page-heading-->
+
+<?globalGetTitle()?>
 
 <?// подключаем пространство имен класса HighloadBlockTable и даём ему псевдоним HLBT для удобной работы
 

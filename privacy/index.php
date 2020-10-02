@@ -4,11 +4,11 @@ $APPLICATION->SetPageProperty("title", "Политика в отношении �
 $APPLICATION->SetPageProperty("keywords", "Политика компании Креп-Комп");
 $APPLICATION->SetPageProperty("description", "Политика в отношении обработки персональных данных");
 $APPLICATION->SetTitle("Политика в отношении обработки персональных данных");
-?><!--page-heading-->
-<div class="basic-layout__module page-heading">
-	<h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
-</div>
- <!--page-heading--> <br>
+?>
+
+<?globalGetTitle()?>
+ 
+ <br>
  <br>
 <p>
 	<b>1. Общие положения</b>

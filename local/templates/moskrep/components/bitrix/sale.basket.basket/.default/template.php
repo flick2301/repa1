@@ -69,13 +69,7 @@ if (empty($arResult['ERROR_MESSAGE']))
 </script>
 <!-- END Criteo Basket/Cart dataLayer -->
       <div class="basic-layout__section">
-         <!--page-heading-->
-			<!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
-            </header>
-            <!--page-heading-->
-         <!--page-heading-->
+<?globalGetTitle()?>
       </div>
 	  	
 

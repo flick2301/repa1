@@ -10,11 +10,8 @@ $this->setFrameMode(true);
 ?>
 
 
-<!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?=$APPLICATION->GetTitle();?></h1>
-            </header>
-<!--page-heading-->
+<?globalGetTitle()?>
+
 <!--catalog-feed-->
             <div class="basic-layout__module catalog-feed">
                <div class="catalog-feed__list">

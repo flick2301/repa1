@@ -20,11 +20,8 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 ?>
 
-<!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?=($arResult['SALE_H1'] ? $arResult['SALE_H1'] : $arResult['NAME'])?></h1>
-            </header>
-<!--page-heading-->
+<?globalGetTitle($arResult['SALE_H1'] ? $arResult['SALE_H1'] : $arResult['NAME'])?>
+
 <!--catalog-feed-->
             <div class="basic-layout__module catalog-feed">
 				<div class="catalog-feed__about">
