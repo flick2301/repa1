@@ -54,6 +54,20 @@ $(document).ready(function() {
 		}
 		//else changeClose('address_street');
 	});	
+	
+	$(document).on('click', '#address_house', function() {
+		
+		//if (!getResult) return; //Eсли не выбрана улица из списка
+		if (!$('#address_street').val()) return;
+		
+	var search = $(this).val();	
+	
+		search = search.replace(/^[^0-9]+/, '');
+		$(this).val(search);
+
+			if (search) get_ajax(search, 'house');
+			else get_ajax('\d', 'house');	
+	});		
 
 $(document).on('keyup', '#address_flat', function(e) {
 		

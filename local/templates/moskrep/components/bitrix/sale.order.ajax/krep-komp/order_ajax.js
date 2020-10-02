@@ -8523,7 +8523,8 @@ for (var key in this.result.DELIVERY_GROUPS) {
 			{
 				if (parseFloat(total.DELIVERY_PRICE) === 0)
 				{
-					deliveryValue = this.params.MESS_PRICE_FREE;
+					if ($('#delivery_pickup').hasClass('active')) deliveryValue = this.params.MESS_PRICE_FREE;
+					else deliveryValue = '';
 					params.free = true;
 				}
 				else
