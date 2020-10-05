@@ -14,8 +14,7 @@ use \Bitrix\Main\Localization\Loc;
 
 ?>
 
-  <?globalGetTitle("Магазин крепежа, метизов и инструментов")?>
-
+<?globalGetTitle("Магазин крепежа, метизов и инструментов")?>	
 
 
             <!--product-slider-->
