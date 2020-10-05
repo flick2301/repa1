@@ -1684,6 +1684,7 @@ if (empty($arRunErrors))
 						unset($picture);
 
 						$y = 0;
+						
 						foreach ($arYandexFields as $key)
 						{
 							switch ($key)
@@ -1843,8 +1844,20 @@ if (empty($arRunErrors))
 					}
 					unset($calculatePrice);
 
-					if ($minPrice <= 0)
+						
+						$arFilter = Array("PRODUCT_ID"=>$row['ID'],"STORE_ID"=>strstr($SETUP_FILE_NAME, "spb_") ? 12 : $DEFAULT_STORE_ID); //Проверка наличия по складам
+$res = CCatalogStoreProduct::GetList(Array(),$arFilter,false,false,Array());
+ 
+if ($arRes = $res->GetNext()) {
+	$amountRes = $arRes["AMOUNT"];
+}
+							//file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($row, true)."---\n".print_r($amountRes, true)); 
+							
+						if ($minPrice <= 0 || $amountRes <= 0)
 						continue;
+					
+					unset($amountRes);
+
 
 					$available = ' available="'.($row['CATALOG_AVAILABLE'] == 'Y' ? 'true' : 'false').'"';
 					$itemsContent .= '<offer id="'.$row['ID'].'"'.$productFormat.$available.">\n";
