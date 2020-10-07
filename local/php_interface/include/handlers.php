@@ -696,7 +696,13 @@ function ChangeMyContent(&$content)
    }
     
     $content = str_replace($search, $replace, $content);
+	$content = preg_replace("/[ \t]+/", " ", $content);
+	//$content = sanitize_output($content);
    }
+}
+function sanitize_output($buffer)
+{
+   return preg_replace('~>\s*\n\s*<~', '><', $buffer);
 }   
    
    \Bitrix\Main\EventManager::getInstance()->addEventHandler('sale', 'OnSaleComponentOrderOneStepFinal',

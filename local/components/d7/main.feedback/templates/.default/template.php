@@ -17,7 +17,7 @@ if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true)die();
 <div class="basic-layout__module basic-layout__module--request send-a-request">
 
     <div class="send-a-request__header">
-        <h3 class="send-a-request__title">Отправить заявку</h3>
+        <div class="send-a-request__title">Отправить заявку</div>
 		
     
 
