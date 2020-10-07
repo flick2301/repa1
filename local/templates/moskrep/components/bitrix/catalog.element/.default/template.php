@@ -92,7 +92,7 @@ dataLayer.push({
     <?php $this->EndViewTarget(); ?>
 <?endif;?>
 
-<?globalGetTitle($arResult['NAME'])?>
+<?globalGetTitle($arResult['NAME'].' '.$arResult['PROPERTIES']['BREND']['VALUE'])?>
 
 <div class="card__articul">Артикул: <span class="card__articul-name"><?=$arResult['PROPERTIES']['CML2_ARTICLE']['VALUE']?></span></div>
 

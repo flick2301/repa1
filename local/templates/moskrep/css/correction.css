@@ -215,7 +215,7 @@ ol.tech li {
 .website-logo {
 	width: 270px;
 	height: 96px;
-	background: url(/local/templates/moskrep/assets/design/website-logo/krep-komp.svg) no-repeat 0% 50%;
+	/*background: url(/local/templates/moskrep/assets/design/website-logo/krep-komp.svg) no-repeat 0% 50%;*/
 	background-size: contain;
 }
 .catalog-table .item_img_block {
