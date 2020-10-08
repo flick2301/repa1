@@ -1,11 +1,7 @@
 <? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();?>
 
-            <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?=$APPLICATION->ShowTitle();?></h1>
-            </header>
-            <!--page-heading-->
-			
+<?globalGetTitle()?>
+
             <!--catalog-feed-->
             <div class="basic-layout__module catalog-feed">
                <div class="catalog-feed__list">
@@ -16,7 +12,7 @@
                      <section class="catalog-card">
                         <h3 class="catalog-card__title"><a class="catalog-card__link" href="<?=$section['SECTION_PAGE_URL']?>"><?=$section['NAME']?></a></h3>
                         <div class="catalog-card__cover">
-                           <img class="catalog-card__image" src="<?=$file['src']?>" width="262" height="197" alt="<?=$section['NAME']?>">
+                           <img class="catalog-card__image" src="<?=$file['src']?>" width="262" height="197" alt="<?=$section['NAME']?>" title="<?=$section['NAME']?>" />
                         </div>
                      </section>
                      <!--catalog-card-->

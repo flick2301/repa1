@@ -66,3 +66,5 @@ if(count($arSizes)>0 && (count($arSizes)!=1 || $arSizes[0]!='DIAMETR_VNUTRENNIY'
     
 }
 
+\Bitrix\Main\Loader::includeModule('dev2fun.opengraph');
+\Dev2fun\Module\OpenGraph::Show($arResult['ID'],'section'); 

@@ -4,19 +4,19 @@ $APPLICATION->SetTitle("О магазине");
 ?>
 
 <?if(SITE_TEMPLATE_ID=='moskrep'){?>
-            <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title">Наша компания – ведущий поставщик строительного крепежа на территории РФ</h1>
-            </header>
-            <!--page-heading-->
+
+<?globalGetTitle("Наша компания – ведущий поставщик строительного крепежа на территории РФ")?>			
+			
             <!--simple-article-->
             <div class="basic-layout__module simple-article">
                <div class="simple-article__content wysiwyg-block">
-                  <p><img src="<?=SITE_TEMPLATE_PATH?>/uploads/simple-article/image-01.jpg" width="904" height="490" alt=""></p>
+                  <p><img src="<?=SITE_TEMPLATE_PATH?>/uploads/simple-article/image-01.jpg" width="904" height="490" alt="КРЕП-КОМП, Коледино" title="КРЕП-КОМП, Коледино" /></p>
                   <p>Уже 14 лет, с 2005 года мы предлагаем максимально широкий ассортимент крепёжных изделий, сохраняя при этом очень доступные цены при розничных, мелкооптовых и оптовых поставках крепежа.</p>
                   <p>Наши складские площади составляют более 6000 кв.м.,и это позволяет поддерживать нам полный спектр крепёжного ассортимента, а также поставлять заказчикам эксклюзивные изделия для специфических видов крепежных работ.</p>
                   <p>Доставка товара осуществляется как нашим транспортом, так и через транспортные компании, в любую точку РФ.</p>
                   <p>Каждый день мы отправляем наши машины доставки по Москве / МО и передаём заказы в транспортные кампании для регионов России.</p>
+				  
+				  <p><img src="<?=SITE_TEMPLATE_PATH?>/uploads/simple-article/image-01_2.jpg" width="904" height="603" alt="Склад КРЕП-КОМП" title="Склад КРЕП-КОМП" /></p>
                </div>
             </div>
             <!--simple-article-->
@@ -26,7 +26,7 @@ $APPLICATION->SetTitle("О магазине");
 <h1 class="s38-title">Наша компания - ведущий поставщик строительного крепежа на территории РФ</h1>
 <div class="content">
 	<div class="content__img">
- <img src="/images/content-01.jpg" alt="">
+ <img src="/images/content-01.jpg" alt="Склад КРЕП-КОМП" title="Склад КРЕП-КОМП">
 	</div>
 	<p>
 		 Уже 14 лет, с 2005 года мы предлагаем максимально широкий ассортимент крепёжных изделий, сохраняя при этом очень доступные цены при розничных, мелкооптовых и оптовых поставках крепежа.

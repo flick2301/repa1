@@ -2,11 +2,16 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Ваши скидки");
 ?>
-<? $APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array()); ?>
-<h1 class="s38-title">Ваши скидки</h1>
+<? //$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array()); ?>
+
+<?globalGetTitle("Ваши скидки")?>
+
+            <div class="basic-layout__module simple-article">
+               <div class="simple-article__content wysiwyg-block">
+			   
 <p class='info-paragraph'>KREP-KOMP - ведущий поставщик и производитель строительного крепежа для розничных, мелкооптовых и оптовых клиентов. С 2005 года мы предлагаем самый широкий ассортимент, доступные цены и гибкую систему скидок.</p>
 <p class='info-paragraph'>Доставка по Москве в пределах МКАД при заказе от 50000 руб. <b>БЕСПЛАТНО</b></p>
-<p class='info-paragraph'>Оптовые и накопительные скидки:</p>
+<p class='info-paragraph'>Оптовые скидки:</p>
 <style>
 	.skid td:first-child{
     width: 50px;
@@ -54,11 +59,13 @@ border-top: 1px solid #457fd8;
 		<td ><b>13%</b></td>
 		<td >от 500 000 руб</td>
 	</tr>
-	<tr>
+	<!--<tr>
 		<td ><b>18%</b></td>
 		<td >от 1 000 000 руб<br>* скидка предоставляется при условии выполнения ежеквартальных закупкок на сумму от 5 000 000 руб.</td>
-	</tr>
+	</tr>-->
 </table>
+
+<br />
 
 <p class='info-paragraph'>Оформите заказ на сайте, и менеджер пересчитает его стоимость с учётом вашей скидки.</p>
 
@@ -82,4 +89,8 @@ $el = $rsData->fetch();?>
 	<a href="/upload/sale.xlsx" class="download-excel">Скачать прайс распродажи</a>
 	<div class="sale-category__date"><span><?=$el['UF_DATE']?></span></div>
 </div>
+
+</div>
+</div>
+
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

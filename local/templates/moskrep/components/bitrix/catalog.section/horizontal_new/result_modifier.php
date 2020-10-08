@@ -170,7 +170,9 @@ foreach($arResult['ITEMS'] as $key=>$arItem){
 
     //Получаем массив из размеров
     $ar_size = array();
+	
 if(count($arSizes)>0 && (count($arSizes)!=1 || $arSizes[0]!='DIAMETR_VNUTRENNIY')){
+	
         foreach($arSizes as $size){
             $ar_size[] = $arItem['PROPERTIES'][$size]["VALUE"];
         }
@@ -178,10 +180,11 @@ if(count($arSizes)>0 && (count($arSizes)!=1 || $arSizes[0]!='DIAMETR_VNUTRENNIY'
 
         $ar_size = array(
             $arItem['PROPERTIES']["DIAMETR"]["VALUE"],
+			$arItem['PROPERTIES']['DIAMETR_VNUTRENNIY']["VALUE"],
             $arItem['PROPERTIES']["VYSOTA"]["VALUE"],
             $arItem['PROPERTIES']["SHIRINA"]["VALUE"],
             $arItem['PROPERTIES']["DLINA"]["VALUE"],
-			$arItem['PROPERTIES']['DIAMETR_VNUTRENNIY']["VALUE"]
+			
         );
     }
 	
@@ -239,3 +242,6 @@ if($arResult["UF_DOP_SETTINGS"])
 		$arResult['ENUM_LIST'][$val_enum['XML_ID']] = true;
 	}
 }
+
+\Bitrix\Main\Loader::includeModule('dev2fun.opengraph');
+\Dev2fun\Module\OpenGraph::Show($arResult['ID'],'section'); 

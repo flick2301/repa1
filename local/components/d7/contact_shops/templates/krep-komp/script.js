@@ -3,13 +3,13 @@ $(document).ready(function() {
 	ymaps.ready(init);
 	
 	$(document).on('click', '#shops li', function() {
-		//alert($(this).attr('rel'));
+		//alert($(this).attr('data-rel'));
 		$('#shops li').removeClass('active');
 		$(this).addClass('active');
 		unsetPlacemark();
 		closeBallon();
-		myPlacemark[$(this).attr('rel')].options.set('iconImageHref', '/images/shop_label_current.png');
-		myMap.setCenter([myPlacemark[$(this).attr('rel')].options.get('lat'), myPlacemark[$(this).attr('rel')].options.get('lon')], zoom[section_id]);
+		myPlacemark[$(this).attr('data-rel')].options.set('iconImageHref', '/images/shop_label_current.png');
+		myMap.setCenter([myPlacemark[$(this).attr('data-rel')].options.get('lat'), myPlacemark[$(this).attr('data-rel')].options.get('lon')], zoom[section_id]);
 	});
 	
    
@@ -36,6 +36,11 @@ $(document).ready(function() {
 		width:200,
 		height:200,
 		text: window.location.href
+	});	
+	
+	$(document).on('click', '.shop .box', function(e) {
+		e.preventDefault();
+		e.stopPropagation();		
 	});	
 
 });	
@@ -76,23 +81,23 @@ shop.forEach(function(entry) {
         .add('click', function (e) {
             // Ссылку на объект, вызвавший событие,
             // можно получить из поля 'target'.
-            if(!$('#shops li[rel=' + entry.id +']').hasClass('active')) e.get('target').options.set('iconImageHref', '/images/shop_label_current.png');
+            if(!$('#shops li[data-rel=' + entry.id +']').hasClass('active')) e.get('target').options.set('iconImageHref', '/images/shop_label_current.png');
         })	
         .add('mouseenter', function (e) {
             // Ссылку на объект, вызвавший событие,
             // можно получить из поля 'target'.
-            if(!$('#shops li[rel=' + entry.id +']').hasClass('active')) e.get('target').options.set('iconImageHref', '/images/shop_label_active.png');
+            if(!$('#shops li[data-rel=' + entry.id +']').hasClass('active')) e.get('target').options.set('iconImageHref', '/images/shop_label_active.png');
         })
         .add('mouseleave', function (e) {
-            if(!$('#shops li[rel=' + entry.id +']').hasClass('active')) e.get('target').options.set('iconImageHref', '/images/shop_label.png');
+            if(!$('#shops li[data-rel=' + entry.id +']').hasClass('active')) e.get('target').options.set('iconImageHref', '/images/shop_label.png');
         });
 		
 		if (entry.balloon) myPlacemark[entry.id].events.add('balloonopen', function (e) {	
 			unsetPlacemark();
 			e.get('target').options.set('iconImageHref', '/images/shop_label_current.png');
 			$('#shops li').removeClass('active');
-			$('#shops li[rel=' + entry.id +']').addClass('active');
-			$('#shops li[rel=' + entry.id +']').scrollIntoView(false);
+			$('#shops li[data-rel=' + entry.id +']').addClass('active');
+			$('#shops li[data-rel=' + entry.id +']').scrollIntoView(false);
         })	
 		.add('balloonclose', function (e) {
 			e.get('target').options.set('iconImageHref', '/images/shop_label.png');

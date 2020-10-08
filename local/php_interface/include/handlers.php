@@ -642,7 +642,7 @@ function onBeforeAdd(\Bitrix\Main\Entity\Event $event)
 }
 
 
-   
+/* 
    
    //Антибот регистрации на сайте
 AddEventHandler("main", "OnBeforeUserRegister", "OnBeforeUserRegisterHandler");
@@ -655,7 +655,7 @@ function OnBeforeUserRegisterHandler(&$arFields)
     $tttfile=$_SERVER['DOCUMENT_ROOT'].'/service/spam_txt.php';
     file_put_contents($tttfile, "<pre>".print_r($_REQUEST,1)."</pre>\n",FILE_APPEND);
 
-    
+    $arFields["LOGIN"] = $arFields["EMAIL"];
     if($_REQUEST['AUTH_FORM']=="Y")
     {
        if ($_REQUEST['_ym_uid'] == ''){
@@ -667,6 +667,7 @@ function OnBeforeUserRegisterHandler(&$arFields)
 
     
 }
+*/
    
    
 AddEventHandler("main", "OnEndBufferContent", "ChangeMyContent");
@@ -684,18 +685,24 @@ function ChangeMyContent(&$content)
      $replace = array(
         'Санкт-Петербурге',
         'Санкт-Петербурге и ЛО',
-        '<span class="roistat-phone-spb">8 812 309-95-45</span>'
+        '<span>8 812 309-95-45</span>'
     );  
    }else{
      $replace = array(
         'Москве',
         'Москве и МО',
-        '<span class="roistat-phone">8 499 350-55-55</span>'
+        '<span>8 499 350-55-55</span>'
     );    
    }
     
     $content = str_replace($search, $replace, $content);
+	$content = preg_replace("/[ \t]+/", " ", $content);
+	//$content = sanitize_output($content);
    }
+}
+function sanitize_output($buffer)
+{
+   return preg_replace('~>\s*\n\s*<~', '><', $buffer);
 }   
    
    \Bitrix\Main\EventManager::getInstance()->addEventHandler('sale', 'OnSaleComponentOrderOneStepFinal',
@@ -718,7 +725,7 @@ AddEventHandler('main', 'OnEpilog', array('CMainHandlers', 'OnEpilogHandler'));
 class CMainHandlers { 
    public static function OnEpilogHandler() {
       if (isset($_GET['PAGEN_1']) && intval($_GET['PAGEN_1'])>0) {
-         $title = $GLOBALS['APPLICATION']->GetPageProperty('title');
+         $title = $GLOBALS['APPLICATION']->getTitle();
          $GLOBALS['APPLICATION']->SetPageProperty('title', $title.' (страница '.intval($_GET['PAGEN_1']).')');
       }
    }
@@ -825,6 +832,20 @@ function DoNotUpdate(&$arFields)
 		}
         unset($arFields['PREVIEW_PICTURE']);
         unset($arFields['DETAIL_PICTURE']);
+        
+    }
+}
+
+AddEventHandler("iblock", "OnBeforeIBlockSectionUpdate", "DoNotUpdateSectionActivate"); 
+function DoNotUpdateSectionActivate(&$arFields)
+{
+	
+	$doNotUpdateActivates = [2777, 2779, 2780, 2781, 2782, 2783, 2784, 2785, 2802, 2803, 2558];
+	if ($_REQUEST['type'] == 'catalog')
+    {
+		if(in_array($arFields["ID"], $doNotUpdateActivates))
+					$arFields["ACTIVE"] = "Y";
+	
         
     }
 }
@@ -942,6 +963,62 @@ class SaleOrderEvents
 
 }
 
+AddEventHandler("main", "OnBeforeUserLogin", Array("CUserEx", "OnBeforeUserLogin"));
+AddEventHandler("main", "OnBeforeUserRegister", Array("CUserEx", "OnBeforeUserRegister"));
+AddEventHandler("main", "OnBeforeUserRegister", Array("CUserEx", "OnBeforeUserUpdate"));
+AddEventHandler("main", "OnBeforeUserAdd", Array("CUserEx", "OnBeforeUserRegister"));
+
+
+class CUserEx
+{
+   function OnBeforeUserLogin($arFields)
+   {
+      $filter = Array("EMAIL" => $arFields["LOGIN"]);
+      $rsUsers = CUser::GetList(($by="ID"), ($order="asc"), $filter);
+      if($user = $rsUsers->GetNext())
+         $arFields["LOGIN"] = $user["LOGIN"];
+      /*else $arFields["LOGIN"] = "";*/
+   }
+   public static function OnBeforeUserRegister(&$arFields)
+   {
+	   
+      $arFields["LOGIN"] = $arFields["EMAIL"];
+	  
+   }
+}
+
+
+
+// обработка If-Modified-Since
+/*AddEventHandler('main', 'OnEpilog', array('CBDPEpilogHooks', 'CheckIfModifiedSince'));
+
+class CBDPEpilogHooks
+{
+   function CheckIfModifiedSince()
+   {
+      GLOBAL $lastModified;
+      if ($lastModified)
+      {
+         header('Last-Modified: '.gmdate('D, d M Y H:i:s', $lastModified).' GMT');
+         $arr = apache_request_headers();
+         foreach ($arr as $header => $value)
+         {
+            if ($header == 'If-Modified-Since')
+            {
+               $ifModifiedSince = strtotime($value);
+               if ($ifModifiedSince > $lastModified)
+               {
+                  $GLOBALS['APPLICATION']->RestartBuffer();
+                  CHTTP::SetStatus('304 Not Modified');
+               }
+            }
+         }
+      }
+   }
+}*/
+
+
+
 /*
 AddEventHandler("iblock", "OnBeforeIBlockElementAdd", "AddElementOrSectionCode"); 
 AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", "AddElementOrSectionCode"); 
@@ -965,3 +1042,21 @@ function AddElementOrSectionCode(&$arFields) {
    }
 }
 */
+
+
+AddEventHandler('main', 'OnEpilog', 'OnEpilogHandler');  
+
+function OnEpilogHandler() {
+            if ( isset($_GET['PAGEN_1']) && (intval($_GET['PAGEN_1'])>0) && (!defined('ERROR_404')) ) {
+        $title = $GLOBALS['APPLICATION']->GetProperty('title');
+                 $GLOBALS['APPLICATION']->SetPageProperty('title', $title.' (страница '.intval($_GET['PAGEN_1']).')');
+        $description = $GLOBALS['APPLICATION']->GetProperty('description');
+        $GLOBALS['APPLICATION']->SetPageProperty('description', $description.' (страница '.intval($_GET['PAGEN_1']).')');        
+     }
+	 if ( isset($_GET['PAGEN_5']) && (intval($_GET['PAGEN_5'])>0) && (!defined('ERROR_404')) ) {
+        $title = $GLOBALS['APPLICATION']->GetProperty('title');
+                 $GLOBALS['APPLICATION']->SetPageProperty('title', $title.' (страница '.intval($_GET['PAGEN_5']).')');
+        $description = $GLOBALS['APPLICATION']->GetProperty('description');
+        $GLOBALS['APPLICATION']->SetPageProperty('description', $description.' (страница '.intval($_GET['PAGEN_5']).')');        
+     }
+  }

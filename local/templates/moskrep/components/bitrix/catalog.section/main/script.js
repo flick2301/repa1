@@ -3,8 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 BX.ready(function () {
     var buyBtnDetail = document.body.querySelectorAll('.simple-cart-icon');
 
@@ -35,7 +33,7 @@ BX.ready(function () {
             onsuccess: function (data) {
                 if (data.STATUS == 'OK') {
                     BX.addClass(e.target, 'active');
-                   ga ('send', 'event', 'Корзина', 'Добавить в корзину');
+                   /*ga ('send', 'event', 'Корзина', 'Добавить в корзину');
 				   gtag('event','add_to_cart', {
 						'value': e.target.dataset.price,
 						'items': [
@@ -43,8 +41,9 @@ BX.ready(function () {
 							'id':  e.target.dataset.product, 
 							'google_business_vertical': 'retail'
 						}]
-					});
+					});*/
                     BX.onCustomEvent('OnBasketChange');
+					dataLayerAddBasket(e.target.dataset.name, e.target.dataset.price, quantity);
                     $('.header-basket').popUp();
                 } else {
                    console.log(data);
@@ -53,11 +52,13 @@ BX.ready(function () {
             }
         }); 
     }
-    
-    
-   
-    
-    
-    
+	
+	
+ $(document).on('click', '.product-slider .slick-prev, .product-slider .slick-next', function() {	
+     $('.product-slider div img').each(function() {
+        $(this).attr('src', $(this).attr('data-src'));
+		$(this).removeAttr('data-src');
+    });	 
+ });      
 
 });

@@ -26,11 +26,7 @@ if(SITE_TEMPLATE_ID=='moskrep'){
 
 
 
-            <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
-            </header>
-            <!--page-heading-->
+<?globalGetTitle()?>
 
 
 
@@ -85,7 +81,7 @@ $APPLICATION->IncludeFile(
 <?
 $APPLICATION->IncludeFile(
  $APPLICATION->GetCurPage()."tab3.php",
- array(),
+ array("SHOW_FRAME"=>"Y"),
  array("SHOW_BORDER" => true, "MODE"=>"php")
 );
 ?>

@@ -33,7 +33,7 @@ BX.message({
 
 
 <div class="global-search">
-<input class="simple-input simple-input--plus global-search__input moskrep_search" type="button" value=""/>	
+<input class="simple-input simple-input--plus global-search__input moskrep_search" type="button" value="&nbsp;"/>	
 <label class="global-search__label moskrep_search" for="global-search"><small class="global-search__hint global-search__hint--lite moskrep_submit"><?=Loc::getMessage("DSEARCH_AJAX_SEARCH_SMALL")?></small><small class="global-search__hint global-search__hint--full"><?=Loc::getMessage("DSEARCH_AJAX_SEARCH_ARTNO")?></small></label>
 <input id="global-search" name="text" type="text" value="<?=htmlspecialcharsEx($_GET['result'])?>" class="global-search__submit moskrep_input" placeholder="" autocomplete="off" />			  
 <div id="text_result">

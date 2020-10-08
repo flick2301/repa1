@@ -20,15 +20,13 @@ if($arParams['FOR_SEO']!='Y'){
     ?>
 	
 <?if(!$_POST['ENUM_LIST']['ELEMENTS'] && !$arParams["DISABLE_HEADER"]=='Y'){?>
-<!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?=($arResult['META_TITLE']) ? $arResult['META_TITLE'] :$arResult['NAME'];?></h1>
-            </header>
-<!--page-heading-->
+
+<?globalGetTitle($arResult['META_TITLE'] ? $arResult['META_TITLE'] : $arResult['NAME'])?>
+
 <?if($arResult['DESCRIPTION']):?>
 	<div class="basic-layout__module catalog-desc">
         <div class="catalog-desc__cover">
-            <img class="catalog-desc__image" src="<?=$arResult['PICTURE']['SRC']?>" width="226" height="170" alt="">
+            <img class="catalog-desc__image" src="<?=$arResult['PICTURE']['SRC']?>" width="226" height="170" alt="<?=($arResult['META_TITLE']) ? $arResult['META_TITLE'] :$arResult['NAME'];?>" title="<?=($arResult['META_TITLE']) ? $arResult['META_TITLE'] :$arResult['NAME'];?>" />
         </div>
 		<p class="catalog-desc__about">
         <?=strip_tags($arResult['DESCRIPTION']);?>
@@ -122,10 +120,13 @@ if($arParams['FOR_SEO']!='Y'){
 				
 <?php
 	//if ($_SERVER['REQUEST_URI']=="/krepezh/samorezy/samorezy_po_derevu/ostrye_pd/") file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arResult['SIZES'], true));
+	
+	$size_index=0;
 
     foreach($arResult['SIZES'] as $key=>$size){
         
         $index=0;
+		$size_index++;
         foreach ($size as $item)
         {
 			
@@ -150,10 +151,12 @@ if($arParams['FOR_SEO']!='Y'){
 						<span class="catalog-table__desc"><strong><?=$item['SIZES']?></strong></span></h3>
 =======
 					<div class="catalog-table__column catalog-table__column--basic <?=$index>0 ? " is-merged" : "groupped";?>">
+					<?if($item['PREVIEW_PICTURE']['src'] || $item['DETAIL_PICTURE']['src']):?>
 		<div class="item_img_block">
-					<img src="<?=$item['PREVIEW_PICTURE']['src']?>" alt='<?=$item['IPROPERTY_VALUES']['ELEMENT_PREVIEW_PICTURE_FILE_ALT']?>' />
+					<img src="<?=$item['PREVIEW_PICTURE']['src'] ? $item['PREVIEW_PICTURE']['src'] : $item['DETAIL_PICTURE']['SRC']?>" alt="<?=$item['IPROPERTY_VALUES']['ELEMENT_PREVIEW_PICTURE_FILE_ALT']?> <?=$item['SIZES']?>" title="<?=$item['IPROPERTY_VALUES']['ELEMENT_PREVIEW_PICTURE_FILE_ALT']?> <?=$item['SIZES']?>" />
 					<div><?=($item['PROPERTIES']['ROOT_NAME']['VALUE']) ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'];?></div>
-					</div>						
+					</div>	
+<?endif?>					
                         <div class="catalog-table__title">Размер, мм<small>:</small></div>						
                         <h3 class="catalog-table__content"><span class="catalog-table__desc"><strong><?=$item['SIZES']?></strong></span></h3>
 >>>>>>> 5958444643f8421b72d053d818a39b6ba31aeb84
@@ -166,7 +169,7 @@ if($arParams['FOR_SEO']!='Y'){
 					<div class="catalog-table__column catalog-table__column--basic">				
                         <div class="catalog-table__title">Фасовка<small>:</small></div>
                         <div class="catalog-table__content">
-                            <a class="catalog-table__link" href="<?=$item['DETAIL_PAGE_URL']?>" target="_self"><?=($item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]) ? $item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] : '1';?> <?=$item['UNIT']?></a>
+                            <a class="catalog-table__link" href="<?=$item['DETAIL_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['PROPERTIES']['ROOT_NAME']['VALUE'] ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME']))?>')" target="_self"><?=($item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]) ? $item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] : '1';?> <?=$item['UNIT']?></a>
                         </div>
                     </div>
             
@@ -175,7 +178,7 @@ if($arParams['FOR_SEO']!='Y'){
 					<div class="catalog-table__column catalog-table__column--basic">
                         <div class="catalog-table__title">Артикул<small>:</small></div>
                         <div class="catalog-table__content">
-                            <a class="catalog-table__link" href="<?=$item['DETAIL_PAGE_URL']?>" target="_self"><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?></a>
+                            <a class="catalog-table__link" href="<?=$item['DETAIL_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['PROPERTIES']['ROOT_NAME']['VALUE'] ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME']))?>')" target="_self"><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?></a>
                         </div>
                     </div>
 			
@@ -185,18 +188,20 @@ if($arParams['FOR_SEO']!='Y'){
 			
 
 					<div class="catalog-table__column catalog-table__column--basic">
+					
+									
 						<div class="catalog-table__title">Получение<small>:</small></div>
                         <div class="catalog-table__content">
                             <span class="pickup-view" data-product="<?=$item['ID']?>">
-									<div id='pickup_<?=$item['ID']?>' style='display:none' class="pickup-block">
+									<div id='pickup_<?=$item['ID']?>' class="pickup-block">
 										
 									</div>
-								</span>
-								<span class="delivery-view"  data-product="<?=$item['ID']?>">
-									<div id='delivery_<?=$item['ID']?>' style='display:none' class="delivery-block">
+							</span>
+							<span class="delivery-view" data-product="<?=$item['ID']?>">
+									<div id='delivery_<?=$item['ID']?>' class="delivery-block">
 										
 									</div>
-								</span>
+							</span>
 
                         </div>
 					</div>
@@ -215,7 +220,8 @@ if($arParams['FOR_SEO']!='Y'){
         <?}?>
 		<?if($arResult['EXTRA_FIELD']){
 			foreach($arResult['EXTRA_FIELD'] as $field){?>
-					<div class="catalog-table__column catalog-table__column--basic">
+					<div class="catalog-table__column catalog-table__column--basic" data-code="<?=$field['CODE']?>"><?$item['PROPERTIES'][$field['CODE']]["VALUE"] ? $view[$field['CODE']]=true : "";?>
+					<?=$size_index==count($arResult['SIZES']) && $index==count($size) && !$view[$field['CODE']] ? "<script>$('.catalog-table__column[data-code=\"{$field['CODE']}\"]').hide();</script>" : ""?>
                         <div class="catalog-table__title"><?=$field['NAME']?><small>:</small></div>
                            <div class="catalog-table__content">
 								<p class="catalog-table__desc"><?=mb_strimwidth($item['PROPERTIES'][$field['CODE']]["VALUE"], 0, 12, "...");?></p>
@@ -264,6 +270,7 @@ if($arParams['FOR_SEO']!='Y'){
 		</div>
 			
 <?php
+		$arProductsID .= '"'.$item['ID'].'",';
         }
     }
 ?>
@@ -298,7 +305,7 @@ while($arSection = $db_list->GetNext()) {
                      <div class="category-card">
                         <p class="category-card__title"><a class="category-card__link" href="<?=$arSection['SECTION_PAGE_URL']?>"><?=$arSection['NAME']?></a></p>
                         <div class="category-card__cover">
-                           <img class="category-card__image" src="<?=$renderImage['src']?>" width="120" height="76" alt=""> 
+                           <img class="category-card__image" src="<?=$renderImage['src']?>" width="120" height="76" alt="<?=$arSection['NAME']?>"> 
                         </div>
                      </div>
                      <!--category-card-->
@@ -310,6 +317,7 @@ while($arSection = $db_list->GetNext()) {
 <?}?>
 
 <?if(count($arResult["UF_SURFACE"])):?>
+
 <div class="blue-block">Типы оснований</div>
 <div class="surface-block-container">
 <?foreach($arResult["UF_SURFACE"] AS $surface):?>
@@ -323,7 +331,7 @@ while($arSection = $db_list->GetNext()) {
 </div>
 <?endif?>
 
-<?if($arResult['UF_DETAIL_TEXT']):?>
+<?if($arResult['UF_DETAIL_TEXT'] && !($_REQUEST['PAGEN_1'] > 1)):?>
 <!--simple-article-->
             <div class="basic-layout__module simple-article">
                <div class="simple-article__content wysiwyg-block">
@@ -355,5 +363,19 @@ BX.ready(function () {
 	
 });
 </script>
+
+<?global $userEmail;?>
+<!-- Criteo Category / Listing dataLayer -->
+<script type='text/javascript'>
+        var dataLayer = dataLayer || [];
+        dataLayer.push({            
+            'event': 'crto_listingpage',
+            crto: {             
+                'email': '<?=$userEmail?>', //может быть пустой строкой
+                'products': [<?=$arProductsID?>]
+            }
+        });
+</script>
+<!-- END Criteo Category / Listing dataLayer -->
 
 		

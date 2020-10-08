@@ -90,7 +90,10 @@ for($index = 0; $index < $itemSize; $index++)
       itemtype="http://schema.org/ListItem" class="crumbs-nav__item">
 				
 				<a itemprop="item" title="'.$title.'" href="'.$arResult[$index]["LINK"].'" target="_self"  class="crumbs-nav__page crumbs-nav__page--link">
+				<span itemprop="name">
 					'.$title.'
+				</span>
+				<meta itemprop="position" content="'.($index + 1).'" />
 				</a>
 				
 			</li>';
@@ -102,7 +105,7 @@ for($index = 0; $index < $itemSize; $index++)
       itemtype="http://schema.org/ListItem" class="crumbs-nav__item">
 				
 				<p itemprop="name" class="crumbs-nav__page crumbs-nav__page--last">'.$title.'</p>
-				
+				<meta itemprop="position" content="'.($index + 1).'" />				
 			</li>';
 	}
 }

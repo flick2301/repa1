@@ -8,11 +8,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 	die();
 ?>
 
-            <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?=$APPLICATION->ShowTitle();?></h1>
-            </header>
-            <!--page-heading-->
+<?globalGetTitle()?>
 
 
 <?ShowError($arResult["strProfileError"]);?>

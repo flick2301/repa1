@@ -37,7 +37,7 @@ if (isset($_GET['IFRAME']) == 'Y')
 		"CONTEXT" => "FULLSCREEN",
 	), false, Array("HIDE_ICONS" => "Y"));
 }
-else if (!isset($_GET['BXD_API_VERSION']) && strpos($_SERVER['HTTP_USER_AGENT'], 'BitrixDesktop') === false)
+else if (!isset($_GET['BXD_API_VERSION']) && mb_strpos($_SERVER['HTTP_USER_AGENT'], 'BitrixDesktop') === false)
 {
 	$APPLICATION->IncludeComponent("bitrix:im.messenger", "fullscreen", Array(
 		"CONTEXT" => "FULLSCREEN",

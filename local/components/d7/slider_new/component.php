@@ -17,7 +17,7 @@ elseif($obCache->StartDataCache())// Если кэш невалиден
 
 
 		$arFilter = array('IBLOCK_ID' => $arParams["IBLOCK_ID"], 'ACTIVE' => 'Y');
-        $arSelect = array("ID", "IBLOCK_ID", "NAME", "CODE", "PREVIEW_PICTURE", "IBLOCK_SECTION_ID", "PROPERTY_*");
+        $arSelect = array("ID", "IBLOCK_ID", "NAME", "CODE", "PREVIEW_PICTURE", "PREVIEW_TEXT", "IBLOCK_SECTION_ID", "PROPERTY_*");
         $res = CIBlockElement::GetList(Array("SORT" => "ASC"), $arFilter, false, Array(), $arSelect);
 		$i=0;
 		while($ob = $res->GetNextElement()){ 

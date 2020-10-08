@@ -99,7 +99,7 @@ if ($USER->IsAuthorized() && !isAccessAllowed())
 
 if (
 	\Bitrix\Main\Loader::includeModule('bitrix24') &&
-	strpos(Context::getCurrent()->getRequest()->getUserAgent(), 'Bitrix24.Disk') !== false &&
+	mb_strpos(Context::getCurrent()->getRequest()->getUserAgent(), 'Bitrix24.Disk') !== false &&
 	\Bitrix\Bitrix24\Limits\User::isUserRestricted($USER->GetID())
 )
 {
@@ -122,7 +122,7 @@ if(
 )
 {
 	$code = '';
-	if (strlen($_POST['user_os_mark']) > 0)
+	if ($_POST['user_os_mark'] <> '')
 	{
 		$code = md5($_POST['user_os_mark'].$_POST['user_account']);
 	}

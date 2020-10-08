@@ -34,7 +34,7 @@ BX.ready(function () {
                     BX.addClass(e.target, 'active');
                    
                    yaCounter29426710.reachGoal('AddToShoppingCart');
-				   ga ('send', 'event', 'Корзина', 'Добавить в корзину');
+				   /*ga ('send', 'event', 'Корзина', 'Добавить в корзину');
 				   gtag('event','add_to_cart', {
 					   'send_to': 'AW-958495754',
 						'value': e.target.dataset.price,
@@ -43,8 +43,9 @@ BX.ready(function () {
 							'id':  e.target.dataset.product, 
 							'google_business_vertical': 'retail'
 						}]
-					});
+					});*/
                     BX.onCustomEvent('OnBasketChange');
+					dataLayerAddBasket(e.target.dataset.name, e.target.dataset.price, quantity);
                     $('.header-basket').popUp();
                     
                 } else {

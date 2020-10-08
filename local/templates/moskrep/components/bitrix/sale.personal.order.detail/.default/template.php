@@ -40,14 +40,11 @@ else
 	}
 	?>
 	
-            <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?= Loc::getMessage('SPOD_LIST_MY_ORDER', array(
+	<?globalGetTitle(Loc::getMessage('SPOD_LIST_MY_ORDER', array(
 					'#ACCOUNT_NUMBER#' => htmlspecialcharsbx($arResult["ACCOUNT_NUMBER"]),
 					'#DATE_ORDER_CREATE#' => $arResult["DATE_INSERT_FORMATED"]
-				)) ?></h1>
-            </header>
-            <!--page-heading-->	
+				)))?>
+	
 	
 	<div class="container-fluid sale-order-detail">
 		<?

@@ -17,7 +17,7 @@ if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true)die();
 <div class="basic-layout__module basic-layout__module--request send-a-request">
 
     <div class="send-a-request__header">
-        <h3 class="send-a-request__title">Отправить заявку</h3>
+        <div class="send-a-request__title">Отправить заявку</div>
 		
     
 
@@ -38,6 +38,9 @@ if(strlen($arResult["OK_MESSAGE"]) > 0)
 {
     ?><div class='header-form-feedback'><?=$arResult["OK_MESSAGE"]?></div>
 		<script>
+	
+dataLayerSendForm();//Отправка формы в DataLayer	
+		
 		$(document).ready(function(){
 		$('.header-form-feedback').popUp();
 		});</script><p><?=$arResult["OK_MESSAGE"]?></p>
@@ -48,7 +51,7 @@ if(strlen($arResult["OK_MESSAGE"]) > 0)
 
 
         yaCounter29426710.reachGoal('SendMessage');
-		ga('send', 'event', 'Сообщения', 'Отправка сообщение');
+		//ga('send', 'event', 'Сообщения', 'Отправка сообщение');
 
     };
 
@@ -57,7 +60,7 @@ if(strlen($arResult["OK_MESSAGE"]) > 0)
        
 }else{
 ?>
-    <p class="send-a-request__desc">Просто оставьте свои контактные данные и комментарий. Ваши данные сохранены в соответствии с политикой <a href="javascript:void(0);">конфиденциальности сайта</a>. А менеджер свяжется с вами в рабочее время и оформит заказ</p>
+    <p class="send-a-request__desc">Просто оставьте свои контактные данные и комментарий. Ваши данные сохранены в соответствии с политикой <a class="underline blue" target="_blank" href="/privacy/">конфиденциальности сайта</a>. А менеджер свяжется с вами в рабочее время и оформит заказ</p>
 <?}?>
 	</div>
 

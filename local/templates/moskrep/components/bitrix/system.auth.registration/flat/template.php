@@ -124,7 +124,7 @@ $APPLICATION->IncludeComponent(
 			</div>
 			<div class="bx-captcha"><img src="/bitrix/tools/captcha.php?captcha_sid=<?=$arResult["CAPTCHA_CODE"]?>" width="180" height="40" alt="CAPTCHA" /></div>
 			<div class="user-account__item">
-				<input type="text" style="max-width: 180px;" class="simple-input user-account__input" name="captcha_word" maxlength="50" value="" autocomplete="off"/>
+				<input type="text" id="captcha_word_registration" style="max-width: 180px;" class="simple-input user-account__input" name="captcha_word" maxlength="50" value="" autocomplete="off"/>
 			</div>
 		</div>
 

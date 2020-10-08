@@ -109,7 +109,7 @@ document.getElementById('bx_auth_secure').style.display = '';
 
 
                <div class="user-account__footer">
-                  <input onclick="BX.submit(BX('form_lk'));" class="main-button main-button--plus user-account__submit" type="button" value="<?=GetMessage("AUTH_AUTHORIZE")?>">
+                  <input onclick="BX.submit(BX('form_lk'));" name="Auth" class="main-button main-button--plus user-account__submit" type="button" value="<?=GetMessage("AUTH_AUTHORIZE")?>">
                </div>		
 	</form>
 

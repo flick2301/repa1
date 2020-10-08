@@ -38,50 +38,82 @@ if ($arParams["SET_TITLE"] == "Y")
 		</tr>
 	</table>
 	
+	
+	<?
+	$order = \Bitrix\Sale\Order::load($arResult["ORDER"]["ID"]);
+	if ($order){
+    	$userEmail = '';
+ 		$propertyCollection = $order->getPropertyCollection();
+ 
+		if ($propUserEmail = $propertyCollection->getUserEmail()) {
+			$userEmail = $propUserEmail->getValue();
+		} else {
+         
+			// поиск свойства путём перебора
+			foreach($propertyCollection as $orderProperty) {
+             
+				if ($orderProperty->getField('CODE') == 'EMAIL') {
+					$userEmail = $orderProperty->getValue();
+					break;
+				}
+			}
+		}
+		
+		$basket = Bitrix\Sale\Basket::loadItemsForOrder($order);
+		
+		
+		?>
+		<!-- Criteo Sales dataLayer -->
+<script type='text/javascript'>
+        var dataLayer = dataLayer || [];
+        dataLayer.push({
+            'event': 'crto_transactionpage',            
+            crto: {             
+                'email': '<?=$userEmail?>',   
+                'transactionid':'<?=$arResult["ORDER"]["ID"]?>',                                        
+                'products': [
+				<?
+				foreach ($basket as $basketItem) {
+					?>
+					{
+                    id: '<?=$basketItem->getProductId()?>',
+                    price: '<?=$basketItem->getPrice()?>',              
+                    quantity: '<?=$basketItem->getQuantity()?>'
+					},
+				<?
+				}
+				?>
+				]
+            }
+        });
+</script>
+<!-- END Criteo Sales dataLayer -->
+		<?
+	}															
+											?>
+	
 <script>
+
+dataLayer.push({
+	'event':'krepkomp',
+		'eventCategory':'Заказ', 
+		'eventAction':'подтверждение',  
+    'eventLabel':'<?=$arResult["ORDER"]["ACCOUNT_NUMBER"]?>', // Номер заказа, указанный на странице с информацией об успешно созданном заказе
+    'eventValue':'<?=$arResult["ORDER"]["PRICE"]?>'  // Общая стоимость оформленного заказа
+});
+
+
+
+
+
+
 window.onload = function() {
 
 yaCounter29426710.reachGoal('BUY');
     
 window.dataLayer = window.dataLayer || [];
 	
-dataLayer.push({
-    "ecommerce": {
-        "purchase": {
-            "actionField": {
-                "id" : "<?=$arResult["ORDER_ID"]?>"
-            },
-            "products": [
-			<?
-$arBasketItems = array();
 
-$dbBasketItems = CSaleBasket::GetList(
-     array(
-          "NAME" => "ASC",
-          "ID" => "ASC"
-          ),
-     array(
-         
-        "ORDER_ID" => $arResult["ORDER_ID"]
-          ),
-        false,
-        false,
-        array("ID", "CALLBACK_FUNC", "MODULE", "PRODUCT_ID", "QUANTITY", "DELAY", "CAN_BUY", "PRICE", "WEIGHT", "PRODUCT_PROVIDER_CLASS", "NAME")
-                );
-while ($arItems = $dbBasketItems->Fetch())
-{?>
-                {
-                    "id": "<?=$arItems['PRODUCT_ID']?>",
-                    "name": "<?=$arItems['NAME']?>",
-                    "price": <?=$arItems['PRICE']?>,
-					"quantity": <?=$arItems['QUANTITY']?>
-                   
-                },
-<?}?>  
-            ]
-        }
-    }
-});
 
 }
 </script>	

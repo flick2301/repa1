@@ -11,6 +11,43 @@ Loc::LoadMessages(__FILE__);
 <html xml:lang="<?=LANGUAGE_ID?>" lang="<?=LANGUAGE_ID?>">
 <head>
 
+	<meta charset="<?=LANG_CHARSET?>">
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CHARSET?>" />-->
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
+    <meta name="yandex-verification" content="94ad628889e9793a" />
+    <meta name="google-site-verification" content="tCyUZcBpb8WKtkt8O1XsKiMEeBQpIFTPY-N9GDFfIv0" />
+    <meta name="apple-mobile-web-app-title" content="Главная страница – Krep-Komp" />
+    <meta name="theme-color" content="#0C58CF" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+	
+<?$APPLICATION->ShowMeta("robots")?>
+<title><?$APPLICATION->ShowTitle();?></title>
+
+<?$APPLICATION->ShowMeta("description")?>
+
+
+    
+	
+	<link rel="manifest" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/manifest.webmanifest" />
+	<link rel="icon" sizes="32x32" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/favicon-32.png" />
+	<link rel="icon" sizes="96x96" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/favicon-96.png" />
+	<link rel="icon" sizes="16x16" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/favicon-16.png" />
+	
+	<!--appicons-->
+   <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-iphone.png" sizes="60x60" />
+   <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-ipad.png" sizes="76x76" />
+   <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-iphone@2x.png" sizes="120x120" />
+   <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-ipad@2x.png" sizes="152x152" />
+   <?
+   $user_agent = $_SERVER["HTTP_USER_AGENT"];
+    if (strpos($user_agent, "Safari") !== false) {
+		echo '<link href="'.SITE_TEMPLATE_PATH.'/css/safari.css" rel="stylesheet" type="text/css" />';
+    }
+	?>
+   
+
+	<link rel='canonical' href='https://<?=$_SERVER["SERVER_NAME"]?><?=$APPLICATION->GetCurPage(false);?>' />	
+
   	<!--АНТИСОВЕТНИК-->
 	<script data-skip-moving='true'>
 (function(d) {
@@ -41,38 +78,40 @@ $APPLICATION->IncludeFile(
 ?>
 <?endif?>       
     
-    <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <meta name="yandex-verification" content="94ad628889e9793a" />
-    <meta name="google-site-verification" content="tCyUZcBpb8WKtkt8O1XsKiMEeBQpIFTPY-N9GDFfIv0" />
-    
-	<meta name="robots" content="index,follow">
-    <meta name="apple-mobile-web-app-title" content="Главная страница – Krep-Komp">
-    <meta name="theme-color" content="#0C58CF">
-    <title><?$APPLICATION->ShowTitle();?></title>
 
-	<?$APPLICATION->ShowHead();?>
-        <?CJSCore::Init(array('jquery'));?>
+
+<?$APPLICATION->ShowCSS()?>
+<?$APPLICATION->ShowHeadStrings()?>
+<?$APPLICATION->ShowHeadScripts()?> 
+        <?CJSCore::Init(array('jquery3'));?>
 	<?
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/reset.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.css", true);
-    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/fancybox.css", true);
+    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/jquery.fancybox.min.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/styles/global.styles.min.css?v=XXXXXXa", true);
-	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.css", true);
+	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.css", true);	
+	if (IPHONE=="Y") $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/iphone.css", true);	
+	
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.fancybox.js");
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/datalayer.js");
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");
+	
+		global $USER;
+		if ($USER->GetID()==1) {
+			$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/administrator.css", true);	
+			$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/administrator.js");
+		}	
 	?>
 	
-	<link rel="manifest" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/manifest.webmanifest">
-	<link rel="icon" sizes="32x32" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/favicon-32.png">
-	<link rel="icon" sizes="96x96" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/favicon-96.png">
-	<link rel="icon" sizes="16x16" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/favicon-16.png">
-	
-	<!--appicons-->
-   <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-iphone.png" sizes="60x60">
-   <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-ipad.png" sizes="76x76">
-   <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-iphone@2x.png" sizes="120x120">
-   <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-ipad@2x.png" sizes="152x152">
-
-	<link rel='canonical' href='https://<?=$_SERVER["SERVER_NAME"]?><?=$APPLICATION->ShowViewContent('page_url');?>' />
+   <script src="/local/templates/moskrep/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="/local/templates/moskrep/assets/scripts/jquery.icheck-1.0.2.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="/local/templates/moskrep/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="/local/templates/moskrep/assets/scripts/jquery.slick-1.9.0.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="/local/templates/moskrep/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="/local/templates/moskrep/js/jquery.popup.js" defer="defer"></script>
+   <script src="/local/templates/moskrep/js/common.js" defer="defer"></script>
+   <script src="/local/templates/moskrep/js/slick.min.js" defer="defer"></script>
+   <script src="/local/templates/moskrep/js/jquery.cookie.js" defer="defer"></script>		
 
     
     <!--[if (lt IE 9)&(!IEMobile 7)]><script src="js/html5support.js"></script><![endif]-->
@@ -86,6 +125,13 @@ $APPLICATION->IncludeFile(
   })(document);
 </script>
 
+<!-- calltouch -->
+<script type="text/javascript">
+(function(w,d,n,c){w.CalltouchDataObject=n;w[n]=function(){w[n]["callbacks"].push(arguments)};if(!w[n]["callbacks"]){w[n]["callbacks"]=[]}w[n]["loaded"]=false;if(typeof c!=="object"){c=[c]}w[n]["counters"]=c;for(var i=0;i<c.length;i+=1){p(c[i])}function p(cId){var a=d.getElementsByTagName("script")[0],s=d.createElement("script"),i=function(){a.parentNode.insertBefore(s,a)};s.type="text/javascript";s.async=true;s.src="https://mod.calltouch.ru/init.js?id="+cId;if(w.opera=="[object Opera]"){d.addEventListener("DOMContentLoaded",i,false)}else{i()}}})(window,document,"ct","9hgftwpz");
+</script>
+<!-- calltouch -->
+
+
 
 <?if($APPLICATION->GetCurPage() == "/" && false):?>
 <style>@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=cyrillic);body{margin:0;font-family:'Open Sans',sans-serif;font-weight:400;letter-spacing:0;background-color:#fff;background-image:none}.project{max-width:660px;margin:0 auto;line-height:24px}.project *{font-family:'Open Sans',sans-serif}.project h1{margin:0;padding:34px 16px 25px;font-size:30px;font-weight:600;text-align:center;text-transform:capitalize}.project h2{margin:0 16px 12px;font-size:17px;font-weight:600}.project q{font-style:normal}.project q,.project q:lang(en){quotes:'\201C''\201D''\2018''\2019'}.project q:lang(ru){quotes:'\00AB''\00BB''\201E''\201C'}.project q::after,.project q::before{font-weight:600;color:#06aaf5}.project a{padding:0 10px;line-height:36px;color:#06aaf5;white-space:nowrap;text-decoration:underline}.js-no-touch .project a:hover,.project a:active{color:#28292b;text-decoration:none}.project .list{width:100%;margin:0;font-size:17px;padding:8px 0 24px}.project .list li{display:flex;flex-direction:column;padding:5px 0 7px}.project .list li:nth-of-type(2n+1){background-color:#f5f5f6}.project .name{padding:8px 16px}.project .action{display:flex;margin-top:-8px;padding:0 6px}@media (min-width:531px){.project{padding:0 40px}.project h1{padding-right:20px;padding-left:20px}.project h2{margin-right:0;margin-left:0}.project .list li{padding-right:4px;padding-left:4px}}@media (min-width:741px){.project{padding:12px 40px}.project a{padding:0 16px;line-height:40px}.project .list li{flex-direction:row;justify-content:space-between;padding-bottom:6px}.project .action{margin-top:0}}</style>
@@ -93,8 +139,11 @@ $APPLICATION->IncludeFile(
 
 
 </head>
-<?$APPLICATION->ShowPanel();?>
+
+
 <body class="basic-layout basic-layout--default" id="basic-layout">
+
+<?$APPLICATION->ShowPanel();?>
 
 <?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
 <?
@@ -118,8 +167,13 @@ $APPLICATION->IncludeFile(
 
     <?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/functions.php";?>
 	<header class="basic-layout__header">
-	
+	<?=$safari?>
 	<!--<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page">  <a class="banner-link" href="https://krep-komp.ru/"><p class="banner-text"><strong style='font-weight: 500; position: relative; top: 1px;'>Мы работаем! Принимаем заказы на самовывоз и бесконтактную доставку. <span style='color: #f39101;'></span></strong></p> </a> <svg class="icon-svg -cross" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg> </div> </div>-->
+	
+	
+	
+	
+	
     <div class="basic-layout__section">
 	<!--eshop-panel-->
         <div class="eshop-panel">
@@ -127,7 +181,8 @@ $APPLICATION->IncludeFile(
 			<!--website-logo-->
 			<div class="website-logo">
 				<?//$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/company_logo.php"), false, []);?>
-				<a class="website-logo__link" href="/">На главную</a>
+				<img class="website-logo__img" alt="Магазин крепежа и метизов «КРЕП-КОМП" title="Магазин крепежа и метизов «КРЕП-КОМП»" src="/local/templates/moskrep/assets/design/website-logo/krep-komp.svg" />
+				<a class="website-logo__link" href="<?=($APPLICATION->GetCurPage() != "/") ? '/' : 'javascript::void();'?>">На главную</a>
 			</div>
 			<!--website-logo-->
             </div>
@@ -284,6 +339,8 @@ $APPLICATION->IncludeFile(
 	</div>
 	<!--eshop-panel-->
 </div>
+
+
 	<div class="basic-layout__section">
          <!--website-navbar-->
          <div class="website-navbar">
@@ -308,14 +365,11 @@ $APPLICATION->IncludeFile(
 		"DELAY" => "N",
 		"ALLOW_MULTI_SELECT" => "N",
 		"VIBOR_CATALOG_TABLE" => array(
-			0 => "1603",
-			1 => "1649",
-			2 => "1951",
-			3 => "2312",
-			4 => "2354",
-			6 => "2411",
-                        7 => "2403",
-                        8 => "",
+			
+			1 => "2312",
+			2 => "2411",
+            3 => "2403",
+            4 => "",
 		)
 	),
 	false
@@ -324,6 +378,8 @@ $APPLICATION->IncludeFile(
 			
 			
 		</div>
+		
+		
 		<div class="website-navbar__primary">
                <!--main-nav-->
                <nav class="main-nav">
@@ -343,6 +399,7 @@ $APPLICATION->IncludeFile(
 					</div>
 				</nav>
 			</div>
+	</div>
 	</div>
     </header>
     

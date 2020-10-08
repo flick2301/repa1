@@ -17,11 +17,8 @@ $APPLICATION->SetTitle("Адреса магазинов");
 
 <?if(!$_REQUEST["ID"]):?>
 
-            <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
-            </header>
-            <!--page-heading-->
+<?globalGetTitle()?>
+
 
 <ul class='delivery_items'>
 	<li data-tab='vivoz_1' class='delivery_item active'>Москва и МО</li>
@@ -30,7 +27,18 @@ $APPLICATION->SetTitle("Адреса магазинов");
 <?endif?>
 
 <div id='vivoz_2' class='delivery__tabs-list city2565 city2631 spb'> 
-<?require_once($_SERVER["DOCUMENT_ROOT"] . "/kontent-elementa/contact_spb.php");?>
+
+<?//require_once($_SERVER["DOCUMENT_ROOT"] . "/kontent-elementa/contact_spb.php");?>
+
+	<?$APPLICATION->IncludeComponent("d7:contact_shops","krep-komp",Array(
+				"IBLOCK_ID" => "19", 
+				"SECTION_ID" => SHOPS_SPB,
+				"CACHE_TYPE" => "A", 
+                "CACHE_TIME" => "3600", 
+                "CACHE_FILTER" => "N" 
+                    ), false
+    );?>	
+
 </div>
 
 

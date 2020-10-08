@@ -29,11 +29,13 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 				
 <?php
 	//if ($_SERVER['REQUEST_URI']=="/krepezh/samorezy/samorezy_po_derevu/ostrye_pd/") file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arResult['SIZES'], true));
-
+	
+		$size_index=0;
 
     foreach($arResult['SIZES'] as $key=>$size){
         
         $index=0;
+		$size_index++;		
         foreach ($size as $item)
         {
 			
@@ -47,10 +49,12 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
                 <section class="catalog-table">
 				
 					<div class="catalog-table__column catalog-table__column--basic <?=$index>0 ? " is-merged" : "groupped";?>">
+					<?if($item['PREVIEW_PICTURE']['src'] || $item['DETAIL_PICTURE']['SRC']):?>
 		<div class="item_img_block">
-					<img src="<?=$item['PREVIEW_PICTURE']['src']?>" alt='<?=$item['IPROPERTY_VALUES']['ELEMENT_PREVIEW_PICTURE_FILE_ALT']?>' />
+					<img src="<?=$item['PREVIEW_PICTURE']['src'] ? $item['PREVIEW_PICTURE']['src'] : $item['DETAIL_PICTURE']['SRC']?>" alt="<?=$item['IPROPERTY_VALUES']['ELEMENT_PREVIEW_PICTURE_FILE_ALT']?> <?=$item['SIZES']?>" title="<?=$item['IPROPERTY_VALUES']['ELEMENT_PREVIEW_PICTURE_FILE_ALT']?> <?=$item['SIZES']?>" />
 					<div><?=($item['PROPERTIES']['ROOT_NAME']['VALUE']) ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'];?></div>
-					</div>						
+					</div>	
+<?endif?>					
                         <div class="catalog-table__title">Размер, мм<small>:</small></div>
                         <h3 class="catalog-table__content"><span class="catalog-table__desc"><strong><?=$item['SIZES']?></strong></span></h3>
                     </div>
@@ -61,7 +65,7 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 					<div class="catalog-table__column catalog-table__column--basic">
                         <div class="catalog-table__title">Фасовка<small>:</small></div>
                         <div class="catalog-table__content">
-                            <a class="catalog-table__link" href="<?=$item['DETAIL_PAGE_URL']?>" target="_self"><?=($item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]) ? $item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] : '1';?> <?=$item['UNIT']?></a>
+                            <a class="catalog-table__link" href="<?=$item['DETAIL_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['PROPERTIES']['ROOT_NAME']['VALUE'] ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME']))?>')" target="_self"><?=($item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]) ? $item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] : '1';?> <?=$item['UNIT']?></a>
                         </div>
                     </div>
             
@@ -70,7 +74,7 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 					<div class="catalog-table__column catalog-table__column--basic">
                         <div class="catalog-table__title">Артикул<small>:</small></div>
                         <div class="catalog-table__content">
-                            <a class="catalog-table__link" href="<?=$item['DETAIL_PAGE_URL']?>" target="_self"><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?></a>
+                            <a class="catalog-table__link" href="<?=$item['DETAIL_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['PROPERTIES']['ROOT_NAME']['VALUE'] ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME']))?>')" target="_self"><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?></a>
                         </div>
                     </div>
 			
@@ -82,12 +86,12 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 						<div class="catalog-table__title">Получение<small>:</small></div>
                         <div class="catalog-table__content">
                             <span class="pickup-view" data-product="<?=$item['ID']?>">
-									<div id='pickup_<?=$item['ID']?>' style='display:none' class="pickup-block">
+									<div id='pickup_<?=$item['ID']?>' class="pickup-block">
 										
 									</div>
 								</span>
 								<span class="delivery-view"  data-product="<?=$item['ID']?>">
-									<div id='delivery_<?=$item['ID']?>' style='display:none' class="delivery-block">
+									<div id='delivery_<?=$item['ID']?>' class="delivery-block">
 										
 									</div>
 								</span>
@@ -108,7 +112,8 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
         <?}?>
 		<?if($arResult['EXTRA_FIELD']){
 			foreach($arResult['EXTRA_FIELD'] as $field){?>
-					<div class="catalog-table__column catalog-table__column--basic">
+					<div class="catalog-table__column catalog-table__column--basic" data-code="<?=$field['CODE']?>"><?$item['PROPERTIES'][$field['CODE']]["VALUE"] ? $view[$field['CODE']]=true : "";?>
+					<?=$size_index==count($arResult['SIZES']) && $index==count($size) && !$view[$field['CODE']] ? "<script>$('.catalog-table__column[data-code=\"{$field['CODE']}\"]').hide();</script>" : ""?>
                         <div class="catalog-table__title"><?=$field['NAME']?><small>:</small></div>
                            <div class="catalog-table__content">
 								<p class="catalog-table__desc"><?=mb_strimwidth($item['PROPERTIES'][$field['CODE']]["VALUE"], 0, 12, "...");?></p>

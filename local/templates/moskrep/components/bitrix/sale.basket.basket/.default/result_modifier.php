@@ -28,3 +28,8 @@ if ('' != $arParams['TEMPLATE_THEME'])
 }
 if ('' == $arParams['TEMPLATE_THEME'])
 	$arParams['TEMPLATE_THEME'] = 'blue';
+
+foreach ($arResult["GRID"]["ROWS"] as $k => $arItem)
+{
+	$arResult['CITRO'][] = ["ID"=>$arItem["ID"], "PRICE"=>$arItem["PRICE_FORMATED"], "QUANTITY" => $arItem["QUANTITY"]]; 
+}

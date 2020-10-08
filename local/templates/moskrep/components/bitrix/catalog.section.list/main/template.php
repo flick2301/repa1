@@ -19,7 +19,7 @@ $this->setFrameMode(true);
 <?foreach ($arResult['SECTIONS'] as &$arSection)
 			{
 				
-                                
+   $count++;                             
 				if (true === $arSection['PICTURE'])
 					$arSection['PICTURE'] = array(
 						'SRC' => $arCurView['EMPTY_IMG'],
@@ -38,9 +38,9 @@ $this->setFrameMode(true);
                <div class="sales-slider__item">
                   <!--catalog-card-->
                   <section class="catalog-card catalog-card--lite">
-                     <h3 class="catalog-card__title"><a class="catalog-card__link" href="<? echo $arSection['SECTION_PAGE_URL']; ?>"><? echo $arSection['NAME']; ?></a></h3>
+                     <div class="div_h3 catalog-card__title"><a class="catalog-card__link" href="<? echo $arSection['SECTION_PAGE_URL']; ?>"><? echo $arSection['NAME']; ?></a></div>
                      <div class="catalog-card__cover">
-                        <img class="catalog-card__image" src="<?=$arSection['PICTURE']["SRC"]?>" width="165" height="124" alt="">
+                        <img class="catalog-card__image" <?=$count > 5 ? "data-" : ""?>src="<?=$arSection['PICTURE']["SRC"]?>" width="165" height="124" alt="">
                      </div>
                   </section>
                   <!--catalog-card-->

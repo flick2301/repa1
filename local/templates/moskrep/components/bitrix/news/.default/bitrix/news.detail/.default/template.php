@@ -11,22 +11,18 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+$scheme = CMain::isHttps() ? 'https' : 'http';
 ?>
 
-            <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
-            </header>
-            <!--page-heading-->
-			
+<?globalGetTitle()?>			
 			
 
             <!--simple-article-->
-            <div class="basic-layout__module simple-article">
+            <div class="basic-layout__module simple-article" itemscope itemtype="http://schema.org/Article">
                <div class="simple-article__content wysiwyg-block">
 
 	<?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arResult["DETAIL_PICTURE"])):?>
-		<p><img
+		<p itemscope itemprop="image" itemtype="http://schema.org/ImageObject"><img itemprop="url contentUrl"
 			class="detail_picture"
 			border="0"
 			src="<?=$arResult["DETAIL_PICTURE"]["SRC"]?>"
@@ -34,14 +30,19 @@ $this->setFrameMode(true);
 			height="<?=$arResult["DETAIL_PICTURE"]["HEIGHT"]?>"
 			alt="<?=$arResult["DETAIL_PICTURE"]["ALT"]?>"
 			title="<?=$arResult["DETAIL_PICTURE"]["TITLE"]?>"
-			/></p>
+			/>
+			<meta itemprop="url" content="<?=$scheme?>://<?=$_SERVER['HTTP_HOST']?><?=$arResult["DETAIL_PICTURE"]["SRC"]?>">
+			<meta itemprop="width" content="<?=$arResult["DETAIL_PICTURE"]["WIDTH"]?>">
+			<meta itemprop="height" content="<?=$arResult["DETAIL_PICTURE"]["HEIGHT"]?>">
+			</p>
 	<?endif?>
-	
+<div itemprop="articleBody">	
 	<?if(strlen($arResult["DETAIL_TEXT"])>0):?>
-		<?echo $arResult["DETAIL_TEXT"];?>
+		<?echo str_replace(Array("<p>", "</p>"), Array("", ""), $arResult["DETAIL_TEXT"]);?>
 	<?else:?>
 		<?echo $arResult["PREVIEW_TEXT"];?>
 	<?endif?>
+</div>	
 	<?
 	if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y")
 	{
@@ -85,7 +86,7 @@ $this->setFrameMode(true);
 		   
                <div class="simple-article__footer">
                   <a class="second-button second-button--mini" href="<?=$arParams["BACK_URL"]?>"><?=GetMessage("T_NEWS_DETAIL_BACK")?></a>
-                  <?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?><p class="simple-article__date">Дата публикации: <time datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arResult["DISPLAY_ACTIVE_FROM"])?>"><?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${1} ". $month["02"]." \${3}", $arResult["DISPLAY_ACTIVE_FROM"])?></time></p><?endif;?>
+                  <?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?><p class="simple-article__date" itemprop="datePublished" <?/*datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arResult["DISPLAY_ACTIVE_FROM"])?>T16:20:30+00:00"*/?>>Дата публикации: <time datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arResult["DISPLAY_ACTIVE_FROM"])?>"><?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${1} ". $month["02"]." \${3}", $arResult["DISPLAY_ACTIVE_FROM"])?></time></p><?endif;?>
 		
 	
                </div>

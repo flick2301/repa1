@@ -3,6 +3,8 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Персональный раздел");
 ?><?$APPLICATION->AddChainItem("Мои заказы", "");?>
 
+
+<?if($_REQUEST['access'] == ''):?>
 <?if(SITE_TEMPLATE_ID=='moskrep'){?>
 
 
@@ -97,4 +99,9 @@ $APPLICATION->SetTitle("Персональный раздел");
 );?><br>
 
 <?}?>
+<?else:?>
+<script>
+//window.location.replace('https://krep-komp.ru/personal/');
+</script>
+<?endif;?>
  <br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

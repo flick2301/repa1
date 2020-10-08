@@ -1,5 +1,5 @@
 <!-- Google Analitycs -->
- <script type="text/javascript">
+ <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -20,14 +20,26 @@
    var clientId='';
    ga(function(tracker) {
    clientId = tracker.get('clientId');
+   
    ga('set', 'dimension2', clientId); });
    ga('send', 'pageview');
    <?
    global $USER;
-   $userID = $USER->GetID();
-   if(isset($userID))
+   global $APPLICATION;
+   global $userEmail;
+   
+   $rsUser = CUser::GetByID($USER->GetId());
+	$arUser = $rsUser->Fetch();
+	$userEmail = $arUser["EMAIL"];
+   if(isset($arUser["PERSONAL_PHONE"]))
    {
-	   ?>ga('set', 'userId', '<?=$userID?>');
+	   $queryUrl = 'https://team.krep-komp.ru/rest/1/rdgiynh922m6xmy9/crm.contact.list';
+		$data = array(
+			'filter' => array("PHONE" => $arUser["PERSONAL_PHONE"]),
+			'select' => array("ID")
+		);
+		$res = getContact($queryUrl, $data);
+	   ?>ga('set', 'userId', '<?=$res["result"][0]["ID"]?>');
 		
 	   <?
    }else{
@@ -36,7 +48,47 @@
 			
 			<?
    }
-	?>	
+	?>
+
+<!--Дополнение GA2-->
+/*ga(function(tracker) {
+    function guid() {
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+      }
+
+      result = '';
+
+      for(i=0; i<8; i++)
+        result += s4();
+
+      return result;
+    }
+});
+	
+   ga('set', 'dimension2', tracker.get('clientId'));
+   ga('set', 'dimension5', guid());*/
+<!--Дополнение GA2-->
+
+
+<!--Дополнение GA-->
+ga(function(tracker) {
+    function guid() {
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+      }
+
+      result = '';
+
+      for(i=0; i<8; i++)
+        result += s4();
+
+      return result;
+    }
+});
+
+   ga('set', 'dimension5', guid());
+ <!--Дополнение GA--> 
    
       </script>
  <!-- /Google Analitycs -->
@@ -60,9 +112,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-W2BJX6S');</script>
 <!-- End Google Tag Manager -->
 
+<script>
+<?if(isset($arUser["PERSONAL_PHONE"])):?>
+dataLayer.push({  
+    'UID':'<?=$res["result"][0]["ID"]?>' // Уникальный идентификатор пользователя взятый из CRM Bitrix24
+});
+<?endif;?>
+</script>
+<?if($APPLICATION->GetCurPage() == "/"):?>
+<!-- Criteo Homepage dataLayer -->
+<script>
+        var dataLayer = dataLayer || [];
+        dataLayer.push({  
+            'event': 'crto_homepage',
+            crto: {             
+                'email': '<?=$arUser["EMAIL"]?>' // может быть пустой строкой
+            }
+        });
+</script>
+<!-- END Criteo Homepage dataLayer -->
+<?endif;?>
+
 
 <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
+<script>
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
@@ -76,5 +149,54 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         ecommerce:"dataLayer"
    });
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/29426710" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+
+
+<!--json-ld-->
+<script type="application/ld+json">
+			{
+			  "@context": "http://schema.org",
+			  "@type": "Organization",
+			  "name" : "Интернет-магазин строительного крепежа «КРЕП-КОМП»",
+			  "address": {
+					"@type" : "PostalAddress",
+					"streetAddress": "Варшавское шоссе, 148, этаж 5, офис 501",
+					"postalCode" : "117519",
+					"addressLocality" : "Москва"
+			 },
+			"telephone": "+7(499) 350-55-55",
+			"email": "sale@krep-komp.ru"
+			}
+		</script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "https://krep-komp.ru/",
+  "logo": "https://krep-komp.ru/local/templates/moskrep/assets/design/website-logo/krep-komp.svg",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "+7(499) 350-55-55",
+    "contactType": "customer service"
+  }]
+}
+</script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "name": "Интернет-магазин строительного крепежа «КРЕП-КОМП»",
+  "url": "https://krep-komp.ru/",
+  "sameAs": [
+    "https://spb.krep-komp.ru/",
+    "https://vk.com/moskrep",
+    "https://www.facebook.com/moskrep",
+    "https://ok.ru/group/54538959192067"
+  ]
+}
+</script>
+<!--json-ld-->

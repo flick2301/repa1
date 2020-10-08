@@ -1,5 +1,8 @@
 			
 		</div>
+		
+
+		
 		<?if (CSite::InDir('/index.php') && SITE_ID!='s2'){
     ?>
 	<div class="basic-layout__sidebar"></div>
@@ -45,6 +48,11 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 	
 <div class="basic-layout__section">	
 	
+            <div class="sales-slider__header">
+               <h2 class="sales-slider__title">Интернет-магазин строительного крепежа "КРЕП-КОМП"</h2>
+            </div>
+			
+	
          <!--promo-block-->
          <div class="basic-layout__module promo-block">
 <?$APPLICATION->IncludeComponent(
@@ -68,14 +76,21 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 );?>			
          </div>
          <!--promo-block-->	
+		 
+			<table id="banner_block">
+			<tbody>
+			<tr>
+			<td><div>Полный ассортимент крепежа доступен на складе</div></td>
+			<td><div>Получите заказ в этот же день с доставкой по Москве и области</div></td>
+			<td><div>"КРЕП-КОМП" - главный оптовый поставщик крепежа в России</div></td>
+			</tr>
+			</tbody>
+			</table>		
 	
 
 
          <!--sales-slider-->
          <div class="basic-layout__module sales-slider">
-            <div class="sales-slider__header">
-               <h2 class="sales-slider__title">Распродажа метизов, строительного крепежа и крепежных изделий</h2>
-            </div>
             <?$APPLICATION->IncludeComponent(
 	     "bitrix:catalog.section.list",
 	     "main",
@@ -290,11 +305,11 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 					<?endif;?>
 					<p class="project-contact__data">Телефон: 
                     <?if($_SERVER['HTTP_HOST']!='spb.krep-komp.ru'){?>
-                    <a class="project-contact__link roistat-phone"  href="tel:8 499 350-55-55">
+                    <a class="project-contact__link roistat-phone"  href="tel:8499350-55-55">
                     8 499 350-55-55
                     </a><?
                     }else{?>
-                    <a class="project-contact__link roistat-phone-spb" href="tel:8 812 309-95-45">8 812 309-95-45 
+                    <a class="project-contact__link roistat-phone-spb" href="tel:8812309-95-45">8 812 309-95-45 
                     </a>
                     <?}?>
 					</p>
@@ -304,6 +319,7 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 				<div class="website-about__copy project-copy">
 					<p class="project-copy__text">Информация на сайте krep-komp.ru не является публичной офертой. Указанные цены действуют только при оформлении заказа через интернет-магазин krep-komp.ru</p>
 					<p class="project-copy__text">© 2005 – 2020 Интернет-магазин «КРЕП-КОМП» <?=$_SERVER['HTTP_HOST']!='spb.krep-komp.ru' ? 'Москва' : 'Санкт-Петербург';?></p>
+					<p class="privacy"><a class="blue underline" href="/privacy/">Политика компании</a></p>
 				</div>
                <!--project-copy-->
 			</div>
@@ -347,6 +363,9 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 
 
 
+
+
+
 <?
 if (CSite::InDir('/index.php')){
     if(SITE_ID=='s2'){
@@ -363,16 +382,11 @@ $APPLICATION->SetPageProperty('description', '«КРЕП-КОМП» - ведущ
         }
     }
 ?>
-   <script src="/local/templates/moskrep/js/fancybox.min.js" defer="defer"></script>
-   <script src="/local/templates/moskrep/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>
-   <script src="/local/templates/moskrep/assets/scripts/jquery.icheck-1.0.2.min.js?v=XXXXXXa" defer="defer"></script>
-   <script src="/local/templates/moskrep/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa" defer="defer"></script>
-   <script src="/local/templates/moskrep/assets/scripts/jquery.slick-1.9.0.min.js?v=XXXXXXa" defer="defer"></script>
-   <script src="/local/templates/moskrep/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa" defer="defer"></script>
-   <script src="/local/templates/moskrep/js/jquery.popup.js" defer="defer"></script>
-   <script src="/local/templates/moskrep/js/common.js" defer="defer"></script>
-   <script src="/local/templates/moskrep/js/slick.min.js" defer="defer"></script>
-   <script src="/local/templates/moskrep/js/jquery.cookie.js" defer="defer"></script>
+
+   
+
+
+<?global $USER; if ($USER->GetID()!=1) include_once $_SERVER["DOCUMENT_ROOT"] . "/include/jivosite.php";?>
 
 </body>
 </html>

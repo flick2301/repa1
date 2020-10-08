@@ -43,15 +43,33 @@ if (empty($arResult['ERROR_MESSAGE']))
 			<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());?> 
 			<!--crumbs-nav-->
 		</div>
-		
+		<?global $userEmail;?>
+<!-- Criteo Basket/Cart dataLayer -->
+<script type='text/javascript'>
+        var dataLayer = dataLayer || [];
+        dataLayer.push({
+            'event': 'crto_basketpage',            
+            crto: {             
+                'email': '<?=$userEmail?>',                           
+                'products': [
+				<?foreach($arResult['CITRO'] as $citroItem)
+				{
+					?>
+				{
+                    id: '<?=$citroItem["ID"]?>',
+                    price: '<?=$citroItem["PRICE"]?>',              
+                    quantity: '<?=$citroItem["QUANTITY"]?>'
+                },
+				<?
+				}
+				?>
+               ]
+            }
+        });
+</script>
+<!-- END Criteo Basket/Cart dataLayer -->
       <div class="basic-layout__section">
-         <!--page-heading-->
-			<!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?$APPLICATION->ShowTitle()?></h1>
-            </header>
-            <!--page-heading-->
-         <!--page-heading-->
+<?globalGetTitle()?>
       </div>
 	  	
 
@@ -85,7 +103,7 @@ if (empty($arResult['ERROR_MESSAGE']))
                <div class="simple-article__content wysiwyg-block">
                   <p>KREP-KOMP - ведущий поставщик и производитель строительного крепежа для розничных, мелкооптовых и оптовых клиентов. С 2005 года мы предлагаем самый широкий ассортимент, доступные цены и гибкую систему скидок.</p>
                   <p>Доставка по Москве в пределах МКАД при заказе от 50000 руб. <strong>БЕСПЛАТНО</strong></p>
-                  <h3>Оптовые и накопительные скидки:</h3>
+                  <h3>Оптовые скидки:</h3>
                   <div class="special-table special-table--lite">
                      <table>
                         <tbody>
@@ -101,10 +119,10 @@ if (empty($arResult['ERROR_MESSAGE']))
                               <th>13%</th>
                               <td>от 500 000 руб</td>
                            </tr>
-                           <tr>
+                           <!--<tr>
                               <th>18%</th>
                               <td>от 1 000 000 руб<br>* скидка предоставляется при условии выполнения ежеквартальных закупкок на сумму от 5 000 000 руб.</td>
-                           </tr>
+                           </tr>-->
                         </tbody>
                      </table>
                   </div>
@@ -143,7 +161,7 @@ if (empty($arResult['ERROR_MESSAGE']))
                   </li>
                </ul>
                <div class="in-cart-total__footer">
-                  <a class="main-button main-button--plus in-cart-total__submit" data-entity="basket-checkout-button" href="javascript:void(0);">Оформить заказ</a>
+                  <a onclick="dataLayerToOrder()" class="main-button main-button--plus in-cart-total__submit" data-entity="basket-checkout-button" href="javascript:void(0);">Оформить заказ</a>
                </div>			
             </div>
             <!--in-cart-total-->

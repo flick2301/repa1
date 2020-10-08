@@ -21,7 +21,60 @@ $ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues($arParams["IBL
 $price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] : $arResult['MIN_PRICE']['VALUE'];
 $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][ID_BASE_PRICE]['VALUE'] : 0;
 
+$scheme = CMain::isHttps() ? 'https' : 'http';
 ?>
+
+<script>
+$(document).ready(function(){
+    $(document).on("click","#chars_href", function (event) {	
+        event.preventDefault();
+        var id  = $(this).attr('href'),
+            top = $(id).offset().top;
+        $('body,html').animate({scrollTop: top}, 1500);
+    });
+});
+
+dataLayer.push({
+	'event':'krepkomp',
+	'eventCategory':'Карточка товара', 
+	'eventAction':'<?=$arResult["NAME"]?>', // Наименование товара, указанное на просматриваемой странице 
+    'eventLabel':'просмотр' 
+});
+</script>
+
+<!--json-ld-->
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "<?=$arResult['NAME']?>",
+      "image": [
+        "<?=$scheme?>://<?=$_SERVER['HTTP_HOST']?><?=$arResult['DETAIL_PICTURE']['SRC'];?>"
+       ],
+      "description": "<?=trim($arResult['PREVIEW_TEXT'])?>",
+      "sku": "<?=trim($arResult['PROPERTIES']['CML2_ARTICLE']['VALUE'])?>",
+	  "mpn": "",
+      "brand": {
+        "@type": "Brand",
+        "name": "<?=$arResult['PROPERTIES']['BREND']['VALUE']?>"
+      },	  
+      "offers": {
+        "@type": "Offer",
+        "url": "<?=$scheme?>://<?=$_SERVER['HTTP_HOST']?><?=$arResult['DETAIL_PAGE_URL']?>",	
+        "priceCurrency": "RUB",
+        "price": "<?=$price?>",
+        "itemCondition": "https://schema.org/UsedCondition",
+        "availability": "http://schema.org/<?=$arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT'] ? 'InStock' : 'OutOfStock'?>",
+        "seller": {
+          "@type": "Organization",
+          "name": "КРЕП-КОМП"
+        }
+      }
+	}
+    </script>
+<!--json-ld-->
+
+
 <?if(count($arResult['RELINK'])):?>
     <?php $this->SetViewTarget('RELINK'); ?>
 	<!--see-also-widget-->
@@ -39,15 +92,11 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
     <?php $this->EndViewTarget(); ?>
 <?endif;?>
 
-<!--page-heading-->
-    <header class="basic-layout__module page-heading">
-        <h1 class="page-heading__title"><?=$arResult['NAME']?></h1>
-    </header>
-<!--page-heading-->
+<?globalGetTitle($arResult['NAME'].' '.$arResult['PROPERTIES']['BREND']['VALUE'])?>
 
 <div class="card__articul">Артикул: <span class="card__articul-name"><?=$arResult['PROPERTIES']['CML2_ARTICLE']['VALUE']?></span></div>
 
-    <div itemscope itemtype="http://schema.org/Product" class="basic-layout__module product-page">
+    <div itemscope class="basic-layout__module product-page">
 		<div class="product-page__main">
                   <div class="product-page__gallery">
                      <!--product-gallery-->
@@ -62,7 +111,19 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                   <div class="product-page__about">
                      <!--product-purchase-->
                      <div class="product-purchase">
+						<?if($old_price){?>
+						<p class="card__price-last"><?echo number_format($old_price, 2, '.', ' ');?> ₽</p>
+                        <?}?>					 
                         <p class="product-purchase__price"><?echo number_format($price, 2, '.', ' ');?> ₽</p>
+
+            <?if($USER->IsAuthorized()):?>
+			<div class='card-price-dop-contaiber'>
+            <?if($arResult["DOP_PRICE"][0]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][0]?> ₽</b> при заказе от 20000 ₽</div><br><?endif?>
+            <?if($arResult["DOP_PRICE"][1]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][1]?> ₽</b> при заказе от 100000 ₽</div><br><?endif?>
+            <?if($arResult["DOP_PRICE"][2]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][2]?> ₽</b> при заказе от 500000 ₽</div><br><?endif?>
+			<?if($arResult["DOP_PRICE"][3]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][3]?> ₽</b> при заказе от 5000000 ₽</div><?endif?>
+			</div>
+            <?endif;?>
 						
                         <a href='javascript::void(0)' data-quantity="<?=$arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>"  class="main-button main-button--plus product-purchase__button"><i class="simple-cart-icon product-purchase__icon" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>"  data-quantity="<?=$arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" rel="nofollow"></i>Добавить в корзину</a>
                      </div>
@@ -85,7 +146,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                               </li>
                            </ul>
                            <div class="product-data__info">
-                              <a class="product-data__scroll" href="/">Адреса магазинов</a>
+                              <a class="product-data__scroll" href="/addresses/">Адреса магазинов</a>
                            </div>
                         </div>
                         <div class="product-data__section">
@@ -101,7 +162,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                         <?endif;?>
                            
                            <div class="product-data__info">
-                              <a class="product-data__scroll" href="#chars" rel="nofollow" data-tab="tab-1">Все характеристики</a>
+                              <a id="chars_href" class="product-data__scroll" href="#desc" rel="nofollow" data-tab="tab-1">Все характеристики</a>
                            </div>
                         </div>
                      </div>
@@ -109,7 +170,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                   </div>
         </div>
         <!--product-tabs-->
-               <div class="product-page__tabs product-tabs">
+               <div class="product-page__tabs product-tabs" id="desc">
                   <ul class="product-tabs__list" data-product-page-tabs>
                      <li class="product-tabs__item">
                         <a class="product-tabs__toggle" href="#description" data-tabby-default>Описание</a>
@@ -135,7 +196,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                </div>
         <!--product-tabs-->
         <div class="product-page__section" id="description">
-                  <h2 class="product-page__title">Характеристики</h2>
+                  <h2 id="chars" class="product-page__title">Характеристики</h2>
                   <!--product-data-->
                   <div class="product-page__specs product-data product-data--specs">
                      <ul class="product-data__list">
@@ -298,7 +359,7 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                      <div class="simple-article__content wysiwyg-block">
                         <p>KREP-KOMP - ведущий поставщик и производитель строительного крепежа для розничных, мелкооптовых и оптовых клиентов. С 2005 года мы предлагаем самый широкий ассортимент, доступные цены и гибкую систему скидок.</p>
                         <p>Доставка по Москве в пределах МКАД при заказе от 50000 руб. <strong>БЕСПЛАТНО</strong></p>
-                        <h3>Оптовые и накопительные скидки:</h3>
+                        <h3>Оптовые скидки:</h3>
                         <div class="special-table special-table--lite">
                            <table>
                               <tbody>
@@ -314,10 +375,10 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
                                     <th>13%</th>
                                     <td>от 500 000 руб</td>
                                  </tr>
-                                 <tr>
+                                 <!--<tr>
                                     <th>18%</th>
                                     <td>от 1 000 000 руб<br>* скидка предоставляется при условии выполнения ежеквартальных закупкок на сумму от 5 000 000 руб.</td>
-                                 </tr>
+                                 </tr>-->
                               </tbody>
                            </table>
                         </div>
@@ -621,7 +682,19 @@ $old_price = $arResult['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arResult['PRICES'][I
 	</div>
 	<br><br>
      
-
-
+</div>
+<?global $userEmail;?>
+<!-- Criteo Product dataLayer -->
+<script type='text/javascript'>
+        var dataLayer = dataLayer || [];
+        dataLayer.push({            
+            'event': 'crto_productpage',
+            crto: {             
+                'email': '<?=$userEmail?>',
+                'products': ['<?=$arResult["ID"]?>']
+            }
+        });
+</script>
+<!-- END Criteo Product dataLayer -->
 <script src="/local/templates/moskrep/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa"></script>
    <script>var tabs=new Tabby("[data-product-page-tabs]");tabs=new Tabby("[data-delivery-tabs]"),tabs=new Tabby("[data-pickup-tabs]"),tabs=new Tabby("[data-product-widget-tabs]")</script>

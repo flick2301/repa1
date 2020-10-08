@@ -56,9 +56,18 @@ elseif($obCache->StartDataCache())// Если кэш невалиден
 					$arResult["ITEMS"][$i]["IMG"][] = CFile::GetPath($img);
 				}
 			}	
+				
 		if ($_REQUEST["ID"]) $arResult['SELECT'] = $arParams["SECTION_ID"];
 			$i++;
 		}
+		
+		if ($_REQUEST["ID"]) { //Заголовки
+			$ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues($arParams["IBLOCK_ID"], $_REQUEST["ID"]);
+			$IPROPERTY  = $ipropValues->getValues();
+				$arResult["META" . $_REQUEST["ID"]]["ELEMENT_META_TITLE"] = $IPROPERTY["ELEMENT_META_TITLE"];
+				$arResult["META" . $_REQUEST["ID"]]["ELEMENT_META_DESCRIPTION"] = $IPROPERTY["ELEMENT_META_DESCRIPTION"];
+				$arResult["META" . $_REQUEST["ID"]]["ELEMENT_PAGE_TITLE"] = $IPROPERTY["ELEMENT_PAGE_TITLE"];
+		}			
 		
 		if ($center_count) {
 			$arResult["LAT"] = $lat / $center_count;
@@ -80,6 +89,12 @@ else $arResult["ZOOM"] = round(pi() * 2 / $zoom);
         ));// Сохраняем переменные в кэш.	
 		
    }   
+   
+
+		if ($_REQUEST["ID"]) {
+				if ($arResult["META" . $_REQUEST["ID"]]["ELEMENT_META_TITLE"]) $APPLICATION->SetPageProperty("title", $arResult["META" . $_REQUEST["ID"]]["ELEMENT_META_TITLE"]);
+				if ($arResult["META" . $_REQUEST["ID"]]["ELEMENT_META_DESCRIPTION"]) $APPLICATION->SetPageProperty("description", $arResult["META" . $_REQUEST["ID"]]["ELEMENT_META_DESCRIPTION"]);
+			}
    
 	if (count($arResult["ITEMS"]) >= 1) $this->IncludeComponentTemplate();	
 } 

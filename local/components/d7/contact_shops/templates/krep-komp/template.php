@@ -48,16 +48,14 @@ $this->addExternalCss($templateFolder."/slick/slick-theme.css");
 
 
 <?if($_REQUEST["ID"]):?>
-<div id="shop<?=$arParams["SECTION_ID"]?>">
+<div id="shop<?=$arParams["SECTION_ID"]?>" class="shop">
 <?foreach($arResult["ITEMS"] AS $key=>$item):?>
 <?$APPLICATION->AddChainItem(preg_replace("/\&lt;[A-z\/ ]+\&gt;/", ", ", $item["PROP"]["ADDRESS"]["VALUE"]));?>
 
 <?if(SITE_TEMPLATE_ID=='moskrep'):?>
-            <!--page-heading-->
-            <header class="basic-layout__module page-heading">
-               <h1 class="page-heading__title"><?=$item["NAME"]?><br /><?=preg_replace("/\&lt;[A-z\/ ]+\&gt;/", ", ", $item["PROP"]["ADDRESS"]["VALUE"])?></h1>
-            </header>
-            <!--page-heading-->
+
+<?globalGetTitle($item["NAME"]."<br />".preg_replace("/\&lt;[A-z\/ ]+\&gt;/", ", ", $item["PROP"]["ADDRESS"]["VALUE"]))?>
+
 <?else:?>
 <h1 class="s38-title"><?=$item["NAME"]?><br /><?=preg_replace("/\&lt;[A-z\/ ]+\&gt;/", ", ", $item["PROP"]["ADDRESS"]["VALUE"])?></h1>
 <?endif?>
@@ -73,7 +71,7 @@ $this->addExternalCss($templateFolder."/slick/slick-theme.css");
 
 <tr>
 <td><?=$item["PREVIEW_TEXT"]?></td>
-<td><?=htmlspecialchars_decode($item["PROP"]["PHONE"]["VALUE"])?></td>
+<td><a class="project-contact__link roistat-phone"  href="tel:<?=htmlspecialchars_decode(str_replace(" ", "", $item["PROP"]["PHONE"]["VALUE"]))?>"><?=htmlspecialchars_decode($item["PROP"]["PHONE"]["VALUE"])?></a></td>
 <td><?=$item["PROP"]["PAYMENT_NAME"]["NAME"]?></td>
 </tr>
 </table>
@@ -82,22 +80,29 @@ $this->addExternalCss($templateFolder."/slick/slick-theme.css");
 shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["VALUE"]?>, lon: <?=$item["PROP"]["LON"]["VALUE"]?>, color: '<?if($item["PROP"]["COLOR"]["VALUE"]):?><div class="label" style="background: <?=$item["PROP"]["COLOR"]["VALUE"]?>;"></div><?endif?>', name: '<?=$item["PROP"]["TYPE"]["VALUE"]?>', address: '<?=htmlspecialchars_decode($item["PROP"]["ADDRESS"]["VALUE"])?>', text: '<?=$item["PREVIEW_TEXT"] ? "<br />Режим работы: ".preg_replace("/[^A-zА-я0-9\,:\-\<\> ]+/u", "", $item["PREVIEW_TEXT"]) : ""?><div class="line-btn"><a href="<?=$APPLICATION->GetCurPageParam("ID=".$item["ID"])?>" class="blue-btn">Перейти к магазину</a></div>'});
 </script>
 
+<div class="onpage">
+
+<div id="qr" class="print"></div>
+
 <div class="left">
+
 <?if(is_array($item["IMG"])):?>
 			<div class="slider slider-for">
 <?foreach($item["IMG"] AS $img):?>
-<div><a href="<?=$img?>" rel="gallery_card"><img src="<?=$img?>" alt="<?=$item["PROP"]["PAYMENT_NAME"]["NAME"]?>" /></a></div>
+<div><a data-fancybox="Магазин <?=["NAME"]?>" href="<?=$img?>" data-rel="gallery_card"><img src="<?=$img?>" alt="<?=["NAME"]?>" title="<?=$item["NAME"]?>" /></a></div>
 <?endforeach?>			
 			</div>
 <script>img_count = <?=count($item["IMG"]) ? count($item["IMG"]) : 0?></script>			
 			<div class="slider slider-nav">			
 <?foreach($item["IMG"] AS $img):?>
-<div class="box"><img src="<?=$img?>" alt="<?=$item["PROP"]["PAYMENT_NAME"]["NAME"]?>" /></div>
+<?$num++?>
+<div class="box"><a href="<?=$img?>"><img src="<?=$img?>" alt="<?=$item["NAME"]?> <?=sprintf("%02d", $num)?>" title="<?=$item["NAME"]?> <?=sprintf("%02d", $num)?>" /></a></div>
 <?endforeach?>			
 </div>
 <?endif?>
 </div>
 <div id="map<?=$arParams["SECTION_ID"]?>"></div>
+</div>
 
 <div class="how">
 <h2 class="noprint">Как добраться</h2>
@@ -111,10 +116,9 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 <?=$item["PROP"]["CAR"]["~VALUE"]["TEXT"]?>
 </div>
 
-<div id="qr" class="print"></div>
 
 <?if($item["SCHEME"]):?>
-	<img class="scheme" src="<?=$item["SCHEME"]?>" alt="<?=preg_replace("/\&lt;[A-z\/ ]+\&gt;/", "", $item["PROP"]["ADDRESS"]["VALUE"])?>" />
+	<img class="scheme" src="<?=$item["SCHEME"]?>" alt="<?=preg_replace("/\&lt;[A-z\/ ]+\&gt;/", "", $item["PROP"]["ADDRESS"]["VALUE"])?>" title="<?=preg_replace("/\&lt;[A-z\/ ]+\&gt;/", "", $item["PROP"]["ADDRESS"]["VALUE"])?>" />
 <?endif?>
 
 <?if($item["PROP"]["YOUTUBE"]["VALUE"]["TEXT"] || $item["VIDEO"]):?>
@@ -154,7 +158,7 @@ shop.push({id: <?=$item["ID"]?>, balloon: false,  lat: <?=$item["PROP"]["LAT"]["
 <div id="shops<?=$arParams["SECTION_ID"]?>">
 <ul class="left">
 <?foreach($arResult["ITEMS"] AS $key=>$item):?>
-<li rel="<?=$item["ID"]?>" class="item">
+<li data-rel="<?=$item["ID"]?>" class="item">
 <?if($item["PROP"]["COLOR"]["VALUE"]):?><div class="label" style="background: <?=$item["PROP"]["COLOR"]["VALUE"]?>;"></div><?endif?>
 <?=htmlspecialchars_decode($item["PROP"]["ADDRESS"]["VALUE"])?><br />
 <span>
@@ -184,8 +188,8 @@ shop.push({id: <?=$item["ID"]?>, balloon: true, lat: <?=$item["PROP"]["LAT"]["VA
 </tr>
 
 <?foreach($arResult["ITEMS"] AS $key=>$item):?>
-<tr rel="<?=$item["ID"]?>">
-<td><div class="label" style="background: <?=$item["PROP"]["COLOR"]["VALUE"]?>;"></div></td>
+<tr data-rel="<?=$item["ID"]?>">
+<td><div class="label" style="background: <?=$item["PROP"]["COLOR"]["VALUE"] ? $item["PROP"]["COLOR"]["VALUE"] : "transparent"?>;"></div></td>
 <td class="blue"><?=htmlspecialchars_decode ($item["PROP"]["ADDRESS"]["VALUE"])?></td>
 <td class="nowrap"><?=$item["PROP"]["TYPE"]["VALUE"]?></td>
 <td class="nowrap"><?=$item["PREVIEW_TEXT"]?></td>

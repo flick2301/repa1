@@ -167,6 +167,14 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			{
 				this.initUserConsent();
 			}
+			
+			$('div[data-property-id-row="50"').addClass('hidden');
+	$('div[data-property-id-row="51"').addClass('hidden');
+	ga(function(tracker) {
+   clientId = tracker.get('clientId');
+   
+   $('#soa-property-50').val(clientId); 
+   $('#soa-property-51').val(clientId);});
 		},
 
 		/**
@@ -355,6 +363,13 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			BX.bind(BX('store-' + currentstore), 'click', BX.proxy(this.selectStore, this));
 			this.maps && this.maps.selectBalloon(currentstore);
 
+	$('div[data-property-id-row="50"').addClass('hidden');
+	$('div[data-property-id-row="51"').addClass('hidden');
+	ga(function(tracker) {
+   clientId = tracker.get('clientId');
+   
+   $('#soa-property-50').val(clientId); 
+   $('#soa-property-51').val(clientId);});
 			return true;
 		},
 
@@ -2508,6 +2523,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
 			errorContainer = section.querySelector('.alert.alert-danger');
 			this.hasErrorSection[section.id] = errorContainer && errorContainer.style.display != 'none';
+			
+
 
 			switch (section.id)
 			{
@@ -8506,7 +8523,8 @@ for (var key in this.result.DELIVERY_GROUPS) {
 			{
 				if (parseFloat(total.DELIVERY_PRICE) === 0)
 				{
-					deliveryValue = this.params.MESS_PRICE_FREE;
+					if ($('#delivery_pickup').hasClass('active')) deliveryValue = this.params.MESS_PRICE_FREE;
+					else deliveryValue = '';
 					params.free = true;
 				}
 				else
@@ -8556,7 +8574,8 @@ for (var key in this.result.DELIVERY_GROUPS) {
 			this.totalInfoBlockNode.append(
 					BX.create('A', {props: {className: 'main-button main-button--plus in-cart-total__submit', id: 'ORDER_CONFIRM_BUTTON', href: 'javascript:void(0)',}, text: "Оформить заказ",
 													events: {
-									click: BX.proxy(this.clickOrderSaveAction, this)
+									//click: BX.proxy(this.clickOrderSaveAction, this)
+									click: BX.delegate(function(){dataLayerSendOrder(total.ORDER_TOTAL_PRICE_FORMATED); this.clickOrderSaveAction();}, this)
 					}}),
 			);		
 

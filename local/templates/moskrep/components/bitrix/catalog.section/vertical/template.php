@@ -38,11 +38,10 @@ global $DEFAULT_STORE_ID;
 //Параметр FOR_SEO устанавливается если это раздел справочника, а не каталога
 //А значит текст и заголовок(шапка) не берутся из каталога, а из справочника, значит условие FOR_SEO != Y
 if($arParams['FOR_SEO']!='Y'){?>
-<!--page-heading-->
-    <header class="basic-layout__module page-heading">
-        <h1 class="page-heading__title"><?=($arResult['META_TITLE']) ? $arResult['META_TITLE'] :$arResult['NAME'];?></h1>
-    </header>
-<!--page-heading-->
+
+<?globalGetTitle($arResult['META_TITLE'] ? $arResult['META_TITLE'] : $arResult['NAME'])?>
+
+
 <?if($arResult['DESCRIPTION']):?>
 <!--catalog-desc-->
             <div class="basic-layout__module catalog-desc">
@@ -102,8 +101,8 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                      <!--product-card-->
                      <section class="product-card">
                         <div class="product-card__header">
-                           <h3 class="product-card__title"><a class="product-card__link" href="<?=$item['DETAIL_PAGE_URL']?>" title='<?=$item['IPROPERTY_VALUES']['TITLE_HREF_MINI_CART']?>' target="_self"><?=$item['NAME']?></a></h3>
-                           <img class="product-card__image" src="<?=$item['PREVIEW_PICTURE']['src']?>" width="200" height="150" alt="">
+                           <h3 class="product-card__title"><a class="product-card__link" href="<?=$item['DETAIL_PAGE_URL']?>" title='<?=$item['IPROPERTY_VALUES']['TITLE_HREF_MINI_CART']?>' target="_self" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['NAME']))?>')"><?=$item['NAME']?></a></h3>
+                           <img class="product-card__image" src="<?=$item['PREVIEW_PICTURE']['src']?>" width="200" height="150" alt="<?=$item['NAME']?>">
                         </div>
                         <div class="product-card__content">
                            <div class="product-card__block">
@@ -163,9 +162,9 @@ while($arSection = $db_list->GetNext()) {
 		<div class="catalog-feed__child">
                      <!--category-card-->
                      <div class="category-card">
-                        <p class="category-card__title"><a class="category-card__link" href="<?=$arSection['SECTION_PAGE_URL']?>"><?=$arSection['NAME']?><</a></p>
+                        <p class="category-card__title"><a class="category-card__link" href="<?=$arSection['SECTION_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($arSection['NAME']))?>')"><?=$arSection['NAME']?></a></p>
                         <div class="category-card__cover">
-                           <img class="category-card__image" src="<?=$renderImage['src']?>" width="120" height="76" alt=""> 
+                           <img class="category-card__image" src="<?=$renderImage['src']?>" width="120" height="76" alt="<?=$arSection['NAME']?>"> 
                         </div>
                      </div>
                      <!--category-card-->
@@ -175,7 +174,7 @@ while($arSection = $db_list->GetNext()) {
 ?>
 </div>
 <?}?>
-<?if($arResult['UF_DETAIL_TEXT']):?>
+<?if($arResult['UF_DETAIL_TEXT'] && !($_REQUEST['PAGEN_1'] > 1)):?>
 <!--simple-article-->
             <div class="basic-layout__module simple-article">
                <div class="simple-article__content wysiwyg-block">

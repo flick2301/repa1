@@ -192,7 +192,7 @@ while($arSection = $db_list->GetNext()) {
         <a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" class="card-nav-product__link">
             <div class="card-nav-img">
               
-                <img src="<?=$renderImage['src']?>"  alt="">
+                <img src="<?=$renderImage['src']?>"  alt="<?=$arSection['NAME']?>">
             </div>
             <div class="card-nav-text"><?=$arSection['NAME']?></div>
         </a>

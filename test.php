@@ -1,30 +1,29 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Новая страница");
+$APPLICATION->SetTitle("Интернет-магазин \"Москреп\"");
+$APPLICATION->SetPageProperty("title", "Интернет-магазин \"Москреп\"");
 ?>
 
-
-
-<?$APPLICATION->IncludeComponent(
-	"d7:slider_new", 
-	".default", 
-	array(
-		"IBLOCK_TYPE" => "banners",
-		"IBLOCK_ID" => "6",
-		"width" => "904",
-		"height" => "290",
-		"effect" => "fold",
-		"slices" => "21",
-		"animSpeed" => "800",
-		"pauseTime" => "8000",
-		"startSlide" => "0",
-		"directionNav" => "N",
-		"controlNav" => "Y",
-		"pauseOnHover" => "Y",
-		"text_title" => "",
-		"COMPONENT_TEMPLATE" => ".default"
-	),
-	false
-);?>
+            <?$APPLICATION->IncludeComponent(
+	     "bitrix:catalog.section.list",
+	     "main",
+	     Array(
+		"ADD_SECTIONS_CHAIN" => "N",
+		"CACHE_GROUPS" => "N",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"COUNT_ELEMENTS" => "N",
+		"IBLOCK_ID"=>CATALOG_IBLOCK_ID,
+		"IBLOCK_TYPE" => "catalog",
+		"SECTION_CODE" => "samorezy",
+		"SECTION_FIELDS" => array("",""),
+		"SECTION_ID" => $_REQUEST["SECTION_ID"],
+		"SECTION_URL" => "",
+		"SECTION_USER_FIELDS" => array("",""),
+		"SHOW_PARENT_NAME" => "Y",
+		"TOP_DEPTH" => "1",
+		"VIEW_MODE" => "LINE"
+	         )
+            );?>	
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

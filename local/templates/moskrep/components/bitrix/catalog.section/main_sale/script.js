@@ -6,7 +6,7 @@
 
 
 BX.ready(function () {
-    var buyBtnDetail = document.body.querySelectorAll('#tab-2 .product-list__btn, #tab-3 .product-list__btn');
+    var buyBtnDetail = document.body.querySelectorAll('.product-card__button');
 
     for (var i = 0; i < buyBtnDetail.length; i++) {
         BX.bind(buyBtnDetail[i], 'click', BX.delegate(function (e) {
@@ -45,6 +45,7 @@ BX.ready(function () {
 						}]
 					});
                     BX.onCustomEvent('OnBasketChange');
+					dataLayerAddBasket(e.target.dataset.name, e.target.dataset.price, quantity);
                     $('.header-basket').popUp();
                 } else {
                    console.log(data);
