@@ -38,6 +38,59 @@ if ($arParams["SET_TITLE"] == "Y")
 		</tr>
 	</table>
 	
+	<?
+	$order = \Bitrix\Sale\Order::load($arResult["ORDER"]["ID"]);
+	if ($order){
+    	$userEmail = '';
+ 		$propertyCollection = $order->getPropertyCollection();
+ 
+		if ($propUserEmail = $propertyCollection->getUserEmail()) {
+			$userEmail = $propUserEmail->getValue();
+		} else {
+         
+			// поиск свойства путём перебора
+			foreach($propertyCollection as $orderProperty) {
+             
+				if ($orderProperty->getField('CODE') == 'EMAIL') {
+					$userEmail = $orderProperty->getValue();
+					break;
+				}
+			}
+		}
+		
+		$basket = Bitrix\Sale\Basket::loadItemsForOrder($order);
+		
+		
+		?>
+		<!-- Criteo Sales dataLayer -->
+<script type='text/javascript'>
+        var dataLayer = dataLayer || [];
+        dataLayer.push({
+            'event': 'crto_transactionpage',            
+            crto: {             
+                'email': '<?=$userEmail?>',   
+                'transactionid':'<?=$arResult["ORDER"]["ID"]?>',                                        
+                'products': [
+				<?
+				foreach ($basket as $basketItem) {
+					?>
+					{
+                    id: '<?=$basketItem->getProductId()?>',
+                    price: '<?=$basketItem->getPrice()?>',              
+                    quantity: '<?=$basketItem->getQuantity()?>'
+					},
+				<?
+				}
+				?>
+				]
+            }
+        });
+</script>
+<!-- END Criteo Sales dataLayer -->
+		<?
+	}															
+											?>
+	
 <script>
 
 dataLayer.push({

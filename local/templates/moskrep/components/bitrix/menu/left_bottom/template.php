@@ -7,8 +7,9 @@
 <?if(CSite::InDir('/certificates/')) $title_menu = "Сертификаты";?>
 <?if(CSite::InDir('/catalog/')) $catalog_title_menu = "Каталог";?>
 <?$index=0;?>
+
 <div class="basic-layout__module table-of-contents" id="table-of-contents">
-    
+ <h3><?=$arResult[0]["ADDITIONAL_LINKS"]["PARENT_NAME"]?></h3>   
     <ul class="table-of-contents__list">
     <?foreach($arResult as $arItem):?>
         <?if($arItem['ADDITIONAL_LINKS']["IS_PARENT"] && $index!=0):?>
@@ -18,7 +19,7 @@
 		<?endif;?>
 		
         <?if( $arItem['ADDITIONAL_LINKS']["IS_PARENT"]):?>
-        <li class="table-of-contents__item parent" style='color:#676767'><span>+</span> <a href="<?=$arItem['LINK']?>" title='<?=$arItem["TEXT"]?>' class="table-of-contents__link"><?=$arItem["TEXT"]?></a>
+        <li class="table-of-contents__item parent <?=$arItem["SELECTED"] ? 'active' : ''?>" style='color:#676767'><span class='table-of-contents_before'><?=$arItem["SELECTED"] ? '-' : '+'?></span> <a href="<?=$arItem['LINK']?>" title='<?=$arItem["TEXT"]?>' class="table-of-contents__link"><?=$arItem["TEXT"]?></a>
 		<ul class='sub-left'>
 		<?elseif( !$arItem['ADDITIONAL_LINKS']["IS_PARENT"]):?>
         <li class="table-of-contents__item"><a href="<?=$arItem['LINK']?>" title='<?=$arItem["TEXT"]?>' class="table-of-contents__link"><?=$arItem["TEXT"]?></a></li>	
@@ -31,12 +32,7 @@
 </div>
 <?endif?>
 
-<style>
-.parent{cursor:pointer}
-.parent .sub-left{display: none;}
-.active .sub-left{display: block; list-style-type:circle; padding-left:30px;}
 
-</style>
 
 <script type="text/javascript">
 			

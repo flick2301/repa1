@@ -309,18 +309,25 @@ if($arResult['SORTING']['SECTION_ID']){
     foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
         
         ?>
+		<div class='category'>
+		<div class='category_left'>
         <h3 class="category-block__title"><?=$sortSection["NAME"]?></h3>
+		</div>
+		<div class='category_right'>
         <ul class="category-block__list">
         <?$i=0;?>
         <?foreach($sortSection['ITEMS'] as $sort_item):?>
             <?$i++;?>
-            <li class="category-block__item">
+			
+            <li class="category-block__item_new">
                 <a href="<?=($sort_item['LINK_TARGET']['VALUE']) ? $sort_item['LINK_TARGET']['VALUE'] : $sort_item['CODE'].'/';?>" <?=($sort_item['LINK_TARGET']['VALUE']) ? "target='_self'" : "";?> class="category-block__link">
                     <?=$sort_item['NAME']?>
                 </a>
             </li>
 	<?endforeach;?>
         </ul>
+		</div>
+		</div>
         <?
     }
 	?></div>
@@ -383,3 +390,11 @@ if($arResult['SORTING']['SECTION_ID']){
 		</div>
 <!--simple-article-->
 <?endif?>
+<script>
+		$('.category-block__list').readmore({
+			maxHeight: 30,
+			sectionCSS: 'display: flew; width: 100%;',
+			moreLink: '<ul class="category-block__list"><li class="category-block__item_new"><a href="#" class="category-block__link">Еще...</a></li></ul>',
+			lessLink: ''
+		});
+	</script>

@@ -1,0 +1,14 @@
+.category_right
+{
+	max-width:300px;
+	width:300px;
+	
+}
+.category_right .category-block__title
+{
+	font-size:24px;
+}
+.category
+{
+	width:100%;
+}

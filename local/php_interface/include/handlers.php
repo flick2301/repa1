@@ -982,6 +982,72 @@ class CUserEx
 }
 
 
+// регистрируем обработчики событий
+//AddEventHandler('bxmaker.authuserphone', 'onSendCode', array('CBXmakerTools', 'authUserPhoneonSendCode'));
+AddEventHandler('bxmaker.authuserphone', 'onUserChangePassword', array('CBXmakerTools', 'authUserPhoneonUserChangePassword'));
+AddEventHandler('bxmaker.authuserphone', 'onUserAdd', array('CBXmakerTools', 'authUserPhoneUserAdde'));
+
+
+class CBXmakerTools
+{
+
+    private static $smsLogin = '**';
+    private static $smsPass = '****';
+    private static $smsSender = '***';
+
+    /**
+    * Отправка временного кода
+    * @param $arFields
+    */
+    public static function authUserPhoneonSendCode($arFields)
+    {
+          self::sendSms($arFields['PHONE'], 'Ваш временный код - ' . $arFields['CODE']);
+    }
+
+    /* после смены пароля */
+    public static function authUserPhoneonUserChangePassword($arFields)
+    {
+        self::sendSms($arFields['PHONE'], 'Ваш новый пароль - ' . $arFields['PASSWORD']);
+    }
+
+    /* после регистрации */
+    public static function authUserPhoneUserAdde($arFields)
+    {
+        self::sendSms($arFields['PHONE'], 'Вы успешно зарегистрированы на сайте, используйте для входа логин - ' . $arFields['PHONE'] . ' и пароль - ' . $arFields['PASSWORD']);
+    }
+
+
+    public static function sendSms($phone, $text){
+		
+		CModule::IncludeModule(
+			'rarus.sms4b'
+		);
+
+        $arFields = array(
+            'user' => self::$smsLogin,
+            'password' => self::$smsPass,
+            'recipient' => $phone,
+            'message' => \Bitrix\Main\Text\Encoding::convertEncoding($text, SITE_CHARSET, 'UTF-8' )
+        );
+
+        if(self::$smsSender)
+       {
+           $arFields['sender'] = self::$smsSender;
+       }
+	   
+	   global $SMS4B;
+
+		$message = $phone;		// текст сообщения
+		$to = $text;	// номер, на который отправляем
+		$result = $SMS4B->SendSMS($text,$phone); // выполняем отправку
+
+       
+
+    }
+
+}
+
+
 
 // обработка If-Modified-Since
 /*AddEventHandler('main', 'OnEpilog', array('CBDPEpilogHooks', 'CheckIfModifiedSince'));

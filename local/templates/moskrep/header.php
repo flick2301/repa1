@@ -94,6 +94,7 @@ $APPLICATION->IncludeFile(
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.fancybox.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/datalayer.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/readmore.js");
 	
 		global $USER;
 		if ($USER->GetID()==1) {
@@ -110,7 +111,8 @@ $APPLICATION->IncludeFile(
    <script src="/local/templates/moskrep/js/jquery.popup.js" defer="defer"></script>
    <script src="/local/templates/moskrep/js/common.js" defer="defer"></script>
    <script src="/local/templates/moskrep/js/slick.min.js" defer="defer"></script>
-   <script src="/local/templates/moskrep/js/jquery.cookie.js" defer="defer"></script>		
+   <script src="/local/templates/moskrep/js/jquery.cookie.js" defer="defer"></script>	
+	<script src="/local/templates/moskrep/js/readmore.js" defer="defer"></script>   
 
     
     <!--[if (lt IE 9)&(!IEMobile 7)]><script src="js/html5support.js"></script><![endif]-->
