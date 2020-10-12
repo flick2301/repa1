@@ -48,6 +48,7 @@ Loc::LoadMessages(__FILE__);
 <link rel="shortcut icon" href="<?=SITE_TEMPLATE_PATH?>/assets/favicon/favicon.ico">
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-config" content="<?=SITE_TEMPLATE_PATH?>/assets/favicon/browserconfig.xml">
+<meta name="apple-mobile-web-app-title" content="КРЕП-КОМП">
 <meta name="theme-color" content="#ffffff">   
 
    
