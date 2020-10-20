@@ -20,13 +20,13 @@ $APPLICATION->SetTitle("Адреса магазинов");
 <?globalGetTitle()?>
 
 
-<ul class='delivery_items'>
-	<li data-tab='vivoz_1' class='delivery_item active'>Москва и МО</li>
-	<li data-tab='vivoz_2' class='delivery_item city2565 city2631 spb'>Санкт-Петербург</li>
+<ul class='delivery_items d-none'>
+	<li data-tab='moscow' class='delivery_item active'>Москва и МО</li>
+	<li data-tab='piter' class='delivery_item city2565 city2631 spb'>Санкт-Петербург</li>
 </ul>
 <?endif?>
 
-<div id='vivoz_2' class='delivery__tabs-list city2565 city2631 spb'> 
+<div id='piter' class='delivery__tabs-list city2565 city2631 spb'> 
 
 <?//require_once($_SERVER["DOCUMENT_ROOT"] . "/kontent-elementa/contact_spb.php");?>
 
@@ -42,7 +42,7 @@ $APPLICATION->SetTitle("Адреса магазинов");
 </div>
 
 
-<div id='vivoz_1' class='delivery__tabs-list active'> 
+<div id='moscow' class='delivery__tabs-list active'> 
 <?if(!$_REQUEST["ID"]):?><p>Забрать груз в пункте самовывоза на Каширском шоссе можно на следующий день. Для этого оформить заказ нужно до 15:00. 
 
 	Суббота и Воскресенье - выходные дни.</p>

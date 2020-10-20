@@ -18,18 +18,19 @@ $APPLICATION->SetTitle("Контакты");
             <!--simple-article-->
             <div class="basic-layout__module simple-article">
                <!--content-tabs-->
-               <div class="simple-article__tabs content-tabs">
+               <div class="simple-article__tabs content-tabs d-none">
                   <ul class="content-tabs__list" data-contact-tabs>
+				  
 <?if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'):?>
                      <li class="content-tabs__item">
-                        <a class="content-tabs__toggle" href="#nijniy" data-tabby-default>Нижний Новгород</a>
-                     </li>
-                     <li class="content-tabs__item">
-                        <a class="content-tabs__toggle" href="#piter">Санкт-Петербург</a>
-                     </li>
-                     <li class="content-tabs__item">
                         <a class="content-tabs__toggle" href="#moscow">Москва и МО</a>
+                     </li>					 
+                     <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#piter" data-tabby-default>Санкт-Петербург</a>
                      </li>
+                     <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#nijniy">Нижний Новгород</a>
+                     </li>					 
 <?elseif($_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'):?>		
                      <li class="content-tabs__item">
                         <a class="content-tabs__toggle" href="#moscow" data-tabby-default>Москва и МО</a>
@@ -38,7 +39,7 @@ $APPLICATION->SetTitle("Контакты");
                         <a class="content-tabs__toggle" href="#piter">Санкт-Петербург</a>
                      </li>	
                      <li class="content-tabs__item">
-                        <a class="content-tabs__toggle" href="#nijniy">Нижний Новгород</a>
+                        <a class="content-tabs__toggle" href="#nijniy" data-tabby-default>Нижний Новгород</a>
                      </li>					 
 <?else:?>				  
                      <li class="content-tabs__item">
