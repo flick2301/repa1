@@ -31,5 +31,5 @@ if ('' == $arParams['TEMPLATE_THEME'])
 
 foreach ($arResult["GRID"]["ROWS"] as $k => $arItem)
 {
-	$arResult['CITRO'][] = ["ID"=>$arItem["ID"], "PRICE"=>$arItem["PRICE_FORMATED"], "QUANTITY" => $arItem["QUANTITY"]]; 
+	$arResult['CITRO'][] = ["ID"=>$arItem["PRODUCT_ID"], "PRICE"=>$arItem["PRICE_FORMATED"], "QUANTITY" => $arItem["QUANTITY"]]; 
 }

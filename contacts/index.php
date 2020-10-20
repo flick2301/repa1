@@ -22,11 +22,24 @@ $APPLICATION->SetTitle("Контакты");
                   <ul class="content-tabs__list" data-contact-tabs>
 <?if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'):?>
                      <li class="content-tabs__item">
-                        <a class="content-tabs__toggle" href="#piter" data-tabby-default>Санкт-Петербург</a>
+                        <a class="content-tabs__toggle" href="#nijniy" data-tabby-default>Нижний Новгород</a>
+                     </li>
+                     <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#piter">Санкт-Петербург</a>
                      </li>
                      <li class="content-tabs__item">
                         <a class="content-tabs__toggle" href="#moscow">Москва и МО</a>
                      </li>
+<?elseif($_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'):?>		
+                     <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#moscow" data-tabby-default>Москва и МО</a>
+                     </li>
+                     <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#piter">Санкт-Петербург</a>
+                     </li>	
+                     <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#nijniy">Нижний Новгород</a>
+                     </li>					 
 <?else:?>				  
                      <li class="content-tabs__item">
                         <a class="content-tabs__toggle" href="#moscow" data-tabby-default>Москва и МО</a>
@@ -34,6 +47,9 @@ $APPLICATION->SetTitle("Контакты");
                      <li class="content-tabs__item">
                         <a class="content-tabs__toggle" href="#piter">Санкт-Петербург</a>
                      </li>
+                     <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#nijniy">Нижний Новгород</a>
+                     </li>					 
 <?endif?>					 
                   </ul>
                </div>
@@ -68,7 +84,18 @@ $APPLICATION->SetTitle("Контакты");
                   <!--contact-block-->
                </div>
 
-
+			                 <div class="simple-article__content" id="nijniy">				 							 
+                  <!--contact-block-->
+ 	<?$APPLICATION->IncludeComponent("d7:contact_shops", ".default",Array(
+				"IBLOCK_ID" => "19", 
+				"SECTION_ID" => SHOPS_NN,
+				"CACHE_TYPE" => "A", 
+                "CACHE_TIME" => "3600", 
+                "CACHE_FILTER" => "N" 
+                    ), false
+    );?>	
+                  <!--contact-block-->
+               </div>
 	
 
  

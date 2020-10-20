@@ -540,6 +540,18 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
 		$arFields["SALE_EMAIL"] = 'spb@krep-komp.ru';
 		$arFields["SALE_PHONE"] = '8 812 309-95-45';
 	
+	}elseif($_SERVER['HTTP_HOST']=='kazan.krep-komp.ru'){
+		$arFields["SALE_EMAIL"] = 'kazan@krep-komp.ru';
+		$arFields["SALE_PHONE"] = '8 843 206-07-00';
+	
+	}elseif($_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'){
+		$arFields["SALE_EMAIL"] = 'nizhniy-novgorod@krep-komp.ru';
+		$arFields["SALE_PHONE"] = '8 831 219-95-16';
+	
+	}elseif($_SERVER['HTTP_HOST']=='voronezh.krep-komp.ru'){
+		$arFields["SALE_EMAIL"] = 'voronezh@krep-komp.ru';
+		$arFields["SALE_PHONE"] = '8 473 204-53-38';
+	
 	}else{
 		$arFields["SALE_PHONE"] = '8 499 350-55-55';
 	}
@@ -687,6 +699,24 @@ function ChangeMyContent(&$content)
         'Санкт-Петербурге и ЛО',
         '<span>8 812 309-95-45</span>'
     );  
+   }elseif($_SERVER['HTTP_HOST']=='kazan.krep-komp.ru'){
+     $replace = array(
+        'Казани',
+        'Казани и Татарстане',
+        '<span>8 843 206-07-00</span>'
+    );  
+   }elseif($_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'){
+     $replace = array(
+        'Нижний Новгороде',
+        'Нижний Новгороде и НО',
+        '<span>8 831 219-95-16</span>'
+    );  
+   }elseif($_SERVER['HTTP_HOST']=='voronezh.krep-komp.ru'){
+     $replace = array(
+        'Воронеже',
+        'Воронеже и ВО',
+        '<span>8 473 204-53-38</span>'
+    );  
    }else{
      $replace = array(
         'Москве',
@@ -696,7 +726,8 @@ function ChangeMyContent(&$content)
    }
     
     $content = str_replace($search, $replace, $content);
-	$content = preg_replace("/[ \t]+/", " ", $content);
+	//$content = preg_replace("  ", " ", $content);
+	$content = str_replace("  ", " ", $content);
 	//$content = sanitize_output($content);
    }
 }

@@ -203,7 +203,7 @@ while($arSection = $db_list->GetNext()) {
 <?}?>
 
 
-<?if($arResult['UF_DETAIL_TEXT']):?>
+<?if($arResult['UF_DETAIL_TEXT'] && ($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' || $_SERVER['HTTP_HOST']=='krep-komp.ru')):?>
 <div class='set-default-parametr-page-cat'><?=html_entity_decode($arResult['UF_DETAIL_TEXT'], ENT_QUOTES, "UTF-8");?></div>
 <?endif;?>
 
