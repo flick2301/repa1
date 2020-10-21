@@ -19,18 +19,14 @@ $APPLICATION->SetTitle("Адреса магазинов");
 
 <?globalGetTitle()?>
 
-
-<ul class='delivery_items d-none'>
-	<li data-tab='moscow' class='delivery_item active'>Москва и МО</li>
-	<li data-tab='piter' class='delivery_item city2565 city2631 spb'>Санкт-Петербург</li>
-</ul>
 <?endif?>
 
-<div id='piter' class='delivery__tabs-list city2565 city2631 spb'> 
+<?if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'):?>	
 
+<div id='piter' class='delivery__tabs-list city<?=SHOPS_SPB?> spb'> 
 <?//require_once($_SERVER["DOCUMENT_ROOT"] . "/kontent-elementa/contact_spb.php");?>
 
-	<?$APPLICATION->IncludeComponent("d7:contact_shops","krep-komp",Array(
+<?$APPLICATION->IncludeComponent("d7:contact_shops","krep-komp",Array(
 				"IBLOCK_ID" => "19", 
 				"SECTION_ID" => SHOPS_SPB,
 				"CACHE_TYPE" => "A", 
@@ -38,9 +34,54 @@ $APPLICATION->SetTitle("Адреса магазинов");
                 "CACHE_FILTER" => "N" 
                     ), false
     );?>	
-
 </div>
 
+<?elseif($_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'):?>	
+
+<div id='nijniy' class='delivery__tabs-list city<?=SHOPS_NN?> nn'> 
+<?//require_once($_SERVER["DOCUMENT_ROOT"] . "/kontent-elementa/contact_spb.php");?>
+
+<?$APPLICATION->IncludeComponent("d7:contact_shops","krep-komp",Array(
+				"IBLOCK_ID" => "19", 
+				"SECTION_ID" => SHOPS_NN,
+				"CACHE_TYPE" => "A", 
+                "CACHE_TIME" => "3600", 
+                "CACHE_FILTER" => "N" 
+                    ), false
+    );?>	
+</div>
+
+<?elseif($_SERVER['HTTP_HOST']=='kazan.krep-komp.ru'):?>	
+
+<div id='kazan' class='delivery__tabs-list city<?=SHOPS_KAZ?> kazan'> 
+<?//require_once($_SERVER["DOCUMENT_ROOT"] . "/kontent-elementa/contact_spb.php");?>
+
+<?$APPLICATION->IncludeComponent("d7:contact_shops","krep-komp",Array(
+				"IBLOCK_ID" => "19", 
+				"SECTION_ID" => SHOPS_KAZ,
+				"CACHE_TYPE" => "A", 
+                "CACHE_TIME" => "3600", 
+                "CACHE_FILTER" => "N" 
+                    ), false
+    );?>	
+</div>
+
+<?elseif($_SERVER['HTTP_HOST']=='voronezh.krep-komp.ru'):?>	
+
+<div id='voronezh' class='delivery__tabs-list city<?=SHOPS_VOR?> voronezh'> 
+<?//require_once($_SERVER["DOCUMENT_ROOT"] . "/kontent-elementa/contact_spb.php");?>
+
+<?$APPLICATION->IncludeComponent("d7:contact_shops","krep-komp",Array(
+				"IBLOCK_ID" => "19", 
+				"SECTION_ID" => SHOPS_VOR,
+				"CACHE_TYPE" => "A", 
+                "CACHE_TIME" => "3600", 
+                "CACHE_FILTER" => "N" 
+                    ), false
+    );?>	
+</div>
+
+<?else:?>	
 
 <div id='moscow' class='delivery__tabs-list active'> 
 <?if(!$_REQUEST["ID"]):?><p>Забрать груз в пункте самовывоза на Каширском шоссе можно на следующий день. Для этого оформить заказ нужно до 15:00. 
@@ -54,9 +95,10 @@ $APPLICATION->SetTitle("Адреса магазинов");
                 "CACHE_TIME" => "3600", 
                 "CACHE_FILTER" => "N" 
                     ), false
-    );?>	
-			
+    );?>			
 </div>
+
+<?endif?>	
 
                <div class="simple-article__content">
                   <article class="simple-article__section wysiwyg-block">

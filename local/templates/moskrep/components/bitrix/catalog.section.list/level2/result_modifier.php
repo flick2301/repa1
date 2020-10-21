@@ -75,7 +75,7 @@ if($arParams['REFERENCE_CHECK']=='Y'):
              
         }
          
-        $arFilter = Array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "ACTIVE"=>"Y", 'CODE'=>$arParams['SORTING']);
+        $arFilter = Array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "ACTIVE"=>"Y", '=CODE'=>$arParams['SORTING']);
         $res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter, false, false, array('*'));
         while($ob = $res->GetNextElement()){ 
             
