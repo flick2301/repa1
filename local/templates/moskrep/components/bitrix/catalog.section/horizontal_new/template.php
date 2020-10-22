@@ -140,7 +140,7 @@ if($arParams['FOR_SEO']!='Y'){
                 <section class="catalog-table">
 				
 				
-<<<<<<< HEAD
+
 					<div class="catalog-table__column catalog-table__column--basic <?=$index>0 ? " is-merged is-merged-{$index}" : "groupped";?>">				
                         <div class="catalog-table__title">Размер, мм<small>:</small></div>
 		<div class="item_img_block">
@@ -149,17 +149,7 @@ if($arParams['FOR_SEO']!='Y'){
 					</div>							
                         <h3 class="catalog-table__content">							
 						<span class="catalog-table__desc"><strong><?=$item['SIZES']?></strong></span></h3>
-=======
-					<div class="catalog-table__column catalog-table__column--basic <?=$index>0 ? " is-merged" : "groupped";?>">
-					<?if($item['PREVIEW_PICTURE']['src'] || $item['DETAIL_PICTURE']['src']):?>
-		<div class="item_img_block">
-					<img src="<?=$item['PREVIEW_PICTURE']['src'] ? $item['PREVIEW_PICTURE']['src'] : $item['DETAIL_PICTURE']['SRC']?>" alt="<?=$item['IPROPERTY_VALUES']['ELEMENT_PREVIEW_PICTURE_FILE_ALT']?> <?=$item['SIZES']?>" title="<?=$item['IPROPERTY_VALUES']['ELEMENT_PREVIEW_PICTURE_FILE_ALT']?> <?=$item['SIZES']?>" />
-					<div><?=($item['PROPERTIES']['ROOT_NAME']['VALUE']) ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'];?></div>
-					</div>	
-<?endif?>					
-                        <div class="catalog-table__title">Размер, мм<small>:</small></div>						
-                        <h3 class="catalog-table__content"><span class="catalog-table__desc"><strong><?=$item['SIZES']?></strong></span></h3>
->>>>>>> 5958444643f8421b72d053d818a39b6ba31aeb84
+
                     </div>
 					
         
