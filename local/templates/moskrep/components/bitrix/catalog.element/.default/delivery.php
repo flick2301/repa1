@@ -25,19 +25,34 @@ switch (LANGUAGE_ID)
                   <!--simple-article-->
                   <div class="basic-layout__module simple-article">
                      <!--content-tabs-->
-                     <div class="simple-article__tabs content-tabs">
-                        <ul class="content-tabs__list" data-delivery-tabs>
-                           <li class="content-tabs__item">
-                              <a class="content-tabs__toggle" href="#moscow" data-tabby-default>Москва и МО</a>
-                           </li>
-                           <li class="content-tabs__item">
-                              <a class="content-tabs__toggle" href="#piter">Санкт-Петербург и ЛО</a>
-                           </li>
-                           <li class="content-tabs__item">
-                              <a class="content-tabs__toggle" href="#russia">Доставка по России</a>
-                           </li>
-                        </ul>
-                     </div>
+               <div class="simple-article__tabs content-tabs">
+                  <ul class="content-tabs__list" data-delivery-tabs>
+<?if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'):?>					  
+                     <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#piter">Санкт-Петербург и ЛО</a>
+                     </li>
+<?elseif($_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'):?>					 
+                   <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#nn">Нижний Новгород и НО</a>
+                     </li>	
+<?elseif($_SERVER['HTTP_HOST']=='voronezh.krep-komp.ru'):?>						 
+                   <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#voron">Воронеж и ВО</a>
+                     </li>		
+<?elseif($_SERVER['HTTP_HOST']=='kazan.krep-komp.ru'):?>						 
+                   <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#kazan">Казань и республика Татарстан</a>
+                     </li>	
+<?else:?>					 
+                     <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#moscow" data-tabby-default>Москва и МО</a>
+                     </li>	
+<?endif?>					 
+                     <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#russia">Доставка по России</a>
+                     </li>
+                  </ul>
+               </div>
                      <!--content-tabs-->
                      <div class="simple-article__content" id="moscow">
                         <div class="simple-article__section wysiwyg-block">
@@ -65,6 +80,41 @@ $APPLICATION->IncludeFile(
                         </div>
                      </div>
 					 
+               <div class="simple-article__content" id="nn">
+                  <div class="simple-article__section wysiwyg-block">
+<?
+$APPLICATION->IncludeFile(
+ "/delivery/tab4.php",
+ array("MAP"=>"N"),
+ array("SHOW_BORDER" => true, "MODE"=>"php")
+);
+?>
+                  </div>
+               </div>	
+
+               <div class="simple-article__content" id="voron">
+                  <div class="simple-article__section wysiwyg-block">
+<?
+$APPLICATION->IncludeFile(
+ "/delivery/tab5.php",
+ array("MAP"=>"N"),
+ array("SHOW_BORDER" => true, "MODE"=>"php")
+);
+?>
+                  </div>
+               </div>	
+
+               <div class="simple-article__content" id="kazan">
+                  <div class="simple-article__section wysiwyg-block">
+<?
+$APPLICATION->IncludeFile(
+ "/delivery/tab6.php",
+ array("MAP"=>"N"),
+ array("SHOW_BORDER" => true, "MODE"=>"php")
+);
+?>
+                  </div>
+               </div>			 		 
 					 
                      <div class="simple-article__content" id="russia">
                         <div class="simple-article__section wysiwyg-block">

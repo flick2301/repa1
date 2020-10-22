@@ -326,10 +326,18 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 					<p class="privacy"><a class="blue underline" href="/privacy/">Политика компании</a></p>
 				</div>
                <!--project-copy-->
+			   
+		<div id="social">
+		<a class="vk" target="_blank" href="https://vk.com/krep_komp"></a>
+		<a class="youtube" target="_blank" href="https://www.youtube.com/channel/UCOKXuIbajRZpYJ4uShRzMYw"></a>
+		<a class="instagram" target="_blank" href="https://www.instagram.com/krep_komp/"></a>
+		<a class="facebook" target="_blank" href="https://www.facebook.com/krep.komp.ru"></a>
+		</div>		
+    </div>			   
 			</div>
         </div>
         <!--website-about-->
-    </div>
+		
  </footer>
 
 <div style="display: none;">
