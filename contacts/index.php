@@ -17,28 +17,70 @@ $APPLICATION->SetTitle("Контакты");
 
             <!--simple-article-->
             <div class="basic-layout__module simple-article">
-               <!--content-tabs-->
-               <div class="simple-article__tabs content-tabs">
-                  <ul class="content-tabs__list" data-contact-tabs>
-<?if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'):?>
-                     <li class="content-tabs__item">
-                        <a class="content-tabs__toggle" href="#piter" data-tabby-default>Санкт-Петербург</a>
-                     </li>
-                     <li class="content-tabs__item">
-                        <a class="content-tabs__toggle" href="#moscow">Москва и МО</a>
-                     </li>
-<?else:?>				  
-                     <li class="content-tabs__item">
-                        <a class="content-tabs__toggle" href="#moscow" data-tabby-default>Москва и МО</a>
-                     </li>
-                     <li class="content-tabs__item">
-                        <a class="content-tabs__toggle" href="#piter">Санкт-Петербург</a>
-                     </li>
-<?endif?>					 
-                  </ul>
-               </div>
-               <!--content-tabs-->
 			   
+			   
+			   
+<?if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'):?>	
+		   
+			    <div class="simple-article__content" id="piter">				 							 
+                  <!--contact-block-->
+ 	<?$APPLICATION->IncludeComponent("d7:contact_shops", ".default",Array(
+				"IBLOCK_ID" => "19", 
+				"SECTION_ID" => SHOPS_SPB,
+				"CACHE_TYPE" => "A", 
+                "CACHE_TIME" => "3600", 
+                "CACHE_FILTER" => "N" 
+                    ), false
+    );?>	
+                  <!--contact-block-->
+               </div>
+			   
+<?elseif($_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'):?>	
+
+			                 <div class="simple-article__content" id="nijniy">				 							 
+                  <!--contact-block-->
+ 	<?$APPLICATION->IncludeComponent("d7:contact_shops", ".default",Array(
+				"IBLOCK_ID" => "19", 
+				"SECTION_ID" => SHOPS_NN,
+				"CACHE_TYPE" => "A", 
+                "CACHE_TIME" => "3600", 
+                "CACHE_FILTER" => "N" 
+                    ), false
+    );?>	
+                  <!--contact-block-->
+               </div>			   
+			   
+<?elseif($_SERVER['HTTP_HOST']=='kazan.krep-komp.ru'):?>	
+
+<div class="simple-article__content" id="kazan">				 							 
+                  <!--contact-block-->
+ 	<?$APPLICATION->IncludeComponent("d7:contact_shops", ".default",Array(
+				"IBLOCK_ID" => "19", 
+				"SECTION_ID" => SHOPS_KAZ,
+				"CACHE_TYPE" => "A", 
+                "CACHE_TIME" => "3600", 
+                "CACHE_FILTER" => "N" 
+                    ), false
+    );?>	
+                  <!--contact-block-->
+               </div>		
+
+<?elseif($_SERVER['HTTP_HOST']=='voronezh.krep-komp.ru'):?>	
+
+<div class="simple-article__content" id="voronezh">				 							 
+                  <!--contact-block-->
+ 	<?$APPLICATION->IncludeComponent("d7:contact_shops", ".default",Array(
+				"IBLOCK_ID" => "19", 
+				"SECTION_ID" => SHOPS_VOR,
+				"CACHE_TYPE" => "A", 
+                "CACHE_TIME" => "3600", 
+                "CACHE_FILTER" => "N" 
+                    ), false
+    );?>	
+                  <!--contact-block-->
+               </div>				   
+			   
+<?else:?>				   
 			   
                <div class="simple-article__content" id="moscow">
                   <!--<div class="simple-article__section">
@@ -55,20 +97,7 @@ $APPLICATION->SetTitle("Контакты");
 				  <!--contact-block-->
               </div>
 			  
-			                 <div class="simple-article__content" id="piter">				 							 
-                  <!--contact-block-->
- 	<?$APPLICATION->IncludeComponent("d7:contact_shops", ".default",Array(
-				"IBLOCK_ID" => "19", 
-				"SECTION_ID" => SHOPS_SPB,
-				"CACHE_TYPE" => "A", 
-                "CACHE_TIME" => "3600", 
-                "CACHE_FILTER" => "N" 
-                    ), false
-    );?>	
-                  <!--contact-block-->
-               </div>
-
-
+<?endif?>	
 	
 
  
@@ -141,8 +170,6 @@ $APPLICATION->SetTitle("Контакты");
 <!--simple-article-->
 
 
-
-<script>$(document).ready(function(){var tabs=new Tabby("[data-contact-tabs]");});</script>
 <?}else{?>
 
 <?$APPLICATION->IncludeComponent(

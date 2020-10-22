@@ -360,7 +360,9 @@ if($arResult['SORTING']['SECTION_ID']){
 <!--simple-article-->
         <div class="basic-layout__module simple-article">
             <div class="simple-article__content wysiwyg-block">
+			<?if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' || $_SERVER['HTTP_HOST']=='krep-komp.ru'){?>
 				<?=$arResult['SECTION']['DESCRIPTION']?>
+			<?}?>
 			</div>	
 		</div>
 <!--simple-article-->

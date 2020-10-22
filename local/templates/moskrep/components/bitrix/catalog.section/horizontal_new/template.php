@@ -331,7 +331,7 @@ while($arSection = $db_list->GetNext()) {
 </div>
 <?endif?>
 
-<?if($arResult['UF_DETAIL_TEXT'] && !($_REQUEST['PAGEN_1'] > 1)):?>
+<?if($arResult['UF_DETAIL_TEXT'] && !($_REQUEST['PAGEN_1'] > 1)  && ($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' || $_SERVER['HTTP_HOST']=='krep-komp.ru')):?>
 <!--simple-article-->
             <div class="basic-layout__module simple-article">
                <div class="simple-article__content wysiwyg-block">

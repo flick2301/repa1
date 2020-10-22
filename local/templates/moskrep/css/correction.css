@@ -1,3 +1,6 @@
+.d-none {
+	display: none!important;
+}
 h1 {
     line-height: 1;
     font-size: 32px;
@@ -362,6 +365,19 @@ ol.tech li {
 }
 .fancybox-button--close-new:hover {
 	opacity: 1;
+}
+#form_auth .form__input {
+	display: inline-flex;
+	align-items: center;
+	height: 44px;
+	padding: 0 14px;
+	white-space: nowrap;
+	font-size: 16px;
+	color: #000;
+	background-color: #fafafa;
+	border: solid 2px #dedede;
+	border-radius: 4px;
+	transition: color .3s,border-color .3s;	
 }
 
 

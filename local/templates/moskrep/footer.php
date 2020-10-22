@@ -304,21 +304,25 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 						<p class="project-contact__desc">Интернет-магазин крепежа, метизов и инструмента «МОСКРЕП»</p>
 					<?endif;?>
 					<p class="project-contact__data">Телефон: 
-                    <?if($_SERVER['HTTP_HOST']!='spb.krep-komp.ru'){?>
-                    <a class="project-contact__link roistat-phone"  href="tel:8499350-55-55">
-                    8 499 350-55-55
-                    </a><?
-                    }else{?>
-                    <a class="project-contact__link roistat-phone-spb" href="tel:8812309-95-45">8 812 309-95-45 
-                    </a>
-                    <?}?>
+					<?if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'):?>
+						<a href='tel:8812309-95-45' class="project-contact__link roistat-phone-spb">8 812 309-95-45</a>
+					<?elseif($_SERVER['HTTP_HOST']=='kazan.krep-komp.ru'):?>
+						<a href='tel:8843206-07-00' class="project-contact__link roistat-phone">8 843 206-07-00</a>
+					<?elseif($_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'):?>
+						<a href='tel:8831219-95-16' class="project-contact__link roistat-phone">8 831 219-95-16</a>
+					<?elseif($_SERVER['HTTP_HOST']=='voronezh.krep-komp.ru'):?>
+						<a href='tel:8473204-53-38' class="project-contact__link roistat-phone">8 473 204-53-38</a>
+					<?else:?>
+						<a href='tel:8499350-55-55' class="project-contact__link roistat-phone">8 499 350-55-55</a>
+					<?endif;?>
+                    
 					</p>
 				</div>
                <!--project-contact-->
                <!--project-copy-->
 				<div class="website-about__copy project-copy">
 					<p class="project-copy__text">Информация на сайте krep-komp.ru не является публичной офертой. Указанные цены действуют только при оформлении заказа через интернет-магазин krep-komp.ru</p>
-					<p class="project-copy__text">© 2005 – 2020 Интернет-магазин «КРЕП-КОМП» <?=$_SERVER['HTTP_HOST']!='spb.krep-komp.ru' ? 'Москва' : 'Санкт-Петербург';?></p>
+					<p class="project-copy__text">© 2005 – 2020 Интернет-магазин «КРЕП-КОМП» <?$APPLICATION->IncludeFile("/include/city.php", array(), array("SHOW_BORDER" => true, "MODE"=>"php"));?></p>
 					<p class="privacy"><a class="blue underline" href="/privacy/">Политика компании</a></p>
 				</div>
                <!--project-copy-->
