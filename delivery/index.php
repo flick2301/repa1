@@ -37,19 +37,19 @@ if(SITE_TEMPLATE_ID=='moskrep'){
                   <ul class="content-tabs__list" data-delivery-tabs>
 <?if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'):?>					  
                      <li class="content-tabs__item">
-                        <a class="content-tabs__toggle" href="#piter">Санкт-Петербург и ЛО</a>
+                        <a class="content-tabs__toggle" href="#piter" data-tabby-default>Санкт-Петербург и ЛО</a>
                      </li>
 <?elseif($_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'):?>					 
                    <li class="content-tabs__item">
-                        <a class="content-tabs__toggle" href="#nn">Нижний Новгород и НО</a>
+                        <a class="content-tabs__toggle" href="#nn" data-tabby-default>Нижний Новгород и НО</a>
                      </li>	
 <?elseif($_SERVER['HTTP_HOST']=='voronezh.krep-komp.ru'):?>						 
                    <li class="content-tabs__item">
-                        <a class="content-tabs__toggle" href="#voron">Воронеж и ВО</a>
+                        <a class="content-tabs__toggle" href="#voron" data-tabby-default>Воронеж и ВО</a>
                      </li>		
 <?elseif($_SERVER['HTTP_HOST']=='kazan.krep-komp.ru'):?>						 
                    <li class="content-tabs__item">
-                        <a class="content-tabs__toggle" href="#kazan">Казань и республика Татарстан</a>
+                        <a class="content-tabs__toggle" href="#kazan" data-tabby-default>Казань и республика Татарстан</a>
                      </li>	
 <?else:?>					 
                      <li class="content-tabs__item">
