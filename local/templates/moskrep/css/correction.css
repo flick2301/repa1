@@ -24,7 +24,9 @@ h1 {
     font-weight: bold;
 	margin-bottom: 0;
 }
-
+.nowrap {
+	white-space: nowrap;
+}
 .orange {
 	color: #f39101;
 }
@@ -379,7 +381,34 @@ ol.tech li {
 	border-radius: 4px;
 	transition: color .3s,border-color .3s;	
 }
-
+#social {
+	overflow: hidden;
+	margin: 15px 0 0;
+	float: right;
+}
+#social a {
+	display: block;
+	width: 32px;
+	height: 32px;
+	float: left;
+	margin-left: 10px;
+	background-size: contain;	
+}
+#social a:first-child {
+	margin-left: 0;	
+}
+#social a.vk {
+	background: url(/images/social/vk.svg) no-repeat;
+}
+#social a.instagram {
+	background: url(/images/social/instagram.svg) no-repeat;
+}
+#social a.youtube {
+	background: url(/images/social/youtube.svg) no-repeat;
+}
+#social a.facebook {
+	background: url(/images/social/facebook.svg) no-repeat;
+}
 
 
 
@@ -455,5 +484,17 @@ height: calc(100% - 10px);
 #bx_basket1 .line-btn a {
 	width: 100%;
 	margin-top: 15px;
+}
+#social {
+	padding: 30px 0 0;
+	float: none;
+	display: table;
+	margin: auto;
+}
+#social a {
+	width: 48px;
+	height: 48px;
+	float: left;
+	margin-left: 15px;
 }
 }

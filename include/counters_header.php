@@ -192,10 +192,10 @@ dataLayer.push({
   "name": "Интернет-магазин строительного крепежа «КРЕП-КОМП»",
   "url": "https://krep-komp.ru/",
   "sameAs": [
-    "https://spb.krep-komp.ru/",
-    "https://vk.com/moskrep",
-    "https://www.facebook.com/moskrep",
-    "https://ok.ru/group/54538959192067"
+   "https://vk.com/krep_komp",
+   "https://www.youtube.com/channel/UCOKXuIbajRZpYJ4uShRzMYw",
+   "https://www.instagram.com/krep_komp/",
+   "https://www.facebook.com/krep.komp.ru"
   ]
 }
 </script>

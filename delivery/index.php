@@ -35,34 +35,35 @@ if(SITE_TEMPLATE_ID=='moskrep'){
                <!--content-tabs-->
                <div class="simple-article__tabs content-tabs">
                   <ul class="content-tabs__list" data-delivery-tabs>
-                     <li class="content-tabs__item">
-                        <a class="content-tabs__toggle" href="#moscow" data-tabby-default>Москва и МО</a>
-                     </li>
+<?if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'):?>					  
                      <li class="content-tabs__item">
                         <a class="content-tabs__toggle" href="#piter">Санкт-Петербург и ЛО</a>
                      </li>
+<?elseif($_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'):?>					 
+                   <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#nn">Нижний Новгород и НО</a>
+                     </li>	
+<?elseif($_SERVER['HTTP_HOST']=='voronezh.krep-komp.ru'):?>						 
+                   <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#voron">Воронеж и ВО</a>
+                     </li>		
+<?elseif($_SERVER['HTTP_HOST']=='kazan.krep-komp.ru'):?>						 
+                   <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#kazan">Казань и республика Татарстан</a>
+                     </li>	
+<?else:?>					 
+                     <li class="content-tabs__item">
+                        <a class="content-tabs__toggle" href="#moscow" data-tabby-default>Москва и МО</a>
+                     </li>	
+<?endif?>					 
                      <li class="content-tabs__item">
                         <a class="content-tabs__toggle" href="#russia">Доставка по России</a>
                      </li>
                   </ul>
                </div>
-			   
-
-			   
-			   
                <!--content-tabs-->
-               <div class="simple-article__content" id="moscow">
-                  <div class="simple-article__section wysiwyg-block">
-<?
-$APPLICATION->IncludeFile(
- $APPLICATION->GetCurPage()."tab1.php",
- array("MAP"=>"Y"),
- array("SHOW_BORDER" => true, "MODE"=>"php")
-);
-?>
-                  </div>
-               </div>
 			   
+<?if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'):?>	
 			   
                <div class="simple-article__content" id="piter">
                   <div class="simple-article__section wysiwyg-block">
@@ -75,6 +76,64 @@ $APPLICATION->IncludeFile(
 ?>
                   </div>
                </div>
+			   
+<?elseif($_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'):?>				   
+			   
+               <div class="simple-article__content" id="nn">
+                  <div class="simple-article__section wysiwyg-block">
+<?
+$APPLICATION->IncludeFile(
+ $APPLICATION->GetCurPage()."tab4.php",
+ array("MAP"=>"N"),
+ array("SHOW_BORDER" => true, "MODE"=>"php")
+);
+?>
+                  </div>
+               </div>
+
+<?elseif($_SERVER['HTTP_HOST']=='voronezh.krep-komp.ru'):?>				   
+
+               <div class="simple-article__content" id="voron">
+                  <div class="simple-article__section wysiwyg-block">
+<?
+$APPLICATION->IncludeFile(
+ $APPLICATION->GetCurPage()."tab5.php",
+ array("MAP"=>"N"),
+ array("SHOW_BORDER" => true, "MODE"=>"php")
+);
+?>
+                  </div>
+               </div>	
+			   
+<?elseif($_SERVER['HTTP_HOST']=='kazan.krep-komp.ru'):?>			   
+
+               <div class="simple-article__content" id="kazan">
+                  <div class="simple-article__section wysiwyg-block">
+<?
+$APPLICATION->IncludeFile(
+ $APPLICATION->GetCurPage()."tab6.php",
+ array("MAP"=>"N"),
+ array("SHOW_BORDER" => true, "MODE"=>"php")
+);
+?>
+                  </div>
+               </div>	
+
+<?else:?>
+
+               <div class="simple-article__content" id="moscow">
+                  <div class="simple-article__section wysiwyg-block">
+<?
+$APPLICATION->IncludeFile(
+ $APPLICATION->GetCurPage()."tab1.php",
+ array("MAP"=>"Y"),
+ array("SHOW_BORDER" => true, "MODE"=>"php")
+);
+?>
+                  </div>
+               </div>
+			   
+<?endif?>			   
 			   
                <div class="simple-article__content" id="russia">
                   <div class="simple-article__section wysiwyg-block">

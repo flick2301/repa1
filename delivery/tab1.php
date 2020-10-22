@@ -198,5 +198,5 @@
 			
 		
 
-        <div id="map" style="height: 500px;" class="external"></div>
+        <?if($arParams["MAP"]=="Y"):?><div id="map" style="height: 500px;" class="external"></div><?endif?>
 		

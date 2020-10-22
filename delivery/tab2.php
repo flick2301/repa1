@@ -93,5 +93,5 @@
 			</div>
 	
 	
-	<div id="map_spb" style="height: 500px;" class="external"></div>
+	<?if($arParams["MAP"]=="Y"):?><div id="map_spb" style="height: 500px;" class="external"></div><?endif?>
 	
