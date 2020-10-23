@@ -14,6 +14,8 @@ switch (LANGUAGE_ID)
 		$locale = 'en-US'; break;
 }
 
+$arParams["SECTION_ID"] = "";//Запрет многокартовости
+
 CJSCore::Init(array("popup"));
 $this->addExternalJs($templateFolder.'/js/scroll.js');
 $this->addExternalJs($templateFolder.'/slick/slick.js');
@@ -36,8 +38,8 @@ $this->addExternalCss($templateFolder."/slick/slick-theme.css");
 	if (typeof center_lon=='undefined') center_lon = [];
 	if (typeof shop=='undefined') shop = [];
 	if (typeof myPlacemark=='undefined') myPlacemark = [];
-	if (typeof myPlacemark2565=='undefined') myPlacemark2565 = [];
-	if (typeof myPlacemark2631=='undefined') myPlacemark2631 = [];	
+	//if (typeof myPlacemark2565=='undefined') myPlacemark2565 = [];
+	//if (typeof myPlacemark2631=='undefined') myPlacemark2631 = [];	
 	if (typeof myMap=='undefined') myMap = {};		
 	section_id = '<?=$arParams["SECTION_ID"] ? $arParams["SECTION_ID"] : "9999"?>';
 	select_city = '<?=$arResult['SELECT']?>';
@@ -65,13 +67,13 @@ $this->addExternalCss($templateFolder."/slick/slick-theme.css");
 <table id="current_shop_table<?=$arParams["SECTION_ID"]?>">
 <tr>
 <th>Время работы</th>
-<th>Телефон</th>
+<?if($item["PROP"]["PHONE"]["VALUE"]):?><th>Телефон</th><?endif?>
 <th>Способы оплаты</th>
 </tr>
 
 <tr>
 <td><?=$item["PREVIEW_TEXT"]?></td>
-<td><a class="project-contact__link roistat-phone"  href="tel:<?=htmlspecialchars_decode(str_replace(" ", "", $item["PROP"]["PHONE"]["VALUE"]))?>"><?=htmlspecialchars_decode($item["PROP"]["PHONE"]["VALUE"])?></a></td>
+<?if($item["PROP"]["PHONE"]["VALUE"]):?><td><a class="project-contact__link roistat-phone"  href="tel:<?=htmlspecialchars_decode(str_replace(" ", "", $item["PROP"]["PHONE"]["VALUE"]))?>"><?=htmlspecialchars_decode($item["PROP"]["PHONE"]["VALUE"])?></a></td><?endif?>
 <td><?=$item["PROP"]["PAYMENT_NAME"]["NAME"]?></td>
 </tr>
 </table>

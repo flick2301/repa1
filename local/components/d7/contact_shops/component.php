@@ -6,7 +6,6 @@ if(CModule::IncludeModule('iblock')){
 
 	
 	$obCache = new CPHPCache();
-
 	
 if($obCache->InitCache(360000, "contact_shops".$arParams["SECTION_ID"].$_REQUEST["ID"], "/"))// Если кэш валиден
 {

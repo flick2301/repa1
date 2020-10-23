@@ -302,6 +302,9 @@
 .print_btn {
 	visibility: hidden;
 }
+.delivery__tabs-list {
+    display: block!important;/*Убрать для многокартовости*/
+}
 
 
 
@@ -440,6 +443,7 @@ h1.page-heading__title {
 	float: right;
 	height: 200px;
 	width: 200px;
+	margin-bottom: 20px;
 }
 #shop .how h3 {
 	margin-top: 20px;
