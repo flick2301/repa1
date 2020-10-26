@@ -305,15 +305,15 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 					<?endif;?>
 					<p class="project-contact__data">Телефон: 
 					<?if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'):?>
-						<a href='tel:8812309-95-45' class="project-contact__link roistat-phone-spb">8 812 309-95-45</a>
+						<a href='tel:+78123099545' class="project-contact__link roistat-phone-spb">8 812 309-95-45</a>
 					<?elseif($_SERVER['HTTP_HOST']=='kazan.krep-komp.ru'):?>
-						<a href='tel:8843206-07-00' class="project-contact__link roistat-phone">8 843 206-07-00</a>
+						<a href='tel:+78432060700' class="project-contact__link roistat-phone">8 843 206-07-00</a>
 					<?elseif($_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'):?>
-						<a href='tel:8831219-95-16' class="project-contact__link roistat-phone">8 831 219-95-16</a>
+						<a href='tel:+78312199516' class="project-contact__link roistat-phone">8 831 219-95-16</a>
 					<?elseif($_SERVER['HTTP_HOST']=='voronezh.krep-komp.ru'):?>
-						<a href='tel:8473204-53-38' class="project-contact__link roistat-phone">8 473 204-53-38</a>
+						<a href='tel:+74732045338' class="project-contact__link roistat-phone">8 473 204-53-38</a>
 					<?else:?>
-						<a href='tel:8499350-55-55' class="project-contact__link roistat-phone">8 499 350-55-55</a>
+						<a href='tel:+74993505555' class="project-contact__link roistat-phone">8 499 350-55-55</a>
 					<?endif;?>
                     
 					</p>

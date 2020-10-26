@@ -73,7 +73,7 @@ $this->addExternalCss($templateFolder."/slick/slick-theme.css");
 
 <tr>
 <td><?=$item["PREVIEW_TEXT"]?></td>
-<?if($item["PROP"]["PHONE"]["VALUE"]):?><td><a class="project-contact__link roistat-phone"  href="tel:<?=htmlspecialchars_decode(str_replace(" ", "", $item["PROP"]["PHONE"]["VALUE"]))?>"><?=htmlspecialchars_decode($item["PROP"]["PHONE"]["VALUE"])?></a></td><?endif?>
+<?if($item["PROP"]["PHONE"]["VALUE"]):?><td><a class="project-contact__link roistat-phone"  href="tel:<?=htmlspecialchars_decode(str_replace(Array(" ", "-", "(", ")"), "", $item["PROP"]["PHONE"]["VALUE"]))?>"><?=htmlspecialchars_decode($item["PROP"]["PHONE"]["VALUE"])?></a></td><?endif?>
 <td><?=$item["PROP"]["PAYMENT_NAME"]["NAME"]?></td>
 </tr>
 </table>

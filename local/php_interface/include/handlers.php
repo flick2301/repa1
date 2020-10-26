@@ -861,8 +861,8 @@ function DoNotUpdate(&$arFields)
 			$time = date("H:i:s");
 			\Bitrix\Main\Diag\Debug::dumpToFile(array($arFields['PREVIEW_PICTURE'], $arFields['DETAIL_PICTURE'], $time), "", '/upload/log_change_pic.txt');
 		}
-        unset($arFields['PREVIEW_PICTURE']);
-        unset($arFields['DETAIL_PICTURE']);
+       //unset($arFields['PREVIEW_PICTURE']);
+       //unset($arFields['DETAIL_PICTURE']);
         
     }
 }

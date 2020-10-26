@@ -379,11 +379,13 @@ $APPLICATION->IncludeFile(
 		"DELAY" => "N",
 		"ALLOW_MULTI_SELECT" => "N",
 		"VIBOR_CATALOG_TABLE" => array(
-			
-			1 => "2312",
-			2 => "2411",
-            3 => "2403",
-            4 => "",
+			0 => "2312",
+			1 => "2838",
+			2 => "2841",
+			3 => "2844",
+			4 => "2411",
+			5 => "2403",
+			6 => "",
 		)
 	),
 	false
