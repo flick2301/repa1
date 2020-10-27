@@ -412,8 +412,38 @@ ol.tech li {
 
 
 
-
-
+@media (min-width: 991px) {
+/*МЕНЮ*/
+#catalog-nav__wrap {
+	min-height: 710px;
+}
+.catalog-nav__lvl.is-active {
+	border-bottom-right-radius: 0;
+}
+.catalog-nav__lvl2 {
+	height: auto;
+	min-height: 710px;
+	border-left: 12px solid #0544a4;
+	border-bottom-left-radius: 4px;
+	right: -280px;
+}
+.catalog-nav__lvl2-list {
+	height: auto;
+	min-height: 100%;
+}
+.catalog-nav__lvl2.is-active {
+	height: auto;	
+	display: block;
+}
+.catalog-nav__lvl3 {
+	min-height: 710px;	
+}
+.catalog-nav__lvl1-toggle {
+	z-index: 5000;
+	position: relative;
+}
+/*МЕНЮ*/
+}
 @media (min-width: 741px) {
 h1 {
     font-size: 38px;
