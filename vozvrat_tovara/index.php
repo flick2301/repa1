@@ -88,7 +88,7 @@ $APPLICATION->AddHeadScript($APPLICATION->GetCurPage()."script.js");
 <div class="buttons">
 <input id="prev_question" type="button" value="Назад" />
 <input id="next_question" type="button" value="Далее" />
-<input id="begin" type="button" value="Начать заного" />
+<input id="begin" type="button" value="Начать заново" />
 </div>
 
 </div>
