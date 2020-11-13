@@ -23,7 +23,6 @@ $(document).ready(function() {
 	$(document).on('click', '#begin', function() {	
 		question="";
 		$('#next_question').show();
-		$('#prev_question').show();	
 		$('.purchase__returns .poll_block label').show();			
 		act();
 	});	
