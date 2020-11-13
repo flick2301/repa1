@@ -19,7 +19,15 @@ $('.card__btn').click(function() {
 
 
 
-
+$('.close-svg').click(function()
+      {
+		 
+		  localStorage.setItem("close-svg", "Y");
+         
+		 $('.page-top-banner').css('display','none');
+		 return false;
+      }
+   );
 
 
 
@@ -34,6 +42,8 @@ $(document).ready(function(){
         slidesToScroll: 1
     });
     //carousel
+	if(localStorage.getItem('close-svg') == 'Y')
+		$('.page-top-banner').css('display','none');
     $(".carousel-product__items").slick({
         dots: true,
         infinite: true,
@@ -351,6 +361,8 @@ BX.ready(function(){
          return BX.PreventDefault(e);
       }
    );
+   
+   
 });
 //Конец клик по email
 

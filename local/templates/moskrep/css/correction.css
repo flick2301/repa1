@@ -1,6 +1,9 @@
 .d-none {
 	display: none!important;
 }
+.page-top-banner {
+	display: none!important;	
+}
 h1 {
     line-height: 1;
     font-size: 32px;

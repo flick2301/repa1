@@ -648,3 +648,45 @@
 		margin-top: 1px;
 	}
 }
+.page-top-banner {
+    background-color: #0c59cf;
+    color: #fff;
+    font-size: 18px !important;
+    display: block;
+    height: 38px;
+    position: fixed;
+    left: 0;
+    right: 0;
+	
+    z-index: 1000;
+}
+.page-top-banner .banner-textbox .banner-text {
+     width: 100%; 
+    text-align: center;
+    margin: 0;
+	
+	font-size: 28px !important;
+}
+.page-top-banner .banner-link {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #fff!important;
+    text-decoration: none;
+	font-size: 18px !important;
+}
+
+
+.page-top-banner .page {
+    background-color: transparent;
+}
+.page-top-banner .-cross {
+    padding: 12px;
+    
+    height: 40px;
+    min-width: 12px;
+    fill: #fff;
+    cursor: pointer;
+	position:absolute;
+	
+}
