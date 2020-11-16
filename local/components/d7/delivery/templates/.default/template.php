@@ -2,9 +2,10 @@
                <div class="simple-article__tabs content-tabs">
                   <ul class="content-tabs__list" data-delivery-tabs>
 				  
+			  
 <?foreach($arResult["ITEMS"] AS $key=>$item):?>
                      <li class="content-tabs__item">
-                        <a class="content-tabs__toggle" href="#<?=$item["CODE"]?>" data-tabby-default><?=$item["NAME"]?></a>
+                        <a class="content-tabs__toggle" href="#<?=$item["CODE"]?>"<?if($key==0):?> data-tabby-default<?endif?>><?=$item["NAME"]?></a>
                      </li>
 <?endforeach?>
 
@@ -17,21 +18,21 @@
 			                  <div class="simple-article__content" id="<?=$item["CODE"]?>">
                   <div class="simple-article__section wysiwyg-block">
 				  
-<?if($item["PROP"]["MAP"]):?><script>document.addEventListener("DOMContentLoaded", <?=$item["PROP"]["MAP"]?>);</script><?endif?>
+<?if($item["PROP"]["MAP"]["VALUE"]):?><script>document.addEventListener("DOMContentLoaded", <?=$item["PROP"]["MAP"]["VALUE"]?>);</script><?endif?>
 
 <?=$item["DETAIL_TEXT"]?>
 
-<?if($item["PROP"]["FILE"]):?>				  
+<?if($item["PROP"]["FILE"]["VALUE"]):?>				  
 <?
 $APPLICATION->IncludeFile(
- "/delivery/".$item["PROP"]["FILE"],
+ "/delivery/".$item["PROP"]["FILE"]["VALUE"],
  $arParams["SHOW_FRAME"] ? array("SHOW_FRAME" => "Y") : "",
  array("SHOW_BORDER" => true, "MODE"=>"php")
 );
 ?>
 <?endif?>
 
-<?if($item["PROP"]["MAP"]):?><div id="<?=str_replace("ready", "map", $item["PROP"]["MAP"])?>" style="height: 500px;" class="external"></div><?endif?>
+<?if($item["PROP"]["MAP"]["VALUE"]):?><div id="<?=str_replace("ready", "map", $item["PROP"]["MAP"]["VALUE"])?>" style="height: 500px;" class="external"></div><?endif?>
 
                   </div>
                </div>

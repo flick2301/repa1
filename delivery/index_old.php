@@ -14,13 +14,15 @@ switch (LANGUAGE_ID)
 	default:
 		$locale = 'en-US'; break;
 }
+
+if(SITE_TEMPLATE_ID=='moskrep'){
 ?>
 
-<?$APPLICATION->SetAdditionalCSS($APPLICATION->GetCurDir()."style.css", true);?>
+<?$APPLICATION->SetAdditionalCSS($APPLICATION->GetCurPage()."style.css", true);?>
 <?/*<script src="<?=$scheme?>://api-maps.yandex.ru/2.1.50/?load=package.full&lang=<?=$locale?>"></script>*/?>
 <?$api_key = htmlspecialcharsbx(Bitrix\Main\Config\Option::get('fileman', 'yandex_map_api_key'));?>
 <?$APPLICATION->AddHeadScript("{$scheme}://api-maps.yandex.ru/2.1.50/?load=package.full&lang={$locale}&apikey={$api_key}" );?>
-<?$APPLICATION->AddHeadScript($APPLICATION->GetCurDir()."map.js?".rand());?>
+<?$APPLICATION->AddHeadScript($APPLICATION->GetCurPage()."map.js?".rand());?>
 
 
 
@@ -28,18 +30,8 @@ switch (LANGUAGE_ID)
 
 
 
-
             <!--simple-article-->
             <div class="basic-layout__module simple-article">
-			
-	<?$APPLICATION->IncludeComponent("d7:delivery","",Array(
-				"IBLOCK_ID" => "22", 
-				"CACHE_TYPE" => "A", 
-                "CACHE_TIME" => "3600", 
-                "CACHE_FILTER" => "N",
-				"SHOW_FRAME" => "Y"	
-                    ), false
-    );?>				
                <!--content-tabs-->
                <div class="simple-article__tabs content-tabs">
                   <ul class="content-tabs__list" data-delivery-tabs>
@@ -77,7 +69,7 @@ switch (LANGUAGE_ID)
                   <div class="simple-article__section wysiwyg-block">
 <?
 $APPLICATION->IncludeFile(
- $APPLICATION->GetCurDir()."tab2.php",
+ $APPLICATION->GetCurPage()."tab2.php",
  array("MAP"=>"Y"),
  array("SHOW_BORDER" => true, "MODE"=>"php")
 );
@@ -91,7 +83,7 @@ $APPLICATION->IncludeFile(
                   <div class="simple-article__section wysiwyg-block">
 <?
 $APPLICATION->IncludeFile(
- $APPLICATION->GetCurDir()."tab4.php",
+ $APPLICATION->GetCurPage()."tab4.php",
  array("MAP"=>"N"),
  array("SHOW_BORDER" => true, "MODE"=>"php")
 );
@@ -105,7 +97,7 @@ $APPLICATION->IncludeFile(
                   <div class="simple-article__section wysiwyg-block">
 <?
 $APPLICATION->IncludeFile(
- $APPLICATION->GetCurDir()."tab5.php",
+ $APPLICATION->GetCurPage()."tab5.php",
  array("MAP"=>"N"),
  array("SHOW_BORDER" => true, "MODE"=>"php")
 );
@@ -119,7 +111,7 @@ $APPLICATION->IncludeFile(
                   <div class="simple-article__section wysiwyg-block">
 <?
 $APPLICATION->IncludeFile(
- $APPLICATION->GetCurDir()."tab6.php",
+ $APPLICATION->GetCurPage()."tab6.php",
  array("MAP"=>"N"),
  array("SHOW_BORDER" => true, "MODE"=>"php")
 );
@@ -133,7 +125,7 @@ $APPLICATION->IncludeFile(
                   <div class="simple-article__section wysiwyg-block">
 <?
 $APPLICATION->IncludeFile(
- $APPLICATION->GetCurDir()."tab1.php",
+ $APPLICATION->GetCurPage()."tab1.php",
  array("MAP"=>"Y"),
  array("SHOW_BORDER" => true, "MODE"=>"php")
 );
@@ -147,7 +139,7 @@ $APPLICATION->IncludeFile(
                   <div class="simple-article__section wysiwyg-block">
 <?
 $APPLICATION->IncludeFile(
- $APPLICATION->GetCurDir()."tab3.php",
+ $APPLICATION->GetCurPage()."tab3.php",
  array("SHOW_FRAME"=>"Y"),
  array("SHOW_BORDER" => true, "MODE"=>"php")
 );
@@ -161,7 +153,58 @@ $APPLICATION->IncludeFile(
 			
 
    <script>$(document).ready(function(){var tabs=new Tabby("[data-delivery-tabs]");});</script>
+   
+<?} else {?>
+<?$APPLICATION->SetAdditionalCSS($APPLICATION->GetCurPage()."style.css", true);?>
+<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array()); ?>
 
+<?/*<script src="<?=$scheme?>://api-maps.yandex.ru/2.1.50/?load=package.full&lang=<?=$locale?>"></script>*/?>
+<?$api_key = htmlspecialcharsbx(Bitrix\Main\Config\Option::get('fileman', 'yandex_map_api_key'));?>
+<?$APPLICATION->AddHeadScript("{$scheme}://api-maps.yandex.ru/2.1.50/?load=package.full&lang={$locale}&apikey={$api_key}" );?>
+<?$APPLICATION->AddHeadScript($APPLICATION->GetCurPage()."map.js?".rand());?>
+
+			<h1 class="s38-title"><?=$APPLICATION->ShowTitle();?></h1>
+
+<ul class='delivery_items'>
+	<li data-tab='tab_1' class='delivery_item active'>Москва и МО</li>
+	<li data-tab='tab_2' class='delivery_item spb'>Санкт-Петербург и ЛО</li>
+	<li data-tab='tab_3' class='delivery_item'>Доставка по России</li>
+</ul>
+
+
+
+<div id='tab_1' class='delivery__tabs-list active'>
+<?
+$APPLICATION->IncludeFile(
+ $APPLICATION->GetCurPage()."tab_old1.php",
+ array("MAP"=>"Y"),
+ array("SHOW_BORDER" => true, "MODE"=>"php")
+);
+?>
+</div>
+
+
+<div id='tab_2' class='delivery__tabs-list spb'>
+<?
+$APPLICATION->IncludeFile(
+ $APPLICATION->GetCurPage()."tab_old2.php",
+ array("MAP"=>"Y"),
+ array("SHOW_BORDER" => true, "MODE"=>"php")
+);
+?>
+</div>
+
+
+<div id='tab_3' class='delivery__tabs-list'>
+<?
+$APPLICATION->IncludeFile(
+ $APPLICATION->GetCurPage()."tab_old3.php",
+ array(),
+ array("SHOW_BORDER" => true, "MODE"=>"php")
+);
+?>
+</div>
+<?}?>
 
    
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

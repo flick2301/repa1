@@ -7,7 +7,7 @@ if(CModule::IncludeModule('iblock')){
 	
 	$obCache = new CPHPCache();
 	
-if($obCache->InitCache(360000, "delivery".$arParams["PAGE"], "/"))// Если кэш валиден
+if($obCache->InitCache(360000, "delivery".$arParams["PAGE"].$_SERVER['HTTP_HOST'], "/"))// Если кэш валиден
 {
    $vars = $obCache->GetVars();// Извлечение переменных из кэша
    $arResult = $vars["RESULT"];
