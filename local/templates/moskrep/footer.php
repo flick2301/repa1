@@ -321,6 +321,7 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
                <!--project-contact-->
                <!--project-copy-->
 				<div class="website-about__copy project-copy">
+					<?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/disclaimer_footer.php";?>
 					<p class="project-copy__text">Информация на сайте krep-komp.ru не является публичной офертой. Указанные цены действуют только при оформлении заказа через интернет-магазин krep-komp.ru</p>
 					<p class="project-copy__text">© 2005 – 2020 Интернет-магазин «КРЕП-КОМП» <?$APPLICATION->IncludeFile("/include/city.php", array(), array("SHOW_BORDER" => true, "MODE"=>"php"));?></p>
 					<p class="privacy"><a class="blue underline" href="/privacy/">Политика компании</a></p>

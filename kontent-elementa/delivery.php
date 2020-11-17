@@ -16,13 +16,6 @@ switch (LANGUAGE_ID)
 }
 ?>
 
-<div id="tab-4" class="card__tabs-list" style="margin-top: 0px;">
-<ul class='delivery_items'>
-	<li data-tab='tab_1' class='delivery_item active'>Москва и МО</li>
-	<li data-tab='tab_2' class='delivery_item spb'>Санкт-Петербург и ЛО</li>
-	<li data-tab='tab_3' class='delivery_item'>Доставка по России</li>
-</ul>
-
 <?$APPLICATION->SetAdditionalCSS("/delivery/style.css", true);?>
 
 <?/*<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
@@ -31,7 +24,22 @@ switch (LANGUAGE_ID)
 <?$api_key = htmlspecialcharsbx(Bitrix\Main\Config\Option::get('fileman', 'yandex_map_api_key'));?>
 <?$APPLICATION->AddHeadScript("{$scheme}://api-maps.yandex.ru/2.1.50/?load=package.full&lang={$locale}&apikey={$api_key}" );?>
 <?$APPLICATION->AddHeadScript("/delivery/map.js?".rand());?>
-  
+
+
+
+
+
+
+
+
+
+<div id="tab-4" class="card__tabs-list" style="margin-top: 0px;">
+<ul class='delivery_items'>
+	<li data-tab='tab_1' class='delivery_item active'>Москва и МО</li>
+	<li data-tab='tab_2' class='delivery_item spb'>Санкт-Петербург и ЛО</li>
+	<li data-tab='tab_3' class='delivery_item'>Доставка по России</li>
+</ul>
+ 
 <div id='tab_1' class='delivery__tabs-list active'>
 <?
 $APPLICATION->IncludeFile(

@@ -26,7 +26,7 @@
 <?
 $APPLICATION->IncludeFile(
  "/delivery/".$item["PROP"]["FILE"]["VALUE"],
- $arParams["SHOW_FRAME"] ? array("SHOW_FRAME" => "Y") : "",
+ $arParams["SHOW_FRAME"]=="Y" ? array("SHOW_FRAME" => "Y") : "",
  array("SHOW_BORDER" => true, "MODE"=>"php")
 );
 ?>

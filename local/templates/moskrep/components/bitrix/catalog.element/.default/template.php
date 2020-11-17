@@ -241,6 +241,7 @@ dataLayer.push({
             
 	    <? require_once($_SERVER["DOCUMENT_ROOT"].$templateFolder."/delivery.php"); ?>
 		
+		
 		<div class="product-page__section" id="pickup">
                   <h2 class="product-page__title">Самовывоз бесплатно</h2>
                   <!--simple-article-->
@@ -353,6 +354,8 @@ dataLayer.push({
                   </div>
                   <!--simple-article-->
                </div>
+			   
+			   
 			   <div class="product-page__section" id="discount">
                   <!--simple-article-->
                   <div class="basic-layout__module simple-article">
@@ -682,7 +685,7 @@ dataLayer.push({
 	</div>
 	<br><br>
      
-</div>
+
 <?global $userEmail;?>
 <!-- Criteo Product dataLayer -->
 <script type='text/javascript'>

@@ -1,7 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetPageProperty("title", "Возврат товара");
-$APPLICATION->SetPageProperty("keywords", "возврат товара");
+$APPLICATION->SetPageProperty("title", "Обмен и возврат товара");
+$APPLICATION->SetPageProperty("keywords", "возврат товара, обмен товара");
 $APPLICATION->SetPageProperty("description", "Как вернуть или обменять приобретенный товар");
 $APPLICATION->SetTitle("Как вернуть или обменять приобретенный товар?");
 

@@ -24,7 +24,7 @@ elseif($obCache->StartDataCache())// Если кэш невалиден
 			$fields = $ob->GetFields();
 			$arResult["ITEMS"][$fields["IBLOCK_SECTION_ID"]][$i] = $fields;
 			$arResult["ITEMS"][$fields["IBLOCK_SECTION_ID"]][$i]["IMG"] = CFile::GetPath($arResult["ITEMS"][$fields["IBLOCK_SECTION_ID"]][$i]["PREVIEW_PICTURE"]);
-			$arResult["ITEMS"][$fields["IBLOCK_SECTION_ID"]][$i]["SMALL_IMG"] =  CFile::ResizeImageGet($arResult["ITEMS"][$fields["IBLOCK_SECTION_ID"]][$i]["PREVIEW_PICTURE"], array('width'=>792, 'height'=>507), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+			$arResult["ITEMS"][$fields["IBLOCK_SECTION_ID"]][$i]["SMALL_IMG"] =  CFile::ResizeImageGet($arResult["ITEMS"][$fields["IBLOCK_SECTION_ID"]][$i]["PREVIEW_PICTURE"], array('width'=>1584, 'height'=>1014), BX_RESIZE_IMAGE_PROPORTIONAL, true);
 			$arResult["ITEMS"][$fields["IBLOCK_SECTION_ID"]][$i]["PROPERTY"] = $ob->GetProperties();
 			$i++;
 		}
