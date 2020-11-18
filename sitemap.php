@@ -46,5 +46,5 @@ function sitemap_gen($sitemap_path, $site_url, $new_path){
 	}
 	return true;
 }
-sitemap_gen('sitemap.xml', 'krep-komp.ru', 'sitemap_dyn.php');
+sitemap_gen('sitemap-iblock-17.xml', 'krep-komp.ru', 'sitemap_dyn.php');
 ?>

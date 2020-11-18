@@ -2,18 +2,32 @@
 if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true) die();
 
 if(CModule::IncludeModule('iblock')){
+	
+	
+
+		
+		
 
 
 	
 	$obCache = new CPHPCache();
 	
-if($obCache->InitCache(360000, "contact_shops".$arParams["SECTION_ID"].$_REQUEST["ID"], "/"))// Если кэш валиден
+if($obCache->InitCache(360000, "contact_shops".$_SERVER['HTTP_HOST'].$_REQUEST["ID"], "/"))// Если кэш валиден
 {
    $vars = $obCache->GetVars();// Извлечение переменных из кэша
    $arResult = $vars["RESULT"];
 }
 elseif($obCache->StartDataCache())// Если кэш невалиден
 {	
+
+		$arFilter = array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "ACTIVE" => "Y", "CODE"=>$_SERVER['HTTP_HOST']);
+        $arSelect = array("ID", "IBLOCK_ID", "NAME", "CODE");
+		$rsSect = CIBlockSection::GetList(Array(), $arFilter, false, $arSelect, Array("iNumPage"=>1));
+		if ($arSection = $rsSect->GetNext()) {
+			if ($arSection["ID"]) $arParams["SECTION_ID"] = $arSection["ID"];
+		}
+		
+
 
 		
 		$i = 0;
@@ -80,6 +94,8 @@ $zoom = $zoom_lon < $zoom_lat ? $zoom_lat : $zoom_lon;
 
 if (count($arResult["ITEMS"])==1) $arResult["ZOOM"] = 15;
 else $arResult["ZOOM"] = round(pi() * 2 / $zoom);
+
+$arResult["SECTION"] = $arSection;
 
 
 	
