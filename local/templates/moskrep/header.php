@@ -201,15 +201,16 @@ $APPLICATION->IncludeFile(
 			</div>
 			<!--website-logo-->
             </div>
-			
+			 <?if(SITE_ID!='s2'):?>                
+                <?require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>             
+                    <?endif;?>
 			<div class="eshop-panel__search">
                 <?
                 $request = Application::getInstance()->getContext()->getRequest();
                 $name = $request->getCookieList();               
                 ?>
-                    <?if(SITE_ID!='s2'):?>                
-                <?require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>             
-                    <?endif;?>
+				
+                   
 
 		<?/*$APPLICATION->IncludeComponent(
 	"d7:search.title", 
