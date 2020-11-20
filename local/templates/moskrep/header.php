@@ -340,13 +340,14 @@ $APPLICATION->IncludeFile(
 		<div class="eshop-panel__contact">
                <!--contact-widget-->
                <div class="contact-widget">
-                    <?if($_SERVER['HTTP_HOST']!='spb.krep-komp.ru'){?>
-						<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/tel_header.php"), false, []);?>
-                    <?}else{?>
-						<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/tel_header_spb.php"), false, []);?>
-                    <?}?>
-                    <p class="contact-widget__schedule"><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/opening_hours.php"), false, []);?></p>
-					<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/email_header.php"), false, []);?>
+	<?$APPLICATION->IncludeComponent("d7:contact_shops","header",Array(
+				"IBLOCK_ID" => "19", 
+				"CACHE_TYPE" => "A", 
+                "CACHE_TIME" => "3600", 
+                "CACHE_FILTER" => "N",
+				"LIMIT" => 1,	
+                    ), false
+    );?>	
 				</div>
 		</div>
               

@@ -12,7 +12,7 @@ if(CModule::IncludeModule('iblock')){
 	
 	$obCache = new CPHPCache();
 	
-if($obCache->InitCache(360000, "contact_shops".$_SERVER['HTTP_HOST'].$_REQUEST["ID"], "/"))// Если кэш валиден
+if($obCache->InitCache(360000, "contact_shops".$_SERVER['HTTP_HOST'].$arParams["LIMIT"].$_REQUEST["ID"], "/"))// Если кэш валиден
 {
    $vars = $obCache->GetVars();// Извлечение переменных из кэша
    $arResult = $vars["RESULT"];
@@ -45,7 +45,7 @@ elseif($obCache->StartDataCache())// Если кэш невалиден
 		
 		if ($_REQUEST["ID"]) $arFilter['ID'] = $_REQUEST["ID"];
 		
-		$res = CIBlockElement::GetList(Array("SORT"=>"ASC", "ID"=>"ASC"), $arFilter, false, Array(), $arSelect);
+		$res = CIBlockElement::GetList(Array("SORT"=>"ASC", "ID"=>"ASC"), $arFilter, false, $arParams["LIMIT"] ? Array("nPageSize"=>$arParams["LIMIT"]) : Array(), $arSelect);
 		while($ob = $res->GetNextElement())
 		{
 			$arResult["ITEMS"][$i] = $ob->GetFields();

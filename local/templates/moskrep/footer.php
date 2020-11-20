@@ -304,18 +304,14 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 						<p class="project-contact__desc">Интернет-магазин крепежа, метизов и инструмента «МОСКРЕП»</p>
 					<?endif;?>
 					<p class="project-contact__data">Телефон: 
-					<?if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'):?>
-						<a href='tel:+78123099545' class="project-contact__link roistat-phone-spb">8 812 309-95-45</a>
-					<?elseif($_SERVER['HTTP_HOST']=='kazan.krep-komp.ru'):?>
-						<a href='tel:+78432060700' class="project-contact__link roistat-phone">8 843 206-07-00</a>
-					<?elseif($_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'):?>
-						<a href='tel:+78312199516' class="project-contact__link roistat-phone">8 831 219-95-16</a>
-					<?elseif($_SERVER['HTTP_HOST']=='voronezh.krep-komp.ru'):?>
-						<a href='tel:+74732045338' class="project-contact__link roistat-phone">8 473 204-53-38</a>
-					<?else:?>
-						<a href='tel:+74993505555' class="project-contact__link roistat-phone">8 499 350-55-55</a>
-					<?endif;?>
-                    
+	<?$APPLICATION->IncludeComponent("d7:contact_shops","phone",Array(
+				"IBLOCK_ID" => "19", 
+				"CACHE_TYPE" => "A", 
+                "CACHE_TIME" => "3600", 
+                "CACHE_FILTER" => "N",
+				"LIMIT" => 1,	
+                    ), false
+    );?>	                    
 					</p>
 				</div>
                <!--project-contact-->
