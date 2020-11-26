@@ -20,8 +20,8 @@ $cp = $this->__component;
 if($arParams['REFERENCE_CHECK']=='Y'):
     
 
-    
-    
+     
+   
    
     $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'UF_DIRECTORY'=>$arResult['SECTION']['ID']);
     $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array('*', 'UF_DIRECTORY'));
@@ -68,14 +68,16 @@ if($arParams['REFERENCE_CHECK']=='Y'):
        
        
     }else{
+		
+		
         $resProps = CIBlock::GetProperties($arParams["IBLOCK_ID"], Array(), Array());
         while($arProp = $resProps->Fetch()){
             $arProp_catalog[]=$arProp['CODE'];
             $arProp_catalog_type[$arProp['CODE']]=$arProp['PROPERTY_TYPE'];
              
         }
-         
-        $arFilter = Array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "ACTIVE"=>"Y", '=CODE'=>$arParams['SORTING']);
+        
+        $arFilter = Array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "ACTIVE"=>"Y", '=CODE'=>end($arParams['SORTING']));
         $res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter, false, false, array('*'));
         while($ob = $res->GetNextElement()){ 
             
@@ -84,15 +86,17 @@ if($arParams['REFERENCE_CHECK']=='Y'):
 			
 			$URL_SORT = false;
 			$nav = CIBlockSection::GetNavChain(false, $arFields["IBLOCK_SECTION_ID"]);
+			 
 			while($arNav = $nav->GetNext())
 			{
+				
 				$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>SORTING_IBLOCK_ID, 'ID'=>$arNav['ID']), false, Array('CODE', 'UF_DIRECTORY'));
 				if($arSect = $res_sect->GetNext()){
 					
 					if($arSect['UF_DIRECTORY']){
 						
 							$code_section = $arParams['SORTING'][count($arParams['SORTING'])-1];
-							$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], 'CODE'=>$code_section), false, Array('ID', 'SECTION_PAGE_URL'));
+							$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], 'ID'=>$arSect['UF_DIRECTORY']), false, Array('ID', 'SECTION_PAGE_URL'));
 							$dir = $APPLICATION->GetCurDir();
 							
 							if($parent_sec_id = $res_sect->GetNext()){

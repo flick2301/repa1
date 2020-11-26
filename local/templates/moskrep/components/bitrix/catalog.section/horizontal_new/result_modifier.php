@@ -243,5 +243,28 @@ if($arResult["UF_DOP_SETTINGS"])
 	}
 }
 
+foreach($arResult['UF_SOPUT_SPR_ITMES'] as $key=>$value)
+{
+	$nav = CIBlockSection::GetNavChain(false, $value["IBLOCK_SECTION_ID"]);
+	while($arNav = $nav->GetNext())
+	{
+				
+		$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>SORTING_IBLOCK_ID, 'ID'=>$arNav['ID']), false, Array('CODE', 'UF_DIRECTORY'));
+		if($arSect = $res_sect->GetNext())
+		{
+					
+			if($arSect['UF_DIRECTORY'])
+			{
+				$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], 'ID'=>$arSect['UF_DIRECTORY']), false, Array('ID', 'SECTION_PAGE_URL'));
+				if($parent_sec_id = $res_sect->GetNext())
+				{
+					$arResult['UF_SOPUT_SPR_ITMES'][$key]['FULL_URL'] = $parent_sec_id['SECTION_PAGE_URL'].$arResult['UF_SOPUT_SPR_ITMES'][$key]['CODE'];
+								
+				}
+			}
+		}
+	}
+}
+
 \Bitrix\Main\Loader::includeModule('dev2fun.opengraph');
 \Dev2fun\Module\OpenGraph::Show($arResult['ID'],'section'); 

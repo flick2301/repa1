@@ -5,7 +5,8 @@ use Bitrix\Main\Loader;
 use Bitrix\Main\ModuleManager;
 
 $this->setFrameMode(true);
-
+global $mySmartFilter;
+$mySmartFilter = [">CATALOG_PRICE_9" => 0];
 
 //ЭТОТ ГЛОБАЛ НЕ ТРОГАТЬ. НУЖЕН В ХЛЕБНЫХ КРОШКАХ ВИРТУАЛЬНОГО КАТАЛОГА
 $GLOBAL['SECTION_ID'] = $arResult["VARIABLES"]["SECTION_ID"];
@@ -166,15 +167,16 @@ if($count_sections || !empty($subsections)){
         }
     
         $this->SetViewTarget("smart_filter");
-    
+   
         $APPLICATION->IncludeComponent(
         "d7:catalog.smart.filter",
         "",
         Array(
             "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
             "IBLOCK_ID" => $arParams["IBLOCK_ID"],
-            "SECTION_ID" => $arCurSection["ID"],
+            "SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
             "FILTER_NAME" => "arrFilter",
+			"PREFILTER_NAME" => "mySmartFilter",
             "PRICE_CODE" => "",
             "CACHE_TYPE" => "A",
             "CACHE_TIME" => "36000000",

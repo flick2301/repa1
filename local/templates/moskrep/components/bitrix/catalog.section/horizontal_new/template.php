@@ -5,7 +5,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 global $APPLICATION;
 global $DEFAULT_STORE_ID;
 include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
-$ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
+$ral_in_ar = $arResult['ITEMS'][10]['PROPERTIES']["TSVET"]["VALUE"];
 
 //Параметр FOR_SEO устанавливается если это раздел справочника, а не каталога
 //А значит текст и заголовок(шапка) не берутся из каталога, а из справочника, значит условие FOR_SEO != Y
@@ -85,11 +85,12 @@ if($arParams['FOR_SEO']!='Y'){
 	        <div class="catalog-feed__other">
 		<?
 		foreach($arResult['UF_SOPUT_SPR_ITMES'] as $soput_itme){
+			
 		?>
 					<div class="catalog-feed__child">
                      <!--category-card-->
                      <div class="category-card">
-                        <p class="category-card__title"><a class="category-card__link" href="<?=$soput_itme['CODE']?>/"><?=$soput_itme['NAME']?></a></p>
+                        <p class="category-card__title"><a class="category-card__link" href="<?=$soput_itme['FULL_URL']?>/"><?=$soput_itme['NAME']?></a></p>
                         <div class="category-card__cover">
                           <!-- <img class="category-card__image" src="uploads/category-card/cover-01.jpg" width="120" height="76" alt=""> -->
                         </div>
