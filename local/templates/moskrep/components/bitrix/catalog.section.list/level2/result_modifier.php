@@ -5,9 +5,10 @@ $module_id = 'relink.table';
 use Bitrix\Main\Loader;
 if (!Loader::includeModule($module_id))
     return;
+//ПЕРЕЛИНКОВКА(СМОТРИТЕ ТАК ЖЕ(ВРЕМЕННО ОТКЛЮЧАЕМ))
 $relinkList = \Relink\Table\LinksTable::getList(array("select" => array('*'), "filter" => array("=DONOR_ID" => $arResult['SECTION']['ID'])));
 while($arRelink = $relinkList->fetch()){
-    $arResult['RELINK'][] = $arRelink;
+   // $arResult['RELINK'][] = $arRelink;
 }
 /* 
  * To change this license header, choose License Headers in Project Properties.

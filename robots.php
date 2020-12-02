@@ -10,7 +10,6 @@ else{
 }
 header("Content-Type: text/plain");?>
 User-Agent: *
-Crawl-delay: 120
 Disallow: /auth/
 disallow: /user/
 Disallow: /webstat/

@@ -20,21 +20,30 @@
 		<aside class="basic-layout__sidebar">
             <!--table-of-contents-->
 		<?$APPLICATION->IncludeComponent(
-            "bitrix:menu",
-            "left_bottom",
-            Array(
-            "ROOT_MENU_TYPE" => "left_bottom", 
-            "MAX_LEVEL" => "1", 
-            "CHILD_MENU_TYPE" => "left_bottom", 
-            "USE_EXT" => "Y",
-            "VIBOR_CATALOG_TABLE" => array(
-			
-			0 => "2411",
-                        1 => "2403",
-                        3 => "",
-                        )
-     )
-	);?>
+	"bitrix:menu", 
+	"left_bottom", 
+	array(
+		"ROOT_MENU_TYPE" => "left_bottom",
+		"MAX_LEVEL" => "1",
+		"CHILD_MENU_TYPE" => "left_bottom",
+		"USE_EXT" => "Y",
+		"VIBOR_CATALOG_TABLE" => array(
+			0 => "",
+			1 => "2411",
+			2 => "2403",
+			3 => "",
+		),
+		"COMPONENT_TEMPLATE" => "left_bottom",
+		"MENU_CACHE_TYPE" => "A",
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"DELAY" => "N",
+		"ALLOW_MULTI_SELECT" => "N"
+	),
+	false
+);?>
 	
 	<?=$APPLICATION->ShowViewContent('RELINK');?>
 	<?=$APPLICATION->ShowViewContent("smart_filter");?>
@@ -286,15 +295,24 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
             <div class="website-about__nav">
 				<nav class="fast-nav">
 				<?$APPLICATION->IncludeComponent(
-				"bitrix:menu",
-				"bottom_menu",
-				Array(
-				"ROOT_MENU_TYPE" => "bottom", 
-				"MAX_LEVEL" => "3", 
-				"CHILD_MENU_TYPE" => "bottom", 
-				"USE_EXT" => "Y" 
-				)
-				);?>
+	"bitrix:menu", 
+	"bottom_menu", 
+	array(
+		"ROOT_MENU_TYPE" => "bottom",
+		"MAX_LEVEL" => "3",
+		"CHILD_MENU_TYPE" => "bottom",
+		"USE_EXT" => "Y",
+		"COMPONENT_TEMPLATE" => "bottom_menu",
+		"MENU_CACHE_TYPE" => "A",
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"DELAY" => "N",
+		"ALLOW_MULTI_SELECT" => "N"
+	),
+	false
+);?>
 				</nav>
 			</div>
 			<div class="website-about__info">

@@ -407,7 +407,6 @@ $arrFilter['!CATALOG_PRICE_8'] = false;
 		"VIEW_MODE" => "LINE"
 	)
 );?>
-
 <?}?>
 
 
