@@ -300,6 +300,21 @@ if(count($arResult['SECTION']['UF_OTHER_SECTION'])){
     }
 }
 
+if(count($arResult['SECTION']['UF_SUBSECTION_ID'])){
+   
+    $arFilter = array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], 'ID' => $arResult['SECTION']['UF_SUBSECTION_ID']);
+    $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter);
+    while ($arSection = $rsSections->GetNext())
+    {
+        $arOther[$arSection['ID']]=$arSection;
+        $rsFile = CFile::GetByID($arSection["PICTURE"]);
+        $arFile=$rsFile->Fetch();
+        $arOther[$arSection['ID']]['PICTURE']=$arFile;
+	$arResult['SECTIONS'][$arSection['ID']]=$arSection;
+	$arResult['SECTIONS'][$arSection['ID']]['PICTURE']=$arFile;
+    }
+}
+
 foreach($arResult['SECTIONS'] as $key=>$arSection){
     
     $file = CFile::ResizeImageGet($arSection['PICTURE']['ID'], array('width'=>$arParams['LIST_PREV_PIC_W_L2'], 'height'=>$arParams['LIST_PREV_PIC_H_L2']), BX_RESIZE_IMAGE_PROPORTIONAL, true);

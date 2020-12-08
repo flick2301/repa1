@@ -1,0 +1,122 @@
+.geolocation {
+    display: block;
+}
+.geolocation a {
+  color:#fff;
+  text-decoration: none;
+  display: none;
+}
+.geolocation a:hover {
+    text-decoration: underline;
+}
+.geolocation a:after {
+    content: "";
+    position: absolute;
+    margin-left: 10px;
+	margin-top: 8px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #fff;
+}
+
+#geolocation {
+    display:none;
+    position:absolute;
+    border-radius: 3px;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0px 1px 6px #87ade8;
+    box-shadow: 0px 1px 6px #87ade8;
+    padding:10px;
+    background: white;
+    z-index:100000;
+}
+#geolocation .white-btn, #geolocation .blue-btn {
+    width:120px;
+    height:40px;
+}
+.geo select {
+    width: 350px;
+    height: 40px;
+    padding: 0 0 0 12px;
+    color: #0c59cf;
+    font-size: 16px;
+}
+.geo::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    font-size: 28px;
+    background: #da00e0;
+    pointer-events: none;
+}
+.geo select option:hover {
+    background: #da00e0;
+}
+
+.geo:hover::before {
+    background: #9b03a0;
+}
+.geo {
+    margin: 20px 0 20px 0;
+	
+	position: relative;
+    text-align: left;
+    vertical-align: middle;
+    display: inline-block;
+    margin: 2rem 0;
+    z-index: 999;
+    border-radius: 4px;
+    background: #fff;
+    color: #333;
+    
+    font-size: 1.0rem;
+    line-height: 2rem;
+	padding: 2.2rem 1.2rem 1rem 1.2rem;
+	
+	
+	
+}
+#geolocation{
+	position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+	opacity: 1;
+	right:0;
+    background: rgba(0,0,0,.8);
+    overflow: auto;
+    text-align: center;
+    
+    transition: opacity .3s;
+    
+   
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 0 10rem 10rem rgba(0,0,0,.8);
+}
+
+.geo li{
+	
+    font-style: normal;
+    line-height: 2.4rem;
+    cursor: pointer;
+}
+.selected-city{
+	color:red;
+	font-weight:700;
+}
+.geo ul{
+	margin-top:10px;
+}
+.geo li:hover{
+	background-color: #f5f5f6;
+    
+}

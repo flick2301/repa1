@@ -294,7 +294,10 @@ global $APPLICATION;
 <?else:?>
 <?if($IPROPERTY['SECTION_META_TITLE']==''){$APPLICATION->SetPageProperty('title', $arResult["SECTION"]["NAME"]);}?>
 
-<?globalGetTitle($arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] ? $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] : $arResult["SECTION"]["NAME"])?>	
+<?if($arParams['META']['H1'] && $_SERVER["HTTP_HOST"]=="spb.krep-komp.ru")
+	globalGetTitle($arParams['META']['H1']);
+else
+	globalGetTitle($arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] ? $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] : $arResult["SECTION"]["NAME"])?>	
 
 
 <!--catalog-feed-->

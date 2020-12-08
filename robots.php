@@ -9,6 +9,10 @@ else{
     $http = "http";
 }
 header("Content-Type: text/plain");?>
+<?if($host=="new.krep-komp.ru"):?>
+User-Agent: *
+Disallow: /
+<?else:?>
 User-Agent: *
 Disallow: /auth/
 disallow: /user/
@@ -117,3 +121,4 @@ Allow: *.js
 Allow: /service/YML.xml
 Host: <?=$http?>://<?=$host.PHP_EOL;?>
 Sitemap: <?=$http?>://<?=$host;?>/sitemap.xml
+<?endif;?>

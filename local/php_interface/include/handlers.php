@@ -994,7 +994,7 @@ class SaleOrderEvents
 
 }
 
-AddEventHandler("main", "OnBeforeUserLogin", Array("CUserEx", "OnBeforeUserLogin"));
+//AddEventHandler("main", "OnBeforeUserLogin", Array("CUserEx", "OnBeforeUserLogin"));
 AddEventHandler("main", "OnBeforeUserRegister", Array("CUserEx", "OnBeforeUserRegister"));
 AddEventHandler("main", "OnBeforeUserRegister", Array("CUserEx", "OnBeforeUserUpdate"));
 AddEventHandler("main", "OnBeforeUserAdd", Array("CUserEx", "OnBeforeUserRegister"));

@@ -320,7 +320,7 @@ $APPLICATION->SetPageProperty("component", "catalog");
 );?>
 <?}else{?>
 <?$APPLICATION->IncludeComponent(
-	"d7_old:main.feedback",
+	"d7:main.feedback",
 	"",
 	Array(
 		"EMAIL_TO" => "moskrep-market@yandex.ru",
