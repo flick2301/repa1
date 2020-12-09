@@ -18,7 +18,7 @@ if($arParams['FOR_SEO']!='Y'){
 	
 	
     ?>
-	
+
 <?if(!$_POST['ENUM_LIST']['ELEMENTS'] && !$arParams["DISABLE_HEADER"]=='Y'){?>
 
 <?globalGetTitle($arResult['META_TITLE'] ? $arResult['META_TITLE'] : $arResult['NAME'])?>

@@ -4,8 +4,8 @@ $APPLICATION->SetTitle("Интернет-магазин \"Москреп\"");
 $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Москреп\"");
 ?>
 
-<?if (strstr($_SERVER['HTTP_HOST'] , "new.")):?> 
-
+<?/*if (strstr($_SERVER['HTTP_HOST'] , "new.")):*/?> 
+<?if ($_GET["new"] || strstr($_SERVER['HTTP_HOST'] , "new.")):?> 
 
  
 <!--intro-slider-->

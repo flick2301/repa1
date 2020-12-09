@@ -30,6 +30,7 @@ $rsGender = CUserFieldEnum::GetList(array(), array("ID" => $aSection["UF_SEC_LIS
 
 
 
+
 		
 <?$intSectionID = $APPLICATION->IncludeComponent(
 					"bitrix:catalog.section",

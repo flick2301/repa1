@@ -9,7 +9,9 @@ $module_id = 'relink.table';
 
 
 use Bitrix\Main\Loader;
-
+echo '<!--';
+var_dump($arResult['ITEMS']);
+echo '-->';
 
 $nav = CIBlockSection::GetNavChain(false, $arResult['ID']);
 while($nw = $nav->Fetch()){
@@ -126,6 +128,7 @@ while($arSection = $rsSections->GetNext())
     }
 
 }
+
 //ВЫЧИСЛЯЕМ ДОСТУПНЫЕ РАЗМЕРЫ ДЛЯ ОТОБРАЖЕНИЯ(КОНЕЦ)
 //if ($_SERVER['REQUEST_URI']=="/krepezh/samorezy/samorezy_po_derevu/ostrye_pd/") file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arResult['ITEMS'], true));
 foreach($arResult['ITEMS'] as $key=>$arItem){

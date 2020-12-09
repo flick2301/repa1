@@ -138,10 +138,7 @@
 				  
 				  				    <div class="catalog-nav__lvl2_new">
 									<ul class="catalog-nav__lvl2_new-list">	
-	   <?
-            global $arrFilter;
-            $arrFilter['!CATALOG_PRICE_'.NUMBER_SALE_PRICE] = false;
-           ?>
+
         <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.section", 
 	"main_sale_menu", 
@@ -213,6 +210,9 @@
 	    ),
 	    false
         );?>
+		
+		<?$arrFilter['!CATALOG_PRICE_'.NUMBER_SALE_PRICE]=""?>
+		
 									</ul>	
 									</div>
 				  </div>

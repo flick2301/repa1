@@ -23,6 +23,8 @@ if($APPLICATION->GetCurPage() == '/krepezh/ankera/anker-25-mm/anker-bolt-s/'){
 	$APPLICATION->SetPageProperty('title', "404 - HTTP not found");
 }
 
+
+
 $isFilter = ($arParams['USE_FILTER'] == 'Y');
 
 if ($isFilter)
@@ -84,6 +86,15 @@ if($res=$ar_result->GetNext()){
 			$subsections[] = $res["UF_SUBSECTION_ID"];
 		if($res["UF_OTHER_SECTION"])
 			$subsections[] = $res["UF_OTHER_SECTION"];
+		
+//ТАК ЖЕ СМОТРИМ В СЕКЦИИ ДОП. МЕТЫ
+
+		if($res["UF_META_TITLE"])
+			$meta['title'] = $res["UF_META_TITLE"];
+		if($res["UF_META_DESCRIPTION_SPB"])
+			$meta['description'] = $res["UF_META_DESCRIPTION_SPB"];
+		if($res["UF_H1_SPB"])
+			$meta['H1'] = $res["UF_H1_SPB"];
 	
 		
 }
@@ -93,6 +104,7 @@ if($_REQUEST['section_temp'] == 'new' || $temple=='ANKERA'){
 }else{
     $name_temple = 'level2';
 }
+
 
 if($count_sections || !empty($subsections)){ 
             
@@ -112,6 +124,7 @@ if($count_sections || !empty($subsections)){
                 'LIST_PREV_PIC_H_L2' => $arParams['LIST_PREV_PIC_W_L2'],
                 'REFERENCE_CHECK' => 'Y',
                 'REFERENCE' => $_REQUEST['reference'],
+				'META' => $meta,
                 'SORTING' => $arUrl,
                 
             ], $component, ['HIDE_ICONS' => 'Y']); 

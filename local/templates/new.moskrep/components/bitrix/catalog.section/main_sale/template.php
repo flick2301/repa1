@@ -12,16 +12,10 @@ use \Bitrix\Main\Localization\Loc;
  * @var string $componentPath
  */
 
-$i = 0;
-if ($arParams["SPLIT"]<=1) $arNewResult['ITEMS'][0] = $arResult['ITEMS'];
-else foreach ($arResult['ITEMS'] as $items) {
-	$arNewResult['ITEMS'][$i % $arParams["SPLIT"]][] = $items;
-	$i++;
-}
 ?>
 
-<?foreach ($arNewResult['ITEMS'] as $items):?>
-<?foreach ($items as $item):?>
+
+<?foreach ($arResult['ITEMS'] as $item):?>
 <?$res = CIBlockElement::GetList(array(), array('ID'=>$item["ID"]), false, false, array('ID', 'IBLOCK_ID', 'NAME', 'DETAIL_PAGE_URL', 'IBLOCK_SECTION_ID'));
 $arElement = $res->GetNext();?>
 
@@ -60,4 +54,4 @@ $arElement = $res->GetNext();?>
                </div>
 			   
 <?endforeach?>
-<?endforeach?>
+
