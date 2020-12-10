@@ -976,6 +976,21 @@ ol.tech li {
 .product-slider.big #product-slider__list .slick-list {
 	min-width: calc(600px);
 }
+.basic-layout__columns--reverse .basic-layout__sidebar .back-to-page {
+	display: none;
+}	
+.crumbs-nav {
+	position: absolute;
+	margin-left: -312px;
+}
+}
+
+
+@media (max-width: 1260.98px) and (min-width: 991px) {
+.crumbs-nav {
+	position: absolute;
+	margin-left: -260px;
+}
 }
 
 
@@ -985,6 +1000,9 @@ ol.tech li {
 h1 {
     font-size: 38px;
 }
+.website-navbar__primary {
+    padding-left: 0;
+}	
 }
 
 
