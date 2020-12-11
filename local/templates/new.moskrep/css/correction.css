@@ -882,8 +882,12 @@ ol.tech li {
 .product-slider.big {
 	display: none;
 }
-
-
+.box-modal__head {
+	min-width: 220px;
+}
+.product-card .div_h3.product-card__title {
+	z-index: 1;
+}
 
 
 
@@ -979,7 +983,7 @@ ol.tech li {
 .basic-layout__columns--reverse .basic-layout__sidebar .back-to-page {
 	display: none;
 }	
-.crumbs-nav {
+.basic-layout__content .crumbs-nav {
 	position: absolute;
 	margin-left: -312px;
 }
@@ -987,7 +991,7 @@ ol.tech li {
 
 
 @media (max-width: 1260.98px) and (min-width: 991px) {
-.crumbs-nav {
+.basic-layout__content .crumbs-nav {
 	position: absolute;
 	margin-left: -260px;
 }

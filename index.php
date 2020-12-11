@@ -5,7 +5,7 @@ $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Мос
 ?>
 
 <?/*if (strstr($_SERVER['HTTP_HOST'] , "new.")):*/?> 
-<?if ($_GET["new"] || strstr($_SERVER['HTTP_HOST'] , "new.")):?> 
+<?if ($_GET["new"] || strstr($_SERVER['HTTP_HOST'] , "new.") || true):?> 
 
  
 <!--intro-slider-->

@@ -94,6 +94,9 @@ function menuResizer() {
 }
 
 function openMenu(elem, mobile) {
+	
+	$('html').scrollTop(0);
+	
 if (mobile || $(window).width() < 685) {
 			$('.basic-layout__header').css('z-index', 9);		
 			$('.basic-layout__header').addClass('static');
