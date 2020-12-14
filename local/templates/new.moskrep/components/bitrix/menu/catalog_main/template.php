@@ -5,7 +5,7 @@
 <div id="catalog_main_mobile_menu">
 <div class="menu_close_bar"><span></span><div>Каталог</div></div>
 <div class="items">
-<div rel="sale">
+<?/*<div rel="sale">
 <li rel="sale" class="catalog-nav__item level1 sale parent"><a href="/rasprodaja_krepeja/"  class="catalog-nav__lvl1-toggle"><span>Распродажа</span></a></li>
 <div rel="sale" class="children sale level1">
 				  				    <div class="catalog-nav__lvl2_new">
@@ -89,7 +89,7 @@
 </ul>	
 </div>		
 		</div>
-</div>
+</div>*/?>
 
 <?foreach ($arResult["ITEMS"] AS $key=>$arItem): $cnt++;?>
 <div rel="<?=$cnt?>"><li rel="<?=$cnt?>" class="catalog-nav__item level1 <?if ($arItem["IS_PARENT"]):?>parent<?endif?>"><a href="<?=$arItem['LINK']?>"  class="catalog-nav__lvl1-toggle"><span><span><?=$arItem["TEXT"]?></span></span></a></li>
@@ -132,6 +132,7 @@
                   <div id="catalog_main_menu">
 				  <div class="basic-layout__section">
 				  <div class="left">
+				  <?/*
 				  <div class="sale"><li class="catalog-nav__item" ><a href="/rasprodaja_krepeja/"  class="catalog-nav__lvl1-toggle">Распродажа</a>
 				  
 				  <div class="item_title">Распродажа</div>
@@ -215,7 +216,7 @@
 		
 									</ul>	
 									</div>
-				  </div>
+				  </div>*/?>
 
 <?$limit = 6;?>
 <?foreach ($arResult["ITEMS"] AS $key=>$arItem):?>

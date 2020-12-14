@@ -363,6 +363,26 @@ BX.ready(function(){
    );
    
    
+   BX.bindDelegate(
+      document.body, 'click', {className: 'catalog-feed__filter' },
+      function(e){
+                 
+         $("#catalog-filter").addClass("is-active");
+		 $("#catalog-filter").removeClass("is-disabled");
+         
+      }
+   );
+   BX.bindDelegate(
+      document.body, 'click', {className: 'catalog-filter__close' },
+      function(e){
+                 
+         $("#catalog-filter").addClass("is-disabled");
+		 $("#catalog-filter").removeClass("is-active");
+         
+      }
+   );
+  
+   
 });
 //Конец клик по email
 

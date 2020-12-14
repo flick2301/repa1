@@ -7,11 +7,10 @@ $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Мос
 <div style="background: red">
 
 	<?$APPLICATION->IncludeComponent("d7:geolocation","",Array(
-				"IBLOCK_ID" => "19", 
+				"IBLOCK_ID" => "23", 
 				"CACHE_TYPE" => "A", 
                 "CACHE_TIME" => "3600", 
-                "CACHE_FILTER" => "N",
-				"LIMIT" => 1,	
+                "CACHE_FILTER" => "N"
                     ), false
     );?>
 

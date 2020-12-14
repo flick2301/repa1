@@ -183,7 +183,19 @@ $APPLICATION->IncludeFile(
 	
 <div id="top_under_menu">
 <div class="basic-layout__section">
-<div><?if(!$_GET["nogeolocation"]):?><?require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?><?endif?></div>
+<div>
+<?if(!$_GET["nogeolocation"] && false):?>
+<?require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>
+<?else:?>
+	<?$APPLICATION->IncludeComponent("d7:geolocation","",Array(
+				"IBLOCK_ID" => "23", 
+				"CACHE_TYPE" => "A", 
+                "CACHE_TIME" => "3600", 
+                "CACHE_FILTER" => "N"
+                    ), false
+    );?>
+<?endif?>	
+</div>
 
 <!--contact-widget-->
 <div class="contact-widget">
