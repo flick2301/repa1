@@ -984,16 +984,18 @@ ol.tech li {
 	display: none;
 }	
 .basic-layout__content .crumbs-nav {
-	position: absolute;
+	/*position: absolute;*/
 	margin-left: -312px;
+	margin-bottom: -20px;
 }
 }
 
 
 @media (max-width: 1260.98px) and (min-width: 991px) {
 .basic-layout__content .crumbs-nav {
-	position: absolute;
+	/*position: absolute;*/
 	margin-left: -260px;
+	margin-bottom: -20px;
 }
 }
 

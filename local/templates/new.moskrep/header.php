@@ -183,7 +183,7 @@ $APPLICATION->IncludeFile(
 	
 <div id="top_under_menu">
 <div class="basic-layout__section">
-<div><?require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?></div>
+<div><?if(!$_GET["nogeolocation"]):?><?require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?><?endif?></div>
 
 <!--contact-widget-->
 <div class="contact-widget">
@@ -230,8 +230,8 @@ $APPLICATION->IncludeFile(
 		"MAX_LEVEL" => "3",
 		"CHILD_MENU_TYPE" => "left",
 		"USE_EXT" => "Y",
-		"COMPONENT_TEMPLATE" => ".default",
-		"MENU_CACHE_TYPE" => "N",
+		"COMPONENT_TEMPLATE" => "catalog_main",
+		"MENU_CACHE_TYPE" => "A",
 		"MENU_CACHE_TIME" => "3600",
 		"MENU_CACHE_USE_GROUPS" => "Y",
 		"MENU_CACHE_GET_VARS" => array(
