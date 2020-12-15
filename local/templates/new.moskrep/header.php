@@ -117,15 +117,15 @@ $APPLICATION->IncludeFile(
 		}	
 	?>
 	
-   <script src="/local/templates/moskrep/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>
-   <script src="/local/templates/moskrep/assets/scripts/jquery.icheck-1.0.2.min.js?v=XXXXXXa" defer="defer"></script>
-   <script src="/local/templates/moskrep/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa" defer="defer"></script>
-   <script src="/local/templates/moskrep/assets/scripts/jquery.slick-1.9.0.min.js?v=XXXXXXa" defer="defer"></script>
-   <script src="/local/templates/moskrep/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa" defer="defer"></script>
-   <script src="/local/templates/moskrep/js/jquery.popup.js" defer="defer"></script>
-   <script src="/local/templates/moskrep/js/common.js" defer="defer"></script>
-   <script src="/local/templates/moskrep/js/slick.min.js" defer="defer"></script>
-   <script src="/local/templates/moskrep/js/jquery.cookie.js" defer="defer"></script>		
+   <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/jquery.icheck-1.0.2.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/jquery.slick-1.9.0.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa" defer="defer"></script>
+   <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.popup.js" defer="defer"></script>
+   <script src="<?=SITE_TEMPLATE_PATH?>/js/common.js" defer="defer"></script>
+   <script src="<?=SITE_TEMPLATE_PATH?>/js/slick.min.js" defer="defer"></script>
+   <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.cookie.js" defer="defer"></script>		
 
     
     <!--[if (lt IE 9)&(!IEMobile 7)]><script src="js/html5support.js"></script><![endif]-->
