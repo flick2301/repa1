@@ -175,7 +175,6 @@ h1 {
     line-height: 1.5rem;
     margin-bottom: 25px;
 }
-
 .blue-block {
 	background: #0c59cf;
 	color: #fff;
@@ -1009,6 +1008,9 @@ h1 {
 .website-navbar__primary {
     padding-left: 0;
 }	
+img.intro-slider__image {
+	width: 100%;
+}
 }
 
 
