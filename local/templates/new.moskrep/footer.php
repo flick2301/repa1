@@ -354,9 +354,10 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 			<div class="footer_right">
 			<div>
 			<div class="dop_menu">
-			<div><a href="#">Полльзовательское соглашение</a></div>
+			<!--<div><a href="#">Полльзовательское соглашение</a></div>
 			<div><a href="#">Политика конфиденциальности</a></div>
-			<div><a href="#">Политика использования Cookie</a></div>
+			<div><a href="#">Политика использования Cookie</a></div>-->
+			<div><a href="/privacy/">Политика компании</a></div>			
 			</div>
 			
 <div class="phone">			
@@ -528,7 +529,7 @@ $APPLICATION->SetPageProperty('description', '«КРЕП-КОМП» - ведущ
    
 
 
-<?global $USER; if ($USER->GetID()!=1) include_once $_SERVER["DOCUMENT_ROOT"] . "/include/jivosite.php";?>
+<?global $USER; if ($USER->GetID()!=1 && !$_GET['administrator']) include_once $_SERVER["DOCUMENT_ROOT"] . "/include/jivosite.php";?>
 
 </body>
 </html>

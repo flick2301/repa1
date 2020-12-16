@@ -693,37 +693,33 @@ function ChangeMyContent(&$content)
    global $APPLICATION;
    $CD   = $APPLICATION->GetCurDir();
    if($CD!='/bitrix/admin/'){
-   if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){
-     $replace = array(
-        'Санкт-Петербурге',
-        'Санкт-Петербурге и ЛО',
-        '<span>8 812 309-95-45</span>'
-    );  
-   }elseif($_SERVER['HTTP_HOST']=='kazan.krep-komp.ru'){
-     $replace = array(
-        'Казани',
-        'Казани и Татарстане',
-        '<span>8 843 206-07-00</span>'
-    );  
-   }elseif($_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'){
-     $replace = array(
-        'Нижний Новгороде',
-        'Нижний Новгороде и НО',
-        '<span>8 831 219-95-16</span>'
-    );  
-   }elseif($_SERVER['HTTP_HOST']=='voronezh.krep-komp.ru'){
-     $replace = array(
-        'Воронеже',
-        'Воронеже и ВО',
-        '<span>8 473 204-53-38</span>'
-    );  
-   }else{
-     $replace = array(
-        'Москве',
-        'Москве и МО',
-        '<span>8 499 350-55-55</span>'
-    );    
-   }
+			
+		$replace = array();
+		\Bitrix\Main\Loader::IncludeModule("iblock");
+
+
+		$dbSections = \Bitrix\Iblock\SectionTable::getList(array(
+			'filter'=>['IBLOCK_ID'=>'19'],
+			'select'=>['IBLOCK_ID', 'ID', 'CODE', 'NAME', 'DESCRIPTION']
+		));
+
+		while($section = $dbSections->fetch())
+		{
+			if($_SERVER['HTTP_HOST']==$section['CODE'])
+			{
+				$replace = explode(";", $section['DESCRIPTION']);
+				
+			}
+		
+		}
+		if(empty($replace))
+		{
+			$replace = array(
+				'Москве',
+				'Москве и МО',
+				'<span>8 499 350-55-55</span>'
+			);  
+		}
     
     $content = str_replace($search, $replace, $content);
 	//$content = preg_replace("  ", " ", $content);

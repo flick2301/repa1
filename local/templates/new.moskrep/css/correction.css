@@ -887,8 +887,23 @@ ol.tech li {
 .product-card .div_h3.product-card__title {
 	z-index: 1;
 }
-
-
+#filter__catalog {
+	width: 100%;
+}
+#filter__catalog button {
+	margin: 40px 0 -12px;
+	border: 1px solid green;
+	min-width: 100%;
+}
+#filter__catalog .catalog-feed__filter {
+	background-color: #4F36E3;
+}
+#filter__catalog_desktop {
+	display: block;
+}	
+#filter__catalog {
+	display: none;
+}
 
 
 
@@ -1097,6 +1112,12 @@ img.intro-slider__image {
 
 
 @media (max-width: 685px) {
+#filter__catalog_desktop {
+	display: none;
+}	
+#filter__catalog {
+	display: block;
+}
 .catalog-table__column--basic.is-merged h3 strong {	
 	display: inherit;
 }
@@ -1218,14 +1239,14 @@ atalog_main_menu .catalog-nav__lvl1-link, .catalog-nav__lvl1-toggle {
 }
 #new_catalog_bar #catalog-nav__toggle {
 	width: 120px;
-	height: 44px;
-	margin-top: -4px;
+	height: 32px;
+	margin-top: -14px;
 }
 #new_catalog_bar #catalog-nav__toggle > span {
 	display: none;
 }
 .basic-layout__module.intro-slider {
-	margin-top: -73px;
+	margin-top: -42px;
 }
 #new_catalog_bar .simple-menu-icon {
 	display: inline-flex;
@@ -1253,11 +1274,12 @@ atalog_main_menu .catalog-nav__lvl1-link, .catalog-nav__lvl1-toggle {
 }
 .eshop-panel__search .simple-input {
 	border: 1px solid #000;
-	height: 44px;
+	height: 32px;
 }
 .global-search__submit {
-	margin-top: -4px;
+	margin-top: -9px;
 	background-image: url(../img/loupe_icon-icons.com_58875.svg);
+	right: 11px;	
 }
 #catalog_main_menu .catalog-nav__item.active .catalog-nav__lvl2_new, #catalog_main_menu .catalog-nav__item.active .item_title {
 }
@@ -1277,7 +1299,7 @@ atalog_main_menu .catalog-nav__lvl1-link, .catalog-nav__lvl1-toggle {
 /*-------------------------------------------*/
 .basic-layout__header {
 	width: 100%;
-	height: 117px;
+	min-height: 107px;
 	position: fixed;
 	background: #fff;
 	z-index: 8;
@@ -1289,8 +1311,11 @@ atalog_main_menu .catalog-nav__lvl1-link, .catalog-nav__lvl1-toggle {
 .basic-layout__header.fixed {
 	box-shadow: 0 2px 3px 0 rgba(0,0,0,.2);
 }
+main.catalog {
+	margin-top: 188px;
+}
 main {
-	margin-top: 158px;
+	margin-top: 148px;
 }
 .eshop-panel {
 	margin-top: 0;
@@ -1382,7 +1407,7 @@ main {
 	max-width: 203px;
 }
 main {
-	margin-top: 158px;
+	margin-top: 138px;
 }
 .fast-nav__list {
 	display: flex;

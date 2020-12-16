@@ -3,7 +3,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("О магазине");
 ?>
 
-<?if(SITE_TEMPLATE_ID=='moskrep'){?>
+<?if(1){?>
 
 <?globalGetTitle("Наша компания – ведущий поставщик строительного крепежа на территории РФ")?>			
 			

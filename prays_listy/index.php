@@ -9,7 +9,7 @@ const MY_HL_BLOCK_META_ID=7;
 //подключаем модуль highloadblock
 CModule::IncludeModule('highloadblock');
 ?>
-<?if(SITE_TEMPLATE_ID=='moskrep'){?>
+<?if(1){?>
 
 <?globalGetTitle()?>
 

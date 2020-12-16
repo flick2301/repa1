@@ -416,6 +416,13 @@ $APPLICATION->IncludeFile(
         
 	</div>
 	<!--eshop-panel-->
+	
+
+<div id="filter__catalog">
+<?$APPLICATION->ShowViewContent('catalogFilter');?>
+<div>
+		
+			
 </div>
 
 
@@ -484,7 +491,7 @@ $APPLICATION->IncludeFile(
     </header>
     
   
-    <main class="basic-layout__common">
+    <main class="basic-layout__common <?$APPLICATION->ShowViewContent('catalogFilterClass');?>">
 	<?if($APPLICATION->GetCurPage() !== "/basket/" && $APPLICATION->GetCurPage() !== "/order/"):?>  	
 	<?if($APPLICATION->GetCurPage() !== "/")
 	{

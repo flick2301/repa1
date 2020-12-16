@@ -105,8 +105,16 @@ if($arParams['FOR_SEO']!='Y'){
 		<!--catalog-feed--><?	
 
 	}?>
+	
+			<?$this->SetViewTarget('catalogFilterClass');?>
+                  catalog
+			<?$this->EndViewTarget();?> 
+	
 			<div class="catalog-feed__tabs">
+			<?$this->SetViewTarget('catalogFilter');?>
                   <button class="catalog-feed__filter" id="catalog-filter-trigger"><i class="simple-filter-icon"></i>Фильтр</button>
+			<?$this->EndViewTarget();?> 
+			<div id="filter__catalog_desktop"><button class="catalog-feed__filter" id="catalog-filter-trigger"><i class="simple-filter-icon"></i>Фильтр</button></div>	
             </div>	
 <?
 }
