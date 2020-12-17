@@ -17,6 +17,7 @@ User-Agent: *
 Disallow: /auth/
 disallow: /user/
 Disallow: /webstat/
+Disallow: /bitrix/
 Disallow: /basket/
 Disallow: /cgi-bin/
 Disallow: /.git/
