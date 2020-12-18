@@ -12,15 +12,103 @@ $rsGender = CUserFieldEnum::GetList(array(), array("ID" => $aSection["UF_SEC_LIS
 	
 }?>
 <?
+
+
+global $mySmartFilter;
 global $arrFilter2;
 
 if(count($arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE'])>1) {
-	
-$arrFilter2 = array("SECTION_ID" => $arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE']);
+	$arrFilter2 = array("SECTION_ID" => $arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE']);
+	$filter_section_id = $arResult['TOP_SECTIONS'][0]['IBLOCK_SECTION_ID'];
+}else{
+	$filter_section_id = $arResult['SECTION']['ID'];
+}
+
+$dbItems = \Bitrix\Iblock\ElementTable::getList(array(
+				'select' => array('ID'), 
+				'filter' => array('IBLOCK_ID' => CATALOG_IBLOCK_ID, 'IBLOCK_SECTION_ID'=> $arrFilter2["SECTION_ID"]),
+			))->fetchAll();
+foreach($dbItems as $item)
+{
+	$mySmartFilter['ID'][]=$item['ID'];
+}
+
+if (CModule::IncludeModule("iblock"))
+{
+        $arFilter = array(
+        "ACTIVE" => "Y",
+        "GLOBAL_ACTIVE" => "Y",
+        "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+        );
+        if(strlen($arResult["VARIABLES"]["SECTION_CODE"])>0)
+        {
+            $arFilter["CODE"] = $arResult["VARIABLES"]["SECTION_CODE"];
+        }
+        elseif($arResult["VARIABLES"]["SECTION_ID"]>0)
+        {
+            $arFilter["ID"] = $arResult["VARIABLES"]["SECTION_ID"];
+        }
+        
+        $obCache = new CPHPCache;
+        if($obCache->InitCache(36000, serialize($arFilter), "/iblock/catalog"))
+        {
+            $arCurSection = $obCache->GetVars();
+        }
+        else
+        {
+            $arCurSection = array();
+            $dbRes = CIBlockSection::GetList(array(), $arFilter, false, array("ID", 'UF_*'));
+            $dbRes = new CIBlockResult($dbRes);
+
+            if(defined("BX_COMP_MANAGED_CACHE"))
+            {
+                global $CACHE_MANAGER;
+                $CACHE_MANAGER->StartTagCache("/iblock/catalog");
+
+                if ($arCurSection = $dbRes->GetNext())
+                {
+                    $CACHE_MANAGER->RegisterTag("iblock_id_".$arParams["IBLOCK_ID"]);
+                }
+                $CACHE_MANAGER->EndTagCache();
+            }
+            else
+            {
+                if(!$arCurSection = $dbRes->GetNext())
+                    $arCurSection = array();
+            }
+
+            $obCache->EndDataCache($arCurSection);
+        }
+    
+        $this->SetViewTarget("smart_filter");
+   
+        $APPLICATION->IncludeComponent(
+        "d7:catalog.smart.filter",
+        "",
+        Array(
+            "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+            "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+            "SECTION_ID" => $filter_section_id,
+            "FILTER_NAME" => "arrFilter2",
+			"PREFILTER_NAME" => "mySmartFilter",
+            "PRICE_CODE" => "",
+            "CACHE_TYPE" => "A",
+            "CACHE_TIME" => "36000000",
+            "CACHE_NOTES" => "",
+            "CACHE_GROUPS" => "Y",
+            "SAVE_IN_SESSION" => "N",
+            "ID SMALL" => "125",
+            "ID MIDLE" => "124",
+            "ID BIG" => "123",
+        ),
+        false
+        );
+		
+        $this->EndViewTarget();
 }
 ?>
 <?
-/*$intSectionID = $APPLICATION->IncludeComponent(
+$intSectionID = $APPLICATION->IncludeComponent(
 					"bitrix:catalog.section",
 					"horizontal_new",
 					array(
@@ -156,5 +244,5 @@ $arrFilter2 = array("SECTION_ID" => $arResult['REFERENCE']['ITEM']['SECTIONS_TOP
 					)
 					
 				);
-				*/
+				
 				?>
