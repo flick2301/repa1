@@ -545,7 +545,7 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
 		$arFields["SALE_PHONE"] = '8 843 206-07-00';
 	
 	}elseif($_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'){
-		$arFields["SALE_EMAIL"] = 'nizhniy-novgorod@krep-komp.ru';
+		$arFields["SALE_EMAIL"] = 'nn@krep-komp.ru';
 		$arFields["SALE_PHONE"] = '8 831 219-95-16';
 	
 	}elseif($_SERVER['HTTP_HOST']=='voronezh.krep-komp.ru'){
