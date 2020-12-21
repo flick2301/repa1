@@ -18,6 +18,12 @@ if(!Loader::includeModule('iblock'))
 }
 
 $FILTER_NAME = (string)$arParams["FILTER_NAME"];
+$PREFILTER_NAME = (string)$arParams["PREFILTER_NAME"];
+
+global ${$PREFILTER_NAME};
+$preFilter = ${$PREFILTER_NAME};
+if (!is_array($preFilter))
+	$preFilter = array();
 
 if($this->StartResultCache(false, 'v7'.($arParams["CACHE_GROUPS"]? $USER->GetGroups(): false)))
 {
@@ -43,6 +49,8 @@ if($this->StartResultCache(false, 'v7'.($arParams["CACHE_GROUPS"]? $USER->GetGro
 			);
 			if ($this->arParams['HIDE_NOT_AVAILABLE'] == 'Y')
 				$arResult["FACET_FILTER"]['CATALOG_AVAILABLE'] = 'Y';
+			if (!empty($preFilter))
+				$arResult["FACET_FILTER"] = array_merge($preFilter, $arResult["FACET_FILTER"]);
 
 			$cntProperty = 0;
 			$tmpProperty = array();
@@ -146,6 +154,8 @@ if($this->StartResultCache(false, 'v7'.($arParams["CACHE_GROUPS"]? $USER->GetGro
 			);
 			if ('Y' == $this->arParams['HIDE_NOT_AVAILABLE'])
 				$arElementFilter['CATALOG_AVAILABLE'] = 'Y';
+			if (!empty($preFilter))
+				$arElementFilter = array_merge($preFilter, $arElementFilter);
 
 			$arElements = array();
 
@@ -723,6 +733,11 @@ if ($arResult["FACET_FILTER"] && $this->arResult["CURRENCIES"])
 	);
 }
 
+if (!empty($preFilter))
+{
+	${$FILTER_NAME} = array_merge($preFilter, ${$FILTER_NAME});
+}
+
 /*Save to session if needed*/
 if($arParams["SAVE_IN_SESSION"])
 {
@@ -823,6 +838,8 @@ else
 if(isset($_REQUEST["ajax"]) && $_REQUEST["ajax"] === "y")
 {
 	$arFilter = $this->makeFilter($FILTER_NAME);
+	if (!empty($preFilter))
+		$arFilter = array_merge($preFilter, $arFilter);
 	$arResult["ELEMENT_COUNT"] = CIBlockElement::GetList(array(), $arFilter, array(), false);
 
 	if (isset($_GET["bxajaxid"]))
