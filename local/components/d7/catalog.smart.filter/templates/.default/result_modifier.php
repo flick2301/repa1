@@ -55,6 +55,7 @@ endforeach;
 
 $temporary_array=$arResult["ITEMS"][$stock_id];
 $temporary_array2=$arResult["ITEMS"][$sale_id];
+
 unset($arResult["ITEMS"][$sale_id]);
 unset($arResult["ITEMS"][$stock_id]);
 array_unshift($arResult["ITEMS"], $temporary_array);

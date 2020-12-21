@@ -716,6 +716,23 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 	                                                                            </li> 
                                                                                 <?endforeach;?>
                                                                             </ul>
+																			<?elseif($arItem['CODE']=="POKRYTIE" || $arItem['CODE']=="GOLOVKA" || $arItem['CODE']=="MATERIAL" || $arItem['CODE']=="KONETS" || $arItem['CODE']=="REZBA"):?>
+																			<ul class="checkbox__items">
+                                                                                <?foreach($arItem["VALUES"] as $val => $ar):?>
+																					
+                                                                                    <li class="checkbox__item">
+	                                                                                <label data-role="label_<?=$ar["CONTROL_ID"]?>" class="bx-filter-param-label checkbox__label <? echo $ar["DISABLED"] ? 'disabled': '' ?> <? echo $ar["CHECKED"]? 'checked': '' ?>" for="<? echo $ar["CONTROL_ID"] ?>">
+	                                                                                    <div class="checkbox__wrap"><input type="checkbox"
+															value="<? echo $ar["HTML_VALUE"] ?>"
+															name="<? echo $ar["CONTROL_NAME"] ?>"
+															id="<? echo $ar["CONTROL_ID"] ?>"
+															<? echo $ar["CHECKED"]? 'checked="checked"': '' ?>
+															onclick="smartFilter.click(this)" class="checkbox__input"></div>
+	                                                                                    <div class="checkbox__text"><?=CIBlockPropertyEnum::GetByID($ar["VALUE"])['VALUE']?></div>
+	                                                                                </label>
+	                                                                            </li> 
+                                                                                <?endforeach;?>
+                                                                            </ul>
                                                                         <?else:?>
                                                                             <ul class="checkbox__items checkbox__item--line">
                                                                                 <?foreach($arItem["VALUES"] as $val => $ar):?>

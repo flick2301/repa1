@@ -341,7 +341,8 @@ global $APPLICATION;
     </div>
     <!--catalog-feed-->
 
-
+<?if($_POST['ENUM_LIST']['ELEMENTS'])
+	require_once __DIR__."/include_parts/section_table.php";?>
 <?
 if($arResult['SORTING']['SECTION_ID']){
 	?>
@@ -369,8 +370,7 @@ if($arResult['SORTING']['SECTION_ID']){
 	<!--category-block--><?
 }
 ?>
-<?if($_POST['ENUM_LIST']['ELEMENTS'])
-	require_once __DIR__."/include_parts/section_table.php";?>
+
 <!--simple-article-->
 	<?if(!($_REQUEST['PAGEN_1'] > 1)  && ($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' || $_SERVER['HTTP_HOST']=='krep-komp.ru')):?>
         <div class="basic-layout__module simple-article">
