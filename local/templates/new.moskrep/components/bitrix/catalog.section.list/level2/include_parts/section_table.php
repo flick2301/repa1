@@ -16,7 +16,7 @@ $rsGender = CUserFieldEnum::GetList(array(), array("ID" => $aSection["UF_SEC_LIS
 
 global $mySmartFilter;
 global $arrFilter2;
-
+/*
 if(count($arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE'])>1) {
 	$arrFilter2 = array("SECTION_ID" => $arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE']);
 	$filter_section_id = $arResult['TOP_SECTIONS'][0]['IBLOCK_SECTION_ID'];
@@ -244,5 +244,5 @@ $intSectionID = $APPLICATION->IncludeComponent(
 					)
 					
 				);
-				
+*/				
 				?>
