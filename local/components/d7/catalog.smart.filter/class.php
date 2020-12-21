@@ -72,7 +72,15 @@ class CBitrixCatalogSmartFilter extends CBitrixComponent
 		{
 			$arParams["FILTER_NAME"] = "arrFilter";
 		}
-
+		$arParams["PREFILTER_NAME"] = (isset($arParams["PREFILTER_NAME"]) ? (string)$arParams["PREFILTER_NAME"] : '');
+		if(
+			$arParams["PREFILTER_NAME"] == ''
+			|| !preg_match("/^[A-Za-z_][A-Za-z01-9_]*$/", $arParams["PREFILTER_NAME"])
+		)
+		{
+			$arParams["PREFILTER_NAME"] = "smartPreFilter";
+		}
+		
 		$arParams["CONVERT_CURRENCY"] = $arParams["CONVERT_CURRENCY"] === "Y";
 		$arParams["CURRENCY_ID"] = trim($arParams["CURRENCY_ID"]);
 		if ($arParams["CURRENCY_ID"] == "")
