@@ -308,7 +308,8 @@ var result = deliveryCost.init({
 		delivery_id: delivery_id,
 	});
 	
-	$('#delivery_lat').val(result.lat);
+	
+	$('#delivery_lat').val(result.lat); 
 	$('#delivery_lon').val(result.lon);
 	
 	if (delivery_id==ID_DELIVERY_DAYTODAY) {

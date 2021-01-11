@@ -66,7 +66,6 @@ Disallow: /articles/primenenie-samorezov/samorezy-dlya-zabora-ar/
 Disallow: /articles/primenenie-samorezov/dlya-pvkh-ar/
 Disallow: /letter/
 Disallow: /order/
-Disallow: /forum/
 Disallow: /uiu.php
 Disallow: *.shtml$
 Disallow: /*?gclid=
@@ -85,6 +84,8 @@ Disallow: /*?keyword
 Disallow: /*?set_filter=y
 Disallow: /*?arrFilter_
 Disallow: /*?s=
+Disallow: /?back_url_admin=
+Disallow: /logs/
 Clean-param: type /
 Clean-param: bitrix_include_areas /
 Clean-param: mp5 /
