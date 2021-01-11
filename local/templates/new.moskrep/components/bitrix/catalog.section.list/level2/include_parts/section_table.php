@@ -20,11 +20,7 @@ global $arrFilter2;
 if(count($arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE'])>1) {
 	$arrFilter2 = array("SECTION_ID" => $arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE']);
 	$filter_section_id = $arResult['TOP_SECTIONS'][0]['IBLOCK_SECTION_ID'];
-}else{
-	$filter_section_id = $arResult['SECTION']['ID'];
-}
-
-$dbItems = \Bitrix\Iblock\ElementTable::getList(array(
+	$dbItems = \Bitrix\Iblock\ElementTable::getList(array(
 				'select' => array('ID'), 
 				'filter' => array('IBLOCK_ID' => CATALOG_IBLOCK_ID, 'IBLOCK_SECTION_ID'=> $arrFilter2["SECTION_ID"]),
 			))->fetchAll();
@@ -32,6 +28,12 @@ foreach($dbItems as $item)
 {
 	$mySmartFilter['ID'][]=$item['ID'];
 }
+}else{
+	$filter_section_id = $arResult['SECTION']['ID'];
+	$mySmartFilter =[];
+}
+
+
 
 if (CModule::IncludeModule("iblock"))
 {

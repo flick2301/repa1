@@ -9,7 +9,7 @@ $APPLICATION->SetTitle("Детальная страница заказа");
 		"ALLOW_INNER" => "N",
 		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "3600",
-		"CACHE_TYPE" => "A",
+		"CACHE_TYPE" => "N",
 		"CUSTOM_SELECT_PROPS" => array(""),
 		"DISALLOW_CANCEL" => "N",
 		"ID" => $ORDER_ID,
