@@ -73,7 +73,7 @@ js.src='https://antisovetnic.ru/anti/'+escape(id);
 ref.parentNode.insertBefore(js, ref);}(document));
 </script>
 	<!--АНТИСОВЕТНИК-->  
-	
+
 <?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
 <?
 $APPLICATION->IncludeFile(
@@ -184,6 +184,8 @@ $APPLICATION->IncludeFile(
 <div id="top_under_menu">
 <div class="basic-layout__section">
 <div>
+<?if(!strstr($_SERVER['HTTP_HOST'], "dev"))
+{?>
 <?if(!$_GET["nogeolocation"] && false):?>
 <?require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>
 <?else:?>
@@ -195,6 +197,7 @@ $APPLICATION->IncludeFile(
                     ), false
     );?>
 <?endif?>	
+	<?}?>
 </div>
 
 <!--contact-widget-->
@@ -420,7 +423,7 @@ $APPLICATION->IncludeFile(
 
 <div id="filter__catalog">
 <?$APPLICATION->ShowViewContent('catalogFilter');?>
-<div>
+</div>
 		
 			
 </div>
