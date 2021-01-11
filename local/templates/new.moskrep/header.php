@@ -73,7 +73,7 @@ js.src='https://antisovetnic.ru/anti/'+escape(id);
 ref.parentNode.insertBefore(js, ref);}(document));
 </script>
 	<!--АНТИСОВЕТНИК-->  
-	
+
 <?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
 <?
 $APPLICATION->IncludeFile(
@@ -105,6 +105,7 @@ $APPLICATION->IncludeFile(
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/styles/global.styles.min.css?v=XXXXXXa", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.css", true);	
 	if (IPHONE=="Y") $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/iphone.css", true);	
+	else $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/dieapple.css", true);
 	
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.fancybox.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/datalayer.js");
@@ -184,6 +185,7 @@ $APPLICATION->IncludeFile(
 <div id="top_under_menu">
 <div class="basic-layout__section">
 <div>
+
 <?if(!strstr($_SERVER['HTTP_HOST'], "dev"))
 {?>
 <?if(!$_GET["nogeolocation"] && false):?>
@@ -217,7 +219,7 @@ $APPLICATION->IncludeFile(
 	<header class="basic-layout__header">
 	<?=$safari?>
 	
-	<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; position: relative; top: 1px; color:white; font-size:16px;'>Уважаемые клиенты, 4 ноября просим осуществлять заказы через сайт. Менеджеры свяжутся с вами в первый рабочий день 5 ноября.<span style='color: #f39101;'></span></strong>  <svg class="icon-svg -cross close-svg" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg></div> </div> </div>
+	<!--<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; color:#000; font-size:16px;'>Уважаемые клиенты! Наш интернет-магазин и все точки самовывоза не работают в период с 31.12.2020 по 10.01.2021<span style='color: #f39101;'></span></strong>  <svg class="icon-svg -cross close-svg" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg></div> </div> </div>-->
 	
 	
 	

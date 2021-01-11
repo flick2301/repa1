@@ -189,7 +189,7 @@ if($count_sections || !empty($subsections)){
             "IBLOCK_ID" => $arParams["IBLOCK_ID"],
             "SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
             "FILTER_NAME" => "arrFilter",
-			"PREFILTER_NAME" => "mySmartFilter",
+			"PREFILTER_NAME" => "",
             "PRICE_CODE" => "",
             "CACHE_TYPE" => "A",
             "CACHE_TIME" => "36000000",

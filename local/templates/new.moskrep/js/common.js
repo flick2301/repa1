@@ -41,9 +41,7 @@ $(document).ready(function(){
         slidesToShow: 3,
         slidesToScroll: 1
     });
-    //carousel
-	if(localStorage.getItem('close-svg') == 'Y')
-		$('.page-top-banner').css('display','none');
+    
     $(".carousel-product__items").slick({
         dots: true,
         infinite: true,

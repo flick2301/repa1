@@ -1,0 +1,48 @@
+/*Если строка регламента*/
+.page-top-banner {
+	display: block!important;	
+	background: #E5E5E5;
+	position: static;
+	margin: 0 -30px;
+	height: auto;
+	padding: 4px 50px 5px;
+}
+.page-top-banner .-cross {
+	display: none;
+}
+.page-top-banner .banner-link.banner-text {
+	line-height: 16px;
+	padding-top: 0;
+}
+.page-top-banner .banner-link.banner-text strong {
+	margin-top: 0;
+}	
+@media (max-width: 685px) {
+.basic-layout__header {
+    min-height: 157px;
+	overflow: hidden;
+}
+main.catalog {
+	margin-top: 238px;
+}
+main {
+	margin-top: 198px;
+}
+}	
+@media (max-width: 530px) {
+main {
+	margin-top: 208px;
+}
+.basic-layout__header {
+    min-height: 177px;
+}	
+}
+@media (max-width: 380px) {
+main {
+	margin-top: 228px;
+}
+.basic-layout__header {
+    min-height: 197px;
+}	
+}	
+/*Если строка регламента*/

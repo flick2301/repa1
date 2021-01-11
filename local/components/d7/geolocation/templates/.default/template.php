@@ -138,7 +138,7 @@ foreach($arResult["ITEMS"] AS $item) {
 <?foreach($arResult["ITEMS"] AS $item):?>	
 		
 				if((getlocation=='<?=$item["PROP"]["NAME"]["VALUE"] ? $item["PROP"]["NAME"]["VALUE"] : $item["NAME"]?>' || $.cookie('geo_id')=='<?=$item["ID"]?>') && $.cookie('geo_id')!='<?=GEOLOCATION_MOSCOW?>') {
-					window.location.href = 'https://<?=$item["PROP"]["DOMAIN"]["VALUE"]?>' + location.pathname;
+					//window.location.href = 'https://<?=$item["PROP"]["DOMAIN"]["VALUE"]?>' + location.pathname;
 				}
 <?endforeach?>		
 					
