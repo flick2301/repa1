@@ -309,6 +309,8 @@ function bxOnSaleOrderBeforeSaved(Main\Event $event)
 
     $propsData = [];
 
+	if($order->getId() !=20905)
+	{
 
     /**
      * Собираем все свойства и их значения в массив
@@ -348,6 +350,7 @@ if ($shipment->getDeliveryId() == 2 || $shipment->getDeliveryId() == 28 || $ship
    //file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt',  file_get_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt').$order->getField("ID").": ".$order->getPrice()."---------------\n".$delivery_price."---------------\n".$order->getDeliveryPrice()."\n".print_r($props, true)."\n++++++++++++++");
 
 	//if ($props["IDCONTACT"]['VALUE']) file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt',  $order->getPrice()."---------------\n".$delivery_price."---------------\n".print_r($did, true));
+}
 }
 
 

@@ -750,3 +750,12 @@
 	right:0px !important;
     
 }
+
+label.bx-filter-param-label.checkbox__label.disabled{
+	
+	color: #ccc!important;
+}
+.disabled .checkbox__wrap {
+    
+    border: 1px solid #ccc!important;
+}

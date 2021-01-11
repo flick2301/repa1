@@ -23,6 +23,7 @@ Disallow: /cgi-bin/
 Disallow: /.git/
 Disallow: /test/
 Disallow: /ajax/
+Disallow: /forum/
 Disallow: /backup/
 Disallow: /service/
 Disallow: /personal/

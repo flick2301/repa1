@@ -750,3 +750,8 @@
 	right:0px !important;
     
 }
+.bx-filter-param-label .checkbox__label .disabled
+{
+	background-color: #ccc!important;
+	color: #ccc!important;
+}
