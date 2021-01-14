@@ -345,6 +345,32 @@ global $APPLICATION;
 	require_once __DIR__."/include_parts/section_table.php";?>
 <?
 if($arResult['SORTING']['SECTION_ID']){
+?>	
+	<!--category-blocknew-->
+            <div class="basic-layout__module category-blocknew">
+	<?
+    foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
+        
+        ?>
+        <div class="div_h3 category-blocknew__title"><span><?=$sortSection["NAME"]?></span></div>
+        <ul class="category-blocknew__list">
+        <?$i=0;?>
+        <?foreach($sortSection['ITEMS'] as $sort_item):?>
+            <?$i++;?>
+            <li class="category-blocknew__item">
+                <a href="<?=($sort_item['LINK_TARGET']['VALUE']) ? $sort_item['LINK_TARGET']['VALUE'] : $sort_item['CODE'].'/';?>" <?=($sort_item['LINK_TARGET']['VALUE']) ? "target='_self'" : "";?> class="category-block__link">
+                    <?=$sort_item['NAME']?>
+                </a>
+            </li>
+	<?endforeach;?>
+        </ul>
+        <?
+    }
+	?></div>
+	<!--category-blocknew-->
+	<?
+	
+	/*
 	?>
 	<!--category-block-->
             <div class="basic-layout__module category-block">
@@ -367,7 +393,7 @@ if($arResult['SORTING']['SECTION_ID']){
         <?
     }
 	?></div>
-	<!--category-block--><?
+	<!--category-block--><?*/
 }
 ?>
 

@@ -1446,6 +1446,64 @@ main {
 
 
 /*Страница каталога*/
+.basic-layout__module.see-also-widget {
+	display: none;
+}
+.pages-nav__item.is-active .pages-nav__link {
+	background: #4f36e3;
+	box-shadow: inset 0 1px 3px transparent;
+}	
+.category-blocknew {	
+	margin: 49px 0;
+}
+.category-blocknew .category-blocknew__title {
+	font-size: 20px;
+	line-height: 24px;
+	overflow: hidden;
+}
+.category-blocknew .category-blocknew__title span {
+	display: block;
+	float: left;
+	cursor: pointer;
+}
+.category-blocknew .category-blocknew__title span::after {
+	background: url(/images/arrow_open.svg) no-repeat;
+	background-size: contain;
+	width: 12px;
+	height: 9px;
+	display: block;
+	margin-left: 10px;
+	margin-top: 8px;
+	float: right;
+	content: " ";	
+}	
+.category-blocknew .category-blocknew__title span.open::after {
+	background: url(/images/arrow_close.svg) no-repeat;
+	background-size: contain;	
+}
+.category-blocknew .category-blocknew__list {
+	display: none;
+	flex-wrap: wrap;
+	width: calc(100% + 20px);
+}
+.category-blocknew .category-blocknew__list .category-blocknew__item {
+	display: block;
+	margin-right: 20px;
+	margin-bottom: 12px;
+	font-size: 14px;
+	font-weight: 400;
+	white-space: nowrap;
+}
+.category-blocknew .category-blocknew__list .category-blocknew__item a {
+	color: #000;
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 20px;
+	padding: 8px 35px 9px 35px;	
+	background: #f0f0f0;	
+}
 /*Страница каталога*/
 
 
