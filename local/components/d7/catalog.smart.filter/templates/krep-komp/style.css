@@ -264,6 +264,12 @@ and open the template in the editor.
 	float: right;
 	margin: -5px -15px 0 0;
 }
+.bx-filter-section.container-fluid .bx-filter-icon {
+	width: 30px;
+	height: 30px;
+	background: url(./images/frame51.svg) 50% 50% no-repeat;
+	background-size: 24px;
+}	
 .bx-filter-section.container-fluid .checkbox__wrap {
     border: 1px solid #000;
 }
@@ -365,8 +371,52 @@ and open the template in the editor.
 	box-shadow: 0px 1px 6px #fff;
 	text-decoration: none!important;
 }
-
 .bx-filter-section.container-fluid .blue-btn:hover {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+.bx-filter-section.container-fluid .checkbox__else--type01 {
+	font-size: 14px;
+	color: #4f36e3;
+	font-weight: 400;
+	margin: 9px 0;
+	overflow: hidden;
+}	
+.bx-filter-section.container-fluid .checkbox__else--type01 span {
+	cursor: pointer;
+	float: left;
+	display: block;
+}
+.bx-filter-section.container-fluid .checkbox__else--type01 span::after {
+	display: block;
+	width: 16px;
+	height: 8px;
+	content: " ";
+	background: url(./images/arrow_up_type01.svg) 50% 50% no-repeat;	
+	float: right;
+	margin: 7px 0 0 2px;
+}
+.bx-filter-section.container-fluid .checkbox__else--type01 span.open::after {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);	
+}
+.bx-filter-section.container-fluid .checkbox__box {
+	display: none;
+	flex-wrap: wrap;
+	clear: both;
+}
 
+
+
+
+@media (max-width: 991px) {
+.bx-filter-section.container-fluid {
+	border: 0 solid #979797;
+	padding: 0;
+}
+.bx-filter-section.container-fluid .bx-filter-icon {
+	margin: -5px 55px 0 0;
+}
+}

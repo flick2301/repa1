@@ -92,7 +92,9 @@ h1 {
 	display: flex;
 	align-items: center;
 	justify-content: center;	
-	background: #fff;
+	background: transparent;
+	width: 70px;
+	height: 53px;
 }
 .catalog-table__column--basic.groupped {
 }
@@ -416,6 +418,7 @@ ol.tech li {
 }
 .catalog-feed__item .catalog-card {
 	z-index: 0;
+	flex-direction: row-reverse;
 }
 #bx-soa-total .main-button {
 	color: #fff;
@@ -920,6 +923,17 @@ ol.tech li {
 
 
 
+@media (min-width: 1261px) {
+.catalog-feed__list {
+	margin: 0 -10px;
+}
+.catalog-feed__item {	
+	flex: 0 0 307px;
+    max-width: 307px;
+    padding: 0 10px;
+}	
+}
+
 
 
 @media (min-width: 991px) {
@@ -1018,6 +1032,10 @@ ol.tech li {
 	margin-left: -260px;
 	margin-bottom: -20px;
 }
+.catalog-feed__item {
+	flex: 0 0 33.33%;
+    max-width: 33.33%;
+}
 }
 
 
@@ -1092,7 +1110,13 @@ img.intro-slider__image {
 	height: 100px;
 	vertical-align: middle;
 }
+.catalog-feed__list {
+	margin-top: 0;
 }
+}
+
+
+
 @media (max-width: 990.98px) {
 #catalog-filter {
 	overflow-y: scroll;
@@ -1453,6 +1477,9 @@ main {
 	background: #4f36e3;
 	box-shadow: inset 0 1px 3px transparent;
 }	
+.pages-nav__item .pages-nav__link:hover {
+	background: rgba(79, 54, 227, 0.2);
+}
 .category-blocknew {	
 	margin: 49px 0;
 }
@@ -1502,8 +1529,43 @@ main {
 	height: 100%;
 	border-radius: 20px;
 	padding: 8px 35px 9px 35px;	
-	background: #f0f0f0;	
+	background: #f0f0f0;
+	border: 1px solid #c4c4c4;	
 }
+.category-blocknew .category-blocknew__list .category-blocknew__item a:hover {
+	background: rgba(79, 54, 227, 0.2);
+	border: 1px solid #4f36e3;	
+}
+.catalog-feed__item {
+	margin: 0 0 21px;
+}
+.catalog-feed__item .catalog-card .catalog-card__title {
+	background: #f0f0f0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+.catalog-feed__item .catalog-card .catalog-card__title a {
+    font-size: 16px;
+	font-weight: 600;
+	line-height: 22px;
+	text-align: left;	
+}	
+.catalog-feed__item .catalog-card {
+	border-radius: 10px;
+	border: 0 solid transparent;
+	background: #f0f0f0;
+	justify-content: center;
+	min-height: 106px;
+}
+.catalog-feed__item .catalog-card:hover {
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}	
+.catalog-feed__item .catalog-card:hover .catalog-card__title {
+	background: #f0f0f0;
+}	
+.catalog-feed__item .catalog-card:hover .catalog-card__title a {
+	color: #000;
+}	
 /*Страница каталога*/
 
 

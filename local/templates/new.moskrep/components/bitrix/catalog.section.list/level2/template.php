@@ -294,7 +294,13 @@ global $APPLICATION;
 <?else:?>
 <?if($IPROPERTY['SECTION_META_TITLE']==''){$APPLICATION->SetPageProperty('title', $arResult["SECTION"]["NAME"]);}?>
 
+<?$this->SetViewTarget('catalog_section');?>
+
+	 <div class="basic-layout__columns basic-layout__columns--reverse">
+		  <div lass="basic-layout__content full">
+		  
 <?globalGetTitle($arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] ? $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] : $arResult["SECTION"]["NAME"])?>	
+
 
 
 <!--catalog-feed-->
@@ -340,9 +346,43 @@ global $APPLICATION;
 		</div>
     </div>
     <!--catalog-feed-->
+	
+		<!--category-blocknew-->
+            <div class="basic-layout__module category-blocknew">
+	<?
+    foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
+        
+        ?>
+        <div class="div_h3 category-blocknew__title"><span><?=$sortSection["NAME"]?></span></div>
+        <ul class="category-blocknew__list">
+        <?$i=0;?>
+        <?foreach($sortSection['ITEMS'] as $sort_item):?>
+            <?$i++;?>
+            <li class="category-blocknew__item">
+                <a href="<?=($sort_item['LINK_TARGET']['VALUE']) ? $sort_item['LINK_TARGET']['VALUE'] : $sort_item['CODE'].'/';?>" <?=($sort_item['LINK_TARGET']['VALUE']) ? "target='_self'" : "";?> class="category-block__link">
+                    <?=$sort_item['NAME']?>
+                </a>
+            </li>
+	<?endforeach;?>
+        </ul>
+        <?
+    }
+	?></div>
+
+	<!--category-blocknew-->
+	
+			  </div>
+	</div>
+	
+<?$this->EndViewTarget();?> 	
+	
+	
 
 <?if($_POST['ENUM_LIST']['ELEMENTS'])
 	require_once __DIR__."/include_parts/section_table.php";?>
+
+
+
 <?
 if($arResult['SORTING']['SECTION_ID']){
 ?>	
@@ -367,6 +407,7 @@ if($arResult['SORTING']['SECTION_ID']){
         <?
     }
 	?></div>
+
 	<!--category-blocknew-->
 	<?
 	
@@ -396,6 +437,9 @@ if($arResult['SORTING']['SECTION_ID']){
 	<!--category-block--><?*/
 }
 ?>
+
+
+
 
 <!--simple-article-->
 	<?if(!($_REQUEST['PAGEN_1'] > 1)  && ($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' || $_SERVER['HTTP_HOST']=='krep-komp.ru')):?>

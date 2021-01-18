@@ -26,6 +26,20 @@ $(document).on('click', '.category-blocknew .category-blocknew__title span', fun
 	}	
 }); 
 
+
+$(document).on('click', '.bx-filter-section.container-fluid .checkbox__else--type01 span', function() {  
+	if ($(this).hasClass('open')) {
+		$(this).removeClass('open');
+		$(this).parent().prev().hide();
+	}	
+	else {
+		$(this).addClass('open')
+		$(this).parent().prev().css('display', 'flex');
+	}	
+}); 
+
+
+
 //$('.category-blocknew .category-blocknew__list').hide();
 $('.category-blocknew .category-blocknew__title:first-child span').trigger('click');
 });

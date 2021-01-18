@@ -720,7 +720,13 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
                                                                             </ul>
 																			<?elseif($arItem['CODE']=="POKRYTIE" || $arItem['CODE']=="GOLOVKA" || $arItem['CODE']=="MATERIAL" || $arItem['CODE']=="KONETS" || $arItem['CODE']=="REZBA" || $arItem['CODE']=="BREND" || $arItem['CODE']=="RAZMER_POD_KLYUCH_MM" || $arItem['CODE']=="KLASS_PROCHNOSTI" || $arItem['CODE']=="SHAG_REZBY_MM"):?>
 																			<ul class="checkbox__items">
+																			<?$i=0?>
                                                                                 <?foreach($arItem["VALUES"] as $val => $ar):?>
+																				
+																				<?$i++?>
+																				<?if($i==5):?>
+																				<div class="checkbox__box">
+																				<?endif?>																				
 																					
                                                                                     <li class="checkbox__item">
 	                                                                                <label data-role="label_<?=$ar["CONTROL_ID"]?>" class="bx-filter-param-label checkbox__label <? echo $ar["DISABLED"] ? 'disabled': '' ?> <? echo $ar["CHECKED"]? 'checked': '' ?>" for="<? echo $ar["CONTROL_ID"] ?>">
@@ -733,11 +739,21 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 	                                                                                    <div class="checkbox__text"><?=CIBlockPropertyEnum::GetByID($ar["VALUE"])['VALUE']?></div>
 	                                                                                </label>
 	                                                                            </li> 
+																				<?if($i>=5 && $i==count($arItem["VALUES"])):?>																				
+																				</div><div class="checkbox__else checkbox__else--type01"><span>Еще</span>
+																				</div><?endif?>
                                                                                 <?endforeach;?>
                                                                             </ul>
                                                                         <?else:?>
                                                                             <ul class="checkbox__items checkbox__item--line">
+																			<?$i=0?>
                                                                                 <?foreach($arItem["VALUES"] as $val => $ar):?>
+																				
+																				<?$i++?>
+																				<?if($i==13):?>
+																				<div class="checkbox__box">
+																				<?endif?>	
+																				
                                                                                     <li class="checkbox__item">
 	                                                                                <label data-role="label_<?=$ar["CONTROL_ID"]?>" class="bx-filter-param-label checkbox__label <? echo $ar["DISABLED"] ? 'disabled': '' ?> <? echo $ar["CHECKED"]? 'checked': '' ?>" for="<? echo $ar["CONTROL_ID"] ?>">
 	                                                                                    <div class="checkbox__wrap"><input type="checkbox"
@@ -749,6 +765,10 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 	                                                                                    <div class="checkbox__text"><?=rtrim(rtrim($ar["VALUE"], '0'), '.');?></div>
 	                                                                                </label>
 	                                                                            </li> 
+
+																				<?if($i>=13 && $i==count($arItem["VALUES"])):?>																				
+																				</div><div class="checkbox__else checkbox__else--type01"><span>Еще</span>
+																				</div><?endif?>																				
                                                                                 <?endforeach;?>
                                                                             </ul>
                                                                         

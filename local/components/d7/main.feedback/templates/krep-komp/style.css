@@ -24,7 +24,8 @@
 #feedback_form  .send-a-request {
 	border: 0px solid transparent;
 	background: #4F36E3;
-	color: #fff;	
+	color: #fff;
+	padding-top: 12px
 }	
 #feedback_form  .send-a-request textarea {
 	resize: none;
