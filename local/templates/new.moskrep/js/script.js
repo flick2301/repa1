@@ -16,6 +16,7 @@ $(window).on('scroll', function() {
    });
    
 $(document).on('click', '.category-blocknew .category-blocknew__title span', function() {  
+if (!$(this).parent().hasClass('open')) {
 	if ($(this).hasClass('open')) {
 		$(this).removeClass('open');
 		$(this).parent().next().hide();
@@ -24,6 +25,7 @@ $(document).on('click', '.category-blocknew .category-blocknew__title span', fun
 		$(this).addClass('open')
 		$(this).parent().next().css('display', 'flex');
 	}	
+}	
 }); 
 
 

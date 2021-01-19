@@ -418,5 +418,6 @@ and open the template in the editor.
 }
 .bx-filter-section.container-fluid .bx-filter-icon {
 	margin: -5px 55px 0 0;
+	display: none;
 }
 }

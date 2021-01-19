@@ -1023,6 +1023,17 @@ ol.tech li {
 	margin-left: -312px;
 	margin-bottom: -20px;
 }
+.category-blocknew .category-blocknew__title.open {
+	float: left;
+	margin-block-start: 0;
+}
+.category-blocknew .category-blocknew__list.open {
+	display: flex;	
+	width: auto;
+	padding-left: 6px;
+	position: relative;
+	right: -20px;
+}
 }
 
 
@@ -1504,6 +1515,9 @@ main {
 	float: right;
 	content: " ";	
 }	
+.category-blocknew .category-blocknew__title.open span::after {
+	display: none;
+}
 .category-blocknew .category-blocknew__title span.open::after {
 	background: url(/images/arrow_close.svg) no-repeat;
 	background-size: contain;	
@@ -1512,6 +1526,9 @@ main {
 	display: none;
 	flex-wrap: wrap;
 	width: calc(100% + 20px);
+}
+.category-blocknew .category-blocknew__list.open {
+	display: flex;	
 }
 .category-blocknew .category-blocknew__list .category-blocknew__item {
 	display: block;
@@ -1566,6 +1583,9 @@ main {
 .catalog-feed__item .catalog-card:hover .catalog-card__title a {
 	color: #000;
 }	
+.catalog-feed__table:first-of-type {
+    margin-top: 0;
+}
 /*Страница каталога*/
 
 
