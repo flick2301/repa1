@@ -63,6 +63,10 @@ if($arParams['REFERENCE_CHECK']=='Y'):
             $arResult['SORTING']['ROOT_ELEMENTS'][$arFields['ID']]=array_merge($arFields, $arProps);
         
             $arResult['SORTING']['ROOT_ELEMENTS'][$arFields['ID']]['PICTURE'] = CFile::ResizeImageGet($arFields['DETAIL_PICTURE'] ? $arFields['DETAIL_PICTURE'] : $arFields['PREVIEW_PICTURE'], array('width'=>$arParams['LIST_PREV_PIC_W_L2'], 'height'=>$arParams['LIST_PREV_PIC_H_L2']), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+			
+			//Отмена сжатия
+			if ($arFields['DETAIL_PICTURE'])			
+			$arResult['SORTING']['ROOT_ELEMENTS'][$arFields['ID']]['PICTURE']['src'] = CFile::GetPath($arFields['DETAIL_PICTURE']);
 
         }
         
@@ -303,6 +307,10 @@ if(count($arResult['SECTION']['UF_OTHER_SECTION'])){
 foreach($arResult['SECTIONS'] as $key=>$arSection){
     
     $file = CFile::ResizeImageGet($arSection['DETAIL_PICTURE'] ? $arSection['DETAIL_PICTURE'] :  $arSection['PICTURE']['ID'], array('width'=>$arParams['LIST_PREV_PIC_W_L2'], 'height'=>$arParams['LIST_PREV_PIC_H_L2']), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+	
+			//Отмена сжатия
+			if ($arSection['DETAIL_PICTURE'])			
+			$file['src'] = CFile::GetPath($arSection['DETAIL_PICTURE']);	
     
     if($file['src']):
         $arResult['SECTIONS'][$key]['PICTURE'] = $file;

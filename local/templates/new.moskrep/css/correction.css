@@ -92,7 +92,7 @@ h1 {
 	display: flex;
 	align-items: center;
 	justify-content: center;	
-	background: transparent;
+	background: #f0f0f0;
 	width: 70px;
 	height: 53px;
 }
@@ -1585,6 +1585,9 @@ main {
 }	
 .catalog-feed__table:first-of-type {
     margin-top: 0;
+}
+.basic-layout__module.pages-nav .pages-nav__fast:hover {
+	background: rgba(79, 54, 227, 0.2);
 }
 /*Страница каталога*/
 
