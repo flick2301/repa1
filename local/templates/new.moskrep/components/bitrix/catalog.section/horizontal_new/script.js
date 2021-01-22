@@ -160,7 +160,9 @@ BX.ready(function () {
         });
 
 
-    
+$(document).on('change', '#page_element_count', function(event) {
+	location.href = location.pathname + '?SIZEN_1=' + $('#page_element_count option:selected').val();
+});   
     
 
 $(".amount__select :contains("+$('.amount__info').text()+")").attr("selected", "selected");

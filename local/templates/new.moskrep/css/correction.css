@@ -953,6 +953,44 @@ ol.tech li {
 #tooltip a {
 	color: #4F36E3;
 }
+.page_count_panel {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	height: 41px;
+	margin: 0 5px 21px;
+}
+.page_count_panel .page_count_panel_block {
+}
+.page_count_panel .page_count_panel_block::after {
+  content: " ";
+  background: url(/images/select_arrow.svg) no-repeat 50% 50%;
+  background-size: contain;
+  font-size: 12px;
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  width: 17px;
+  height: 41px;
+  pointer-events: none;
+  box-sizing: border-box;
+  margin-left: -32px;
+}
+.page_count_panel .page_count_panel_block select {
+	border: 2px solid #F0F0F0;
+	box-sizing: border-box;
+	border-radius: 2px;
+	cursor: pointer;
+	padding-left: 19px;
+	padding-right: 39px;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	height: 100%;
+}	
+
+	
 
 
 @media (min-width: 1261px) {
