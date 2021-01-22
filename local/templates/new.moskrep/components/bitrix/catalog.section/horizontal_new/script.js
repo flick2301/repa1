@@ -159,7 +159,10 @@ BX.ready(function () {
             }
         });
 
-
+$( "#page_element_count" ).change(function(event) {
+	
+	location.href = location.pathname+'?SIZEN_1='+$('#page_element_count option:selected').text();
+});
     
     
 
@@ -179,3 +182,6 @@ function ChangeInputCart(name, e){
 	}
    
 }
+
+
+

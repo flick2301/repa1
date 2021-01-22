@@ -78,6 +78,15 @@ if($arParams['FOR_SEO']!='Y'){
 //ШАПКА ТАБЛИЦЫ
 
 }?>
+По количеству: 
+<select name="page_element_count" id="page_element_count">
+	<?foreach(PAGE_ELEMENT_COUNT as $page_element_count)
+	{?>
+          
+          <option <?=($arParams['PAGE_ELEMENT_COUNT'] == $page_element_count) ? 'selected="selected"' : '';?>><?=$page_element_count?></option>
+          
+	<?}?>
+</select>
 <!--catalog-feed-->
     <div class="basic-layout__module catalog-feed">
 <?if($arResult['UF_SOPUT_SPR_ITMES']){
