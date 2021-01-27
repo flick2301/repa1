@@ -314,7 +314,7 @@ global $APPLICATION;
 		<!--catalog-card-->
         <section class="catalog-card">
             <div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($arSection['NAME']))?>');"><?=$arSection['NAME']?></a></div>
-                <div class="catalog-card__cover">
+                <div class="catalog-card__cover <?if(!$arSection['DETAIL_PICTURE']):?>catalog-card__cover__white<?endif?>">
                     <img class="catalog-card__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>
             
@@ -330,7 +330,7 @@ global $APPLICATION;
 		<!--catalog-card-->
         <section class="catalog-card">
             <div class="div_flex_h3 catalog-card__title"><a href="<?=($dop_section['LINK_TARGET']['VALUE']) ? $dop_section['LINK_TARGET']['VALUE'] : $dop_section['CODE'].'/';?>" target="_self" title='<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$dop_section['H1']["VALUE"]?></a></div>
-                <div class="catalog-card__cover">
+                <div class="catalog-card__cover <?if(!$dop_section['DETAIL_PICTURE']):?>catalog-card__cover__white<?endif?>">
                     <img class="catalog-card__image" width="262" height="197" src="<?=$dop_section['PICTURE']['src']?>" alt="<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>
             
@@ -355,8 +355,8 @@ global $APPLICATION;
 		if ($i) break;
         $i++;
         ?>
-        <div class="div_h3 category-blocknew__title open"><span><?=$sortSection["NAME"]?>:</span></div>
-        <ul class="category-blocknew__list open">
+        <div class="div_h3 category-blocknew__title open opening"><span><?=$sortSection["NAME"]?></span></div>
+        <ul class="category-blocknew__list open opening">
         <?$i=0;?>
         <?foreach($sortSection['ITEMS'] as $sort_item):?>
             <?$i++;?>

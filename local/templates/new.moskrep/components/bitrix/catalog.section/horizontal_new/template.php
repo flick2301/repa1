@@ -80,6 +80,9 @@ if($arParams['FOR_SEO']!='Y'){
 }?>
 
 <div class="page_count_panel">
+
+<div class="page_count_panel_viewblock">Показано <?=count($arResult['ITEMS'])?> из <?=$arResult['NAV_RESULT']->NavRecordCount?> товаров</div>
+
 <div class="page_count_panel_block">
 <select name="page_element_count" id="page_element_count">
 	<?foreach(PAGE_ELEMENT_COUNT as $page_element_count)

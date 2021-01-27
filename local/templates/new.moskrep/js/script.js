@@ -15,6 +15,8 @@ $(window).on('scroll', function() {
           else $('.basic-layout__header').removeClass('fixed');
    });
    
+   usedtrigger = false;
+   
 $(document).on('click', '.category-blocknew .category-blocknew__title span', function() {  
 if (!$(this).parent().hasClass('open')) {
 	if ($(this).hasClass('open')) {
@@ -26,6 +28,17 @@ if (!$(this).parent().hasClass('open')) {
 		$(this).parent().next().css('display', 'flex');
 	}	
 }	
+if ($(this).parent().hasClass('opening') && usedtrigger==true) {
+	if ($(this).hasClass('open')) {
+		$(this).removeClass('open');
+		$(this).parent().next().addClass('opening');
+	}
+	else {
+	$(this).addClass('open');
+	$(this).parent().next().removeClass('opening');
+	}
+}
+usedtrigger = true;
 }); 
 
 
@@ -33,10 +46,12 @@ $(document).on('click', '.bx-filter-section.container-fluid .checkbox__else--typ
 	if ($(this).hasClass('open')) {
 		$(this).removeClass('open');
 		$(this).parent().prev().hide();
+		$(this).text('Еще');
 	}	
 	else {
 		$(this).addClass('open')
 		$(this).parent().prev().css('display', 'flex');
+		$(this).text('Свернуть');
 	}	
 }); 
 
