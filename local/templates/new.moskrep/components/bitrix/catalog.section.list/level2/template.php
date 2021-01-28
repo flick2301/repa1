@@ -355,8 +355,9 @@ global $APPLICATION;
 		if ($i) break;
         $i++;
         ?>
-        <div class="div_h3 category-blocknew__title open opening"><span><?=$sortSection["NAME"]?></span></div>
+        <div class="div_h3 category-blocknew__title open opening"><span><?=$sortSection["NAME"]?>:</span></div>
         <ul class="category-blocknew__list open opening">
+		<span>Еще</span>
         <?$i=0;?>
         <?foreach($sortSection['ITEMS'] as $sort_item):?>
             <?$i++;?>

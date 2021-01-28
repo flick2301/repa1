@@ -186,7 +186,7 @@ $APPLICATION->IncludeFile(
 <div class="basic-layout__section">
 <div>
 
-<?if(!strstr($_SERVER['HTTP_HOST'], "dev"))
+<?if(!strstr($_SERVER['HTTP_HOST'], "dev") || true)
 {?>
 <?if(!$_GET["nogeolocation"] && false):?>
 <?require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>

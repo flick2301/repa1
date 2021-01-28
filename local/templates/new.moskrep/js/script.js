@@ -28,6 +28,7 @@ if (!$(this).parent().hasClass('open')) {
 		$(this).parent().next().css('display', 'flex');
 	}	
 }	
+/*
 if ($(this).parent().hasClass('opening') && usedtrigger==true) {
 	if ($(this).hasClass('open')) {
 		$(this).removeClass('open');
@@ -38,8 +39,20 @@ if ($(this).parent().hasClass('opening') && usedtrigger==true) {
 	$(this).parent().next().removeClass('opening');
 	}
 }
+*/	
 usedtrigger = true;
 }); 
+
+$(document).on('click', '.category-blocknew .category-blocknew__list.open span', function() {  
+	if ($(this).parent().hasClass('opening')) {
+		$(this).parent().removeClass('opening');
+		$(this).text('Свернуть');
+	}
+	else {
+		$(this).parent().addClass('opening');
+		$(this).text('Еще');
+	}
+});
 
 
 $(document).on('click', '.bx-filter-section.container-fluid .checkbox__else--type01 span', function() {  
