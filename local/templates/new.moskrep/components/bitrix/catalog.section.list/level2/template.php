@@ -91,6 +91,8 @@ global $APPLICATION;
 		<?if($_POST['ENUM_LIST']['ELEMENTS'])
 			require_once __DIR__."/include_parts/section_table.php";?>
     <?endif;?>
+	<?if(!empty($arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE']) && $_POST['ENUM_LIST']['ELEMENTS'])
+		require_once __DIR__."/include_parts/section_table.php";?>
     <?if($arResult['REFERENCE']['ITEM']['PICTURE']){?>
     <div class="catalog-head__photo photo__seo">
         <a href="<?=$arResult['REFERENCE']['ITEM']['PICTURE']['src']?>"  onclick="javascript:void();" rel="catalog-photo" class="catalog-photo__link">
@@ -107,7 +109,7 @@ global $APPLICATION;
 <!--simple-article-->
     <?
 
-    if($arResult['REFERENCE']['ITEM']['DIRECTORY']){
+    if($arResult['REFERENCE']['ITEM']['DIRECTORY'] && $intSectionID==0){
 
 		
         global $arReplacement;

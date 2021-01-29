@@ -163,7 +163,7 @@ if($arParams['REFERENCE_CHECK']=='Y'):
 					$_POST['ENUM_LIST'][$extra_setting] = true;
 				}
 			}
-
+			
         }
 
         //ЕСЛИ ВЫБРАНО НЕСКОЛЬКО РАЗДЕЛОВ БЕЗ СВОЙСТВ

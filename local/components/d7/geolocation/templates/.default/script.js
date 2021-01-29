@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+		
     
 		$('#geolocation, .geolocation_link, #geolocation .box-modal__head .popUp-close, #geolocation .white-btn').click(function() {
 			//$('#geolocation').slideToggle(0);

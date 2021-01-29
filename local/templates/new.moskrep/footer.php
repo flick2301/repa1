@@ -13,6 +13,7 @@
 				"/", 
 				"/basket/",
 				"/order/",
+				"/import/",
 			);
 			?>
 		

@@ -56,7 +56,7 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 					</div>	
 <?endif?>					
                         <div class="catalog-table__title">Размер, мм<small>:</small></div>
-                        <h3 class="catalog-table__content"><span class="catalog-table__desc"><strong><?=$item['SIZES']?></strong></span></h3>
+                        <div class="catalog-table__content"><span class="catalog-table__desc"><strong><?=$item['SIZES']?></strong></span></div>
                     </div>
         
             <?

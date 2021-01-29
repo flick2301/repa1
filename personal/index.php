@@ -53,8 +53,7 @@ $APPLICATION->SetTitle("Персональный раздел");
 );?><br>
 <?}else{?>
 
-<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());?>
-<h1 class="s38-title"><?=$APPLICATION->ShowTitle();?></h1><?$APPLICATION->IncludeComponent(
+<?$APPLICATION->IncludeComponent(
 	"bitrix:sale.personal.order", 
 	".default", 
 	array(

@@ -52,7 +52,7 @@ $APPLICATION->SetTitle("Контакты");
                            </li>
                            <li class="bank-details__item">
                               <p class="bank-details__name">Фактический адрес:</p>
-                              <p class="bank-details__data">117519, г. Москва, Варшавское шоссе, 148, этаж 5, офис 501</p>
+                              <p class="bank-details__data">117519, г. Москва, Варшавское шоссе, 148</p>
                            </li>
                            <li class="bank-details__item">
                               <p class="bank-details__name">ИНН</p>

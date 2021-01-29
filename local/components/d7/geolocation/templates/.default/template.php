@@ -135,10 +135,13 @@ foreach($arResult["ITEMS"] AS $item) {
 		{
 			if(location.origin=='https://krep-komp.ru' &&  !(id_get!='' && access!=''))
 			{
-<?foreach($arResult["ITEMS"] AS $item):?>	
+				
+<?foreach($arResult["ITEMS"] AS $item):?>
 		
-				if((getlocation=='<?=$item["PROP"]["NAME"]["VALUE"] ? $item["PROP"]["NAME"]["VALUE"] : $item["NAME"]?>' || $.cookie('geo_id')=='<?=$item["ID"]?>') && $.cookie('geo_id')!='<?=GEOLOCATION_MOSCOW?>') {
-					//window.location.href = 'https://<?=$item["PROP"]["DOMAIN"]["VALUE"]?>' + location.pathname;
+				if(($.cookie('geo_id')=='<?=$item["ID"]?>') && $.cookie('geo_id')!='<?=GEOLOCATION_MOSCOW?>') {
+					
+					//$.cookie("geo_id", '<?=GEOLOCATION_MOSCOW?>');
+					window.location.href = 'https://<?=$item["PROP"]["DOMAIN"]["VALUE"]?>' + location.pathname;
 				}
 <?endforeach?>		
 					

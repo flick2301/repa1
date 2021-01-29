@@ -2,7 +2,7 @@
 
 <?if (!empty($arResult)):?>
 
-			<h4 class="fast-nav__title" data-sreader>Доп навигация</h4>
+			<div class="fast-nav__title" data-sreader>Доп навигация</div>
 				<ul class="fast-nav__list">
 
 <?

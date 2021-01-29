@@ -17,7 +17,23 @@ $rsGender = CUserFieldEnum::GetList(array(), array("ID" => $aSection["UF_SEC_LIS
 global $mySmartFilter;
 global $arrFilter2;
 
-if(count($arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE'])>1) {
+?>
+
+<?
+if(!empty($arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE']))
+{
+	$arrFilter2 = array("SECTION_ID" => $arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE']);
+	$filter_section_id = $arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE'][0];
+	$filter = array_merge($GLOBALS['Filter_seo'], array('IBLOCK_ID' => CATALOG_IBLOCK_ID, 'SECTION_ID'=> $filter_section_id, 'INCLUDE_SUBSECTIONS'=>'Y'));	
+	$dbItems = CIBlockElement::getList(array('SORT' => 'ASC', 'ID' => 'DESC'),	$filter, false, false, array('ID', 'PROPERTY_GOLOVKA'));
+	while ($row = $dbItems->getNext()) 
+	{
+		$mySmartFilter['ID'][]=$row['ID'];
+		//$arrFilter2['ID'][]=$row['ID'];
+	}
+	
+}
+elseif(count($arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE'])>1) {
 	$arrFilter2 = array("SECTION_ID" => $arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE']);
 	$filter_section_id = $arResult['TOP_SECTIONS'][0]['IBLOCK_SECTION_ID'];
 	$dbItems = \Bitrix\Iblock\ElementTable::getList(array(
@@ -91,7 +107,7 @@ if (CModule::IncludeModule("iblock"))
             "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
             "IBLOCK_ID" => $arParams["IBLOCK_ID"],
             "SECTION_ID" => $filter_section_id,
-            "FILTER_NAME" => "arrFilter2",
+            "FILTER_NAME" => (!empty($arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE'])) ? "Filter_seo" : "arrFilter2",
 			"PREFILTER_NAME" => "mySmartFilter",
             "PRICE_CODE" => "",
             "CACHE_TYPE" => "N",
@@ -131,7 +147,7 @@ $intSectionID = $APPLICATION->IncludeComponent(
 						"SECTION_ID_VARIABLE" => $arParams["SECTION_ID_VARIABLE"],
 						"PRODUCT_QUANTITY_VARIABLE" => $arParams["PRODUCT_QUANTITY_VARIABLE"],
 						"PRODUCT_PROPS_VARIABLE" => $arParams["PRODUCT_PROPS_VARIABLE"],
-						"FILTER_NAME" => 'arrFilter2',
+						"FILTER_NAME" => (!empty($arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE'])) ? "Filter_seo" : "arrFilter2",
 						"CACHE_TYPE" => $arParams["CACHE_TYPE"],
 						"CACHE_TIME" => $arParams["CACHE_TIME"],
 						"CACHE_FILTER" => $arParams["CACHE_FILTER"],
@@ -185,7 +201,7 @@ $intSectionID = $APPLICATION->IncludeComponent(
 						"OFFERS_SORT_ORDER2" => $arParams["OFFERS_SORT_ORDER2"],
 						"OFFERS_LIMIT" => $arParams["LIST_OFFERS_LIMIT"],
 
-						"SECTION_ID" => $arResult['SECTION']['ID'],
+						"SECTION_ID" => ($arResult['SECTION']['ID']) ? $arResult['SECTION']['ID'] : $filter_section_id,
 						"SECTION_CODE" => $arResult['SECTION']['CODE'],
 						"SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
 						"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],

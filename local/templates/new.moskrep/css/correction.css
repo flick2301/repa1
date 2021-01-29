@@ -8,6 +8,67 @@ h1 {
     line-height: 1;
     font-size: 32px;
 }
+.page-heading .import {
+	color: #555c68;
+}
+.import-block .import-block-img {
+	margin: 10px 0 20px;	
+}
+.import-block .import-block-img-title {
+	width: 100%;
+}
+.import-block .import-block-img-mobile {
+	display: none;
+}
+.import-blocksub {
+	min-height: 274px;
+	position: relative;
+	margin: 0 -30px;
+}
+.import-blocksub .import-blocksub-become {
+	height: 204px;
+	background: #f1f1f1;
+	margin: 67px 0 0 0;
+	width: 100%;
+	position: absolute;
+}
+.import-blocksub .import-blocksub-become-block {
+	height: 204px;
+	width: 100%;
+	display: flex;
+}
+.import-blocksub .import-blocksub-become-block div {
+	width: 50%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.import-blocksub .import-blocksub-become-block div:first-child {
+	font-size: 45px;
+	line-height: 56px;
+	font-weight: 400;
+}
+.import-blocksub .import-blocksub-become-block div:last-child {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.import-blocksub .import-blocksub-become-block div .button {
+	width: 412px;
+	height: 60px;
+	background: #000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;	
+	font-size: 30px;
+	font-weight: 400;
+	border-radius: 10px;
+	margin-left: 20px;
+}
+.import-blocksub .import-blocksub-become-block div .button:hover {
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);	
+}
 .div_h1, .div_h2, .div_h3, .div_h4, .div_h5, .div_h6 {
     margin: 0;
     text-rendering: optimizeLegibility;
@@ -97,6 +158,9 @@ h1 {
 .catalog-table__column--basic.groupped {
 }
 .catalog-table__column--basic.is-merged h3 strong {
+	display: none;
+}
+.catalog-table__column--basic.is-merged div strong {
 	display: none;
 }
 .global-search__hint {
@@ -1108,9 +1172,20 @@ img.intro-slider__image {
 
 
 
-@media (max-width: 800px) {
+@media (max-width: 740px) {
 .global-search__hint.global-search__hint--lite.moskrep_submit, .surface-block, .tech_title, table.tech {
 	display: none;
+}
+.import-blocksub .import-blocksub-become-block div:first-child {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+}
+.import-blocksub .import-blocksub-become-block div .button {
+	width: 202px;
+	height: 44px;
+	font-size: 20px;
+	line-height: 24px;
 }
 }
 
@@ -1306,7 +1381,7 @@ atalog_main_menu .catalog-nav__lvl1-link, .catalog-nav__lvl1-toggle {
 /*-------------------------------------------*/
 .basic-layout__header {
 	width: 100%;
-	min-height: 107px;
+	min-height: 107px!important;
 	position: fixed;
 	background: #fff;
 	z-index: 8;
@@ -1319,10 +1394,10 @@ atalog_main_menu .catalog-nav__lvl1-link, .catalog-nav__lvl1-toggle {
 	box-shadow: 0 2px 3px 0 rgba(0,0,0,.2);
 }
 main.catalog {
-	margin-top: 188px;
+	margin-top: 188px!important;
 }
 main {
-	margin-top: 148px;
+	margin-top: 148px!important;
 }
 .eshop-panel {
 	margin-top: 0;
@@ -1395,6 +1470,9 @@ main {
 .multi-search .multi-layout {
 	margin: 0 20px!important;
 }
+.import-blocksub .import-blocksub-become-block div:first-child {
+	padding-left: 20px;
+}	
 }
 
 
@@ -1427,6 +1505,35 @@ main {
 }
 .multi-search .multi-layout {
 	margin: 0 10px!important;
+}
+.import-blocksub .import-blocksub-become-block div:first-child {
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 400;
+}
+.import-blocksub .import-blocksub-become-block div .button {
+	width: 101px;
+	height: 22px;
+	font-size: 10px;
+	line-height: 12px;
+	margin-right: 20px;
+}
+.import-blocksub .import-blocksub-become {
+	height: 75px;
+	margin-top: 40px;
+}
+.import-blocksub .import-blocksub-become-block {
+	height: 75px;
+}
+.import-blocksub {
+    min-height: 145px;
+}	
+.import-block .import-block-img {
+	display: none;
+}
+.import-block .import-block-img-mobile {
+	display: block;
+	margin: 20px 0 10px;	
 }
 }
 

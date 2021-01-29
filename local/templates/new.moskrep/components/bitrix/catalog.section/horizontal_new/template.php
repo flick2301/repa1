@@ -156,8 +156,8 @@ if($arParams['FOR_SEO']!='Y'){
 					<img src="<?=$item['PREVIEW_PICTURE']['src']?>" alt='<?=$item['IPROPERTY_VALUES']['ELEMENT_PREVIEW_PICTURE_FILE_ALT']?>' />
 					<div><?=($item['PROPERTIES']['ROOT_NAME']['VALUE']) ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'];?></div>
 					</div>							
-                        <h3 class="catalog-table__content">							
-						<span class="catalog-table__desc"><strong><?=$item['SIZES']?></strong></span></h3>
+                        <div class="catalog-table__content">							
+						<span class="catalog-table__desc"><strong><?=$item['SIZES']?></strong></span></div>
 
                     </div>
 					
@@ -243,7 +243,7 @@ if($arParams['FOR_SEO']!='Y'){
                     </div>
 					
 					<div class="catalog-table__column catalog-table__column--to-cart">
-                           <div class="catalog-table__title">Стоимость<small>:</small></div>
+                           <div class="catalog-table__title">Цена (с НДС)<small>:</small></div>
                            <div class="catalog-table__content catalog-table__content--to-cart">
                               <!--price-in-table-->
                               <div class="price-in-table">

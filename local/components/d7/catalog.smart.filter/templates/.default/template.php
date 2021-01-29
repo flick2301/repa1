@@ -164,7 +164,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 					<div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-12<?endif?> bx-filter-parameters-box <?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>bx-active<?endif?>">
 						
 						<div class="bx-filter-parameters-box-title" onclick="smartFilter.hideFilterProps(this)">
-							<?if($arItem['CODE']!="FOR_SALE" && $arItem['CODE']!="IN_STOCK" && $arItem['CODE']!='VIDY_UPAKOVOK'):?>
+							<?if($arItem['CODE']!="FOR_SALE" && $arItem['CODE']!="IN_STOCK" && $arItem['CODE']!='VIDY_UPAKOVOK_OLD'):?>
                                                             <div class="s18-title"><?=$arItem["NAME"]?>
 								<?if ($arItem["FILTER_HINT"] <> ""):?>
 									<i id="item_title_hint_<?echo $arItem["ID"]?>" class="fa fa-question-circle"></i>
@@ -625,7 +625,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
                                             </ul>
                                         <?$this->EndViewTarget();?>
                                     <?endif;?>
-                                    <?if($arItem['CODE']=='VIDY_UPAKOVOK'):?>
+                                    <?if($arItem['CODE']=='VIDY_UPAKOVOK_OLD'):?>
 
                                         <?$ar=reset($arItem["VALUES"]);?>
                                         <?$this->SetViewTarget('filter_in_upakovka');?>
@@ -683,7 +683,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
                                                                                 <?endforeach;?>
                                                                             </ul>
                                                                             <a href="javascript:void(0);" class="checkbox-color__all disable">Показать ещё</a>
-                                <?elseif($arItem['CODE']=='VIDY_UPAKOVOK'):?>
+                                <?elseif($arItem['CODE']=='VIDY_UPAKOVOK_OLD'):?>
                                 <?elseif($arItem['CODE']==ID_PROPERTY_COUNT):?>
                                                                             <ul class="checkbox__items checkbox__item--50">
                                                                                 <?foreach($arItem["VALUES"] as $val => $ar):?>
@@ -716,7 +716,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 	                                                                            </li> 
                                                                                 <?endforeach;?>
                                                                             </ul>
-																			<?elseif($arItem['CODE']=="POKRYTIE" || $arItem['CODE']=="GOLOVKA" || $arItem['CODE']=="MATERIAL" || $arItem['CODE']=="KONETS" || $arItem['CODE']=="REZBA" || $arItem['CODE']=="BREND" || $arItem['CODE']=="RAZMER_POD_KLYUCH_MM" || $arItem['CODE']=="KLASS_PROCHNOSTI" || $arItem['CODE']=="SHAG_REZBY_MM" || $arItem['CODE']=="DIN" || $arItem['CODE']=="GOST" || $arItem['CODE']=="SHLITS" || $arItem['CODE']=="PO_PRIMENENIYU"):?>
+																			<?elseif($arItem['CODE']=="POKRYTIE" || $arItem['CODE']=="GOLOVKA" || $arItem['CODE']=="MATERIAL" || $arItem['CODE']=="KONETS" || $arItem['CODE']=="REZBA" || $arItem['CODE']=="BREND" || $arItem['CODE']=="RAZMER_POD_KLYUCH_MM" || $arItem['CODE']=="KLASS_PROCHNOSTI" || $arItem['CODE']=="SHAG_REZBY_MM" || $arItem['CODE']=="DIN" || $arItem['CODE']=="GOST" || $arItem['CODE']=="SHLITS" || $arItem['CODE']=="PO_PRIMENENIYU"  || $arItem['CODE']=="VIDY_UPAKOVOK"):?>
 																			<ul class="checkbox__items">
                                                                                 <?foreach($arItem["VALUES"] as $val => $ar):?>
 																					

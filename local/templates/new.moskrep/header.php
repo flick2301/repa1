@@ -41,6 +41,7 @@ Loc::LoadMessages(__FILE__);
    */?>
    
 <link rel="apple-touch-icon" sizes="180x180" href="<?=SITE_TEMPLATE_PATH?>/assets/favicon/apple-touch-icon.png">
+<link el="icon" type="image/png" sizes="120x120" href="<?=SITE_TEMPLATE_PATH?>/assets/favicon/favicon-120x120.png">
 <link rel="icon" type="image/png" sizes="32x32" href="<?=SITE_TEMPLATE_PATH?>/assets/favicon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="<?=SITE_TEMPLATE_PATH?>/assets/favicon/favicon-16x16.png">
 <link rel="manifest" href="<?=SITE_TEMPLATE_PATH?>/assets/favicon/site.webmanifest">
@@ -475,7 +476,7 @@ $APPLICATION->IncludeFile(
 		<div class="website-navbar__primary">
                <!--main-nav-->
                <nav class="main-nav<?if (CSite::InDir('/index.php') && SITE_ID!='s2'):?> full<?endif?>">
-                  <h4 class="main-nav__title" data-sreader>Навигация</h4>
+                  <div class="main-nav__title" data-sreader>Навигация</div>
                   <div class="main-nav__wrap is-disabled" id="main-nav__wrap">
                      <button class="main-nav__close" id="main-nav__close"><i class="simple-close-icon"></i>Закрыть</button>
 	<?$APPLICATION->IncludeComponent(
@@ -497,7 +498,7 @@ $APPLICATION->IncludeFile(
     
   
     <main class="basic-layout__common <?$APPLICATION->ShowViewContent('catalogFilterClass');?>">
-	<?if($APPLICATION->GetCurPage() !== "/basket/" && $APPLICATION->GetCurPage() !== "/order/"):?>  	
+	<?if($APPLICATION->GetCurPage() !== "/basket/" && $APPLICATION->GetCurPage() !== "/order/" && $APPLICATION->GetCurPage() !== "/import2/"):?>  	
 	<?if($APPLICATION->GetCurPage() !== "/")
 	{
 		?>

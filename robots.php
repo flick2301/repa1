@@ -9,7 +9,7 @@ else{
     $http = "http";
 }
 header("Content-Type: text/plain");?>
-<?if($host=="new.krep-komp.ru"):?>
+<?if($host=="new.krep-komp.ru" || strstr($_SERVER['HTTP_HOST'], "dev")):?>
 User-Agent: *
 Disallow: /
 <?else:?>
