@@ -721,10 +721,11 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 																			<?elseif($arItem['CODE']=="POKRYTIE" || $arItem['CODE']=="GOLOVKA" || $arItem['CODE']=="MATERIAL" || $arItem['CODE']=="KONETS" || $arItem['CODE']=="REZBA" || $arItem['CODE']=="BREND" || $arItem['CODE']=="RAZMER_POD_KLYUCH_MM" || $arItem['CODE']=="KLASS_PROCHNOSTI" || $arItem['CODE']=="SHAG_REZBY_MM"):?>
 																			<ul class="checkbox__items">
 																			<?$i=0?>
+																			<?if ($arItem["ID"]==132) $run_hidden = true;?>
                                                                                 <?foreach($arItem["VALUES"] as $val => $ar):?>
 																				
 																				<?$i++?>
-																				<?if($i==5):?>
+																				<?if(($i==5 && $run_hidden==false) || ($run_hidden==true && $i==1)):?>
 																				<div class="checkbox__box">
 																				<?endif?>																				
 																					
@@ -739,7 +740,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 	                                                                                    <div class="checkbox__text"><?=CIBlockPropertyEnum::GetByID($ar["VALUE"])['VALUE']?></div>
 	                                                                                </label>
 	                                                                            </li> 
-																				<?if($i>=5 && $i==count($arItem["VALUES"])):?>																				
+																				<?if((($i>=5 && $run_hidden==false) || $run_hidden==true) && $i==count($arItem["VALUES"])):?>																				
 																				</div><div class="checkbox__else checkbox__else--type01"><span>Еще</span>
 																				</div><?endif?>
                                                                                 <?endforeach;?>
@@ -747,10 +748,11 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
                                                                         <?else:?>
                                                                             <ul class="checkbox__items checkbox__item--line">
 																			<?$i=0?>
+																			<?if ($arItem["ID"]==132) $run_hidden = true;?>
                                                                                 <?foreach($arItem["VALUES"] as $val => $ar):?>
 																				
 																				<?$i++?>
-																				<?if($i==13):?>
+																				<?if(($i==13 && $run_hidden==false)  || ($run_hidden==true && $i==1)):?>
 																				<div class="checkbox__box">
 																				<?endif?>	
 																				
@@ -766,7 +768,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 	                                                                                </label>
 	                                                                            </li> 
 
-																				<?if($i>=13 && $i==count($arItem["VALUES"])):?>																				
+																				<?if((($i>=13 && $run_hidden==false)  || $run_hidden==true) && $i==count($arItem["VALUES"])):?>																				
 																				</div><div class="checkbox__else checkbox__else--type01"><span>Еще</span>
 																				</div><?endif?>																				
                                                                                 <?endforeach;?>
