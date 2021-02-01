@@ -300,6 +300,11 @@ if(count($arResult['SECTION']['UF_OTHER_SECTION'])){
     }
 }
 
+if($arResult['SECTION']['UF_VID_KREPEZH'])
+{
+	$GLOBALS['Filter_seo']["PROPERTY_VID_KREPEZH_VALUE"]=$arResult['SECTION']['UF_VID_KREPEZH'];
+}
+
 foreach($arResult['SECTIONS'] as $key=>$arSection){
     
     $file = CFile::ResizeImageGet($arSection['PICTURE']['ID'], array('width'=>$arParams['LIST_PREV_PIC_W_L2'], 'height'=>$arParams['LIST_PREV_PIC_H_L2']), BX_RESIZE_IMAGE_PROPORTIONAL, true);

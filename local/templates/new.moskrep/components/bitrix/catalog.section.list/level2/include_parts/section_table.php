@@ -17,9 +17,6 @@ $rsGender = CUserFieldEnum::GetList(array(), array("ID" => $aSection["UF_SEC_LIS
 global $mySmartFilter;
 global $arrFilter2;
 
-?>
-
-<?
 if(!empty($arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE']))
 {
 	$arrFilter2 = array("SECTION_ID" => $arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE']);
@@ -40,10 +37,21 @@ elseif(count($arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE'])>1) {
 				'select' => array('ID'), 
 				'filter' => array('IBLOCK_ID' => CATALOG_IBLOCK_ID, 'IBLOCK_SECTION_ID'=> $arrFilter2["SECTION_ID"]),
 			))->fetchAll();
-foreach($dbItems as $item)
+	foreach($dbItems as $item)
+	{
+		$mySmartFilter['ID'][]=$item['ID'];
+	}
+}elseif($arResult['SECTION']['UF_SECTION_ID'])
 {
-	$mySmartFilter['ID'][]=$item['ID'];
-}
+	$filter_section_id = $arResult['SECTION']['UF_SECTION_ID'];
+	
+	$filter = array_merge($GLOBALS['Filter_seo'], array('IBLOCK_ID' => CATALOG_IBLOCK_ID, 'SECTION_ID'=> $filter_section_id, 'INCLUDE_SUBSECTIONS'=>'Y'));	
+	$dbItems = CIBlockElement::getList(array('SORT' => 'ASC', 'ID' => 'DESC'),	$filter, false, false, array('ID', 'PROPERTY_GOLOVKA'));
+	while ($row = $dbItems->getNext()) 
+	{
+		$mySmartFilter['ID'][]=$row['ID'];
+		//$arrFilter2['ID'][]=$row['ID'];
+	}
 }else{
 	$filter_section_id = $arResult['SECTION']['ID'];
 	$mySmartFilter =[];
@@ -107,7 +115,7 @@ if (CModule::IncludeModule("iblock"))
             "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
             "IBLOCK_ID" => $arParams["IBLOCK_ID"],
             "SECTION_ID" => $filter_section_id,
-            "FILTER_NAME" => (!empty($arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE'])) ? "Filter_seo" : "arrFilter2",
+            "FILTER_NAME" => (!empty($arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE']) || $arResult['SECTION']['UF_SECTION_ID']) ? "Filter_seo" : "arrFilter2",
 			"PREFILTER_NAME" => "mySmartFilter",
             "PRICE_CODE" => "",
             "CACHE_TYPE" => "N",
@@ -147,7 +155,7 @@ $intSectionID = $APPLICATION->IncludeComponent(
 						"SECTION_ID_VARIABLE" => $arParams["SECTION_ID_VARIABLE"],
 						"PRODUCT_QUANTITY_VARIABLE" => $arParams["PRODUCT_QUANTITY_VARIABLE"],
 						"PRODUCT_PROPS_VARIABLE" => $arParams["PRODUCT_PROPS_VARIABLE"],
-						"FILTER_NAME" => (!empty($arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE'])) ? "Filter_seo" : "arrFilter2",
+						"FILTER_NAME" => (!empty($arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE']) || $arResult['SECTION']['UF_SECTION_ID']) ? "Filter_seo" : "arrFilter2",
 						"CACHE_TYPE" => $arParams["CACHE_TYPE"],
 						"CACHE_TIME" => $arParams["CACHE_TIME"],
 						"CACHE_FILTER" => $arParams["CACHE_FILTER"],
@@ -201,7 +209,7 @@ $intSectionID = $APPLICATION->IncludeComponent(
 						"OFFERS_SORT_ORDER2" => $arParams["OFFERS_SORT_ORDER2"],
 						"OFFERS_LIMIT" => $arParams["LIST_OFFERS_LIMIT"],
 
-						"SECTION_ID" => ($arResult['SECTION']['ID']) ? $arResult['SECTION']['ID'] : $filter_section_id,
+						"SECTION_ID" => ($arResult['SECTION']['ID'] && $arResult['SECTION']['UF_SECTION_ID']==null) ? $arResult['SECTION']['ID'] : $filter_section_id,
 						"SECTION_CODE" => $arResult['SECTION']['CODE'],
 						"SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
 						"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],

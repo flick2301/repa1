@@ -298,7 +298,9 @@ global $APPLICATION;
 
 <?globalGetTitle($arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] ? $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] : $arResult["SECTION"]["NAME"])?>	
 
-
+<?if($arParams['TYPE_TEMPLATE']!='BOTTOM')
+{
+	?>
 <!--catalog-feed-->
     <div class="basic-layout__module catalog-feed">
         <div class="catalog-feed__list">
@@ -342,6 +344,7 @@ global $APPLICATION;
 		</div>
     </div>
     <!--catalog-feed-->
+<?}?>
 
 <?if($_POST['ENUM_LIST']['ELEMENTS'])
 	require_once __DIR__."/include_parts/section_table.php";?>
@@ -351,6 +354,25 @@ if($arResult['SORTING']['SECTION_ID']){
 	<!--category-block-->
             <div class="basic-layout__module category-block">
 	<?
+	//Если по шаблону категории должны быть под таблицей
+	if($arParams['TYPE_TEMPLATE']=='BOTTOM')
+	{
+		?><div class="div_h3 category-block__title">Основные категории</div>
+		<ul class="category-block__list">
+        <?$i=0;?><?
+		foreach ($arResult['SECTIONS'] as &$arSection)
+		{
+			$i++;
+		?>
+			<li class="category-block__item">
+                <a href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" class="category-block__link">
+                    <?=$arSection['NAME']?>
+                </a>
+            </li>
+		
+		<?}?>
+		</ul><?
+	}
     foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
         
         ?>

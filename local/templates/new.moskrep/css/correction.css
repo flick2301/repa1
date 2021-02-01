@@ -11,6 +11,10 @@ h1 {
 .page-heading .import {
 	color: #555c68;
 }
+.main-nav__link .import {
+	color: #555c68;
+	white-space: nowrap;
+}
 .import-block .import-block-img {
 	margin: 10px 0 20px;	
 }

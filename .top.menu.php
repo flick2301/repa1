@@ -48,6 +48,13 @@ $aMenuLinks = Array(
 		Array(), 
 		Array(), 
 		"" 
-	)
+	),
+	Array(
+		"Import&nbsp;<span class='import'>进口</span>", 
+		"/import/", 
+		Array(), 
+		Array(), 
+		"" 
+	)	
 );
 ?>
