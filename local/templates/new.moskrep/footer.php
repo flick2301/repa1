@@ -20,7 +20,7 @@
 <?if (!in_array($APPLICATION->GetCurPage(), $page_footer_menu)):?>
 		<aside class="basic-layout__sidebar">
             <!--table-of-contents-->
-		<?$APPLICATION->IncludeComponent(
+		<?/*$APPLICATION->IncludeComponent(
 	"bitrix:menu", 
 	"left_bottom", 
 	array(
@@ -44,7 +44,7 @@
 		"ALLOW_MULTI_SELECT" => "N"
 	),
 	false
-);?>
+);*/?>
 	
 	<?=$APPLICATION->ShowViewContent('RELINK');?>
 	<?=$APPLICATION->ShowViewContent("smart_filter");?>
@@ -486,6 +486,27 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 	<div class="box-modal" id="feedback">
         
         </div>
+		
+<div class="box-modal" id="callback">
+<?/*$APPLICATION->IncludeComponent(
+	"bitrix:form.result.new",
+	"callback",
+	Array(
+		"CACHE_TIME" => "3600",
+		"CACHE_TYPE" => "A",
+		"CHAIN_ITEM_LINK" => "",
+		"CHAIN_ITEM_TEXT" => "",
+		"EDIT_URL" => "",
+		"IGNORE_CUSTOM_TEMPLATE" => "N",
+		"LIST_URL" => "",
+		"SEF_MODE" => "N",
+		"SUCCESS_URL" => "",
+		"USE_EXTENDED_ERRORS" => "Y",
+		"VARIABLE_ALIASES" => Array("RESULT_ID"=>"RESULT_ID","WEB_FORM_ID"=>"WEB_FORM_ID"),
+		"WEB_FORM_ID" => "1"
+	)
+);*/?>
+</div>		
 </div>
 
 

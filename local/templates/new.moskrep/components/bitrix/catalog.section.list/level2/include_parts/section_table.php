@@ -110,7 +110,7 @@ if (CModule::IncludeModule("iblock"))
    
         $APPLICATION->IncludeComponent(
         "d7:catalog.smart.filter",
-        "",
+        "krep-komp",
         Array(
             "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
             "IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -166,7 +166,7 @@ $intSectionID = $APPLICATION->IncludeComponent(
 						"SHOW_404" => $arParams["SHOW_404"],
 						"FILE_404" => $arParams["FILE_404"],
 						"DISPLAY_COMPARE" => $arParams["USE_COMPARE"],
-						"PAGE_ELEMENT_COUNT" => $GLOBAL['size_1'],
+						"PAGE_ELEMENT_COUNT" => $_GET['SIZEN_1'],
 						"LINE_ELEMENT_COUNT" => $arParams["LINE_ELEMENT_COUNT"],
 						"PRICE_CODE" => array(
                                                     0 => "Распродажа",

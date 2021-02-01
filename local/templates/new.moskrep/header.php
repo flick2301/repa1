@@ -187,7 +187,7 @@ $APPLICATION->IncludeFile(
 <div class="basic-layout__section">
 <div>
 
-<?if(!strstr($_SERVER['HTTP_HOST'], "dev"))
+<?if(!strstr($_SERVER['HTTP_HOST'], "dev") || true)
 {?>
 <?if(!$_GET["nogeolocation"] && false):?>
 <?require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>
@@ -520,8 +520,14 @@ $APPLICATION->IncludeFile(
 	<?
 	}
 	?>
+
+<!--Разделы каталога-->
+		  <?$APPLICATION->ShowViewContent('catalog_section');?>
+<!--Разделы каталога-->		  
+
       <div class="basic-layout__columns basic-layout__columns--reverse">
          <div class="basic-layout__content<?if (CSite::InDir('/index.php') && SITE_ID!='s2'):?> full<?endif?>">
+		 
            
                 
             <?=$APPLICATION->ShowViewContent("related_menu_element");?>
