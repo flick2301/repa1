@@ -1202,6 +1202,12 @@ ol.tech li {
 	flex: 0 0 33.33%;
     max-width: 33.33%;
 }
+.footer_partition .footer_center .fast-nav__item {
+	white-space: nowrap;
+}
+.footer_partition .footer_center {
+    padding: 85px 55px 102px;
+}
 }
 
 
