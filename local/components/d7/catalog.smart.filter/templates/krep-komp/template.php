@@ -740,9 +740,10 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 	                                                                                    <div class="checkbox__text"><?=CIBlockPropertyEnum::GetByID($ar["VALUE"])['VALUE']?></div>
 	                                                                                </label>
 	                                                                            </li> 
-																				<?if((($i>=5 && $run_hidden==false) || $run_hidden==true) && $i==count($arItem["VALUES"])):?>																				
+																				<?if((($i>=5 && $run_hidden==false) || $run_hidden==true) && $i==count($arItem["VALUES"])):?>														
 																				</div><div class="checkbox__else checkbox__else--type01"><span>Еще</span>
-																				</div><?endif?>
+																				</div>
+																				<?endif?>
                                                                                 <?endforeach;?>
                                                                             </ul>
                                                                         <?else:?>
