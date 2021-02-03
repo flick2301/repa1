@@ -1426,6 +1426,19 @@ img.intro-slider__image {
 
 
 @media (max-width: 685px) {
+#tooltip {
+    margin-top: 0!important;
+    margin-left: 0!important;
+	top: 0!important;
+	left: 0!important;
+
+}
+#tooltip:before {
+    display: none;
+}
+.category-blocknew .category-blocknew__title.open {
+	float: none;
+}
 .catalog-feed__item {
     flex: 0 0 100%;
     max-width: 100%;

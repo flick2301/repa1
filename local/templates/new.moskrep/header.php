@@ -100,11 +100,12 @@ $APPLICATION->IncludeFile(
 <?$APPLICATION->ShowHeadScripts()?> 
         <?CJSCore::Init(array('jquery3'));?>
 	<?
+	$rand = "?".rand();
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/reset.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.css", true);
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/jquery.fancybox.min.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/styles/global.styles.min.css?v=XXXXXXa", true);
-	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.css", true);	
+	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.css".$rand, true);	
 	if (IPHONE=="Y") $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/iphone.css", true);	
 	else $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/dieapple.css", true);
 	
