@@ -439,7 +439,7 @@ if($arResult['SORTING']['SECTION_ID']){
 		?>
 			<li class="category-block__item">
                 <a href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" class="category-block__link">
-                    <?=$arSection['NAME']?>
+                    <?=($arSection['UF_SHORT_NAME']) ? $arSection['UF_SHORT_NAME']: $arSection['NAME'];?>
                 </a>
             </li>
 		

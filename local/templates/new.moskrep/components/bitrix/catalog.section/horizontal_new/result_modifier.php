@@ -9,9 +9,7 @@ $module_id = 'relink.table';
 
 
 use Bitrix\Main\Loader;
-echo '<!--';
-var_dump($arResult['ITEMS']);
-echo '-->';
+
 
 $nav = CIBlockSection::GetNavChain(false, $arResult['ID']);
 while($nw = $nav->Fetch()){

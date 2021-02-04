@@ -10,8 +10,8 @@ $APPLICATION->SetTitle("Import");
 <?globalGetTitle("Import <span class='import'>进口</span>")?>	
 
 <div class="import-block">
-<div class="import-block-img"><img src="./img/import01.png" class="import-block-img-title" alt="Import"></div>
-<div class="import-block-img-mobile"><img src="./img/import02.png" class="import-block-img-mobile-title" alt="Import"></div>
+<div class="import-block-img"><img src="./img/import04.png" class="import-block-img-title" alt="Import"></div>
+<div class="import-block-img-mobile"><img src="./img/import04.png" class="import-block-img-mobile-title" alt="Import"></div>
 
 <p>Our company ООО «KREP-KOMP» holds leading position in the market of steel fasteners in Russia.
 We are open for a new cooperation with suppliers and manufacturers of screws, drywall screws, roofing screws, bolts, nuts, nails, washers, double thread screws, different types of anchors, rigging etc.

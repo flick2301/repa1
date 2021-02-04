@@ -16,7 +16,7 @@ h1 {
 	white-space: nowrap;
 }
 .import-block .import-block-img {
-	margin: 10px 0 20px;	
+	margin: 10px 0 -20px;	
 }
 .import-block .import-block-img-title {
 	width: 100%;
@@ -1153,7 +1153,12 @@ ol.tech li {
 	left: calc(100% - 12px);
     content: " ";	
 }
-	
+.main-nav__item.is-active .main-nav__link {
+	color: #4F36E3;
+}
+.website-navbar__primary .main-nav__list .main-nav__item:first-child a {
+	color: #4F36E3!important;	
+}
 
 
 @media (min-width: 1261px) {
