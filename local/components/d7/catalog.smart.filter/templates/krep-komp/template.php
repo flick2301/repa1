@@ -147,6 +147,8 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 				//not prices
 				foreach($arResult["ITEMS"] as $key=>$arItem)
 				{
+					
+				if ($arItem["ID"]==132) $run_hidden = true;
 
 					if(
 						empty($arItem["VALUES"])
@@ -164,9 +166,9 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 					?>
 					<div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-12<?endif?> bx-filter-parameters-box <?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>bx-active<?endif?>">
 						
-						<div class="bx-filter-parameters-box-title" onclick="smartFilter.hideFilterProps(this)">
+						<div class="bx-filter-parameters-box-title" onclick="/*smartFilter.hideFilterProps(this)*/">
 							<?if($arItem['CODE']!="FOR_SALE" && $arItem['CODE']!="IN_STOCK" && $arItem['CODE']!='VIDY_UPAKOVOK'):?>
-                                                            <div class="s18-title"><?=$arItem["NAME"]?>
+                                                            <div class="s18-title <?if($run_hidden):?>opening<?endif?>"><?=$arItem["NAME"]?>
 								<?if ($arItem["FILTER_HINT"] <> ""):?>
 									<i id="item_title_hint_<?echo $arItem["ID"]?>" class="fa fa-question-circle"></i>
 									<script type="text/javascript">
@@ -661,7 +663,9 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
                                         <?$this->EndViewTarget();?>
                                     <?endif;?>
                                                                         <?if($arItem['CODE']==ID_PROPERTY_TSVET):?>
+
                                                                             <ul class="checkbox__items checkbox__item--line checkbox__item--color">
+																			
 										<?foreach($arItem["VALUES"] as $val => $ar):?>
 											<li class="checkbox__item visible">
 												<label data-role="label_<?=$ar["CONTROL_ID"]?>" class="bx-filter-param-label checkbox__label <? echo $ar["DISABLED"] ? 'disabled': '' ?> <? echo $ar["CHECKED"]? 'checked': '' ?>" for="<? echo $ar["CONTROL_ID"] ?>">
@@ -683,6 +687,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 											</li>
                                                                                 <?endforeach;?>
                                                                             </ul>
+																			<div class="checkbox__else checkbox__else--type01 colors"><span>Еще</span></div>
                                                                             <a href="javascript:void(0);" class="checkbox-color__all disable">Показать ещё</a>
                                 <?elseif($arItem['CODE']=='VIDY_UPAKOVOK'):?>
                                 <?elseif($arItem['CODE']==ID_PROPERTY_COUNT):?>
@@ -721,11 +726,10 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 																			<?elseif($arItem['CODE']=="POKRYTIE" || $arItem['CODE']=="GOLOVKA" || $arItem['CODE']=="MATERIAL" || $arItem['CODE']=="KONETS" || $arItem['CODE']=="REZBA" || $arItem['CODE']=="BREND" || $arItem['CODE']=="RAZMER_POD_KLYUCH_MM" || $arItem['CODE']=="KLASS_PROCHNOSTI" || $arItem['CODE']=="SHAG_REZBY_MM"):?>
 																			<ul class="checkbox__items">
 																			<?$i=0?>
-																			<?if ($arItem["ID"]==132) $run_hidden = true;?>
                                                                                 <?foreach($arItem["VALUES"] as $val => $ar):?>
 																				
 																				<?$i++?>
-																				<?if(($i==5 && $run_hidden==false) || ($run_hidden==true && $i==1)):?>
+																				<?if(($i==3 && $run_hidden==false) || ($run_hidden==true && $i==1)):?>
 																				<div class="checkbox__box">
 																				<?endif?>																				
 																					
@@ -740,15 +744,15 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 	                                                                                    <div class="checkbox__text"><?=CIBlockPropertyEnum::GetByID($ar["VALUE"])['VALUE']?></div>
 	                                                                                </label>
 	                                                                            </li> 
-																				<?if((($i>=5 && $run_hidden==false) || $run_hidden==true) && $i==count($arItem["VALUES"])):?>																				
-																				</div><div class="checkbox__else checkbox__else--type01"><span>Еще</span>
+																				<?if((($i>=3 && $run_hidden==false) || $run_hidden==true) && $i==count($arItem["VALUES"])):?>														
+																				</div><?if($run_hidden==false):?><div class="checkbox__else checkbox__else--type01"><span>Еще</span>
 																				</div><?endif?>
+																				<?endif?>
                                                                                 <?endforeach;?>
                                                                             </ul>
                                                                         <?else:?>
                                                                             <ul class="checkbox__items checkbox__item--line">
 																			<?$i=0?>
-																			<?if ($arItem["ID"]==132) $run_hidden = true;?>
                                                                                 <?foreach($arItem["VALUES"] as $val => $ar):?>
 																				
 																				<?$i++?>
@@ -769,8 +773,8 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 	                                                                            </li> 
 
 																				<?if((($i>=13 && $run_hidden==false)  || $run_hidden==true) && $i==count($arItem["VALUES"])):?>																				
-																				</div><div class="checkbox__else checkbox__else--type01"><span>Еще</span>
-																				</div><?endif?>																				
+																				</div><?if($run_hidden==false):?><div class="checkbox__else checkbox__else--type01"><span>Еще</span>
+																				</div><?endif?><?endif?>																					
                                                                                 <?endforeach;?>
                                                                             </ul>
                                                                         
