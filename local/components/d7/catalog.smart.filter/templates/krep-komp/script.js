@@ -908,3 +908,9 @@ BX.Iblock.SmartFilter = (function()
 
 	return SmartFilter;
 })();
+
+$(document).ready(function(){
+	$('.row.bx-filter-parameters-box-container').each(function(i,elem) {
+		//if(parseInt($(elem).html().length)==280) $(elem).parent().hide(); //Костыль на скрытие пустых пунктов
+	});	
+});

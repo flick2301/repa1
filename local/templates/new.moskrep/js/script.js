@@ -55,18 +55,44 @@ $(document).on('click', '.category-blocknew .category-blocknew__list.open span',
 });
 
 
-$(document).on('click', '.bx-filter-section.container-fluid .checkbox__else--type01 span', function() {  
+$(document).on('click', '.bx-filter-section.container-fluid .checkbox__else--type01:not(.colors) span', function() {  
 	if ($(this).hasClass('open')) {
 		$(this).removeClass('open');
 		$(this).parent().prev().hide();
 		$(this).text('Еще');
 	}	
 	else {
-		$(this).addClass('open')
+		$(this).addClass('open');
 		$(this).parent().prev().css('display', 'flex');
 		$(this).text('Свернуть');
 	}	
 }); 
+
+$(document).on('click', '.bx-filter-section.container-fluid .checkbox__else--type01.colors span', function() {
+	if ($(this).hasClass('open')) {
+		$(this).removeClass('open');
+		$('.bx-filter-section.container-fluid .checkbox__item--color').removeClass('full');
+		$(this).text('Еще');
+	}	
+	else {
+		$(this).addClass('open');
+		$('.bx-filter-section.container-fluid .checkbox__item--color').addClass('full');
+		$(this).text('Свернуть');
+	}	
+}); 
+	
+
+$(document).on('click', '.main-filter .s18-title.opening', function() {  
+	if ($(this).hasClass('open')) {
+		$(this).removeClass('open');
+		$(this).parent().next().children().children().children().hide();	
+	}	
+	else {
+		$(this).addClass('open');
+		$(this).parent().next().children().children().children().css('display', 'flex');
+	}	
+});
+
 
 
 
