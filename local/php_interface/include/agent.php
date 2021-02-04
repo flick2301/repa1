@@ -69,6 +69,7 @@ function AgentCheckCatalogProps(){
 
         // Установим новое значение для данного свойства данного элемента
         CIBlockElement::SetPropertyValuesEx($ELEMENT_ID, false, array($PROPERTY_CODE => $PROPERTY_VALUE));
+		
         
     }
     
@@ -88,6 +89,7 @@ function AgentCheckCatalogProps(){
 
         // Установим новое значение для данного свойства данного элемента
         CIBlockElement::SetPropertyValuesEx($ELEMENT_ID, false, array($PROPERTY_CODE => $PROPERTY_VALUE));
+		\Bitrix\Main\Diag\Debug::dumpToFile($ELEMENT_ID, "", '/upload/net_akc.txt');
         
     }
     
@@ -124,6 +126,7 @@ function AgentCheckCatalogProps(){
         
         // Установим новое значение для данного свойства данного элемента
         CIBlockElement::SetPropertyValuesEx($ELEMENT_ID, false, array($PROPERTY_CODE => $PROPERTY_VALUE));
+		\Bitrix\Main\Diag\Debug::dumpToFile($ELEMENT_ID, "", '/upload/net_v_nal.txt');
         
     }
     
