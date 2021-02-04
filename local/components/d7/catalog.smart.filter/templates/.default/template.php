@@ -728,7 +728,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 															id="<? echo $ar["CONTROL_ID"] ?>"
 															<? echo $ar["CHECKED"]? 'checked="checked"': '' ?>
 															onclick="smartFilter.click(this)" class="checkbox__input"></div>
-	                                                                                    <div class="checkbox__text"><?=CIBlockPropertyEnum::GetByID($ar["VALUE"])['VALUE']?></div>
+	                                                                                    <div class="checkbox__text 1"><?=CIBlockPropertyEnum::GetByID($ar["VALUE"])['VALUE']?></div>
 	                                                                                </label>
 	                                                                            </li> 
                                                                                 <?endforeach;?>
