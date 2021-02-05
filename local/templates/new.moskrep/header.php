@@ -97,7 +97,6 @@ $APPLICATION->IncludeFile(
 
 <?$APPLICATION->ShowCSS()?>
 <?$APPLICATION->ShowHeadStrings()?>
-<?$APPLICATION->ShowHeadScripts()?> 
         <?CJSCore::Init(array('jquery3'));?>
 	<?
 	$rand = "?".rand();
@@ -109,6 +108,7 @@ $APPLICATION->IncludeFile(
 	if (IPHONE=="Y") $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/iphone.css", true);	
 	else $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/dieapple.css", true);
 	
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.maskedinput.min.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.fancybox.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/datalayer.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");
