@@ -82,7 +82,7 @@ $(document).on('click', '.bx-filter-section.container-fluid .checkbox__else--typ
 }); 
 	
 
-$(document).on('click', '.main-filter .s18-title.opening', function() {  
+$(document).on('click', '.main-filter .s18-title.opening:not(.colors)', function() {  
 	if ($(this).hasClass('open')) {
 		$(this).removeClass('open');
 		$(this).parent().next().children().children().children().hide();	
@@ -94,8 +94,46 @@ $(document).on('click', '.main-filter .s18-title.opening', function() {
 });
 
 
+$(document).on('click', '.main-filter .s18-title.opening.colors', function() {  
+	if ($(this).hasClass('open')) {
+		$(this).removeClass('open');
+		$('.bx-filter-section.container-fluid .checkbox__item--color').removeClass('full');
+	}	
+	else {
+		$(this).addClass('open');
+		$('.bx-filter-section.container-fluid .checkbox__item--color').addClass('full');
+	}	
+});
+
 
 
 //$('.category-blocknew .category-blocknew__list').hide();
 $('.category-blocknew .category-blocknew__title:first-child span').trigger('click');
+});
+
+
+
+
+
+BX.ready(function(){
+	$("#soa-property-14").mask("+7 (999) 999-99-99");
+	$("#soa-property-3").mask("+7 (999) 999-99-99");
+	click_phone = true;
+	
+$(document).on('keyup', '#soa-property-10', function(e) {
+	$(this).val($(this).val().replace(/[^0-9]+/, ""));
+});	
+
+$(document).on('click', 'input[name=PERSON_TYPE]', function(e) {
+	click_phone = false;
+});
+
+$(document).on('click', '#soa-property-14, #soa-property-3', function(e) {
+	
+	if (click_phone==false) {
+		$("#soa-property-14").mask("+7 (999) 999-99-99");
+		$("#soa-property-3").mask("+7 (999) 999-99-99");
+		click_phone = true;
+	}
+});	
 });

@@ -1,3 +1,4 @@
+
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 /** @var array $arParams */
 /** @var array $arResult */
@@ -148,7 +149,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 				foreach($arResult["ITEMS"] as $key=>$arItem)
 				{
 				
-				if ($arItem["ID"]==127) $run_hidden = true;
+				if ($arItem["ID"]==127 || true) $run_hidden = true;
 				if(count($arItem["VALUES"])>0)
 				{
 					if(
@@ -169,7 +170,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 						
 						<div class="bx-filter-parameters-box-title" onclick="/*smartFilter.hideFilterProps(this)*/">
 							<?if($arItem['CODE']!="FOR_SALE" && $arItem['CODE']!="IN_STOCK" && $arItem['CODE']!='VIDY_UPAKOVOK_OLD'):?>
-                                                            <div class="s18-title <?if($run_hidden && $arItem["ID"]!=127):?>opening<?endif?>"><?=$arItem["NAME"]?>
+                                                            <div class="s18-title <?if($run_hidden):?>opening<?endif?> <?if ($arItem["ID"]==127):?>colors<?endif?>"><?=$arItem["NAME"]?>
 								<?if ($arItem["FILTER_HINT"] <> ""):?>
 									<i id="item_title_hint_<?echo $arItem["ID"]?>" class="fa fa-question-circle"></i>
 									<script type="text/javascript">
@@ -688,7 +689,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 											</li>
                                                                                 <?endforeach;?>
                                                                             </ul>
-																			<div class="checkbox__else checkbox__else--type01 colors"><span>Еще</span></div>
+																			<!--<div class="checkbox__else checkbox__else--type01 colors"><span>Еще</span></div>-->
                                                                             <a href="javascript:void(0);" class="checkbox-color__all disable">Показать ещё</a>
                                 <?elseif($arItem['CODE']=='VIDY_UPAKOVOK_OLD'):?>
                                 <?elseif($arItem['CODE']==ID_PROPERTY_COUNT):?>
@@ -730,7 +731,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
                                                                                 <?foreach($arItem["VALUES"] as $val => $ar):?>
 																				
 																				<?$i++?>
-																				<?if(($i==3 && $run_hidden==false) || ($run_hidden==true && $i==1)):?>
+																				<?if(($i==300 && $run_hidden==false) || ($run_hidden==true && $i==1)):?>
 																				<div class="checkbox__box">
 																				<?endif?>																				
 																					
@@ -745,7 +746,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 	                                                                                    <div class="checkbox__text"><?=CIBlockPropertyEnum::GetByID($ar["VALUE"])['VALUE']?></div>
 	                                                                                </label>
 	                                                                            </li> 
-																				<?if((($i>=3 && $run_hidden==false) || $run_hidden==true) && $i==count($arItem["VALUES"])):?>														
+																				<?if((($i>=300 && $run_hidden==false) || $run_hidden==true) && $i==count($arItem["VALUES"])):?>														
 																				</div><?if($run_hidden==false):?><div class="checkbox__else checkbox__else--type01"><span>Еще</span>
 																				</div><?endif?>
 																				<?endif?>
@@ -757,7 +758,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
                                                                                 <?foreach($arItem["VALUES"] as $val => $ar):?>
 																				
 																				<?$i++?>
-																				<?if(($i==13 && $run_hidden==false)  || ($run_hidden==true && $i==1)):?>
+																				<?if(($i==1300 && $run_hidden==false)  || ($run_hidden==true && $i==1)):?>
 																				<div class="checkbox__box">
 																				<?endif?>	
 																				
@@ -773,7 +774,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 	                                                                                </label>
 	                                                                            </li> 
 
-																				<?if((($i>=13 && $run_hidden==false)  || $run_hidden==true) && $i==count($arItem["VALUES"])):?>																				
+																				<?if((($i>=1300 && $run_hidden==false)  || $run_hidden==true) && $i==count($arItem["VALUES"])):?>																				
 																				</div><?if($run_hidden==false):?><div class="checkbox__else checkbox__else--type01"><span>Еще</span>
 																				</div><?endif?><?endif?>																					
                                                                                 <?endforeach;?>

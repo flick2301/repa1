@@ -1410,6 +1410,9 @@ img.intro-slider__image {
 
 
 @media (max-width: 740px) {
+.catalog-table__column--basic.is-merged div strong {
+    display: inline;
+}	
 .global-search__hint.global-search__hint--lite.moskrep_submit, .surface-block, .tech_title, table.tech {
 	display: none;
 }
