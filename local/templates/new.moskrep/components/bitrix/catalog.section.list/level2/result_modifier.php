@@ -308,6 +308,14 @@ if($arResult['SECTION']['UF_VID_KREPEZH'])
 {
 	$GLOBALS['Filter_seo']["PROPERTY_VID_KREPEZH_VALUE"]=$arResult['SECTION']['UF_VID_KREPEZH'];
 }
+if($arResult['SECTION']['UF_PO_PRIMENENIYU'])
+{
+	$GLOBALS['Filter_seo']["PROPERTY_PO_PRIMENENIYU_VALUE"]=$arResult['SECTION']['UF_PO_PRIMENENIYU'];
+}
+if($arResult['SECTION']['UF_GOLOVKA'])
+{
+	$GLOBALS['Filter_seo']["PROPERTY_GOLOVKA_VALUE"]=$arResult['SECTION']['UF_GOLOVKA'];
+}
 
 foreach($arResult['SECTIONS'] as $key=>$arSection){
     

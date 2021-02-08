@@ -13,12 +13,12 @@ $APPLICATION->SetTitle("Import");
 <div class="import-block-img"><img src="./img/import04.png" class="import-block-img-title" alt="Import"></div>
 <div class="import-block-img-mobile"><img src="./img/import04.png" class="import-block-img-mobile-title" alt="Import"></div>
 
-<p>Our company ООО «KREP-KOMP» holds leading position in the market of steel fasteners in Russia.
+<p>Our company LLC «KREP-KOMP» holds leading position in the market of steel fasteners in Russia.
 We are open for a new cooperation with suppliers and manufacturers of screws, drywall screws, roofing screws, bolts, nuts, nails, washers, double thread screws, different types of anchors, rigging etc.
 If you want to become our supplier, contact with Foreign Trade Department: <a href="mailto:hello@krep-komp.ru">hello@krep-komp.ru</a></p><br />
 
 <p>Наша компания ООО «КРЕП-КОМП» занимает лидирующие позиции на рынке стального крепежа в России.
-Мы открыты для нового сотрудничества с поставщиками и производителями шурупов, шурупов для гипсокартона, кровельных шурупов, болтов, гаек, гвоздей, шайб, шурупов с двойной резьбой, различных типов анкеров, такелажа и т.д.<br />
+Мы открыты для нового сотрудничества с поставщиками и производителями винтов, саморезов, кровельных саморезов, болтов, гаек, гвоздей, шайб, шурупов-шпилек, различных типов анкеров, такелажа и т.д.<br />
 Если вы хотите стать нашим поставщиком, обращайтесь в Департамент внешней торговли: <a href="mailto:hello@krep-komp.ru">hello@krep-komp.ru</a></p>
 
 
