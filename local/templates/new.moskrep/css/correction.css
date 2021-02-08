@@ -1070,20 +1070,21 @@ ol.tech li {
   right: 13px;	
 }
 .page_count_panel .page_count_panel_block select {
-	border: 2px solid #F0F0F0;
-	box-sizing: border-box;
-	border-radius: 2px;
-	cursor: pointer;
-	padding-left: 19px;
-	padding-right: 39px;
-	padding-top: 9px;
-    padding-bottom: 8px;	
-	font-size: 13px;
-	outline: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	height: 100%;
+    border: 2px solid #F0F0F0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    cursor: pointer;
+    padding-left: 19px;
+    padding-right: 39px;
+    padding-top: 9px;
+    padding-bottom: 8px;
+    font-size: 13px;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 100%;
+	max-height: 41px;
 }	
 #top_under_menu .call-back {
 	color: #000;
@@ -1113,7 +1114,7 @@ ol.tech li {
 	padding-left: 6px;
 	position: relative;
 	right: -20px;
-	padding-right: 90px;	
+	padding-right: 100px;	
 }
 .category-blocknew .category-blocknew__list .category-blocknew-block {
 	display: flex;
@@ -1122,7 +1123,7 @@ ol.tech li {
 	position: relative;
 	height: 43px;
 	overflow: hidden;
-	padding-right: 70px;
+	padding-right: 100px;
 }
 .category-blocknew .category-blocknew__list.open span {
 	position: absolute;
@@ -1152,7 +1153,19 @@ ol.tech li {
 	top: 5px;
 	left: calc(100% - 12px);
     content: " ";	
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);	
 }
+.category-blocknew .category-blocknew__list.open.opening span::after {	
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}	
 .main-nav__item.is-active .main-nav__link {
 	color: #4F36E3;
 }
@@ -1426,6 +1439,12 @@ img.intro-slider__image {
 	height: 44px;
 	font-size: 20px;
 	line-height: 24px;
+}
+.catalog-desc__data {
+	display: none;
+}
+.catalog-desc__about {
+	display: none;
 }
 }
 

@@ -377,7 +377,7 @@ global $APPLICATION;
         ?>
         <div class="div_h3 category-blocknew__title open opening"><span><?=$sortSection["NAME"]?>:</span></div>
         <ul class="category-blocknew__list open opening">
-		<span>Еще</span>
+		<?if(count($sortSection['ITEMS'])>1):?><span>Еще</span><?endif?>
         <?$i=0;?>
         <?foreach($sortSection['ITEMS'] as $sort_item):?>
             <?$i++;?>
