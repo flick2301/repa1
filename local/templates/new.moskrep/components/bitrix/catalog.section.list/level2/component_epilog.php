@@ -32,6 +32,22 @@ if($arResult['REFERENCE']['ITEM']['ID']!=''):
         $APPLICATION->SetPageProperty('title', $IPROPERTY['SECTION_META_TITLE']);
         $APPLICATION->SetPageProperty('description', $IPROPERTY['SECTION_META_DESCRIPTION']);
         $APPLICATION->SetPageProperty('keywords', $IPROPERTY['SECTION_META_KEYWORDS']);
+		
+		if($arResult['SECTION']["UF_META_TITLE_MSK"] && $_SERVER['HTTP_HOST'] != 'spb.krep-komp.ru')
+		{
+			$APPLICATION->SetPageProperty('title', $arResult['SECTION']["UF_META_TITLE_MSK"]);
+		}elseif($arResult['SECTION']["UF_META_TITLE"] && $_SERVER['HTTP_HOST'] == 'spb.krep-komp.ru')
+		{
+			$APPLICATION->SetPageProperty('title', $arResult['SECTION']["UF_META_TITLE"]);
+		}
+		
+		if($arResult['SECTION']["UF_META_DESCRIPTION_MSK"] && $_SERVER['HTTP_HOST'] != 'spb.krep-komp.ru')
+		{
+			$APPLICATION->SetPageProperty('description', $arResult['SECTION']["UF_META_DESCRIPTION_MSK"]);
+		}elseif($arResult['SECTION']["UF_META_DESCRIPTION_SPB"] && $_SERVER['HTTP_HOST'] == 'spb.krep-komp.ru')
+		{
+			$APPLICATION->SetPageProperty('description', $arResult['SECTION']["UF_META_DESCRIPTION_SPB"]);
+		}
     endif;
 
 if($arResult['REFERENCE']['ITEM']['ID']=='' && $arResult["SECTION"]["ID"]==''){

@@ -7847,6 +7847,16 @@ for (var key in this.result.DELIVERY_GROUPS) {
 
 		isValidForm: function()
 		{
+			
+			if ($('#soa-property-10').val() && $('#soa-property-10').val().length!=10 && $('#soa-property-10').val().length!=12) {
+							
+				$('.bx-soa-section-content.container-fluid > .alert-danger').html('Неверный формат поля "ИНН"');
+				$('.bx-soa-section-content.container-fluid > .alert-danger').show();
+				this.animateScrollTo(this.propsBlockNode, 800, 50);
+				
+				return;
+			}			
+			
 			if (!this.options.propertyValidation)
 				return true;
 

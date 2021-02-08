@@ -301,7 +301,19 @@ global $APPLICATION;
 	 <div class="basic-layout__columns basic-layout__columns--reverse">
 		  <div lass="basic-layout__content full">
 		  
-<?globalGetTitle($arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] ? $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] : $arResult["SECTION"]["NAME"])?>	
+		  <?
+		  if($arResult['SECTION']["UF_H1_MSK"] && $_SERVER['HTTP_HOST'] != 'spb.krep-komp.ru')
+		  {
+			$h1_section = $arResult['SECTION']["UF_H1_MSK"];
+		  }elseif($arResult['SECTION']["UF_H1_SPB"] && $_SERVER['HTTP_HOST'] == 'spb.krep-komp.ru')
+		  {
+			$h1_section = $arResult['SECTION']["UF_H1_SPB"];
+		  }else
+		  {
+			  $h1_section = $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] ? $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] : $arResult["SECTION"]["NAME"];
+		  }
+		  ?>
+<?globalGetTitle($h1_section)?>	
 
 
 <?if($arParams['TYPE_TEMPLATE']!='BOTTOM')
@@ -399,7 +411,27 @@ if($arResult['SORTING']['SECTION_ID']){
 ?>	
 	<!--category-blocknew-->
             <div class="basic-layout__module category-blocknew">
+			
 	<?
+	//Если по шаблону категории должны быть под таблицей
+	if($arParams['TYPE_TEMPLATE']=='BOTTOM')
+	{
+		?><div class="div_h3 category-blocknew__title"><span>Основные категории</span></div>
+		<ul class="category-blocknew__list">
+        <?$i=0;?><?
+		foreach ($arResult['SECTIONS'] as &$arSection)
+		{
+			$i++;
+		?>
+			<li class="category-blocknew__item">
+                <a href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" class="category-block__link">
+                    <?=($arSection['UF_SHORT_NAME']) ? $arSection['UF_SHORT_NAME']: $arSection['NAME'];?>
+                </a>
+            </li>
+		
+		<?}?>
+		</ul><?
+	}
     foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
         
         ?>
