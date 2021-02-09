@@ -1172,6 +1172,16 @@ ol.tech li {
 .website-navbar__primary .main-nav__list .main-nav__item:first-child a {
 	color: #4F36E3!important;	
 }
+.table-of-contents {
+    border: 1px solid #979797;
+    border-radius: 10px;
+	margin-top: 20px;
+}
+.table-of-contents__link {
+    color: #4F36E3;
+}
+
+
 
 
 @media (min-width: 1261px) {

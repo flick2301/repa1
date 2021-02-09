@@ -20,7 +20,11 @@
 <?if (!in_array($APPLICATION->GetCurPage(), $page_footer_menu)):?>
 		<aside class="basic-layout__sidebar">
             <!--table-of-contents-->
-		<?/*$APPLICATION->IncludeComponent(
+
+	<?=$APPLICATION->ShowViewContent('RELINK');?>
+	<?=$APPLICATION->ShowViewContent("smart_filter");?>
+
+<?$APPLICATION->IncludeComponent(
 	"bitrix:menu", 
 	"left_bottom", 
 	array(
@@ -44,10 +48,8 @@
 		"ALLOW_MULTI_SELECT" => "N"
 	),
 	false
-);*/?>
+);?>	
 	
-	<?=$APPLICATION->ShowViewContent('RELINK');?>
-	<?=$APPLICATION->ShowViewContent("smart_filter");?>
          </aside>
 <?endif?>
 
