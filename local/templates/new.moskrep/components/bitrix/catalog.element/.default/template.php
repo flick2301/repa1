@@ -376,7 +376,7 @@ dataLayer.push({
                                     <td>от 100 000 руб</td>
                                  </tr>
                                  <tr>
-                                    <th>13%</th>
+                                    <th>15%</th>
                                     <td>от 500 000 руб</td>
                                  </tr>
                                  <!--<tr>
