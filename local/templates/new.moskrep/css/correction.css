@@ -1427,6 +1427,12 @@ img.intro-slider__image {
 	font-size: 20px;
 	line-height: 24px;
 }
+.catalog-desc__data {
+	display: none;
+}
+.catalog-desc__about {
+	display: none;
+}
 }
 
 
