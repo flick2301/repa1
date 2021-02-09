@@ -107,9 +107,31 @@ $(document).on('click', '.main-filter .s18-title.opening.colors', function() {
 
 
 
+	$(window).resize(function() {
+        elseTest();
+    });
+
+
+
 //$('.category-blocknew .category-blocknew__list').hide();
 $('.category-blocknew .category-blocknew__title:first-child span').trigger('click');
+
+
+elseTest();
 });
+
+var else_view = false;
+var else_test = false; 
+
+function elseTest() {
+	$('.category-blocknew .category-blocknew__list.open.opening .category-blocknew__item').each(function(i,elem) {
+	else_test = true;
+	if ($(elem).position().top > 0) else_view = true;
+});
+
+if (!else_view) $('.category-blocknew .category-blocknew__list.open span').hide();
+else if (else_test) $('.category-blocknew .category-blocknew__list.open span').show();
+}
 
 
 
