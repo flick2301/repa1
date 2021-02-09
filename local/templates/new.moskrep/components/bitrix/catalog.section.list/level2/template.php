@@ -370,26 +370,25 @@ global $APPLICATION;
 		<!--category-blocknew-->
             <div class="basic-layout__module category-blocknew">
 	<?
-	$i = 0;
-    foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
-		if ($i) break;
-        $i++;
-        ?>
-        <div class="div_h3 category-blocknew__title open opening"><span><?=$sortSection["NAME"]?>:</span></div>
-        <ul class="category-blocknew__list open opening">
-		<?if(count($sortSection['ITEMS'])>1):?><span>Еще</span><?endif?>
-        <?$i=0;?>
-        <?foreach($sortSection['ITEMS'] as $sort_item):?>
-            <?$i++;?>
-            <li class="category-blocknew__item">
-                <a href="<?=($sort_item['LINK_TARGET']['VALUE']) ? $sort_item['LINK_TARGET']['VALUE'] : $sort_item['CODE'].'/';?>" <?=($sort_item['LINK_TARGET']['VALUE']) ? "target='_self'" : "";?> class="category-block__link">
-                    <?=$sort_item['NAME']?>
+	//Если по шаблону категории должны быть под таблицей
+	if($arParams['TYPE_TEMPLATE']=='BOTTOM')
+	{
+		?><div class="div_h3 category-blocknew__title"><span>Основные категории</span></div>
+		<ul class="category-blocknew__list">
+        <?$i=0;?><?
+		foreach ($arResult['SECTIONS'] as &$arSection)
+		{
+			$i++;
+		?>
+			<li class="category-blocknew__item">
+                <a href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" class="category-block__link">
+                    <?=($arSection['UF_SHORT_NAME']) ? $arSection['UF_SHORT_NAME']: $arSection['NAME'];?>
                 </a>
             </li>
-	<?endforeach;?>
-        </ul>
-        <?
-    }
+		
+		<?}?>
+		</ul><?
+	}
 	?></div>
 
 	<!--category-blocknew-->
@@ -413,25 +412,7 @@ if($arResult['SORTING']['SECTION_ID']){
             <div class="basic-layout__module category-blocknew">
 			
 	<?
-	//Если по шаблону категории должны быть под таблицей
-	if($arParams['TYPE_TEMPLATE']=='BOTTOM')
-	{
-		?><div class="div_h3 category-blocknew__title"><span>Основные категории</span></div>
-		<ul class="category-blocknew__list">
-        <?$i=0;?><?
-		foreach ($arResult['SECTIONS'] as &$arSection)
-		{
-			$i++;
-		?>
-			<li class="category-blocknew__item">
-                <a href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" class="category-block__link">
-                    <?=($arSection['UF_SHORT_NAME']) ? $arSection['UF_SHORT_NAME']: $arSection['NAME'];?>
-                </a>
-            </li>
-		
-		<?}?>
-		</ul><?
-	}
+	
     foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
         
         ?>
