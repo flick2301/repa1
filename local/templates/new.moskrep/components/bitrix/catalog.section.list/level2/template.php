@@ -321,7 +321,7 @@ global $APPLICATION;
 	?>
 
 <!--catalog-feed-->
-    <div class="basic-layout__module catalog-feed">
+    <div class="basic-layout__module basic-layout__module__sections catalog-feed">
         <div class="catalog-feed__list">
 <?
     foreach ($arResult['SECTIONS'] as &$arSection)

@@ -81,6 +81,7 @@ Disallow: /rk.php
 Disallow: /*&set_filter=y
 Disallow: /*?baobab_event_id=
 Disallow: /*?keyword
+Disallow: /*?reference
 Disallow: /*?set_filter=y
 Disallow: /*?arrFilter_
 Disallow: /*?s=

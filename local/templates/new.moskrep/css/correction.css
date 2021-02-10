@@ -1185,6 +1185,9 @@ ol.tech li {
 
 
 @media (min-width: 1261px) {
+.basic-layout__module__sections {
+	min-width: 1216px;
+}	
 .catalog-feed__list {
 	margin: 0 -10px;
 }
@@ -1942,7 +1945,7 @@ main {
 }
 .catalog-feed__item .catalog-card .catalog-card__title a {
     font-size: 20px;
-	font-weight: 600;
+	font-weight: 500;
 	line-height: 27px;
 	text-align: center;	
 	display: block;
