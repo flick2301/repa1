@@ -1199,11 +1199,6 @@ ol.tech li {
     max-width: 307px;
     padding: 0 10px;
 }	
-.catalog-feed__item__withpic {	
-	flex: 0 0 202px;
-    max-width: 202px;
-    padding: 0 21px;
-}
 }
 
 
@@ -1421,8 +1416,8 @@ img.intro-slider__image {
 	height: 100px;
 	vertical-align: middle;
 }
-.catalog-feed__list {
-	margin-top: 0;
+.catalog-feed__item__withpic {
+    margin: 0 10px 21px!important;	
 }
 }
 
@@ -1838,6 +1833,9 @@ main {
 .page_count_panel .page_count_panel_viewblock {
 	margin-right: 20px;
 }
+.catalog-feed__item__withpic {
+    margin: 0 7px 21px!important;	
+}
 }
 
 
@@ -1967,9 +1965,13 @@ main {
 	min-height: 106px;
 }
 .catalog-feed__item__withpic {
-	width: 202px;
+	width: 160px;
 	height: 147px;
-	padding: 0 21px;
+	flex: 0 0 160px;
+    max-width: 160px;
+    margin: 0 20.5px 21px;	
+	box-sizing: padding-box;
+	padding: 0;
 }
 .catalog-feed__item__withpic .catalog-card .catalog-card__title {
 	border-radius: 0px;
