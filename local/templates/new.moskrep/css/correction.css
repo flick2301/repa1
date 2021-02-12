@@ -1970,7 +1970,6 @@ main {
 	flex: 0 0 160px;
     max-width: 160px;
     margin: 0 20.5px 21px;	
-	box-sizing: padding-box;
 	padding: 0;
 }
 .catalog-feed__item__withpic .catalog-card .catalog-card__title {
@@ -1991,20 +1990,26 @@ main {
 	border-radius: 10px;
 	border: 0 solid transparent;
 	background: #f0f0f0;
-	justify-content: center;
+	justify-content: space-between;
 	min-height: 106px;
 	flex-direction: column;
 }
-
+.catalog-feed__item__withpic.catalog-feed__item__white .catalog-card {
+	background: #fff;	
+	border: 1px solid #f0f0f0;
+	overflow: hidden;
+}
 element.style {
 }
 .catalog-feed__item__withpic .catalog-card__cover {
-    display: block;
+	display: flex;
+	align-content: center;
+	overflow: hidden;
     width: 100px;
     min-width: 80px;
     height: 80px;
     margin-right: 0;
-	margin-top: 10px;
+	margin-top: 13px;
 	margin-bottom: 0;
 }
 .catalog-feed__item .catalog-card:hover {

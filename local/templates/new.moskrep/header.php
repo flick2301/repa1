@@ -521,10 +521,13 @@ $APPLICATION->IncludeFile(
 	<?
 	}
 	?>
-
+<?if(ERROR_404 != "Y")
+{
+	?>
 <!--Разделы каталога-->
 		  <?$APPLICATION->ShowViewContent('catalog_section');?>
-<!--Разделы каталога-->		  
+<!--Разделы каталога-->	
+<?}?>	  
 
       <div class="basic-layout__columns basic-layout__columns--reverse">
          <div class="basic-layout__content<?if (CSite::InDir('/index.php') && SITE_ID!='s2'):?> full<?endif?>">

@@ -140,6 +140,7 @@ else if (else_test) $('.category-blocknew .category-blocknew__list.open span').s
 BX.ready(function(){
 	$("#soa-property-14").mask("+7 (999) 999-99-99");
 	$("#soa-property-3").mask("+7 (999) 999-99-99");
+	$(".phonemask").mask("+7 (999) 999-99-99");
 	click_phone = true;
 	
 $(document).on('keyup', '#soa-property-10', function(e) {
