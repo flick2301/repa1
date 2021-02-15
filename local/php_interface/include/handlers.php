@@ -1090,3 +1090,31 @@ function OnEpilogHandler() {
         $GLOBALS['APPLICATION']->SetPageProperty('description', $description.' (страница '.intval($_GET['PAGEN_5']).')');        
      }
   }
+  
+  
+
+
+ 
+$eventManager = \Bitrix\Main\EventManager::getInstance();
+$eventManager->addEventHandler('', 'SalePriceOnUpdate', 'OnUpdate');
+ 
+function OnUpdate(\Bitrix\Main\Entity\Event $event) {
+    $params = $event->getParameter("id");
+//id обновляемого элемента
+    $id = $params["ID"];
+ 
+    $entity = $event->getEntity();
+    $entityDataClass = $entity->GetDataClass();
+	
+if ($entityDataClass != "\SalePriceTable")	return;
+
+// тип события. вернет ColorsOnUpdate
+    $eventType = $event->getEventType();
+// получаем массив полей хайлоад блока
+    $arFields = $event->getParameter("fields");
+	
+	if($arFields["UF_FILE"]["tmp_name"]) copy($arFields["UF_FILE"]["tmp_name"], $_SERVER["DOCUMENT_ROOT"].$arFields["UF_SALE_LINK"]);
+
+	
+	//file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arFields, true).print_r($entityDataClass, true));
+}	
