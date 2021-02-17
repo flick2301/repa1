@@ -221,7 +221,7 @@ $APPLICATION->IncludeFile(
 	<header class="basic-layout__header">
 	<?=$safari?>
 	
-	<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; color:#000; font-size:16px;'>Уважаемые клиенты! Наш интернет-магазин и все точки самовывоза не работают в период с 21.02.2021 по 23.02.2021<span style='color: #f39101;'></span></strong>  <svg class="icon-svg -cross close-svg" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg></div> </div> </div>
+	<!--<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; color:#000; font-size:16px;'>Уважаемые клиенты! Наш интернет-магазин и все точки самовывоза не работают в период с 21.02.2021 по 23.02.2021<span style='color: #f39101;'></span></strong>  <svg class="icon-svg -cross close-svg" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg></div> </div> </div>-->
 	
 	
 	
