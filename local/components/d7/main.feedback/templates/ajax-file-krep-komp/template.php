@@ -93,6 +93,13 @@ dataLayerSendForm();//Отправка формы в DataLayer
 				<input required="true" type="text" name="user_email" placeholder="<?=GetMessage("MFT_EMAIL")?>*" value="<?=$arResult["AUTHOR_EMAIL"]?>" class="simple-input send-a-request__input">
             </div>
 			
+<div id='<?echo ($arParams['HEADER_FORM']=='Y') ? 'header_' : '';?>user_file' class="send-a-request__file">
+  <label for="custom-file-upload" class="filupp">
+    <span class="filupp-file-name js-value">Вы можете добавить свой фаил</span>
+    <input name="UPLOAD_FILES" type="file" value="1" id="custom-file-upload">
+  </label>			
+</div>			
+			
             <div class="send-a-request__item">
                 <label class="send-a-request__label" for="send-a-request__text"></label>
 				<textarea required="true" name="MESSAGE" placeholder="<?=GetMessage("MFT_MESSAGE")?>*" class="simple-textarea send-a-request__textarea"><?=$arResult["MESSAGE"]?></textarea>
@@ -108,8 +115,6 @@ dataLayerSendForm();//Отправка формы в DataLayer
     <p class="send-a-request__desc">Просто оставьте свои контактные данные и комментарий. Ваши данные сохранены в соответствии с политикой <a class="underline blue" target="_blank" href="/privacy/">конфиденциальности сайта</a>. А менеджер свяжется с вами в рабочее время и оформит заказ</p>
 
 	<div class="send-a-request__footer">
-	
-            <div class="send-a-request__file"><input id='<?echo ($arParams['HEADER_FORM']=='Y') ? 'header_' : '';?>user_file' name="UPLOAD_FILES" type="file"></div>
 			
           <!--  <a href="javascript:void(0)" onclick="$('#<?echo ($arParams['HEADER_FORM']=='Y') ? 'header_' : '';?>user_file').click();" class="white-btn" style="visibility: hidden">Приложенный файл</a>-->
             <a href="javascript:void(0)" onclick="if (!$(this).hasClass('disable')) $('#<?echo ($arParams['HEADER_FORM']=='Y') ? 'header_feedback_form' : 'feedback_form';?>').submit();" class="blue-btn main-button send-a-request__submit disable">Оставить заявку</a>

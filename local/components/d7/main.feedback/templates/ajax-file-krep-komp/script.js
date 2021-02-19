@@ -15,6 +15,17 @@ $('#feedback_form input[required], #feedback_form textarea[required]').click(fun
 	$(this).removeClass('input-alert');
 	$('#feedback_form .send-a-request__form-errors').hide();
 });
+
+$('#user_file input[type="file"]').change(function(){
+    var value = $("#user_file input[type='file']").val();
+    $('#user_file .js-value').text(value);
+	$('#user_file .filupp').addClass('active');
+});
+
+
+
+
+
 	
 $('#feedback_form').submit(function(e) {
 
@@ -24,8 +35,6 @@ $('#feedback_form .send-a-request__form-reuslt').hide();
 $('#feedback_form input[required], #feedback_form textarea[required]').each(function(index,value){
 	if(!$(value).val()) $(value).addClass('input-alert');
 });
-
-
 
 //data = $(this).serialize();
 data = new FormData($(this).get(0));

@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"  && (!isset($_POST["PARAMS_HASH"]) || $a
 				$arResult["ERROR_MESSAGE"][] = GetMessage("MF_REQ_NAME");		
 			if((empty($arParams["REQUIRED_FIELDS"]) || in_array("EMAIL", $arParams["REQUIRED_FIELDS"])) && strlen($_POST["user_email"]) <= 1)
 				$arResult["ERROR_MESSAGE"][] = GetMessage("MF_REQ_EMAIL");
-			if((empty($arParams["REQUIRED_FIELDS"]) || in_array("MESSAGE", $arParams["REQUIRED_FIELDS"])) && strlen($_POST["MESSAGE"]) <= 3)
+			if((empty($arParams["REQUIRED_FIELDS"]) || in_array("MESSAGE", $arParams["REQUIRED_FIELDS"])) && strlen($_POST["MESSAGE"]) <= 1)
 				$arResult["ERROR_MESSAGE"][] = GetMessage("MF_REQ_MESSAGE");
 		}
 		if(strlen($_POST["user_email"]) > 1 && !check_email($_POST["user_email"]))

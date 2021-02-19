@@ -34,6 +34,7 @@
 }	
 #feedback_form .send-a-request textarea {
 	resize: none;
+	height: 97px;
 }
 #feedback_form .send-a-request__block--comment {
 	display: flex;
@@ -120,7 +121,7 @@
 	width: 100%;
 	margin-top: 27px;
 	padding-left: 300px;
-	background: url('images/bg_success.svg') 0 50%/ 231px 231px no-repeat; 
+	background: url('images/bg_success.svg') 0 50% / 231px 231px no-repeat; 
 	display: flex;
 	justify-content: flex-end;
 	margin-bottom: 10px;
@@ -141,21 +142,70 @@
 .send-a-request_success_info_choice {
 	color: #E7CE1B;
 }
-.send-a-request__file {
-	margin-bottom: 20px;
-	text-align: left;
-}
 #user_file {
-    appearance: initial;
-    background-color: initial;
-    cursor: pointer;
-    align-items: baseline;
-    color: inherit;
-    text-overflow: ellipsis;
-    white-space: pre;
-    padding: 0;
-    border: 0 solid transparent;
+	box-sizing: border-box;
+	position: relative;
+	margin-bottom: 0;
 }
+#user_file .filupp > input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+	border: 0
+}
+#user_file .filupp {
+	position: relative;
+	background: rgba(230, 228, 238, 0.35) url('./images/clip.svg') 50% 50% / 19px 19px no-repeat; 
+	display: block;
+	padding: 1em;
+	width: 30px;
+	height: 30px;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 50%;
+	position: absolute;
+	right: 5px;	
+	top: 25px;
+	z-index: 2;
+}
+#user_file .filupp:hover {
+	/*box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);*/
+}
+#user_file .filupp.active {
+	background: rgba(230, 228, 238, 0.35) url('./images/clip_active.svg') 50% 50% / 19px 19px no-repeat; 	
+	/*background-color: rgba(255, 214, 0, 0.35);*/
+}
+#user_file .filupp-file-name {
+	display: none;
+	background: #f1f1f1;
+	border-radius: 10px;
+	border-top-right-radius: 4px;
+	padding: 10px 16px;
+	font-size: 11px;
+	font-weight: 400;
+	color: #979797;
+	position: absolute;
+	top: 38px;
+	right: 6px;
+	white-space: nowrap;
+}
+#user_file .filupp-file-name::before {
+	border: 8px solid transparent;
+	border-bottom: 8px solid #f1f1f1;
+	content: " ";
+	display: block;
+	position: absolute;
+	top: -13px;
+	right: 2px;
+}
+#user_file .filupp:hover .filupp-file-name {
+	display: block;
+}
+
 
 
 @media (max-width: 1260px) {

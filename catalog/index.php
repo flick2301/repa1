@@ -309,7 +309,7 @@ $APPLICATION->SetPageProperty("component", "catalog");
 
 	 <?$APPLICATION->IncludeComponent(
 	"d7:main.feedback", 
-	"ajax-krep-komp", 
+	"ajax-file-krep-komp", 
 	array(
 		"EMAIL_TO" => "sale@krep-komp.ru",
 		"EVENT_MESSAGE_ID" => array(
