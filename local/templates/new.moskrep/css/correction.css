@@ -1342,6 +1342,12 @@ img.intro-slider__image {
 .catalog-feed__table:last-child .catalog-table__column:last-child  .catalog-table__content {
 	border-radius:  0 0 10px 0; 
 }
+.catalog-feed__table .catalog-table {
+    border-bottom: solid 1px transparent;
+}
+.catalog-feed__table:last-of-type .catalog-table {
+	border-bottom: solid 1px #dedede;
+}
 }
 
 @media (min-width: 685px) {

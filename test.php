@@ -6,7 +6,7 @@ $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Мос
 
 <?$APPLICATION->IncludeComponent(
 	"d7:main.feedback", 
-	"ajax-krep-komp", 
+	"ajax-file-krep-komp", 
 	array(
 		"EMAIL_TO" => "kolobets@mail.ru",
 		"EVENT_MESSAGE_ID" => array(

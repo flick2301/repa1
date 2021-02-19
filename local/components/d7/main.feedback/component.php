@@ -115,9 +115,20 @@ unset($FILES["TEXT"]);
 			if(!empty($arParams["EVENT_MESSAGE_ID"]))
 			{
 				foreach($arParams["EVENT_MESSAGE_ID"] as $v)
-					if(IntVal($v) > 0)
-						CEvent::Send($arParams["EVENT_NAME"], SITE_ID, $arFields, "N", IntVal($v), $FILES);
-					//CEvent::Send($arParams["EVENT_NAME"], SITE_ID, $arFields, "N", IntVal($v), array($_FILES['UPLOAD_FILES']['tmp_name']));
+					if(IntVal($v) > 0) {
+						//CEvent::Send($arParams["EVENT_NAME"], SITE_ID, $arFields, "N", IntVal($v), $FILES);
+						
+						if ($_FILES['UPLOAD_FILES']['name'] && $_FILES['UPLOAD_FILES']['tmp_name']) {
+							$send_file = $_SERVER["DOCUMENT_ROOT"].'/service/send/'.basename($_FILES['UPLOAD_FILES']['name']);
+							if (copy($_FILES['UPLOAD_FILES']['tmp_name'], $send_file)) {
+							CEvent::Send($arParams["EVENT_NAME"], SITE_ID, $arFields, "N", IntVal($v), array($send_file));
+							unlink($send_file);
+							}
+						}
+						else CEvent::Send($arParams["EVENT_NAME"], SITE_ID, $arFields, "N", IntVal($v));
+					
+					//file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arParams["EVENT_NAME"], true).$_FILES['UPLOAD_FILES']['tmp_name']);
+					}
 			}
 			else
 				CEvent::Send($arParams["EVENT_NAME"], SITE_ID, $arFields);

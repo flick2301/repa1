@@ -141,6 +141,21 @@
 .send-a-request_success_info_choice {
 	color: #E7CE1B;
 }
+.send-a-request__file {
+	margin-bottom: 20px;
+	text-align: left;
+}
+#user_file {
+    appearance: initial;
+    background-color: initial;
+    cursor: pointer;
+    align-items: baseline;
+    color: inherit;
+    text-overflow: ellipsis;
+    white-space: pre;
+    padding: 0;
+    border: 0 solid transparent;
+}
 
 
 @media (max-width: 1260px) {
