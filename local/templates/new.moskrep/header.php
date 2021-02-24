@@ -100,6 +100,10 @@ $APPLICATION->IncludeFile(
         <?CJSCore::Init(array('jquery3'));?>
 	<?
 	$rand = "?".rand();
+	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/fonts/montserrat/montserrat.css", true);
+	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/fonts/proto/proto.css", true);
+	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/fonts/proximanova/proximanova.css", true);	
+	
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/reset.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.css", true);
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/jquery.fancybox.min.css", true);
@@ -118,6 +122,11 @@ $APPLICATION->IncludeFile(
 			$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/administrator.css", true);	
 			$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/administrator.js");
 		}	
+		
+		
+	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/new/css/main.min.css", true);	
+	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/new/css/style.css", true);	
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");	
 	?>
 	
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>

@@ -13,7 +13,6 @@ $('a[data-rel=catalog-photo]').fancybox({arrows: false, toolbar: false, loop: tr
 $(window).on('scroll', function() {
     if ($(window).scrollTop() > 0) $('.basic-layout__header').addClass('fixed');
           else $('.basic-layout__header').removeClass('fixed');
-		  console.log(111);
    });
    
    usedtrigger = false;

@@ -4,15 +4,18 @@ $APPLICATION->SetPageProperty("description", "Адреса магазинов в
 $APPLICATION->SetTitle("Адреса магазинов в {{city}}");
 ?><!--simple-article-->
 <div class="basic-layout__module simple-article">
+
 	 <?if(!$_REQUEST["ID"]):?> <?globalGetTitle()?> <?endif?>
 	<div id="moscow" class="delivery__tabs-list active">
 		 <?if(!$_REQUEST["ID"] && $_SERVER['HTTP_HOST']=='krep-komp.ru'):?>
 		<p>
 			Забрать груз в пункте самовывоза на Каширском шоссе можно на следующий день. Для этого оформить заказ нужно до 15:00. Суббота и Воскресенье - выходные дни.
 		</p>
-		 <?endif?> <?$APPLICATION->IncludeComponent(
+		 <?endif?> 
+		 
+	<?$APPLICATION->IncludeComponent(
 	"d7:contact_shops",
-	"krep-komp",
+	"krep-komp.new",
 	Array(
 		"CACHE_FILTER" => "N",
 		"CACHE_TIME" => "3600",
@@ -21,6 +24,8 @@ $APPLICATION->SetTitle("Адреса магазинов в {{city}}");
 	)
 );?>
 	</div>
+	
+	
 	<div class="simple-article__content">
  <article class="simple-article__section wysiwyg-block">
 		<h2>ООО «КРЕП-КОМП»</h2>

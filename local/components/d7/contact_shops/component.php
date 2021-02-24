@@ -93,7 +93,7 @@ $zoom_lat = ($arResult["LAT"] - $lat_min) + ($lat_max - $arResult["LAT"]);
 $zoom = $zoom_lon < $zoom_lat ? $zoom_lat : $zoom_lon;
 
 if (count($arResult["ITEMS"])==1) $arResult["ZOOM"] = 15;
-else $arResult["ZOOM"] = round(pi() * 2 / $zoom);
+else $arResult["ZOOM"] = round(pi() * 2 / $zoom) + 1;
 
 $arResult["SECTION"] = $arSection;
 
