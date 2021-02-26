@@ -7,6 +7,11 @@ $APPLICATION->SetTitle("Контакты");
 ?>
 
 
+<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/global.scripts.min.js?v=XXXXXXa");?>
+<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/jquery.icheck-1.0.2.min.js?v=XXXXXXa");?>
+<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa");?>
+<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa");?>
+
 <?globalGetTitle()?>
 
             <!--simple-article-->
@@ -19,7 +24,7 @@ $APPLICATION->SetTitle("Контакты");
                      <p>Забрать груз в пункте самовывоза на Каширском шоссе можно на следующий день. Для этого оформить заказ нужно до 15:00. Суббота и Воскресенье – выходные дни.</p>
                   </div>-->
 				  <!--contact-block-->
-	<?$APPLICATION->IncludeComponent("d7:contact_shops","contacts",Array(
+	<?$APPLICATION->IncludeComponent("d7:contact_shops",".default",Array(
 				"IBLOCK_ID" => "19", 
 				"CACHE_TYPE" => "A", 
                 "CACHE_TIME" => "3600", 
