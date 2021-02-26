@@ -45,6 +45,7 @@ $('#feedback_form input[required], #feedback_form textarea[required]').click(fun
 			else {
 				//$('#feedback_form .send-a-request__form-result').html($(result).html());
 				//$('#feedback_form .send-a-request__form-result').show();
+				yaCounter29426710.reachGoal('SendMessage');
 				$('.basic-layout__module.basic-layout__module--request.send-a-request').html($('.send-a-request_success_block').html());
 			}
 

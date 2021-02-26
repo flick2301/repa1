@@ -36,10 +36,11 @@ function saveInfo(\Bitrix\Main\Event $event ) {
 	    */
 	   if ( $_SESSION['BX_CML2_EXPORT'] ) {
 		      $entity = $event->getParameter('ENTITY');
-			  \Bitrix\Main\Diag\Debug::dumpToFile($entity, "", '/upload/1.txt');
+			  
 		      if ( $entity instanceof Shipment ) {
 			         if ( !is_array( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] )  )
 			            $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] = array();
+					\Bitrix\Main\Diag\Debug::dumpToFile($entity->getFields()->getValues(), "", '/upload/1.txt');
 			         if ( !$entity->isSystem() )
 			            $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'][] = checkFields( $entity->getFields()->getValues(), Shipment::getAvailableFields() );
 			}

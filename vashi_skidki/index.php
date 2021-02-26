@@ -56,7 +56,7 @@ border-top: 1px solid #457fd8;
 		<td >от 100 000 руб</td>
 	</tr>
 	<tr>
-		<td ><b>13%</b></td>
+		<td ><b>15%</b></td>
 		<td >от 500 000 руб</td>
 	</tr>
 	<!--<tr>
