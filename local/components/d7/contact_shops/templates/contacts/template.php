@@ -31,7 +31,7 @@ switch (LANGUAGE_ID)
                 <div class="contacts__box">
                   <div class="contacts__map">
                     <?//=str_replace(Array(490, 370), Array("100%", "100%"), $item["DETAIL_TEXT"])?>
-					<div class="contacts__search"><textarea name="form-map-from" class="contacts__from" id="form-map-from-<?=++$id?>"></textarea></div>
+					<div class="contacts__search contacts__search<?=++$id?>"><div class="contacts__icon" title="Проложить маршрут"></div><textarea placeholder="Откуда ехать" name="form-map-from" class="contacts__from" id="form-map-from-<?=$id?>"></textarea></div>
 					<div id="map-<?=$id?>" class="contacts__mapframe"></div>
                   </div>
                   <div class="contacts__left">

@@ -66,13 +66,17 @@ myCollection = new ymaps.GeoObjectCollection({}, {
 			
 		
 		//myCollection.add(myPlacemark2);	
-		//console.log(res.geoObjects.get(0).geometry.getCoordinates());		
+		//console.log(res.geoObjects.get(0).geometry.getCoordinates());	
+
+ $('.contacts__from').val('');
+ $('.contacts__icon').show();
+ $('.contacts__from').hide();		
 
 
 var start_point = [lat, lon];
 var end_point = res.geoObjects.get(0).geometry.getCoordinates();
 ymaps.route([start_point, end_point], {
- mapStateAutoApply: true,
+ mapStateAutoApply: false,
  avoidTrafficJams: false,
  multiRoute: false,
  routingMode: "auto",
@@ -91,6 +95,19 @@ ymaps.route([start_point, end_point], {
  points.get(0).options.set('visible', false);
  points.get(1).options.set('visible', true);
  window['myMap' + id].geoObjects.add(myRoute = route);
+ window['myMap' + id].setCenter([end_point[0], end_point[1]]);
+ 
+ if(window.innerWidth >= 767){
+    var pixelCenter = window['myMap' + id].getGlobalPixelCenter();
+    pixelCenter = [
+     pixelCenter[0] - 220,
+     pixelCenter[1] - 0
+    ];
+    var geoCenter = window['myMap' + id].options.get('projection').fromGlobalPixels(pixelCenter, window['myMap' + id].getZoom());
+    window['myMap' + id].setCenter(geoCenter);
+   }
+ 
+ 
 }, function (error) {
  // Ошибка error.message
 });	
@@ -104,3 +121,20 @@ getRoute = true;
 		
 	 }
 }
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function() {
+	$('.contacts__icon').click(function() {
+			//$(this).hide();
+			$(this).parent().children('.contacts__from').toggle(300);
+	});
+});
