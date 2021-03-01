@@ -378,7 +378,7 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 		<a class="vk" target="_blank" href="https://vk.com/krep_komp"></a>
 		<a class="youtube" target="_blank" href="https://www.youtube.com/channel/UCOKXuIbajRZpYJ4uShRzMYw"></a>
 		<a class="instagram" target="_blank" href="https://www.instagram.com/krep_komp/"></a>
-		<a class="facebook" target="_blank" href="https://www.facebook.com/krep.komp.ru"></a>
+		<a class="facebook" target="_blank" href="https://www.facebook.com/ru.krepkomp"></a>
 		</div>	
 		
 		<div class="copy copy_mobile">Все права защищены <?=date('Y')?></div>
@@ -553,7 +553,10 @@ $APPLICATION->SetPageProperty('description', '«КРЕП-КОМП» - ведущ
    
 
 
-<?global $USER; if ($USER->GetID()!=1 && !$_GET['administrator']) include_once $_SERVER["DOCUMENT_ROOT"] . "/include/jivosite.php";?>
+<?global $USER;
+CModule::IncludeModule('conversion');
+$detect = new \Bitrix\Conversion\Internals\MobileDetect;
+	if ($USER->GetID()!=1 && !$_GET['administrator'] && !$detect->isMobile()) include_once $_SERVER["DOCUMENT_ROOT"] . "/include/jivosite.php";?>
 
 </body>
 </html>

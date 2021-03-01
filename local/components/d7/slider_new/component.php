@@ -2,9 +2,20 @@
 if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true) die();
 
 if(CModule::IncludeModule('iblock')){
+	CModule::IncludeModule('conversion');
+	$detect = new \Bitrix\Conversion\Internals\MobileDetect;
 
-	
 	$obCache = new CPHPCache();
+	
+	if($detect->isMobile())
+	{
+		$res_width = 792;
+		$res_height = 507;
+	}else
+	{
+		$res_width = 1584;
+		$res_height = 1014;
+	}
 
 
 if($obCache->InitCache($arParams["CACHE_TIME"], "slider", "/"))// Если кэш валиден
@@ -24,7 +35,7 @@ elseif($obCache->StartDataCache())// Если кэш невалиден
 			$fields = $ob->GetFields();
 			$arResult["ITEMS"][$fields["IBLOCK_SECTION_ID"]][$i] = $fields;
 			$arResult["ITEMS"][$fields["IBLOCK_SECTION_ID"]][$i]["IMG"] = CFile::GetPath($arResult["ITEMS"][$fields["IBLOCK_SECTION_ID"]][$i]["PREVIEW_PICTURE"]);
-			$arResult["ITEMS"][$fields["IBLOCK_SECTION_ID"]][$i]["SMALL_IMG"] =  CFile::ResizeImageGet($arResult["ITEMS"][$fields["IBLOCK_SECTION_ID"]][$i]["PREVIEW_PICTURE"], array('width'=>1584, 'height'=>1014), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+			$arResult["ITEMS"][$fields["IBLOCK_SECTION_ID"]][$i]["SMALL_IMG"] =  CFile::ResizeImageGet($arResult["ITEMS"][$fields["IBLOCK_SECTION_ID"]][$i]["PREVIEW_PICTURE"], array('width'=>$res_width, 'height'=>$res_height), BX_RESIZE_IMAGE_PROPORTIONAL, true);
 			$arResult["ITEMS"][$fields["IBLOCK_SECTION_ID"]][$i]["PROPERTY"] = $ob->GetProperties();
 			$i++;
 		}
