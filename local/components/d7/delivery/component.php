@@ -16,7 +16,7 @@ elseif($obCache->StartDataCache())// Если кэш невалиден
 {	
 	$i = 0;
 
-		$arSelect = Array("ID", "IBLOCK_ID", "NAME", "CODE", "DETAIL_TEXT", "PROPERTY_*");
+		$arSelect = Array("ID", "IBLOCK_ID", "NAME", "CODE", "PREVIEW_TEXT", "DETAIL_TEXT", "PROPERTY_*");
 		$arFilter = Array("IBLOCK_ID"=>$arParams["IBLOCK_ID"], "ACTIVE"=>"Y", "PROPERTY_SITES"=>Array($_SERVER['HTTP_HOST'], "*"));
 
 		

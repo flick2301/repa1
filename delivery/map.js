@@ -59,7 +59,7 @@ $(document).on('click', "li.viewmap", function() {
         }
 				
 
-        function addPolygon(coords, numpol, index) {
+        function addPolygon(coords, numpol, index, num) {
             /* пробежимся по массиву полигонов и остановим их редактирование */
 
             if (typeof coords === 'undefined' || !coords.length) {
@@ -77,5 +77,10 @@ $(document).on('click', "li.viewmap", function() {
                 strokeWidth: 1
             });
             myMap.geoObjects.add(myPolygon[numpol]);
+			
+			myPolygon[numpol].events.add('hover', function () {
+				$('.delivery__td').removeClass('red'); 
+				//if (num) $('.delivery__td:nth-child(' + (num + 1) + ')').addClass('red'); 
+			});	
             
         }

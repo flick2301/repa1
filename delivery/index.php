@@ -15,11 +15,19 @@ switch (LANGUAGE_ID)
 	default:
 		$locale = 'en-US'; break;
 }
-?><?$APPLICATION->SetAdditionalCSS($APPLICATION->GetCurDir()."style.css", true);?> <?/*<script src="<?=$scheme?>://api-maps.yandex.ru/2.1.50/?load=package.full&lang=<?=$locale?>"></script>*/?> <?$api_key = htmlspecialcharsbx(Bitrix\Main\Config\Option::get('fileman', 'yandex_map_api_key'));?> <?$APPLICATION->AddHeadScript("{$scheme}://api-maps.yandex.ru/2.1.50/?load=package.full&lang={$locale}&apikey={$api_key}" );?> <?$APPLICATION->AddHeadScript($APPLICATION->GetCurDir()."map.js?".rand());?> <?globalGetTitle()?> <!--simple-article-->
+?><?$APPLICATION->SetAdditionalCSS($APPLICATION->GetCurDir()."style.css", true);?> <?/*<script src="<?=$scheme?>://api-maps.yandex.ru/2.1.50/?load=package.full&lang=<?=$locale?>"></script>*/?> 
+<?$api_key = htmlspecialcharsbx(Bitrix\Main\Config\Option::get('fileman', 'yandex_map_api_key'));?> 
+<?$APPLICATION->AddHeadScript("{$scheme}://api-maps.yandex.ru/2.1.50/?load=package.full&lang={$locale}&apikey={$api_key}" );?> 
+<?$APPLICATION->AddHeadScript($APPLICATION->GetCurDir()."map.js?".rand());?> <?globalGetTitle()?> <!--simple-article-->
+
+
+
+
 <div class="basic-layout__module simple-article">
+<div class="delivery">
 	 <?$APPLICATION->IncludeComponent(
 	"d7:delivery",
-	"",
+	"krep-komp",
 	Array(
 		"CACHE_FILTER" => "N",
 		"CACHE_TIME" => "3600",
@@ -29,5 +37,7 @@ switch (LANGUAGE_ID)
 	)
 );?>
 </div>
-            <!--simple-article-->
-   <script>$(document).ready(function(){var tabs=new Tabby("[data-delivery-tabs]");});</script><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+</div>
+
+
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
