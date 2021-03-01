@@ -19,6 +19,7 @@ Loc::LoadMessages(__FILE__);
     <meta name="apple-mobile-web-app-title" content="Главная страница – Krep-Komp" />
     <meta name="theme-color" content="#0C58CF" />
 	<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+	<meta name="facebook-domain-verification" content="qyjoyjc6m0agulp5ix7pznx4nhhm22" />
 	
 <?$APPLICATION->ShowMeta("robots")?>
 <title><?$APPLICATION->ShowTitle();?></title>
