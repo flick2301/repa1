@@ -24,7 +24,6 @@ switch (LANGUAGE_ID)
 
 
 <div class="basic-layout__module simple-article">
-<div class="delivery">
 	 <?$APPLICATION->IncludeComponent(
 	"d7:delivery",
 	"krep-komp",
@@ -36,7 +35,6 @@ switch (LANGUAGE_ID)
 		"SHOW_FRAME" => "Y"
 	)
 );?>
-</div>
 </div>
 
 
