@@ -1,4 +1,5 @@
-               <!--content-tabs-->			  
+<div class="delivery">               
+<!--content-tabs-->			  
                <div class="delivery__tabs">
 			   <?foreach($arResult["ITEMS"] AS $key=>$item):?>
                   <div class="delivery__tab <?if($key==0):?>delivery__tab--active<?endif?>"><?=$item["NAME"]?></div>
@@ -33,3 +34,4 @@ $APPLICATION->IncludeFile(
 				  </div>	
 <?endforeach?>				  
  </div>				   		   
+  </div>	
