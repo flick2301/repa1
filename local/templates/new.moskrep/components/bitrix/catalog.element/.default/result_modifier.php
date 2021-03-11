@@ -6,7 +6,7 @@ $module_id = 'relink.table';
 /*$cp = $this->__component; // объект компонента
 if (is_object($cp))
    $cp->SetResultCacheKeys(array('TIMESTAMP_X'));*/
-
+global $DEFAULT_STORE_ID;
 
 use Bitrix\Main\Loader;
 if (!Loader::includeModule($module_id))
@@ -212,6 +212,10 @@ $startTable = 3 - (count($arElements) - $indexElement);
 $arResult['ELEMENT_NEXT'] = array_merge(array_slice($arElements, $indexElement, count($arElements) - $indexElement), array_slice($arElements, 0, $startTable));    
 }else{
 $arResult['ELEMENT_NEXT'] = array_slice($arElements, $indexElement, 3);
+}
+
+if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){
+	$arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT'] = $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']+$arResult['STORE'][3]['AMOUNT'];
 }
 
 \Bitrix\Main\Loader::includeModule('dev2fun.opengraph');

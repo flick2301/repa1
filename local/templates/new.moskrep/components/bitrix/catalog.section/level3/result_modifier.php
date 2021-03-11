@@ -1,5 +1,7 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
+global $DEFAULT_STORE_ID;
+
 foreach($arResult['ITEMS'] as $key=>$arItem){
    
     if(stripos($arItem['NAME'], 'кг') !== false):
@@ -12,6 +14,10 @@ foreach($arResult['ITEMS'] as $key=>$arItem){
     while($arStore = $rsStore->Fetch()){
         $arResult['ITEMS'][$key]['STORE'][$arStore['STORE_ID']] = $arStore;
     }
+	//Выбираем количество. Для СПБ - общее. Для МСК - только со склада в Коледино
+	if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){
+		$arResult['ITEMS'][$key]['STORE'][$DEFAULT_STORE_ID]['AMOUNT'] = $arResult['ITEMS'][$key]['STORE'][$DEFAULT_STORE_ID]['AMOUNT']+$arResult['ITEMS'][$key]['STORE'][3]['AMOUNT'];
+	}
     
     foreach($arItem['PROPERTIES'] as $prop){
         if(!in_array($prop['CODE'], ['SOPUTSTVUYUSHCHIE_TOVARY', 'PO_PRIMENENIYU', 'DIAMETR', 'DLINA', 'VYSOTA', 'SHIRINA', 'RAZMER_POD_KLYUCH_MM', 'SHAG_REZBY_MM'])){

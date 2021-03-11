@@ -5,7 +5,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/local/modules/relink.table/lib/table.ph
 use Bitrix\Highloadblock\HighloadBlockTable as HLBT;
 $module_id = 'relink.table';
 
-
+global $DEFAULT_STORE_ID;
 
 
 use Bitrix\Main\Loader;
@@ -136,6 +136,8 @@ foreach($arResult['ITEMS'] as $key=>$arItem){
       $file = CFile::ResizeImageGet($arResult['PICTURE']['ID'], array('width'=>150, 'height'=>150), BX_RESIZE_IMAGE_PROPORTIONAL, true);  
     }
     $arResult['ITEMS'][$key]['PREVIEW_PICTURE'] = $file;
+	
+		
     if(stripos($arItem['NAME'], 'кг') !== false):
         $arResult['ITEMS'][$key]['UNIT']= ' кг';
     else:
@@ -150,10 +152,16 @@ foreach($arResult['ITEMS'] as $key=>$arItem){
 	{
 		$arResult['ITEMS'][$key]['KOLEDINO'] = $arStoreProduct['AMOUNT'];
 	}
+	
+	
     $rsStore = CCatalogStoreProduct::GetList(array(), array('PRODUCT_ID' => $arItem['ID']), false, false, array('STORE_ID', 'AMOUNT', 'STORE_NAME'));
     while($arStore = $rsStore->Fetch()){
         $arResult['ITEMS'][$key]['STORE'][$arStore['STORE_ID']] = $arStore;
     }
+	//Выбираем количество. Для СПБ - общее. Для МСК - только со склада в Коледино
+	if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){
+		$arResult['ITEMS'][$key]['STORE'][$DEFAULT_STORE_ID]['AMOUNT'] = $arResult['ITEMS'][$key]['STORE'][$DEFAULT_STORE_ID]['AMOUNT']+$arResult['ITEMS'][$key]['STORE'][3]['AMOUNT'];
+	}
     
     foreach($arItem['PROPERTIES'] as $prop){
         if(!in_array($prop['CODE'], ['SOPUTSTVUYUSHCHIE_TOVARY', 'PO_PRIMENENIYU', 'DIAMETR', 'DLINA', 'VYSOTA', 'SHIRINA', 'RAZMER_POD_KLYUCH_MM', 'SHAG_REZBY_MM'])){
