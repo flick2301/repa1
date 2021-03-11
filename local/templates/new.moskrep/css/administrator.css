@@ -1,9 +1,0 @@
-.catalog-feed__item__withpic .catalog-card * {
-	border: 1px solid red;
-}
-.catalog-feed__item__withpic .catalog-card .catalog-card__title {
-	align-items: flex-start;
-}	
-.catalog-feed__item__withpic .catalog-card .catalog-card__title a {
-	line-height: 15px;
-}
