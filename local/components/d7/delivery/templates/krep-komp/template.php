@@ -1,13 +1,13 @@
 <div class="delivery">               
 <!--content-tabs-->			  
-               <div class="delivery__tabs">
+               <div class="delivery__tabs" data-delivery-tabs>
 			   <?foreach($arResult["ITEMS"] AS $key=>$item):?>
                   <div class="delivery__tab <?if($key==0):?>delivery__tab--active<?endif?>"><?=$item["NAME"]?></div>
 				  <?endforeach?>
                 </div>
                <!--content-tabs-->
 			   
-			   
+	   
 			   
 <div class="delivery__list">
 <?foreach($arResult["ITEMS"] AS $key=>$item):?>	

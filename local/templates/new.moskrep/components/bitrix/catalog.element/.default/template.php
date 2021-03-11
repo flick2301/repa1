@@ -214,7 +214,7 @@ dataLayer.push({
 					 <?}?>
                         
                      </ul>
-                     <p class="product-data__info"><?=$arResult['NAME']?></p>
+                     <!--<p class="product-data__info"><?=$arResult['NAME']?></p>-->
                   </div>
                   <!--product-data-->
         </div>
