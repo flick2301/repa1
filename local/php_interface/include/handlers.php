@@ -729,6 +729,7 @@ function ChangeMyContent(&$content)
 				
 			}
 		
+		
 		}
 		if(empty($replace))
 		{
@@ -738,6 +739,7 @@ function ChangeMyContent(&$content)
 				'<span>8 499 350-55-55</span>'
 			);  
 		}
+		
     
     $content = str_replace($search, $replace, $content);
 	//$content = preg_replace("  ", " ", $content);

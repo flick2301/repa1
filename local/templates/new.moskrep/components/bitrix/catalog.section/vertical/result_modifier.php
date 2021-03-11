@@ -72,9 +72,9 @@ if(!in_array($arSec['ID'], $arParams["VIBOR_CATALOG_TABLE"])){ $arResult['JUST_V
 
 foreach($arResult['ITEMS'] as $key=>$arItem){
     if(isset($arItem['PREVIEW_PICTURE']['ID'])){
-      $file = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE']['ID'], array('width'=>$arParams['ITEMS_PREV_PIC_W_L3'], 'height'=>$arParams['ITMES_PREV_PIC_H_L3']), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+      $file = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE']['ID'], array('height'=>'150'), BX_RESIZE_IMAGE_PROPORTIONAL, true);
     }else{
-      $file = CFile::ResizeImageGet($arResult['PICTURE']['ID'], array('width'=>$arParams['ITEMS_PREV_PIC_W_L3'], 'height'=>$arParams['ITMES_PREV_PIC_H_L3']), BX_RESIZE_IMAGE_PROPORTIONAL, true);  
+      $file = CFile::ResizeImageGet($arResult['PICTURE']['ID'], array('height'=>150), BX_RESIZE_IMAGE_PROPORTIONAL, true);  
     }
     if($file['src']):
     $arResult['ITEMS'][$key]['PREVIEW_PICTURE'] = $file;

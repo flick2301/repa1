@@ -102,7 +102,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                      <section class="product-card">
                         <div class="product-card__header">
                            <h3 class="product-card__title"><a class="product-card__link" href="<?=$item['DETAIL_PAGE_URL']?>" title='<?=$item['IPROPERTY_VALUES']['TITLE_HREF_MINI_CART']?>' target="_self" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['NAME']))?>')"><?=$item['NAME']?></a></h3>
-                           <img class="product-card__image" src="<?=$item['PREVIEW_PICTURE']['src']?>" width="200" height="150" alt="<?=$item['NAME']?>">
+                           <img class="product-card__image" src="<?=$item['PREVIEW_PICTURE']['src']?>"  height="150" alt="<?=$item['NAME']?>">
                         </div>
                         <div class="product-card__content">
                            <div class="product-card__block">
