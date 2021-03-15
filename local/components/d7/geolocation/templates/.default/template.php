@@ -98,7 +98,7 @@ foreach($arResult["ITEMS"] AS $item) {
 		else if($.cookie('geo_id')==null)
 		{
 <?foreach($arResult["ITEMS"] AS $item):?>
-<?if($item["ID"]!=GEOLOCATION_MOSCOW):?>
+<?if($item["ID"]!=GEOLOCATION_MOSCOW || true):?>
 			if((location.origin=='https://<?=$item["PROP"]["DOMAIN"]["VALUE"]?>' || location.origin=='http://<?=$item["PROP"]["DOMAIN"]["VALUE"]?>'))
 			{
 				$.cookie("geo_text", '<?=$item["PROP"]["NAME"]["VALUE"] ? $item["PROP"]["NAME"]["VALUE"] : $item["NAME"]?>',{expires:365, path:'/', domain:'<?=$item["PROP"]["DOMAIN"]["VALUE"]?>'});
