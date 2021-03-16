@@ -403,7 +403,7 @@ dataLayer.push({
                         <a class="content-tabs__toggle" href="#packaging" data-tabby-default>Варианты упаковки</a>
                      </li>
                      <li class="content-tabs__item">
-                        <a class="content-tabs__toggle" href="#other">С этим товаром смотрят</a>
+                        <a class="content-tabs__toggle" href="#other">Сопутствующие товары</a>
                      </li>
                   </ul>
                </div>
