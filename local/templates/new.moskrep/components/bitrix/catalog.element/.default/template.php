@@ -551,7 +551,9 @@ dataLayer.push({
             <div class="product-widget__content" id="other">
 		<?
             global $baFilter;
-            $baFilter = Array("ID" => $arResult['ELEMENT_NEXT']);    
+			if(empty($baFilter))
+				$baFilter = Array("ID" => $arResult['ELEMENT_NEXT']); 
+						
             
             $APPLICATION->IncludeComponent(
 	    "bitrix:catalog.section", 
@@ -560,7 +562,6 @@ dataLayer.push({
 		"COMPONENT_TEMPLATE" => "level3",
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_ID" => $arParams['IBLOCK_ID'],
-		"SECTION_ID" => $arResult['IBLOCK_SECTION_ID'],
 		"SECTION_USER_FIELDS" => array(
 			0 => "",
 			1 => "",
@@ -568,15 +569,15 @@ dataLayer.push({
                 "USE_FILTER" =>"Y",
 		"FILTER_NAME" => "baFilter",
 		'DISABLE_HEADER' => 'Y',
-		"INCLUDE_SUBSECTIONS" => "A",
-		"SHOW_ALL_WO_SECTION" => "N",
+		"INCLUDE_SUBSECTIONS" => "Y",
+		"SHOW_ALL_WO_SECTION" => "Y",
 		"CUSTOM_FILTER" => "",
 		"HIDE_NOT_AVAILABLE" => "N",
 		"HIDE_NOT_AVAILABLE_OFFERS" => "N",
 		
 		
-		"PAGE_ELEMENT_COUNT" => "3",
-		"LINE_ELEMENT_COUNT" => "3",
+		"PAGE_ELEMENT_COUNT" => "10",
+		"LINE_ELEMENT_COUNT" => "10",
 		"PROPERTY_CODE" => array("TSVET","CML2_ARTICLE","KOLICHESTVO_V_UPAKOVKE",""),
 		"OFFERS_LIMIT" => "5",
 		"BACKGROUND_IMAGE" => "-",
@@ -674,8 +675,7 @@ dataLayer.push({
 			1 => "",
 		),
 		"OFFERS_CART_PROPERTIES" => ""
-	),
-	false
+	)
 );
 ?>
             </div>
