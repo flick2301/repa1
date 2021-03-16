@@ -481,7 +481,32 @@ if($arResult['SORTING']['SECTION_ID']){
 }
 ?>
 
-
+<?
+if($arResult["S_ETIM_TOVAROM"]){
+?>
+<br><br>
+<div class="catalog-feed__other">
+<?
+$arFilter = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "ID"=>$arResult["S_ETIM_TOVAROM"], false, array("*"));
+$db_list = CIBlockSection::GetList(Array("SORT"=>"ASC"), $arFilter, true);
+while($arSection = $db_list->GetNext()) {
+    $renderImage = CFile::ResizeImageGet($arSection["PICTURE"], Array("width" => 172, "height" => 172), BX_RESIZE_IMAGE_EXACT, false); 
+    ?>
+		<div class="catalog-feed__child">
+                     <!--category-card-->
+                     <div class="category-card">
+                        <p class="category-card__title"><a class="category-card__link" href="<?=$arSection['SECTION_PAGE_URL']?>"><?=$arSection['NAME']?></a></p>
+                        <div class="category-card__cover">
+                           <img class="category-card__image" src="<?=$renderImage['src']?>" width="120" height="76" alt="<?=$arSection['NAME']?>"> 
+                        </div>
+                     </div>
+                     <!--category-card-->
+		</div>
+	<?
+}
+?>
+</div>
+<?}?>
 
 
 <!--simple-article-->

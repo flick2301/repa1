@@ -137,9 +137,38 @@ $ar_result = CIBlockSection::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" =
 if($arSection = $ar_result->GetNext()) {
 	
     $arResult["RELATED"] = $arSection["UF_RELATED"];
-    $arResult["SECTION_PICTURE"]=$arSection['PICTURE'];
+	$arResult["SECTION_PICTURE"]=$arSection['PICTURE'];
     
 }
+
+//Подбор сопутствующих товаров по свойству, нужен getlist на все верхние подразделы, будут
+//проверены все верхние подразделы пока не найдется первый с заполненным свойством
+$ar_result = CIBlockSection::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "ID" => $arTempID), false, $arSelect = array("*", "UF_*"));
+while($arSection = $ar_result->GetNext())
+{
+	if($arSection["UF_S_ETIM_TOVAROM"])
+	{
+		$arResult["S_ETIM_TOVAROM"] = $arSection["UF_S_ETIM_TOVAROM"];
+		$arResult["S_ETIM_TOVAROM_PROPERTIES"] = $arSection["UF_S_ETIM_TOVAROM_PROPERTIES"];
+		$ar_props = CUserFieldEnum::GetList([], ['ID'=>$arResult["S_ETIM_TOVAROM_PROPERTIES"]]);
+		while($prop = $ar_props->GetNext())
+		{
+			$props['PROPERTY_'.$prop['VALUE'].'_VALUE'] = $arResult['DISPLAY_PROPERTIES'][$prop['VALUE']]['VALUE'];
+		}
+		$filter = array_merge(['IBLOCK_ID' => $arParams['IBLOCK_ID'], 'INCLUDE_SUBSECTIONS'=>'Y', 'CATALOG_AVAILABLE'=>'Y', 'ACTIVE'=>'Y',  'SECTION_ID'=>$arResult["S_ETIM_TOVAROM"]], $props);
+		
+		// выборка списка элементов
+		$dbItems = CIBlockElement::GetList(Array(), $filter, false, array(), array('ID', 'NAME', 'IBLOCK_ID'));
+        global $baFilter;         
+		while ($arItem = $dbItems->GetNext()){
+			$baFilter['ID'][] = $arItem['ID'];
+		}
+		
+		break;
+	}
+}
+
+
 if($arResult['DETAIL_PICTURE']['ID']){
     $arResult['PREVIEW_PICTURE'] = CFile::ResizeImageGet($arResult['DETAIL_PICTURE']['ID'], array('width'=>$arParams['ITEMS_DETAIL_PIC_W'], 'height'=>$arParams['ITEMS_DETAIL_PIC_H']), BX_RESIZE_IMAGE_PROPORTIONAL, true);
     

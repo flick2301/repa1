@@ -62,6 +62,20 @@ if($arSection = $rsResult->GetNext()) {
 	
 }
 
+//Подбор сопутствующих товаров по свойству, нужен getlist на все верхние подразделы, будут
+//проверены все верхние подразделы пока не найдется первый с заполненным свойством
+$ar_result = CIBlockSection::GetList(array("ID" => "DESC"), array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "ID" => $arTempID), false, $arSelect = array("*", "UF_*"));
+while($arSection = $ar_result->GetNext())
+{
+	if($arSection["UF_S_ETIM_TOVAROM"])
+	{
+		$arResult["S_ETIM_TOVAROM"] = $arSection["UF_S_ETIM_TOVAROM"];
+				
+		break;
+	}
+}
+
+
 if (!count($arResult['EXTRA_FIELD']) && $GLOBALS["REFERENCE"]["UF_EXTRA_FIELD"]["VALUE"]) {
 		$arCode = explode(';', $GLOBALS["REFERENCE"]["UF_EXTRA_FIELD"]["VALUE"]);
 		foreach($arCode as $code)

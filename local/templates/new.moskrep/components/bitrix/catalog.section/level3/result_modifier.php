@@ -2,6 +2,7 @@
 
 global $DEFAULT_STORE_ID;
 
+
 foreach($arResult['ITEMS'] as $key=>$arItem){
    
     if(stripos($arItem['NAME'], 'кг') !== false):
