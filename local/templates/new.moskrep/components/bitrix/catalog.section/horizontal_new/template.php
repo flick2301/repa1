@@ -307,6 +307,7 @@ if(!$_POST['ENUM_LIST']['ELEMENTS'] && !$arParams["DISABLE_HEADER"]=='Y')
 if($arResult["S_ETIM_TOVAROM"]){
 ?>
 <br><br>
+<div class="recomend__title">Рекомендации</div>
 <div class="catalog-feed__other">
 <?
 $arFilter = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "ID"=>$arResult["S_ETIM_TOVAROM"], false, array("*"));

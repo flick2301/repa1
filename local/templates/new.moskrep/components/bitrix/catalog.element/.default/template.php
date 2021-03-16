@@ -557,9 +557,9 @@ dataLayer.push({
             
             $APPLICATION->IncludeComponent(
 	    "bitrix:catalog.section", 
-	    "level3", 
+	    "level3_vertical", 
 	    array(
-		"COMPONENT_TEMPLATE" => "level3",
+		"COMPONENT_TEMPLATE" => "level3_vertical",
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_ID" => $arParams['IBLOCK_ID'],
 		"SECTION_USER_FIELDS" => array(

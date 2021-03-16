@@ -1,3 +1,10 @@
+.recomend__title {
+    font-weight: normal;
+    font-size: 40px;
+    text-align: left;
+    color: #000000;
+    margin-bottom: 60px;
+}
 .d-none {
 	display: none!important;
 }
