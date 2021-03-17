@@ -13,7 +13,6 @@ $rsGender = CUserFieldEnum::GetList(array(), array("ID" => $aSection["UF_SEC_LIS
 }?>
 <?
 
-
 global $mySmartFilter;
 global $arrFilter2;
 
@@ -134,9 +133,14 @@ if (CModule::IncludeModule("iblock"))
 }
 ?>
 <?
+if($_POST['ENUM_LIST']['BLOCKS'])
+	$template = "vertical";
+else
+	$template = "horizontal_new";
+
 $intSectionID = $APPLICATION->IncludeComponent(
 					"bitrix:catalog.section",
-					"horizontal_new",
+					$template,
 					array(
 						"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 						"IBLOCK_ID" => $arParams["IBLOCK_ID"],
