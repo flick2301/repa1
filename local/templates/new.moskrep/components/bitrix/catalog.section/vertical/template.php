@@ -15,6 +15,7 @@ global $DEFAULT_STORE_ID;
 <?include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");?>
 <?$ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];?>
 
+<?if(!$_POST['ENUM_LIST']['ELEMENTS'] && !$arParams["DISABLE_HEADER"]=='Y'){?>
 <?$APPLICATION->SetPageProperty('title', $arResult["NAME"].", цена - купить в интернет-магазине в Москве");?>
 
 <?if(count($arResult['RELINK'])):?>
@@ -55,7 +56,7 @@ if($arParams['FOR_SEO']!='Y'){?>
 <?}
 	?>
 
-
+<?}?>
 <?
 $showTopPager = $arParams["DISPLAY_TOP_PAGER"];
 $showBottomPager = $arParams['DISPLAY_BOTTOM_PAGER'];
@@ -146,7 +147,7 @@ if ($showBottomPager)
 	<?
 }
 ?>
-
+<?if(!$_POST['ENUM_LIST']['ELEMENTS'] && !$arParams["DISABLE_HEADER"]=='Y'){?>
 <?
 
 
@@ -186,6 +187,6 @@ while($arSection = $db_list->GetNext()) {
 
 <br>
 <br>
-
+<?}?>
 
 		

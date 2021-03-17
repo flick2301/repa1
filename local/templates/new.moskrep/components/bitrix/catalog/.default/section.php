@@ -140,11 +140,7 @@ if($count_sections || !empty($subsections)){
         "GLOBAL_ACTIVE" => "Y",
         "IBLOCK_ID" => $arParams["IBLOCK_ID"],
         );
-        if(strlen($arResult["VARIABLES"]["SECTION_CODE"])>0)
-        {
-            $arFilter["CODE"] = $arResult["VARIABLES"]["SECTION_CODE"];
-        }
-        elseif($arResult["VARIABLES"]["SECTION_ID"]>0)
+        if($arResult["VARIABLES"]["SECTION_ID"]>0)
         {
             $arFilter["ID"] = $arResult["VARIABLES"]["SECTION_ID"];
         }
@@ -211,14 +207,14 @@ if($count_sections || !empty($subsections)){
 		$rsGender = CUserFieldEnum::GetList(array(), array("ID" => $arCurSection["UF_EL_LIST_TEMPL"]));
         if($arCat = $rsGender->GetNext())
                   $temple = $arCat["XML_ID"];
-		
+			  
+	   
 	
   
     //Получает все ID верхних каталогов, нужно чтоб вычислить $arParams["VIBOR_CATALOG_TABLE"]( ID в котором прописан
     //что разделы каталога в виде таблице( по дефолту карточками))
     $nav = CIBlockSection::GetNavChain(false, $arCurSection["ID"]);
     $arSec = $nav->GetNext();
-
 
     if ($isVerticalFilter==='Y' || !in_array($arSec['ID'], $arParams["VIBOR_CATALOG_TABLE"]) || $temple == 'vertical')
 	include($_SERVER["DOCUMENT_ROOT"]."/".$this->GetFolder()."/section_vertical.php");
