@@ -287,7 +287,24 @@ if($arParams['REFERENCE_CHECK']=='Y'):
     
 endif;
 
+$nav = CIBlockSection::GetNavChain(false, $arResult['SECTION']['ID']);
+while($nw = $nav->Fetch()){
+    $arTempID[]=$nw['ID'];
+    $arTempName[]=$nw['NAME'];
+}
 
+//Подбор сопутствующих товаров по свойству, нужен getlist на все верхние подразделы, будут
+//проверены все верхние подразделы пока не найдется первый с заполненным свойством
+$ar_result = CIBlockSection::GetList(array("ID" => "DESC"), array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "ID" => $arTempID), false, $arSelect = array("*", "UF_*"));
+while($arSection = $ar_result->GetNext())
+{
+	if($arSection["UF_S_ETIM_TOVAROM"])
+	{
+		$arResult["S_ETIM_TOVAROM"] = $arSection["UF_S_ETIM_TOVAROM"];
+				
+		break;
+	}
+}
 
 if(count($arResult['SECTION']['UF_OTHER_SECTION'])){
    
@@ -316,14 +333,19 @@ if($arResult['SECTION']['UF_GOLOVKA'])
 {
 	$GLOBALS['Filter_seo']["PROPERTY_GOLOVKA_VALUE"]=$arResult['SECTION']['UF_GOLOVKA'];
 }
+if($arResult['SECTION']['UF_MATERIAL'])
+{
+	
+	$GLOBALS['Filter_seo']["PROPERTY_MATERIAL_VALUE"]=$arResult['SECTION']['UF_MATERIAL'];
+}
 
 foreach($arResult['SECTIONS'] as $key=>$arSection){
     
     $file = CFile::ResizeImageGet($arSection['DETAIL_PICTURE'] ? $arSection['DETAIL_PICTURE'] :  $arSection['PICTURE']['ID'], array('width'=>$arParams['LIST_PREV_PIC_W_L2'], 'height'=>$arParams['LIST_PREV_PIC_H_L2']), BX_RESIZE_IMAGE_PROPORTIONAL, true);
 	
 			//Отмена сжатия
-			if ($arSection['DETAIL_PICTURE'])			
-			$file['src'] = CFile::GetPath($arSection['DETAIL_PICTURE']);	
+			//if ($arSection['DETAIL_PICTURE'])			
+			//$file['src'] = CFile::GetPath($arSection['DETAIL_PICTURE']);	
     
     if($file['src']):
         $arResult['SECTIONS'][$key]['PICTURE'] = $file;

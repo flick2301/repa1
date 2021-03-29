@@ -26,6 +26,11 @@ switch (LANGUAGE_ID)
 <?$APPLICATION->AddHeadScript($APPLICATION->GetCurDir()."map.js?".rand());?> <?globalGetTitle()?> <!--simple-article-->
 
 
+
+
+<!--simple-article-->
+
+
             <div class="basic-layout__module simple-article" id="delivery">
                   <!--simple-article-->
                   <div class="basic-layout__module simple-article">

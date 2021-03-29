@@ -33,18 +33,27 @@ function getContact($url, $data)
 }
 
 //Вывести заголовок
-function globalGetTitle($title = "") {
+function globalGetTitle($title = "", $template="new.moskrep") {
 	
 	global $APPLICATION;
 	
-	echo "<!--page-heading-->
-		<header class=\"basic-layout__module page-heading\">             
+	if($template == "new.moskrep")
+	{
+		echo "<!--page-heading-->
+			<header class=\"basic-layout__module page-heading\">             
 			<h1>{$title}"; 
 			
-			if (!$title) $APPLICATION->ShowTitle();
+		if (!$title) $APPLICATION->ShowTitle();
 			
-			echo "</h1>
+		echo "</h1>
             </header>
 			<!--page-heading-->";
+	}elseif($template == "krep-komp")
+	{
+		echo "<div class='content__title'>";
+		if (!$title) $APPLICATION->ShowTitle();
+		else echo $title;
+		echo "</div>";
+	}
 }
 ?>

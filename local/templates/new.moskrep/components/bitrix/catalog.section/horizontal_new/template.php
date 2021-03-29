@@ -304,15 +304,16 @@ if($arParams['FOR_SEO']!='Y'){
 
 if(!$_POST['ENUM_LIST']['ELEMENTS'] && !$arParams["DISABLE_HEADER"]=='Y')
 {
-if($arResult["UF_RELATED"]){
+if($arResult["S_ETIM_TOVAROM"]){
 ?>
 <br><br>
+<div class="recomend__title">Рекомендации</div>
 <div class="catalog-feed__other">
 <?
-$arFilter = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "ID"=>$arResult["UF_RELATED"], false, array("*"));
+$arFilter = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "ID"=>$arResult["S_ETIM_TOVAROM"], false, array("*"));
 $db_list = CIBlockSection::GetList(Array("SORT"=>"ASC"), $arFilter, true);
 while($arSection = $db_list->GetNext()) {
-    $renderImage = CFile::ResizeImageGet($arSection["PICTURE"], Array("width" => 72, "height" => 72), BX_RESIZE_IMAGE_EXACT, false); 
+    $renderImage = CFile::ResizeImageGet($arSection["PICTURE"], Array("width" => 172, "height" => 172), BX_RESIZE_IMAGE_EXACT, false); 
     ?>
 		<div class="catalog-feed__child">
                      <!--category-card-->

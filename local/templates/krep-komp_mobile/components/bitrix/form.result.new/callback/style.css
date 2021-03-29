@@ -1,0 +1,130 @@
+.callback-formblock .callback-formblock-questions .callback-formblock-questions-inputblock input[type=text]::-webkit-input-placeholder {color:#979797;}
+.callback-formblock .callback-formblock-questions .callback-formblock-questions-inputblock input[type=text]::-moz-placeholder {color:#979797;}
+.callback-formblock .callback-formblock-questions .callback-formblock-questions-inputblock input[type=text]:-moz-placeholder {color:#979797;}
+.callback-formblock .callback-formblock-questions .callback-formblock-questions-inputblock input[type=text]:-ms-input-placeholder {color:#979797;}
+.callback-formblock .callback-formblock-questions .callback-formblock-questions-inputblock textarea::-webkit-input-placeholder {color:#979797;}
+.callback-formblock .callback-formblock-questions .callback-formblock-questions-inputblock textarea::-moz-placeholder {color:#979797;}
+.callback-formblock .callback-formblock-questions .callback-formblock-questions-inputblock textarea:-moz-placeholder {color:#979797;}
+.callback-formblock .callback-formblock-questions .callback-formblock-questions-inputblock textarea:-ms-input-placeholder {color:#979797;}
+.callback-formblock {
+	width: 524px;
+	margin: -19px -42px -42px;
+	text-align: center;
+	overflow: hidden;
+}
+.callback-formblock .callback-formblock-description {
+}
+.callback-formblock .callback-formblock-description-logo {
+	margin: auto;
+	width: 83px;
+	height: 83px;
+	background: url('./images/icons8-rocket 1.svg') 50% 50% no-repeat;
+	background-size: contain;
+}
+.callback-formblock .callback-formblock-description-title {
+	font-weight: 300;
+	font-size: 35px;
+	line-height: 42px;
+	margin: 28px 0 30px;
+	padding: 0;
+}
+.callback-formblock .callback-formblock-description p {
+	width: 387px;
+	color: #979797;
+	font-size: 20px;
+	line-height: 23px;
+	font-weight: 400;
+	margin: 0 auto 39px;
+}
+.callback-formblock .callback-formblock-questions {
+}
+.callback-formblock .callback-formblock-questions .callback-formblock-questions-inputblock {
+	margin-bottom: 27px;
+}
+.callback-formblock .callback-formblock-questions .callback-formblock-questions-inputblock input[type=text] {
+	width: 380px;
+	padding: 18px 30px;
+	border: 1px solid #000000;
+	box-sizing: border-box;
+	border-radius: 10px;
+	font-size: 25px;
+	line-height: 29px;
+	font-weight: 400;
+}
+.callback-formblock .callback-formblock-questions .callback-formblock-questions-inputblock textarea {
+	width: 380px;
+	padding: 18px 30px;
+	border: 1px solid #000000;
+	box-sizing: border-box;
+	border-radius: 10px;
+	font-size: 25px;
+	line-height: 29px;
+	font-weight: 400;
+}
+.callback-formblock .callback-formblock-submit {
+	font-size: 25px;
+	line-height: 29px;
+	color: #fff;
+	background: #979797;
+	display: flex;
+	width: 445px;
+	height: 70px;
+	background: #979797;	
+	justify-content: center;
+	align-items: center;		
+	margin: 39px auto 39px;
+	border-radius: 10px;
+	cursor: default;
+}
+.callback-formblock .callback-formblock-submit.active {
+	background: #4F36E3;
+}	
+.callback-formblock .callback-formblock-submit.active:hover {
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);	
+	cursor: pointer;	
+}
+.callback-formblock .callback-formblock-consent {
+	margin: 0 56px 37px 48px;
+}
+.callback-formblock .callback-formblock-consent .callback-formblock-checkbox__wrap {
+	float: left;
+	display: block;
+	margin-right: 19px;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #000;	
+	border-radius: 2px;
+	cursor: pointer;
+}
+.callback-formblock .callback-formblock-consent input[type=checkbox] {
+	display: none;
+}
+.callback-formblock .callback-formblock-consent span {
+	display: block;
+	font-size: 15px;
+	line-height: 17px;
+	margin-left: 39px;
+	color: #000;	
+	text-align: left;
+}
+.callback-formblock .callback-formblock-consent label {
+	cursor: pointer;
+}
+.callback-formblock .callback-formblock-consent input[type=checkbox] + label::before {
+	content: " ";
+	width: 20px;
+	height: 20px;
+	display: block;
+	position: absolute;
+	border: 1px solid black;
+	border-radius: 2px;
+	margin-top: 5px;
+}
+.callback-formblock .callback-formblock-consent input[type=checkbox]:checked + label::before {
+	background: url('./images/icons8-checkmark 1.svg') 50% 50% no-repeat;
+	background-size: 17px 17px;
+}
+.callback-formblock .callback-formblock-errortext .errortext {
+	font-size: 14.5px;
+	line-height: 23px;
+}
