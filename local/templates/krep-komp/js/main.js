@@ -35,7 +35,9 @@ $('.top__catalog').on('click', function(){
 });
 */
 
-
+$('.top__catalog').on('click', function(){
+	$('.top').toggleClass('relative');
+});
 
 
 $('.mobile__link--catalog').on('click', function(){

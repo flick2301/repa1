@@ -13,8 +13,8 @@ use \Bitrix\Main\Localization\Loc;
  */
 
 ?>
-
-
+<div class="container">
+<div class="popular__wrapper">
 <div class="popular__title">Популярные товары</div>
 
 <div class="popular__block">
@@ -75,4 +75,5 @@ use \Bitrix\Main\Localization\Loc;
 		<div class="owl-dots disabled"></div>
 	</div>
 </div>
-            
+</div>            
+</div> 

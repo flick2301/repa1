@@ -79,8 +79,8 @@ BX.ready(function () {
 function menuResizer() {
 		var height = $('#catalog_main_menu .catalog-nav__item.active .catalog-nav__lvl2_new-list').height();
 		if (!height || (height < 800 && $(window).width() < 685)) height = 1000;
-		else if (height < 800) height = '100%';
-		else height += 200;
+		//else if (height < 800) height = '100%';
+		else height += 500;
 		$('#catalog_main_menu').css('height', height);	
 		
 		if ($(window).width() < 685 && $('#catalog-nav__toggle.open_menu').hasClass('active')) {

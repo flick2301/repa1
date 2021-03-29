@@ -723,9 +723,16 @@ ol.tech li {
 	display: flex;
 	justify-content: space-between;	
 }
+.popular__name {
+	min-height: 63px;
+}
+.top.relative {
+	position: relative;
+}
 .catalog_main_menu {
 	height: 100%;
 	z-index: 100;
+	margin-top: -50px;
 }
 #catalog_main_menu {
 	width: 100%;
