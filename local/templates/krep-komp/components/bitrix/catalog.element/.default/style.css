@@ -1,0 +1,116 @@
+.card__articul {
+	margin: 15px 0;
+}
+.card__photo{
+    height:486px !important;
+}
+.card__link-dashed_packs{
+    color:#0c59cf;
+    border-bottom: 1px dashed #b6cdf1;
+    
+}
+.card__link-dashed_packs:hover{
+    color:#0c59cf;
+    border-bottom: 0px dashed #b6cdf1;
+}
+.blue-table {
+    border-radius: 3px;
+    border: 1px solid #dfdfdf;
+    display: block;
+    text-align: left;
+    margin-top: 30px;
+}
+
+.blue-table__thead {
+    border-radius: 3px 3px 0 0;
+    background: #0c59cf;
+    display: flex;
+    flex-direction: column;
+}
+.blue-table__tbody {
+    display: flex;
+    flex-direction: column;
+}
+
+.blue-table__th {
+    width: 16%;
+    font-weight: 400;
+    padding: 14px;
+    line-height: 1.25rem;
+    font-size: 0.9375rem; color: #fff;
+    border-right: 1px solid #457fd8;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+.blue-table__th:last-child {
+    border-right: none;
+}
+.blue-table__tr {
+    display: flex;
+    justify-content: space-between;
+    /*align-items: center;*/
+}
+
+.blue-table__td {
+    border-right: 1px solid #dfdfdf;
+    border-bottom: 1px solid #dfdfdf;
+    font-size: 0.875rem; color: #676767;
+    width: 16%;
+    padding: 14px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+}
+
+.blue-table__tr:last-child .blue-table__td {
+    border-bottom: none;
+}
+
+.blue-table__td:last-child {
+    border-right: none;
+}
+
+.card-price-dop{
+    font-size:0.775rem;
+}
+
+
+	.skid td:first-child{
+    width: 50px;
+    font-weight: 400;
+	text-align:center;
+    padding: 14px;
+    line-height: 1.25rem;
+    font-size: 0.9375rem;
+    color: #fff;
+    border-right: 1px solid #457fd8;
+border-bottom: 1px solid #457fd8;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+		background:#457fd8;
+}
+.skid td:last-child{
+    width: 240px;
+
+    font-weight: 400;
+    padding: 14px;
+    line-height: 1.25rem;
+    font-size: 0.9375rem;
+    color: #000;
+    border-right: 1px solid #457fd8;
+	border-bottom: 1px solid #457fd8;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+	.skid{
+		margin-top:20px;
+border-top: 1px solid #457fd8;
+}
+.spb .skid td:last-child{
+    width:120px}
+.spb .skid td:first-child{
+    width:120px}

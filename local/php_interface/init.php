@@ -1,4 +1,6 @@
 <?php
+use \Bitrix\Main\Loader;
+
 if(!defined('B_PROLOG_INCLUDED')||B_PROLOG_INCLUDED!==true)die();
 
 // #
@@ -23,6 +25,12 @@ if(strstr($_SERVER['HTTP_HOST'], "dev"))
 	include_once($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/include/dev_constants.php');
 else
 	include_once($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/include/constants.php');
+
+//Классы
+
+Loader::registerAutoLoadClasses(null, array(
+    '\Olepro\Classes\Helpers\MobileDetect' => '/local/classes/helpers/mobiledetect.php',
+));
 
 
 ?>

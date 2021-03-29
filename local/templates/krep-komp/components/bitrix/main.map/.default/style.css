@@ -1,0 +1,80 @@
+.user_sitemap {
+	margin-top: 20px;
+}
+.user_sitemap table {
+	padding: 0;
+	border-spacing: 0;	
+}
+.user_sitemap table tr td {
+	vertical-align: top;
+	padding: 10px 20px;
+	text-align: left;
+}
+.user_sitemap table tr td:first-child {
+	padding-left: 0;
+}
+.user_sitemap .client-widget__link {
+	height: auto;
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+.user_sitemap h3 {
+	margin-top: 20px;
+}
+.user_sitemap .catalog_items {
+	margin-top: 10px;
+}
+.user_sitemap .level {
+	display: none;
+}
+.user_sitemap .level0 {
+	display: block;
+}
+.user_sitemap .level {
+	margin-left: 45px;
+}
+.user_sitemap .level.subsection {
+	margin-left: 20px;	
+}
+.user_sitemap .level0 {
+	margin-left: 25px;
+}
+.user_sitemap .level0.subsection {
+	margin-left: 0;
+}
+.user_sitemap .level span {
+	display: none;
+}
+.user_sitemap .subsection > span {
+	display: inline-block;
+	cursor: pointer;
+	border: 0px solid #d5d5d5;
+	height: 15px;
+	width: 15px;
+	background: url(/images/plussquare_120280.svg) 50% 50% no-repeat;
+	background-size: cover;
+	position: relative;
+	margin-top: 5px;
+	margin-right: 7px;
+	opacity: 1;
+}
+.user_sitemap .subsection span.open {
+	background: url(/images/minussquare_120280.svg) 50% 50% no-repeat;	
+	background-size: cover;	
+}
+.user_sitemap .subsection > span:hover, .user_sitemap .subsection span.open:hover {
+	opacity: 0.8;
+}
+
+
+
+
+
+@media (max-width: 685px) {
+.user_sitemap table tr td {
+	display: block;
+	width: 100%;
+	padding-left: 0px;
+}
+}
