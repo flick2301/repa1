@@ -68,7 +68,7 @@ $rsGender = CUserFieldEnum::GetList(array(), array("ID" => $aSection["UF_SEC_LIS
 						"SHOW_404" => $arParams["SHOW_404"],
 						"FILE_404" => $arParams["FILE_404"],
 						"DISPLAY_COMPARE" => $arParams["USE_COMPARE"],
-						"PAGE_ELEMENT_COUNT" => $GLOBAL['size_1'],
+						"PAGE_ELEMENT_COUNT" => $_GET['SIZEN_1'],
 						"LINE_ELEMENT_COUNT" => $arParams["LINE_ELEMENT_COUNT"],
 						"PRICE_CODE" => $arParams["PRICE_CODE"],
 						"USE_PRICE_COUNT" => $arParams["USE_PRICE_COUNT"],

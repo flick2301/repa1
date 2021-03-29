@@ -56,8 +56,6 @@ elseif(count($arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE'])>1) {
 	$mySmartFilter =[];
 }
 
-
-
 if (CModule::IncludeModule("iblock"))
 {
         $arFilter = array(

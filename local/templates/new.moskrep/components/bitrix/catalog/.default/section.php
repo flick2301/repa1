@@ -95,6 +95,9 @@ if($res=$ar_result->GetNext()){
 			$meta['description'] = $res["UF_META_DESCRIPTION_SPB"];
 		if($res["UF_H1_SPB"])
 			$meta['H1'] = $res["UF_H1_SPB"];
+		
+		if($res["UF_MATERIAL"])
+			$uf_fields["UF_MATERIAL"] = $res["UF_MATERIAL"];
 	
 		
 }
@@ -106,7 +109,7 @@ if($_REQUEST['section_temp'] == 'new' || $temple=='ANKERA'){
 }
 
 
-if($count_sections || !empty($subsections)){ 
+if($count_sections || !empty($subsections) || !empty($uf_fields["UF_MATERIAL"])){ 
             
             $APPLICATION->IncludeComponent('bitrix:catalog.section.list', $name_temple, [
                 'IBLOCK_ID' => $arParams['IBLOCK_ID'],
