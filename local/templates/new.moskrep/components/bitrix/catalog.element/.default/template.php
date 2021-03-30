@@ -134,7 +134,7 @@ dataLayer.push({
                            <ul class="product-data__list">
                               <li class="product-data__item">
                                  <p class="product-data__name"><i class="simple-car-icon product-data__icon"></i>Доставка</p>
-                                 <p class="product-data__text">от 290 руб.</p>
+                                 <p class="product-data__text">от <?=strstr($_SERVER['HTTP_HOST'], "spb") ? "490" : "290";?> руб.</p>
                               </li>
                               <li class="product-data__item">
                                  <p class="product-data__name"><i class="simple-available-icon product-data__icon"></i>Наличие</p>
