@@ -34,8 +34,36 @@ $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Мос
 </div>
 <!--intro-slider-->
 
-
-
+<div class="main_hits_title">Категории товаров</div>
+<div class='category'>
+	<div class='container'>
+		<div class='category__wrapper'>
+			
+			<?$APPLICATION->IncludeComponent(
+				"bitrix:catalog.section.list",
+				"root_directory",
+				Array(
+					"ADD_SECTIONS_CHAIN" => "Y",
+					"CACHE_GROUPS" => "Y",
+					"CACHE_TIME" => "36000000",
+					"CACHE_TYPE" => "N",
+					"COUNT_ELEMENTS" => "Y",
+					"IBLOCK_ID" => CATALOG_IBLOCK_ID,
+					"IBLOCK_TYPE" => "catalog",
+					"SECTION_CODE" => "",
+					"SECTION_FIELDS" => array("", ""),
+					"SECTION_ID" => "",
+					"SECTION_URL" => "",
+					"SECTION_USER_FIELDS" => array("", ""),
+					"SHOW_PARENT_NAME" => "Y",
+					"TOP_DEPTH" => "1",
+					"SECTION_USER_FIELDS" => array("UF_PIC",""),
+					"VIEW_MODE" => "LINE"
+				)
+			);?>
+		</div>
+	</div>
+</div>
 
 <?
 global $arrFilter;
