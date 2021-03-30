@@ -7,12 +7,15 @@ $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Мос
 <?/*if (strstr($_SERVER['HTTP_HOST'] , "new.")):*/?> 
 <?if ($_GET["new"] || strstr($_SERVER['HTTP_HOST'] , "new.") || true):?> 
 
- 
+
+
+	
+	
 <!--intro-slider-->
 <div class="basic-layout__module intro-slider">		   
 <?$APPLICATION->IncludeComponent(
 	"d7:slider_new", 
-	".default", 
+	"krep-komp", 
 	array(
 		"IBLOCK_TYPE" => "banners",
 		"IBLOCK_ID" => "6",
@@ -32,7 +35,9 @@ $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Мос
 	false
 );?>
 </div>
-<!--intro-slider-->
+<!--intro-slider-->	
+	
+	
 
 
 

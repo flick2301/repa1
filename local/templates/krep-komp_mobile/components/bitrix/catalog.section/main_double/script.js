@@ -7,7 +7,7 @@ BX.ready(function () {
 	
 	//sliderResizer();
 	
-    var buyBtnDetail = document.body.querySelectorAll('.simple-cart-icon');
+    var buyBtnDetail = document.body.querySelectorAll('.product-card__button');
 
     for (var i = 0; i < buyBtnDetail.length; i++) {
         BX.bind(buyBtnDetail[i], 'click', BX.delegate(function (e) {

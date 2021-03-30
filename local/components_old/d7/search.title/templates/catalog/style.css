@@ -1,0 +1,12 @@
+.title-search-result {
+    width: 870px;
+    border-radius: 3px;
+    background: #fff;
+    display: none;
+    margin-top: 18px;
+    padding: 30px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 100000;
+}

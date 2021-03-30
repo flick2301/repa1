@@ -1,27 +1,24 @@
 <?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
-<?if (!empty($arResult)):?>
 
-			<div class="fast-nav__title" data-sreader>Доп навигация</div>
-				<ul class="fast-nav__list">
 
 <?
-
+$list=1;
 foreach($arResult as $arItem):
+	if($list==1 || $list%4 ==1)
+	{
 ?>
-
-		
-			
-				
-		    <li class="fast-nav__item"><a href="<?=$arItem['LINK']?>" class="fast-nav__link"><?=$arItem["TEXT"]?></a></li>
-	
-	
+	<div class="footer__list">
+	<?}?>
+		<div class="footer__box"><a class="footer__link" href="<?=$arItem['LINK']?>"><?=$arItem["TEXT"]?></a></div>
+	<?
+	if($list%4 ==0)
+	{
+	?>
+	</div>
+	<?}?>
+	<?$list++;?>
 <?endforeach?>
+</div>
 
 
-
-
-</ul>
-
-
-<?endif?>
