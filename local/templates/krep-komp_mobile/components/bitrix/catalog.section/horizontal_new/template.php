@@ -136,7 +136,7 @@ if($arParams['FOR_SEO']!='Y'){
 					</div>
 					<div class='table__td'>
 						<div class='table__name'>Наличие</div>
-						<div class='table__fasovka'><?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT'];?> уп.</div>
+						<div class='table__availability<?=($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']>0) ? "" : " table__availability--impability";?>'><?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT'];?> уп.</div>
 					</div>
 				</div>
 				<div class='table__item'>

@@ -8,7 +8,9 @@ $APPLICATION->SetTitle("Адреса магазинов в {{city}}");
 	 <?if(!$_REQUEST["ID"]):?> <?globalGetTitle()?> <?endif?>
 	<div id="moscow" class="delivery__tabs-list active">
 	
+	<?if($_SERVER['HTTP_HOST']=="krep-komp.ru" || $_SERVER['HTTP_HOST']=="spb.krep-komp.ru"):?>
 	<p>Выдача заказов осуществляется на следующий день после 13.00 при условии оформления заказа до 17.30 предыдущего дня.</p>
+	<?endif?>
 	
 		 <?if(!$_REQUEST["ID"] && $_SERVER['HTTP_HOST']=='krep-komp.ru'):?>
 		<ul>
