@@ -5,6 +5,8 @@ use \Bitrix\Main\Page\Asset;
 use Bitrix\Main\Application;
 
 Loc::LoadMessages(__FILE__);
+
+global $APPLICATION;
 ?>
 <!-- DESKTOP -->
 <!DOCTYPE html>
@@ -109,8 +111,8 @@ $APPLICATION->IncludeFile(
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.css", true);
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/jquery.fancybox.min.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/styles/global.styles.min.css?v=XXXXXXa", true);
-	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.css".$rand, true);
-	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/main.min.css", true);	
+	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.css".$rand, true);	
+	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/main.min.css", true);
 	if (IPHONE=="Y") $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/iphone.css", true);	
 	else $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/dieapple.css", true);
 	
@@ -118,6 +120,7 @@ $APPLICATION->IncludeFile(
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.fancybox.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/datalayer.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");
+	
 	
 		global $USER;
 		if ($USER->GetID()==1 || $_GET["administrator"]) {
@@ -140,7 +143,8 @@ $APPLICATION->IncludeFile(
    <script src="<?=SITE_TEMPLATE_PATH?>/js/common.js" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/js/slick.min.js" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.cookie.js" defer="defer"></script>
-	<script src="<?=SITE_TEMPLATE_PATH?>/js/main.js" defer="defer"></script>   
+	<script src="<?=SITE_TEMPLATE_PATH?>/js/main.js" defer="defer"></script>  
+	<script src="<?=SITE_TEMPLATE_PATH?>/js/owl.carousel.min.js"></script> 	
 
     
     <!--[if (lt IE 9)&(!IEMobile 7)]><script src="js/html5support.js"></script><![endif]-->
@@ -196,267 +200,291 @@ $APPLICATION->IncludeFile(
 
     <?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/functions.php";?>
 	
-<div id="top_under_menu">
-<div class="basic-layout__section">
-<div>
-
-<?if(!strstr($_SERVER['HTTP_HOST'], "dev") || true)
-{?>
-<?if(!$_GET["nogeolocation"] && false):?>
-<?require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>
-<?else:?>
-	<?$APPLICATION->IncludeComponent("d7:geolocation","",Array(
-				"IBLOCK_ID" => "23", 
-				"CACHE_TYPE" => "A", 
-                "CACHE_TIME" => "3600", 
-                "CACHE_FILTER" => "N"
-                    ), false
-    );?>
-<?endif?>	
-	<?}?>
-</div>
-
-<!--contact-widget-->
-<div class="contact-widget">
-	<?$APPLICATION->IncludeComponent("d7:contact_shops","header",Array(
-				"IBLOCK_ID" => "19", 
-				"CACHE_TYPE" => "A", 
-                "CACHE_TIME" => "3600", 
-                "CACHE_FILTER" => "N",
-				"LIMIT" => 1,	
-                    ), false
-    );?>
-</div>
-</div>
-</div>	
 	
-	<header class="basic-layout__header">
-	<?=$safari?>
-	
-	<!--<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; color:#000; font-size:16px;'>Уважаемые клиенты! Наш интернет-магазин и все точки самовывоза не работают 8 марта!<span style='color: #f39101;'></span></strong>  <svg class="icon-svg -cross close-svg" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg></div> </div> </div>-->
-	<?if($_SERVER['HTTP_HOST']=="krep-komp.ru"):?>
-	<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; color:#000; font-size:16px;'>В магазине на Каширке доступна доставка день в день. <a href="/addresses/" style="text-decoration: underline; color: #4F36E3;">Подробнее</a><span style='color: #f39101;'></span></strong>  <svg class="icon-svg -cross close-svg" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg></div> </div> </div>
-	<?endif?>
-	
-	
-	
-	
-	
-	
-    <div class="basic-layout__section">
-	<!--eshop-panel-->
-        <div class="eshop-panel">
-			<div class="eshop-panel__brand">
-			<!--website-logo-->
-			<div class="website-logo">
-				<?//$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/company_logo.php"), false, []);?>
-				<img class="website-logo__img" alt="Магазин крепежа и метизов «КРЕП-КОМП" title="Магазин крепежа и метизов «КРЕП-КОМП»" src="/local/templates/moskrep/assets/design/website-logo/krep-komp.svg" />
-				<a class="website-logo__link" href="<?=($APPLICATION->GetCurPage() != "/") ? '/' : 'javascript::void();'?>">На главную</a>
+	<div class='mobile'>
+		<div class='mobile__wrapp'>
+			<div class="mobile__top">
+				<div class="mobile__close"></div>  
 			</div>
-			<!--website-logo-->
-            </div>
-			
-<?if (CSite::InDir('/index.php') || true):?>				
-<?$APPLICATION->IncludeComponent(
-	"bitrix:menu", 
-	"catalog_main", 
-	array(
-		"ROOT_MENU_TYPE" => "left",
-		"MAX_LEVEL" => "3",
-		"CHILD_MENU_TYPE" => "left",
-		"USE_EXT" => "Y",
-		"COMPONENT_TEMPLATE" => "catalog_main",
-		"MENU_CACHE_TYPE" => "A",
-		"MENU_CACHE_TIME" => "3600",
-		"MENU_CACHE_USE_GROUPS" => "Y",
-		"MENU_CACHE_GET_VARS" => array(
-		),
-		"DELAY" => "N",
-		"ALLOW_MULTI_SELECT" => "N",
-		"VIBOR_CATALOG_TABLE" => array(
-			0 => "2312",
-			1 => "2838",
-			2 => "2841",
-			3 => "2844",
-			4 => "2411",
-			5 => "2403",
-			6 => "",
-		)
-	),
-	false
-);?>				
-<?endif?>
-			
-					
-			<div class="eshop-panel__search <?if (CSite::InDir('/index.php') || 1):?>main<?endif?>">
-                <?
-                $request = Application::getInstance()->getContext()->getRequest();
-                $name = $request->getCookieList();               
-                ?>
-				
-                   
-
-		<?/*$APPLICATION->IncludeComponent(
-	"d7:search.title", 
-	"catalog", 
-	array(
-		"CATEGORY_0" => array(
-			0 => "iblock_catalog",
-		),
-		"CATEGORY_0_TITLE" => "",
-		"CATEGORY_0_iblock_catalog" => array(
-			0 => "17",
-		),
-		"CHECK_DATES" => "N",
-		"CONTAINER_ID" => "title-search",
-		"INPUT_ID" => "title-search-input",
-		"NUM_CATEGORIES" => "1",
-		"ORDER" => "rank",
-		"PAGE" => "#SITE_DIR#search/index.php",
-		"SHOW_INPUT" => "Y",
-		"SHOW_OTHERS" => "N",
-		"TOP_COUNT" => "10",
-		"USE_LANGUAGE_GUESS" => "N",
-		"PRICE_CODE" => array(
-			0 => "Распродажа",
-			1 => "К0 (БАЗОВАЯ НАЧАЛЬНАЯ)",
-		),
-		"COMPONENT_TEMPLATE" => "catalog",
-		"PRICE_VAT_INCLUDE" => "Y",
-		"PREVIEW_TRUNCATE_LEN" => "",
-		"SHOW_PREVIEW" => "Y",
-		"PREVIEW_WIDTH" => "75",
-		"PREVIEW_HEIGHT" => "75",
-		"CONVERT_CURRENCY" => "N",
-		"CATEGORY_OTHERS_TITLE" => "",
-		"CATEGORY_1_TITLE" => "",
-		"CATEGORY_1" => "",
-		"CATEGORY_2_TITLE" => "",
-		"CATEGORY_2" => "",
-		"CATEGORY_3_TITLE" => "",
-		"CATEGORY_3" => "",
-		"CATEGORY_4_TITLE" => "",
-		"CATEGORY_4" => ""
-	),
-	false
-);*/?>                          <?//$APPLICATION->AddHeadScript('/local/ajax/ajax_search.js');?>
-
-    
-<!--<div class='header-search__wrap' id='header-search__result'>   
-<form action="/search/index.php">
-    <input id="title-search-input" type="text" name="q" value=""  placeholder="Поиск по каталогу..." class="header-search__input" autocomplete="off">
-                <a href="javascript:void(0);" onclick="BX(&quot;search_submit&quot;).click();" class="header-search__btn"></a>
-    <input style="display:none;" id="search_submit" name="s" type="submit" value="Поиск">
-</form>
-</div>-->
-
-<?$APPLICATION->IncludeComponent(
-	"webcreature:dsearch.ajax", 
-	"krep-komp", 
-	array(
-		"ARTNO" => "CML2_ARTICLE",
-		"CATEGORY" => array(
-			0 => "0",
-		),
-		"DESCRIPTION_LEN" => "300",
-		"IBLOCK_ID" => "17",
-		"IBLOCK_TYPE" => "catalog",
-		"IN_CATEGORY" => "N",
-		"SEARCH_VARIABLE" => "result",
-		"SIZE" => "8",
-		"STAT" => "Y",
-		"STAT_LIMIT" => "10000",
-		"COMPONENT_TEMPLATE" => "krep-komp"
-	),
-	false
-);?>
+			<div class='mobile__bot'>
+				<a href='/rasprodaja_krepeja/' class='mobile__item mobile__item--offer'>Акции</a>
+				<div class='mobile__item mobile__item--catalog'>
+					<?$APPLICATION->IncludeComponent(
+							"bitrix:menu", 
+							"catalog_main_mobile", 
+							array(
+								"ROOT_MENU_TYPE" => "left",
+								"MAX_LEVEL" => "3",
+								"CHILD_MENU_TYPE" => "left",
+								"USE_EXT" => "Y",
+								"COMPONENT_TEMPLATE" => "catalog_main_mobile",
+								"MENU_CACHE_TYPE" => "A",
+								"MENU_CACHE_TIME" => "3600",
+								"MENU_CACHE_USE_GROUPS" => "Y",
+								"MENU_CACHE_GET_VARS" => array(),
+								"DELAY" => "N",
+								"ALLOW_MULTI_SELECT" => "N",
+								"VIBOR_CATALOG_TABLE" => array(
+									0 => "2312",
+									1 => "2838",
+									2 => "2841",
+									3 => "2844",
+									4 => "2411",
+									5 => "2403",
+									6 => "",
+								)
+							),
+							false
+						);?>	
+				</div>
+				<a href='/prays_listy/' class='mobile__item'>Прайс-лист</a>
+				<a href='/certificates/' class='mobile__item'>Сертификаты</a>
+				<a href='/oplata/' class='mobile__item'>Получение и оплата</a>
+				<a href='/contacts/' class='mobile__item'>Контакты</a>
+			</div>
 		</div>
-               
-		<div class="eshop-panel__user">
-               <!--client-widget-->
-               <div class="client-widget">
-					<div class="client-widget__user">
-					<?
-					global $USER;
-					if ($USER->IsAuthorized()){ 
-						?><a class="client-widget__link" href="/personal/"><i class="simple-user-icon client-widget__icon"></i>Кабинет</a><?
-					}else{
-						?><a href="javascript:void(0);" class="client-widget__link login__btn" data-sign-in-form-trigger><i class="simple-user-icon client-widget__icon"></i>Вход</a><?
-					}
-					?>
+	</div>
+
+	<div class="shelf">
+		<div class="container">
+			<div class="shelf__wrapper">
+				<div class="shelf__left">
+					<div class="shelf__hamburger">
+						<span></span>
+						<span></span>
+						<span></span>
 					</div>
-					
+					<a class="shelf__logo" href="/">
+						<img class="shelf__img" src="<?=SITE_TEMPLATE_PATH?>/images/logo-mobile.svg">
+					</a>
+				</div>
+				<div class="shelf__right">
 					<?
 		
-		$APPLICATION->IncludeComponent(
-	"bitrix:sale.basket.basket.line", 
-	".default", 
-	array(
-		"HIDE_ON_BASKET_PAGES" => "N",
-		"PATH_TO_AUTHORIZE" => "",
-		"PATH_TO_BASKET" => SITE_DIR."basket/",
-		"PATH_TO_ORDER" => SITE_DIR."order/",
-		"PATH_TO_PERSONAL" => SITE_DIR."personal/",
-		"PATH_TO_PROFILE" => SITE_DIR."personal/",
-		"PATH_TO_REGISTER" => SITE_DIR."login/",
-		"POSITION_FIXED" => "N",
-		"SHOW_AUTHOR" => "N",
-		"SHOW_EMPTY_VALUES" => "N",
-		"SHOW_NUM_PRODUCTS" => "Y",
-		"SHOW_PERSONAL_LINK" => "N",
-		"SHOW_PRODUCTS" => "Y",
-		"SHOW_REGISTRATION" => "N",
-		"SHOW_TOTAL_PRICE" => "N",
-		"COMPONENT_TEMPLATE" => ".default",
-		"SHOW_DELAY" => "N",
-		"SHOW_NOTAVAIL" => "N",
-		"SHOW_IMAGE" => "Y",
-		"SHOW_PRICE" => "Y",
-		"SHOW_SUMMARY" => "Y",
-		"MAX_IMAGE_SIZE" => "70"
-	),
-	false
-);?>
-			
-				
+						$APPLICATION->IncludeComponent(
+							"bitrix:sale.basket.basket.line", 
+							"mobile", 
+							array(
+								"HIDE_ON_BASKET_PAGES" => "N",
+								"PATH_TO_AUTHORIZE" => "",
+								"PATH_TO_BASKET" => SITE_DIR."basket/",
+								"PATH_TO_ORDER" => SITE_DIR."order/",
+								"PATH_TO_PERSONAL" => SITE_DIR."personal/",
+								"PATH_TO_PROFILE" => SITE_DIR."personal/",
+								"PATH_TO_REGISTER" => SITE_DIR."login/",
+								"POSITION_FIXED" => "N",
+								"SHOW_AUTHOR" => "N",
+								"SHOW_EMPTY_VALUES" => "N",
+								"SHOW_NUM_PRODUCTS" => "Y",
+								"SHOW_PERSONAL_LINK" => "N",
+								"SHOW_PRODUCTS" => "Y",
+								"SHOW_REGISTRATION" => "N",
+								"SHOW_TOTAL_PRICE" => "N",
+								"COMPONENT_TEMPLATE" => "mobile",
+								"SHOW_DELAY" => "N",
+								"SHOW_NOTAVAIL" => "N",
+								"SHOW_IMAGE" => "Y",
+								"SHOW_PRICE" => "Y",
+								"SHOW_SUMMARY" => "Y",
+								"MAX_IMAGE_SIZE" => "70"
+							),
+							false
+						);?>
+					<div class="shelf__search"></div>
+				</div>
 			</div>
 		</div>
-		<?/*<div class="eshop-panel__contact">
-               <!--contact-widget-->
-               <div class="contact-widget">
-	<?$APPLICATION->IncludeComponent("d7:contact_shops","header",Array(
-				"IBLOCK_ID" => "19", 
-				"CACHE_TYPE" => "A", 
-                "CACHE_TIME" => "3600", 
-                "CACHE_FILTER" => "N",
-				"LIMIT" => 1,	
-                    ), false
-    );?>	
-				</div>
-		</div>*/?>
-              
+	</div>
+	
+	
+	<div class='top'>
+		<div class='container'>
+			<div class='top__wrapper'>
+				<div class="top__topside">
+					<div class="top__left">
+						
+						<div class='top__address'>
+						<?if(!strstr($_SERVER['HTTP_HOST'], "dev") || true)
+						{?>
+							<?if(!$_GET["nogeolocation"] && false):?>
+								<?require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>
+							<?else:?>
+								<?$APPLICATION->IncludeComponent("d7:geolocation","",Array(
+										"IBLOCK_ID" => "23", 
+										"CACHE_TYPE" => "A", 
+										"CACHE_TIME" => "3600", 
+										"CACHE_FILTER" => "N"
+									), false
+								);?>
+							<?endif?>	
+						<?}?>				
+						</div>
+					</div>
+					<div class='top__right'>
+					
+						<div class="top__payment">
+							<div class="top__payment__name"><a href='/delivery/'>Получение и оплата</a></div>
+						</div>
+						<div class="top__contact"><a href='/contacts/'>Контакты</a></div>
+						
+
+						
+						<?$APPLICATION->IncludeComponent("d7:contact_shops","header_krep-komp",Array(
+								"IBLOCK_ID" => "19", 
+								"CACHE_TYPE" => "A", 
+								"CACHE_TIME" => "3600", 
+								"CACHE_FILTER" => "N",
+								"LIMIT" => 1,	
+							), false
+						);?>
+						
+					</div>
+				</div>	
+	
+	
+				<?=$safari?>
+		
+    
+	
+				<div class="top__botside">
+				<div class="top__logoblock">
+					<a class="top__logo"  href="<?=($APPLICATION->GetCurPage() != "/") ? '/' : 'javascript::void();'?>">
+						<img class="top__img" alt="Магазин крепежа и метизов «КРЕП-КОМП" title="Магазин крепежа и метизов «КРЕП-КОМП»" src="<?=SITE_TEMPLATE_PATH?>/images/logo.svg" />
+					</a>
+			
+			
+					<?if (CSite::InDir('/index.php') || true):?>				
+						<?$APPLICATION->IncludeComponent(
+							"bitrix:menu", 
+							"catalog_main", 
+							array(
+								"ROOT_MENU_TYPE" => "left",
+								"MAX_LEVEL" => "3",
+								"CHILD_MENU_TYPE" => "left",
+								"USE_EXT" => "Y",
+								"COMPONENT_TEMPLATE" => "catalog_main",
+								"MENU_CACHE_TYPE" => "A",
+								"MENU_CACHE_TIME" => "3600",
+								"MENU_CACHE_USE_GROUPS" => "Y",
+								"MENU_CACHE_GET_VARS" => array(),
+								"DELAY" => "N",
+								"ALLOW_MULTI_SELECT" => "N",
+								"VIBOR_CATALOG_TABLE" => array(
+									0 => "2312",
+									1 => "2838",
+									2 => "2841",
+									3 => "2844",
+									4 => "2411",
+									5 => "2403",
+									6 => "",
+								)
+							),
+							false
+						);?>				
+					<?endif?>
+			</div>
+					
+					<div class="top__form">
+					<?
+						$request = Application::getInstance()->getContext()->getRequest();
+						$name = $request->getCookieList();               
+					?>
+				
+     
+
+						<?$APPLICATION->IncludeComponent(
+							"webcreature:dsearch.ajax", 
+							"krep-komp", 
+							array(
+								"ARTNO" => "CML2_ARTICLE",
+								"CATEGORY" => array(
+									0 => "0",
+								),
+								"DESCRIPTION_LEN" => "300",
+								"IBLOCK_ID" => "17",
+								"IBLOCK_TYPE" => "catalog",
+								"IN_CATEGORY" => "N",
+								"SEARCH_VARIABLE" => "result",
+								"SIZE" => "8",
+								"STAT" => "Y",
+								"STAT_LIMIT" => "10000",
+								"COMPONENT_TEMPLATE" => "krep-komp"
+							),
+							false
+						);?>
+					</div>
+               
+					<div class="top__rightside">
+						<div class="top__nav top__login">
+						<?
+							global $USER;
+							if ($USER->IsAuthorized())
+							{ 
+						?>
+								<a href="/personal/">Кабинет</a>
+							<?}else{?>
+								<a href="javascript:void(0);" class="login__btn" data-sign-in-form-trigger>Вход</a>
+							<?}?>
+						</div>
+					
+						<?
+		
+						$APPLICATION->IncludeComponent(
+							"bitrix:sale.basket.basket.line", 
+							".default", 
+							array(
+								"HIDE_ON_BASKET_PAGES" => "N",
+								"PATH_TO_AUTHORIZE" => "",
+								"PATH_TO_BASKET" => SITE_DIR."basket/",
+								"PATH_TO_ORDER" => SITE_DIR."order/",
+								"PATH_TO_PERSONAL" => SITE_DIR."personal/",
+								"PATH_TO_PROFILE" => SITE_DIR."personal/",
+								"PATH_TO_REGISTER" => SITE_DIR."login/",
+								"POSITION_FIXED" => "N",
+								"SHOW_AUTHOR" => "N",
+								"SHOW_EMPTY_VALUES" => "N",
+								"SHOW_NUM_PRODUCTS" => "Y",
+								"SHOW_PERSONAL_LINK" => "N",
+								"SHOW_PRODUCTS" => "Y",
+								"SHOW_REGISTRATION" => "N",
+								"SHOW_TOTAL_PRICE" => "N",
+								"COMPONENT_TEMPLATE" => ".default",
+								"SHOW_DELAY" => "N",
+								"SHOW_NOTAVAIL" => "N",
+								"SHOW_IMAGE" => "Y",
+								"SHOW_PRICE" => "Y",
+								"SHOW_SUMMARY" => "Y",
+								"MAX_IMAGE_SIZE" => "70"
+							),
+							false
+						);?>
+			
+				
+						
+					</div>
+		            
 		
         
-	</div>
-	<!--eshop-panel-->
+				</div>
+	
 	
 
-<div id="filter__catalog">
-<?$APPLICATION->ShowViewContent('catalogFilter');?>
-</div>
+				<div id="filter__catalog">
+				<?$APPLICATION->ShowViewContent('catalogFilter');?>
+				</div>
 		
 			
-</div>
 
 
-	<div class="basic-layout__section">
-         <!--website-navbar-->
-         <div class="website-navbar">
+
+				<div class="basic-layout__section">
+					<!--website-navbar-->
+					<div class="website-navbar">
 		 
 		 
 <?if (!CSite::InDir('/index.php') && false):?>		 
-           <div class="website-navbar__catalog">
-               <!--catalog-nav-->
+						<div class="website-navbar__catalog">
+							<!--catalog-nav-->
                			
 	<?$APPLICATION->IncludeComponent(
 	"bitrix:menu", 
@@ -486,16 +514,16 @@ $APPLICATION->IncludeFile(
 	),
 	false
 );?>	
-		</div>
+						</div>
 <?endif?>		
 		
 		
-		<div class="website-navbar__primary">
-               <!--main-nav-->
-               <nav class="main-nav<?if (CSite::InDir('/index.php') && SITE_ID!='s2'):?> full<?endif?>">
-                  <div class="main-nav__title" data-sreader>Навигация</div>
-                  <div class="main-nav__wrap is-disabled" id="main-nav__wrap">
-                     <button class="main-nav__close" id="main-nav__close"><i class="simple-close-icon"></i>Закрыть</button>
+						<div class="website-navbar__primary">
+							<!--main-nav-->
+							<nav class="main-nav<?if (CSite::InDir('/index.php') && SITE_ID!='s2'):?> full<?endif?>">
+								<div class="main-nav__title" data-sreader>Навигация</div>
+								<div class="main-nav__wrap is-disabled" id="main-nav__wrap">
+									<button class="main-nav__close" id="main-nav__close"><i class="simple-close-icon"></i>Закрыть</button>
 	<?$APPLICATION->IncludeComponent(
         "bitrix:menu",
         "top_menu",
@@ -506,33 +534,35 @@ $APPLICATION->IncludeFile(
          "USE_EXT" => "Y" 
      )
 		);?>	
+								</div>
+							</nav>
+						</div>
 					</div>
-				</nav>
+				</div>
+			
 			</div>
+		</div>
+	
 	</div>
-	</div>
-    </header>
     
   
-    <main class="basic-layout__common <?$APPLICATION->ShowViewContent('catalogFilterClass');?>">
+	<div class='page'>
+	<?if($APPLICATION->GetCurPage() !== "/")
+	{?>
+		<div class='content'>
+			<div class='container'>
+				<div class='content__wrapper'>
+	<?}?>
+    
 	<?if($APPLICATION->GetCurPage() !== "/basket/" && $APPLICATION->GetCurPage() !== "/order/" && $APPLICATION->GetCurPage() !== "/import2/"):?>  	
 	<?if($APPLICATION->GetCurPage() !== "/")
 	{
 		?>
-		<div class="basic-layout__columns basic-layout__columns--reverse basic-layout__columns--special">
-			<div class="basic-layout__content">
-            <!--crumbs-nav-->
-			<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());?> 
-			<!--crumbs-nav-->
-			</div>
-			<div class="basic-layout__sidebar basic-layout__sidebar--special">
-            <!--back-to-page-->
-            <div class="back-to-page">
-               <a class="back-to-page__link" href="/"><i class="simple-back-icon back-to-page__icon"></i>Главная страница</a>
-            </div>
-            <!--back-to-page-->
-         </div>
+		
+		<div class='bread' itemscope itemtype="http://schema.org/BreadcrumbList">
             
+			<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());?> 
+			
 		</div>
 	<?
 	}
@@ -545,35 +575,56 @@ $APPLICATION->IncludeFile(
 <!--Разделы каталога-->	
 <?}?>	  
 
-      <div class="basic-layout__columns basic-layout__columns--reverse">
-         <div class="basic-layout__content<?if (CSite::InDir('/index.php') && SITE_ID!='s2'):?> full<?endif?>">
+		<?if($APPLICATION->GetCurPage() !== "/")
+		{?>
+		<div class="filter filter--page">
+         
 		 
-           
-                
+			<div class='filter__block'>
+		   
+			<?$page_footer_menu = Array("/","/basket/","/order/","/import/",);?>
+		
+			<?if (!in_array($APPLICATION->GetCurPage(), $page_footer_menu)):?>
+				<div class="filter__leftside">
+            
+
+					<?=$APPLICATION->ShowViewContent('RELINK');?>
+					<?=$APPLICATION->ShowViewContent("smart_filter");?>
+
+					<?$APPLICATION->IncludeComponent(
+						"bitrix:menu", 
+						"left_bottom", 
+						array(
+							"ROOT_MENU_TYPE" => "left_bottom",
+							"MAX_LEVEL" => "1",
+							"CHILD_MENU_TYPE" => "left_bottom",
+							"USE_EXT" => "Y",
+							"VIBOR_CATALOG_TABLE" => array(
+								0 => "",
+								1 => "2411",
+								2 => "2403",
+								3 => "",
+								),
+							"COMPONENT_TEMPLATE" => "left_bottom",
+							"MENU_CACHE_TYPE" => "A",
+							"MENU_CACHE_TIME" => "3600",
+							"MENU_CACHE_USE_GROUPS" => "Y",
+							"MENU_CACHE_GET_VARS" => array(),
+							"DELAY" => "N",
+							"ALLOW_MULTI_SELECT" => "N"
+							),
+						false
+					);?>	
+	
+				</div>
+			<?endif?>
+				<div class='filter__rightside'>
             <?=$APPLICATION->ShowViewContent("related_menu_element");?>
             <?if($APPLICATION->GetCurPage() == "/catalog/"):
                 $APPLICATION->SetPageProperty("title", "Интернет-магазин \"КРЕП-КОМП\"");
             endif;?>
-			
-			
-			
-            <?if(0):?>            
-            <div class="aside-contacts">
-	        <div class="aside-contacts__adres-wrap">
-		    <h3 class="s22-title">Контактная информация</h3>
-		    <span class="aside-contacts__title">Адрес магазина:</span>
-		    <p class="aside-contacts__adres"><?=STORE_ID_KASHIRKA[1]?></p>
-		    <span class="aside-contacts__title">Адрес склада:</span>
-		    <p class="aside-contacts__adres"><?=STORE_ID_KOLEDINO[1]?></p>
-		</div>
-		<div class="aside-contacts__phone-wrap">
-		    <span class="aside-contacts__phone"><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/telephone.php"), false);?></span>
-		    <a href="<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/telephone.php"), false);?>" class="aside-contacts__mail"><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/email.php"), false);?></a>
-		    <span class="aside-contacts__schedule"><?=STORE_ID_KASHIRKA[2]?></span>
-		    <a href="javascript:void(0)" class="blue-btn aside-contacts__btn">Отправить запрос</a>
-		</div>
-	    </div>
-            <?endif;?>
+		<?}?>
+		
         
         
 <?else:?>

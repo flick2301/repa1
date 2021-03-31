@@ -29,14 +29,17 @@ $('.mobile__close').on('click', function(){
 });
 
 
+/*
 $('.top__catalog').on('click', function(){
   $(this).toggleClass('top__catalog--active');
   $('.catalog').toggleClass('catalog--active');
   $('body').toggleClass('body--active');
 });
+*/
 
-
-
+$('.top__catalog').on('click', function(){
+	$('.top').toggleClass('relative');
+});
 
 
 $('.mobile__link--catalog').on('click', function(){

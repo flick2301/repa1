@@ -1,0 +1,441 @@
+#shops2565 {
+	border: 0px solid #d5d5d5;
+}
+#shops2565 {
+	overflow: hidden;
+}
+#shops2565 ul.left {
+	float: left;
+	width: 250px;
+	height: 600px;
+	display: block;
+	border-right: 0px solid #d5d5d5;
+	overflow-y: auto;
+}
+#shops2565 ul.left li {
+	display: block;
+	padding: 10px;
+	border-bottom: 0px solid #d5d5d5;
+	cursor: pointer;
+	overflow: hidden;
+	font-size: 14px;
+	line-height: 18px;
+}
+#shops2565 ul.left li:last-child {
+	border-bottom: transparent;
+}
+#shops2565 ul.left li:hover {
+	background: #f5f5f5;
+}
+#shops2565 ul.left li.active {
+	background: #f0f0f0;
+}
+#shops2565 ul.left li div.label {
+	width: 10px;
+	height: 10px;
+	float: left;
+	margin-right: 10px;
+	border-radius: 10px;
+	position: relative;
+	top: 2px;
+}
+#shops2565 ul.left li .line-btn {
+	margin: 12px 0;
+	font-size: 14px;
+	text-align: left;
+	justify-content: left;
+}
+#shops2565 ul.left li .line-btn .blue-btn {
+	height: 30px;
+	width: 80%;
+}
+.inblock {
+	font-size: 14px;
+}
+.inblock .type {
+	color: #676767; 
+	font-size: 14px;
+}
+.inblock .preview {
+	color: #149000;
+	font-size: 14px;
+}	
+.inblock .line-btn {
+	margin: 12px 0;
+	font-size: 14px;
+	text-align: left;
+	justify-content: left;
+}
+.inblock .line-btn .blue-btn {
+	height: 30px;
+}
+.inblock div.label {
+	width: 10px;
+	height: 10px;
+	float: left;
+	margin-right: 7px;
+	border-radius: 10px;
+	position: relative;
+	top: 5px;
+}
+#shops2565 ul.left li span {
+	color: #676767;
+	font-size: 14px;
+	line-height: 18px;
+}
+#shops2565 ul.left li span span {
+	color: #149000;
+	font-size: 14px;
+	line-height: 18px;
+}
+#current_shop_table2565 {
+	margin: 20px 0 40px;	
+	width: 100%;
+}
+#current_shop_table2565 th, #current_shop_table2565 td {
+	padding: 10px 10px 0 10px;	
+	text-align: center;
+	font-size: 16px;
+	line-height: 18px;
+}
+#current_shop_table2565 th {
+	font-size: 20px;
+	line-height: 29px;
+}	
+#current_shop_table2565 th:first-child, #current_shop_table2565 td:first-child {
+	padding: 10px 10px 0 0;	
+	text-align: left;
+}
+#current_shop_table2565 th:last-child, #current_shop_table2565 td:last-child {
+	padding: 10px 0 0 10px;	
+	text-align: right;
+}
+#shop_table2565 {
+	margin: 20px 0;	
+	width: 100%;
+}
+#shop_table2565 th, #shop_table2565 td {
+	padding: 7px 10px 7px 7px;
+	text-align: left;
+	vertical-align: middle;	
+}
+#shop_table2565 th {
+	background: #d5d5d5;
+	font-weight: normal;
+}
+#shop_table2565 td {
+	padding: 10px 10px 10px 7px;
+	border-bottom: 2px solid #d5d5d5;
+	font-size: 14px;
+	line-height: 18px;		
+}
+#shop_table2565 td:first-child {
+	padding-right: 0;
+}
+#shop_table2565 td.nowrap {
+	white-space: nowrap;
+}
+#shop_table2565 td.gray {
+	color: #999;
+}
+#shop_table2565 td.blue {
+	color: #0c59cf;
+}
+#shop_table2565 div.label {
+	width: 10px;
+	height: 10px;
+	float: left;
+	margin-right: 10px;
+	border-radius: 10px;
+	position: relative;
+	top: 2px;
+}
+#shops2565 #map2565 {
+	height: 600px;	
+	margin-left: 270px;
+}
+/* Let's get this party started */
+#shops2565 ul.left::-webkit-scrollbar {
+    width: 3px;
+}
+ /* Track */
+#shops2565 ul.left::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0 rgba(0,0,0,0); 
+    -webkit-border-radius: 0;
+    border-radius: 0;
+	background: #e7e7e7;
+}
+/* Handle */
+#shops2565 ul.left::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    background: #0c59cf; 
+   -webkit-box-shadow: inset 0 0 0 rgba(0,0,0,0);
+   height: 60px;
+   max-height: 60px;
+}
+#shops2565 ul.left::-webkit-scrollbar-button {
+	height: 20px;
+}
+#shops2565 ul.left::-webkit-scrollbar-thumb:hover {
+  background: rgba(12,89,207,0.7);
+}
+#shop2565 #map2565 {
+	height: 352px;	
+	margin-left: 360px;
+	border: 0px solid #d5d5d5;	
+}
+#shop2565 .left {
+	float: left;
+	width: 339px;
+	height: 355px;
+	overflow: hidden;
+}
+#shop2565 .left .slider-for img {
+	width: 339px;
+}
+#shop2565 .left .slider-nav {
+	margin-top: 20px;
+	width: 349px;
+}
+#shop2565 .left .slider-nav div.box {
+	width: 114px;
+}
+#shop2565 .left .slider-nav img {
+	width: 104px;
+}
+#shop2565 .how {
+	width: 100%;
+	clear: both;
+	overflow: hidden;
+	margin-top: 30px;
+}
+#shop2565 .how h2 {
+	float: left;
+	font-size: 20px;
+	line-height: 29px;
+	font-weight: bold;
+	font-family: Circe,sans-serif;
+}
+#shop2565 .how h3 {
+	font-size: 16px;
+	line-height: 18px;
+	color: #0c59cf;
+	width: 100%;
+	clear: both;
+	margin: 0 0 10px 0;
+	font-weight: bold;
+	font-family: Circe,sans-serif;
+}	
+#shop2565 .how .blue-btn {
+	height: 36px;
+	padding-left: 20px;
+	padding-right: 0;
+	background-image: url(images/print.svg);
+	background-repeat: no-repeat;
+	background-size: 25px;
+	background-position: 10px 50%;
+	width: 160px;
+}
+#shop2565 .how .scheme {
+	width: 100%;
+	display: block;
+	clear: both;
+	margin-top: 0;
+	border: solid 1px #dedede;
+}
+#click_scheme2565 {
+	display: block;
+	margin: 30px 0 0;
+	padding: 3px 0;
+	padding-left: 32px;
+	font-size: 16px;
+	line-height: 18px;
+	color: #0c59cf;
+	text-decoration: underline;
+	background-image: url(images/cam.svg);
+	background-repeat: no-repeat;
+	background-size: contain;	
+	background-position: 0 -2px;
+}
+#click_scheme:hover {
+	text-decoration: none;
+}
+#popup-window-titlebar-scheme {
+	display: none;	
+}
+.popup-window.popup-window-with-titlebar {
+	padding: 15px;
+}
+.scheme-title-bar {
+	font-size: 16px;
+	position: relative;
+	top: 15px;
+	color: #0c59cf;
+}
+.popup-window {
+	border-radius: 10px;
+}
+#scheme_text {
+	display: none;
+}
+#scheme_text video {
+	width: 560px;
+	margin-bottom: 20px;
+	clear: both;
+	display: block;
+}
+#shop2565 .car {
+	margin: 10px 0 30px;
+}
+#shop2565 .print {
+	display: none;
+}
+.print_btn {
+	visibility: hidden;
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 685px) {
+.catalog-table__column--basic.is-merged h3 strong {	
+	display: inherit;
+}
+.shop_table tr td:nth-child(3), .shop_table tr th:nth-child(3) {
+	display: none;
+}
+#shops2565 ul.left {
+	display: block;
+	float: none;	
+	width: 100%;
+	height: auto;
+}
+#shops2565 #map2565  {
+	margin-left: 0;
+	height: 400px;
+}
+#shop2565 .left {
+	margin-bottom: 20px;	
+}
+#shop2565 #map2565  {
+    margin-left: 0;
+	clear: both;
+}	
+#shops2565 ul.left {
+    overflow-y: hidden;
+	margin-bottom: 20px;
+}
+#shops2565 ul.left li .line-btn .blue-btn {
+	width: 100%;
+}
+/* Let's get this party started */
+#shops2565 ul.left::-webkit-scrollbar {
+    opacity: 0;
+}
+ /* Track */
+#shops2565 ul.left::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0 #fff; 
+	background: #fff;
+}
+/* Handle */
+#shops2565 ul.left::-webkit-scrollbar-thumb {
+    background: #fff; 
+   -webkit-box-shadow: #fff;
+}
+#shops2565 ul.left::-webkit-scrollbar-button {
+	background: #fff;
+}
+#shops2565 ul.left::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}	
+}
+
+
+
+
+
+
+@media print {
+.noprint {
+    display: none!important;
+	visibility: hidden!important;
+	opacity: 0!important;
+}
+.map {
+    width: 400px;
+    height: 300px;
+    background-image: url('http://maps.googleapis.com/maps/api/staticmap?center=Wien+Floridsdorf&zoom=13&scale=false&size=400x300&maptype=roadmap&format=png&visual_refresh=true');
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}	
+#shop2565 .print {
+	display: block;
+}
+#bx-panel {
+	display: none!important;	
+}
+header, footer, aside, .crumbs-nav, nav, .main-nav, .basic-layout__header, .basic-layout__section, .simple-article__content, #shop2565 .slider-nav {
+	display: none!important;
+}
+header.basic-layout__module {
+	display: block!important;
+	padding: 0!important;
+	margin: 0!important;	
+	margin-top: -200px!important;	
+}
+body, #content, #shop, .basic-layout__content, main, basic-layout__content {
+	padding: 0!important;
+	margin: 0!important;
+}
+h1.page-heading__title {
+	font-size: 20px;
+	padding-top: 0;
+}
+#shop2565 #map2565 , #shop2565 #map2565  div, #shop2565 #map2565  ymaps {
+	width: 100%!important;
+	margin: 0;
+	padding: 0;
+	float: none;
+	height: 400px!important;
+}
+#shop2565 .how h3 {
+	margin-top: 10px;
+}
+#shop2565 .left {
+	width: 64%!important;
+	height: auto;
+}
+#shop2565 .left div{
+	width: 100%!important;
+}
+#shop2565 .left img {
+	width: 100%!important;
+	display: block;
+}
+#shop2565 .left .slick-initialized .slick-slide {
+	width: 800px;
+}
+#qr {
+	float: right;
+	height: 200px;
+	width: 200px;
+}
+#shop2565 .how h3 {
+	margin-top: 20px;
+}
+
+[class*="ymaps-2"][class*="-ground-pane"] {
+  -webkit-filter: saturate(500%) grayscale(50%) contrast(110%);
+          filter: saturate(500%) grayscale(50%) contrast(110%);
+}
+[class="scheme"] {
+  -webkit-filter: saturate(250%) grayscale(50%);
+          filter: saturate(250%) grayscale(50%);
+}
+}
