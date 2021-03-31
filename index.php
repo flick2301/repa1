@@ -4,12 +4,15 @@ $APPLICATION->SetTitle("Интернет-магазин \"Москреп\"");
 $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Москреп\"");
 ?>
 
-
+<?if(SITE_TEMPLATE_ID=='krep-komp_mobile')
+	$template='krep-komp';
+else
+	$template='';?>
 <!--intro-slider-->
 <div class="basic-layout__module intro-slider">		   
 <?$APPLICATION->IncludeComponent(
 	"d7:slider_new", 
-	"krep-komp", 
+	$template, 
 	array(
 		"IBLOCK_TYPE" => "banners",
 		"IBLOCK_ID" => "6",
@@ -213,7 +216,7 @@ $arrFilter['!CATALOG_PRICE_8'] = false;
 global $arrFilter;
 $arrFilter['!CATALOG_PRICE_8'] = false;
 ?>
-
+<?if(SITE_TEMPLATE_ID=='krep-komp_mobile'){?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.section", 
 	"main_double_hits", 
@@ -345,6 +348,7 @@ $arrFilter['!CATALOG_PRICE_8'] = false;
 	),
 	false
 );?>
+<?}?>
 
 
 
