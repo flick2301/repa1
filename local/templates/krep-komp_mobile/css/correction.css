@@ -13,6 +13,18 @@
     justify-content: space-between;
 	width: 100%;
 }
+.popUp-container_i2 .basket-icon {
+	display: none;
+}
+.top__contact a, .top__payment__name a {
+	color: rgba(0, 0, 0, 0.5);
+}
+.top__nav.top__login a, .top__nav.top__basket.header-basket a {
+	color: #000;
+}
+.infomedia__text .infomedia__price {
+	display: none;
+}
 .geolocation a {
     color: #000;
 }

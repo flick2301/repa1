@@ -3,10 +3,18 @@
 }
 #bx_incl_area_8 .global-search {
 	height: 100%;
-	min-height: 50px;
+	min-height: 45px;
 }
 #bx_incl_area_10 {
 	width: 100%;
+}
+#bx_incl_area_12 {
+    display: flex;
+    justify-content: space-between;
+	width: 100%;
+}
+.popUp-container_i2 .basket-icon {
+	display: none;
 }
 .geolocation a
 {

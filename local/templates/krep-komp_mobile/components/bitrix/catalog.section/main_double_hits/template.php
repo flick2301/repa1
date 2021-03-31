@@ -14,7 +14,9 @@ use \Bitrix\Main\Localization\Loc;
 
 ?>
 
-
+<div class="hits">
+<div class="container">
+<div class="hits__wrapper">
 <div class="hits__title">Хиты продаж</div>
 
 <div class="hits__block">
@@ -75,4 +77,6 @@ use \Bitrix\Main\Localization\Loc;
 		<div class="owl-dots disabled"></div>
 	</div>
 </div>
-            
+	</div>
+</div>            
+</div> 

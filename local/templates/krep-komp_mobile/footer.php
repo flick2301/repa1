@@ -32,6 +32,21 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 <?}?>
 	
 
+
+
+
+
+    <div class="banner">
+      <div class="container">
+        <div class="banner__wrapper"><a class="banner__block" href=""><img class="banner__img" src="<?=SITE_TEMPLATE_PATH?>/images/banner.png"><img class="banner__mobile" src="<?=SITE_TEMPLATE_PATH?>/images/mobile-banner.png"></a></div>
+      </div>
+    </div>
+
+
+
+
+
+
 	
 <?if($APPLICATION->GetCurPage() !== "/")
 	{?>

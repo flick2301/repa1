@@ -14,7 +14,7 @@ use \Bitrix\Main\Localization\Loc;
 
 ?>
 
-
+<div class="popular">
 <div class="container">
 <div class="popular__wrapper">
 <div class="popular__title">Популярные товары</div>
@@ -79,3 +79,4 @@ use \Bitrix\Main\Localization\Loc;
 </div>
 	</div>
 </div>            
+</div>
