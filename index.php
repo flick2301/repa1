@@ -29,9 +29,9 @@ $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Мос
 	false
 );?>
 </div>
-<!--intro-slider-->	
-	
-	
+
+<!--intro-slider-->
+
 
 <div class="main_hits_title">Категории товаров</div>
 <div class='category'>
