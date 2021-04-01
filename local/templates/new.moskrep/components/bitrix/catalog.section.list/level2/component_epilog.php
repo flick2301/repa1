@@ -17,13 +17,11 @@ if($arResult['REFERENCE']['ITEM']['ID']!=''):
             
             $APPLICATION->SetPageProperty('title', $IPROPERTY['ELEMENT_META_TITLE']);
         else:
-            $APPLICATION->SetPageProperty('title', $arResult['REFERENCE']['ITEM']['H1']['VALUE']." купить в {{city}} – каталог, цены");
+            $APPLICATION->SetPageProperty('title', $arResult['REFERENCE']['ITEM']['H1']['VALUE'].", цена - купить в интернет-магазине в Москве");
         endif;
         
-        if($IPROPERTY['ELEMENT_META_DESCRIPTION'])
-			$APPLICATION->SetPageProperty('description', $IPROPERTY['ELEMENT_META_DESCRIPTION']);
-		else
-			$APPLICATION->SetPageProperty('description', "Купить ".mb_strtolower($arResult['REFERENCE']['ITEM']['H1']['VALUE'])." в {{city}} оптом и в розницу в магазине крепежа «КРЕП-КОМП». Доставка по России.");
+        
+        $APPLICATION->SetPageProperty('description', $IPROPERTY['ELEMENT_META_DESCRIPTION']);
         $APPLICATION->SetPageProperty('keywords', $IPROPERTY['ELEMENT_META_KEYWORDS']);
         
     else:
