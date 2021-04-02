@@ -77,7 +77,8 @@
 						"OFFERS_SORT_FIELD2" => $arParams["OFFERS_SORT_FIELD2"],
 						"OFFERS_SORT_ORDER2" => $arParams["OFFERS_SORT_ORDER2"],
 						"OFFERS_LIMIT" => $arParams["LIST_OFFERS_LIMIT"],
-
+						"SET_BROWSER_TITLE"=>"N",
+						"SET_META_DESCRIPTION"=>"N",
 						"SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
 						"SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
 						"SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
@@ -100,6 +101,7 @@
 						'SHOW_SLIDER' => $arParams['LIST_SHOW_SLIDER'],
 						'SLIDER_INTERVAL' => isset($arParams['LIST_SLIDER_INTERVAL']) ? $arParams['LIST_SLIDER_INTERVAL'] : '',
 						'SLIDER_PROGRESS' => isset($arParams['LIST_SLIDER_PROGRESS']) ? $arParams['LIST_SLIDER_PROGRESS'] : '',
+						"SECTION_USER_FIELDS" => array("UF_*"),
 
 						'OFFER_ADD_PICT_PROP' => $arParams['OFFER_ADD_PICT_PROP'],
 						'OFFER_TREE_PROPS' => $arParams['OFFER_TREE_PROPS'],

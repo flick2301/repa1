@@ -87,6 +87,7 @@ Disallow: /*?arrFilter_
 Disallow: /*?s=
 Disallow: /?back_url_admin=
 Disallow: /logs/
+Disallow: /*?SIZEN_1=
 Clean-param: type /
 Clean-param: bitrix_include_areas /
 Clean-param: mp5 /

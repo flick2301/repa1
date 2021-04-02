@@ -38,6 +38,12 @@ if($arSection = $rsResult->GetNext()) {
 	$arResult["UF_CHARS"] = $arSection["UF_CHARS"];
 	$arResult["UF_DOP_SETTINGS"] = $arSection["UF_DOP_SETTINGS"];
 	$arResult["UF_EXTRA_FIELD"] = $arSection["UF_EXTRA_FIELD"];
+		
+	$this->__component->SetResultCacheKeys(array("UF_META_TITLE_MSK"));
+	$this->__component->SetResultCacheKeys(array("UF_META_DESCRIPTION_MSK"));
+	$this->__component->SetResultCacheKeys(array("UF_META_TITLE"));
+	$this->__component->SetResultCacheKeys(array("UF_META_DESCRIPTION_SPB"));
+	
 	foreach($arSection["UF_SURFACE"] AS $surface) {
 		$res = CIBlockElement::GetByID($surface);
 		if ($ar_res = $res->GetNext()) {

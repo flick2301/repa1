@@ -6,6 +6,8 @@ use Bitrix\Main\ModuleManager;
 
 $this->setFrameMode(true);
 global $mySmartFilter;
+global $NavNum;
+$NavNum = 0;
 $mySmartFilter = [">CATALOG_PRICE_9" => 0];
 
 //ЭТОТ ГЛОБАЛ НЕ ТРОГАТЬ. НУЖЕН В ХЛЕБНЫХ КРОШКАХ ВИРТУАЛЬНОГО КАТАЛОГА
