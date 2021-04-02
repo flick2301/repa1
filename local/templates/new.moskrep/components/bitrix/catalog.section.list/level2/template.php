@@ -398,7 +398,35 @@ global $APPLICATION;
 	
 <?$this->EndViewTarget();?> 	
 	
-
+<?
+if($arResult['SORTING']['SECTION_ID']){
+?>	
+				
+	<?
+	
+    foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
+        if($sortSection['TOP']){
+        ?>
+		<div class="basic-layout__module category-blocknew">
+			<div class="div_h3 category-blocknew__title"><span><?=$sortSection["NAME"]?></span></div>
+			<ul class="category-blocknew__list">
+			<?$i=0;?>
+			<?foreach($sortSection['ITEMS'] as $sort_item):?>
+				<?$i++;?>
+				<li class="category-blocknew__item">
+					<a href="<?=($sort_item['LINK_TARGET']['VALUE']) ? $sort_item['LINK_TARGET']['VALUE'] : $sort_item['CODE'].'/';?>" <?=($sort_item['LINK_TARGET']['VALUE']) ? "target='_self'" : "";?> class="category-block__link">
+						<?=$sort_item['NAME']?>
+					</a>
+				</li>
+			<?endforeach;?>
+			</ul>
+		</div>
+        <?
+		}
+    }
+	
+}
+?>
 
 <?if($_POST['ENUM_LIST']['ELEMENTS'])
 	require_once __DIR__."/include_parts/section_table.php";?>
@@ -414,7 +442,7 @@ if($arResult['SORTING']['SECTION_ID']){
 	<?
 	
     foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
-        
+        if($sortSection['TOP']==null){
         ?>
         <div class="div_h3 category-blocknew__title"><span><?=$sortSection["NAME"]?></span></div>
         <ul class="category-blocknew__list">
@@ -429,6 +457,7 @@ if($arResult['SORTING']['SECTION_ID']){
 	<?endforeach;?>
         </ul>
         <?
+		}
     }
 	?></div>
 
