@@ -9,7 +9,7 @@
 	width: 100%;
 }
 #bx_incl_area_12 {
-    display: flex;
+    /*display: flex;*/
     justify-content: space-between;
 	width: 100%;
 }
@@ -757,7 +757,7 @@ ol.tech li {
 .catalog_main_menu {
 	height: 100%;
 	z-index: 100;
-	margin-top: -50px;
+	margin-top: -30px;
 }
 #catalog_main_menu {
 	width: 100%;
@@ -1103,6 +1103,7 @@ ol.tech li {
 .page_count_panel .page_count_panel_block {
 	overflow: visible;
 	position: relative; 
+	margin-top: 13px;
 }
 .page_count_panel .page_count_panel_block::after {
   content: " ";
@@ -1218,6 +1219,7 @@ ol.tech li {
 }	
 .main-nav__item.is-active .main-nav__link {
 	color: #4F36E3;
+	font-size: 14px;	
 }
 .website-navbar__primary .main-nav__list .main-nav__item a {
 	font-size: 14px;
@@ -1241,6 +1243,12 @@ ol.tech li {
 }
 .top__form {
 	margin: 0 10px!important;
+}
+.basic-layout__module.pages-nav {
+	margin-top: 15px;
+}
+.sale-category__date {
+	margin-top: 10px;
 }
 
 
@@ -1418,6 +1426,9 @@ img.intro-slider__image {
 .catalog-feed__table:last-of-type .catalog-table {
 	border-bottom: solid 1px #dedede;
 }
+.table__add { 
+	background: #552FEC!important;
+}
 }
 
 @media (min-width: 685px) {
@@ -1521,9 +1532,14 @@ img.intro-slider__image {
 }
 #catalog-filter-trigger {
 	padding-top: 11px;
+	position: relative;
+	top: 20px;
 }
 #catalog_main_menu .catalog-nav__item {
 	position: static;
+}
+#catalog_main_menu .catalog-nav__item a {
+	position: relative;
 }
 .product-card--lite_new .product-card__image-block {
 	text-align: center;
@@ -1536,6 +1552,15 @@ img.intro-slider__image {
 	min-height: 57px;
 	display: flex;
 	align-items: center;
+}
+.filter.filter--page {
+    margin-top: 0;
+}
+.multi-wrapper {
+	margin: 50px 0 0!important;
+}
+.multi-search .multi-wrapper .multi-layout {
+    margin: 0!important;
 }
 }
 
@@ -1565,6 +1590,9 @@ img.intro-slider__image {
 }
 .catalog-desc__about {
 	display: none;
+}
+.catalog-feed__item.catalog-feed__item_sale {
+	padding: 0 30px;
 }
 }
 
@@ -1940,9 +1968,18 @@ main {
 .catalog-feed__item__withpic {
     margin: 0 7px 21px!important;	
 }
+/*
+.basic-layout__module .catalog-feed__list {
+   margin: 0 -26px!important;
+}	
+.basic-layout__module .catalog-feed__item__withpic {
+    margin: 0 5px 10px!important;
 }
-
-
+*/
+.basic-layout__columns {
+	padding: 0 2px;
+}
+}
 
 
 

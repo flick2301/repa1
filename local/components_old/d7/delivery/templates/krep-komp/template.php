@@ -1,10 +1,6 @@
 <div class="delivery">               
 <!--content-tabs-->			  
-<<<<<<< HEAD
-               <div class="delivery__tabs">
-=======
                <div class="delivery__tabs" data-delivery-tabs>
->>>>>>> e07cb958bc7011f75d7975b28a91b0aa59427297
 			   <?foreach($arResult["ITEMS"] AS $key=>$item):?>
                   <div class="delivery__tab <?if($key==0):?>delivery__tab--active<?endif?>"><?=$item["NAME"]?></div>
 				  <?endforeach?>

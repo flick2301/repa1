@@ -508,12 +508,18 @@ while($arSection = $db_list->GetNext()) {
 
 	<?if(!($_REQUEST['PAGEN_1'] > 1)  && ($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' || $_SERVER['HTTP_HOST']=='krep-komp.ru' || $_SERVER['HTTP_HOST']=='dev1.krep-komp.ru')):?>
 	<?$this->SetViewTarget('catalog_desc');?>
+	<div class='desc'>
+		<div class='container'>
+			<div class='desc__wrapper'>	
 		<!--simple-article-->
         <div class="basic-layout__module simple-article">
             <div class="simple-article__content wysiwyg-block">
 				<?=$arResult['SECTION']['DESCRIPTION']?>
 			</div>	
 		</div>
+			</div>
+		</div>
+	</div>			
 		<!--simple-article-->
 	<?$this->EndViewTarget();?> 
 	<?endif;?>

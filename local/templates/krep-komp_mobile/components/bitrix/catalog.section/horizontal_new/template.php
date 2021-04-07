@@ -79,9 +79,9 @@ if($arParams['FOR_SEO']!='Y'){
 
 }?>
 
-			<?$this->SetViewTarget('catalogFilter');?>
+
                   <button class="catalog-feed__filter" id="catalog-filter-trigger"><i class="simple-filter-icon"></i>Фильтр</button>
-			<?$this->EndViewTarget();?> 
+
 
 <div class="page_count_panel">
 
@@ -98,7 +98,7 @@ if($arParams['FOR_SEO']!='Y'){
 </div>
 <?}?>
 <!--catalog-feed-->
-    <div class="table__mobile">
+    <div class="!table__mobile">
 
 		  
 				

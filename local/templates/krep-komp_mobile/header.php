@@ -174,7 +174,7 @@ $APPLICATION->IncludeFile(
 </head>
 
 
-<body class="basic-layout basic-layout--default" id="basic-layout">
+<body class="!basic-layout basic-layout--default" id="basic-layout">
 
 <?$APPLICATION->ShowPanel();?>
 
@@ -290,7 +290,7 @@ $APPLICATION->IncludeFile(
 							),
 							false
 						);?>
-					<div class="shelf__search"></div>
+					<div class="shelf__search global-search"></div>
 				</div>
 			</div>
 		</div>
@@ -585,12 +585,45 @@ $APPLICATION->IncludeFile(
 			<?$page_footer_menu = Array("/","/basket/","/order/","/import/",);?>
 		
 			<?if (!in_array($APPLICATION->GetCurPage(), $page_footer_menu)):?>
+
+  
+<?if($APPLICATION->GetCurPage() == "/personal/" || $APPLICATION->GetCurPage() == "/personal/private/" || $APPLICATION->GetCurPage() == "/personal/change_pass/"):?>
+ <div class="contacts__leftside ">
+ 
+					<?$APPLICATION->IncludeComponent(
+						"bitrix:menu", 
+						"left_bottom_new", 
+						array(
+							"ROOT_MENU_TYPE" => "left_bottom",
+							"MAX_LEVEL" => "1",
+							"CHILD_MENU_TYPE" => "left_bottom",
+							"USE_EXT" => "Y",
+							"VIBOR_CATALOG_TABLE" => array(
+								0 => "",
+								1 => "2411",
+								2 => "2403",
+								3 => "",
+								),
+							"COMPONENT_TEMPLATE" => "left_bottom_new",
+							"MENU_CACHE_TYPE" => "A",
+							"MENU_CACHE_TIME" => "3600",
+							"MENU_CACHE_USE_GROUPS" => "Y",
+							"MENU_CACHE_GET_VARS" => array(),
+							"DELAY" => "N",
+							"ALLOW_MULTI_SELECT" => "N"
+							),
+						false
+					);?>
+					
+</div>
+<?else:?>
+
 				<div class="filter__leftside">
             
 
 					<?=$APPLICATION->ShowViewContent('RELINK');?>
 					<?=$APPLICATION->ShowViewContent("smart_filter");?>
-
+					
 					<?$APPLICATION->IncludeComponent(
 						"bitrix:menu", 
 						"left_bottom", 
@@ -614,15 +647,20 @@ $APPLICATION->IncludeFile(
 							"ALLOW_MULTI_SELECT" => "N"
 							),
 						false
-					);?>	
+					);?>
+				</div>					
+<?endif?>
+
+					
 	
-				</div>
+
 			<?endif?>
 				<div class='filter__rightside'>
             <?=$APPLICATION->ShowViewContent("related_menu_element");?>
             <?if($APPLICATION->GetCurPage() == "/catalog/"):
                 $APPLICATION->SetPageProperty("title", "Интернет-магазин \"КРЕП-КОМП\"");
             endif;?>
+
 		<?}?>
 		
         

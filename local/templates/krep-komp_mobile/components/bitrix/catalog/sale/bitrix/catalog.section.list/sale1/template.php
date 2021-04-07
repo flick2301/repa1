@@ -19,7 +19,7 @@ $this->setFrameMode(true);
 				foreach ($arResult['SECTIONS'] as &$arSection)
 				{
 				?>
-                  <div class="catalog-feed__item">
+                  <div class="catalog-feed__item catalog-feed__item_sale">
                      <!--catalog-card-->
                      <section class="catalog-card">
                         <h3 class="catalog-card__title"><a class="catalog-card__link" href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self"><?=$arSection['NAME']?></a></h3>

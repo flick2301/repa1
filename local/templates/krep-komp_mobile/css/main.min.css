@@ -1000,14 +1000,17 @@ button {
     align-items: flex-start;
     height: 452px;
     border-radius: 20px;
-    overflow: hidden; }
+    overflow: hidden; 
+	height: auto; }
     @media (max-width: 1023px) {
       .slider__link {
-        height: 351px; } }
+        height: 351px; 
+		height: auto; } }
     @media (max-width: 767px) {
       .slider__link {
         height: 185px;
-        border-radius: 0px; } }
+        border-radius: 0px; 
+		height: auto; } }
   .slider__navigation {
     display: flex;
     justify-content: space-between;
@@ -1291,7 +1294,7 @@ svg {
     top: 0;
     left: -100%;
     width: 100%;
-    height: 100%;
+    height: 200vh;
     transition: .3s; }
     .mobile__ul--active {
       left: 0; }
@@ -2021,6 +2024,7 @@ svg {
     font-family: 'Montserrat';
     font-weight: bold;
     font-size: 22px;
+	white-space: nowrap;
     color: #000000; }
     @media (max-width: 767px) {
       .popular__new {
@@ -2031,6 +2035,7 @@ svg {
     font-size: 16px;
     text-decoration-line: line-through;
     color: #808080;
+	white-space: nowrap;
     margin-left: 12px; }
     @media (max-width: 767px) {
       .popular__old {
@@ -4267,7 +4272,107 @@ svg {
   color: #552FEC;
   display: block;
   margin-top: 6px; }
+  
+ .sidebar__profile {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-left: -25px;
+  margin-right: -25px;
+  padding: 0px 25px;
+  padding-bottom: 25px;
+  margin-bottom: 30px; }
+  @media (max-width: 767px) {
+    .sidebar__profile {
+      margin-left: -20px;
+      margin-right: -20px;
+      padding: 0px 20px;
+      padding-bottom: 20px;
+      margin-bottom: 25px; } }
 
+.sidebar__icon {
+  font-family: 'Montserrat';
+  font-weight: 800;
+  font-size: 24px;
+  color: #FFFFFF;
+  width: 68px;
+  height: 68px;
+  background: #552FEC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 15px; }
+  @media (max-width: 767px) {
+    .sidebar__icon {
+      font-size: 16px;
+      color: #FFFFFF;
+      width: 48px;
+      height: 48px; } }
+
+.sidebar__group {
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px; }
+  .sidebar__group:last-child {
+    border-bottom: none;
+    margin-bottom: 0px;
+    padding-bottom: 0px; }
+  .sidebar__group .sidebar__link {
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding: 1px 0px;
+    padding-left: 40px; }
+    .sidebar__group .sidebar__link--orders {
+      background-image: url(../images/settings/basket.svg); }
+      @media (max-width: 767px) {
+        .sidebar__group .sidebar__link--orders {
+          background-size: 18px; } }
+    .sidebar__group .sidebar__link--orders.sidebar__link--active {		
+	  background-image: url(../images/settings/basket-active.svg); }		
+    .sidebar__group .sidebar__link--allorders {
+      background-image: url(../images/settings/all.svg);
+      background-position: left 3px center; }
+      @media (max-width: 767px) {
+        .sidebar__group .sidebar__link--allorders {
+          background-size: 16px; } }
+	.sidebar__group .sidebar__link--allorders.sidebar__link--active {
+	  background-image: url(../images/settings/all-active.svg); }
+    .sidebar__group .sidebar__link--settings {
+      background-image: url(../images/settings/login.svg);
+      background-position: left 3px center; }
+      @media (max-width: 767px) {
+        .sidebar__group .sidebar__link--settings {
+          background-size: 14px;
+          background-position: left 5px center; } }
+    .sidebar__group .sidebar__link--settings.sidebar__link--active {
+	  background-image: url(../images/settings/login-active.svg); }		  
+    .sidebar__group .sidebar__link--org {
+      background-image: url(../images/settings/map.svg); }
+      @media (max-width: 767px) {
+        .sidebar__group .sidebar__link--org {
+          background-size: 16px;
+          background-position: left 4px center; } }
+	.sidebar__group .sidebar__link--org.sidebar__link--active {
+      background-image: url(../images/settings/map-active.svg); }		  
+    .sidebar__group .sidebar__link--docs {
+      background-image: url(../images/settings/doc.svg); }
+      @media (max-width: 767px) {
+        .sidebar__group .sidebar__link--docs {
+          background-size: 18px;
+          background-position: left 3px center; } }
+    .sidebar__group .sidebar__link--docs.sidebar__link--active {
+      background-image: url(../images/settings/doc-active.svg); }		  
+    .sidebar__group .sidebar__link--exit {
+      background-image: url(../images/settings/exit.svg);
+      background-position: left 3px center; }
+      @media (max-width: 767px) {
+        .sidebar__group .sidebar__link--exit {
+          background-size: 14px;
+          background-position: left 5px center; } }  
+    .sidebar__group .sidebar__link--exit.sidebar__link--active {
+	  background-image: url(../images/settings/exit-active.svg); }		  
+  
 .shops__map {
   border-radius: 10px;
   overflow: hidden;

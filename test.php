@@ -4,7 +4,7 @@ $APPLICATION->SetTitle("Интернет-магазин \"Москреп\"");
 $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Москреп\"");
 ?>
 
-<?$APPLICATION->IncludeComponent(
+<?/*$APPLICATION->IncludeComponent(
 	"d7:main.feedback", 
 	"ajax-file-krep-komp", 
 	array(
@@ -24,7 +24,7 @@ $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Мос
 		"MOBILE_VERSION" => "N"
 	),
 	false
-);?>
+);*/?>
 
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

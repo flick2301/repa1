@@ -1454,6 +1454,9 @@ img.intro-slider__image {
 #catalog_main_menu .catalog-nav__item {
 	position: static;
 }
+#catalog_main_menu .catalog-nav__item a {
+	position: relative;
+}
 .product-card--lite_new .product-card__image-block {
 	text-align: center;
 	min-height: 187px;

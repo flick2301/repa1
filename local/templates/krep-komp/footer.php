@@ -38,14 +38,13 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 			</div>
 		</div>
 	</div>
-	<div class='desc'>
-		<div class='container'>
-			<div class='desc__wrapper'>
-				<?=$APPLICATION->ShowViewContent('catalog_desc');?>
-			</div>
-		</div>
-	</div>
+</div>
+
+
 	<?}?>
+
+
+				<?=$APPLICATION->ShowViewContent('catalog_desc');?>
 	
 
 
