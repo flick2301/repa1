@@ -24,6 +24,36 @@
 	<?=$APPLICATION->ShowViewContent('RELINK');?>
 	<?=$APPLICATION->ShowViewContent("smart_filter");?>
 
+<?if($APPLICATION->GetCurPage() == "/personal/" || $APPLICATION->GetCurPage() == "/personal/private/" || $APPLICATION->GetCurPage() == "/personal/change_pass/"):?>
+ <div class="contacts__leftside ">
+ 
+					<?$APPLICATION->IncludeComponent(
+						"bitrix:menu", 
+						"left_bottom_new", 
+						array(
+							"ROOT_MENU_TYPE" => "left_bottom",
+							"MAX_LEVEL" => "1",
+							"CHILD_MENU_TYPE" => "left_bottom",
+							"USE_EXT" => "Y",
+							"VIBOR_CATALOG_TABLE" => array(
+								0 => "",
+								1 => "2411",
+								2 => "2403",
+								3 => "",
+								),
+							"COMPONENT_TEMPLATE" => "left_bottom_new",
+							"MENU_CACHE_TYPE" => "A",
+							"MENU_CACHE_TIME" => "3600",
+							"MENU_CACHE_USE_GROUPS" => "Y",
+							"MENU_CACHE_GET_VARS" => array(),
+							"DELAY" => "N",
+							"ALLOW_MULTI_SELECT" => "N"
+							),
+						false
+					);?>
+					
+</div>
+<?else:?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:menu", 
 	"left_bottom", 
@@ -48,7 +78,8 @@
 		"ALLOW_MULTI_SELECT" => "N"
 	),
 	false
-);?>	
+);?>
+<?endif?>	
 	
          </aside>
 <?endif?>
