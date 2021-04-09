@@ -886,15 +886,16 @@ function DoNotUpdate(&$arFields)
 AddEventHandler("iblock", "OnBeforeIBlockSectionUpdate", "DoNotUpdateSectionActivate"); 
 function DoNotUpdateSectionActivate(&$arFields)
 {
-	
+	CModule::IncludeModule("iblock");
 	$doNotUpdateActivates = [2777, 2779, 2780, 2781, 2782, 2783, 2784, 2785, 2802, 2803, 2558];
 	if ($_REQUEST['type'] == 'catalog')
     {
-		if(in_array($arFields["ID"], $doNotUpdateActivates))
+if(in_array($arFields["ID"], $doNotUpdateActivates) || $_REQUEST['UF_SECTION_ID'] || $_REQUEST['UF_SYM_LINK'])
 					$arFields["ACTIVE"] = "Y";
 	
-        
+			
     }
+	
 }
 
 $eventManager = \Bitrix\Main\EventManager::getInstance();
