@@ -423,7 +423,7 @@ $APPLICATION->IncludeFile(
 						?>
 								<a href="/personal/">Кабинет</a>
 							<?}else{?>
-								<a href="javascript:void(0);" class="login__btn" data-sign-in-form-trigger>Вход</a>
+								<a href="/personal/" class="login__btn_new">Вход</a>
 							<?}?>
 						</div>
 					
@@ -575,14 +575,14 @@ $APPLICATION->IncludeFile(
 <!--Разделы каталога-->	
 <?}?>	  
 
-		<?if($APPLICATION->GetCurPage() !== "/")
+		<?if($APPLICATION->GetCurPage() !== "/" && ($APPLICATION->GetCurPage() !== "/personal/" || $USER->IsAuthorized()))
 		{?>
 		<div class="filter filter--page">
          
 		 
 			<div class='filter__block'>
 		   
-			<?$page_footer_menu = Array("/","/basket/","/order/","/import/",);?>
+			<?$page_footer_menu = Array("/","/basket/","/order/","/import/");?>
 		
 			<?if (!in_array($APPLICATION->GetCurPage(), $page_footer_menu)):?>
 

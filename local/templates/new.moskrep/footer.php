@@ -25,6 +25,7 @@
 	<?=$APPLICATION->ShowViewContent("smart_filter");?>
 
 <?if($APPLICATION->GetCurPage() == "/personal/" || $APPLICATION->GetCurPage() == "/personal/private/" || $APPLICATION->GetCurPage() == "/personal/change_pass/"):?>
+<?if($USER->IsAuthorized()):?>
  <div class="contacts__leftside ">
  
 					<?$APPLICATION->IncludeComponent(
@@ -53,6 +54,7 @@
 					);?>
 					
 </div>
+<?endif?>
 <?else:?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:menu", 

@@ -379,7 +379,7 @@ $APPLICATION->IncludeFile(
 					if ($USER->IsAuthorized()){ 
 						?><a class="client-widget__link" href="/personal/"><i class="simple-user-icon client-widget__icon"></i>Кабинет</a><?
 					}else{
-						?><a href="javascript:void(0);" class="client-widget__link login__btn" data-sign-in-form-trigger><i class="simple-user-icon client-widget__icon"></i>Вход</a><?
+						?><a href="/personal/" class="client-widget__link login__btn_new"><i class="simple-user-icon client-widget__icon"></i>Вход</a><?
 					}
 					?>
 					</div>
@@ -513,7 +513,7 @@ $APPLICATION->IncludeFile(
     
   
     <main class="basic-layout__common <?$APPLICATION->ShowViewContent('catalogFilterClass');?>">
-	<?if($APPLICATION->GetCurPage() !== "/basket/" && $APPLICATION->GetCurPage() !== "/order/" && $APPLICATION->GetCurPage() !== "/import2/"):?>  	
+	<?if($APPLICATION->GetCurPage() !== "/basket/" && $APPLICATION->GetCurPage() !== "/order/" && $APPLICATION->GetCurPage() !== "/import2/" && ($APPLICATION->GetCurPage() !== "/personal/" || $USER->IsAuthorized())):?>  	
 	<?if($APPLICATION->GetCurPage() !== "/")
 	{
 		?>

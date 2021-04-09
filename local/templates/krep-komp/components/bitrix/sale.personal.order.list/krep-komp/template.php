@@ -14,7 +14,9 @@ Loc::loadMessages(__FILE__);
 
 ?>
 
+<?if($USER->IsAuthorized()):?>
 <?globalGetTitle()?>
+<?endif?>
 
 <?
 if (!empty($arResult['ERRORS']['FATAL']))
