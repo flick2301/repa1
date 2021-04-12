@@ -1,0 +1,177 @@
+.auth__block {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; }
+  @media (max-width: 1023px) {
+    .auth__block {
+      flex-direction: column; } }
+
+.auth__box {
+  background: rgba(85, 47, 236, 0.05);
+  border-radius: 10px;
+  padding: 50px 64px 60px 64px;
+  width: calc(50% - 15px); }
+  @media (max-width: 1279px) {
+    .auth__box {
+      padding: 50px 40px 60px 40px; } }
+  @media (max-width: 1023px) {
+    .auth__box {
+      width: 100%;
+      margin-bottom: 40px; }
+      .auth__box:last-child {
+        margin-bottom: 0px; } }
+  @media (max-width: 767px) {
+    .auth__box {
+      padding: 25px 20px 30px 20px;
+      margin-bottom: 25px; } }
+
+.auth__topic {
+  font-family: 'Montserrat';
+  font-weight: bold;
+  font-size: 24px;
+  color: #000000;
+  margin-bottom: 24px; }
+  @media (max-width: 767px) {
+    .auth__topic {
+      font-size: 20px;
+      margin-bottom: 15px; } }
+
+.auth__desc {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 145%;
+  color: #666666;
+  margin-bottom: 20px; }
+  @media (max-width: 767px) {
+    .auth__desc {
+      font-size: 12px;
+      margin-bottom: 15px; } }
+
+.auth__top {
+  margin-bottom: 30px; }
+  @media (max-width: 767px) {
+    .auth__top {
+      margin-bottom: 20px; } }
+
+.auth__name {
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.015em;
+  color: #000000;
+  margin-bottom: 15px; }
+  @media (max-width: 767px) {
+    .auth__name {
+      font-size: 12px;
+      margin-bottom: 10px; } }
+
+.auth__input {
+  width: 100%;
+  padding: 18px 20px;
+  border: none;
+  border: 1px solid #8C8C8C;
+  border-radius: 4px;
+  background-color: #ffffff;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.015em;
+  color: #000000;
+  outline: none; }
+  .auth__input::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #8C8C8C; }
+  .auth__input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #8C8C8C; }
+  .auth__input:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #8C8C8C; }
+  .auth__input:-moz-placeholder {
+    /* Firefox 18- */
+    color: #8C8C8C; }
+  @media (max-width: 767px) {
+    .auth__input {
+      font-size: 12px;
+      padding: 12px 16px; } }
+.auth__bot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+
+.auth__button {
+  border: none;
+  outline: none;
+  display: inline-block;
+  padding: 13px 45px!important;
+  background: #552FEC;
+  border-radius: 10px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 16px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: .3s; }
+  .auth__button:hover {
+    background-color: #3A0FB5; }
+  @media (max-width: 1139px) {
+    .auth__button {
+      padding: 13px 35px; } }
+  @media (max-width: 767px) {
+    .auth__button {
+      padding: 10px 20px;
+      font-size: 12px; } }
+
+.auth__link {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 16px;
+  color: #552FEC;
+  cursor: pointer;
+  display: inline-block; }
+  @media (max-width: 1139px) {
+    .auth__link {
+      font-size: 14px; } }
+  @media (max-width: 767px) {
+    .auth__link {
+      font-size: 10px; } }
+
+.auth__list {
+  margin-bottom: 24px; }
+  @media (max-width: 767px) {
+    .auth__list {
+      margin-bottom: 15px; } }
+
+.auth__item {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 10px;
+  position: relative;
+  margin-left: 14px; }
+  .auth__item::before {
+    content: '';
+    border: 2px solid #552FEC;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    position: absolute;
+    left: -14px;
+    top: 5px; }
+    @media (max-width: 767px) {
+      .auth__item::before {
+        width: 6px;
+        height: 6px;
+        left: -12px;
+        border-width: 1px; } }
+  .auth__item:last-child {
+    margin-bottom: 0px; }
+  @media (max-width: 767px) {
+    .auth__item {
+      font-size: 12px;
+      margin-bottom: 6px;
+      margin-left: 12px; } }	  
