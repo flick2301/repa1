@@ -42,7 +42,7 @@ if(!empty($arParams["~AUTH_RESULT"])):
 		<input type="hidden" name="TYPE" value="SEND_PWD">
 
 		<div class="bx-authform-formgroup-container">
-			<div class="auth__name"><?echo GetMessage("AUTH_LOGIN_EMAIL")?></div>
+			<div class="auth__name">E-mail</div>
 
 				<input type="text" class="auth__input" name="USER_LOGIN" maxlength="255" value="<?=$arResult["USER_LOGIN"]?>" />
 				<input type="hidden" name="USER_EMAIL" />
@@ -78,7 +78,7 @@ if(!empty($arParams["~AUTH_RESULT"])):
 
 		
                 <div class="auth__bot">
-                  <input onclick="document.getElementById('check').value = 'stopSpam_yes';" class="auth__button" type="submit" name="send_account_info value="<?=GetMessage("AUTH_REGISTER")?>"><a class="auth__link" href="<?=$arResult["AUTH_AUTH_URL"]?>"><?=GetMessage("AUTH_AUTH")?></a>
+                  <input onclick="document.getElementById('check').value = 'stopSpam_yes';" class="auth__button" type="submit" name="send_account_info" value="Запросить"><a class="auth__link" href="<?=$arResult["AUTH_AUTH_URL"]?>"><?=GetMessage("AUTH_AUTH")?></a>
                 </div>		
 
 
