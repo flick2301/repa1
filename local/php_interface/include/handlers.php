@@ -1136,3 +1136,16 @@ if ($entityDataClass != "\SalePriceTable")	return;
 	
 	//file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arFields, true).print_r($entityDataClass, true));
 }	
+
+
+
+//Почтовое событие
+AddEventHandler("main", "OnBeforeEventAdd", "OnBeforeEventAddHandler");
+	
+function OnBeforeEventAddHandler(&$event, &$lid, &$arFields)
+{
+if ($event == 'USER_PASS_REQUEST'){
+	$arFields["SERVER_NAME"] = $_SERVER['HTTP_HOST'];
+	//file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', $event."-------------------".print_r($arFields, true));
+}
+}
