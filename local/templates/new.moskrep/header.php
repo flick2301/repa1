@@ -51,7 +51,11 @@ Loc::LoadMessages(__FILE__);
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-config" content="<?=SITE_TEMPLATE_PATH?>/assets/favicon/browserconfig.xml">
 <meta name="apple-mobile-web-app-title" content="КРЕП-КОМП">
-<meta name="theme-color" content="#ffffff">   
+<meta name="theme-color" content="#ffffff">  
+
+<?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
+<meta name="google-site-verification" content="Obf25qlplQtNOWNrsgj_jU3Xb5E7wvJ8athrd1N4bhs" />
+<?endif?> 
 
    
    <?

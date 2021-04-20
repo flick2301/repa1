@@ -48,9 +48,10 @@ if($arSection = $rsResult->GetNext()) {
 		$res = CIBlockElement::GetByID($surface);
 		if ($ar_res = $res->GetNext()) {
 			$ar_res["IMG"] = CFile::GetPath($ar_res["PREVIEW_PICTURE"]);
-			$arResult["UF_SURFACE"][] = $ar_res;
+			$arNewResult["UF_SURFACE"][] = $ar_res;
 		}
 	}
+	$arResult["UF_SURFACE"] = $arNewResult["UF_SURFACE"];
 	if($arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD']){
 		
 		$arCode = explode(';', $arResult['ORIGINAL_PARAMETERS']['EXTRA_FIELD']);

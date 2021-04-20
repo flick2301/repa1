@@ -30,3 +30,35 @@
 		margin-top:20px;
 		border-top: 1px solid #457fd8;
 }
+
+.delivery__box h2{
+	margin: 15px 0px;
+}
+.simple-table th span {
+	font-size: 12px
+}
+.simple-table th {
+    vertical-align: middle;
+    padding: 10px 15px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #552FEC;
+    border: solid 1px #EAEAEA;
+    border-left: 0;
+    line-height: 1.2;
+}
+.simple-table th:first-child {
+	white-space: nowrap;	
+}
+.simple-table td {
+    vertical-align: middle;
+}	
+.simple-table table {
+	font-family: 'Montserrat';
+	font-size: 14px;
+	font-weight: 500;
+}	
+.simple-table th span {
+    font-size: 10px;
+	display: block;
+}

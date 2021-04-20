@@ -23,6 +23,11 @@ global $APPLICATION;
 	<meta name="viewport" content="width=device-width; initial-scale=1.0" />
 	<meta name="facebook-domain-verification" content="qyjoyjc6m0agulp5ix7pznx4nhhm22" />
 	
+<?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
+<meta name="google-site-verification" content="Obf25qlplQtNOWNrsgj_jU3Xb5E7wvJ8athrd1N4bhs" />
+<?endif?> 
+	
+	
 <?$APPLICATION->ShowMeta("robots")?>
 <title><?$APPLICATION->ShowTitle();?></title>
 

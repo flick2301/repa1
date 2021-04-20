@@ -11,6 +11,11 @@ Loc::LoadMessages(__FILE__);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+	
+<?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
+<meta name="google-site-verification" content="Obf25qlplQtNOWNrsgj_jU3Xb5E7wvJ8athrd1N4bhs" />
+<?endif?> 
+	
     
     <?$APPLICATION->ShowHead();?>
 	<?

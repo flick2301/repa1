@@ -324,7 +324,7 @@ function bxOnSaleOrderBeforeSaved(Main\Event $event)
 
     $propsData = [];
 
-	if($order->getId() !=20905 && $order->getId() !=22289)
+	if($order->getId() !=20905 && $order->getId() !=24631)
 	{
 
     /**
