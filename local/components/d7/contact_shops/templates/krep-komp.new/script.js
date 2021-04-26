@@ -111,6 +111,8 @@ myPlacemarks.push(myPlacemark[entry.id]);
     myMap.geoObjects.add(myPlacemark[entry.id]);
 	$('.print_btn').css('visibility', 'visible');
 	
+	if(zoom[section_id]>19) myMap.setBounds(myMap.geoObjects.getBounds(),{checkZoomRange:true, zoomMargin:9});
+	
 });
 /*
 var clusterIcons = [
