@@ -7,7 +7,6 @@ while ($arSection = $rsSections->Fetch())
     $arText[]=$arSection['NAME'];
 }
 $delete=true;
-
 foreach($arResult as $key=>$arItem):
     if($arItem['DEPTH_LEVEL'] == 1):
         $delete=false;

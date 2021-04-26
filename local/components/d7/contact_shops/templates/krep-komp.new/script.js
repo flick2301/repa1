@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function() { 
 	
 	myPlacemarks = [];
 	
@@ -48,7 +48,7 @@ $(document).ready(function() {
 });	
 
 
-function init() {
+function init() { 
     myMap = new ymaps.Map("map", {
             center: [center_lat[section_id], center_lon[section_id]],
             zoom: zoom[section_id]

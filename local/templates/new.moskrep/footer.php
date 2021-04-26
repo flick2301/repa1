@@ -68,7 +68,7 @@
 			0 => "",
 			1 => "2411",
 			2 => "2403",
-			3 => "",
+			3 => "1655",
 		),
 		"COMPONENT_TEMPLATE" => "left_bottom",
 		"MENU_CACHE_TYPE" => "A",
