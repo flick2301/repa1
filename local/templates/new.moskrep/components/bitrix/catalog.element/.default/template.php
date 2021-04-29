@@ -142,7 +142,7 @@ dataLayer.push({
                               </li>
                               <li class="product-data__item">
                                  <p class="product-data__name"><i class="simple-home-icon product-data__icon"></i>Самовывоз</p>
-                                 <p class="product-data__text"><?echo ($arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']-$arResult['STORE'][3]['AMOUNT']) ? ' сегодня, бесплатно' : 'на заказ';?></p>
+                                 <p class="product-data__text"><?echo ((strstr($_SERVER['HTTP_HOST'], "spb") && $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']-$arResult['STORE'][3]['AMOUNT']) || (!strstr($_SERVER['HTTP_HOST'], "spb") && $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT'])) ? ' сегодня, бесплатно' : 'на заказ';?></p>
                               </li>
                            </ul>
                            <div class="product-data__info">
@@ -239,7 +239,7 @@ dataLayer.push({
 		<div class="product-page__section" id="payment">
 		 <? include($_SERVER["DOCUMENT_ROOT"]."/kontent-elementa/var_payment.php"); ?>
 		 </div>
-            
+         <!--<?=$templateFolder?>-->   
 	    <? require_once($_SERVER["DOCUMENT_ROOT"].$templateFolder."/delivery.php"); ?>
 		
 		
