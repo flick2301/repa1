@@ -2,7 +2,7 @@ $(document).ready(function() {
 	
 	myPlacemarks = [];
 	
-	ymaps.ready(init);
+	ymaps.ready(initMap);
 	
 	$(document).on('click', '#shops li', function() {
 		//alert($(this).attr('data-rel'));
@@ -48,7 +48,7 @@ $(document).ready(function() {
 });	
 
 
-function init() { 
+function initMap() { 
     myMap = new ymaps.Map("map", {
             center: [center_lat[section_id], center_lon[section_id]],
             zoom: zoom[section_id]

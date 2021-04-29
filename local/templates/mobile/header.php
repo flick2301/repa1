@@ -15,6 +15,8 @@ Loc::LoadMessages(__FILE__);
 <?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
 <meta name="google-site-verification" content="Obf25qlplQtNOWNrsgj_jU3Xb5E7wvJ8athrd1N4bhs" />
 <?endif?> 
+
+<?CJSCore::Init(array('jquery3'));?>
 	
     
     <?$APPLICATION->ShowHead();?>

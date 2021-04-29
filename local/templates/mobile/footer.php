@@ -48,7 +48,7 @@ endif;?>
 
 
 
-<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.min.js");?>
+<?/*$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.min.js");*/?>
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/slick.min.js");?>
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.popup.js");?>
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/common.js");?>
