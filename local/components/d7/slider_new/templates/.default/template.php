@@ -1,4 +1,4 @@
-               <div class="intro-slider__list" id="intro-slider__list">
+		<div class="intro-slider__list" id="intro-slider__list">
 			   <?foreach($arResult["ITEMS"][$arParams["MAIN_SECTION_ID"]] AS $val):?>
 			   <?if($val["PROPERTY"]["DOMEN"]["VALUE"] ==false || in_array($_SERVER['HTTP_HOST'], $val["PROPERTY"]["DOMEN"]["VALUE"]))
 			   {

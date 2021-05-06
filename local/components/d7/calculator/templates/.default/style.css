@@ -1,0 +1,43 @@
+.mass-widget {
+    border: 1px solid #979797;
+	border-radius: 10px;
+	margin-top: 20px;
+	padding: 20px 30px;
+	display: table;
+	width: 500px;
+	max-width: 100%;
+}
+.mass-widget__logo {
+	width: 200px;
+	max-width: 80%;
+	margin-bottom: 20px;
+}
+
+.mass-widget-cleaner {
+    padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    text-align: center;
+    color: #aaa;
+    cursor: pointer;
+    line-height: 17px;
+    margin-top: 10px;
+	float: right;
+}
+.mass-widget__form-block {
+	margin-bottom: 20px;
+}
+.mass-widget__form-control {
+	width: 100%;
+}
+.mass-widget__mass-one-unit {
+	font-weight: bold;
+	text-align: center;
+	margin: 20px 0 0;
+}
+.mass-widget__input-lg {
+	border: 1px solid #000;
+}

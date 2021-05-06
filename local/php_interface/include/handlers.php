@@ -324,48 +324,51 @@ function bxOnSaleOrderBeforeSaved(Main\Event $event)
 
     $propsData = [];
 
-	if($order->getId() !=20905 && $order->getId() !=25218)
+	if($order->getId() !=20905 && $order->getId() !=25478)
 	{
 
     /**
      * Собираем все свойства и их значения в массив
      * @var \Bitrix\Sale\PropertyValue $propertyItem
      */
-    foreach ($propertyCollection as $propertyItem) {
-        if (!empty($propertyItem->getField("CODE"))) {
-            $props[$propertyItem->getField("CODE")]["VALUE"] = trim($propertyItem->getValue());
-        }
-    }
-	
-	$delivery_price = $order->getDeliveryPrice() ? $order->getDeliveryPrice() : 0;
-	
-
-if ($props['DELIVERY_PRICE']['VALUE']) {
-	
-	$delivery_price = $props['DELIVERY_PRICE']['VALUE'];//К точному времени
-
-
-$deliveryCollection = $order->getShipmentCollection()->getNotSystemItems();
-
-foreach ($deliveryCollection as $shipment) {
-if ($shipment->getDeliveryId() == 2 || $shipment->getDeliveryId() == 28 || $shipment->getDeliveryId() == ID_DELIVERY_DAYTODAY || $shipment->getDeliveryId() == ID_DELIVERY_SUNDAY) {
-			//if ($shipment->getDeliveryId() == 11) $delivery_price+=400;
-				$shipment->setField("BASE_PRICE_DELIVERY", $delivery_price);			
-				$shipment->setField('PRICE_DELIVERY', $delivery_price);
-				$shipment->setField("CUSTOM_PRICE_DELIVERY", "Y");
-            }
-			else {
-				$shipment->setField("BASE_PRICE_DELIVERY", 0);				
-				$shipment->setField('PRICE_DELIVERY', 0);
-				$shipment->setField("CUSTOM_PRICE_DELIVERY", "Y");
+		foreach ($propertyCollection as $propertyItem) {
+			if (!empty($propertyItem->getField("CODE"))) {
+				$props[$propertyItem->getField("CODE")]["VALUE"] = trim($propertyItem->getValue());
 			}
-	}
-}
+		}
+		
+		
+		$delivery_price = $order->getDeliveryPrice() ? $order->getDeliveryPrice() : 0;
+	
+		
+		
+		if ($props['DELIVERY_PRICE']['VALUE']) {
+	
+			if($order->getField('STATUS_ID') == 'N')
+				$delivery_price = $props['DELIVERY_PRICE']['VALUE'];//К точному времени (только новые заказы)
+
+
+			$deliveryCollection = $order->getShipmentCollection()->getNotSystemItems();
+
+			foreach ($deliveryCollection as $shipment) {
+				if ($shipment->getDeliveryId() == 2 || $shipment->getDeliveryId() == 28 || $shipment->getDeliveryId() == ID_DELIVERY_DAYTODAY || $shipment->getDeliveryId() == ID_DELIVERY_SUNDAY) {
+			//if ($shipment->getDeliveryId() == 11) $delivery_price+=400;
+					$shipment->setField("BASE_PRICE_DELIVERY", $delivery_price);			
+					$shipment->setField('PRICE_DELIVERY', $delivery_price);
+					$shipment->setField("CUSTOM_PRICE_DELIVERY", "Y");
+				}
+				else {
+					$shipment->setField("BASE_PRICE_DELIVERY", 0);				
+					$shipment->setField('PRICE_DELIVERY', 0);
+					$shipment->setField("CUSTOM_PRICE_DELIVERY", "Y");
+				}
+			}
+		}
  
    //file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt',  file_get_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt').$order->getField("ID").": ".$order->getPrice()."---------------\n".$delivery_price."---------------\n".$order->getDeliveryPrice()."\n".print_r($props, true)."\n++++++++++++++");
 
 	//if ($props["IDCONTACT"]['VALUE']) file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt',  $order->getPrice()."---------------\n".$delivery_price."---------------\n".print_r($did, true));
-}
+	}
 }
 
 
@@ -888,8 +891,11 @@ function DoNotUpdateSectionActivate(&$arFields)
 {
 	CModule::IncludeModule("iblock");
 	$doNotUpdateActivates = [2777, 2779, 2780, 2781, 2782, 2783, 2784, 2785, 2802, 2803, 2558];
+	$res = CIBlockSection::GetList(["SORT"=>"ASC"], ['IBLOCK_ID'=>17, 'ID'=>$arFields["ID"]],false, array("ID","IBLOCK_ID","IBLOCK_SECTION_ID","NAME","DESCRIPTION","UF_*"));
+	if($ar_res = $res->Fetch())
+		Bitrix\Main\Diag\Debug::dumpToFile($ar_res, "", '/upload/arFields.txt');
 	
-	if(in_array($arFields["ID"], $doNotUpdateActivates) || $arFields['UF_SECTION_ID'] || $arFields['UF_SYM_LINK'])
+	if(in_array($arFields["ID"], $doNotUpdateActivates) || $ar_res['UF_SECTION_ID'] || $ar_res['UF_SYM_LINK'])
 		$arFields["ACTIVE"] = "Y";
 
 	

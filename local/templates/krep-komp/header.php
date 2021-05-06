@@ -127,8 +127,7 @@ $APPLICATION->IncludeFile(
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");
 	
 	
-		global $USER;
-		if ($USER->GetID()==1 || $_GET["administrator"]) {
+		global $USER; if ($USER->IsAdmin() || $_GET["administrator"]) {
 			$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/administrator.css", true);	
 			$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/administrator.js");
 		}	
