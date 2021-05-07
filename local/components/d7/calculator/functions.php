@@ -7,7 +7,7 @@ function widgetGetNames($arParams, $SECTION_ID, $arResultLog = "") {
 								//$arResult["LOG"] = $arResultLog.$SECTION_ID."<br />";	
 
 		$arSort = array("SORT" => "ASC", "ID" => "ASC");
-		$arFilter = array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "ACTIVE" => "Y", "ELEMENT_SUBSECTIONS" => "N");
+		$arFilter = array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "ACTIVE" => "Y", "ELEMENT_SUBSECTIONS" => "N", "CNT_ACTIVE" => "Y");
 		$arFilter["SECTION_ID"] = $SECTION_ID;
         $arSelect = array("ID", "IBLOCK_ID", "NAME", "CODE");
 		$rsSect = CIBlockSection::GetList($arSort, $arFilter, true, $arSelect, Array("nPageSize"=>50));

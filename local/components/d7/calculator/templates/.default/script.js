@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	$(document).on('keyup', '#mass-widget__count', function(e) {
+		$(this).val($(this).val().replace(/[^0-9]/, ""));
 		var weight = $(this).val() * $('#mass-widget__weight').val();
 		
 		
@@ -10,6 +11,18 @@ $(document).ready(function() {
 	});
 	
 
+	$(document).on('keyup', '#mass-widget__result', function(e) {
+		$(this).val($(this).val().replace(/[^0-9\.]/, ""));
+		var count = $(this).val() / $('#mass-widget__weight').val();
+		
+		
+		count = count.toFixed();
+		
+		
+		$('#mass-widget__count').val(count);
+	});
+	
+	
 
 	
 	$(document).on('change', '#mass-widget__form select', function() {

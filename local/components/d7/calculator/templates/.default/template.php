@@ -38,6 +38,17 @@ if($arResult["LOG"] && $USER->isAdmin()):?>
 </div>
 <?endif?>
 
+<?if(count($arResult["DIAMETR_VNUTRENNIY"])):?>
+<div class="mass-widget__form-block">	
+<select class="mass-widget__form-control input-lg mass-widget-loader-select" name="DIAMETR_VNUTRENNIY">
+<option value="" class="mass-option-disabled">- Внутренний диаметр -</option>
+<?foreach($arResult["DIAMETR_VNUTRENNIY"] AS $interior_diametr):?>			
+	<option value="<?=$interior_diametr?>" <?if($interior_diametr==$_POST["DIAMETR_VNUTRENNIY"]):?>selected="true"<?endif?>><?=$interior_diametr?></option>			
+<?endforeach?>	
+</select>
+</div>
+<?endif?>
+
 
 <?if(count($arResult["DIAMETR"])):?>
 <div class="mass-widget__form-block">	
@@ -79,6 +90,14 @@ if($arResult["LOG"] && $USER->isAdmin()):?>
 <?elseif ($_POST["LENGTH"]):?>
 <div class="mass-widget__mass-one-unit">Масса изделия не известна</div>
 <?endif?>
+
+<?if(count($arResult["ITEMS"])):?>
+<?foreach($arResult["ITEMS"] AS $item):?>
+<?=$item["NAME"]?><br />
+<?endforeach?>
+<?endif?>
+		
+
 </form>
 		
 </div>
@@ -86,7 +105,6 @@ if($arResult["LOG"] && $USER->isAdmin()):?>
 		
 		
 	<div class="mass-widget__widget-footer">
-		
 	</div>
 </div>
 
