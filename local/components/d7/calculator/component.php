@@ -82,17 +82,35 @@ if($_POST["LENGTH"] || count($arResult["LENGTH"])==1 || (count($arResult["DIAMET
 		$arFilter = array('IBLOCK_ID' => $arParams["IBLOCK_ID"], 'ACTIVE' => 'Y', 'SECTION_ID'=>$_POST["NAMES"], 'PROPERTY_DIAMETR'=>htmlspecialcharsbx($_POST["DIAMETR"]), 'PROPERTY_DIAMETR_VNUTRENNIY_VALUE'=> htmlspecialcharsbx($_POST["DIAMETR_VNUTRENNIY"]), 'PROPERTY_DLINA'=>htmlspecialcharsbx($_POST["LENGTH"]));
         $arSelect = array("ID", "IBLOCK_ID", "NAME", "CODE", "IBLOCK_SECTION_ID");
         $res = CIBlockElement::GetList(Array("SORT" => "ASC"), $arFilter, false, Array(), $arSelect); 
+		
+				$weight = Array();
 
 		while($ob = $res->GetNextElement()){
 			$fields = $ob->GetFields();
 			$props = $ob->GetProperties(); 
 			$arResult["ITEMS"][++$i] = $fields;
 			$arResult["ITEMS"][$i]["PROPS"] = $props;
-			if ($props["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] != end($props["CML2_TRAITS"]["VALUE"]) && !strstr($fields["NAME"], " кг")) {
-			if ($props["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] && end($props["CML2_TRAITS"]["VALUE"]) && !$arResult["WEIGHT"]) $arResult["WEIGHT"] = end($props["CML2_TRAITS"]["VALUE"]) / $props["KOLICHESTVO_V_UPAKOVKE"]["VALUE"];
-			elseif (!$props["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] || !end($props["CML2_TRAITS"]["VALUE"])) $arResult["LOG"] .= "<b>{$fields["NAME"]}</b> ({$props["CML2_ARTICLE"]["VALUE"]}): в упаковке - {$props["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]}, вес упаковки - ".end($props["CML2_TRAITS"]["VALUE"])."<br />";
+
+
+			if ($props["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] && end($props["CML2_TRAITS"]["VALUE"]) && !$arResult["WEIGHT"]) {
+				$arResult["WEIGHT"] = end($props["CML2_TRAITS"]["VALUE"]) / $props["KOLICHESTVO_V_UPAKOVKE"]["VALUE"];
+				$weight[] = $arResult["WEIGHT"];
+			}	
+			elseif (!$props["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] || !end($props["CML2_TRAITS"]["VALUE"]) || ($props["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] == end($props["CML2_TRAITS"]["VALUE"]))) {
+				$arResult["LOG"] .= "<b>{$fields["NAME"]}</b> ({$props["CML2_ARTICLE"]["VALUE"]}): в упаковке - {$props["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]}, вес упаковки - ".end($props["CML2_TRAITS"]["VALUE"])."<br />";
 			}
-		}	
+			
+			if (preg_match("/\([0-9 \.\,кг]+\/[0-9 шт\.]+\)/", $fields["NAME"], $matches) && (!$props["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] || !end($props["CML2_TRAITS"]["VALUE"]) || $props["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]==end($props["CML2_TRAITS"]["VALUE"]))) { 
+				$matches = explode("/", $matches[0]);
+				$matches[0] = preg_replace("/[^0-9\.]+/", "", str_replace(",", ".", $matches[0]));
+				$matches[1] = preg_replace("/[^0-9]+/", "", $matches[1]);
+				//$arResult["LOG"] .= "{$matches[0]} --- {$matches[1]}<br />";
+				$weight[] = $matches[0] / $matches[1];
+			}
+
+		}
+		
+		$arResult["WEIGHT"] = min($weight);	
 }
 
 
