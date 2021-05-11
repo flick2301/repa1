@@ -106,6 +106,7 @@ if($_POST["LENGTH"] || count($arResult["LENGTH"])==1 || (count($arResult["DIAMET
 				$matches[1] = preg_replace("/[^0-9]+/", "", $matches[1]);
 				//$arResult["LOG"] .= "{$matches[0]} --- {$matches[1]}<br />";
 				$weight[] = $matches[0] / $matches[1];
+				$arResult["LOG"] .= "<b>{$fields["NAME"]}</b> ({$props["CML2_ARTICLE"]["VALUE"]}): в упаковке - {$props["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]}, вес упаковки - ".end($props["CML2_TRAITS"]["VALUE"])."<br />";
 			}
 
 		}
