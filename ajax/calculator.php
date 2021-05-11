@@ -11,7 +11,7 @@ use Bitrix\Main\Application;
 		"CACHE_TYPE" => "A",
 		"IBLOCK_ID" => "17",
 		"SECTION_ID" => "1655",
-		"SECTIONS" => Array(1831, 1656, 1673, 1768, 1771, 1776)
+		"SECTIONS" => Array(1831, 1656, 1673, 1768, 1771, 1776, 1688, 1786, 1789, 1793, 1722)
 	)
 );?>
 

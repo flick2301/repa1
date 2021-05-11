@@ -78,9 +78,9 @@ if($_POST["DIAMETR"]) {
 }	
 
 
-if($_POST["LENGTH"] || count($arResult["LENGTH"])==1 || count($arResult["DIAMETR_VNUTRENNIY"])) {
-		$arFilter = array('IBLOCK_ID' => $arParams["IBLOCK_ID"], 'ACTIVE' => 'Y', 'SECTION_ID'=>$_POST["NAMES"], 'PROPERTY_DIAMETR'=>htmlspecialcharsbx($_POST["DIAMETR"]), 'PROPERTY_DLINA'=>htmlspecialcharsbx($_POST["LENGTH"]));
-        $arSelect = array("ID", "IBLOCK_ID", "NAME", "CODE");
+if($_POST["LENGTH"] || count($arResult["LENGTH"])==1 || (count($arResult["DIAMETR_VNUTRENNIY"]) && $_POST["DIAMETR_VNUTRENNIY"])) {
+		$arFilter = array('IBLOCK_ID' => $arParams["IBLOCK_ID"], 'ACTIVE' => 'Y', 'SECTION_ID'=>$_POST["NAMES"], 'PROPERTY_DIAMETR'=>htmlspecialcharsbx($_POST["DIAMETR"]), 'PROPERTY_DIAMETR_VNUTRENNIY_VALUE'=> htmlspecialcharsbx($_POST["DIAMETR_VNUTRENNIY"]), 'PROPERTY_DLINA'=>htmlspecialcharsbx($_POST["LENGTH"]));
+        $arSelect = array("ID", "IBLOCK_ID", "NAME", "CODE", "IBLOCK_SECTION_ID");
         $res = CIBlockElement::GetList(Array("SORT" => "ASC"), $arFilter, false, Array(), $arSelect); 
 
 		while($ob = $res->GetNextElement()){
