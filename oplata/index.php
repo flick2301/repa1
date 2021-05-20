@@ -22,7 +22,10 @@ use Bitrix\Main\Web\Cookie;
                         <img class="payment-option__icon" src="<?=SITE_TEMPLATE_PATH?>/img/i-delivery-01.png" width="53" height="47" alt="Банковской картой через сайт" title="Банковской картой через сайт" />
                      </div>
                   </section>
+				  
                   <!--payment-option-->
+				  
+<?if($_SERVER["HTTP_HOST"]=="krep-komp.ru" || $_SERVER["HTTP_HOST"]=="spb.krep-komp.ru"):?>				  
                   <!--payment-option-->
                   <section class="simple-article__section payment-option">
                      <div class="payment-option__header">
@@ -34,6 +37,8 @@ use Bitrix\Main\Web\Cookie;
                      </div>
                   </section>
                   <!--payment-option-->
+			  
+				  
                   <!--payment-option-->
                   <section class="simple-article__section payment-option">
                      <div class="payment-option__header">
@@ -45,6 +50,8 @@ use Bitrix\Main\Web\Cookie;
                      </div>
                   </section>
                   <!--payment-option-->
+<?endif?>				  
+				  
                   <!--payment-option-->
                   <section class="simple-article__section payment-option">
                      <div class="payment-option__header">

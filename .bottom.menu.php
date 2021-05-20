@@ -73,5 +73,11 @@ $aMenuLinks = Array(
 		Array(),
 		""
 	),	
+	Array(
+		"Калькулятор веса",
+		"/calculator/",
+		Array(),
+		Array(),
+		""),
 );
 ?>

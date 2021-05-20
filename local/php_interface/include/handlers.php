@@ -748,6 +748,11 @@ function ChangeMyContent(&$content)
 	//$content = preg_replace("  ", " ", $content);
 	$content = str_replace("  ", " ", $content);
 	//$content = sanitize_output($content);
+	
+	if(!($_SERVER['HTTP_HOST']=='krep-komp.ru' || $_SERVER['HTTP_HOST']=='spb.krep-komp.ru'))
+	{	
+		$content = str_replace('Адреса магазинов', 'Точки выдачи', $content);
+	}
    }
 }
 function sanitize_output($buffer)
@@ -1110,6 +1115,7 @@ function OnEpilogHandler() {
         $description = $GLOBALS['APPLICATION']->GetProperty('description');
         $GLOBALS['APPLICATION']->SetPageProperty('description', $description.' (страница '.intval($_GET['PAGEN_5']).')');        
      }
+	 
   }
   
   

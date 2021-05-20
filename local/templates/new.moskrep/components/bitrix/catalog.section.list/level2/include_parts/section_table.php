@@ -132,9 +132,15 @@ if (CModule::IncludeModule("iblock"))
 ?>
 <?
 if($_POST['ENUM_LIST']['BLOCKS'])
+{
 	$template = "vertical";
+	$element_sort_field = 'sort';
+}
 else
+{
 	$template = "horizontal_new";
+	$element_sort_field = 'property_'.$first_sort_field;
+}
 
 $intSectionID = $APPLICATION->IncludeComponent(
 					"bitrix:catalog.section",
@@ -142,7 +148,7 @@ $intSectionID = $APPLICATION->IncludeComponent(
 					array(
 						"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 						"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-						"ELEMENT_SORT_FIELD" => 'property_'.$first_sort_field,
+						"ELEMENT_SORT_FIELD" => $element_sort_field,
 						"ELEMENT_SORT_ORDER" => 'asc',
 						"ELEMENT_SORT_FIELD2" => 'property_DLINA',
 						"ELEMENT_SORT_ORDER2" => 'asc',
