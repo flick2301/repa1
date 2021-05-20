@@ -4,6 +4,13 @@ $APPLICATION->SetTitle("Интернет-магазин \"Москреп\"");
 $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Москреп\"");
 ?>
 
+<?
+$APPLICATION->IncludeFile(
+	SITE_DIR."/include/calculator.php",
+	array("SHOW_BORDER" => true, "MODE"=>"html")
+);
+?>
+
 <?/*$APPLICATION->IncludeComponent(
 	"d7:main.feedback", 
 	"ajax-file-krep-komp", 

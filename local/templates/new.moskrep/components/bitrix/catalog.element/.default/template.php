@@ -196,6 +196,13 @@ dataLayer.push({
                </div>
         <!--product-tabs-->
         <div class="product-page__section" id="description">
+					<?if($arResult['DETAIL_TEXT']){?>
+					<h2 id="chars" class="product-page__title">Описание</h2>
+					<div class="product-page__specs product-data product-data--specs">
+						<?=$arResult['DETAIL_TEXT']?>
+					</div>
+					<br>
+					<?}?>
                   <h2 id="chars" class="product-page__title">Характеристики</h2>
                   <!--product-data-->
                   <div class="product-page__specs product-data product-data--specs">
