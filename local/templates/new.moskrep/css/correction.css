@@ -1190,6 +1190,26 @@ ol.tech li {
 .table-of-contents__link {
     color: #4F36E3;
 }
+.colored-cart-icon {
+    background-image: url(../img/colored-cart.svg);
+}	
+.pickup-view {
+    background: url(../img/Shape-01.svg) no-repeat;
+	background-size: contain;
+}
+.delivery-view {
+    background: url(../img/Shape-02.svg) no-repeat;
+	background-size: contain;
+}	
+.simple-user-icon {
+    background-image: url(../img/simple-user.svg);
+}	
+.catalog-table__link {
+	color: #4F36E3;
+}
+
+
+
 
 
 
@@ -1329,6 +1349,10 @@ ol.tech li {
 
 
 
+
+
+
+
 @media (min-width: 741px) {
 h1 {
     font-size: 38px;
@@ -1362,6 +1386,9 @@ img.intro-slider__image {
 }
 .catalog-feed__table:last-of-type .catalog-table {
 	border-bottom: solid 1px #dedede;
+}
+.catalog-table .catalog-table__title {
+	background: #4F36E3;
 }
 }
 
