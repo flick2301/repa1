@@ -1,3 +1,172 @@
+<p> 
+Здесь приводится таблица расчёта расхода химического анкера HIMTEX, в зависимости от глубины отверстия и диаметра отверстия, стандартные показатели.
+</p><br />
+<table cellspacing="1" cellpadding="1" border="1" align="center">
+<tbody>
+<tr>
+	<td>
+		 диаметр анкера (мм)
+	</td>
+	<td>
+		 диаметр отверстия (мм)
+	</td>
+	<td>
+		 стандартная глубина отверстия (мм)
+	</td>
+	<td>
+		 объем наполнения для одного отверстия (мл)
+	</td>
+	<td>
+		 количество отверстий из картриджа 300 (мл)
+	</td>
+	<td>
+		 количество отверстий из картриджа 385 (мл)
+	</td>
+</tr>
+<tr>
+	<td>
+		 &nbsp;М8
+	</td>
+	<td>
+		 10
+	</td>
+	<td>
+		 80&nbsp;
+	</td>
+	<td>
+		 4.14&nbsp;
+	</td>
+	<td>
+		 72.4&nbsp;
+	</td>
+	<td>
+		 93.0
+	</td>
+</tr>
+<tr>
+	<td>
+		 &nbsp;М10
+	</td>
+	<td>
+		 12
+	</td>
+	<td>
+		 90
+	</td>
+	<td>
+		 6.71
+	</td>
+	<td>
+		 44.7&nbsp;
+	</td>
+	<td>
+		 57.4&nbsp;
+	</td>
+</tr>
+<tr>
+	<td>
+		 &nbsp;М12
+	</td>
+	<td>
+		 14
+	</td>
+	<td>
+		 110&nbsp;
+	</td>
+	<td>
+		 11.17
+	</td>
+	<td>
+		 26.9&nbsp;
+	</td>
+	<td>
+		 34.5&nbsp;
+	</td>
+</tr>
+<tr>
+	<td>
+		 М16
+	</td>
+	<td>
+		 18
+	</td>
+	<td>
+		 125
+	</td>
+	<td>
+		 20.98&nbsp;
+	</td>
+	<td>
+		 14.3&nbsp;
+	</td>
+	<td>
+		 18.4&nbsp;
+	</td>
+</tr>
+<tr>
+	<td>
+		 &nbsp;М20
+	</td>
+	<td>
+		 24
+	</td>
+	<td>
+		 170&nbsp;
+	</td>
+	<td>
+		 50.73&nbsp;
+	</td>
+	<td>
+		 5.9
+	</td>
+	<td>
+		 7.6&nbsp;
+	</td>
+</tr>
+<tr>
+	<td>
+		 &nbsp;M24
+	</td>
+	<td>
+		 28
+	</td>
+	<td>
+		 210
+	</td>
+	<td>
+		 85.30
+	</td>
+	<td>
+		 3.5
+	</td>
+	<td>
+		 4.5
+	</td>
+</tr>
+<tr>
+	<td>
+		 &nbsp;М30
+	</td>
+	<td>
+		 35
+	</td>
+	<td>
+		 280
+	</td>
+	<td>
+		 177.71&nbsp;
+	</td>
+	<td>
+		 1.7&nbsp;
+	</td>
+	<td>
+		 2.2&nbsp;
+	</td>
+</tr>
+</tbody>
+</table><br />
+
+
 <p>
 	 * расчет производится в соответствии с регламентом монтажа, заполнения отверстия на 2/3. Установка считается правильной, если излишки химического состава выступили из отверстия. В случае использования сетчатой гильзы (пустотелые основания) необходимо прибавить 30%, так как в данном случае гильза заполняется полностью!
 </p>
@@ -83,7 +252,7 @@ __FC_FORMULA = ['rez=({vbal}*1000/(({diam}*{diam}*0.25*{h}*3.1076*2)/3))/1','rez
 
 
 <script>
-$(document).ready(function() {
+$(document).ready(function() {console.log();
 	
 eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('$(\'#6 8[C=m], #6 o\').x(\'y z\',A(){$(q).5($(q).5().B(/[^0-9\\.]+/,\'\'));4 c=$(\'#6 8[7=c]\').5();4 h=$(\'#6 8[7=h]\').5();4 i=$(\'#6 o[7=i]\').5();e(c&&h&&i){4 a=(i*u/((c*c*0.s*h*3.E*2)/ 3)) /1;a=v.F(a);e(a==0)a=0;$(\'#n\').m(a);$(\'#n\').l(\'f\',\'t\')}w $(\'#n\').l(\'f\',\'r\');4 d=$(\'#6 8[7=d]\').5();4 k=$(\'#6 8[7=k]\').5();4 j=$(\'#6 8[7=j]\').5();4 g=$(\'#6 o[7=g]\').5();e(d&&k&&j&&g){4 b=((((d*d*0.s*k*3.D*2)/3)*j)/ u) /g;b=v.G(b);e(b==0)b=0;$(\'#p\').m(b);$(\'#p\').l(\'f\',\'t\')}w $(\'#p\').l(\'f\',\'r\')});',43,43,'||||var|val|calcForm|name|input||result|result2|diam|diam2|if|display|vbal2||vbal|qol|h2|css|text|rez|select|rez2|this|none|25|flex|1000|Math|else|on|keyup|change|function|replace|type|14|1076|floor|ceil'.split('|'),0,{}))
 	

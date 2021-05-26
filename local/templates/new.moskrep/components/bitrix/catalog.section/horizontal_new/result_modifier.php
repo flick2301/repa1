@@ -151,6 +151,8 @@ while($arSection = $rsSections->GetNext())
 //ВЫЧИСЛЯЕМ ДОСТУПНЫЕ РАЗМЕРЫ ДЛЯ ОТОБРАЖЕНИЯ(КОНЕЦ)
 //if ($_SERVER['REQUEST_URI']=="/krepezh/samorezy/samorezy_po_derevu/ostrye_pd/") file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arResult['ITEMS'], true));
 foreach($arResult['ITEMS'] as $key=>$arItem){
+	if($arResult["ID"]==2992)
+		\Bitrix\Main\Diag\Debug::dumpToFile($arItem['PROPERTIES']['DIAMETR_VNUTRENNIY_INTEGER']["VALUE"], "", '/upload/15.txt');
     if(isset($arItem['PREVIEW_PICTURE']['ID'])){
       $file = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE']['ID'], array('width'=>150, 'height'=>150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
     }else{
@@ -230,7 +232,10 @@ if(count($arSizes)>0 && (count($arSizes)!=1 || $arSizes[0]!='DIAMETR_VNUTRENNIY'
 	if($arItem['PROPERTIES']["DIAMETR_VNUTRENNIY"]["VALUE"]){
 		$vnut_diametr = true;
 		$ss = str_replace('м', '', $arResult['ITEMS'][$key]['SIZES']);
+		
 		$arResult['SIZES'][$ss][$key]=$arResult['ITEMS'][$key];
+		
+		//$arResult['SIZES'][$arResult['ITEMS'][$key]['SIZES']][$key]=$arResult['ITEMS'][$key];
 		
 		
 	}else{
@@ -243,8 +248,10 @@ if(count($arSizes)>0 && (count($arSizes)!=1 || $arSizes[0]!='DIAMETR_VNUTRENNIY'
 
 
 if($vnut_diametr){
-	//ksort($arResult['SIZES']);
 	
+	//ksort($arResult['SIZES'], SORT_NUMERIC);
+	//array_multisort($arResult['SIZES']);
+	//\Bitrix\Main\Diag\Debug::dumpToFile($arResult['SIZES'], "", '/upload/13.txt');
 }
 
 $arProp = array_diff($arProp, array(''));

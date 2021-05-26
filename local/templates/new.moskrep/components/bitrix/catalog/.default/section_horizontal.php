@@ -25,7 +25,7 @@ $rsGender = CUserFieldEnum::GetList(array(), array("ID" => $aSection["UF_SEC_LIS
 	if(in_array('DIAMETR_VNUTRENNIY', $arSizes_val))
 		$first_sort_field = 'DIAMETR_VNUTRENNIY_INTEGER';
 	
-	
+	\Bitrix\Main\Diag\Debug::dumpToFile($first_sort_field, "", '/upload/14.txt');
 }?>
 
 
