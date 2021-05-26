@@ -1207,7 +1207,9 @@ ol.tech li {
 .catalog-table__link {
 	color: #4F36E3;
 }
-
+.catalog-table .item_img_block div {
+	background: #4F36E3;	
+}
 
 
 
