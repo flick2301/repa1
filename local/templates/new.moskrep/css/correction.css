@@ -1210,6 +1210,15 @@ ol.tech li {
 .catalog-table .item_img_block div {
 	background: #4F36E3;	
 }
+.special-table th, .cart-table__title, .in-cart-total {
+    background-color: #4F36E3;
+}
+#bx-soa-order-form .bx-soa-section-title-container, #bx-soa-total .bx-soa-cart-total {
+    background-color: #4F36E3;	
+}
+.skid td:first-child {
+    background-color: #4F36E3!important;	
+}
 
 
 

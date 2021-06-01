@@ -12,7 +12,7 @@ global $APPLICATION;
 if($arResult['REFERENCE']['ITEM']['ID']!=''):
         $ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues($arResult['REFERENCE']['ITEM']["IBLOCK_ID"],$arResult['REFERENCE']['ITEM']['ID']);
         $IPROPERTY  = $ipropValues->getValues();
-        
+        Bitrix\Main\Diag\Debug::dumpToFile($IPROPERTY, "", '/upload/a.txt');
         if($IPROPERTY['ELEMENT_META_TITLE']!=''):
             
             $APPLICATION->SetPageProperty('title', $IPROPERTY['ELEMENT_META_TITLE']);

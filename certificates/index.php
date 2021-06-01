@@ -23,6 +23,8 @@ $APPLICATION->SetTitle("Сертификаты соответствия");
 		"CACHE_TYPE" => "A",	// Тип кеширования
 		"COMPONENT_TEMPLATE" => ".default",
 		"DATE_FORMAT" => "d.m.Y",
+		"SET_STATUS_404" => "Y",
+		"SHOW_404" => "Y",
 		"IBLOCK_ID" => "8",	// IBLOCK_ID
 		"IBLOCK_TYPE" => "certificates",	// IBLOCK_TYPE
 		"ITEMS_PREV_PIC_H" => "370",	// Высота картинки раздела
@@ -32,7 +34,7 @@ $APPLICATION->SetTitle("Сертификаты соответствия");
 		"SEF_FOLDER" => "/certificates/",	// Каталог ЧПУ (относительно корня сайта)
 		"SEF_MODE" => "Y",	// Включить поддержку ЧПУ
 		"SEF_URL_TEMPLATES" => array(
-			"sections" => "/certificates/#SECTION_CODE#/",
+			"sections" => "",
 			"items" => "#SECTION_CODE_PATH#/",
 		),
 		"SET_TITLE" => "Y",	// Устанавливать заголовок страницы

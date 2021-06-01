@@ -200,6 +200,11 @@ dataLayer.push({
 					<h2 id="chars" class="product-page__title">Описание</h2>
 					<div class="product-page__specs product-data product-data--specs">
 						<?=$arResult['DETAIL_TEXT']?>
+						<?
+						//НУЖНО ВСТАВИТЬ КАЛЬКУЛЯТОР ДЛЯ ХИМ. КАРТРИДЖЕЙ
+						if($arResult['ORIGINAL_PARAMETERS']['SECTION_CODE']=='kartridzh')
+							$APPLICATION->IncludeFile(SITE_DIR."/include/calculator.php", array("SHOW_BORDER" => true, "MODE"=>"html"));
+						?>
 					</div>
 					<br>
 					<?}?>

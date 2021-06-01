@@ -40,7 +40,7 @@ function saveInfo(\Bitrix\Main\Event $event ) {
 		      if ( $entity instanceof Shipment ) {
 			         if ( !is_array( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] )  )
 			            $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] = array();
-					\Bitrix\Main\Diag\Debug::dumpToFile($entity->getFields()->getValues(), "", '/upload/1.txt');
+					
 			         if ( !$entity->isSystem() )
 			            $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'][] = checkFields( $entity->getFields()->getValues(), Shipment::getAvailableFields() );
 			}
@@ -69,7 +69,7 @@ function reverseInfo(\Bitrix\Main\Event $event )
 		$order = $event->getParameter("ENTITY");
 		if ( $_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'] ) 
 		{
-			\Bitrix\Main\Diag\Debug::dumpToFile($_SESSION['BX_CML2_EXPORT']['DELETED_SHIPMENTS'], "", '/upload/2.txt');
+			
 			//Вернем отгрузки
 			$shipmentCollection = $order->getShipmentCollection();
 			
@@ -114,7 +114,7 @@ function reverseInfo(\Bitrix\Main\Event $event )
 				}
 				if ( $fg || $order->getDeliveryPrice()==0) 
 				{
-					Bitrix\Main\Diag\Debug::dumpToFile(array($order->getId(), $order->getDeliveryPrice()), "", '/upload/4.txt');
+					
 					$shipment = $shipmentCollection->createItem();
 					$shipment->setFields( $shipmentFields );
 					OrderBasketShipment::updateData($order, $shipment, $products);
@@ -623,7 +623,7 @@ function onBeforeAdd(\Bitrix\Main\Entity\Event $event)
 {
 
         $fields = $event->getParameter("fields");
-		\Bitrix\Main\Diag\Debug::dumpToFile($fields, "", '/upload/sss_pay.txt');
+		
 
 
 
@@ -883,7 +883,7 @@ function DoNotUpdate(&$arFields)
 		if($arFields['PREVIEW_PICTURE'] || $arFields['DETAIL_PICTURE'])
 		{
 			$time = date("H:i:s");
-			\Bitrix\Main\Diag\Debug::dumpToFile(array($arFields['PREVIEW_PICTURE'], $arFields['DETAIL_PICTURE'], $time), "", '/upload/log_change_pic.txt');
+			
 		}
        //unset($arFields['PREVIEW_PICTURE']);
        //unset($arFields['DETAIL_PICTURE']);
@@ -898,7 +898,7 @@ function DoNotUpdateSectionActivate(&$arFields)
 	$doNotUpdateActivates = [2777, 2779, 2780, 2781, 2782, 2783, 2784, 2785, 2802, 2803, 2558];
 	$res = CIBlockSection::GetList(["SORT"=>"ASC"], ['IBLOCK_ID'=>17, 'ID'=>$arFields["ID"]],false, array("ID","IBLOCK_ID","IBLOCK_SECTION_ID","NAME","DESCRIPTION","UF_*"));
 	if($ar_res = $res->Fetch())
-		Bitrix\Main\Diag\Debug::dumpToFile($ar_res, "", '/upload/arFields.txt');
+		
 	
 	if(in_array($arFields["ID"], $doNotUpdateActivates) || $ar_res['UF_SECTION_ID'] || $ar_res['UF_SYM_LINK'])
 		$arFields["ACTIVE"] = "Y";
@@ -966,7 +966,7 @@ function OnSaleCheckPrepareDataHandler($a, $str)
 		if($product['PRODUCT_ID']==44497)
 		{
 			//$a['PRODUCTS'][$key]["NOMENCLATURE_CODE"] = __int64 4144676f705371;
-			Bitrix\Main\Diag\Debug::dumpToFile($a, "", '/upload/5.txt');
+			
 		}
 
 	}

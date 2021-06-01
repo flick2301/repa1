@@ -144,6 +144,7 @@ dataLayer.push({
         clickmap:true,
         trackLinks:true,
         accurateTrackBounce:true,
+        webvisor:true,
         ecommerce:"dataLayer"
    });
 </script>
