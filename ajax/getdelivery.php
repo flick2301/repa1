@@ -7,7 +7,9 @@ CModule::IncludeModule('catalog');
 
 $request = Application::getInstance()->getContext()->getRequest();
 $ID = $request->getPost("ID");
+$HOST = $request->getPost("HOST");
 
+//ПОЛУЧАЕМ ДОСТУПНОЕ КОЛИЧЕСТВО ТОВАРА НА СКЛАДАХ ПО ID ТОВАРА
 if($ID)
 {
 	$rsStoreProduct = \Bitrix\Catalog\StoreProductTable::getList(array(
@@ -31,6 +33,20 @@ if($ID)
 	}
 }
 
+//ПОЛУЧАЕМ ИНФОРМАЦИЮ О РЕГИОНАЛЬНОМ СКЛАДЕ В ЗАВИСИМОСТИ ОТ ДОМЕНА
+if($HOST)
+{
+	$rsStore = \Bitrix\Catalog\StoreTable::getList(array(
+		'filter' =>['UF_HOST_NAME'=>$HOST],
+		'select' => ['*', 'UF_*'],
+	));
+
+	if($arStore=$rsStore->fetch())
+	{
+		$sklad = $arStore;
+	}
+}
+
 if($request->getPost("PICKUP")=='SHOW'):
 	
 	$delivery["KASHIRKA"] = ($amount['KASHIRKA'] && $clock<17) ? "Сегодня" : (($amount['KASHIRKA']) ? "Завтра c 9:00" : (($item['STORE'][STORE_ID_KOLEDINO[0]]['AMOUNT']) ? (($clock<17) ? "Сегодня при заказе до 14:30" : "Завтра при заказе до 14:30")  : "Под заказ"));
@@ -50,6 +66,10 @@ if($request->getPost("PICKUP")=='SHOW'):
 		echo '<strong>Самовывоз</strong>
 			<p>г. Санкт-Петербург, проспект Энергетиков, 22Л
 			Склад и пункт выдачи<br> пн - пт: c 09:00 до 18:00;</p><p>Получение:</p>'.$delivery_SPB;
+	}elseif($HOST != 'spb.krep-komp.ru' && $HOST != 'krep-komp.ru' && $sklad)
+	{
+		echo '<strong>Самовывоз</strong>
+		<p>Адрес:<br>'.$sklad['ADDRESS'].'</p><p>Получение:</br>'.$sklad['SCHEDULE'].'</p>';
 	}else{
 		echo '<strong>Самовывоз</strong>
 		<p>'.STORE_ID_KASHIRKA["1"].'<br> '.STORE_ID_KASHIRKA["2"].'</p><p>Получение:</p>'.$delivery_new['KASHIRKA'].'
@@ -77,7 +97,12 @@ elseif($request->getPost("DELIVERY")=='SHOW'):
 	}else
 	{
 		if($amount['KOLEDINO'])
-			echo '<strong>Доставка</strong><p>Сегодня<br> При заказе до 14:30</p>';
+		{
+			if($HOST != 'krep-komp.ru' && $sklad['UF_DELIVERY_TIME'])
+				echo '<strong>Доставка</strong><p>'.$sklad['UF_DELIVERY_TIME'].'</p>';
+			else
+				echo '<strong>Доставка</strong><p>Сегодня<br> При заказе до 14:30</p>';
+		}
 		else
 			echo '<strong>Доставка</strong><p>На заказ</p>';
 	}
