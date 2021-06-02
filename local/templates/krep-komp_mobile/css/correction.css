@@ -1350,7 +1350,10 @@ ol.tech li {
 	width: 100%;
 	border-radius: 10px;
 }
-
+.table__name_nal {
+	text-align: left;
+	padding-left: 2px;
+}
 
 
 
