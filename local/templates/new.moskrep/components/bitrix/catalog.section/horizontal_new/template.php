@@ -89,11 +89,9 @@ if($arParams['FOR_SEO']!='Y'){
 
 <div class="page_count_panel_block">
 
-<?if($arResult['UF_DESCRIPTION_ABOUT'] && ($arResult['UF_DESCRIPTION_SPECIES'] || $arResult['UF_DESCRIPTION_WHOLESALE'] || $arResult['UF_DESCRIPTION_WARRANTY'] || $arResult['UF_DESCRIPTION_DELIVERY'] || $arResult['UF_DESCRIPTION_SORT'])):?>
-<a href="javascript:void(0);" rel="nofollow" onclick="$('.product-tabs__toggle').attr('aria-selected', false); $('#tabby-toggle_description_wholesale').attr('aria-selected', true); $('.product-page__section').attr('hidden', 'hidden'); $('#description_wholesale').attr('hidden', false); element = document.getElementById('desc');
-element.scrollIntoView(true);" class="blue-btn page_count_panel_viewblock_btn">Оптовые скидки</a>
-<?else:?>
-<?endif?>
+
+<a id="view_wholesale" href="javascript:void(0);" rel="nofollow" class="blue-btn page_count_panel_viewblock_btn">Оптовые скидки</a>
+
 
 
 <select name="page_element_count" id="page_element_count">
