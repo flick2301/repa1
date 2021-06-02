@@ -79,6 +79,16 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 			<?endforeach?>
             </tbody>
         </table>
+		
+		
+		
+	
+	<div class="wholesale-baskte-block">
+	<div class="wholesale-baskte-block__sale">Оптовая скидка:&nbsp;<span>- 1000 Р</span></div>
+	<div class="wholesale-baskte-block__sum">В корзине 4 товара на сумму:&nbsp;<span>56 675.60 р</span></div>
+	</div>
+		
+		
         <div class="line-btn">
 	    <a href="#" onclick="$('.popUp-container').popUp('close');" class="white-btn">Продолжить покупки</a>
 	    <a onclick="dataLayerToBasket()" href="<?=$arParams['PATH_TO_BASKET']?>" class="blue-btn">Перейти в корзину</a>

@@ -1250,12 +1250,45 @@ ol.tech li {
 	float: left;	
 	margin-right: 18px;
 }
-
-
-
-
-
-
+.wholesale-baskte-block {
+	padding: 29px 0 32px;
+	border-top: 1px solid #C4C4C4;
+}
+.wholesale-baskte-block__sale {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 120%;
+	/* or 31px */
+	align-items: center;
+	text-align: right;
+	color: #FF6C6C;	
+	text-align: right;
+}
+.wholesale-baskte-block__sale span {
+	font-weight: bold;
+}	
+.wholesale-baskte-block__sum {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 120%;
+	/* or 31px */
+	align-items: center;
+	text-align: right;
+	color: #8A8C8E;	
+	margin-top: 7px;
+	text-align: right;
+}
+.wholesale-baskte-block__sum span {
+	font-weight: bold;	
+	color: #000;
+}
+.blue-btn {
+    background: #4F36E3;
+}
 
 
 

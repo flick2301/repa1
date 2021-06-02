@@ -1263,7 +1263,7 @@ ol.tech li {
 }
 .wholesale-block {
 	width: 354px;
-	max-width: 100%;
+	max-width: calc(100% - 20px);
 	background: #fff;
 	border: 1px solid #000000;
 	box-sizing: border-box;
@@ -1354,7 +1354,62 @@ ol.tech li {
 	text-align: left;
 	padding-left: 2px;
 }
-
+.added-product {
+    margin-top: 20px;
+}
+.wholesale-baskte-block {
+	padding: 29px 0 19px;
+}
+.wholesale-baskte-block__sale {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 120%;
+	/* or 31px */
+	align-items: center;
+	text-align: right;
+	color: #FF6C6C;	
+	text-align: right;
+}
+.wholesale-baskte-block__sale b {
+	font-weight: bold;
+}	
+.wholesale-baskte-block__sum {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 120%;
+	/* or 31px */
+	align-items: center;
+	text-align: right;
+	color: #8A8C8E;	
+	margin-top: 7px;
+	text-align: right;
+}
+.wholesale-baskte-block__sum b {
+	font-weight: bold;	
+	color: #000;
+}
+.blue-btn {
+    background: #4F36E3;
+}
+.top__nav.top__login a.blue-btn, .top__nav.top__basket.header-basket a.blue-btn {
+	color: #fff;
+}
+#bx_basket1 .added-product__close {
+	font-size: 17px;
+	margin-left: calc(50% - 54px);
+}
+.added-product__close:before {
+	margin-left: 25px!important;
+	color: #4F36E3;	
+}
+.box-modal__title {
+	line-height: 21px;
+	max-width: 80%;
+}
 
 
 
@@ -2001,6 +2056,10 @@ main {
 }
 .import-blocksub .import-blocksub-become-block div:first-child {
 	padding-left: 20px;
+}	
+.added-product__price {
+    margin-left: 20px;
+    margin-top: -10px;
 }	
 }
 
