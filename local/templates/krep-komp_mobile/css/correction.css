@@ -1250,6 +1250,108 @@ ol.tech li {
 .sale-category__date {
 	margin-top: 10px;
 }
+.wholesale-link {
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.015em;
+    color: #000000!important;
+	text-decoration: underline;	
+}
+#wholesale-block {
+	display: none;
+}
+.wholesale-block {
+	width: 354px;
+	max-width: 100%;
+	background: #fff;
+	border: 1px solid #000000;
+	box-sizing: border-box;
+	border-radius: 10px;	
+	text-align: center;
+}	
+.wholesale-block__top {
+	padding: 19px 46px 0;	
+}
+.wholesale-block__title {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 125%;
+	/* or 22px */
+	letter-spacing: 0.015em;
+	color: #000000;	
+	text-align: center;
+}
+.wholesale-block__table-block {
+	border: 1px solid #000000;		
+	border-radius: 5px;	
+	margin: 26px 0 33px;	
+}
+.wholesale-block__table {
+	box-sizing: border-box;
+	border-collapse: collapse;
+	width: 100%;
+}
+.wholesale-block__table td {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 125%;
+	/* or 17px */
+	text-align: center;
+	vertical-align: center;
+	letter-spacing: 0.015em;
+	border: 1px solid #000000;	
+	padding: 8px 10px;
+}
+.wholesale-block__table td:first-child {
+	font-weight: 600;
+	font-size: 18px;
+}
+.wholesale-block__bottom {	
+	padding: 30px 81px 31px;
+	background: #4F36E3;
+	border-top: 1px solid #000000;
+	position: relative;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;	
+}
+.wholesale-block__bottom::before {	
+	width: 24px;
+	height: 24px;
+	background: #fff;
+	display: block;
+	content: " ";
+	border-bottom: 1px solid #000000;
+	border-right: 1px solid #000000;
+	position: absolute;
+	transform: rotate(45deg);
+	top: -12px;
+	left: calc(50% - 12px);
+}
+.wholesale-block__discover {
+	border: 1px solid #fff;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 125%;
+	/* or 17px */
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	letter-spacing: 0.015em;
+	color: #FFFFFF;	
+	height: 42px;
+	width: 100%;
+	border-radius: 10px;
+}
+
+
 
 
 

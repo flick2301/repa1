@@ -138,6 +138,10 @@ if($arParams['FOR_SEO']!='Y'){
 						<div class='table__name'>Наличие</div>
 						<div class='table__availability<?=($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']>0) ? "" : " table__availability--impability";?>'><?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT'];?> уп.</div>
 					</div>
+					<div class='table__td'>
+						<div class='table__name'>Оптовые скидки</div>
+						<div><a href="javascript:void(0);" class="wholesale-link">Подробнее</a></div>
+					</div>					
 				</div>
 				<div class='table__item'>
 					<div class='table__prices'>

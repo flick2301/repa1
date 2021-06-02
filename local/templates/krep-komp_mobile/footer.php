@@ -201,6 +201,27 @@ $detect = new \Bitrix\Conversion\Internals\MobileDetect;
 
 
 </div>
+
+
+<div id="wholesale-block">
+<div class="wholesale-block">
+<div class="wholesale-block__top">
+<div class="wholesale-block__title">Получите скидку<br />на оптовый заказ!</div>
+
+<div class="wholesale-block__table-block">
+<table class="wholesale-block__table" rules="all">
+<tr><td>15%</td><td>от 20 000 руб</td></tr>
+<tr><td>10%</td><td>от 100 000 руб</td></tr>
+<tr><td>15%</td><td>от 500 000 руб</td></tr>
+</table>
+</div>
+</div>
+<div class="wholesale-block__bottom">
+<a class="wholesale-block__discover" href="/vashi_skidki/" target="_blank">Узнать подробнее</a>
+</div>
+</div>
+</div>
+
 </body>
 </html>
  
