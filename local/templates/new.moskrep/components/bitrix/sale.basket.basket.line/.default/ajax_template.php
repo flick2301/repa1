@@ -38,13 +38,19 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
             <?foreach ($arResult["CATEGORIES"] as $category => $items):
 		if (empty($items))
 		    continue;
-                    
+                 
+					//Считаем общую скидку на корзину
+					foreach ($items as $v){
+						if($v['DISCOUNT_PRICE'])
+							$total_discount_price += $v['DISCOUNT_PRICE']*$v['QUANTITY'];
+					}
+				
                     //Выбираем последний элемент добавленный в корзину( чтобы отобразить все нужно оставить $items
                     $item_last=array($items[$arResult['NUM_PRODUCTS']-1]);
                     
 	    ?>
 	        <?foreach ($item_last as $v):?>
-                <?$rsStore = CCatalogStoreProduct::GetList(array(), array('PRODUCT_ID' => $v['ID']), false, false, array('STORE_ID', 'AMOUNT', 'STORE_NAME'));
+				<?$rsStore = CCatalogStoreProduct::GetList(array(), array('PRODUCT_ID' => $v['ID']), false, false, array('STORE_ID', 'AMOUNT', 'STORE_NAME'));
 					while($arStore = $rsStore->Fetch()){
 						$v['STORE'][$arStore['STORE_ID']] = $arStore;
 						?><script>alert(<?=$v['STORE'][$arStore['STORE_ID']]?>);</script><?
@@ -84,8 +90,10 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 		
 	
 	<div class="wholesale-baskte-block">
-	<div class="wholesale-baskte-block__sale">Оптовая скидка:&nbsp;<span>- 1000 Р</span></div>
-	<div class="wholesale-baskte-block__sum">В корзине 4 товара на сумму:&nbsp;<span>56 675.60 р</span></div>
+	<?if($total_discount_price):?>
+	<div class="wholesale-baskte-block__sale">Оптовая скидка:&nbsp;<span>- <?=number_format($total_discount_price, 2, '.', ' ');?> ₽</span></div>
+	<?endif;?>
+	<div class="wholesale-baskte-block__sum"><?=$arResult['PRODUCTS'];?> на сумму:&nbsp;<span><?=number_format($arResult['TOTAL_PRICE'], 2, '.', ' ');?> ₽</span></div>
 	</div>
 		
 		
