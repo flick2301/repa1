@@ -548,13 +548,15 @@ while($arSection = $db_list->GetNext()) {
                <div class="product-page__tabs product-tabs" id="desc">
                   <ul class="product-tabs__list" data-product-page-tabs>		
                      <li class="product-tabs__item">
-                        <a class="product-tabs__toggle" href="#description_about" data-tabby-default>О товаре</a>
+                        <a class="product-tabs__toggle" href="#description_about" data-tabby-default>Описание</a>
                      </li>
-					 <?if($arResult['SECTION']['UF_DESCRIPTION_SPECIES']):?>
+					 
+					 <?if($arResult['SECTION']['UF_DESCRIPTION_SPECIES'] && false):?>
                      <li class="product-tabs__item">
                         <a class="product-tabs__toggle" href="#description_species">Виды</a>
                      </li>
 					 <?endif?>
+					 
 					 <?if($arResult['SECTION']['UF_DESCRIPTION_WHOLESALE']):?>					 
                      <li class="product-tabs__item">
                         <a class="product-tabs__toggle" href="#description_wholesale"><?=explode(" ", $arResult['SECTION']["NAME"])[0]?> оптом</a>
@@ -573,7 +575,7 @@ while($arSection = $db_list->GetNext()) {
                         <a class="product-tabs__toggle" href="#description_delivery">Доставка</a>
                      </li>
 					 <?endif?>		
-					 <?if($arResult['SECTION']['UF_DESCRIPTION_SORT']):?>						 
+					 <?if($arResult['SECTION']['UF_DESCRIPTION_SORT'] && false):?>						 
                      <li class="product-tabs__item">
                         <a class="product-tabs__toggle" href="#description_sort">Сортировка</a>
                      </li>	
@@ -587,11 +589,12 @@ while($arSection = $db_list->GetNext()) {
 <div class="basic-layout__module simple-article">
 <div class="simple-article__content wysiwyg-block">		
 <?=$arResult['SECTION']['~UF_DESCRIPTION_ABOUT'];?>
+<?=$arResult['SECTION']['~UF_DESCRIPTION_SPECIES'];?>
 </div>	
 </div>
 </div>	
 
-<?if($arResult['SECTION']['UF_DESCRIPTION_SPECIES']):?>
+<?if($arResult['SECTION']['UF_DESCRIPTION_SPECIES'] && false):?>
 <div class="product-page__section" id="description_species">
 <div class="basic-layout__module simple-article">
 <div class="simple-article__content wysiwyg-block">		
@@ -652,7 +655,7 @@ while($arSection = $db_list->GetNext()) {
 </div>	
 <?endif?>
 
-<?if($arResult['SECTION']['UF_DESCRIPTION_SORT']):?>		
+<?if($arResult['SECTION']['UF_DESCRIPTION_SORT'] && false):?>		
 <div class="product-page__section" id="description_sort">
 <div class="basic-layout__module simple-article">
 <div class="simple-article__content wysiwyg-block">		

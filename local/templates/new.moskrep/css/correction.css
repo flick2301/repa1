@@ -1289,7 +1289,17 @@ ol.tech li {
 .blue-btn {
     background: #4F36E3;
 }
-
+.product-tabs__list {
+	border: solid 1px #dedede;
+	border: solid 0px #dedede;
+}
+.product-tabs__item {
+	border: solid 1px #f4f4f4;
+    border-right: solid 0px #f4f4f4;
+}
+.product-tabs__item:last-of-type {
+    border-right: solid 1px #f4f4f4;
+}
 
 
 
