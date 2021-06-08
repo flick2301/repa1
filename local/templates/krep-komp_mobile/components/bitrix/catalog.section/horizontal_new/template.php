@@ -79,8 +79,12 @@ if($arParams['FOR_SEO']!='Y'){
 
 }?>
 
+			<?$this->SetViewTarget('catalogFilterClass');?>page_catalog<?$this->EndViewTarget();?> 
 
-                  <button class="catalog-feed__filter" id="catalog-filter-trigger"><i class="simple-filter-icon"></i>Фильтр</button>
+			<?$this->SetViewTarget('catalogFilter');?>
+                  <button class="catalog-feed__filter catalog-feed__filter_mobile" id="catalog-filter-trigger"><i class="simple-filter-icon"></i>Фильтр</button>
+			<?$this->EndViewTarget();?> 
+                  <!--<button class="catalog-feed__filter catalog-feed__filter_desktop" id="catalog-filter-trigger"><i class="simple-filter-icon"></i>Фильтр</button>-->
 
 
 <div class="page_count_panel">

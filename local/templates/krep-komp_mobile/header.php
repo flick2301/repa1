@@ -299,6 +299,9 @@ $APPLICATION->IncludeFile(
 				</div>
 			</div>
 		</div>
+		
+<?$APPLICATION->ShowViewContent('catalogFilter');?>
+		
 	</div>
 	
 	
@@ -551,7 +554,7 @@ $APPLICATION->IncludeFile(
 	</div>
     
   
-	<div class='page'>
+	<div class='page <?$APPLICATION->ShowViewContent('catalogFilterClass');?>'>
 	<?if($APPLICATION->GetCurPage() !== "/")
 	{?>
 		<div class='content'>
