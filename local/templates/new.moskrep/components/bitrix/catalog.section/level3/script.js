@@ -68,6 +68,7 @@ BX.ready(function () {
 			data: {
 				'ID': e.target.dataset.product,
 				'PICKUP': 'SHOW',
+				'HOST': window.location.host,
 			},
 			method: 'POST',
 			dataType: 'text',
@@ -107,6 +108,7 @@ BX.ready(function () {
 			data: {
 				'ID': e.target.dataset.product,
 				'DELIVERY': 'SHOW',
+				'HOST': window.location.host,
 			},
 			method: 'POST',
 			dataType: 'text',

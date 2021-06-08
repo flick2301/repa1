@@ -442,7 +442,7 @@ if($arResult['SORTING']['SECTION_ID']){
 	<?
 	
     foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
-        if($sortSection['TOP']==null){
+        if(!$sortSection['TOP']){
         ?>
         <div class="div_h3 category-blocknew__title"><span><?=$sortSection["NAME"]?></span></div>
         <ul class="category-blocknew__list">

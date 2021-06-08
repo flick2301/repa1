@@ -78,6 +78,8 @@ BX.ready(function () {
 
   $('.pickup-view').click(function(e) {
 
+		//Для вертикального шаблона пока эта функция не нужна, сразу же прерываю ее
+		return false;
 		$('.pickup-block').removeClass('show');
 		$('.delivery-block').removeClass('show');
 		$(this).children('.pickup-block').addClass('show');
@@ -117,6 +119,10 @@ BX.ready(function () {
 	});
 
 	$('.delivery-view').click(function(e) {
+		
+		//Для вертикального шаблона пока эта функция не нужна, сразу же прерываю ее
+		return false;
+		
 		$('.pickup-block').removeClass('show');
 		$('.delivery-block').removeClass('show');
 		$(this).children('.delivery-block').addClass('show');
