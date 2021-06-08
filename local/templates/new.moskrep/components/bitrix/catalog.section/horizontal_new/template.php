@@ -79,11 +79,21 @@ if($arParams['FOR_SEO']!='Y'){
 
 }?>
 
+
+
 <div class="page_count_panel">
 
 <div class="page_count_panel_viewblock">Показано <?=count($arResult['ITEMS'])?> из <?=$arResult['NAV_RESULT']->NavRecordCount?> товаров</div>
 
+
+
 <div class="page_count_panel_block">
+
+
+<a id="view_wholesale" href="javascript:void(0);" rel="nofollow" class="blue-btn page_count_panel_viewblock_btn">Оптовые скидки</a>
+
+
+
 <select name="page_element_count" id="page_element_count">
 	<?foreach(PAGE_ELEMENT_COUNT as $page_element_count)
 	{?>
@@ -374,7 +384,6 @@ BX.ready(function () {
 	
 	console.log(IDs);
 	console.log(sum);
-	
 	
 });
 </script>

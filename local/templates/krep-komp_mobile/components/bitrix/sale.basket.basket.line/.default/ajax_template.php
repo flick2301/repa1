@@ -38,6 +38,12 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
             <?foreach ($arResult["CATEGORIES"] as $category => $items):
 		if (empty($items))
 		    continue;
+		
+					//Считаем общую скидку на корзину
+					foreach ($items as $v){
+						if($v['DISCOUNT_PRICE'])
+							$total_discount_price += $v['DISCOUNT_PRICE']*$v['QUANTITY'];
+					}
                     
                     //Выбираем последний элемент добавленный в корзину( чтобы отобразить все нужно оставить $items
                     $item_last=array($items[$arResult['NUM_PRODUCTS']-1]);
@@ -79,6 +85,20 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 			<?endforeach?>
             </tbody>
         </table>
+		
+		
+		
+		
+	<div class="wholesale-baskte-block">
+	<?if($total_discount_price):?>
+	<div class="wholesale-baskte-block__sale">Оптовая скидка:&nbsp;<b>- <?=number_format($total_discount_price, 2, '.', ' ');?> ₽</b></div>
+	<?endif;?>
+	<div class="wholesale-baskte-block__sum"><?=$arResult['PRODUCTS'];?> на сумму:&nbsp;<b><?=number_format($arResult['TOTAL_PRICE'], 2, '.', ' ');?> ₽</b></div>
+	</div>			
+		
+		
+		
+		
         <div class="line-btn">
 	    <a href="#" onclick="$('.popUp-container').popUp('close');" class="white-btn">Продолжить покупки</a>
 	    <a onclick="dataLayerToBasket()" href="<?=$arParams['PATH_TO_BASKET']?>" class="blue-btn">Перейти в корзину</a>

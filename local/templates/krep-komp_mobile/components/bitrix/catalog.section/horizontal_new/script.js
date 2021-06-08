@@ -167,6 +167,13 @@ $(document).on('change', '#page_element_count', function(event) {
 
 $(".amount__select :contains("+$('.amount__info').text()+")").attr("selected", "selected");
 
+
+		$('.wholesale-link').click(function() {
+			$('.wholesale-block').popUp();
+			return false;
+		});		
+
+
 });
 function ChangeInputCart(name, e){
 	

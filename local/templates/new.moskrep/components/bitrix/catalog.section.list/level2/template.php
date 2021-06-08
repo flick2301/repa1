@@ -540,12 +540,141 @@ while($arSection = $db_list->GetNext()) {
 
 
 <!--simple-article-->
-	<?if(!($_REQUEST['PAGEN_1'] > 1)  && ($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' || $_SERVER['HTTP_HOST']=='krep-komp.ru')):?>
+<?if(!($_REQUEST['PAGEN_1'] > 1)  && ($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' || $_SERVER['HTTP_HOST']=='krep-komp.ru' || $_SERVER['HTTP_HOST']=='dev2.krep-komp.ru')):?>
+<?if($arResult['SECTION']['UF_DESCRIPTION_ABOUT'] && ($arResult['SECTION']['UF_DESCRIPTION_SPECIES'] || $arResult['SECTION']['UF_DESCRIPTION_WHOLESALE'] || $arResult['SECTION']['UF_DESCRIPTION_WARRANTY'] || $arResult['SECTION']['UF_DESCRIPTION_DELIVERY'] || $arResult['SECTION']['UF_DESCRIPTION_SORT'])):?>
+
+
+        <!--product-tabs-->
+               <div class="product-page__tabs product-tabs" id="desc">
+                  <ul class="product-tabs__list" data-product-page-tabs>		
+                     <li class="product-tabs__item">
+                        <a class="product-tabs__toggle" href="#description_about" data-tabby-default>О товаре</a>
+                     </li>
+					 <?if($arResult['SECTION']['UF_DESCRIPTION_SPECIES']):?>
+                     <li class="product-tabs__item">
+                        <a class="product-tabs__toggle" href="#description_species">Виды</a>
+                     </li>
+					 <?endif?>
+					 <?if($arResult['SECTION']['UF_DESCRIPTION_WHOLESALE']):?>					 
+                     <li class="product-tabs__item">
+                        <a class="product-tabs__toggle" href="#description_wholesale"><?=explode(" ", $arResult['SECTION']["NAME"])[0]?> оптом</a>
+                     </li>
+					 <?endif?>
+                     <li class="product-tabs__item">
+                        <a class="product-tabs__toggle" href="#description_payment">Как заказать</a>
+                     </li>					 
+					 <?if($arResult['SECTION']['UF_DESCRIPTION_WARRANTY']):?>						 
+                     <li class="product-tabs__item">
+                        <a class="product-tabs__toggle" href="#description_warranty">Гарантия</a>
+                     </li>
+					 <?endif?>
+					 <?if($arResult['SECTION']['UF_DESCRIPTION_DELIVERY']):?>						 
+                     <li class="product-tabs__item">
+                        <a class="product-tabs__toggle" href="#description_delivery">Доставка</a>
+                     </li>
+					 <?endif?>		
+					 <?if($arResult['SECTION']['UF_DESCRIPTION_SORT']):?>						 
+                     <li class="product-tabs__item">
+                        <a class="product-tabs__toggle" href="#description_sort">Сортировка</a>
+                     </li>	
+					<?endif?>						 
+                  </ul>
+               </div>
+        <!--product-tabs-->
+
+
+<div class="product-page__section" id="description_about">
+<div class="basic-layout__module simple-article">
+<div class="simple-article__content wysiwyg-block">		
+<?=$arResult['SECTION']['~UF_DESCRIPTION_ABOUT'];?>
+</div>	
+</div>
+</div>	
+
+<?if($arResult['SECTION']['UF_DESCRIPTION_SPECIES']):?>
+<div class="product-page__section" id="description_species">
+<div class="basic-layout__module simple-article">
+<div class="simple-article__content wysiwyg-block">		
+<?=$arResult['SECTION']['~UF_DESCRIPTION_SPECIES'];?>
+</div>	
+</div>
+</div>	
+<?endif?>
+
+<?if($arResult['SECTION']['UF_DESCRIPTION_WHOLESALE']):?>	
+<div class="product-page__section" id="description_wholesale">
+<div class="basic-layout__module simple-article">
+<div class="simple-article__content wysiwyg-block">		
+<?=$arResult['SECTION']['~UF_DESCRIPTION_WHOLESALE'];?>
+</div>		
+</div>
+</div>
+<?endif?>
+
+<div class="product-page__section" id="description_payment">
+<div class="basic-layout__module simple-article">
+<div class="simple-article__content wysiwyg-block">		
+<h2 style="text-align: left;">Как сделать заказ?</h2>
+Сделать заказ можно несколькими способами:<br /><br />
+<ul>
+<li>На сайте через корзину (самый быстрый способ, чтобы получить счет).</li>
+<li>Отправить заявку через форму на сайте, прикрепив её.</li>
+<li>Отправить заявку на почту.</li>
+<li>Отправить заявку в мессенджере (Живосайт).</li>
+<li>Позвонить по телефону и продиктовать менеджеру.</li>
+<ul><br />
+<h2 style="text-align: left;">Как получить заказ?</h2>
+Получить заказ можно у нас на центральном складе или в любом магазине ПВЗ.
+Либо воспользоваться нашей услугой по доставке вашего заказа. 
+<br /><br />
+                                    Телефон отдела продаж: (499) 350-55-55
+</div>
+</div>
+</div>	
+
+<?if($arResult['SECTION']['UF_DESCRIPTION_WARRANTY']):?>		
+<div class="product-page__section" id="description_warranty">
+<div class="basic-layout__module simple-article">
+<div class="simple-article__content wysiwyg-block">		
+<?=$arResult['SECTION']['~UF_DESCRIPTION_WARRANTY'];?>
+</div>	
+</div>
+</div>
+<?endif?>	
+
+<?if($arResult['SECTION']['UF_DESCRIPTION_DELIVERY']):?>
+<div class="product-page__section" id="description_delivery">
+<div class="basic-layout__module simple-article">
+<div class="simple-article__content wysiwyg-block">		
+<?=$arResult['SECTION']['~UF_DESCRIPTION_DELIVERY'];?>
+</div>
+</div>
+</div>	
+<?endif?>
+
+<?if($arResult['SECTION']['UF_DESCRIPTION_SORT']):?>		
+<div class="product-page__section" id="description_sort">
+<div class="basic-layout__module simple-article">
+<div class="simple-article__content wysiwyg-block">		
+<?=$arResult['SECTION']['~UF_DESCRIPTION_SORT'];?>
+</div>
+</div>
+</div>	
+<?endif?>
+
+
+
+<?else:?>
         <div class="basic-layout__module simple-article">
             <div class="simple-article__content wysiwyg-block">
 				<?=$arResult['SECTION']['DESCRIPTION']?>
 			</div>	
 		</div>
+	<?endif?>	
 	<?endif;?>
 <!--simple-article-->
 <?endif?>
+
+
+<script src="/local/templates/moskrep/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa"></script>
+<script>var tabs=new Tabby("[data-product-page-tabs]");tabs=new Tabby("[data-delivery-tabs]"),tabs=new Tabby("[data-pickup-tabs]"),tabs=new Tabby("[data-product-widget-tabs]")</script>

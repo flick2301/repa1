@@ -1154,7 +1154,7 @@ div[data-property-id-row="17"],
 .bx-soa-cart-total .bx-soa-cart-total-line-total .bx-soa-cart-d span {font-size: 18px;}
 
 .bx-soa-cart-total-line.bx-soa-cart-total-line-highlighted {
-    background-color: #d4ffb8;
+    /*background-color: #d4ffb8;*/
     border-color: transparent;
 }
 .bx-soa-cart-total-line-highlighted + .bx-soa-cart-total-line {
