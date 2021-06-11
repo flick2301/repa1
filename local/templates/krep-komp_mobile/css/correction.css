@@ -1416,6 +1416,9 @@ ol.tech li {
 	line-height: 21px;
 	max-width: 80%;
 }
+.table__topside .table__img {
+    object-fit: contain;	
+}
 
 
 
