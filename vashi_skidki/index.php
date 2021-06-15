@@ -1,17 +1,21 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Ваши скидки");
+$APPLICATION->SetTitle("Оптовые скидки");
 ?>
 <? //$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array()); ?>
 
-<?globalGetTitle("Ваши скидки")?>
+<?globalGetTitle("Оптовые скидки")?>
 
             <div class="basic-layout__module simple-article">
                <div class="simple-article__content wysiwyg-block">
 			   
-<p class='info-paragraph'>KREP-KOMP - ведущий поставщик и производитель строительного крепежа для розничных, мелкооптовых и оптовых клиентов. С 2005 года мы предлагаем самый широкий ассортимент, доступные цены и гибкую систему скидок.</p>
-<p class='info-paragraph'>Доставка по Москве в пределах МКАД при заказе от 50000 руб. <b>БЕСПЛАТНО</b></p>
-<p class='info-paragraph'>Оптовые скидки:</p>
+
+<p class='info-paragraph'>Все цены, предоставленные на нашем сайте БАЗОВЫЕ (мелкооптовые).</p>
+<p class='info-paragraph'>Для того, чтобы купить саморезы оптом, нужно сделать заказ от 20 000 рублей.</p>
+<p class='info-paragraph'>На такие заказы, мы предоставляем следующие скидки:</p>
+	   
+			   
+
 <style>
 	.skid td:first-child{
     width: 50px;
@@ -46,6 +50,7 @@ border-bottom: 1px solid #457fd8;
 border-top: 1px solid #457fd8;
 }
 </style>
+
 <table class='skid' >
 	<tr >
 		<td><b>5%</b></td>
@@ -67,7 +72,10 @@ border-top: 1px solid #457fd8;
 
 <br />
 
-<p class='info-paragraph'>Оформите заказ на сайте, и менеджер пересчитает его стоимость с учётом вашей скидки.</p>
+
+<p class='info-paragraph'>Скидка сохраняется на месяц, при условии выбора товара на сумму, соответствующей скидки.</p>
+<p class='info-paragraph'>Также, для особо крупных клиентов, с оборотом от 5 000 000 рублей в квартал, у нас предусмотрена скидка в 20%. Она закрепляется на квартал, и по итогам нового квартала пересчитывается.</p>
+<p class='info-paragraph'>Все цены, предоставленные в нашем прайс-листе и на сайте с НДС.</p>
 
 <?// подключаем пространство имен класса HighloadBlockTable и даём ему псевдоним HLBT для удобной работы
 use Bitrix\Highloadblock\HighloadBlockTable as HLBT;

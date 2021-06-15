@@ -541,7 +541,7 @@ while($arSection = $db_list->GetNext()) {
 
 <!--simple-article-->
 <?if(!($_REQUEST['PAGEN_1'] > 1)  && ($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' || $_SERVER['HTTP_HOST']=='krep-komp.ru' || $_SERVER['HTTP_HOST']=='dev2.krep-komp.ru')):?>
-<?if($arResult['SECTION']['UF_DESCRIPTION_ABOUT'] && ($arResult['SECTION']['UF_DESCRIPTION_SPECIES'] || $arResult['SECTION']['UF_DESCRIPTION_WHOLESALE'] || $arResult['SECTION']['UF_DESCRIPTION_WARRANTY'] || $arResult['SECTION']['UF_DESCRIPTION_DELIVERY'] || $arResult['SECTION']['UF_DESCRIPTION_SORT'])):?>
+<?if($arResult['SECTION']['UF_DESCRIPTION_ABOUT'] /*&& ($USER->IsAdmin() || $arResult['SECTION']['UF_DESCRIPTION_SPECIES'] || $arResult['SECTION']['UF_DESCRIPTION_WHOLESALE'] || $arResult['SECTION']['UF_DESCRIPTION_WARRANTY'] || $arResult['SECTION']['UF_DESCRIPTION_DELIVERY'] || $arResult['SECTION']['UF_DESCRIPTION_SORT'])*/):?>
 
 
         <!--product-tabs-->
@@ -557,7 +557,7 @@ while($arSection = $db_list->GetNext()) {
                      </li>
 					 <?endif?>
 					 
-					 <?if($arResult['SECTION']['UF_DESCRIPTION_WHOLESALE']):?>					 
+					 <?if($arResult['SECTION']['UF_DESCRIPTION_WHOLESALE'] || true):?>					 
                      <li class="product-tabs__item">
                         <a class="product-tabs__toggle" href="#description_wholesale"><?=explode(" ", $arResult['SECTION']["NAME"])[0]?> оптом</a>
                      </li>
@@ -565,12 +565,12 @@ while($arSection = $db_list->GetNext()) {
                      <li class="product-tabs__item">
                         <a class="product-tabs__toggle" href="#description_payment">Как заказать</a>
                      </li>					 
-					 <?if($arResult['SECTION']['UF_DESCRIPTION_WARRANTY']):?>						 
+					 <?if($arResult['SECTION']['UF_DESCRIPTION_WARRANTY'] || true):?>						 
                      <li class="product-tabs__item">
                         <a class="product-tabs__toggle" href="#description_warranty">Гарантия</a>
                      </li>
 					 <?endif?>
-					 <?if($arResult['SECTION']['UF_DESCRIPTION_DELIVERY']):?>						 
+					 <?if($arResult['SECTION']['UF_DESCRIPTION_DELIVERY'] || true):?>						 
                      <li class="product-tabs__item">
                         <a class="product-tabs__toggle" href="#description_delivery">Доставка</a>
                      </li>
@@ -604,11 +604,25 @@ while($arSection = $db_list->GetNext()) {
 </div>	
 <?endif?>
 
-<?if($arResult['SECTION']['UF_DESCRIPTION_WHOLESALE']):?>	
+<?if($arResult['SECTION']['UF_DESCRIPTION_WHOLESALE'] || true):?>	
 <div class="product-page__section" id="description_wholesale">
 <div class="basic-layout__module simple-article">
-<div class="simple-article__content wysiwyg-block">		
+<div class="simple-article__content wysiwyg-block">	
+<?if($arResult['SECTION']['~UF_DESCRIPTION_WHOLESALE']):?>	
 <?=$arResult['SECTION']['~UF_DESCRIPTION_WHOLESALE'];?>
+<?else:?>
+<h2 style="text-align: left;"> Как купить <?=mb_strtoupper(explode(" ", $arResult['SECTION']["NAME"])[0])?> ОПТОМ?</h2>
+Все цены, предоставленные на нашем сайте БАЗОВЫЕ (мелкооптовые).<br />
+Для того, чтобы купить <?=mb_strtolower(explode(" ", $arResult['SECTION']["NAME"])[0])?> оптом, нужно сделать заказ от 20 000 рублей. <br />
+На такие заказы, мы предоставляем следующие скидки:<br /><br />
+От 20 000 рублей – 5%<br />
+От 100 000 рублей – 10%<br />
+От 500 000 рублей – 15%<br /><br />
+Скидка сохраняется на месяц, при условии выбора товара на сумму, соответствующей скидки.<br />
+Также, для особо крупных клиентов, с оборотом от 5 000 000 рублей в квартал, у нас предусмотрена скидка в 20%. Она закрепляется на квартал, и по итогам нового квартала пересчитывается. <br /><br />
+Все цены, предоставленные в нашем прайс-листе и на сайте с НДС.<br /><br />
+Так же, для крупных заказов, суммой от 50 000 рублей, у нас предусмотрена бесплатная доставка по Москве, в пределах МКАД. 
+<?endif?>
 </div>		
 </div>
 </div>
@@ -630,26 +644,40 @@ while($arSection = $db_list->GetNext()) {
 Получить заказ можно у нас на центральном складе или в любом магазине ПВЗ.
 Либо воспользоваться нашей услугой по доставке вашего заказа. 
 <br /><br />
-                                    Телефон отдела продаж: (499) 350-55-55
+Телефон отдела продаж: (499) 350-55-55
 </div>
 </div>
 </div>	
 
-<?if($arResult['SECTION']['UF_DESCRIPTION_WARRANTY']):?>		
+<?if($arResult['SECTION']['UF_DESCRIPTION_WARRANTY'] || true):?>		
 <div class="product-page__section" id="description_warranty">
 <div class="basic-layout__module simple-article">
 <div class="simple-article__content wysiwyg-block">		
+<?if($arResult['SECTION']['~UF_DESCRIPTION_WARRANTY']):?>	
 <?=$arResult['SECTION']['~UF_DESCRIPTION_WARRANTY'];?>
+<?else:?>
+<h2 style="text-align: left;">Гарантия качества “КРЕП-КОМП”</h2>
+<p>
+	 Все крепежные изделия и <?=mb_strtolower(explode(" ", $arResult['SECTION']["NAME"])[0])?> торговых марок “KREP-KOMP” и “KENNER” изготавливаются на ведущих фабриках на современном оборудовании, и из первичного сырья. На всю продукцию мы предоставляем соответствующие сертификаты. Наша компания КРЕП-КОМП даёт гарантию, и в случае если вас что-то не устроит, вы сможете вернуть нам приобретенные у нас изделия обратно, при условии целостности упаковки.
+</p>
+<?endif?>
 </div>	
 </div>
 </div>
 <?endif?>	
 
-<?if($arResult['SECTION']['UF_DESCRIPTION_DELIVERY']):?>
+<?if($arResult['SECTION']['UF_DESCRIPTION_DELIVERY'] || true):?>
 <div class="product-page__section" id="description_delivery">
 <div class="basic-layout__module simple-article">
-<div class="simple-article__content wysiwyg-block">		
+<div class="simple-article__content wysiwyg-block">	
+<?if($arResult['SECTION']['UF_DESCRIPTION_DELIVERY']):?>	
 <?=$arResult['SECTION']['~UF_DESCRIPTION_DELIVERY'];?>
+<?else:?>
+<h2 style="text-align: left;">Доставка заказов</h2>
+<p>
+	 Мы выполняем доставку заказов собственным автотранспортом по {{region}}, а также во все города РФ, через транспортные компании. До ТК “Деловые Линии” и “ПЭК”, мы везём бесплатно от любой суммы заказа, услуги самой ТК от города {{city}} до вашего города оплачиваете вы.
+</p>
+<?endif?>
 </div>
 </div>
 </div>	
