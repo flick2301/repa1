@@ -534,13 +534,17 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
 
   $full_address = $country_name.", ".$address ? $address : ($city_name.($pcity ? ", ".$pcity : "").($street ? ", ".$street.", ".$house.", ".$flat : ""));
   
+$resultDelivery = \Bitrix\Sale\Delivery\Services\Table::getList(array('filter' => array('ID'=>$arOrder["DELIVERY_ID"])));
+if ($deliveryInfo = $resultDelivery->fetch()) $deliveryGroupID = $deliveryInfo["PARENT_ID"];  
+  
 
   //-- получаем название службы доставки
   $arDeliv = CSaleDelivery::GetByID($arOrder["DELIVERY_ID"]);
   $delivery_name = "";
   if ($arDeliv)
   {
-    $delivery_name = $arDeliv["NAME"].($arOrder["DELIVERY_ID"]==3 || $arOrder["DELIVERY_ID"]==23 || $arOrder["DELIVERY_ID"]==25 || $arOrder["DELIVERY_ID"]==29 || $arOrder["DELIVERY_ID"]==30 ? " <span style='color: red;'>(Вход в ПВЗ только в масках и перчатках)</span>" : "");	
+	  
+    $delivery_name = $arDeliv["NAME"].($deliveryGroupID==33 ? " <span style='color: red;'>(Вход в ПВЗ только в масках и перчатках)</span>" : "");	
   }
   
   if ($arOrder["DELIVERY_ID"]=='sdek:courier') $delivery_name="Доставка СДЭК";
@@ -588,7 +592,7 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
   $arFields["PPHONE"] =  $phone;
   $arFields["DELIVERY"] =  $delivery_name;
   $arFields["PAY_SYSTEM_NAME"] =  $pay_system_name;
-  $arFields["FULL_ADDRESS"] = $full_address;	
+  $deliveryGroupID==32 || $deliveryGroupID==34 ? $arFields["FULL_ADDRESS"] = "Адрес доставки: {$full_address}<br />" : "";	
   $arFields["ADDRESS"] = $address;
   $arFields["COMPANY"] = $company;
   $arFields["PCITY"] = $pcity;
@@ -605,7 +609,7 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
   else $arFields["DELIVERY_PRICE"]="";
   
 	
-file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arFields, true));
+//file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arDeliv, true)."---------------<br />".print_r($arFields, true));
       }
    }
    
