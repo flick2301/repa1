@@ -487,6 +487,11 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
       $preq = $arProps["VALUE"];
     }	
 
+    if ($arProps["CODE"] == "ADDRESS")
+    {
+      $address = $arProps["VALUE"];   
+    }
+
     if ($arProps["CODE"] == "PSTREET")
     {
       $street = $arProps["VALUE"];   
@@ -527,7 +532,7 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
 	}
 }
 
-  $full_address = $country_name.", ".$city_name.($pcity ? ", ".$pcity : "").($street ? ", ".$street.", ".$house.", ".$flat : "");
+  $full_address = $country_name.", ".$address ? $address : ($city_name.($pcity ? ", ".$pcity : "").($street ? ", ".$street.", ".$house.", ".$flat : ""));
   
 
   //-- получаем название службы доставки
@@ -584,6 +589,7 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
   $arFields["DELIVERY"] =  $delivery_name;
   $arFields["PAY_SYSTEM_NAME"] =  $pay_system_name;
   $arFields["FULL_ADDRESS"] = $full_address;	
+  $arFields["ADDRESS"] = $address;
   $arFields["COMPANY"] = $company;
   $arFields["PCITY"] = $pcity;
   $arFields["PPLACE"] = $place;
@@ -599,7 +605,7 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
   else $arFields["DELIVERY_PRICE"]="";
   
 	
-//file_put_contents('/var/www/webadmin/data/www/moskrep.ru/service/text.txt', print_r($arOrder, true));	
+file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arFields, true));
       }
    }
    
