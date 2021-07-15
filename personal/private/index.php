@@ -2,7 +2,10 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetPageProperty("title", "Личные данные");
 $APPLICATION->SetTitle("Личные данные");
-?><?$APPLICATION->IncludeComponent(
+global $USER;
+if (!$USER->IsAuthorized()) LocalRedirect((CMain::IsHTTPS() ? "https://" : "http://").$_SERVER['HTTP_HOST']."/personal/");
+?>
+<?$APPLICATION->IncludeComponent(
 	"bitrix:main.profile",
 	"",
 	Array(

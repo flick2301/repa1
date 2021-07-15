@@ -44,7 +44,7 @@ if($arResult['ERROR_MESSAGE'] <> ''):
 ?>
 	<div class="alert alert-danger"><?=nl2br(htmlspecialcharsbx($text))?></div>
 <?endif?>
-              <div class="auth__desc">Если у вас есть учетная запись, войдите используя номер вашего телефона</div>
+              <div class="auth__desc">Если у вас есть учетная запись, войдите используя ваш E-mail</div>
 
 	<form id="form_lk" class="auth__form" name="form_auth" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
 

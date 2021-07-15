@@ -1318,6 +1318,7 @@ ol.tech li {
 }
 .pricelist-info {
 	display: none;
+	margin-top: 80px;
 }
 .pricelist-info__steep {
 	margin: 30px 0 10px;

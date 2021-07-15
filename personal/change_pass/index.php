@@ -2,6 +2,8 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetPageProperty("title", "Сменить пароль");
 $APPLICATION->SetTitle("Сменить пароль");
+global $USER;
+if (!$USER->IsAuthorized()) LocalRedirect((CMain::IsHTTPS() ? "https://" : "http://").$_SERVER['HTTP_HOST']."/personal/");
 ?><?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Сменить пароль");

@@ -716,7 +716,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 	                                                                            </li> 
                                                                                 <?endforeach;?>
                                                                             </ul>
-																			<?elseif($arItem['CODE']=="POKRYTIE" || $arItem['CODE']=="GOLOVKA" || $arItem['CODE']=="MATERIAL" || $arItem['CODE']=="KONETS" || $arItem['CODE']=="REZBA" || $arItem['CODE']=="BREND" || $arItem['CODE']=="RAZMER_POD_KLYUCH_MM" || $arItem['CODE']=="KLASS_PROCHNOSTI" || $arItem['CODE']=="SHAG_REZBY_MM" || $arItem['CODE']=="DIN" || $arItem['CODE']=="GOST" || $arItem['CODE']=="SHLITS" || $arItem['CODE']=="PO_PRIMENENIYU"  || $arItem['CODE']=="VIDY_UPAKOVOK"):?>
+																			<?elseif($arItem['CODE']=="POKRYTIE" || $arItem['CODE']=="ZERNISTOST_P" || $arItem['CODE']=="GOLOVKA" || $arItem['CODE']=="MATERIAL" || $arItem['CODE']=="KONETS" || $arItem['CODE']=="REZBA" || $arItem['CODE']=="BREND" || $arItem['CODE']=="RAZMER_POD_KLYUCH_MM" || $arItem['CODE']=="KLASS_PROCHNOSTI" || $arItem['CODE']=="SHAG_REZBY_MM" || $arItem['CODE']=="DIN" || $arItem['CODE']=="GOST" || $arItem['CODE']=="SHLITS" || $arItem['CODE']=="PO_PRIMENENIYU"  || $arItem['CODE']=="VIDY_UPAKOVOK"):?>
 																			<ul class="checkbox__items">
                                                                                 <?foreach($arItem["VALUES"] as $val => $ar):?>
 																					
