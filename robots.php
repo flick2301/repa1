@@ -88,6 +88,34 @@ Disallow: /*?s=
 Disallow: /?back_url_admin=
 Disallow: /logs/
 Disallow: /*?SIZEN_1=
+Disallow: /*?_openstat=
+Disallow: /*?_r=
+Disallow: /*?arrfilter_
+Disallow: /*?arrFilter2_
+Disallow: /*?banner_id=
+Disallow: /*?baobab_event_id=
+Disallow: /*?bxajaxid=
+Disallow: /*?clear_cache=
+Disallow: /*?clid=
+Disallow: /*?cto_pld=
+Disallow: /*?del_filter=
+Disallow: /*?diameter=2.5SIZEN_1=
+Disallow: /*?diameter=3.5
+Disallow: /*?filter%5BUF_TYPE%5D=
+Disallow: /*?filter[UF_TYPE]=
+Disallow: /*?Filter_seo_
+Disallow: /*?from=
+Disallow: /*?frommarket=
+Disallow: /*?ID=
+Disallow: /*?length=
+Disallow: /*?PAGEN_1=
+Disallow: /*?set_filter=
+Disallow: /*?size=
+Disallow: /*?SIZEN_1=
+Disallow: /*?success=
+Disallow: /*?tpclid=
+Disallow: /*?wprid=
+Disallow: /*?yhid=
 Clean-param: type /
 Clean-param: bitrix_include_areas /
 Clean-param: mp5 /
