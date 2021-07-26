@@ -92,3 +92,9 @@ $scheme = CMain::isHttps() ? 'https' : 'http';
                </div>
             </div>
             <!--simple-article-->
+			
+			
+<br /><br /><div style="margin: auto; width: auto; text-align: center;">
+<script src="https://yastatic.net/share2/share.js"></script>
+<div class="ya-share2" data-curtain data-size="l" data-color-scheme="blackwhite" data-services="messenger,vkontakte,facebook,telegram"></div>
+</div>

@@ -702,8 +702,13 @@ dataLayer.push({
 		<!--product-widget-->
                
 	</div>
-	<br><br>
-     
+
+<br> 	
+<div style="margin: auto; width: auto; text-align: right;">
+<script src="https://yastatic.net/share2/share.js"></script>
+<div class="ya-share2" data-curtain data-size="l" data-services="messenger,vkontakte,facebook,telegram"></div>
+</div>
+<br>   
 
 <?global $userEmail;?>
 <!-- Criteo Product dataLayer -->

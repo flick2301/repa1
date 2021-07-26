@@ -82,6 +82,11 @@ $scheme = CMain::isHttps() ? 'https' : 'http';
 		"12" => "декабря",
 	);
 	?>
+	
+	
+	
+	
+	
                </div>
 		   
                <div class="simple-article__footer">
@@ -89,6 +94,20 @@ $scheme = CMain::isHttps() ? 'https' : 'http';
                   <?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?><p class="simple-article__date" itemprop="datePublished" <?/*datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arResult["DISPLAY_ACTIVE_FROM"])?>T16:20:30+00:00"*/?>>Дата публикации: <time datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arResult["DISPLAY_ACTIVE_FROM"])?>"><?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${1} ". $month["02"]." \${3}", $arResult["DISPLAY_ACTIVE_FROM"])?></time></p><?endif;?>
 		
 	
-               </div>
+               </div>		   
             </div>
             <!--simple-article-->
+			
+	
+<div style="margin: auto; width: auto; text-align: right;">
+<script src="https://yastatic.net/share2/share.js"></script>
+<div class="ya-share2" data-curtain data-size="l" data-services="messenger,vkontakte,facebook,telegram"></div>
+</div>
+	
+			
+			
+			
+			
+			
+			
+			
