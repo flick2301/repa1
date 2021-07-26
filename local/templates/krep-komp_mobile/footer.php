@@ -94,8 +94,8 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
               <div class="footer__payment"><img class="footer__payment__img" src="<?=SITE_TEMPLATE_PATH?>/images/payment/1.svg"></div>
               <div class="footer__payment"><img class="footer__payment__img" src="<?=SITE_TEMPLATE_PATH?>/images/payment/2.svg"></div>
               <div class="footer__payment"><img class="footer__payment__img" src="<?=SITE_TEMPLATE_PATH?>/images/payment/3.svg"></div>
-              <div class="footer__payment"><img class="footer__payment__img" src="<?=SITE_TEMPLATE_PATH?>/images/payment/4.svg"></div>
-              <div class="footer__payment"><img class="footer__payment__img" src="<?=SITE_TEMPLATE_PATH?>/images/payment/5.svg"></div>
+              <!--<div class="footer__payment"><img class="footer__payment__img" src="<?=SITE_TEMPLATE_PATH?>/images/payment/4.svg"></div>
+              <div class="footer__payment"><img class="footer__payment__img" src="<?=SITE_TEMPLATE_PATH?>/images/payment/5.svg"></div>-->
             </div>
           </div>
           <div class="footer__right">
