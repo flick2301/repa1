@@ -4,6 +4,8 @@ $APPLICATION->SetTitle("Интернет-магазин \"Москреп\"");
 $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Москреп\"");
 ?>
 
+<a href="https://clck.yandex.ru/redir/dtype=stred/pid=47/cid=73582/path=dynamic.150x101/*https://market.yandex.ru/shop--krep-komp/557450/reviews"> <img src="https://clck.yandex.ru/redir/dtype=stred/pid=47/cid=73581/path=dynamic.150x101/*https://grade.market.yandex.ru/?id=557450&action=image&size=2" border="0" alt="Читайте отзывы покупателей и оценивайте качество магазина КРЕП-КОМП на Яндекс.Маркете" /> </a>
+
 <?
 $APPLICATION->IncludeFile(
 	SITE_DIR."/include/calculator.php",

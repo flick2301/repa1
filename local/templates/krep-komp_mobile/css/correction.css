@@ -1419,6 +1419,61 @@ ol.tech li {
 .table__topside .table__img {
     object-fit: contain;	
 }
+.footer__payments {
+	display: flex!important;
+}
+/*
+.desc p, .desc li, .desc div {
+    font-size: 14px!important;
+}	
+.client-widget__link {
+    font-size: 14px!important;
+}
+.top__address {
+    font-size: 14px!important;
+}
+.geo .global-geosearch__submit {
+    font-size: 14px!important;
+}
+.top__payment__name {
+    font-size: 14px!important;
+}
+.top__contact {
+    font-size: 14px!important;
+}
+.top__chat {
+    font-size: 14px!important;
+}
+.top__phone {
+    font-size: 14px!important;
+}
+.top__nav {
+    font-size: 14px!important;
+}
+.popular__name {
+    font-size: 14px!important;
+}
+.popular__date {
+    font-size: 14px!important;
+}
+.popular__delivery {
+    font-size: 14px!important;
+}
+.popular__get {
+    font-size: 14px!important;
+}
+.popular__old {
+    font-size: 14px!important;
+}
+.popular__offer {
+    font-size: 14px!important;
+}
+*/
+.footer-yandex-widget {
+	margin-top: 20px;
+	position: relative;
+}
+
 
 
 

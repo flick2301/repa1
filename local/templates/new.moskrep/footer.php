@@ -414,6 +414,12 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 		<a class="facebook" target="_blank" href="https://www.facebook.com/ru.krepkomp"></a>
 		</div>	
 		
+
+<div class="footer-yandex-widget">
+<a href="https://clck.yandex.ru/redir/dtype=stred/pid=47/cid=73582/path=dynamic.88x31/*https://market.yandex.ru/shop--krep-komp/557450/reviews"> <img src="https://clck.yandex.ru/redir/dtype=stred/pid=47/cid=73581/path=dynamic.88x31/*https://grade.market.yandex.ru/?id=557450&action=image&size=0" border="0" alt="Читайте отзывы покупателей и оценивайте качество магазина КРЕП-КОМП на Яндекс.Маркете" /> </a>
+</div>
+
+		
 		<div class="copy copy_mobile">Все права защищены <?=date('Y')?></div>
 			
 		</div>

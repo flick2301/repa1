@@ -550,6 +550,7 @@ ol.tech li {
 	overflow: hidden;
 	margin: 0 0 0;
 	float: left;
+	position: relative;
 }
 #social a {
 	display: block;
@@ -1323,6 +1324,15 @@ ol.tech li {
 .pricelist-info__steep {
 	margin: 30px 0 10px;
 }
+.footer-yandex-widget {
+	margin-top: 60px;
+	position: relative;
+}
+
+
+
+
+
 
 
 
@@ -1760,6 +1770,9 @@ height: calc(100% - 10px);
 	float: none;
 	display: table;
 	margin: 0;
+}
+.footer-yandex-widget {
+	margin-top: 25px;
 }
 #social a {
 	width: 43px;
