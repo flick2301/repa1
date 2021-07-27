@@ -1,7 +1,9 @@
 <?php
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
+use Bitrix\Main\Context;
 
+$server = Context::getCurrent()->getServer();
 
 global $APPLICATION;
 global $USER;
@@ -105,7 +107,7 @@ if(count($arResult_sort)){
 //we can't use $APPLICATION->SetAdditionalCSS() here because we are inside the buffered function GetNavChain()
 
 
-$strReturn .= '<ul itemscope itemtype="http://schema.org/BreadcrumbList" class="crumbs-nav">';
+$strReturn .= '<ul itemscope itemtype="https://schema.org/BreadcrumbList" class="crumbs-nav">';
 
 
 $itemSize = count($arResult);
@@ -118,9 +120,9 @@ for($index = 0; $index < $itemSize; $index++)
 	{
 		$strReturn .= $arrow.'
 			<li itemprop="itemListElement" itemscope
-      itemtype="http://schema.org/ListItem" class="crumbs-nav__item">
+          itemtype="https://schema.org/ListItem" class="crumbs-nav__item">
 				
-				<a itemprop="item" title="'.$title.'" href="'.$arResult[$index]["LINK"].'" target="_self"  class="crumbs-nav__page crumbs-nav__page--link">
+				<a itemprop="item" title="'.$title.'" href="'.$arResult[$index]["LINK"].'" itemtype="https://schema.org/WebPage" itemid="https://'.$server->getHttpHost().$arResult[$index]["LINK"].'" target="_self"  class="crumbs-nav__page crumbs-nav__page--link">
 				<span itemprop="name">
 					'.$title.'
 				</span>
@@ -133,7 +135,7 @@ for($index = 0; $index < $itemSize; $index++)
 	{
 		$strReturn .= $arrow.'
 			<li itemprop="itemListElement" itemscope
-      itemtype="http://schema.org/ListItem" class="crumbs-nav__item">
+          itemtype="https://schema.org/ListItem" class="crumbs-nav__item">
 				
 				<p itemprop="name" class="crumbs-nav__page crumbs-nav__page--last">'.$title.'</p>
 				<meta itemprop="position" content="'.($index + 1).'" />				
