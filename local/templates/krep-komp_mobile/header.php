@@ -567,7 +567,7 @@ $APPLICATION->IncludeFile(
 	{
 		?>
 		
-		<div class='bread' itemscope itemtype="http://schema.org/BreadcrumbList">
+		<div class='bread'>
             
 			<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());?> 
 			

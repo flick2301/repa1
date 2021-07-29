@@ -43,7 +43,7 @@ $sorting_index = 0;
 
 
         $arResult_sort[] = array('TITLE'=>$arProps['H1']['VALUE'], 'LINK' => $link);
-        $arResult['SORT_BLOCK'] = 'Y';
+        //$arResult['SORT_BLOCK'] = 'Y';
 		
 		$nav = CIBlockSection::GetNavChain(false, $arFields["IBLOCK_SECTION_ID"]);
 		while($arNav = $nav->GetNext())

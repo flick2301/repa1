@@ -222,4 +222,23 @@ function AgentPayment(){
 	}
 	return "AgentPayment();";
 }
+
+//Агент по деактивации правил(rules) модуля редиректов step2use.redirects. По другому нельзя. Галочкой не отключается. 
+//Правил более 90 000
+function AgentDeactivetingRules()
+{
+	\Bitrix\Main\Loader::includeModule('step2use.redirects');
+	
+	$rules = S2uRedirectsRulesDB::GetList(['ACTIVE'=>'Y'], ['ID'=>'DESC'], true);
+	$i=0;
+	foreach($rules as $rule)
+	{
+		$i++;
+		if($i>10)
+			break;
+		S2uRedirectsRulesDB::Update($rule['ID'], ['ACTIVE'=>'N']);
+
+	}
+	return "AgentDeactivetingRules();";
+}
 ?>
