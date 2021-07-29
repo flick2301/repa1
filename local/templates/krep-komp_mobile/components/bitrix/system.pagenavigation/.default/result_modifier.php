@@ -1,9 +1,12 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+use \Bitrix\Main\Application;
 
-$arResult["NavQueryString"] = $arResult["NavQueryString"].'&SIZEN_1='.$_REQUEST['SIZEN_1'];
+$app = Application::getInstance();
+$context = $app->getContext();
+$request = $context->getRequest();
+
+if($request->get('SIZEN_1') && $arResult["NavQueryString"])
+	$arResult["NavQueryString"] = $arResult["NavQueryString"].'&SIZEN_1='.$request->get('SIZEN_1');
+elseif($request->get('SIZEN_1'))
+	$arResult["NavQueryString"] = $arResult["NavQueryString"].'SIZEN_1='.$request->get('SIZEN_1');
