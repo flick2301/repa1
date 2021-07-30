@@ -87,7 +87,6 @@ Disallow: /*?arrFilter_
 Disallow: /*?s=
 Disallow: /?back_url_admin=
 Disallow: /logs/
-Disallow: /*?SIZEN_1=
 Disallow: /*?_openstat=
 Disallow: /*?_r=
 Disallow: /*?arrfilter_
@@ -117,6 +116,14 @@ Disallow: /*?tpclid=
 Disallow: /*?wprid=
 Disallow: /*?yhid=
 Clean-param: type /
+Clean-param: PAGEN_1
+Clean-param: PAGEN_3
+Clean-param: PAGEN_4
+Clean-param: PAGEN_5
+Clean-param: PAGEN_6
+Clean-param: PAGEN_7
+Clean-param: PAGEN_8
+Clean-param: PAGEN_9
 Clean-param: bitrix_include_areas /
 Clean-param: mp5 /
 Clean-param: utm_campaign /
