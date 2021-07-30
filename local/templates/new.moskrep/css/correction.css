@@ -1334,7 +1334,9 @@ ol.tech li {
 	background: url('//opt-1651734.ssl.1c-bitrix-cdn.ru/upload/sale/paysystem/logotip/288/2881aa60771892e30169a3a8e33c1bf0.jpg?159232457444942') no-repeat 0 0 /  contain;
 	max-width: 200px;
 }
-
+.product-data--specsfull {
+	max-width: 100%;
+}
 
 
 

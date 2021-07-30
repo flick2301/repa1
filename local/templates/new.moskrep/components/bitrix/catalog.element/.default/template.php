@@ -204,7 +204,7 @@ dataLayer.push({
         <div class="product-page__section" id="description">
 					<?if($arResult['DETAIL_TEXT']){?>
 					<h2 id="chars" class="product-page__title">Описание</h2>
-					<div class="product-page__specs product-data product-data--specs">
+					<div class="product-page__specs product-data product-data--specs product-data--specsfull">
 						<?=$arResult['DETAIL_TEXT']?>
 						<?
 						//НУЖНО ВСТАВИТЬ КАЛЬКУЛЯТОР ДЛЯ ХИМ. КАРТРИДЖЕЙ
