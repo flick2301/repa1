@@ -5,9 +5,9 @@
 <div id="catalog_main_mobile_menu">
 <div class="menu_close_bar"><span></span><div>Каталог</div></div>
 <div class="items">
-<?/*<div rel="sale">
-<li rel="sale" class="catalog-nav__item level1 sale parent"><a href="/rasprodaja_krepeja/"  class="catalog-nav__lvl1-toggle"><span>Распродажа</span></a></li>
-<div rel="sale" class="children sale level1">
+<?/*<div data-rel="sale">
+<li data-rel="sale" class="catalog-nav__item level1 sale parent"><a href="/rasprodaja_krepeja/"  class="catalog-nav__lvl1-toggle"><span>Распродажа</span></a></li>
+<div data-rel="sale" class="children sale level1">
 				  				    <div class="catalog-nav__lvl2_new">
 									<ul class="catalog-nav__lvl2_new-list">
 	   <?
@@ -92,19 +92,19 @@
 </div>*/?>
 
 <?foreach ($arResult["ITEMS"] AS $key=>$arItem): $cnt++;?>
-<div rel="<?=$cnt?>"><li rel="<?=$cnt?>" class="catalog-nav__item level1 <?if ($arItem["IS_PARENT"]):?>parent<?endif?>"><a href="<?=$arItem['LINK']?>"  class="catalog-nav__lvl1-toggle"><span><span><?=$arItem["TEXT"]?></span></span></a></li>
+<div data-rel="<?=$cnt?>"><li data-rel="<?=$cnt?>" class="catalog-nav__item level1 <?if ($arItem["IS_PARENT"]):?>parent<?endif?>"><a href="<?=$arItem['LINK']?>"  class="catalog-nav__lvl1-toggle"><span><span><?=$arItem["TEXT"]?></span></span></a></li>
 <?if ($arItem["IS_PARENT"]):?>
-			<div rel="<?=$cnt?>" class="children level1">
+			<div data-rel="<?=$cnt?>" class="children level1">
 						<?foreach ($arItem["ITEMS"] AS $arItem_2): $cnt++;?>
-						<li rel="<?=$cnt?>" class="catalog-nav__item level2 <?if ($arItem_2["IS_PARENT"]):?>parent<?endif?>"><a href="<?=$arItem_2['LINK']?>"  class="catalog-nav__lvl1-toggle"><span><span><?=$arItem_2["TEXT"]?></span></span></a></li>
+						<li data-rel="<?=$cnt?>" class="catalog-nav__item level2 <?if ($arItem_2["IS_PARENT"]):?>parent<?endif?>"><a href="<?=$arItem_2['LINK']?>"  class="catalog-nav__lvl1-toggle"><span><span><?=$arItem_2["TEXT"]?></span></span></a></li>
 								<?if ($arItem["IS_PARENT"]):?>	
 								<!--lvl3-->
-								<div rel="<?=$cnt?>" class="children level2">		
+								<ul data-rel="<?=$cnt?>" class="children level2">		
 						<?foreach ($arItem_2["ITEMS"] AS $arItem_3): $cnt++;?>
 									<li class="catalog-nav__item level3"><a href="<?=$arItem_3['LINK']?>"  class="catalog-nav__lvl1-toggle"><span><span><?=$arItem_3["TEXT"]?></span></span></a></li>					
 						<?endforeach?>		
 
-								</div>		
+								</ul>		
 								<?endif?>							
 						<?endforeach?>
 						

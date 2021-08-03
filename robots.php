@@ -88,6 +88,7 @@ Disallow: /*?s=
 Disallow: /?back_url_admin=
 Disallow: /logs/
 Disallow: /*?_openstat=
+Disallow: */_openstat
 Disallow: /*?_r=
 Disallow: /*?arrfilter_
 Disallow: /*?arrFilter2_
@@ -106,17 +107,27 @@ Disallow: /*?Filter_seo_
 Disallow: /*?from=
 Disallow: /*?frommarket=
 Disallow: /*?ID=
+Disallow: /*?&set_filter
 Disallow: /*?length=
-Disallow: /*?PAGEN_1=
 Disallow: /*?set_filter=
 Disallow: /*?size=
 Disallow: /*?SIZEN_1=
+Disallow: /*?PAGEN_1=*&PAGEN_1=*
+Disallow: *SIZEN_1*
+Disallow: *PAGEN_2*
+Disallow: *PAGEN_3*
+Disallow: *PAGEN_4*
+Disallow: *PAGEN_5*
+Disallow: *PAGEN_6*
+Disallow: *PAGEN_7*
+Disallow: *PAGEN_8*
+Disallow: *PAGEN_9*
 Disallow: /*?success=
 Disallow: /*?tpclid=
 Disallow: /*?wprid=
 Disallow: /*?yhid=
 Clean-param: type /
-Clean-param: PAGEN_1
+Clean-param: PAGEN_2
 Clean-param: PAGEN_3
 Clean-param: PAGEN_4
 Clean-param: PAGEN_5

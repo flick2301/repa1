@@ -17,10 +17,10 @@ BX.ready(function () {
 	$(document).on('click', '#catalog_main_mobile_menu .catalog-nav__item.parent > a', function(e) {
 			e.preventDefault();
 			if ($(this).parent().parent().children('.children')) {
-				$(this).parent().parent().children('.children[rel=' + $(this).parent().attr('rel') + ']').show();
+				$(this).parent().parent().children('.children[data-rel=' + $(this).parent().data('rel') + ']').show();
 				//$(this).parent().parent().children('.children').show();
-				//$(this).parent().parent().children('.children').attr('rel');
-				$('#catalog_main_mobile_menu .menu_close_bar span').attr('rel', $(this).parent().parent().children('.children').attr('rel'));
+				//$(this).parent().parent().children('.children').data('rel');
+				$('#catalog_main_mobile_menu .menu_close_bar span').attr('rel', $(this).parent().parent().children('.children').data('rel'));
 				$('#catalog_main_mobile_menu .menu_close_bar span').show();
 				if ($(this).parent().parent().children('.children').hasClass('level1')) {$('#catalog_main_mobile_menu .catalog-nav__item.level1').hide();}
 				if ($(this).parent().parent().children('.children').hasClass('level2')) {$('#catalog_main_mobile_menu .catalog-nav__item.level2').hide();}
@@ -36,17 +36,17 @@ BX.ready(function () {
 	$(document).on('click', '#catalog_main_mobile_menu .menu_close_bar span', function(e) {
 		e.stopPropagation();
 		$('#catalog_main_mobile_menu .children').hide();
-		$('#catalog_main_mobile_menu div[rel=' + $(this).attr('rel') + ']').parent().show();
-		$('#catalog_main_mobile_menu div[rel=' + $(this).attr('rel') + ']').parent().children('li').show();
-		$('#catalog_main_mobile_menu div[rel=' + $(this).attr('rel') + ']').parent().parent().parent().children('li').show();
+		$('#catalog_main_mobile_menu div[data-rel=' + $(this).data('rel') + ']').parent().show();
+		$('#catalog_main_mobile_menu div[data-rel=' + $(this).data('rel') + ']').parent().children('li').show();
+		$('#catalog_main_mobile_menu div[data-rel=' + $(this).data('rel') + ']').parent().parent().parent().children('li').show();
 		
-		if ($('#catalog_main_mobile_menu div[rel=' + $(this).attr('rel') + ']').parent().children('li').hasClass('level1')) {
+		if ($('#catalog_main_mobile_menu div[data-rel=' + $(this).data('rel') + ']').parent().children('li').hasClass('level1')) {
 			$('#catalog_main_mobile_menu .menu_close_bar span').hide();		
 			$('#catalog_main_mobile_menu .catalog-nav__item').show();
 			$('#catalog_main_mobile_menu .menu_close_bar div').text('Каталог');
 		}
 		else {
-			$('#catalog_main_mobile_menu .menu_close_bar div').text($('#catalog_main_mobile_menu li[rel=' + $(this).attr('rel') + ']').text());
+			$('#catalog_main_mobile_menu .menu_close_bar div').text($('#catalog_main_mobile_menu li[data-rel=' + $(this).data('rel') + ']').text());
 			$('#catalog_main_mobile_menu .menu_close_bar span').attr('rel', 1);
 		}
 	});		

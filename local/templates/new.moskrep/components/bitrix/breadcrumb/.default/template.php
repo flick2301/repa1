@@ -122,7 +122,7 @@ for($index = 0; $index < $itemSize; $index++)
 			<li itemprop="itemListElement" itemscope
           itemtype="https://schema.org/ListItem" class="crumbs-nav__item">
 				
-				<a itemprop="item" title="'.$title.'" href="'.$arResult[$index]["LINK"].'" itemtype="https://schema.org/WebPage" itemid="https://'.$server->getHttpHost().$arResult[$index]["LINK"].'" target="_self"  class="crumbs-nav__page crumbs-nav__page--link">
+				<a itemprop="item" title="'.$title.'" href="'.$arResult[$index]["LINK"].'" target="_self"  class="crumbs-nav__page crumbs-nav__page--link">
 				<span itemprop="name">
 					'.$title.'
 				</span>

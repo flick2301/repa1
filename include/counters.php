@@ -1,5 +1,5 @@
 <!-- /Yandex.Metrika counter -->
-<div><noscript><img src="https://mc.yandex.ru/watch/29426710" style="position:absolute; left:-9999px;" alt="YM" /></noscript></div>
+<noscript><div><img src="https://mc.yandex.ru/watch/29426710" style="position:absolute; left:-9999px;" alt="YM" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
 <!-- Google Tag Manager (noscript) -->

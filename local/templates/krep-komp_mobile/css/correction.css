@@ -1950,7 +1950,7 @@ height: calc(100% - 10px);
 	float: right;
 	display: block;
 }
-#top_under_menu .contact-widget > div #header_mail {
+#top_under_menu .contact-widget > div #header_mail, #top_under_menu .contact-widget > div #header_mail_mobile {
 	background: url(/local/templates/moskrep/img/iconmonstr-email-4.svg) 50% 50% no-repeat;
 	background-size: 28.5px 21px;
 }
