@@ -254,7 +254,9 @@ if($arParams['FOR_SEO']!='Y'){
             
 			<?}
 		}?>
-
+				<?if($arResult['AMOUN_ALLOWED'])
+				{
+					?>
 					<div class="catalog-table__column catalog-table__column--state">
                            <div class="catalog-table__title">Наличие<small>:</small></div>
                            <div class="catalog-table__content">
@@ -266,6 +268,7 @@ if($arParams['FOR_SEO']!='Y'){
 							<?}?>
                            </div>
                     </div>
+				<?}?>
 					
 					<div class="catalog-table__column catalog-table__column--to-cart">
                            <div class="catalog-table__title">Цена (с НДС)<small>:</small></div>

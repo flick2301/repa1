@@ -10,6 +10,16 @@ global $DEFAULT_STORE_ID;
 
 use Bitrix\Main\Loader;
 
+$context = \Bitrix\Main\Application::getInstance()->getContext();
+$server = $context->getServer();
+
+$server_name = $server->get('SERVER_NAME');
+$sub_domain = str_replace("krep-komp.ru", "", $server_name);
+$allowed_sub_domains = ['dev1.', 'dev2.', 'spb.'];
+if($sub_domain == '' || in_array($sub_domain, $allowed_sub_domains))
+	$arResult['AMOUN_ALLOWED']=true;
+else
+	$arResult['AMOUN_ALLOWED']=false;
 
 $nav = CIBlockSection::GetNavChain(false, $arResult['ID']);
 while($nw = $nav->Fetch()){
