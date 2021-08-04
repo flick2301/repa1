@@ -6,7 +6,7 @@
 <div class="menu_close_bar"><span></span><div>Каталог</div></div>
 <div class="items">
 <?/*<div data-rel="sale">
-<li data-rel="sale" class="catalog-nav__item level1 sale parent"><a href="/rasprodaja_krepeja/"  class="catalog-nav__lvl1-toggle"><span>Распродажа</span></a></li>
+<div data-rel="sale" class="catalog-nav__item level1 sale parent"><a href="/rasprodaja_krepeja/"  class="catalog-nav__lvl1-toggle"><span>Распродажа</span></a></div>
 <div data-rel="sale" class="children sale level1">
 				  				    <div class="catalog-nav__lvl2_new">
 									<ul class="catalog-nav__lvl2_new-list">
@@ -92,19 +92,19 @@
 </div>*/?>
 
 <?foreach ($arResult["ITEMS"] AS $key=>$arItem): $cnt++;?>
-<div data-rel="<?=$cnt?>"><li data-rel="<?=$cnt?>" class="catalog-nav__item level1 <?if ($arItem["IS_PARENT"]):?>parent<?endif?>"><a href="<?=$arItem['LINK']?>"  class="catalog-nav__lvl1-toggle"><span><span><?=$arItem["TEXT"]?></span></span></a></li>
+<div data-rel="<?=$cnt?>"><p data-rel="<?=$cnt?>" class="catalog-nav__item level1 <?if ($arItem["IS_PARENT"]):?>parent<?endif?>"><a href="<?=$arItem['LINK']?>"  class="catalog-nav__lvl1-toggle"><span><span><?=$arItem["TEXT"]?></span></span></a></p>
 <?if ($arItem["IS_PARENT"]):?>
 			<div data-rel="<?=$cnt?>" class="children level1">
 						<?foreach ($arItem["ITEMS"] AS $arItem_2): $cnt++;?>
-						<li data-rel="<?=$cnt?>" class="catalog-nav__item level2 <?if ($arItem_2["IS_PARENT"]):?>parent<?endif?>"><a href="<?=$arItem_2['LINK']?>"  class="catalog-nav__lvl1-toggle"><span><span><?=$arItem_2["TEXT"]?></span></span></a></li>
+						<p data-rel="<?=$cnt?>" class="catalog-nav__item level2 <?if ($arItem_2["IS_PARENT"]):?>parent<?endif?>"><a href="<?=$arItem_2['LINK']?>"  class="catalog-nav__lvl1-toggle"><span><span><?=$arItem_2["TEXT"]?></span></span></a></p>
 								<?if ($arItem["IS_PARENT"]):?>	
 								<!--lvl3-->
-								<ul data-rel="<?=$cnt?>" class="children level2">		
+								<div data-rel="<?=$cnt?>" class="children level2">		
 						<?foreach ($arItem_2["ITEMS"] AS $arItem_3): $cnt++;?>
-									<li class="catalog-nav__item level3"><a href="<?=$arItem_3['LINK']?>"  class="catalog-nav__lvl1-toggle"><span><span><?=$arItem_3["TEXT"]?></span></span></a></li>					
+									<p class="catalog-nav__item level3"><a href="<?=$arItem_3['LINK']?>"  class="catalog-nav__lvl1-toggle"><span><span><?=$arItem_3["TEXT"]?></span></span></a></p>					
 						<?endforeach?>		
 
-								</ul>		
+								</div>		
 								<?endif?>							
 						<?endforeach?>
 						
@@ -133,7 +133,7 @@
 				  <div class="basic-layout__section">
 				  <div class="left">
 				  <?/*
-				  <div class="sale"><li class="catalog-nav__item" ><a href="/rasprodaja_krepeja/"  class="catalog-nav__lvl1-toggle">Распродажа</a>
+				  <div class="sale"><div class="catalog-nav__item" ><a href="/rasprodaja_krepeja/"  class="catalog-nav__lvl1-toggle">Распродажа</a>
 				  
 				  <div class="item_title">Распродажа</div>
 				  
@@ -221,7 +221,7 @@
 <?$limit = 6;?>
 <?foreach ($arResult["ITEMS"] AS $key=>$arItem):?>
 			<?$cnt = 0; $count = 0;?>
-			<li class="catalog-nav__item<?if(!$key):?> first<?endif?>" ><a href="<?=$arItem['LINK']?>"  class="catalog-nav__lvl1-toggle"><span><?=$arItem["TEXT"]?></span></a>
+			<div class="catalog-nav__item<?if(!$key):?> first<?endif?>" ><a href="<?=$arItem['LINK']?>"  class="catalog-nav__lvl1-toggle"><span><?=$arItem["TEXT"]?></span></a>
 				<!--lvl1-->
 				<?foreach ($arItem["ITEMS"] AS $arItem_2):?>
 				<?$cnt += (count($arItem_2["ITEMS"]) < $limit ? count($arItem_2["ITEMS"]) : $limit) + 2;?>
@@ -238,35 +238,35 @@
 				<?if ($arItem["IS_PARENT"]):?>
 				    <div class="catalog-nav__lvl2_new">
 <!--lvl2-->
-<ul class="catalog-nav__lvl2_new-list"><div>					
+<div class="catalog-nav__lvl2_new-list"><div>					
 						<?foreach ($arItem["ITEMS"] AS $arItem_2):?><?$cnt_item = 0;?>
 						<?if(!count($arItem_2["ITEMS"])) $no_count++; else $no_count = 0;?>
 						<?if((($count + 2) > $cnt/4) && (count($arItem_2["ITEMS"]) || $no_count == 1)):?><?$count = 0;?></div><div><?endif?><?$count = $count + 2;?>
 <?if (!count($arItem_2["ITEMS"])):?>						
-<li class="catalog-nav__lvl3_new-item <?if($count<=2 || $no_count==1):?>margin<?endif?>"><a href="<?=$arItem_2['LINK']?>" class="catalog-nav__lvl3_new-link"><?=$arItem_2["TEXT"]?></a></li>						
+<div class="catalog-nav__lvl3_new-item <?if($count<=2 || $no_count==1):?>margin<?endif?>"><a href="<?=$arItem_2['LINK']?>" class="catalog-nav__lvl3_new-link"><?=$arItem_2["TEXT"]?></a></div>						
 <?else:?>
-<li class="catalog-nav__lvl2_new-item" >
+<div class="catalog-nav__lvl2_new-item" >
 	<span class="catalog-nav__lvl2_new-item catalog-nav__lvl2_new-item-title" ><a href="<?=$arItem_2['LINK']?>" class="catalog-nav__lvl2_new-toggle"><span><?=$arItem_2["TEXT"]?></span></a></span>						
 
 								<!--lvl3-->
 								<div class="catalog-nav__lvl3_new">
-										<ul class="catalog-nav__lvl3_new-list">				
+										<div class="catalog-nav__lvl3_new-list">				
 						<?foreach ($arItem_2["ITEMS"] AS $arItem_3):?><?$cnt_item++;?><?if ($cnt_item <= $limit) $count++?>
-									<li class="catalog-nav__lvl3_new-item <?if($cnt_item > $limit) echo "hide";?>"><a href="<?=$arItem_3['LINK']?>" class="catalog-nav__lvl3_new-link"><?=$arItem_3["TEXT"]?></a></li>						
+									<div class="catalog-nav__lvl3_new-item <?if($cnt_item > $limit) echo "hide";?>"><a href="<?=$arItem_3['LINK']?>" class="catalog-nav__lvl3_new-link"><?=$arItem_3["TEXT"]?></a></div>						
 						<?endforeach?>	
 <?if($cnt_item > $limit):?>
-<li class="catalog-nav__lvl3_new-item more"><a href="<?=$arItem_2['LINK']?>">Все категории</a></li>
+<div class="catalog-nav__lvl3_new-item more"><a href="<?=$arItem_2['LINK']?>">Все категории</a></div>
 <?endif?>						
-										</ul>
+										</div>
 								</div>		
 
-</li>	
+</div>	
 <?endif?>				
 						<?endforeach?>		
-</div></ul>						
+</div></div>						
 					</div>
 				<?endif?>	
-			</li>	
+			</div>	
 <?endforeach?>
 
 

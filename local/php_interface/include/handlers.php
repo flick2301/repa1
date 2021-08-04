@@ -764,7 +764,13 @@ function ChangeMyContent(&$content)
 		$content = str_replace('Адреса магазинов', 'Точки выдачи', $content);
 	}
    }
+   
+   $content = str_replace(Array(" type=\"text/javascript\"", " type='text/javascript'"), "", $content);    
 }
+
+
+
+
 function sanitize_output($buffer)
 {
    return preg_replace('~>\s*\n\s*<~', '><', $buffer);
