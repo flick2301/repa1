@@ -13,8 +13,9 @@ use Bitrix\Main\Loader;
 $context = \Bitrix\Main\Application::getInstance()->getContext();
 $server = $context->getServer();
 
-$server_name = $server->get('SERVER_NAME');
-$sub_domain = str_replace("krep-komp.ru", "", $server_name);
+$http_host = $server->get('HTTP_HOST');
+$sub_domain = str_replace("krep-komp.ru", "", $http_host);
+
 $allowed_sub_domains = ['dev1.', 'dev2.', 'spb.'];
 if($sub_domain == '' || in_array($sub_domain, $allowed_sub_domains))
 	$arResult['AMOUN_ALLOWED']=true;
