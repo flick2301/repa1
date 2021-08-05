@@ -12,7 +12,7 @@ if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true)die();
 
 ?>
 <!--send-a-request-->
-<a name="sendform"></a>
+<a id="sendform"></a>
 
 <div class="send-a-request_success_block">
 <div class="send-a-request_success">
@@ -81,7 +81,7 @@ dataLayerSendForm();//Отправка формы в DataLayer
         <div class="send-a-request__block send-a-request__block--primary">
             <div class="send-a-request__item">
                 <label class="send-a-request__label" for="send-a-request__name"></label>
-				<input required="true" type="text" value="<?=$arResult["AUTHOR_NAME"]?>" name="user_name" placeholder="<?=GetMessage("MFT_NAME")?>*" class="simple-input send-a-request__input">
+				<input required="required" type="text" value="<?=$arResult["AUTHOR_NAME"]?>" name="user_name" placeholder="<?=GetMessage("MFT_NAME")?>*" class="simple-input send-a-request__input">
             </div>
             <div class="send-a-request__item">
                 <label class="send-a-request__label" for="send-a-request__phone"></label>
@@ -89,12 +89,12 @@ dataLayerSendForm();//Отправка формы в DataLayer
             </div>
             <div class="send-a-request__item">
                 <label class="send-a-request__label" for="send-a-request__email"></label>
-				<input required="true" type="text" name="user_email" placeholder="<?=GetMessage("MFT_EMAIL")?>*" value="<?=$arResult["AUTHOR_EMAIL"]?>" class="simple-input send-a-request__input">
+				<input required="required" type="text" name="user_email" placeholder="<?=GetMessage("MFT_EMAIL")?>*" value="<?=$arResult["AUTHOR_EMAIL"]?>" class="simple-input send-a-request__input">
             </div>
 			
             <div class="send-a-request__item">
                 <label class="send-a-request__label" for="send-a-request__text"></label>
-				<textarea required="true" name="MESSAGE" placeholder="<?=GetMessage("MFT_MESSAGE")?>*" class="simple-textarea send-a-request__textarea"><?=$arResult["MESSAGE"]?></textarea>
+				<textarea required="required" name="MESSAGE" placeholder="<?=GetMessage("MFT_MESSAGE")?>*" class="simple-textarea send-a-request__textarea"><?=$arResult["MESSAGE"]?></textarea>
             </div>			
 		</div>
         <input type="hidden" value="<?=$_COOKIE["roistat_visit"]?>" name="roistat_visit" id="WEB_FORM_<?=$_COOKIE["roistat_visit"]?>"  class="form__input"> 
@@ -143,8 +143,8 @@ dataLayerSendForm();//Отправка формы в DataLayer
         
 	
     
-</form>
 </div>
+</form>
 <!--send-a-request-->
 
 

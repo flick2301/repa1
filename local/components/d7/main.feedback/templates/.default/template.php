@@ -12,7 +12,7 @@ if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true)die();
 
 ?>
 <!--send-a-request-->
-<a name="sendform"></a>
+<a id="sendform"></a>
 <form enctype="multipart/form-data" action="<?=POST_FORM_ACTION_URI?>#sendform" id='<?echo ($arParams['HEADER_FORM']=='Y') ? 'header_feedback_form' : 'feedback_form';?>' method="POST">
 <div class="basic-layout__module basic-layout__module--request send-a-request">
 
@@ -119,9 +119,8 @@ dataLayerSendForm();//Отправка формы в DataLayer
 	<input type="hidden" name="PARAMS_HASH" value="<?=$arResult["PARAMS_HASH"]?>">
         
 	
-    
+</div>   
 </form>
-</div>
 <!--send-a-request-->
 
 

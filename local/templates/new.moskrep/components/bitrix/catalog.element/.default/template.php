@@ -189,8 +189,7 @@ dataLayer.push({
                      <li class="product-tabs__item">
                         <a class="product-tabs__toggle" href="#delivery">Доставка</a>
                      </li>
-					<?if($_SERVER['HTTP_HOST']=='krep-komp.ru' || $_SERVER['HTTP_HOST']=='spb.krep-komp.ru')
-					{?>
+					<?if($_SERVER['HTTP_HOST']=='krep-komp.ru' || $_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){?>
                      <li class="product-tabs__item">
                         <a class="product-tabs__toggle" href="#pickup">Самовывоз</a>
                      </li>
@@ -260,8 +259,8 @@ dataLayer.push({
          <!--<?=$templateFolder?>-->   
 	    <? require_once($_SERVER["DOCUMENT_ROOT"].$templateFolder."/delivery.php"); ?>
 		
-		
-		<div class="product-page__section" id="pickup">
+<?if($_SERVER['HTTP_HOST']=='krep-komp.ru' || $_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){?>		
+		<div class="product-page__section" id="pickup"><br /><br />
                   <h2 class="product-page__title">Самовывоз бесплатно</h2>
                   <!--simple-article-->
                   <div class="basic-layout__module simple-article">
@@ -373,6 +372,7 @@ dataLayer.push({
                   </div>
                   <!--simple-article-->
                </div>
+<?}?>			   
 			   
 			   
 			   <div class="product-page__section" id="discount">

@@ -299,7 +299,7 @@ global $APPLICATION;
 <?$this->SetViewTarget('catalog_section');?>
 
 	 <div class="basic-layout__columns basic-layout__columns--reverse">
-		  <div lass="basic-layout__content full">
+		  <div class="basic-layout__content full">
 		  
 		  <?
 		  if($arResult['SECTION']["UF_H1_MSK"] && $_SERVER['HTTP_HOST'] != 'spb.krep-komp.ru')

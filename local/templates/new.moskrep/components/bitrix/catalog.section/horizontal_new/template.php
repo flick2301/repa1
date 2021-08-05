@@ -137,7 +137,7 @@ if($arParams['FOR_SEO']!='Y'){
 	
 			<div class="catalog-feed__tabs">
 			<?$this->SetViewTarget('catalogFilter');?>
-                  <button class="catalog-feed__filter" id="catalog-filter-trigger"><i class="simple-filter-icon"></i>Фильтр</button>
+                  <button class="catalog-feed__filter" id="catalog-filter-trigger2"><i class="simple-filter-icon"></i>Фильтр</button>
 			<?$this->EndViewTarget();?> 
 			<div id="filter__catalog_desktop"><button class="catalog-feed__filter" id="catalog-filter-trigger"><i class="simple-filter-icon"></i>Фильтр</button></div>	
             </div>	
@@ -284,7 +284,7 @@ if($arParams['FOR_SEO']!='Y'){
 								 <?}?>
                               </div>
                               <!--price-in-table-->
-							  <input type="hidden" name="" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" onchange='ChangeInputCart("<?=$item['NAME']?>", $(this))' id="QUANTITY_<?=$item['ID']?>" value="1" class="value__input">
+							  <input type="hidden" name="quantity-hidden" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" onchange='ChangeInputCart("<?=$item['NAME']?>", $(this))' id="QUANTITY_<?=$item['ID']?>" value="1" class="value__input">
                               <button class="catalog-table__to-cart" data-product="<?=$item['ID']?>" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"><i class="colored-cart-icon catalog-table__cart" data-product="<?=$item['ID']?>" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"></i>Добавить в корзину</button>
                            </div>
                     </div>
