@@ -50,8 +50,8 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
-		"Import&nbsp;<span class='import'>进口</span>", 
-		"/import/", 
+		"Адреса магазинов",
+		"/addresses/", 
 		Array(), 
 		Array(), 
 		"" 

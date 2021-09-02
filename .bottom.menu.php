@@ -25,8 +25,8 @@ $aMenuLinks = Array(
 		""
 	),
 	Array(
-		"Адреса магазинов",
-		"/addresses/",
+		"Import&nbsp;<span class='import'>进口</span>", 
+		"/import/",
 		Array(),
 		Array(),
 		""

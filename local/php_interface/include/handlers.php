@@ -1193,3 +1193,39 @@ function OnPageStartHandler()
 		copy($file, $newfile);
 	}
 }
+
+
+\Bitrix\Main\EventManager::getInstance()->addEventHandler('catalog','\Bitrix\Catalog\Price::OnBeforeUpdate','onBeforePriceUpdate');
+
+function onBeforePriceUpdate($event){
+
+	$result = new Entity\EventResult;
+	$data = $event->getParameter("fields");
+	
+   	if ($data["PRICE"]==0)
+	{
+		\Bitrix\Main\Diag\Debug::dumpToFile($data, "", '/upload/aa.txt');
+		$result->unsetFields(array('PRICE'));
+	}
+
+   return $result;
+   
+}
+
+
+\Bitrix\Main\EventManager::getInstance()->addEventHandler('catalog','\Bitrix\Catalog\Price::OnBeforeAdd','onBeforePriceAdd');
+
+function onBeforePriceAdd($event){
+
+	$result = new Entity\EventResult;
+	$data = $event->getParameter("fields");
+	
+   	if ($data["PRICE"]==0)
+	{
+		\Bitrix\Main\Diag\Debug::dumpToFile($data, "", '/upload/a9.txt');
+		$result->unsetFields(array('PRICE'));
+	}
+
+   return $result;
+   
+}

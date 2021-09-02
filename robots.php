@@ -14,8 +14,41 @@ User-Agent: *
 Disallow: /
 <?else:?>
 User-Agent: *
+Disallow: */index.php
+Disallow: /bitrix/
+Disallow: /*show_include_exec_time=
+Disallow: /*show_page_exec_time=
+Disallow: /*show_sql_stat=
+Disallow: /*bitrix_include_areas=
+Disallow: /*clear_cache=
+Disallow: /*clear_cache_session=
+Disallow: /*ADD_TO_COMPARE_LIST
+Disallow: /*ORDER_BY
+Disallow: /*PAGEN
+Disallow: /*?print=
+Disallow: /*&print=
+Disallow: /*print_course=
+Disallow: /*?action=
+Disallow: /*&action=
+Disallow: /*register=
+Disallow: /*forgot_password=
+Disallow: /*change_password=
+Disallow: /*login=
+Disallow: /*logout=
+Disallow: /*auth=
+Disallow: /*backurl=
+Disallow: /*back_url=
+Disallow: /*BACKURL=
+Disallow: /*BACK_URL=
+Disallow: /*back_url_admin=
+Disallow: /*?utm_source=
+Disallow: /*?bxajaxid=
+Disallow: /*&bxajaxid=
+Disallow: /*?view_result=
+Disallow: /*&view_result=
 Disallow: /auth/
-disallow: /user/
+Disallow: /user/
+Disallow: /sale/
 Disallow: /webstat/
 Disallow: /bitrix/
 Disallow: /basket/
@@ -64,6 +97,10 @@ Disallow: /articles/primenenie-samorezov/samorezy-dlya-metalloprofilya-ar/
 Disallow: /articles/primenenie-samorezov/samorezy-dlya-krovli-ar/
 Disallow: /articles/primenenie-samorezov/samorezy-dlya-zabora-ar/
 Disallow: /articles/primenenie-samorezov/dlya-pvkh-ar/
+Disallow: *frommarket*
+Disallow: *=http:/*
+Disallow: */http*
+Disallow: *diameter*
 Disallow: /letter/
 Disallow: /order/
 Disallow: /uiu.php
@@ -105,23 +142,38 @@ Disallow: /*?filter%5BUF_TYPE%5D=
 Disallow: /*?filter[UF_TYPE]=
 Disallow: /*?Filter_seo_
 Disallow: /*?from=
+Disallow: /sorting/
+Disallow: /krepezhhttps:/
+Disallow: /shops/
 Disallow: /*?frommarket=
 Disallow: /*?ID=
 Disallow: /*?&set_filter
 Disallow: /*?length=
 Disallow: /*?set_filter=
 Disallow: /*?size=
+Disallow: /*?SECTION_ID=
+Disallow: *SECTION_ID=*
+Disallow: *section_id*
+Disallow: /*?size=
 Disallow: /*?SIZEN_1=
 Disallow: /*?PAGEN_1=*&PAGEN_1=*
 Disallow: *SIZEN_1*
+Disallow: *sizen_1*
 Disallow: *PAGEN_2*
+Disallow: *UF_TYPE*
+Disallow: *uf_type*
+Disallow: *pagen*
 Disallow: *PAGEN_3*
+Disallow: *set_filter*
+Disallow: *arrfilter*
 Disallow: *PAGEN_4*
 Disallow: *PAGEN_5*
 Disallow: *PAGEN_6*
 Disallow: *PAGEN_7*
 Disallow: *PAGEN_8*
 Disallow: *PAGEN_9*
+Disallow: */_*
+Disallow: *_/*
 Disallow: /*?success=
 Disallow: /*?tpclid=
 Disallow: /*?wprid=
@@ -135,6 +187,26 @@ Clean-param: PAGEN_6
 Clean-param: PAGEN_7
 Clean-param: PAGEN_8
 Clean-param: PAGEN_9
+Clean-param: pagen_1
+Clean-param: pagen_2
+Clean-param: pagen_3
+Clean-param: pagen_4
+Clean-param: sizen_1
+Clean-param: set_filter
+Clean-param: diameter
+Clean-param: uf_type
+Clean-param: UF_TYPE
+Clean-param: _openstat
+Clean-param: SECTION_ID
+Clean-param: section_id
+Clean-param: sorting
+Clean-param: frommarket
+Clean-param: ID
+Clean-param: pagen_5
+Clean-param: pagen_6
+Clean-param: pagen_7
+Clean-param: pagen_8
+Clean-param: pagen_9
 Clean-param: bitrix_include_areas /
 Clean-param: mp5 /
 Clean-param: utm_campaign /
@@ -167,9 +239,12 @@ Clean-param: utm_block /
 Clean-param: roistat /
 Clean-param: roistat_referrer /
 Clean-param: roistat_pos /
-Allow: *.css
-Allow: *.js
-Allow: /service/YML.xml
+Allow: /bitrix/components/
+Allow: /bitrix/cache/
+Allow: /bitrix/js/
+Allow: /bitrix/templates/
+Allow: /bitrix/panel/
+
 Host: <?=$http?>://<?=$host.PHP_EOL;?>
 Sitemap: <?=$http?>://<?=$host;?>/sitemap.xml
 <?endif;?>

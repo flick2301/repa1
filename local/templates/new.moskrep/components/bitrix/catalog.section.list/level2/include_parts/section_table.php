@@ -16,6 +16,8 @@ $rsGender = CUserFieldEnum::GetList(array(), array("ID" => $aSection["UF_SEC_LIS
 
 global $mySmartFilter;
 global $arrFilter2;
+global $NavNum;
+$NavNum=0;
 
 if(!empty($arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE']))
 {

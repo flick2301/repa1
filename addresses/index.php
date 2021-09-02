@@ -62,8 +62,11 @@ $APPLICATION->SetTitle("Адреса магазинов в {{city}}");
 					Юридический адрес:
 				</p>
 				<p class="bank-details__data">
+					117519, г. Москва, вн. тер. г. муниципальный округ Чертаново Южное, ш. Варшавское, д. 148,  этаж 3, помещ. 310
+				</p>				
+				<!--<p class="bank-details__data">
 					117519, г. Москва, Варшавское шоссе, 148,  этаж 3, офис 310
-				</p>
+				</p>-->
  </li>
 				<li class="bank-details__item">
 				<p class="bank-details__name">

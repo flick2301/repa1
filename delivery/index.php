@@ -1,7 +1,8 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetPageProperty("description", "Доставка по {{city}}");
-$APPLICATION->SetTitle("Доставка в {{city}}");
+$APPLICATION->SetPageProperty("title", "Доставка строительного крепежа в {{city}} | КРЕП-КОМП");
+$APPLICATION->SetPageProperty("description", "Доставка строительного крепежа в {{city}}. Магазин «КРЕП-КОМП». Работаем оптом и в розницу.");
+$APPLICATION->SetTitle("Доставка крепежа в {{city}} ");
 $scheme = $request->isHttps() ? 'https' : 'http';
 
 switch (LANGUAGE_ID)
