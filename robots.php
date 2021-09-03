@@ -179,34 +179,34 @@ Disallow: /*?tpclid=
 Disallow: /*?wprid=
 Disallow: /*?yhid=
 Clean-param: type /
-Clean-param: PAGEN_2
-Clean-param: PAGEN_3
-Clean-param: PAGEN_4
-Clean-param: PAGEN_5
-Clean-param: PAGEN_6
-Clean-param: PAGEN_7
-Clean-param: PAGEN_8
-Clean-param: PAGEN_9
-Clean-param: pagen_1
-Clean-param: pagen_2
-Clean-param: pagen_3
-Clean-param: pagen_4
-Clean-param: sizen_1
-Clean-param: set_filter
-Clean-param: diameter
-Clean-param: uf_type
-Clean-param: UF_TYPE
-Clean-param: _openstat
-Clean-param: SECTION_ID
-Clean-param: section_id
-Clean-param: sorting
-Clean-param: frommarket
-Clean-param: ID
-Clean-param: pagen_5
-Clean-param: pagen_6
-Clean-param: pagen_7
-Clean-param: pagen_8
-Clean-param: pagen_9
+Clean-param: PAGEN_2 /
+Clean-param: PAGEN_3 /
+Clean-param: PAGEN_4 /
+Clean-param: PAGEN_5 /
+Clean-param: PAGEN_6 /
+Clean-param: PAGEN_7 /
+Clean-param: PAGEN_8 /
+Clean-param: PAGEN_9 /
+Clean-param: pagen_1 /
+Clean-param: pagen_2 /
+Clean-param: pagen_3 /
+Clean-param: pagen_4 /
+Clean-param: sizen_1 /
+Clean-param: set_filter /
+Clean-param: diameter /
+Clean-param: uf_type /
+Clean-param: UF_TYPE /
+Clean-param: _openstat /
+Clean-param: SECTION_ID /
+Clean-param: section_id /
+Clean-param: sorting /
+Clean-param: frommarket /
+Clean-param: ID /
+Clean-param: pagen_5 /
+Clean-param: pagen_6 /
+Clean-param: pagen_7 /
+Clean-param: pagen_8 /
+Clean-param: pagen_9 /
 Clean-param: bitrix_include_areas /
 Clean-param: mp5 /
 Clean-param: utm_campaign /
