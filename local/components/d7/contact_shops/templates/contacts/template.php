@@ -40,6 +40,7 @@ switch (LANGUAGE_ID)
                     <div class="contacts__time"><?=strip_tags($item["PREVIEW_TEXT"])?></div>
 					<a class="contacts__email" href="mailto:<?=$item["PROP"]["EMAIL"]["VALUE"]?>"><?=$item["PROP"]["EMAIL"]["VALUE"]?></a>
 					<?if($item["PROP"]["PHONE"]["VALUE"]):?><a class="contacts__phone" href="tel:<?=str_replace(Array(" ", "-", "(", ")"), "", $item["PROP"]["PHONE"]["VALUE"])?>"><?=str_replace(array("+7", "(", ")"), array("8", "", ""), $item["PROP"]["PHONE"]["VALUE"])?></a><?endif?>
+					<br><br><a class="shops__link" href="/addresses/?ID=<?=$item["ID"]?>">Перейти к <?if($item["PROP"]["TYPE"]["VALUE_ENUM_ID"]==581):?>точке выдачи<?else:?>магазину<?endif?></a>
                   </div>
                 </div>
 				

@@ -10,6 +10,35 @@ $('a[data-rel=gallery_card]').fancybox({arrows: true, toolbar: false, loop: true
 $('a[data-rel=gallery_img]').fancybox({arrows: false, toolbar: false, loop: true});
 $('a[data-rel=catalog-photo]').fancybox({arrows: false, toolbar: false, loop: true});
 
+/*$("#modal-can-register-link").fancybox({
+  arrows : false, 
+  modal : false,
+  padding     : 20,
+  fitToView   : false,
+  autoSize    : true,
+  closeClick  : false,
+  openEffect  : 'fade',
+  closeEffect : 'fade',
+  wrapCSS     : 'dark',
+  overlayColor: '#f00',  
+});*/
+
+		$('.modal-can-register-link').click(function() {
+			//$('#modal-can-register').slideDown(0);
+			$('#modal-can-register').css('display', 'flex');
+			return false;
+		});		
+		
+		$('.can-register_close').click(function() {
+			$('#modal-can-register').slideUp(0);
+			return false;
+		});		
+		
+if ($(window).height() < 840) {
+	$('.can-register').addClass('can-register__small');
+	console.log($(window).height());
+}	
+
 $(window).on('scroll', function() {
     if ($(window).scrollTop() > 0) $('.basic-layout__header').addClass('fixed');
           else $('.basic-layout__header').removeClass('fixed');

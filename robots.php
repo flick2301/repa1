@@ -172,6 +172,8 @@ Disallow: *PAGEN_6*
 Disallow: *PAGEN_7*
 Disallow: *PAGEN_8*
 Disallow: *PAGEN_9*
+Disallow: *nogeolocation*
+Disallow: */length_30/*
 Disallow: */_*
 Disallow: *_/*
 Disallow: /*?success=
@@ -181,6 +183,7 @@ Disallow: /*?yhid=
 Clean-param: type /
 Clean-param: PAGEN_2 /
 Clean-param: PAGEN_3 /
+Clean-param: nogeolocation /
 Clean-param: PAGEN_4 /
 Clean-param: PAGEN_5 /
 Clean-param: PAGEN_6 /

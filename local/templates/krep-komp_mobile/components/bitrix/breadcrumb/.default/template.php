@@ -20,89 +20,84 @@ if(empty($arResult))
 
 $strReturn = '';
 
-$sorting_index = 0;
+//БЛОК СОСТАВЛЕНИЯ НАВИГАЦИОННОЙ ЦЕПОЧКИ ДЛЯ ВИРТУАЛЬНОГО(НЕСУЩЕСТВУЮЩЕГО) КАТАЛОГА( ПРИСОЕДИНЕННОЙ К КАТАЛОГУ ИЗ 1С)
+$arFilter = array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "CODE" => $arCode[0]);
+$ar_element = CIBlockElement::GetList(array('SORT' => 'asc'),$arFilter, array('*'));
 
-    $arFilter = array(
-        "IBLOCK_TYPE" => 'sorting',
-        "CODE" => $arCode[0]
-    );
-    $ar_element = CIBlockElement::GetList(array('SORT' => 'asc'),$arFilter, array('*'));
-    if($item_element = $ar_element->GetNextElement()){
+if($item_element = $ar_element->GetNextElement())
+{
 
-        if($sorting_index==0){$arResult=array();}
-        if($sorting_index==0){$link = '';}else{
-            array_pop($url_code_ar);
-            $link='/'.implode("/", $url_code_ar);
+    if($sorting_index==0)
+	{
+		$arResult=array();
+		$link = '';
+	}else
+	{
+        array_pop($url_code_ar);
+        $link='/'.implode("/", $url_code_ar);
             
-        }
-        $sorting_index++;
+    }
+    $sorting_index++;
 
 
-        $arProps = $item_element->GetProperties();
-        $arFields = $item_element->GetFields();
+    $arProps = $item_element->GetProperties();
+    $arFields = $item_element->GetFields();
 
 
-        $arResult_sort[] = array('TITLE'=>$arProps['H1']['VALUE'], 'LINK' => $link);
-        //$arResult['SORT_BLOCK'] = 'Y';
+    $arResult_sort[] = array('TITLE'=>$arProps['H1']['VALUE'], 'LINK' => $link);
+    
 		
-		$nav = CIBlockSection::GetNavChain(false, $arFields["IBLOCK_SECTION_ID"]);
-		while($arNav = $nav->GetNext())
-		{
+	$nav = CIBlockSection::GetNavChain(false, $arFields["IBLOCK_SECTION_ID"]);
+	while($arNav = $nav->GetNext())
+	{
 				
-			$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>SORTING_IBLOCK_ID, 'ID'=>$arNav['ID']), false, Array('CODE', 'UF_DIRECTORY'));
-			if($arSect = $res_sect->GetNext()){
+		$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>SORTING_IBLOCK_ID, 'ID'=>$arNav['ID']), false, Array('CODE', 'UF_DIRECTORY'));
+		if($arSect = $res_sect->GetNext())
+		{
 					
-				if($arSect['UF_DIRECTORY']){
-						
-					$arFilter = array(
+			if($arSect['UF_DIRECTORY'])
+			{
+				//ПОДКЛЮЧАЕМ ЦЕПОЧКУ КАТАЛОГА 1С	
+				$arFilter = array(
 						"IBLOCK_TYPE" => 'catalog',
 						"ID" => $arSect['UF_DIRECTORY']
 					);
-					$id_ar = CIBlockSection::GetList(array('SORT' => 'asc'),$arFilter);
-					$id_sec = $id_ar->GetNext();
+				$id_ar = CIBlockSection::GetList(array('SORT' => 'asc'),$arFilter);
+				$id_sec = $id_ar->GetNext();
 
-					$nav2 = CIBlockSection::GetNavChain(false, $id_sec['ID']);
-					$link='/';
+				$nav2 = CIBlockSection::GetNavChain(false, $id_sec['ID']);
+				$link='/';
 
-					while($nav_item=$nav2->Fetch()){
-						$link .=$nav_item['CODE'].'/';
-						$arResult[] = array('TITLE'=>$nav_item['NAME'], 'LINK' => $link);
-					}
-					break;
+				while($nav_item=$nav2->Fetch())
+				{
+					$link .=$nav_item['CODE'].'/';
+					$arResult[] = array('TITLE'=>$nav_item['NAME'], 'LINK' => $link);
+				}
+				
 							
-				}	
-			}
+			}	
 		}
-    }elseif($sorting_index!=0){
-        /*$arFilter = array(
-            "IBLOCK_TYPE" => 'catalog',
-            "CODE" => $code
-        );
-        $id_ar = CIBlockSection::GetList(array('SORT' => 'asc'),$arFilter);
-        $id_sec = $id_ar->GetNext();
-
-        $nav = CIBlockSection::GetNavChain(false, $id_sec['ID']);
-        $link='/';
-
-        while($nav_item=$nav->Fetch()){
-            $link .=$nav_item['CODE'].'/';
-            $arResult[] = array('TITLE'=>$nav_item['NAME'], 'LINK' => $link);
-        }
-        ?><?
-        break;
-		*/
-    }
-
+	}
+}
 if(count($arResult_sort)){
     $arResult = array_merge($arResult, array_reverse($arResult_sort));
 }
 
+//БЛОК СОСТАВЛЕНИЯ НАВИГАЦИОННОЙ ЦЕПОЧКИ ДЛЯ ВИРТУАЛЬНОГО(НЕСУЩЕСТВУЮЩЕГО) КАТАЛОГА (КОНЕЦ)
 
 
 
-
-
-
+//ДЛЯ РАСПРОДАЖИ УБИРАЕМ ЛИШНЮЮ ХЛЕБНУЮ КРОШКУ (КРЕПЕЖ)
+foreach($arResult as $key=>$bread)
+{
+	if($bread['TITLE']=="Распродажа крепежа")
+	{
+		unset($arResult[$key+1]);
+		$arResult=array_values($arResult);
+		break;
+	}
+}
+//ДЛЯ РАСПРОДАЖИ УБИРАЕМ ЛИШНЮЮ ХЛЕБНУЮ КРОШКУ (КРЕПЕЖ) (КОНЕЦ)
 
 //we can't use $APPLICATION->SetAdditionalCSS() here because we are inside the buffered function GetNavChain()
 

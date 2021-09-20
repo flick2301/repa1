@@ -331,6 +331,9 @@ table.tech th {
 	border-top: 1px solid #1e1e1e;
     border-bottom: 1px solid #1e1e1e;
 }	
+.tech__new-tech tr:nth-child(odd) td {
+    background-color: #eee;	
+}
 .tech_title {
     margin-top: 20px;
     margin-left: 30px;
@@ -1052,7 +1055,7 @@ ol.tech li {
 	justify-content: space-between;
 	flex-wrap: wrap;
 	height: 41px;
-	margin: 0 5px 21px;
+	margin: 12px 5px 21px;
 	overflow: visible;
 }
 .page_count_panel .page_count_panel_viewblock {
@@ -1337,6 +1340,159 @@ ol.tech li {
 .product-data--specsfull {
 	max-width: 100%;
 }
+.modal-can-register {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+    right: 0;
+    background: rgba(0,0,0,.8);
+    overflow: auto;
+    transition: opacity .3s;
+    transform: translateZ(0);
+    box-shadow: 0 0 10rem 10rem rgb(0 0 0 / 80%);
+    border-radius: 3px;
+    box-sizing: border-box;
+    z-index: 100000;
+	width: 100%;
+	overflow: hidden;
+	display: none;
+	justify-content: center;
+	align-items: center;	
+}
+.inmodal-can-register {
+	width: 735px;
+	max-width: 90%;	
+	max-height: 97%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	margin: auto;
+}
+.can-register {
+	background: #F9F5FF url('/images/can-register.png') 100% 100% no-repeat;
+	border-radius: 20px;
+	overflow: hidden;
+	position: relative;
+}	
+.can-register_title {
+	margin: 50px 56px;
+	max-width: 481px;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 35px;
+	line-height: 115%;
+}
+.can-register__small .can-register_title {
+	margin: 25px 56px 20px;	
+	font-size: 20px;	
+}
+.can-register-info {
+	list-style: none;	
+	margin: 0 50px;
+}
+.can-register__small .can-register-info {
+	margin: 0 50px;	
+}
+.can-register-info_item {
+	padding: 10px 0;
+	padding-left: 57px;
+	margin-bottom: 30px;
+	max-width: 577px;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 115%;
+	color: #000000;	
+	text-align: left;
+}	
+.can-register__small .can-register-info_item {
+	margin-bottom: 15px;
+	font-size: 16px;
+}
+.can-register-info_item__status {
+	background: transparent url('/images/can-register-info_item__status.svg') 0 50% / 43px 43px no-repeat;
+}
+.can-register-info_item__sale {
+	background: transparent url('/images/can-register-info_item__sale.svg') 0 50% / 41px 42px no-repeat;	
+}
+.can-register-info_item__personal {
+	background: transparent url('/images/can-register-info_item__personal.svg') 0 50% / 36px 35px no-repeat;	
+}
+.can-register-info_item__history {
+	background: transparent url('/images/can-register-info_item__history.svg') 0 50% / 36px 36px no-repeat;	
+}	
+.can-register__button {
+	width: 340.37px;
+	max-width: calc(100% - 104px);
+	height: 81.04px;
+	margin: 87px 52px 6px;
+	color: #fff;
+	background: #552FEC;
+	display: block;
+	text-align: center;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;	
+	font-size: 24px;
+	line-height: 115%;	
+	border-radius: 10px;
+}	
+.can-register__small .can-register__button {
+	margin: 37px 52px 6px;
+	font-size: 20px;
+	height: 60px;
+}
+.can-register__no-personal {
+	width: 326px;
+	max-width: calc(100% - 120px);
+	height: 32px;
+	margin: 0 60px;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 115%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000000;
+}	
+.can-register__small .can-register__no-personal {
+	font-size: 18px;
+}
+.can-register__registration {
+	height: 21px;
+	width: 326px;
+	max-width: calc(100% - 120px);	
+	margin: 0 60px;	
+	margin-bottom: 38px;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 115%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #552FEC;
+}
+.can-register__small .can-register__registration {
+	font-size: 18px;
+	margin-bottom: 28px;
+}
+.can-register_close {
+	width: 24px;
+	height: 23px;
+	background: transparent url('/images/can-register_close.svg') 0 0 / contain no-repeat;	
+	cursor: pointer;	
+	position: absolute;
+	top: 25px;
+	right: 25px;
+}
+
 
 
 
@@ -2029,6 +2185,14 @@ main {
 .page_count_panel .page_count_panel_block {
 	margin-top: auto;
 }
+.can-register {
+	background: #F9F5FF;
+}
+.can-register_title, .can-register__small .can-register_title {
+	font-size: 20px;
+	text-align: left;
+	padding-right: 50px;
+}
 }
 
 
@@ -2099,6 +2263,30 @@ main {
 }
 .catalog-feed__item__withpic {
     margin: 0 7px 21px!important;	
+}	
+.can-register_title, .can-register__small .can-register_title {
+    margin: 30px 20px;
+	font-size: 18px;
+}	
+.can-register-info, .can-register__small .can-register-info {
+    margin: 0 20px;
+}	
+.can-register-info_item, .can-register__small .can-register-info_item {
+    margin-bottom: 15px;
+	font-size: 16px;
+}	
+.can-register__button, .can-register__small .can-register__button {
+    max-width: calc(100% - 40px);
+    height: 61.04px;
+    margin: 37px 20px 6px;
+    font-size: 18px;
+}	
+.can-register__no-personal, .can-register__small .can-register__no-personal { 
+	font-size: 16px;
+}
+.can-register__registration, .can-register__small .can-register__registration {
+	font-size: 18px;
+	margin-bottom: 28px;
 }
 }
 

@@ -1476,7 +1476,136 @@ ol.tech li {
 .footer__payments {
 	justify-content: center;
 }
-
+.modal-can-register-mobile {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+    right: 0;
+    background: rgba(0,0,0,.8);
+    overflow: auto;
+    transition: opacity .3s;
+    transform: translateZ(0);
+    box-shadow: 0 0 10rem 10rem rgb(0 0 0 / 80%);
+    border-radius: 3px;
+    box-sizing: border-box;
+    z-index: 100000;
+	width: 100%;
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+.inmodal-can-register-mobile {
+	width: 367px;
+	max-width: 100%;	
+	max-height: 97%;
+	margin: auto;
+}
+.can-register-mobile {
+	background: #F9F5FF url('/images/can-register-mobile.png') 50% 50% no-repeat;
+	border-radius: 20px;
+	overflow: hidden;
+	position: relative;
+}	
+.can-register-mobile_title {
+	margin: 17px 36px 25px 25px;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 115%;
+}
+.can-register-mobile-info {
+	margin: 0 24px;
+}
+.can-register-mobile-info_item {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 115%;
+	padding-left: 85px;
+	margin-bottom: 28px;
+}
+.can-register-mobile-info_title {
+	margin-bottom: 5px;	
+}
+.can-register-mobile-info_item__sale {
+	background: transparent url('/images/can-register-info_item__sale.svg') 0 50% / 61px 63px no-repeat;	
+}
+.can-register-mobile-info_item__history {
+	background: transparent url('/images/can-register-info_item__history.svg') 0 50% / 58px 60px no-repeat;	
+}	
+.can-register-mobile-info-group {
+}
+.can-register-mobile-info-group_item {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 22px;
+	color: #000000;	
+}
+.can-register-mobile-info-group_item::before {
+  content: '\2981';
+  color: #552FEC;
+  font-size: 15px;
+  margin-right: 7px;
+  font-family: Arial;
+}
+.can-register-mobile__button {
+	width: 181px;
+	max-width: 90%;
+	height: 43px;
+	color: #fff;
+	background: #552FEC;
+	display: block;
+	text-align: center;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;	
+	font-size: 15px;
+	line-height: 115%;	
+	margin: auto;
+	border-radius: 10px;
+}
+.can-register-mobile__no-personal {
+	max-width: 90%;
+	margin: 20px auto 8px;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 115%;
+	display: block;
+	text-align: center;
+	width: 200px;
+	color: #000000;
+}
+.can-register-mobile__registration {
+	max-width: 90%;	
+	margin: 0 auto;	
+	margin-bottom: 21px;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 115%;
+	display: block;
+	text-align: center;
+	width: 200px;
+	color: #552FEC;
+}
+.can-register-mobile_close {
+	width: 11.5px;
+	height: 11px;
+	background: transparent url('/images/can-register_close.svg') 0 0 / contain no-repeat;	
+	cursor: pointer;	
+	position: absolute;
+	top: 12px;
+	right: 12px;
+}
 
 
 

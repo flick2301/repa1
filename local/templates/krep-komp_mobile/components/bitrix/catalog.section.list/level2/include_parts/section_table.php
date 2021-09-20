@@ -1,13 +1,16 @@
 <?
 $first_sort_field = 'DIAMETR';
 $aSection   = CIBlockSection::GetList(array(), array('IBLOCK_ID'=> $arParams["IBLOCK_ID"], 'ID'=> $arResult["VARIABLES"]["SECTION_ID"],), false, array( 'UF_SEC_LIST_SIZES' ) )->Fetch();
-if($aSection["UF_SEC_LIST_SIZES"]){
-$rsGender = CUserFieldEnum::GetList(array(), array("ID" => $aSection["UF_SEC_LIST_SIZES"]));
+if($aSection["UF_SEC_LIST_SIZES"])
+{
+	$rsGender = CUserFieldEnum::GetList(array(), array("ID" => $aSection["UF_SEC_LIST_SIZES"]));
     while ($arCat = $rsGender->GetNext()) {
         $arSizes_val[] = $arCat["XML_ID"];
     }
 	if(in_array('DIAMETR_VNUTRENNIY', $arSizes_val))
 		$first_sort_field = 'DIAMETR_VNUTRENNIY_INTEGER';
+	if(in_array('SHIRINA', $arSizes_val))
+			$first_sort_field = 'SHIRINA';
 	
 	
 }?>

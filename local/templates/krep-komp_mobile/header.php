@@ -128,7 +128,7 @@ $APPLICATION->IncludeFile(
 	
 	
 		global $USER;
-		if ($USER->GetID()==1 || $_GET["administrator"]) {
+		if ($USER->IsAdmin() || $_GET["administrator"]) {
 			$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/administrator.css", true);	
 			$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/administrator.js");
 		}	
@@ -245,6 +245,7 @@ $APPLICATION->IncludeFile(
 				<a href='/prays_listy/' class='mobile__item'>Прайс-лист</a>
 				<a href='/certificates/' class='mobile__item'>Сертификаты</a>
 				<a href='/oplata/' class='mobile__item'>Получение и оплата</a>
+				<a href='/addresses/' class='mobile__item'>Адреса магазинов</a>
 				<a href='/contacts/' class='mobile__item'>Контакты</a>
 			</div>
 		</div>

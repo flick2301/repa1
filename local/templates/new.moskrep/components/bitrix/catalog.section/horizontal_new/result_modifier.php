@@ -275,6 +275,9 @@ if(count($arResult['UF_CHARS'])>1)
 		$arVal = explode(';', trim($char,';'));
 		$arResult['GENERAL_PROPERTIES'][$arVal[0]]=$arVal[1];
 	}
+}elseif($arResult['UF_CHARS'][0]=='-')
+{
+	$arResult['GENERAL_PROPERTIES']=[];
 }else{
 	$arResult['GENERAL_PROPERTIES']=$arProp;
 }

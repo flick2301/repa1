@@ -1,16 +1,3 @@
-.how [class*="ymaps-2"][class*="-ground-pane"] {
-	filter: grayscale(1);
-	-ms-filter: grayscale(1);
-	-webkit-filter: grayscale(1);
-	-moz-filter: grayscale(1);
-	-o-filter: grayscale(1);
-}
-
-
-
-
-
-
 .shops__map {
   border-radius: 10px;
   overflow: hidden;

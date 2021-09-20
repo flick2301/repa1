@@ -179,6 +179,7 @@ if($arResult["LOG"] && $USER->isAdmin()):?>
 		"COMPATIBLE_MODE" => "Y",
 		"DISABLE_INIT_JS_IN_COMPONENT" => "N",
 		"CURRENCY_ID" => "RUB",
+		"SET_BROWSER_TITLE"=>"N",
 		
 	    ),
 	    false

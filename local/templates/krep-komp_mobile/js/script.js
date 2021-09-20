@@ -10,6 +10,17 @@ $('a[data-rel=gallery_card]').fancybox({arrows: true, toolbar: false, loop: true
 $('a[data-rel=gallery_img]').fancybox({arrows: false, toolbar: false, loop: true});
 $('a[data-rel=catalog-photo]').fancybox({arrows: false, toolbar: false, loop: true});
 
+		$('.modal-can-register-link').click(function() {
+			//$('#modal-can-register-mobile').slideDown(0);
+			$('#modal-can-register-mobile').css('display', 'flex');
+			return false;
+		});		
+		
+		$('.can-register-mobile_close').click(function() {
+			$('#modal-can-register-mobile').slideUp(0);
+			return false;
+		});	
+
 $(window).on('scroll', function() {
     if ($(window).scrollTop() > 0) $('.basic-layout__header').addClass('fixed');
           else $('.basic-layout__header').removeClass('fixed');
