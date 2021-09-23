@@ -142,11 +142,15 @@ if($_POST['ENUM_LIST']['BLOCKS'])
 	$element_sort_field = 'sort';
 	$arParams["HIDE_NOT_AVAILABLE"]='L';
 	$arParams["HIDE_NOT_AVAILABLE_OFFERS"]='L';
+	$arParams["ELEMENT_SORT_FIELD"]='';
+	$arParams["ELEMENT_SORT_FIELD2"]='';
+	
 }
 else
 {
 	$template = "horizontal_new";
-	$element_sort_field = 'property_'.$first_sort_field;
+	$arParams["ELEMENT_SORT_FIELD"] = 'property_'.$first_sort_field;
+	$arParams["ELEMENT_SORT_FIELD2"]='property_DLINA';
 	
 }
 
@@ -156,9 +160,9 @@ $intSectionID = $APPLICATION->IncludeComponent(
 					array(
 						"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 						"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-						"ELEMENT_SORT_FIELD" => $element_sort_field,
+						"ELEMENT_SORT_FIELD" => $arParams["ELEMENT_SORT_FIELD"],
 						"ELEMENT_SORT_ORDER" => 'asc',
-						"ELEMENT_SORT_FIELD2" => 'property_DLINA',
+						"ELEMENT_SORT_FIELD2" => $arParams["ELEMENT_SORT_FIELD2"],
 						"ELEMENT_SORT_ORDER2" => 'asc',
 						"PROPERTY_CODE" => ['*'],
 						"PROPERTY_CODE_MOBILE" => $arParams["LIST_PROPERTY_CODE_MOBILE"],
