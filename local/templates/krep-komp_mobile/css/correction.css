@@ -2361,6 +2361,26 @@ main {
 
 
 
+@media (max-width: 320px) {
+	#banner_block_new > div > div {
+		font-size: 14px;
+	}
+.catalog-feed__item__withpic {
+		/*width: calc(100% - 14px);
+		height: auto;
+		flex: 0 0 calc(100% - 14px);
+		max-width: calc(100% - 14px);*/	
+	}
+.catalog-feed__list {
+    justify-content: center;
+	align-items: center;
+}		
+}
+
+
+
+
+
 
 
 
