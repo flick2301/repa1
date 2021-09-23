@@ -140,6 +140,8 @@ if($_POST['ENUM_LIST']['BLOCKS'])
 {
 	$template = "vertical";
 	$element_sort_field = 'sort';
+	$arParams["HIDE_NOT_AVAILABLE"]='L';
+	$arParams["HIDE_NOT_AVAILABLE_OFFERS"]='L';
 }
 else
 {

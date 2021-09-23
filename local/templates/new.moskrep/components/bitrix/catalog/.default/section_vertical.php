@@ -86,7 +86,7 @@
 						"USE_MAIN_ELEMENT_SECTION" => $arParams["USE_MAIN_ELEMENT_SECTION"],
 						'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
 						'CURRENCY_ID' => $arParams['CURRENCY_ID'],
-						'HIDE_NOT_AVAILABLE' => $arParams["HIDE_NOT_AVAILABLE"],
+						'HIDE_NOT_AVAILABLE' => "L",
 						'HIDE_NOT_AVAILABLE_OFFERS' => $arParams["HIDE_NOT_AVAILABLE_OFFERS"],
 
 						'LABEL_PROP' => $arParams['LABEL_PROP'],

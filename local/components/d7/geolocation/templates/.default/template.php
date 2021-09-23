@@ -14,11 +14,12 @@ $name = $request->getCookie("geo_text");
 
          $ip = \Rover\GeoIp\Location::getCurIp();
          $location = \Rover\GeoIp\Location::getInstance($ip);
-		 $cityName = $location->getCityName();
-       
+		 //НУЖНО ПРОВЕРИТЬ НЕОБХОДИМ ЛИ ЭТОТ ЗАПРОС НА ОПРЕДЕЛЕНИЕ ГОРОДА ПО IP АВТОМАТОМ. ВИДИМО СЕРВИСЫ ОШИБАЛИСЬ
+		 //$cityName = $location->getCityName();
+		//$loc_reg=$location->getRegionName();
 	   
       
-       $loc_reg=$location->getRegionName();
+       
 	   
 
 $loc_reg_id = 0;
