@@ -73,7 +73,142 @@
   @media (max-width: 767px) {
     .sidebar__name {
       font-size: 16px; } }
-
+.sidebar__name-discount {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10px;
+	line-height: 125%;
+	letter-spacing: 0.015em;
+	color: #808080;
+}
+.sidebar__name-discount-icons {
+	width: 141px;
+	height: 28.51px;
+	border: 1px solid #552FEC;
+	box-sizing: border-box;
+	border-radius: 20px;	
+	margin-top: 7.18px;
+	display: flex;
+	flex-wrap: nowrap;
+	position: telative;
+}
+.sidebar__name-discount-icon {
+	width: 47px;
+	height: calc(100% + 2px);	
+	box-sizing: border-box;
+	background-position: 50% -8px!important;
+	background-repeat: no-repeat!important;
+	background-size: 34px 34px!important;	
+	border: 1px solid transparent;
+	position: relative;
+	top: -1px;
+	opacity: 0.4;
+}
+.sidebar__name-discount-icon.active {
+	background: #FFFFFF;
+	border: 1px solid #552FEC;
+	border-radius: 20px;	
+	opacity: 1;
+}
+.sidebar__name-discount-icon_copper {
+	background-image: url('./images/sidebar__name-discount-icon_copper.svg')!important;
+	left: -1px;
+}
+.sidebar__name-discount-icon_silver {
+	background-image: url('./images/sidebar__name-discount-icon_silver.svg')!important;	
+}
+.sidebar__name-discount-icon_gold {
+	background-image: url('./images/sidebar__name-discount-icon_gold.svg')!important;	
+	right: -1px;
+}
+.sidebar__manager {	
+	margin-bottom: 17px;
+}
+@media (max-width: 767px) {
+.sidebar__manager {	
+	margin-bottom: 17px;
+}	
+}
+.sidebar__manager.active {	
+	margin-bottom: 25px;
+}
+@media (max-width: 767px) {
+.sidebar__manager.active {	
+	margin-bottom: 20px;
+}	
+}
+.sidebar__manager div {
+	display: none;
+}	
+.sidebar__manager.active div {
+	display: block;
+}	
+.sidebar__manager-title {
+	display: block!important;
+	cursor: pointer;	
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 125%;
+	letter-spacing: 0.015em;
+	color: #000000;	
+	padding-left: 40px;
+	padding-top: 2px;
+    background-image: url(./images/icons8-manager.svg);
+	background-repeat: no-repeat;
+    background-size: 21px;	
+	background-position: 0 0!important; }
+@media (max-width: 767px) {
+.sidebar__manager-title {	  
+	background-size: 18px; } }
+.sidebar__manager-schedule {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 10px;
+	line-height: 125%;
+	letter-spacing: 0.015em;
+	color: #808080;	
+	padding-left: 40px;
+	margin-top: 8px;
+}	
+.sidebar__manager-mail {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 125%;
+	letter-spacing: 0.015em;
+	color: #111111;	
+	padding-left: 65px;	
+	margin-top: 8px;
+	background: url('./images/manager-mail.svg') no-repeat 40px 0 / 17px 17px!important;	
+}
+.sidebar__manager-phone {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 125%;
+	letter-spacing: 0.015em;
+	color: #111111;	
+	padding-left: 65px;	
+	margin-top: 8px;
+	background: url('./images/manager-phone.svg') no-repeat 40px 0 / 17px 17px!important;	
+}
+.sidebar__manager-name {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 125%;
+	letter-spacing: 0.015em;
+	color: #000000;	
+	padding-left: 40px;
+	margin-top: 7px;
+}
 .sidebar__desc {
   font-family: 'Montserrat';
   font-weight: 500;
@@ -111,14 +246,14 @@
   margin-left: -25px;
   margin-right: -25px;
   padding: 0px 25px;
-  padding-bottom: 25px;
+  padding-bottom: 10px;
   margin-bottom: 30px; }
   @media (max-width: 767px) {
     .sidebar__profile {
       margin-left: -20px;
       margin-right: -20px;
       padding: 0px 20px;
-      padding-bottom: 20px;
+      padding-bottom: 10px;
       margin-bottom: 25px; } }
 
 .sidebar__icon {
@@ -132,6 +267,7 @@
   min-height: 68px;
   background: #552FEC;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
@@ -147,6 +283,10 @@
   padding-bottom: 16px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   margin-bottom: 16px; }
+.sidebar__group--nohr {
+    margin-bottom: 0px;	
+	padding-bottom: 13px;
+    border-bottom: none; }	
   .sidebar__group:last-child {
     border-bottom: none;
     margin-bottom: 0px;
@@ -161,14 +301,30 @@
       @media (max-width: 767px) {
         .sidebar__group .sidebar__link--orders {
           background-size: 18px; } }
+    .sidebar__group .sidebar__link--orders-active {
+      background-image: url(./images/settings/clock.svg); 
+	  background-size: 22px;}
+      @media (max-width: 767px) {
+        .sidebar__group .sidebar__link--orders-active {
+          background-size: 18px; } }		  
     .sidebar__group .sidebar__link--orders.sidebar__link--active {		
 	  background-image: url(./images/settings/basket-active.svg); }		
+    .sidebar__group .sidebar__link--orders-active.sidebar__link--active {		
+	  background-image: url(./images/settings/clock-active.svg); }		  
     .sidebar__group .sidebar__link--allorders {
       background-image: url(./images/settings/all.svg);
       background-position: left 3px center; }
       @media (max-width: 767px) {
         .sidebar__group .sidebar__link--allorders {
           background-size: 16px; } }
+    .sidebar__group .sidebar__link--organizations {
+      background-image: url(./images/settings/organizations.svg); 
+	  background-size: 24px; }
+      @media (max-width: 767px) {
+        .sidebar__group .sidebar__link--organizations {
+          background-size: 20px; } }	  
+    .sidebar__group .sidebar__link--organizations.sidebar__link--active {		
+	  background-image: url(./images/settings/organizations-active.svg); }			  
 	.sidebar__group .sidebar__link--allorders.sidebar__link--active {
 	  background-image: url(./images/settings/all-active.svg); }
     .sidebar__group .sidebar__link--settings {

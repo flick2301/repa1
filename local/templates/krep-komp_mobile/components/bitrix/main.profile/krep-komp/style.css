@@ -1,0 +1,101 @@
+.notetext, .errortext {
+	position: relative;
+	height: 50px;
+	top: 20px;
+}
+
+
+
+
+.profile-block-hidden
+{
+	display: none;
+}
+
+.profile-block-shown
+{
+	display:block;
+}
+
+.profile-table
+{
+	width: 100%;
+}
+
+.profile-link
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-weight: bold;
+}
+
+.profile-table td {
+	vertical-align: top;
+	width:50%;
+}
+
+div.bx-auth-profile input.bx-auth-input {vertical-align:middle;}
+div.bx-auth-profile span.bx-auth-secure {background-color:#FFFAE3; border:1px solid #DEDBC8; padding:2px; display:inline-block; vertical-align:middle;}
+div.bx-auth-profile div.bx-auth-secure-icon {background-image:url(images/sec.png); background-repeat:no-repeat; background-position:center; width:19px; height:18px;}
+div.bx-auth-profile div.bx-auth-secure-unlock {background-image:url(images/sec-unlocked.png);}
+
+
+
+
+
+
+
+
+
+
+.user-notifications {
+	margin-top: 30px;
+}
+.user-notifications__title {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 135%;
+	color: #000000;	
+	margin-bottom: 24px;
+}
+.user-notifications__item {
+}
+.user-notifications__label {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 125%;
+	letter-spacing: 0.015em;
+	color: #000000;	
+	position: relative;
+	margin-bottom: 16px;
+	cursor: pointer;
+}
+.user-notifications__checkbox {
+	display: none;
+}
+.user-notifications__checkbox+.user-notifications__label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+.user-notifications__checkbox+.user-notifications__label::before {
+  content: ' ';
+	width: 20px;
+	height: 20px;
+	background: #FFFFFF;
+	border: 1px solid #552FEC;
+	box-sizing: border-box;
+	border-radius: 4px;
+	display: block;
+	margin-right: 6px;
+}
+.user-notifications__checkbox:checked+.user-notifications__label::before {
+  background: url('./images/mark.svg') no-repeat 50% 50% / 11px 8px;
+}
+

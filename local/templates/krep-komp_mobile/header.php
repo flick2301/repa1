@@ -593,7 +593,7 @@ $APPLICATION->IncludeFile(
 		   
 			<?$page_footer_menu = Array("/","/basket/","/order/","/import/");?>
 		
-			<?if (!in_array($APPLICATION->GetCurPage(), $page_footer_menu)):?>
+			<?if (!in_array($APPLICATION->GetCurPage(), $page_footer_menu) && !preg_match('/test[0-9]*\.php/', $APPLICATION->GetCurPage())):?>
 
   
 <?if($APPLICATION->GetCurPage() == "/personal/" || $APPLICATION->GetCurPage() == "/personal/private/" || $APPLICATION->GetCurPage() == "/personal/change_pass/"):?>
