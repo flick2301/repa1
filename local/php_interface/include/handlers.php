@@ -208,6 +208,24 @@ if (isset ($_GET['type'])){
 }
 
 
+AddEventHandler("sale", "OnSaleComponentOrderOneStepOrderProps", "OnSaleComponentOrderOneStepOrderProps");
+function OnSaleComponentOrderOneStepOrderProps(&$arResult, &$arUserResult, &$arParams)
+{
+	global $USER;
+	if (!$USER->IsAuthorized()) {
+		
+                $arSelect = Array("*");
+                $arFilter = Array("IBLOCK_ID"=>22, "PROPERTY_SITES"=>$_SERVER['HTTP_HOST']);
+                $res = CIBlockElement::GetList(Array(), $arFilter, false, array(), $arSelect);
+                if($ob = $res->GetNextElement())
+                {
+                    $arFields = $ob->GetFields();
+                    $arProperties = $ob->GetProperties();
+					if ($arProperties["LOCATION"]["VALUE"]) $arUserResult['DELIVERY_LOCATION'] =  $arProperties["LOCATION"]["VALUE"];
+					//$arUserResult['DELIVERY_LOCATION'] = 269; // id Санкт-Петербурга
+                }
+	}
+}
 
 //Обработчик свойств заказа
 AddEventHandler("sale", "OnSaleComponentOrderJsData", "SaleComponentOrderJsData");
