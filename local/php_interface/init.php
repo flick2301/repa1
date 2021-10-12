@@ -33,4 +33,8 @@ Loader::registerAutoLoadClasses(null, array(
 ));
 
 
+//Классы (СВои)
+include_once($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/include/classes/autoload.php');
+
+
 ?>
