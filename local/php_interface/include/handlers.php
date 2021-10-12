@@ -349,7 +349,10 @@ function bxOnSaleOrderBeforeSaved(Main\Event $event)
 
 
 			$deliveryCollection = $order->getShipmentCollection()->getNotSystemItems();
-
+			/*
+			* НЕ НУЖНО К СВОЙСТВУ "Расчетная стоимость доставки" ПРИРАВНИВАТЬ СТОИМОСТЬ КАЖДОЙ ДОСТАВКИ - ЭТО НЕПРАВИЛЬНОЕ РЕШЕНИЕ! 
+			1) ЕСЛИ СЛУЖБ НЕСКОЛЬКО, ТО КАЖДОЙ ПЛЮСУЕТСЯ СТОИМОСТЬ ДОСТАВКИ
+			2) ЕСЛИ НОВАЯ СЛУЖБА И НЕ ПРОПИСАН ID(МАГИЧЕСКИЙ ПРЯМО В КОДЕ), ТО ВСЕГДА 0Р. И 1С НЕ МОЖЕТ ИЗМЕНИТЬ СТОИМОСТЬ ДОСТАВКИ
 			foreach ($deliveryCollection as $shipment) {
 				if ($shipment->getDeliveryId() == 2 || $shipment->getDeliveryId() == 28 || $shipment->getDeliveryId() == ID_DELIVERY_DAYTODAY || $shipment->getDeliveryId() == ID_DELIVERY_SUNDAY) {
 			//if ($shipment->getDeliveryId() == 11) $delivery_price+=400;
@@ -363,6 +366,7 @@ function bxOnSaleOrderBeforeSaved(Main\Event $event)
 					$shipment->setField("CUSTOM_PRICE_DELIVERY", "Y");
 				}
 			}
+			*/
 		}
  
    //file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt',  file_get_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt').$order->getField("ID").": ".$order->getPrice()."---------------\n".$delivery_price."---------------\n".$order->getDeliveryPrice()."\n".print_r($props, true)."\n++++++++++++++");
