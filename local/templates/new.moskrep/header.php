@@ -173,7 +173,6 @@ $APPLICATION->IncludeFile(
 
 
 <body class="basic-layout basic-layout--default" id="basic-layout">
-
 <?$APPLICATION->ShowPanel();?>
 
 <?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>

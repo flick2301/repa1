@@ -12,6 +12,7 @@ if (Loader::includeModule('rover.geoip')){
 $request = Application::getInstance()->getContext()->getRequest();
 $name = $request->getCookie("geo_text");
 
+
          $ip = \Rover\GeoIp\Location::getCurIp();
          $location = \Rover\GeoIp\Location::getInstance($ip);
 		 //НУЖНО ПРОВЕРИТЬ НЕОБХОДИМ ЛИ ЭТОТ ЗАПРОС НА ОПРЕДЕЛЕНИЕ ГОРОДА ПО IP АВТОМАТОМ. ВИДИМО СЕРВИСЫ ОШИБАЛИСЬ

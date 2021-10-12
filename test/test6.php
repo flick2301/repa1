@@ -1,19 +1,33 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Личный кабинет");//Зависит от выбранного пункта меню!?>
-<?
+
+<?CJSCore::Init(array('ajax'));?>
 
 
+<script>
+//js
 
-                $arSelect = Array("*");
-                $arFilter = Array("IBLOCK_ID"=>22, "PROPERTY_SITES"=>$_SERVER['HTTP_HOST']);
-                $res = CIBlockElement::GetList(Array(), $arFilter, false, array(), $arSelect);
-                if($ob = $res->GetNextElement())
-                {
-                    $arFields = $ob->GetFields();
-                    $arProperties = $ob->GetProperties();
-                    echo $arProperties["LOCATION"]["VALUE"];
-                }
-				
+offersId = 54;
 
-				
-?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+var postData = {               
+  'sessid': BX.bitrix_sessid(),
+  'site_id': BX.message('SITE_ID'),
+  'action': 'add',
+  'id': offersId,
+  'quantity': 1,
+};
+BX.ajax({
+   url: '/test/file.php',
+   method: 'POST',
+   data: postData,
+   dataType: 'json',
+   onsuccess: function(result){      
+      console.log(result);
+   },
+   onfailure: function(result){
+      console.log(result);
+   } 
+});
+
+</script>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

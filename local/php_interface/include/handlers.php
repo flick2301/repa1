@@ -777,7 +777,7 @@ function ChangeMyContent(&$content)
 	$content = str_replace("  ", " ", $content);
 	//$content = sanitize_output($content);
 	
-	if(!($_SERVER['HTTP_HOST']=='krep-komp.ru' || $_SERVER['HTTP_HOST']=='spb.krep-komp.ru'))
+	if(!($_SERVER['HTTP_HOST']=='krep-komp.ru' || $_SERVER['HTTP_HOST']=='spb.krep-komp.ru' || $_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'))
 	{	
 		$content = str_replace('Адреса магазинов', 'Точки выдачи', $content);
 	}

@@ -385,3 +385,6 @@ if($arResult['SECTION']["UF_DOP_SETTINGS"])
 }
 
 if (count($arResult["REFERENCE"]["ITEM"])) $GLOBALS["REFERENCE"] = $arResult["REFERENCE"]["ITEM"];
+
+\Bitrix\Main\Loader::includeModule('dev2fun.opengraph');
+\Dev2fun\Module\OpenGraph::Show($arResult['SECTION']['ID'],'section');
