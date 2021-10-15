@@ -4,30 +4,37 @@ namespace Exchange1C;
 
 class NewCSaleOrderLoader extends \CSaleOrderLoader
 {
-    public function nodeHandler(\CDataXML $value, $fileStream)
+    public function nodeHandler(\CDataXML $dataXml, $fileStream)
     {
-        $value_ar = $value->GetArray();
+        $value_ar = $dataXml->GetArray();
+		$importer = $this->importer;
 		$arAgentInfo = $this->collectAgentInfo($value_ar[GetMessage("CC_BSC1_AGENT")]["#"]);
-		if(!empty($value_ar[GetMessage("CC_BSC1_DOCUMENT")]) || !ImportDiscount::isUserExist($arAgentInfo["AGENT"]["ID"]))
+		//\Bitrix\Main\Diag\Debug::dumpToFile($importer, "", '/upload/1loader.txt');
+		//\Bitrix\Main\Diag\Debug::dumpToFile([ImportDiscount::isUserExist($arAgentInfo["AGENT"]["ID"]), $arAgentInfo["AGENT"]["ID"]], "", '/upload/2loader.txt');
+		if(!empty($value_ar[GetMessage("CC_BSC1_CONTAINER")]["#"][GetMessage("CC_BSC1_DOCUMENT")]) || !empty($value_ar[GetMessage("CC_BSC1_DOCUMENT")]) || !ImportDiscount::isUserExist($arAgentInfo["AGENT"]["ID"]))
         {
-            parent::nodeHandler($value, $fileStream); // это мне не надо было, пусть родитель мучается
+            parent::nodeHandler($dataXml, $fileStream); // это мне не надо было, пусть родитель мучается
 			
 			$value = $value_ar[GetMessage("CC_BSC1_AGENT")]["#"];
             $arAgentInfo = $this->collectAgentInfo($value);
 			
-			try
+			if(!empty($value))
 			{
-				if($arAgentInfo["AGENT"]["OKPO_CODE"])
+				try
 				{
-					$user = new ImportDiscount($arAgentInfo["AGENT"]["ID"], $arAgentInfo["AGENT"]["OKPO_CODE"]);
-				}
+					if($arAgentInfo["AGENT"]["OKPO_CODE"])
+					{
+						$user = new ImportDiscount($arAgentInfo["AGENT"]["ID"], $arAgentInfo["AGENT"]["OKPO_CODE"]);
+						\Bitrix\Main\Diag\Debug::dumpToFile($arAgentInfo["AGENT"]["ID"], "", '/upload/1loader.txt');
+					}
 								
-			}catch(ImportDiscount $exception)
-			{
-				echo $exception->getMessage();
+					}catch(ImportDiscount $exception)
+					{
+						echo $exception->getMessage();
+					}
+						// $arAgentInfo - вот тут у нас уже нормальные данные, прям тут можем их записывать в БД или еще чего нибудь
 			}
-			// $arAgentInfo - вот тут у нас уже нормальные данные, прям тут можем их записывать в БД или еще чего нибудь
-        }
+		}
         elseif($this->arParams["IMPORT_NEW_ORDERS"] == "Y")
         {
             $value = $value_ar[GetMessage("CC_BSC1_AGENT")]["#"];
