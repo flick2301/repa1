@@ -283,7 +283,7 @@ if (id) {
 //Расчет стоимости доставки
 function setDeliveryPrice(rel, id) {
 	
-	if (BX.Sale.OrderAjaxComponent.currentDelivery!=2 && BX.Sale.OrderAjaxComponent.currentDelivery!=28 && BX.Sale.OrderAjaxComponent.currentDelivery!=ID_DELIVERY_DAYTODAY && BX.Sale.OrderAjaxComponent.currentDelivery!=ID_DELIVERY_SUNDAY) return;
+	if (BX.Sale.OrderAjaxComponent.currentDelivery!=2 && BX.Sale.OrderAjaxComponent.currentDelivery!=28 && BX.Sale.OrderAjaxComponent.currentDelivery!=84 && BX.Sale.OrderAjaxComponent.currentDelivery!=ID_DELIVERY_DAYTODAY && BX.Sale.OrderAjaxComponent.currentDelivery!=ID_DELIVERY_SUNDAY) return;
 	
 		var coords = get_coords(rel, id);
 		

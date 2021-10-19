@@ -26,8 +26,11 @@ var myMap, myPolygon = [];
             iconCaption: lat + ', ' + lon
         }));
 		
+		myMap.behaviors.disable('scrollZoom'); 
+		
             loadPolygons(BX.Sale.OrderAjaxComponent.currentDelivery!=ID_DELIVERY_DAYTODAY && BX.Sale.OrderAjaxComponent.currentDelivery!=ID_DELIVERY_SUNDAY ? false : true);
 			loadPolygons_spb();
+			loadPolygons_nn();
         }
 
         function stopDraw() {

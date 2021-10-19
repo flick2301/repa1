@@ -478,6 +478,10 @@ div[data-property-id-row="17"],
 	padding-top: 90px;
 }
 #delivery_map {
+	overflow: hidden;
+	float: none;
+	clear: both;
+	margin: 20px 0 10px;
 }
 #coords_info {
 	margin-top: 20px;

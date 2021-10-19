@@ -176,9 +176,13 @@ Disallow: *nogeolocation*
 Disallow: */length_30/*
 Disallow: */_*
 Disallow: *_/*
+Disallow: *]*
+Disallow: */m...zh/*
 Disallow: /*?success=
 Disallow: /*?tpclid=
 Disallow: /*?wprid=
+Disallow: /*?type=
+Disallow: /*?roistat_param1=
 Disallow: /*?yhid=
 Clean-param: type /
 Clean-param: PAGEN_2 /
@@ -205,6 +209,8 @@ Clean-param: section_id /
 Clean-param: sorting /
 Clean-param: frommarket /
 Clean-param: ID /
+Clean-param: type /
+Clean-param: roistat_param1 /
 Clean-param: pagen_5 /
 Clean-param: pagen_6 /
 Clean-param: pagen_7 /

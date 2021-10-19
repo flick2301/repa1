@@ -280,6 +280,7 @@ $('#big').slick({
   */
 
 
+  /*
   ymaps.ready(init);
 
   function init () {
@@ -301,3 +302,4 @@ $('#big').slick({
    myMap.geoObjects.add(myPlacemark);
   
   }
+*/

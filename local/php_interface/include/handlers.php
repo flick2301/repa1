@@ -212,7 +212,9 @@ AddEventHandler("sale", "OnSaleComponentOrderOneStepOrderProps", "OnSaleComponen
 function OnSaleComponentOrderOneStepOrderProps(&$arResult, &$arUserResult, &$arParams)
 {
 	global $USER;
-	if (!$USER->IsAuthorized()) {
+	if (!$USER->IsAuthorized() && (!$arResult["ORDER_PROP"]["USER_PROPS_Y"][18]["VALUE_FORMATED"] || $arResult["ORDER_PROP"]["USER_PROPS_Y"][18]["VALUE_FORMATED"]=="Россия")) {
+		
+							//file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arResult["ORDER_PROP"]["USER_PROPS_Y"][18]["VALUE_FORMATED"], true));
 		
                 $arSelect = Array("*");
                 $arFilter = Array("IBLOCK_ID"=>22, "PROPERTY_SITES"=>$_SERVER['HTTP_HOST']);
@@ -304,6 +306,8 @@ $dbList = CCatalogStore::GetList(
 		$arResult["JS_DATA"]["DELIVERY"][2]["PRICE_FORMATED"] = $formatted_delivery_price;
 		$arResult["JS_DATA"]["DELIVERY"][28]["PRICE"] = $delivery_price;
 		$arResult["JS_DATA"]["DELIVERY"][28]["PRICE_FORMATED"] = $formatted_delivery_price;		
+		$arResult["JS_DATA"]["DELIVERY"][84]["PRICE"] = $delivery_price;
+		$arResult["JS_DATA"]["DELIVERY"][84]["PRICE_FORMATED"] = $formatted_delivery_price;			
 		$arResult["JS_DATA"]["DELIVERY"][ID_DELIVERY_DAYTODAY]["PRICE"] = $delivery_price;
 		$arResult["JS_DATA"]["DELIVERY"][ID_DELIVERY_DAYTODAY]["PRICE_FORMATED"] = $formatted_delivery_price;
 		$arResult["JS_DATA"]["DELIVERY"][ID_DELIVERY_SUNDAY]["PRICE"] = $delivery_price;

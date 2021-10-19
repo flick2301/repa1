@@ -8,6 +8,7 @@ $(document).on('click', "li.viewmap", function() {
 		viewmap = true;
 		ymaps.ready(init);
 		ymaps.ready(init_spb);
+		ymaps.ready(init_nn);
 	}	
 });
 
@@ -22,9 +23,9 @@ $(document).on('click', "li.viewmap", function() {
             ymaps.ready(init_spb);
         }		
 		
-        function ready_spb() {
-            ymaps.ready(init_spb);
-        }		
+        function ready_nn() {
+            ymaps.ready(init_nn);
+        }			
 
         function init() {
             myMap = new ymaps.Map("map", {
@@ -46,7 +47,18 @@ $(document).on('click', "li.viewmap", function() {
                 searchControlProvider: 'yandex#search'
             });
             loadPolygons_spb();
-        }		
+        }	
+
+        function init_nn() {
+            myMap = new ymaps.Map("map_nn", {
+                center: [56.3287, 44.002],
+                zoom: 8,
+            }, {
+                avoidFractionalZoom: false,
+                searchControlProvider: 'yandex#search'
+            });
+            loadPolygons_nn();
+        }			
 
         function stopDraw() {
             if (myPolygon.length > 0) {
@@ -59,7 +71,10 @@ $(document).on('click', "li.viewmap", function() {
         }
 				
 
-        function addPolygon(coords, numpol, index, num) {
+        function addPolygon(coords, numpol, index, num) { 
+		
+		//console.log(coords);
+		
             /* пробежимся по массиву полигонов и остановим их редактирование */
 
             if (typeof coords === 'undefined' || !coords.length) {

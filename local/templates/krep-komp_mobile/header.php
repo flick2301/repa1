@@ -133,10 +133,12 @@ $APPLICATION->IncludeFile(
 			$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/administrator.js");
 		}	
 		
+		$rand = "?".rand();
+		
 		
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/new/css/main.min.css", true);	
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/new/css/style.css", true);	
-	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");	
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js".$rand);	
 	?>
 	
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>
@@ -148,7 +150,7 @@ $APPLICATION->IncludeFile(
    <script src="<?=SITE_TEMPLATE_PATH?>/js/common.js" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/js/slick.min.js" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.cookie.js" defer="defer"></script>
-	<script src="<?=SITE_TEMPLATE_PATH?>/js/main.js" defer="defer"></script>  
+	<script src="<?=SITE_TEMPLATE_PATH?>/js/main.js<?=$rand?>" defer="defer"></script>  
 	<script src="<?=SITE_TEMPLATE_PATH?>/js/owl.carousel.min.js"></script> 	
 
     

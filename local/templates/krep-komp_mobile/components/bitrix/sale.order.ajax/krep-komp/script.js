@@ -1,5 +1,7 @@
 BX.ready(function() {
 	
+	//$('#delivery_map').bind('mousewheel DOMMouseScroll', function (e) { return false; });
+	
 	$("body").click(function() {
 		$("#bx-soa-order-form .bx-sls .dropdown-block").removeClass("active"); 
 	});		
