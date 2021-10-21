@@ -1,4 +1,7 @@
-$.getScript('/delivery/areas.js', function(){
+/*$.getScript('/delivery/areas.js', function(){
+});*/
+
+$.getScript('/delivery/get_areas.php', function(){
 });
 
 viewmap = false;
