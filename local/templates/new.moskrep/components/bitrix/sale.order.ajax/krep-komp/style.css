@@ -2074,3 +2074,13 @@ label[data-bx-user-consent] input{
 	color: #f39101;
 	display: none;
 }
+.ymaps-2-1-79-float-button {
+	display: flex!important;
+	justify-content: center!important;
+	align-items: center!important;
+}
+.ymaps-2-1-79-float-button-icon {
+	margin-left: 5px;!important;
+}
+.ymaps-2-1-79-zoom__minus {
+}
