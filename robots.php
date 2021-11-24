@@ -47,6 +47,7 @@ Disallow: /*&bxajaxid=
 Disallow: /*?view_result=
 Disallow: /*&view_result=
 Disallow: /auth/
+Disallow: *src_pof*
 Disallow: /user/
 Disallow: /sale/
 Disallow: /webstat/
@@ -64,9 +65,11 @@ Disallow: /detail_order/
 Disallow: /mailsuccess/
 Disallow: /ysearch/
 Disallow: /search/
+Disallow: /store/
 Disallow: /search_result/
 Disallow: /search_yandex/
 Disallow: /console/
+Disallow: /upload/sale.xlsx
 Disallow: /advantage/
 Disallow: /articles/golovki-samorezov/samorez-s-shestigrannoy-golovkoy1/
 Disallow: /articles/golovki-samorezov/samorez-s-potaynoy-golovkoy-ar/
@@ -108,6 +111,7 @@ Disallow: *.shtml$
 Disallow: /*?gclid=
 Disallow: /*?title=
 Disallow: /*?goto=
+Disallow: /*?from=
 Disallow: /*?clear_cache=
 Disallow: /*?clear_cache_session=
 Disallow: /*?FIELD1=
@@ -118,6 +122,7 @@ Disallow: /rk.php
 Disallow: /*&set_filter=y
 Disallow: /*?baobab_event_id=
 Disallow: /*?keyword
+Disallow: /*?text=
 Disallow: /*?reference
 Disallow: /*?set_filter=y
 Disallow: /*?arrFilter_
@@ -134,6 +139,8 @@ Disallow: /*?baobab_event_id=
 Disallow: /*?bxajaxid=
 Disallow: /*?clear_cache=
 Disallow: /*?clid=
+Disallow: /*?mobile=
+Disallow: /*?snn=
 Disallow: /*?cto_pld=
 Disallow: /*?del_filter=
 Disallow: /*?diameter=2.5SIZEN_1=
@@ -172,6 +179,7 @@ Disallow: *PAGEN_6*
 Disallow: *PAGEN_7*
 Disallow: *PAGEN_8*
 Disallow: *PAGEN_9*
+Disallow: *from*
 Disallow: *nogeolocation*
 Disallow: */length_30/*
 Disallow: */_*
@@ -186,7 +194,11 @@ Disallow: /*?roistat_param1=
 Disallow: /*?yhid=
 Clean-param: type /
 Clean-param: PAGEN_2 /
+Clean-param: from /
+Clean-param: src_pof /
 Clean-param: PAGEN_3 /
+Clean-param: mobile /
+Clean-param: snn /
 Clean-param: nogeolocation /
 Clean-param: PAGEN_4 /
 Clean-param: PAGEN_5 /
@@ -209,6 +221,7 @@ Clean-param: section_id /
 Clean-param: sorting /
 Clean-param: frommarket /
 Clean-param: ID /
+Clean-param: text /
 Clean-param: type /
 Clean-param: roistat_param1 /
 Clean-param: pagen_5 /

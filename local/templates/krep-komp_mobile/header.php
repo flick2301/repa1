@@ -249,6 +249,15 @@ $APPLICATION->IncludeFile(
 				<a href='/oplata/' class='mobile__item'>Получение и оплата</a>
 				<a href='/addresses/' class='mobile__item'>Адреса магазинов</a>
 				<a href='/contacts/' class='mobile__item'>Контакты</a>
+
+								<?$APPLICATION->IncludeComponent("d7:geolocation","mobile",Array(
+										"IBLOCK_ID" => "23", 
+										"CACHE_TYPE" => "A", 
+										"CACHE_TIME" => "3600", 
+										"CACHE_FILTER" => "N"
+									), false
+								);?>		
+							
 			</div>
 		</div>
 	</div>
@@ -319,7 +328,7 @@ $APPLICATION->IncludeFile(
 						{?>
 							<?if(!$_GET["nogeolocation"] && false):?>
 								<?require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>
-							<?else:?>
+							<?elseif(false):?>
 								<?$APPLICATION->IncludeComponent("d7:geolocation","",Array(
 										"IBLOCK_ID" => "23", 
 										"CACHE_TYPE" => "A", 
