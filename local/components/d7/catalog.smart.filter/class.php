@@ -12,7 +12,7 @@ class CBitrixCatalogSmartFilter extends CBitrixNewsBase
 class CBitrixCatalogSmartFilter extends CBitrixComponent
 {
 	public $IBLOCK_ID = 0;
-	public $SKU_IBLOCK_ID = 0;
+    public $SKU_IBLOCK_ID = 0;
 	public $SKU_PROPERTY_ID = 0;
 	public $SECTION_ID = 0;
 	public $FILTER_NAME = "";
@@ -26,6 +26,11 @@ class CBitrixCatalogSmartFilter extends CBitrixComponent
 	protected static $iblockIncluded = null;
 	/** @var \Bitrix\Iblock\PropertyIndex\Facet **/
 	protected $facet = null;
+
+    //Параметр для свойств типа список фильтра( все свойста должны быть добавлены в массив)
+    public $ARR_FILTER_PROPERTIES = [
+        "POKRYTIE", "GOLOVKA", "MATERIAL", "KONETS", "REZBA", "BREND", "RAZMER_POD_KLYUCH_MM", "KLASS_PROCHNOSTI", "SHAG_REZBY_MM", "DIN", "GOST", "SHLITS", "PO_PRIMENENIYU", "VIDY_UPAKOVOK", "DIAMETR_VNUTRENNIY", "STRANA_PROIZVODSTV"
+    ];
 
 	public function onPrepareComponentParams($arParams)
 	{

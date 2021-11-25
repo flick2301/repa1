@@ -4,6 +4,8 @@
 //ID_PROPERTY_DLINA
 //ID_PROPERTY_FOR_SALE
 //ID_PROPERTY_STOCK - КОНСТАНТЫ
+$component = $this->getComponent();
+$arResult['ARR_FILTER_PROPERTIES']=$component->ARR_FILTER_PROPERTIES;
 if (isset($arParams["TEMPLATE_THEME"]) && !empty($arParams["TEMPLATE_THEME"]))
 {
 	$arAvailableThemes = array();
