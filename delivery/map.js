@@ -28,6 +28,10 @@ $(document).on('click', "li.viewmap", function() {
 		
         function ready_nn() {
             ymaps.ready(init_nn);
+        }	
+
+        function ready_pskov() {
+            ymaps.ready(init_pskov);
         }			
 
         function init() {
@@ -61,6 +65,17 @@ $(document).on('click', "li.viewmap", function() {
                 searchControlProvider: 'yandex#search'
             });
             loadPolygons_nn();
+        }		
+
+        function init_pskov() {
+            myMap = new ymaps.Map("map_pskov", {
+                center: [57.819274, 28.332460],
+                zoom: 8,
+            }, {
+                avoidFractionalZoom: false,
+                searchControlProvider: 'yandex#search'
+            });
+            //loadPolygons_nn();
         }			
 
         function stopDraw() {
