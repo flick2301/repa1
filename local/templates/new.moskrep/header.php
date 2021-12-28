@@ -21,7 +21,12 @@ Loc::LoadMessages(__FILE__);
 	<meta name="viewport" content="width=device-width; initial-scale=1.0" />
 	<meta name="facebook-domain-verification" content="qyjoyjc6m0agulp5ix7pznx4nhhm22" />
 	
-<?$APPLICATION->ShowMeta("robots")?>
+<?
+$request = $context->getRequest();
+if(!empty($request->getQueryList()->getValues()))
+      echo '<meta name="robots" content="noindex, nofollow" />';
+else
+    $APPLICATION->ShowMeta("robots")?>
 <title><?$APPLICATION->ShowTitle();?></title>
 
 <?$APPLICATION->ShowMeta("description")?>

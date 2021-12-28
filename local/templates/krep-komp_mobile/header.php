@@ -25,10 +25,15 @@ global $APPLICATION;
 	
 <?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
 <meta name="google-site-verification" content="Obf25qlplQtNOWNrsgj_jU3Xb5E7wvJ8athrd1N4bhs" />
-<?endif?> 
-	
-	
-<?$APPLICATION->ShowMeta("robots")?>
+<?endif?>
+
+
+    <?
+    $request = $context->getRequest();
+    if(!empty($request->getQueryList()->getValues()))
+        echo '<meta name="robots" content="noindex, nofollow" />';
+    else
+        $APPLICATION->ShowMeta("robots")?>
 <title><?$APPLICATION->ShowTitle();?></title>
 
 <?$APPLICATION->ShowMeta("description")?>
