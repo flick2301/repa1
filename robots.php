@@ -190,6 +190,7 @@ Disallow: /*?success=
 Disallow: /*?tpclid=
 Disallow: /*?wprid=
 Disallow: /*?type=
+Disallow: /*?formtracking_setup=
 Disallow: /*?roistat_param1=
 Disallow: /*?yhid=
 Clean-param: type /
@@ -253,6 +254,7 @@ Clean-param: campaign /
 Clean-param: gbid /
 Clean-param: device /
 Clean-param: region /
+Clean-param: formtracking_setup /
 Clean-param: region_name /
 Clean-param: utm_retargeting /
 Clean-param: utm_group_id /
