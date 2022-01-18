@@ -32,6 +32,7 @@ elseif($obCache->StartDataCache())// Если кэш невалиден
 			$arr = $ob->GetFields();
 			$arResult["ITEMS"][$arr["ID"]] = $ob->GetFields();
 			$arResult["ITEMS"][$arr["ID"]]['PROP'] = $ob->GetProperties();
+			if ($_SERVER['HTTP_HOST']==$arResult["ITEMS"][$arr["ID"]]['PROP']["DOMAIN"]["VALUE"]) $arResult["JIVO"] = trim($arResult["ITEMS"][$arr["ID"]]['PROP']["JIVO"]["VALUE"]);
 			$i++;
 		}
 		
@@ -43,6 +44,8 @@ elseif($obCache->StartDataCache())// Если кэш невалиден
         ));// Сохраняем переменные в кэш.	
 		
    }   
+   
+   $GLOBALS["JIVO"] = $arResult["JIVO"];
    
 
 	if (count($arResult["ITEMS"]) >= 1) $this->IncludeComponentTemplate();	
