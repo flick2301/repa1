@@ -599,7 +599,7 @@ $APPLICATION->SetPageProperty('description', '«КРЕП-КОМП» - ведущ
 <?global $USER;
 CModule::IncludeModule('conversion');
 $detect = new \Bitrix\Conversion\Internals\MobileDetect;
-	if ($USER->GetID()!=1 && !$_GET['administrator'] && !$detect->isMobile()) include_once $_SERVER["DOCUMENT_ROOT"] . "/include/jivosite.php";?>
+	if (!$USER->IsAdmin() && !$detect->isMobile()) include_once $_SERVER["DOCUMENT_ROOT"] . "/include/jivosite.php";?>
 
 </body>
 </html>
