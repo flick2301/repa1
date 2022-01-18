@@ -270,6 +270,21 @@ function(){
             'transitionOut'     : 'none',
             'titlePosition'     : 'none'
         });
+        $("a[data-fancy=gallery_img]").fancybox({
+            'transitionIn'      : 'none',
+            'transitionOut'     : 'none',
+            'titlePosition'     : 'none'
+        });
+        $("a[data-fancy=gallery_card]").fancybox({
+            'transitionIn'      : 'none',
+            'transitionOut'     : 'none',
+            'titlePosition'     : 'none'
+        });
+        $("a[data-fancy=catalog-photo]").fancybox({
+            'transitionIn'      : 'none',
+            'transitionOut'     : 'none',
+            'titlePosition'     : 'none'
+        });		
     };
     
     

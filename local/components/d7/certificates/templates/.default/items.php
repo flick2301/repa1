@@ -32,7 +32,7 @@ $APPLICATION->SetPageProperty("keywords", $arResult['IPROP_VALUES']['SECTION_MET
                         <div class="simple-article__column">
                            <!--certify-card-->
                            <div class="certify-card">
-                              <a class="certify-card__link nav-certificate__link" href="<?=CFile::GetPath($page_cert)?>" rel="gallery_img">
+                              <a class="certify-card__link nav-certificate__link" href="<?=CFile::GetPath($page_cert)?>" data-rel="gallery_img">
                                  <p class="certify-card__cover"><img class="certify-card__image" src="<?=$file['src']?>" width="265" height="375" alt="<?=$item['NAME']?> <?=sprintf("%02d", $num)?>" title="<?=$item['NAME']?> <?=sprintf("%02d", $num)?>"></p>
                                  <p data-sreader>Увеличить</p>
                               </a>

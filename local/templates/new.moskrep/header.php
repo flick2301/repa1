@@ -12,6 +12,21 @@ Loc::LoadMessages(__FILE__);
 <head>
 
 	<meta charset="<?=LANG_CHARSET?>" />
+	<?
+	if($context)
+	{
+		$request = $context->getRequest();
+		$paramList = $request->getQueryList()->getValues();
+		unset($paramList['reference']);
+		unset($paramList['PAGEN_1']);
+		unset($paramList['SIZEN_1']);
+		unset($paramList['utm_source']);
+		unset($paramList['utm_medium']);
+		unset($paramList['utm_campaign']);
+		unset($paramList['utm_content']);
+		unset($paramList['utm_term']);
+		unset($paramList['yclid']);
+	}?>
     <!--<meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CHARSET?>" />-->
 	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
     <meta name="yandex-verification" content="94ad628889e9793a" />
@@ -22,11 +37,10 @@ Loc::LoadMessages(__FILE__);
 	<meta name="facebook-domain-verification" content="qyjoyjc6m0agulp5ix7pznx4nhhm22" />
 	
 <?
-$request = $context->getRequest();
-if(!empty($request->getQueryList()->getValues()))
-      echo '<meta name="robots" content="noindex, nofollow" />';
+if(!empty($paramList))
+    echo '<meta name="robots" content="noindex, nofollow" />';
 else
-    $APPLICATION->ShowMeta("robots")?>
+	$APPLICATION->ShowMeta("robots");?>
 <title><?$APPLICATION->ShowTitle();?></title>
 
 <?$APPLICATION->ShowMeta("description")?>
@@ -109,25 +123,27 @@ $APPLICATION->IncludeFile(
 <?$APPLICATION->ShowHeadStrings()?>
         <?CJSCore::Init(array('jquery3'));?>
 	<?
+	global $USER;
 	$rand = "?".rand();
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/fonts/montserrat/montserrat.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/fonts/proto/proto.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/fonts/proximanova/proximanova.css", true);	
 	
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/reset.css", true);
-	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.css", true);
+	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.min.css", true);
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/jquery.fancybox.min.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/styles/global.styles.min.css?v=XXXXXXa", true);
-	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.css".$rand, true);	
+	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.min.css".$rand, true);	
 	if (IPHONE=="Y") $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/iphone.css", true);	
 	else $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/dieapple.css", true);
 	
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.maskedinput.min.js");
-	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.fancybox.js");
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.fancybox.min.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/datalayer.js");
-	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");
 	
-		global $USER;
+	//file_exists($_SERVER["DOCUMENT_ROOT"].SITE_TEMPLATE_PATH."/js/script.js")
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.min.js");
+
 		if ($USER->IsAdmin() || $_GET["administrator"]) {
 			$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/administrator.css", true);	
 			$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/administrator.js");
@@ -135,8 +151,8 @@ $APPLICATION->IncludeFile(
 		
 		
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/new/css/main.min.css", true);	
-	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/new/css/style.css", true);	
-	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");	
+	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/new/css/style.css", true);	
+	//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");	
 	?>
 	
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>
@@ -145,7 +161,7 @@ $APPLICATION->IncludeFile(
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/jquery.slick-1.9.0.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.popup.js" defer="defer"></script>
-   <script src="<?=SITE_TEMPLATE_PATH?>/js/common.js" defer="defer"></script>
+   <script src="<?=SITE_TEMPLATE_PATH?>/js/common.min.js" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/js/slick.min.js" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.cookie.js" defer="defer"></script>		
 
@@ -206,6 +222,7 @@ $APPLICATION->IncludeFile(
 <div class="basic-layout__section">
 <div>
 
+
 <?if(!strstr($_SERVER['HTTP_HOST'], "dev") || true)
 {?>
 <?if(!$_GET["nogeolocation"] && false):?>
@@ -239,7 +256,7 @@ $APPLICATION->IncludeFile(
 	<header class="basic-layout__header">
 	<?=$safari?>
 	
-	<!--<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; color:#000; font-size:16px;'>Уважаемые клиенты! Наш интернет-магазин и все точки самовывоза не работают 8 марта!<span style='color: #f39101;'></span></strong>  <svg class="icon-svg -cross close-svg" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg></div> </div> </div>-->
+	<!--<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; color:#000; font-size:16px;'>Уважаемые клиенты! Наш интернет-магазин не работает в праздничные дни с 31.12.2021 по 09.01.2022. С 10.01.2022 работаем в штатном режиме.<span style='color: #f39101;'></span></strong>  <svg class="icon-svg -cross close-svg" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg></div> </div> </div>-->
 	<?if($_SERVER['HTTP_HOST']=="krep-komp.ru"):?>
 	<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; color:#000; font-size:16px;'>В магазине на Каширке доступна доставка день в день. <a href="/addresses/" style="text-decoration: underline; color: #4F36E3;">Подробнее</a><span style='color: #f39101;'></span></strong>  <svg class="icon-svg -cross close-svg" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg></div> </div> </div>
 	<?endif?>

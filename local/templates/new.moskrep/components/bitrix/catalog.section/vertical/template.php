@@ -147,7 +147,7 @@ if ($showBottomPager)
 	<?
 }
 ?>
-<?if(!$_POST['ENUM_LIST']['ELEMENTS'] && !$arParams["DISABLE_HEADER"]=='Y'){?>
+<?if(!$arParams["DISABLE_HEADER"]=='Y'){?>
 <?
 
 
@@ -182,11 +182,16 @@ while($arSection = $db_list->GetNext()) {
 			   <?=html_entity_decode($arResult['UF_DETAIL_TEXT'], ENT_QUOTES, "UTF-8");?>
 			   </div>
             </div>
-            <!--simple-article-->
+<!--simple-article-->
 <?endif;?>
 
 <br>
 <br>
 <?}?>
+<?if($arResult['UF_INCLUDE_FILE_AFTER_DESC'])
+{
+	$APPLICATION->IncludeFile(SITE_DIR."/include/".$arResult['UF_INCLUDE_FILE_AFTER_DESC'], array("SHOW_BORDER" => true, "MODE"=>"html"));
+}
+?>
 
 		

@@ -22,18 +22,32 @@ global $APPLICATION;
     <meta name="theme-color" content="#0C58CF" />
 	<meta name="viewport" content="width=device-width; initial-scale=1.0" />
 	<meta name="facebook-domain-verification" content="qyjoyjc6m0agulp5ix7pznx4nhhm22" />
+
 	
 <?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
 <meta name="google-site-verification" content="Obf25qlplQtNOWNrsgj_jU3Xb5E7wvJ8athrd1N4bhs" />
 <?endif?>
 
-
-    <?
-    $request = $context->getRequest();
-    if(!empty($request->getQueryList()->getValues()))
-        echo '<meta name="robots" content="noindex, nofollow" />';
-    else
-        $APPLICATION->ShowMeta("robots")?>
+<?
+if($context)
+{
+	$request = $context->getRequest();
+	$paramList = $request->getQueryList()->getValues();
+	unset($paramList['reference']);
+	unset($paramList['PAGEN_1']);
+	unset($paramList['SIZEN_1']);
+	unset($paramList['utm_source']);
+	unset($paramList['utm_medium']);
+	unset($paramList['utm_campaign']);
+	unset($paramList['utm_content']);
+	unset($paramList['utm_term']);
+	unset($paramList['yclid']);
+}?>
+<?
+if(!empty($paramList))
+    echo '<meta name="robots" content="noindex, nofollow" />';
+else
+	$APPLICATION->ShowMeta("robots");?>
 <title><?$APPLICATION->ShowTitle();?></title>
 
 <?$APPLICATION->ShowMeta("description")?>
@@ -118,18 +132,18 @@ $APPLICATION->IncludeFile(
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/fonts/proximanova/proximanova.css", true);	
 	
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/reset.css", true);
-	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.css", true);
+	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.min.css", true);
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/jquery.fancybox.min.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/styles/global.styles.min.css?v=XXXXXXa", true);
-	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.css".$rand, true);	
+	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.min.css".$rand, true);	
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/main.min.css", true);
 	if (IPHONE=="Y") $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/iphone.css", true);	
 	else $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/dieapple.css", true);
 	
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.maskedinput.min.js");
-	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.fancybox.js");
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/jquery.fancybox.min.js");
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/datalayer.js");
-	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.min.js");
 	
 	
 		global $USER;
@@ -142,8 +156,8 @@ $APPLICATION->IncludeFile(
 		
 		
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/new/css/main.min.css", true);	
-	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/new/css/style.css", true);	
-	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js".$rand);	
+	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/new/css/style.css", true);	
+	//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js".$rand);	
 	?>
 	
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>
@@ -152,7 +166,7 @@ $APPLICATION->IncludeFile(
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/jquery.slick-1.9.0.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.popup.js" defer="defer"></script>
-   <script src="<?=SITE_TEMPLATE_PATH?>/js/common.js" defer="defer"></script>
+   <script src="<?=SITE_TEMPLATE_PATH?>/js/common.min.js" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/js/slick.min.js" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.cookie.js" defer="defer"></script>
 	<script src="<?=SITE_TEMPLATE_PATH?>/js/main.js<?=$rand?>" defer="defer"></script>  
@@ -212,6 +226,14 @@ $APPLICATION->IncludeFile(
 
     <?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/functions.php";?>
 	
+
+	
+	<!--<div class="page-top-banner page-top-banner_mobile"> <div class="banner-textbox page page_mobile"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; color:#000; font-size:16px;'>Уважаемые клиенты! Наш интернет-магазин не работает в праздничные дни с 31.12.2021 по 09.01.2022. С 10.01.2022 работаем в штатном режиме.</strong> </div> </div> </div>-->
+	
+	<?if($_SERVER['HTTP_HOST']=="krep-komp.ru"):?>
+	<div class="page-top-banner page-top-banner_mobile"> <div class="banner-textbox page page_mobile"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; color:#000; font-size:16px;'>В магазине на Каширке доступна доставка день в день. <a href="/addresses/" style="text-decoration: underline; color: #4F36E3;">Подробнее</a></strong> </div> </div> </div>	
+	<?endif?> 
+	
 	
 	<div class='mobile'>
 		<div class='mobile__wrapp'>
@@ -266,10 +288,14 @@ $APPLICATION->IncludeFile(
 			</div>
 		</div>
 	</div>
+	
+	
 
 	<div class="shelf">
 		<div class="container">
+
 			<div class="shelf__wrapper">
+			
 				<div class="shelf__left">
 					<div class="shelf__hamburger">
 						<span></span>
@@ -323,7 +349,7 @@ $APPLICATION->IncludeFile(
 	
 	
 	<div class='top'>
-		<div class='container'>
+		<div class='container'>		
 			<div class='top__wrapper'>
 				<div class="top__topside">
 					<div class="top__left">

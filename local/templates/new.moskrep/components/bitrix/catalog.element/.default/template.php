@@ -242,7 +242,7 @@ dataLayer.push({
                      <div class="product-page__column">
                         <!--certify-card-->
                         <div class="certify-card">
-                           <a class="certify-card__link" href="<?=$cert['BIG_PIC']?>">
+                           <a class="certify-card__link" href="<?=$cert['BIG_PIC']?>" data-fancy="gallery_img">
                               <p class="certify-card__cover"><img class="certify-card__image" src="<?=$cert['src']?>" width="265" height="375" alt=""></p>
                               <p data-sreader>Увеличить</p>
                            </a>

@@ -41,8 +41,19 @@
 .d-none {
 	display: none!important;
 }
-.page-top-banner {
+.page-top-banner_mobile {
 	/*display: none!important;	*/
+	position: relative!important;
+	z-index: 0;	
+	margin-bottom: -120px!important;
+	width: 100%!important;
+	margin-left: 0!important;
+	margin-right: 0!important;
+	padding-left: 15px!important;
+	padding-right: 15px!important;	
+}
+.page_mobile {
+	margin-top: 165px!important;
 }
 h1 {
     line-height: 1;
@@ -1927,6 +1938,15 @@ img.intro-slider__image {
 .page.page_catalog {
     margin-top: 146px;
 }
+.page-top-banner_mobile {
+	/*display: none!important;	*/
+	position: relative!important;
+	z-index: 0;
+	margin-bottom: 0px!important;
+}
+.page_mobile {
+	margin-top: 48px!important;
+}
 }
 
 
@@ -2589,3 +2609,5 @@ element.style {
 }
 */
 /*новый год*/
+
+

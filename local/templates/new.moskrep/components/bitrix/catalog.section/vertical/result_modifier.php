@@ -44,6 +44,7 @@ if($arSection = $rsResult->GetNext()) {
     $arResult['UF_VES_TABLE_ID'] = $arSection["UF_VES_TABLE"];
     $arResult["UF_RELATED"] = $arSection["UF_RELATED"];
      $arResult["UF_DETAIL_TEXT"] = $arSection["UF_DETAIL_TEXT"];
+	 $arResult['UF_INCLUDE_FILE_AFTER_DESC'] = $arSection["UF_INCLUDE_FILE_AFTER_DESC"];
 	 
 	$this->__component->SetResultCacheKeys(array("UF_META_TITLE_MSK"));
 	$this->__component->SetResultCacheKeys(array("UF_META_DESCRIPTION_MSK"));
