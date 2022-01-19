@@ -13,7 +13,7 @@ Loc::LoadMessages(__FILE__);
 
 	<meta charset="<?=LANG_CHARSET?>" />
 	<?
-	if($context)
+    if($context)
 	{
 		$request = $context->getRequest();
 		$paramList = $request->getQueryList()->getValues();
@@ -37,7 +37,10 @@ Loc::LoadMessages(__FILE__);
 	<meta name="facebook-domain-verification" content="qyjoyjc6m0agulp5ix7pznx4nhhm22" />
 	
 <?
-if(!empty($paramList))
+$path = $APPLICATION->GetCurPage();
+$lastEl = array_pop(explode("/", trim($path, "/")));
+
+if(!empty($paramList)  || is_numeric($lastEl))
     echo '<meta name="robots" content="noindex, nofollow" />';
 else
 	$APPLICATION->ShowMeta("robots");?>
@@ -606,8 +609,8 @@ $APPLICATION->IncludeFile(
         
        
 <?endif;?>
-        
-		
+
+
 		
        
 

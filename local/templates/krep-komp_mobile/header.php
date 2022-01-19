@@ -44,7 +44,10 @@ if($context)
 	unset($paramList['yclid']);
 }?>
 <?
-if(!empty($paramList))
+$path = $APPLICATION->GetCurPage();
+$lastEl = array_pop(explode("/", trim($path, "/")));
+
+if(!empty($paramList)  || is_numeric($lastEl))
     echo '<meta name="robots" content="noindex, nofollow" />';
 else
 	$APPLICATION->ShowMeta("robots");?>
@@ -723,7 +726,7 @@ $APPLICATION->IncludeFile(
        
 <?endif;?>
         
-		
+
 		
        
 
