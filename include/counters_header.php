@@ -1,3 +1,4 @@
+<?if(!strpos($_SERVER['HTTP_USER_AGENT'],'Chrome-Lighthouse')):?>
 <!-- Google Analitycs -->
  <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -209,3 +210,4 @@ ct.src = document.location.protocol+'//cc.calltracking.ru/phone.a7431.11162.asyn
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ct, s);
 })();
 </script>
+<?endif?>

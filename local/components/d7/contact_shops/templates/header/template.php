@@ -12,7 +12,7 @@
 <!--<a class="call-back" href="#callback" rel="callback">
 Заказать обратный звонок
 </a>-->
-<button class="call-back b24-web-form-popup-btn-2">Заказать звонок</button>
+<button class="call-back b24-web-form-popup-btn-2 d-none">Заказать звонок</button>
 
 
 

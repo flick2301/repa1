@@ -20,7 +20,12 @@ BX.ready(function() {
 		//event.stopPropagation();
 	});	
 	
-	
+	$('#bx-soa-total-mobile #ORDER_CONFIRM_BUTTON').attr('id', 'ORDER_CONFIRM_BUTTON_MOBILE');
+	$(document).on('click', '#ORDER_CONFIRM_BUTTON_MOBILE', function() {
+		dataLayerSendOrder($('#bx-soa-total-mobile .bx-soa-cart-total-line-total .bx-soa-cart-d').text()); 
+		BX.Sale.OrderAjaxComponent.clickOrderSaveAction();
+		//$('#ORDER_CONFIRM_BUTTON').trigger('click');
+	});			
 });
 
 
