@@ -32,7 +32,11 @@ $(document).on('click', "li.viewmap", function() {
 
         function ready_pskov() {
             ymaps.ready(init_pskov);
-        }			
+        }	
+
+        function ready_voron() {
+            ymaps.ready(init_voron);
+        }				
 
         function init() {
             myMap = new ymaps.Map("map", {
@@ -76,6 +80,17 @@ $(document).on('click', "li.viewmap", function() {
                 searchControlProvider: 'yandex#search'
             });
             //loadPolygons_nn();
+        }	
+
+        function init_voron() {
+            myMap = new ymaps.Map("map_voron", {
+                center: [51.660786, 39.200269],
+                zoom: 9,
+            }, {
+                avoidFractionalZoom: false,
+                searchControlProvider: 'yandex#search'
+            });
+            loadPolygons_voron();
         }			
 
         function stopDraw() {

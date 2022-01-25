@@ -219,7 +219,7 @@ $detect = new \Bitrix\Conversion\Internals\MobileDetect;
 
 <div class="wholesale-block__table-block">
 <table class="wholesale-block__table" rules="all">
-<tr><td>15%</td><td>от 20 000 руб</td></tr>
+<tr><td>5%</td><td>от 20 000 руб</td></tr>
 <tr><td>10%</td><td>от 100 000 руб</td></tr>
 <tr><td>15%</td><td>от 500 000 руб</td></tr>
 </table>

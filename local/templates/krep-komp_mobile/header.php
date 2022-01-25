@@ -47,7 +47,7 @@ if($context)
 $path = $APPLICATION->GetCurPage();
 $lastEl = array_pop(explode("/", trim($path, "/")));
 
-if(!empty($paramList)  || is_numeric($lastEl))
+if(!empty($paramList))
     echo '<meta name="robots" content="noindex, nofollow" />';
 else
 	$APPLICATION->ShowMeta("robots");?>

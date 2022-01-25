@@ -32,6 +32,6 @@ $APPLICATION->IncludeFile(
 			  
 				  
 				  </div>	
-<?endforeach?>				  
- </div>				   		   
+<?endforeach?>		  
+ </div>		   		   
   </div>	
