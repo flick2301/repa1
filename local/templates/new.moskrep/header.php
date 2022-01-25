@@ -41,9 +41,9 @@ $path = $APPLICATION->GetCurPage();
 $lastEl = array_pop(explode("/", trim($path, "/")));
 
 if(!empty($paramList))
-    echo '<meta name="robots" content="noindex, nofollow" />';
-else
-	$APPLICATION->ShowMeta("robots");?>
+    $APPLICATION->SetPageProperty('robots', 'noindex, nofollow');
+
+$APPLICATION->ShowMeta("robots");?>
 <title><?$APPLICATION->ShowTitle();?></title>
 
 <?$APPLICATION->ShowMeta("description")?>

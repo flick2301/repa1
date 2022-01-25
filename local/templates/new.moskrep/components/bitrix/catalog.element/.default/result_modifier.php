@@ -248,4 +248,7 @@ if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){
 }
 
 \Bitrix\Main\Loader::includeModule('dev2fun.opengraph');
-\Dev2fun\Module\OpenGraph::Show($arResult['ID'],'element'); 
+\Dev2fun\Module\OpenGraph::Show($arResult['ID'],'element');
+if($arResult['PROPERTIES']['noindex']['VALUE_XML_ID']=='Y')
+    $APPLICATION->SetPageProperty('robots', 'noindex, nofollow');
+
