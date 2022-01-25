@@ -150,7 +150,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 				{
 				
 				if ($arItem["ID"]==127 || true) $run_hidden = true;
-				if(count($arItem["VALUES"])>0)
+				if(count($arItem["VALUES"])>1)
 				{
 					if(
 						empty($arItem["VALUES"])
