@@ -6,6 +6,7 @@ $(document).ready(function() {
 	var token = "6286a42bb8f394fa4346875f691f7b28a9db6b63";
 	var getResult = false;
 	var setPrice = false;
+	var setDeliveryFromStreet = false;
 	
 	$(document).on('keyup', '#address_street', function(event) {
 		
@@ -27,6 +28,7 @@ $(document).ready(function() {
 		BX.Sale.OrderAjaxComponent.editAddress();
 		changeClose('address_street');
 		getResult = true;
+		setDeliveryFromStreet = false;
 		//setDeliveryPrice($(this).attr('rel'));
 		
 		e.stopPropagation();
@@ -83,6 +85,7 @@ $(document).on('keyup', '#address_flat', function(e) {
 		changeClose('address_house');
 		setDeliveryPrice($(this).attr('rel'), $(this).attr('id'));
 		setPrice = true;
+		setDeliveryFromStreet = false;
 
 		e.stopPropagation();
 	});	
@@ -112,7 +115,8 @@ $(document).on('keyup', '#address_flat', function(e) {
 		street = street.replace(/(ул )|(пр\-кт )|( пер)|( б\-р)/, '');
 		
 		if (city[0]) {
-			locations[0].city = city[0];
+			if (city[0].match(/область/)) locations[0].region = city[0].replace(/ область/, '');
+			else locations[0].city = city[0];
 			locations[1].settlement = city[0];
 		}		
 		
@@ -249,7 +253,7 @@ if (id) {
             "country_iso_code": "RU",
         };	
 		
-	locations[0].fias_id = id;
+	//locations[0].fias_id = id;
 	locations[1].fias_id = id;
 }
   
@@ -268,6 +272,9 @@ if (id) {
 	},		
   };
   
+  //console.log(request);
+
+  
   var params = {
     type: "POST",
     contentType: "application/json",
@@ -276,14 +283,18 @@ if (id) {
     },
     data: JSON.stringify(request)
   }
+  
+  //console.log($.ajax(serviceUrl, params));
 
 	return $.ajax(serviceUrl, params);
 }	
 
 //Расчет стоимости доставки
 function setDeliveryPrice(rel, id) {
+
+	if (BX.Sale.OrderAjaxComponent.currentDelivery!=2 && BX.Sale.OrderAjaxComponent.currentDelivery!=28 && BX.Sale.OrderAjaxComponent.currentDelivery!=84 && BX.Sale.OrderAjaxComponent.currentDelivery!=86 && BX.Sale.OrderAjaxComponent.currentDelivery!=ID_DELIVERY_DAYTODAY && BX.Sale.OrderAjaxComponent.currentDelivery!=ID_DELIVERY_SUNDAY) return;
 	
-	if (BX.Sale.OrderAjaxComponent.currentDelivery!=2 && BX.Sale.OrderAjaxComponent.currentDelivery!=28 && BX.Sale.OrderAjaxComponent.currentDelivery!=84 && BX.Sale.OrderAjaxComponent.currentDelivery!=ID_DELIVERY_DAYTODAY && BX.Sale.OrderAjaxComponent.currentDelivery!=ID_DELIVERY_SUNDAY) return;
+
 	
 		var coords = get_coords(rel, id);
 		
@@ -339,6 +350,10 @@ $('#soa-property-' + ORDER_PROPERTY_DELIVERY_PRICE1 + ', #soa-property-' + ORDER
 //alert(JSON.stringify(result));
 			
 			BX.Sale.OrderAjaxComponent.sendRequest();
+		}
+		else if (!setDeliveryFromStreet) {
+			setDeliveryFromStreet = true;
+			//setDeliveryPrice($('#address_full_street').val(), $('#address_id_street').val());	
 		}
 	});		
 }	
