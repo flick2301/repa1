@@ -194,4 +194,8 @@ while($arSection = $db_list->GetNext()) {
 }
 ?>
 
-		
+<?
+//НУЖНО ВСТАВИТЬ КАЛЬКУЛЯТОР ДЛЯ ХИМ. КАРТРИДЖЕЙ
+if($arResult['ORIGINAL_PARAMETERS']['SECTION_CODE']=='kartridzh')
+    $APPLICATION->IncludeFile(SITE_DIR."/include/calculator.php", array("SHOW_BORDER" => true, "MODE"=>"html"));
+?>

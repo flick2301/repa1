@@ -16,7 +16,10 @@ while($arRelink = $relinkList->fetch()){
  * and open the template in the editor.
  */
 $cp = $this->__component;
+global $context;
 
+$request = $context->getRequest();
+$requestUri = $request->getRequestUri();
 
 if($arParams['REFERENCE_CHECK']=='Y'):
     
@@ -388,3 +391,20 @@ if (count($arResult["REFERENCE"]["ITEM"])) $GLOBALS["REFERENCE"] = $arResult["RE
 
 \Bitrix\Main\Loader::includeModule('dev2fun.opengraph');
 \Dev2fun\Module\OpenGraph::Show($arResult['SECTION']['ID'],'section');
+
+foreach($arResult['SORTING']['SECTIONS'] as $key=>$sortSection)
+{
+    foreach($sortSection['ITEMS'] as $key_item=>$sort_item)
+    {
+        if(!empty($sort_item['arFilters']['VALUE']))
+        {
+            $get_params = $request->getQueryList();
+
+            $is_active = count(array_intersect_key(array_flip($sort_item['arFilters']['VALUE']), $get_params->getValues())) ? 'active' : null;
+            $arResult['SORTING']['SECTIONS'][$key]['ITEMS'][$key_item]['IS_ACTIVE']=$is_active;
+            if($is_active)
+                ++$arResult['SORTING']['SECTIONS'][$key]['ACTIVES'];
+
+        }
+    }
+}
