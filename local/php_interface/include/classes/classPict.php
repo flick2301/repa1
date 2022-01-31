@@ -62,7 +62,7 @@ class Pict {
 				$array['WEBP_FILE_NAME'] = str_replace('.jpg', '.webp', strtolower($array['FILE_NAME']));
 				$array['WEBP_FILE_NAME'] = str_replace('.jpeg', '.webp', strtolower($array['WEBP_FILE_NAME']));
 			}
-				echo $_SERVER['DOCUMENT_ROOT'] . $array['WEBP_PATH']."<br />";
+
 			if (!file_exists($_SERVER['DOCUMENT_ROOT'] . $array['WEBP_PATH']))
 			{
 				mkdir($_SERVER['DOCUMENT_ROOT'] . $array['WEBP_PATH'], 0775, true);
