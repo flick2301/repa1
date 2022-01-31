@@ -5,3 +5,7 @@ spl_autoload_register(function($className){
         require_once $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/include/classes/'.$path;
     }
 });
+
+CModule::AddAutoloadClasses("", array(
+    '\Bas\Pict' => '/local/php_interface/include/classes/classPict.php',
+));
