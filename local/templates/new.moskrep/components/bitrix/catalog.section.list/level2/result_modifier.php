@@ -400,7 +400,7 @@ foreach($arResult['SORTING']['SECTIONS'] as $key=>$sortSection)
         {
             $get_params = $request->getQueryList();
 
-            $is_active = count(array_intersect_key(array_flip($sort_item['arFilters']['VALUE']), $get_params->getValues())) ? 'active' : null;
+            $is_active = count(array_intersect_key(array_flip($sort_item['arFilters']['VALUE']), $get_params->getValues())) == count($sort_item['arFilters']['VALUE']) ? 'active' : null;
             $arResult['SORTING']['SECTIONS'][$key]['ITEMS'][$key_item]['IS_ACTIVE']=$is_active;
             if($is_active)
                 ++$arResult['SORTING']['SECTIONS'][$key]['ACTIVES'];
