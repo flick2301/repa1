@@ -24,7 +24,7 @@ $arElement = $res->GetNext();?>
                   <section class="product-card">
                      <div class="product-card__header">
                         <div class="div_h3 product-card__title"><a class="product-card__link" href="<?=$arElement['DETAIL_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['NAME']))?>')"><?=$item['NAME']?></a></div>
-                        <img class="product-card__image" src="<?echo ($item['PREVIEW_PICTURE']['SRC']) ? $item['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg";?>" width="200" height="150" alt="">
+                        <img class="product-card__image" src="<?echo $item["SMALL_IMG_WEBP"]['WEBP_SRC'] ? $item["SMALL_IMG_WEBP"]['WEBP_SRC'] : ($item['PREVIEW_PICTURE']['SRC'] ? $item['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg");?>" width="200" height="150" alt="">
                      </div>
                      <div class="product-card__content">
                         <div class="product-card__block">

@@ -41,7 +41,7 @@ use \Bitrix\Main\Localization\Loc;
 						<div class="popular__topside">
 							<a class="popular__top" href="<?=$item['DETAIL_PAGE_URL']?>">
 								<div class="popular__offer">Акция</div>
-								<img class="popular__img" src="<?=$item['PREVIEW_PICTURE']['SRC'];?>" style="opacity: 1;">
+								<img class="popular__img" src="<?=$item["SMALL_IMG_WEBP"]['WEBP_SRC'] ? $item["SMALL_IMG_WEBP"]['WEBP_SRC'] : $item['PREVIEW_PICTURE']['SRC'];?>" style="opacity: 1;">
 							</a>
 							<a class="popular__name" href="<?=$item['DETAIL_PAGE_URL']?>"><?=$item['NAME']?></a>
 						</div>

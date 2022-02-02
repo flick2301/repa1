@@ -40,7 +40,7 @@ use \Bitrix\Main\Localization\Loc;
                      <div class="product-card__header">
                         <div class="div_h3 product-card__title"><a class="product-card__link" href="<?=$arElement[$key]['DETAIL_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($arResult['ITEMS'][$key]['NAME']))?>')"><?=$arResult['ITEMS'][$key]['NAME']?></a></div>
 						<div class="product-card__image-block">
-                        <img class="product-card__image" src="<?echo ($arResult['ITEMS'][$key]['PREVIEW_PICTURE']['SRC']) ? $arResult['ITEMS'][$key]['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg";?>" width="200" height="150" alt="">
+                        <img class="product-card__image" src="<?echo $arResult['ITEMS'][$key]["SMALL_IMG_WEBP"]['WEBP_SRC'] ? $arResult['ITEMS'][$key]["SMALL_IMG_WEBP"]['WEBP_SRC'] : ($arResult['ITEMS'][$key]['PREVIEW_PICTURE']['SRC'] ? $arResult['ITEMS'][$key]['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg");?>" width="200" height="150" alt="">
 						</div>
                      </div>
                      <div class="product-card__content">
@@ -80,7 +80,7 @@ use \Bitrix\Main\Localization\Loc;
                      <div class="product-card__header">
                         <div class="div_h3 product-card__title"><a class="product-card__link" href="<?=$arElement[$key]['DETAIL_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($arResult['ITEMS'][$key + 1]['NAME']))?>')"><?=$arResult['ITEMS'][$key + 1]['NAME']?></a></div>
 						<div class="product-card__image-block">
-                        <img class="product-card__image" src="<?echo ($arResult['ITEMS'][$key + 1]['PREVIEW_PICTURE']['SRC']) ? $arResult['ITEMS'][$key + 1]['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg";?>" width="200" height="150" alt="">
+                        <img class="product-card__image" src="<?echo $arResult['ITEMS'][$key + 1]["SMALL_IMG_WEBP"]['WEBP_SRC'] ? $arResult['ITEMS'][$key + 1]["SMALL_IMG_WEBP"]['WEBP_SRC'] : ($arResult['ITEMS'][$key + 1]['PREVIEW_PICTURE']['SRC'] ? $arResult['ITEMS'][$key + 1]['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg");?>" width="200" height="150" alt="">
 						</div>
                      </div>
                      <div class="product-card__content">
@@ -158,7 +158,7 @@ use \Bitrix\Main\Localization\Loc;
                      <div class="product-card__header">
                         <div class="div_h3 product-card__title"><a class="product-card__link" href="<?=$arElement[$key]['DETAIL_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($arResult['ITEMS'][$key]['NAME']))?>')"><?=$arResult['ITEMS'][$key]['NAME']?></a></div>
 						<div class="product-card__image-block">
-                        <img class="product-card__image" src="<?echo ($arResult['ITEMS'][$key]['PREVIEW_PICTURE']['SRC']) ? $arResult['ITEMS'][$key]['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg";?>" width="200" height="150" alt="">
+                        <img class="product-card__image" src="<?echo ($arResult['ITEMS'][$key]["SMALL_IMG_WEBP"]['WEBP_SRC'] ? $arResult['ITEMS'][$key]["SMALL_IMG_WEBP"]['WEBP_SRC'] : $arResult['ITEMS'][$key]['PREVIEW_PICTURE']['SRC'] ? $arResult['ITEMS'][$key]['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg");?>" width="200" height="150" alt="">
 						</div>
                      </div>
                      <div class="product-card__content">
@@ -198,7 +198,7 @@ use \Bitrix\Main\Localization\Loc;
                      <div class="product-card__header">
                         <div class="div_h3 product-card__title"><a class="product-card__link" href="<?=$arElement[$key]['DETAIL_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($arResult['ITEMS'][$key + 1]['NAME']))?>')"><?=$arResult['ITEMS'][$key + 1]['NAME']?></a></div>
 						<div class="product-card__image-block">
-                        <img class="product-card__image" src="<?echo ($arResult['ITEMS'][$key + 1]['PREVIEW_PICTURE']['SRC']) ? $arResult['ITEMS'][$key + 1]['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg";?>" width="200" height="150" alt="">
+                        <img class="product-card__image" src="<?echo $arResult['ITEMS'][$key + 1]["SMALL_IMG_WEBP"]['WEBP_SRC'] ? $arResult['ITEMS'][$key + 1]["SMALL_IMG_WEBP"]['WEBP_SRC'] : ($arResult['ITEMS'][$key + 1]['PREVIEW_PICTURE']['SRC'] ? $arResult['ITEMS'][$key + 1]['PREVIEW_PICTURE']['SRC'] : "/images/no_image.jpg");?>" width="200" height="150" alt="">
 						</div>
                      </div>
                      <div class="product-card__content">
