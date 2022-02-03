@@ -1,0 +1,9 @@
+.youtube_video {
+	height: 500px;
+	margin: 10px 0;
+}
+@media (max-width: 1200px) {
+.youtube_video {
+	height: 340px;
+}
+}
