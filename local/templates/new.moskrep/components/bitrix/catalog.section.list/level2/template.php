@@ -317,9 +317,39 @@ $requestUri = $request->getRequestUri();
 <?globalGetTitle($h1_section)?>	
 
 
-<?if($arParams['TYPE_TEMPLATE']!='BOTTOM')
+<?
+//Проверка, что из саморезов и шурупов, отслеживаем путь, берем второго родителя( Крепеж - первый и т.д.)
+$second_parent = $arResult['SECTION']['PATH']['1'];
+if($second_parent['CODE']=='samorezy' && $arResult['SECTION']['DEPTH_LEVEL']>2)
 {
-	?>
+    $arParams['SECTIONS_LIST_TEMPLATE']="<!--catalog-feed-->
+            <div class=\"basic-layout__module basic-layout__module__sections catalog-feed below-table\">
+        <div class=\"catalog-feed__list\">";
+    foreach ($arResult['SECTIONS'] as &$arSection)
+    {
+        $white_class = (!$arSection['DETAIL_PICTURE']) ? 'catalog-feed__item__white' : '';
+        $arParams['SECTIONS_LIST_TEMPLATE'].= "<div class=\"catalog-feed__item catalog-feed__item__withpic ".$white_class."\">
+            <!--catalog-card-->
+            <section class=\"catalog-card\">";
+        $link = $arSection['UF_SYM_LINK'] ?? $arSection['SECTION_PAGE_URL'];
+        $name = $arSection['UF_SHORT_NAME'] ?? $arSection['NAME'];
+        $arParams['SECTIONS_LIST_TEMPLATE'].= "<div class=\"div_flex_h3 catalog-card__title\"><a href=\"$link\" target=\"_self\" title=\"".$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']."\" class=\"catalog-card__link\" onclick=\"dataLayerProduct(".str_replace(Array("\"", "'"), "", htmlspecialchars($arSection['NAME'])).");\">$name</a></div>";
+        $cover_class = (!$arSection['DETAIL_PICTURE']) ? 'catalog-card__cover__white' : '';
+        $arParams['SECTIONS_LIST_TEMPLATE'].= "<div class=\"catalog-card__cover $cover_class\">";
+        $arParams['SECTIONS_LIST_TEMPLATE'].= "<img class=\"catalog-card__image\" width=\"262\" height=\"197\" src=\"".$arSection['PICTURE']['src']."\" alt=\"".$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']."\">
+                </div>
+
+            </section>
+            <!--catalog-card-->
+        </div>";
+    }
+    $arParams['SECTIONS_LIST_TEMPLATE'] .= "</div>
+    </div>
+    <!--catalog-feed-->";
+}
+elseif($arParams['TYPE_TEMPLATE']!='BOTTOM')
+{
+   	?>
 
 <!--catalog-feed-->
     <div class="basic-layout__module basic-layout__module__sections catalog-feed">

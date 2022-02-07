@@ -196,6 +196,7 @@ if($arParams['FOR_SEO']!='Y'){
                             <a class="catalog-table__link" href="<?=$item['DETAIL_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['PROPERTIES']['ROOT_NAME']['VALUE'] ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME']))?>')" target="_self"><?=($item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"]) ? $item['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] : '1';?> <?=$item['UNIT']?></a>
                         </div>
                     </div>
+
             
             <?if(!$arResult['ENUM_LIST']['TURN_OFF_ARTICUL'] && !$_POST['ENUM_LIST']['TURN_OFF_ARTICUL'])
 				{?>
@@ -311,7 +312,7 @@ if($arParams['FOR_SEO']!='Y'){
 		<!-- pagination-container -->
 		<?=$arResult['NAV_STRING']?>
 		<!-- pagination-container -->
-	
+<?php echo htmlspecialchars_decode($arParams['SECTIONS_LIST_TEMPLATE']);?>
 
 <?
 

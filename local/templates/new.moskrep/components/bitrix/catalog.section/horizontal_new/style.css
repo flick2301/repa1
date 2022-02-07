@@ -133,3 +133,9 @@
     color: #333;
     font-size: 0.75rem;
 }
+.below-table{
+    min-width: 1000px !important;
+}
+.below-table ..catalog-feed__item__withpic{
+    margin: 0 11.5px 21px;
+}
