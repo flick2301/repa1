@@ -1,0 +1,127 @@
+.catalog-feed__list_vi {
+	justify-content: flex-start;
+	margin: 0 -15px 0 5px!important;
+
+}
+@media (max-width: 740px) {
+.catalog-feed__item_vi {
+	margin: 0 -5px 0 5px!important;
+}
+}
+.catalog-feed__item_vi {
+	padding: 0!important;
+	max-width: 25%!important;	
+	padding-right: 10px!important;
+	margin: 20px 0 10px!important;
+}
+@media (max-width: 1600px) {
+.catalog-feed__item_vi {
+	max-width: 33.33%!important;	
+}	
+}
+@media (max-width: 990.98px) {
+.catalog-feed__item_vi {
+	max-width: 50%!important;	
+}	
+}
+@media (max-width: 740px) {
+.catalog-feed__item_vi {
+	max-width: 100%!important;	
+	padding-right: 0!important;
+}	
+}
+.product-card_vi {
+    border: 1px solid #f0f0f0;
+	border-radius: 10px;	
+	padding: 4px 7px 2px!important;	
+}
+.product-card_vi:hover {
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}	
+.product-card__title_vi {
+    /*background: #4f36e3;*/
+	padding: 5px 8px;
+	/*min-height: 67.5625px;*/
+	display: flex;
+	align-items: center;
+	margin: 8px 0 0!important;
+	box-sizing: content-box;
+}
+@media (max-width: 1600px) {
+.product-card__title_vi {
+	/*min-height: 48.375px;*/
+}	
+}
+@media (max-width: 740px) {
+.product-card__title_vi {
+	/*min-height: auto;*/
+}	
+}
+.product-card__link_vi {
+	/*color: #fff!important;*/
+}
+.product-card__block-size {
+	font-size: 17px;
+	margin-bottom: 3px;
+}
+.product-card__header_vi {
+    margin-bottom: 5px!important;
+}	
+.product-card__available_vi {
+	text-align: left!important;
+}
+.product-card__amount {
+	text-align: right;
+	float: right;
+}
+.product-card__available_vi {
+	margin: 3px 0 0;
+	font-size: 18px;
+}
+.product-card__size {
+	font-weight: bold;
+	margin-bottom: 2px;
+}
+.simple-state-yes-icon_vi {
+	height: 15px!important;
+	width: 14px!important;
+	background-size: 14px 14px!important;
+}
+.product-card__price-block_vi {
+	font-size: 16px!important;
+	text-align: left;
+	margin-top: 3px;
+	font-size: 16px!important;
+	white-space: nowrap;
+}
+.product-card__price_vi {
+	text-align: left;
+	padding: 0!important;
+	font-size: 18px!important;
+}
+.product-card__footer_vi {
+	align-items: flex-end;
+	margin-top: 1px!important;
+}
+.product-card__button_round {
+	height: 39px!important;
+	width: 39px!important;
+	border-radius: 50%!important;
+	margin: 0 3px 8px 0!important;
+	background: #4f36e3 url('./image/shopping-cart-svgrepo-com-white.svg') no-repeat 50% 50% / 50% 50%!important;
+}
+.product-card__button_round:hover {
+	opacity: 0.9;
+}
+.product-card__artno-block {
+	font-size: 11px;
+	margin-bottom: 2px;
+}
+.product-card__artno {
+	color: #676767;
+}
+.product-card__state_artno {
+	color: #000;
+	font-weight: normal!important;
+	font-size: 14px!important;
+}
