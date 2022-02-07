@@ -202,6 +202,7 @@ if ($showBottomPager)
 	<?
 }
 ?>
+<?php echo htmlspecialchars_decode($arParams['SECTIONS_LIST_TEMPLATE']);?>
 <?if(!$arParams["DISABLE_HEADER"]=='Y'){?>
 <?
 
