@@ -147,10 +147,18 @@ if($_POST['ENUM_LIST']['BLOCKS'])
 	
 }
 else
-{
-	$template = "horizontal_new";
+{	
+
+$intCount = CIBlockSection::GetCount(
+  array('IBLOCK_ID' => $arParams['IBLOCK_ID'], 'ACTIVE' => 'Y', 'SECTION_ID' => $arResult['SECTION']['ID'])
+);
+
+
+	if (!$intCount) $template = "horizontal_new";
+	else $template = "vertical";
 	$arParams["ELEMENT_SORT_FIELD"] = 'property_'.$first_sort_field;
 	$arParams["ELEMENT_SORT_FIELD2"]='property_DLINA';
+	//$template = "horizontal_new";
 	
 }
 
@@ -186,7 +194,7 @@ $intSectionID = $APPLICATION->IncludeComponent(
 						"SHOW_404" => $arParams["SHOW_404"],
 						"FILE_404" => $arParams["FILE_404"],
 						"DISPLAY_COMPARE" => $arParams["USE_COMPARE"],
-						"PAGE_ELEMENT_COUNT" => $_GET['SIZEN_1'],
+						"PAGE_ELEMENT_COUNT" => $_GET['SIZEN_1'] ? $_GET['SIZEN_1'] : PAGE_ELEMENT_COUNT_NEW[0],
 						"LINE_ELEMENT_COUNT" => $arParams["LINE_ELEMENT_COUNT"],
 						"PRICE_CODE" => array(
                                                     0 => "Распродажа",

@@ -607,6 +607,7 @@ while($arSection = $db_list->GetNext()) {
 <?if($arResult['SECTION']['UF_DESCRIPTION_ABOUT'] /*&& ($USER->IsAdmin() || $arResult['SECTION']['UF_DESCRIPTION_SPECIES'] || $arResult['SECTION']['UF_DESCRIPTION_WHOLESALE'] || $arResult['SECTION']['UF_DESCRIPTION_WARRANTY'] || $arResult['SECTION']['UF_DESCRIPTION_DELIVERY'] || $arResult['SECTION']['UF_DESCRIPTION_SORT'])*/):?>
 
 
+
         <!--product-tabs-->
                <div class="product-page__tabs product-tabs" id="desc">
                   <ul class="product-tabs__list" data-product-page-tabs>		
@@ -642,7 +643,12 @@ while($arSection = $db_list->GetNext()) {
                      <li class="product-tabs__item">
                         <a class="product-tabs__toggle" href="#description_sort">Сортировка</a>
                      </li>	
-					<?endif?>						 
+					<?endif?>			
+					 <?if($arResult['SECTION']['UF_YOUTUBE']):?>						 
+                     <li class="product-tabs__item">
+                        <a class="product-tabs__toggle" href="#description_youtube">Видео</a>
+                     </li>	
+					<?endif?>						
                   </ul>
                </div>
         <!--product-tabs-->
@@ -755,6 +761,19 @@ while($arSection = $db_list->GetNext()) {
 </div>
 </div>	
 <?endif?>
+	
+<?if($arResult['SECTION']['UF_YOUTUBE']):?>						 
+<div class="product-page__section" id="description_youtube">
+<div class="basic-layout__module simple-article">
+<div class="simple-article__content wysiwyg-block">	
+<?$arResult['SECTION']['UF_YOUTUBE'] = explode("|", $arResult['SECTION']['UF_YOUTUBE'])?>
+<?foreach($arResult['SECTION']['UF_YOUTUBE'] AS $youtube):?>
+<iframe class="youtube_video" width="100%" height="" src="https://www.youtube.com/embed/<?=$youtube;?>" title="<?=$h1_section?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<?endforeach?>
+</div>
+</div>
+</div>
+<?endif?>	
 
 
 

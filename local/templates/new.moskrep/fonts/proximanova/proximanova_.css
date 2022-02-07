@@ -9,6 +9,7 @@
 		url('ProximaNovaCond-LightIt.ttf') format('truetype');
 	font-weight: 300;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -20,6 +21,7 @@
 		url('ProximaNova-LightIt.ttf') format('truetype');
 	font-weight: 300;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -31,6 +33,7 @@
 		url('ProximaNovaCond-Regular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -42,6 +45,7 @@
 		url('ProximaNova-Extrabld.ttf') format('truetype');
 	font-weight: 800;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -53,6 +57,7 @@
 		url('ProximaNovaCond-Black.ttf') format('truetype');
 	font-weight: 900;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -64,6 +69,7 @@
 		url('ProximaNovaCond-ExtrabldIt.ttf') format('truetype');
 	font-weight: 800;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -75,6 +81,7 @@
 		url('ProximaNova-Regular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -86,6 +93,7 @@
 		url('ProximaNova-Semibold.ttf') format('truetype');
 	font-weight: 600;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -97,6 +105,7 @@
 		url('ProximaNovaExCn-Thin.ttf') format('truetype');
 	font-weight: 100;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -108,6 +117,7 @@
 		url('ProximaNovaCond-Semibold.ttf') format('truetype');
 	font-weight: 600;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -119,6 +129,7 @@
 		url('ProximaNovaExCn-SemiboldIt.ttf') format('truetype');
 	font-weight: 600;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -130,6 +141,7 @@
 		url('ProximaNovaExCn-Semibold.ttf') format('truetype');
 	font-weight: 600;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -141,6 +153,7 @@
 		url('ProximaNova-ThinIt.ttf') format('truetype');
 	font-weight: 100;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -152,6 +165,7 @@
 		url('ProximaNovaCond-Thin.ttf') format('truetype');
 	font-weight: 100;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -163,6 +177,7 @@
 		url('ProximaNovaCond-RegularIt.ttf') format('truetype');
 	font-weight: normal;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -174,6 +189,7 @@
 		url('ProximaNovaExCn-ThinIt.ttf') format('truetype');
 	font-weight: 100;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -185,6 +201,7 @@
 		url('ProximaNova-SemiboldIt.ttf') format('truetype');
 	font-weight: 600;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -196,6 +213,7 @@
 		url('ProximaNova-RegularIt.ttf') format('truetype');
 	font-weight: normal;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -207,6 +225,7 @@
 		url('ProximaNovaCond-Extrabld.ttf') format('truetype');
 	font-weight: 800;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -218,6 +237,7 @@
 		url('ProximaNovaExCn-ExtrabldIt.ttf') format('truetype');
 	font-weight: 800;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -229,6 +249,7 @@
 		url('ProximaNovaExCn-BlackIt.ttf') format('truetype');
 	font-weight: 900;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -240,6 +261,7 @@
 		url('ProximaNovaExCn-LightIt.ttf') format('truetype');
 	font-weight: 300;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -251,6 +273,7 @@
 		url('ProximaNovaCond-ThinIt.ttf') format('truetype');
 	font-weight: 100;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -262,6 +285,7 @@
 		url('ProximaNovaExCn-Light.ttf') format('truetype');
 	font-weight: 300;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -273,6 +297,7 @@
 		url('ProximaNovaCond-BoldIt.ttf') format('truetype');
 	font-weight: bold;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -284,6 +309,7 @@
 		url('ProximaNovaExCn-Extrabld.ttf') format('truetype');
 	font-weight: 800;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -295,6 +321,7 @@
 		url('ProximaNovaExCn-BoldIt.ttf') format('truetype');
 	font-weight: bold;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -306,6 +333,7 @@
 		url('ProximaNova-Black.ttf') format('truetype');
 	font-weight: 900;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -317,6 +345,7 @@
 		url('ProximaNova-Bold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -328,6 +357,7 @@
 		url('ProximaNovaExCn-Bold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -339,6 +369,7 @@
 		url('ProximaNovaT-Thin.ttf') format('truetype');
 	font-weight: 100;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -350,6 +381,7 @@
 		url('ProximaNova-BoldIt.ttf') format('truetype');
 	font-weight: bold;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -361,6 +393,7 @@
 		url('ProximaNovaCond-Bold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -372,6 +405,7 @@
 		url('ProximaNovaExCn-Black.ttf') format('truetype');
 	font-weight: 900;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -383,6 +417,7 @@
 		url('ProximaNovaExCn-RegularIt.ttf') format('truetype');
 	font-weight: normal;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -394,6 +429,7 @@
 		url('ProximaNovaCond-Light.ttf') format('truetype');
 	font-weight: 300;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -405,6 +441,7 @@
 		url('ProximaNova-ExtrabldIt.ttf') format('truetype');
 	font-weight: 800;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -416,6 +453,7 @@
 		url('ProximaNovaCond-BlackIt.ttf') format('truetype');
 	font-weight: 900;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -427,6 +465,7 @@
 		url('ProximaNovaExCn-Regular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -438,6 +477,7 @@
 		url('ProximaNova-Light.ttf') format('truetype');
 	font-weight: 300;
 	font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -449,6 +489,7 @@
 		url('ProximaNovaCond-SemiboldIt.ttf') format('truetype');
 	font-weight: 600;
 	font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -460,4 +501,5 @@
 		url('ProximaNova-BlackIt.ttf') format('truetype');
 	font-weight: 900;
 	font-style: italic;
+    font-display: swap;
 }

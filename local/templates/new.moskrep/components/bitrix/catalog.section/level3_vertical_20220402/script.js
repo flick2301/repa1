@@ -78,6 +78,8 @@ BX.ready(function () {
 
   $('.pickup-view').click(function(e) {
 
+		//Для вертикального шаблона пока эта функция не нужна, сразу же прерываю ее
+		return false;
 		$('.pickup-block').removeClass('show');
 		$('.delivery-block').removeClass('show');
 		$(this).children('.pickup-block').addClass('show');
@@ -117,6 +119,10 @@ BX.ready(function () {
 	});
 
 	$('.delivery-view').click(function(e) {
+		
+		//Для вертикального шаблона пока эта функция не нужна, сразу же прерываю ее
+		return false;
+		
 		$('.pickup-block').removeClass('show');
 		$('.delivery-block').removeClass('show');
 		$(this).children('.delivery-block').addClass('show');
@@ -164,26 +170,6 @@ BX.ready(function () {
     
 
 $(".amount__select :contains("+$('.amount__info').text()+")").attr("selected", "selected");
-
-$(document).on('change', '#page_element_count', function(event) {
-	location.href = location.pathname + '?SIZEN_1=' + $('#page_element_count option:selected').val();
-});   
-    
-
-$(".amount__select :contains("+$('.amount__info').text()+")").attr("selected", "selected");
-
-$(document).on('click', '#view_wholesale', function() {
-	if($('div').is('#desc')) {	
-		$('.product-tabs__toggle').attr('aria-selected', false); 
-		$('#tabby-toggle_description_wholesale').attr('aria-selected', true); 
-		$('.product-page__section').attr('hidden', 'hidden'); 
-		$('#description_wholesale').attr('hidden', false); 
-		element = document.getElementById('desc');
-		element.scrollIntoView(true);
-	}
-	else window.open('/vashi_skidki/', '_blank');
-	});
-
 
 });
 function ChangeInputCart(name, e){
