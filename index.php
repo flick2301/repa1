@@ -352,6 +352,7 @@ $arrFilter['!CATALOG_PRICE_8'] = false;
 
 
 
+
 <?/*
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.section.list",
