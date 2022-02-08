@@ -147,12 +147,14 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
 						</div> 
 				<?endif?>		
 						
+						<?if($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']):?>
 						<div class="product-card__content">
                            <div class="product-card__block">
                               <p class="product-card__delivery"><i class="simple-home-icon product-card__icon"></i><span class="product-card__text">Самовывоз</span><span class="product-card__date">Сегодня</span></p>						   
                               <p class="product-card__delivery"><i class="simple-car-icon product-card__icon"></i><span class="product-card__text">Доставка</span><span class="product-card__date">Завтра</span></p>
                            </div>
-						</div>  
+						</div> 
+						<?endif;?>
 
 						<div class="product-card__content">
                            <div class="product-card__block">
