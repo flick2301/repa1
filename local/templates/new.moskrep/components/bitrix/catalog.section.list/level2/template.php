@@ -320,7 +320,7 @@ $requestUri = $request->getRequestUri();
 <?
 //Проверка, что из саморезов и шурупов, отслеживаем путь, берем второго родителя( Крепеж - первый и т.д.)
 $second_parent = $arResult['SECTION']['PATH']['1'];
-if($second_parent['CODE']=='samorezy' && $arResult['SECTION']['DEPTH_LEVEL']>2)
+if(($second_parent['CODE']=='samorezy' && $arResult['SECTION']['DEPTH_LEVEL']>2) || in_array($arResult['SECTION']['CODE'], ARR_CODE_CAT_WITH_BOTTOM_CATEGORIES_LIST))
 {
     $arParams['SECTIONS_LIST_TEMPLATE']="<!--catalog-feed-->
             <div class=\"basic-layout__module basic-layout__module__sections catalog-feed below-table\">

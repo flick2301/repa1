@@ -56,6 +56,8 @@ const ID_PRICE_18 = '13';
 //Платежные системы
 const BY_CARD = 8;
 
+const ARR_CODE_CAT_WITH_BOTTOM_CATEGORIES_LIST = ['bolty', 'vinty', 'gayki', 'shayby', 'shpilki'];
+
 const ID_DELIVERY_DAYTODAY = 36;
 const ID_DELIVERY_SUNDAY = 37;
 const SHOPS_SPB = 2631;
