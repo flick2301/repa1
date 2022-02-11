@@ -2087,7 +2087,7 @@ atalog_main_menu .catalog-nav__lvl1-link, .catalog-nav__lvl1-toggle {
 /*-------------------------------------------*/
 .basic-layout__header {
 	width: 100%;
-	min-height: 107px;
+	min-height: 107px!important;
 	position: fixed;
 	background: #fff;
 	z-index: 8;
@@ -2103,7 +2103,7 @@ main.catalog {
 	margin-top: 188px;
 }
 main {
-	margin-top: 148px;
+	margin-top: 148px!important;
 }
 .eshop-panel {
 	margin-top: 0;
