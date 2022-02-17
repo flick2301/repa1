@@ -8518,7 +8518,9 @@ for (var key in this.result.DELIVERY_GROUPS) {
 						)
 					);
 				}
-			}		
+			}
+
+			
 
 			params = {};
 			curDelivery = this.getSelectedDelivery();
@@ -8611,7 +8613,11 @@ for (var key in this.result.DELIVERY_GROUPS) {
 				);
 			}
 
-			this.editMobileTotalBlock();
+			this.editMobileTotalBlock(); 
+			
+	$('#bx-soa-total-mobile #ORDER_CONFIRM_BUTTON').attr('id', 'ORDER_CONFIRM_BUTTON_MOBILE');
+	
+	
 		},
 
 		editMobileTotalBlock: function()

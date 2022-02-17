@@ -83,7 +83,7 @@ BX.ready(function () {
 		$(this).children('.pickup-block').addClass('show');
 		
 		var id = e.target.dataset.product;
-		console.log(e.target.dataset.product);
+		//console.log(e.target.dataset.product);
 								
 		BX.ajax({ 
 			type: 'POST', // метод отправки

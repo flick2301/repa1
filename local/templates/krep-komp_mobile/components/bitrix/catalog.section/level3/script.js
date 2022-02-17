@@ -6,7 +6,8 @@
 
 
 BX.ready(function () {
-    var buyBtnDetail = document.body.querySelectorAll('.basket-btn');
+    //var buyBtnDetail = document.body.querySelectorAll('.basket-btn');
+	var buyBtnDetail = document.body.querySelectorAll('.catalog-table__cart');
 
     for (var i = 0; i < buyBtnDetail.length; i++) {
         BX.bind(buyBtnDetail[i], 'click', BX.delegate(function (e) {
@@ -60,7 +61,7 @@ BX.ready(function () {
 		$(this).children('.pickup-block').addClass('show');
 		
 		var id = e.target.dataset.product;
-		console.log(e.target.dataset.product);
+		//console.log(e.target.dataset.product);
 								
 		BX.ajax({ 
 			type: 'POST', // метод отправки

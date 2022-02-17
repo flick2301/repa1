@@ -1,6 +1,10 @@
 * {
     box-sizing: inherit;
 }
+#ORDER_CONFIRM_BUTTON_MOBILE {
+	color: #fff!important;
+	text-decoration: none;
+}
 *:before, *:after {
     box-sizing: inherit;
 }

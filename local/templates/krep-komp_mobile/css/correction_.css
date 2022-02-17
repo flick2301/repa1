@@ -1252,6 +1252,20 @@ ol.tech li {
 .table-of-contents__link {
     color: #4F36E3;
 }
+.colored-cart-icon {
+    background-image: url(../img/colored-cart.svg);
+}	
+.pickup-view {
+    background: url(../img/Shape-01.svg) no-repeat;
+	background-size: contain;
+}
+.delivery-view {
+    background: url(../img/Shape-02.svg) no-repeat;
+	background-size: contain;
+}	
+.simple-user-icon {
+    background-image: url(../img/simple-user.svg);
+}	
 .website-navbar {
 	margin: 18px 0 -5px;
 }
@@ -1417,7 +1431,7 @@ ol.tech li {
 }
 #bx_basket1 .added-product__close {
 	font-size: 17px;
-	margin-left: calc(50% - 54px);
+	margin-left: calc(50% - 10px);
 }
 .added-product__close:before {
 	margin-left: 25px!important;
@@ -1617,6 +1631,12 @@ ol.tech li {
 	top: 12px;
 	right: 12px;
 }
+#added-basket span {
+	display: none!important;	
+}
+#added-basket {
+	border: 1px solid #000;
+}
 
 
 
@@ -1794,6 +1814,15 @@ img.intro-slider__image {
 }
 .table__add { 
 	background: #552FEC!important;
+}
+.product-purchase__price {
+	white-space: nowrap;
+	font-size: 22px;
+	line-height: 40px;
+}
+.card-price-dop {
+    font-size: .75rem;
+    line-height: 0;
 }
 }
 
@@ -2582,7 +2611,6 @@ element.style {
 	background: rgba(79, 54, 227, 0.2);
 }
 /*Страница каталога*/
-
 
 
 
