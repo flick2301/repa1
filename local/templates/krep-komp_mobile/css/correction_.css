@@ -1648,6 +1648,15 @@ ol.tech li {
 	line-height: 22px;
 	margin-bottom: 12px;
 }
+#geolocation {
+	padding-top: 0px!important;
+}
+.geo {
+	margin-top: 10px;
+}
+.mobile--active {
+	width: 100%!important;
+}
 
 
 
