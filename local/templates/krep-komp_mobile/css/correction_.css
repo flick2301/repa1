@@ -1637,8 +1637,17 @@ ol.tech li {
 #added-basket {
 	border: 1px solid #000;
 }
-
-
+.mobile__ul--active {
+	z-index: 2;
+}
+#global-geoitem-search {
+	height: calc(100% + 3px);
+}
+.geo li, .geo li.master {
+	font-size: 20px;
+	line-height: 22px;
+	margin-bottom: 12px;
+}
 
 
 

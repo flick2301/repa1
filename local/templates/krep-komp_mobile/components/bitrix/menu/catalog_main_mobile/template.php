@@ -15,12 +15,12 @@
 	<?if ($arItem["IS_PARENT"])
 	{?>
 		<div class="mobile__link mobile__item--drop">
-            <div class="mobile__link--parent"><?=$arItem["TEXT"]?></div>
+            <div class="mobile__link--parent"><span class="mobile__text"><?=$arItem["TEXT"]?></span></div>
             <div class="mobile__ul">
                   <div class="mobile__back">&lt; Назад</div>
 					
 	<?}else{?>
-		<a class="mobile__link" href="<?=$arItem['LINK']?>"><?=$arItem["TEXT"]?></a>
+		<a class="mobile__link" href="<?=$arItem['LINK']?>"><span class="mobile__text"><?=$arItem["TEXT"]?></span></a>
 	<?}?>
 	<?$previousLevel = $arItem["DEPTH_LEVEL"];?>
 	

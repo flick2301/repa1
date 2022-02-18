@@ -1879,7 +1879,7 @@ img.intro-slider__image {
 
 
 
-@media (max-width: 685px) {
+@media (max-width: 685px) {	
 #tooltip {
     margin-top: 0!important;
     margin-left: 0!important;
@@ -2034,7 +2034,7 @@ atalog_main_menu .catalog-nav__lvl1-link, .catalog-nav__lvl1-toggle {
 	display: none;
 }
 .basic-layout__module.intro-slider {
-	margin-top: -42px;
+	margin-top: 3px;
 }
 #new_catalog_bar .simple-menu-icon {
 	display: inline-flex;
@@ -2087,7 +2087,7 @@ atalog_main_menu .catalog-nav__lvl1-link, .catalog-nav__lvl1-toggle {
 /*-------------------------------------------*/
 .basic-layout__header {
 	width: 100%;
-	min-height: 107px!important;
+	min-height: 152px!important;
 	position: fixed;
 	background: #fff;
 	z-index: 8;
@@ -2221,7 +2221,7 @@ main {
 	flex: 0 0 50%;
 }
 .basic-layout__module.intro-slider {
-	margin-top: -32px;
+	margin-top: 18px;
 }
 .multi-search .multi-layout {
 	margin: 0 10px!important;
@@ -2287,7 +2287,7 @@ main {
 .can-register__registration, .can-register__small .can-register__registration {
 	font-size: 18px;
 	margin-bottom: 28px;
-}
+}	
 }
 
 
