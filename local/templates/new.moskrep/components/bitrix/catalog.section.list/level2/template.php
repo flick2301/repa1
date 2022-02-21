@@ -370,6 +370,21 @@ elseif($arParams['TYPE_TEMPLATE']!='BOTTOM')
 		<!--catalog-card-->
 		</div>
     <?}?>
+	<?if ($arResult["SECTION"]["UF_YOUTUBE"]):?>
+	<?$video_view_name = mb_strtolower(mb_substr($h1_section, 0, 1)) . mb_substr($h1_section, 1);?>
+<div class="catalog-feed__item catalog-feed__item__withpic catalog-feed__item__white">
+		<!--goto-video-->
+    <section id="catalog-card_goto-video" class="catalog-card catalog-card_goto-video">
+      <div class="div_flex_h3 catalog-card__title"><a href="javascript:void();" title="Видеобзоры на <?=$video_view_name?>" class="catalog-card__link">Видеобзоры на <?=$video_view_name?></a></div>
+        <div class="catalog-card__cover catalog-card__cover__white">
+          <img class="catalog-card__image catalog-card__image_goto-video" width="262" height="197" src="<?=SITE_TEMPLATE_PATH?>/img/video_view_name.svg" alt="Видеобзоры на <?=$video_view_name?>">
+        </div>
+      
+    </section>
+		<!--goto-video-->
+		</div>
+		
+	<?endif?>	
     <?php
     if(count($arResult['SORTING']['ROOT_ELEMENTS'])){
         foreach($arResult['SORTING']['ROOT_ELEMENTS'] as $dop_section){
