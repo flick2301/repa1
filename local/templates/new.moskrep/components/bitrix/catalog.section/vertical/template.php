@@ -74,7 +74,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
 
 
 
-
+<div id="shops-window"><div class="win"></div></div>
 <div class="page_count_panel">
 
 <div class="page_count_panel_viewblock">Показано <?=count($arResult['ITEMS'])?> из <?=$arResult['NAV_RESULT']->NavRecordCount?> товаров</div>
@@ -102,7 +102,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
 
     <!--catalog-feed-->
     <div class="basic-layout__module catalog-feed">
-
+        <?php //require_once($_SERVER["DOCUMENT_ROOT"].'/test/temp_of_cart.php');?>
 		<div class="catalog-feed__list catalog-feed__list_vi">			
 	<?
 	
@@ -150,8 +150,8 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
 						<?if($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']):?>
 						<div class="product-card__content">
                            <div class="product-card__block">
-                              <p class="product-card__delivery"><i class="simple-home-icon product-card__icon"></i><span class="product-card__text">Самовывоз</span><span class="product-card__date">Сегодня</span></p>						   
-                              <p class="product-card__delivery"><i class="simple-car-icon product-card__icon"></i><span class="product-card__text">Доставка</span><span class="product-card__date">Завтра</span></p>
+                              <p class="product-card__delivery" data-product="<?=$item['ID']?>"><i class="simple-home-icon product-card__icon"></i><span class="product-card__text">Самовывоз</span><span class="product-card__date">Сегодня</span></p>
+                              <p class="product-card__delivery" data-product="<?=$item['ID']?>"><i class="simple-car-icon product-card__icon"></i><span class="product-card__text">Доставка</span><span class="product-card__date">Завтра</span></p>
                            </div>
 						</div> 
 						<?endif;?>

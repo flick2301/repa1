@@ -3,7 +3,9 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetPageProperty("description", "Адреса магазинов в {{city}}");
 $APPLICATION->SetTitle("Адреса магазинов в {{city}}");
 ?><!--simple-article-->
+<!--<script type='text/javascript' src='https://api-maps.yandex.ru/2.1.50/?load=package.full&lang=ru-RU&apikey=e42a471e-bc80-4836-8f3b-af2ca212b91b'></script>-->
 <div class="basic-layout__module simple-article">
+
 
 	 <?if(!$_REQUEST["ID"]):?> <?globalGetTitle()?> <?endif?>
 	<div id="moscow" class="delivery__tabs-list active">
@@ -49,9 +51,8 @@ $APPLICATION->SetTitle("Адреса магазинов в {{city}}");
 	)
 );?>
 	</div>
-	
-	
-	<div class="simple-article__content">
+
+    <div class="simple-article__content">
  <article class="simple-article__section wysiwyg-block">
 		<h2>ООО «КРЕП-КОМП»</h2>
 		 <!--bank-details-->

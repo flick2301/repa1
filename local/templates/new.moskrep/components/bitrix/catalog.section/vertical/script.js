@@ -184,6 +184,48 @@ $(document).on('click', '#view_wholesale', function() {
 	else window.open('/vashi_skidki/', '_blank');
 	});
 
+	$('.product-card__delivery').click(function () {
+		$('#shops-window').slideDown(0);
+		var product_id = $(this).data('product');
+		var request = BX.ajax.runComponentAction("d7:contact_shops", "ajaxRequest", {
+
+			mode: "class",
+			data:{
+				iblock_id: '19',
+				product_id: product_id,
+			}
+
+		});
+		request.then(function(response)
+		{
+
+
+
+			let shops_monitor = document.querySelector('.win');
+
+			$('body').append("<script type='text/javascript' src='/local/components/d7/contact_shops/templates/krep-komp.new/script.js' />");
+
+			shops_monitor.innerHTML = response.data;
+
+			let code2 = document.querySelector('#api-map').textContent;
+			eval(code2);
+			let code = document.querySelector('#push').textContent;
+			eval(code);
+
+
+
+
+		});
+
+
+
+	});
+	$('.win').on('click', function(e){
+		if(e.target.id=='close') {
+			$('#shops-window').slideUp(0);
+		}
+	});
+
 
 });
 function ChangeInputCart(name, e){
