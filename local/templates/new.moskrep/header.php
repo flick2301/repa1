@@ -148,6 +148,11 @@ $APPLICATION->IncludeFile(
 	//file_exists($_SERVER["DOCUMENT_ROOT"].SITE_TEMPLATE_PATH."/js/script.js")
 	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.min.js");
 
+
+    CJSCore::Init(array("popup"));
+    $api_key = htmlspecialcharsbx(Bitrix\Main\Config\Option::get('fileman', 'yandex_map_api_key'));
+    Asset::getInstance()->addJs("https://api-maps.yandex.ru/2.1.50/?load=package.full&lang=ru-RU&apikey=$api_key");
+
 		if ($USER->IsAdmin() || $_GET["administrator"]) {
 			$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/administrator.css", true);	
 			$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/administrator.js");
