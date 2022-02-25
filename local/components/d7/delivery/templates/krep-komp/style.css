@@ -1,3 +1,12 @@
+.win .delivery p{
+  width:870px;
+  display: block;
+  white-space: initial;
+  line-height: 1.4em;
+}
+.win .delivery__tabs{
+  margin-bottom:0px;
+}
 .delivery__tabs {
   display: flex;
   align-items: center;

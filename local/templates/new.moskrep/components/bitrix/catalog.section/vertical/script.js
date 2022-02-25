@@ -184,7 +184,7 @@ $(document).on('click', '#view_wholesale', function() {
 	else window.open('/vashi_skidki/', '_blank');
 	});
 
-	$('.product-card__delivery').click(function () {
+	$('.card_pickup').click(function () {
 		$('#shops-window').slideDown(0);
 		var product_id = $(this).data('product');
 		var request = BX.ajax.runComponentAction("d7:contact_shops", "ajaxRequest", {
@@ -220,6 +220,36 @@ $(document).on('click', '#view_wholesale', function() {
 
 
 	});
+
+	$('.card_delivery').click(function () {
+		$('#shops-window').slideDown(0);
+		var request = BX.ajax.runComponentAction("d7:delivery", "ajaxRequest", {
+
+			mode: "class",
+			data:{
+				iblock_id: '22',
+			}
+
+		});
+		request.then(function(response)
+		{
+
+			let shops_monitor = document.querySelector('.win');
+
+			$('body').append("<script type='text/javascript' src='/local/components/d7/delivery/templates/krep-komp/script.js' />");
+
+			shops_monitor.innerHTML = response.data;
+
+			let code = document.querySelector('#api-map-delivery').textContent;
+			eval(code);
+
+
+		});
+
+
+
+	});
+
 	$('.win').on('click', function(e){
 		if(e.target.id=='close') {
 			$('#shops-window').slideUp(0);
