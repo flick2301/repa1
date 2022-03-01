@@ -22,17 +22,36 @@ $request = $context->getRequest();
 $requestUri = $request->getRequestUri();
 
 if($arParams['REFERENCE_CHECK']=='Y'):
-    
 
-     
-   
-   
-    $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'UF_DIRECTORY'=>$arResult['SECTION']['ID']);
-    $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array('*', 'UF_DIRECTORY'));
-    while ($arSection = $rsSections->Fetch())
+
+
+
+    if(end($arParams['SORTING']))
     {
-       $arResult['SORTING']['SECTION_ID'] = $arSection['ID'];
+        $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'UF_LANDING_PAGE_CODE'=>end($arParams['SORTING']));
+        $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array('*', 'UF_LANDING_PAGE_CODE'));
+        while ($arSection = $rsSections->Fetch())
+        {
+            $arResult['SORTING']['SECTION_ID'] = $arSection['ID'];
+        }
+    }else {
+        $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'UF_DIRECTORY' => $arResult['SECTION']['ID']);
+        $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array('*', 'UF_DIRECTORY'));
+        while ($arSection = $rsSections->Fetch()) {
+            $arResult['SORTING']['SECTION_ID'] = $arSection['ID'];
+        }
     }
+    if($arResult['SORTING']['SECTION_ID']) {
+        $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'SECTION_ID' => $arResult['SORTING']['SECTION_ID']);
+        $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array('*', 'UF_TOP'));
+        while ($arSection = $rsSections->Fetch()) {
+            $arResult['SORTING']['SECTIONS'][$arSection['ID']]['NAME'] = $arSection['NAME'];
+            $arResult['SORTING']['SECTIONS'][$arSection['ID']]['TOP'] = $arSection['UF_TOP'];
+            $arSortSecID[] = $arSection['ID'];
+
+        }
+    }
+
     
     if($arResult['SORTING']['SECTION_ID'] && $arResult['SECTION']['ID']){
         $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'SECTION_ID'=>$arResult['SORTING']['SECTION_ID']);
@@ -77,8 +96,19 @@ if($arParams['REFERENCE_CHECK']=='Y'):
        
        
     }else{
-		
-		
+
+        if($arSortSecID){
+            $arFilter = Array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "ACTIVE"=>"Y", 'IBLOCK_SECTION_ID'=>$arSortSecID, '!PROPERTY_VISIBILITY_VALUE'=>'Y');
+            $res = CIBlockElement::GetList(Array('SORT' => 'ASC'), $arFilter, false, false, array('*'));
+            while($ob = $res->GetNextElement()){
+
+                $arFields = $ob->GetFields();
+                $arProps = $ob->GetProperties();
+                $arResult['SORTING']['SECTIONS'][$arFields['IBLOCK_SECTION_ID']]['ITEMS'][]=array_merge($arFields, $arProps);
+
+            }
+        }
+
         $resProps = CIBlock::GetProperties($arParams["IBLOCK_ID"], Array(), Array());
         while($arProp = $resProps->Fetch()){
             $arProp_catalog[]=$arProp['CODE'];
