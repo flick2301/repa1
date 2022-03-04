@@ -78,10 +78,9 @@ if($arParams['FOR_SEO']!='Y'){
 //ШАПКА ТАБЛИЦЫ
 
 }?>
-
-
-
+    <div id="shops-window"><div class="win"></div></div>
 <div class="page_count_panel">
+
 
 <div class="page_count_panel_viewblock">Показано <?=count($arResult['ITEMS'])?> из <?=$arResult['NAV_RESULT']->NavRecordCount?> товаров</div>
 
