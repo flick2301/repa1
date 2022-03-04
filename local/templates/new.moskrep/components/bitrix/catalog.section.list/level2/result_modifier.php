@@ -25,16 +25,13 @@ if($arParams['REFERENCE_CHECK']=='Y'):
 
 
 
+	$arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'UF_LANDING_PAGE_CODE'=>end($arParams['SORTING']));
+    $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array('*', 'UF_LANDING_PAGE_CODE'));
 
-    if(end($arParams['SORTING']))
+    if($arSection = $rsSections->Fetch())
     {
-        $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'UF_LANDING_PAGE_CODE'=>end($arParams['SORTING']));
-        $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array('*', 'UF_LANDING_PAGE_CODE'));
-        while ($arSection = $rsSections->Fetch())
-        {
-            $arResult['SORTING']['SECTION_ID'] = $arSection['ID'];
-        }
-    }else {
+        $arResult['SORTING']['SECTION_ID'] = $arSection['ID'];
+	}else {
         $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'UF_DIRECTORY' => $arResult['SECTION']['ID']);
         $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array('*', 'UF_DIRECTORY'));
         while ($arSection = $rsSections->Fetch()) {

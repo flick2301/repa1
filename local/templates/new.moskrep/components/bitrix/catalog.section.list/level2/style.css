@@ -1,3 +1,7 @@
+.category-blocknew .category-blocknew__list .category-blocknew__item .active{
+	background: rgba(79, 54, 227, 0.2) !important;
+	border: 1px solid #4f36e3 !important;
+}
 .youtube_video {
 	height: 500px;
 	margin: 10px 0;
