@@ -69,10 +69,25 @@ class ContactShopsClass extends \CBitrixComponent implements \Bitrix\Main\Engine
                             'STORE_ID'=>$this->arResult["ITEMS"][$i]['PROP']['SKLAD_ID']['VALUE'],
 
                         ],
-                        'select'=>['AMOUNT'],
+                        'select'=>['*'],
                     ])->fetch();
                     $this->arResult["ITEMS"][$i]['AMOUNT'] = $amount['AMOUNT'];
 
+                    $dbProperty = \CIBlockElement::getProperty(
+                        CATALOG_IBLOCK_ID,
+                        $this->arParams["PRODUCT_ID"], array("sort", "asc"),
+                        array()
+                    );
+                    while ($arProperty = $dbProperty->GetNext()) {
+
+                        $this->arResult["PROPERTIES"][$arProperty['CODE']] = $arProperty;
+
+                    }
+                    $this->arResult['PRODUCT'] = \Bitrix\Catalog\ProductTable::getByPrimary($this->arParams["PRODUCT_ID"], ['select'=>['*', 'IBLOCK_ELEMENT.NAME', 'IBLOCK_ELEMENT.PREVIEW_PICTURE']])->fetch();
+                    $this->arResult['PRODUCT']['PREVIEW_PICTURE_SRC'] = \CFile::GetPath($this->arResult['PRODUCT']['CATALOG_PRODUCT_IBLOCK_ELEMENT_PREVIEW_PICTURE']);
+                    $this->arResult['PRODUCT']['PRICE']=\Bitrix\Catalog\PriceTable::getList(['filter'=>['PRODUCT_ID'=>$this->arParams["PRODUCT_ID"]]])->fetch();
+                    if($this->arResult["PROPERTIES"]['KOLICHESTVO_V_UPAKOVKE']['VALUE'])
+                        $this->arResult['PRODUCT']['PRICE']['PRICE_FOR_ONE'] = round($this->arResult['PRODUCT']['PRICE']['PRICE']/$this->arResult["PROPERTIES"]['KOLICHESTVO_V_UPAKOVKE']['VALUE'], 2);
 
                     $payment = \CIBlockElement::GetByID($this->arResult["ITEMS"][$i]['PROP']["PAYMENT"]["VALUE"]);
                     $this->arResult["ITEMS"][$i]['PROP']["PAYMENT_NAME"] =  $payment->GetNext();

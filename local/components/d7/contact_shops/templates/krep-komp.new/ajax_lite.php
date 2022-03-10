@@ -51,7 +51,47 @@ if ($arParams["SECTION_ID"]){
     <div class="win-close" id="close"></div>
     <div class="shops">
         <div class="shops__map">
-            <div id="map<?=$arParams["SECTION_ID"]?>"></div>
+            <div class="shop_map" style="height:450px;">
+                <div id="map<?=$arParams["SECTION_ID"]?>"></div>
+            </div>
+
+                <div class="shops_cart">
+                    <div class="product-card__artno-blok">
+                        <p class="product-card__artno">Артикул: <span class="product-card__state product-card__state_artno"><?=$arResult['PROPERTIES']['CML2_ARTICLE']['VALUE']?></span></p>
+                    </div>
+
+                    <div class="product-card__header product-card__header_vi">
+                        <img class="product-card__image" src="<?=$arResult["PRODUCT"]["PREVIEW_PICTURE_SRC"]?>" height="150" alt="<?=$arResult["PRODUCT"]["CATALOG_PRODUCT_IBLOCK_ELEMENT_NAME"]?>">
+                        <h3 class="product-card__title product-card__title_vi"><?=$arResult["PRODUCT"]["CATALOG_PRODUCT_IBLOCK_ELEMENT_NAME"]?></h3>
+                    </div>
+
+
+                    <?if($arResult['PROPERTIES']["DIAMETR"]["VALUE"] && $arResult['PROPERTIES']["DLINA"]["VALUE"]):?>
+                        <div class="product-card__content">
+                            <div class="product-card__block-size">
+                                <p class="product-card__size">Размер (мм): <span class="product-card__state"><?=$arResult['PROPERTIES']["DIAMETR"]["VALUE"]?>x<?=$arResult['PROPERTIES']["DLINA"]["VALUE"]?></span></p>
+                            </div>
+                        </div>
+                    <?endif?>
+
+
+
+                    <div class="product-card__footer product-card__footer_vi">
+                        <p class="product-card__price-block product-card__price-block_vi">Цена (с НДС): <span class="product-card__price product-card__price_vi"><?=$arResult['PRODUCT']['PRICE']['PRICE']?> ₽</span></p>
+                        <?if($arResult['PRODUCT']['PRICE']['PRICE_FOR_ONE'])
+                            {?>
+                        <p class="product-card__price-block product-card__price-block_vi">Цена за штуку: <span class="product-card__price product-card__price_vi"><?=$arResult['PRODUCT']['PRICE']['PRICE_FOR_ONE']?> ₽</span></p>
+                        <?}?>
+
+
+
+
+
+                    </div>
+
+                </div>
+
+
         </div>
 
 
@@ -71,6 +111,7 @@ if ($arParams["SECTION_ID"]){
 
                 </div>
             </div>
+
 
             <div class="list scroll-bold" data-behavior="shops-list-response"><div class="scroll-wrap"><div class="scroll-content">
                         <?php
@@ -121,6 +162,10 @@ if ($arParams["SECTION_ID"]){
 
                     </div></div><div class="scroll-bar enabled" style="height: calc(2.07403% - 0px); top: calc(0% + 0px);"></div><div class="scroll-under-bar enabled"></div></div>
         </div>
+
+
+
+
     </div>
 
 

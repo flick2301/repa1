@@ -6,10 +6,26 @@
 	-o-filter: grayscale(1);
 }
 
+.shops .shops__map{
+	height:800px;
+}
 
-
-
-
+.shops_cart{
+	padding:10px;
+	font-size:18px !important;
+}
+.shops_cart .product-card__state_artno{
+	font-size:18px !important;
+}
+.shops_cart .product-card__title{
+	font-size:18px !important;
+}
+.shops_cart .product-card__block-size{
+	font-size:18px !important;
+}
+.shops_cart .product-card__price-block_vi{
+	font-size:18px !important;
+}
 
 .shops__map {
   border-radius: 10px;
@@ -21,6 +37,7 @@
     .shops__map {
       height: 340px;
       margin-bottom: 25px; } }
+
 
 .shops__list {
   display: flex;
@@ -583,5 +600,8 @@ h1.page-heading__title {
           filter: saturate(250%) grayscale(50%);
 }
 }
+
+
+
 
 
