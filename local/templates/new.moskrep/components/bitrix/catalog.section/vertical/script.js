@@ -196,24 +196,19 @@ $(document).on('click', '#view_wholesale', function() {
 			}
 
 		});
+
 		request.then(function(response)
 		{
-
-
-
 			let shops_monitor = document.querySelector('.win');
 
 			$('body').append("<script type='text/javascript' src='/local/components/d7/contact_shops/templates/krep-komp.new/script.js' />");
-
+			//Отклик шаблона компонента заливаем в селектор
 			shops_monitor.innerHTML = response.data;
-
+			//С помощью eval запускаем javascript в теле шаблона popup-окна вызванного через ajax
 			let code2 = document.querySelector('#api-map').textContent;
 			eval(code2);
 			let code = document.querySelector('#push').textContent;
 			eval(code);
-
-
-
 
 		});
 
@@ -233,16 +228,14 @@ $(document).on('click', '#view_wholesale', function() {
 		});
 		request.then(function(response)
 		{
-
 			let shops_monitor = document.querySelector('.win');
 
 			$('body').append("<script type='text/javascript' src='/local/components/d7/delivery/templates/krep-komp/script.js' />");
-
+			//Отклик шаблона компонента заливаем в селектор
 			shops_monitor.innerHTML = response.data;
-
+			//С помощью eval запускаем javascript в теле шаблона popup-окна вызванного через ajax
 			let code = document.querySelector('#api-map-delivery').textContent;
 			eval(code);
-
 
 		});
 

@@ -93,7 +93,7 @@ dataLayer.push({
 <?endif;?>
 
 <?globalGetTitle($arResult['NAME'].' '.$arResult['PROPERTIES']['BREND']['VALUE'])?>
-
+<div id="shops-window"><div class="win"></div></div>
 <div class="card__articul">Артикул: <span class="card__articul-name"><?=$arResult['PROPERTIES']['CML2_ARTICLE']['VALUE']?></span></div>
 
     <div itemscope class="basic-layout__module product-page">
@@ -133,17 +133,17 @@ dataLayer.push({
                         <div class="product-data__section">
                            <ul class="product-data__list">
                               <li class="product-data__item">
-                                 <p class="product-data__name"><i class="simple-car-icon product-data__icon"></i>Доставка</p>
+                                 <p class="product-data__name card_delivery" data-product="<?=$arResult['ID']?>"><i class="simple-car-icon product-data__icon"></i>Доставка</p>
                                  <p class="product-data__text">от <?=strstr($_SERVER['HTTP_HOST'], "spb") ? "490" : "290";?> руб.</p>
                               </li>
                               <li class="product-data__item">
                                  <p class="product-data__name"><i class="simple-available-icon product-data__icon"></i>Наличие</p>
                                  <p class="product-data__text"><?=($arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) ?  $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT'].' уп.' : 'нет в наличии'?></p>
                               </li>
-							  <?if($_SERVER['HTTP_HOST']=='krep-komp.ru' || $_SERVER['HTTP_HOST']=='spb.krep-komp.ru')
+							  <?if($_SERVER['HTTP_HOST']=='krep-komp.ru' || $_SERVER['HTTP_HOST']=='spb.krep-komp.ru'|| $_SERVER['HTTP_HOST']=='dev1.krep-komp.ru')
 							  {?>
                               <li class="product-data__item">
-                                 <p class="product-data__name"><i class="simple-home-icon product-data__icon"></i>Самовывоз</p>
+                                 <p class="product-data__name card_pickup" data-product="<?=$arResult['ID']?>"><i class="simple-home-icon product-data__icon"></i>Самовывоз</p>
                                  <p class="product-data__text"><?echo ((strstr($_SERVER['HTTP_HOST'], "spb") && $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']-$arResult['STORE'][3]['AMOUNT']) || (!strstr($_SERVER['HTTP_HOST'], "spb") && $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT'])) ? ' сегодня, бесплатно' : 'на заказ';?></p>
                               </li>
 							  <?}?>
