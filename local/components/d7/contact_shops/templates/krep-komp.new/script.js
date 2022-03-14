@@ -110,8 +110,8 @@ myPlacemarks.push(myPlacemark[entry.id]);
         })	
 		.add('balloonclose', function (e) {
 			e.get('target').options.set('iconImageHref', template_url + '/images/shop_label.svg');
-			$('#shops li').removeClass('active');
-			$('.shop-card').removeClass('active');			
+			$('#shops li[data-rel=' + entry.id + ']').removeClass('active');
+			$('.shop-card[data-shop=' + entry.id + ']').removeClass('active');			
         });				
 
     myMap.geoObjects.add(myPlacemark[entry.id]);
