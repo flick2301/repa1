@@ -501,7 +501,12 @@
 	font-weight: 400;
 	color: #676767;
 }
-
+.shop-card .alerts .item.-warning {
+	color: #fa6607;
+}
+.shop-card.active .alerts .item.-warning {
+	color: #fa6607;
+}
 
 
 

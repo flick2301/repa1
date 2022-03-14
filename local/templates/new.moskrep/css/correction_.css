@@ -1492,7 +1492,9 @@ ol.tech li {
 	top: 25px;
 	right: 25px;
 }
-
+#shops-window .delivery {
+	padding: 10px;
+}
 
 
 
@@ -1872,6 +1874,16 @@ img.intro-slider__image {
 }
 .catalog-desc__about {
 	display: none;
+}
+.shops-list {
+	display: none;
+}
+#shops-window .win, #shops-window .shops  {
+	min-width: 0!important;
+}
+#shops-window .shops__map {
+	width: 100%!important;
+	margin-top: 20px;
 }
 }
 
