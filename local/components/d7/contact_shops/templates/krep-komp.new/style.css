@@ -458,7 +458,8 @@
 .shops-list .head {
     padding: 12px 0 4px 8px;
 }
-.shops__map {
+#shops-window .shops__map {
+	margin-left: 10px;
 	padding-right: 10px;
 }
 .shop-card {
@@ -490,11 +491,11 @@
     color: #61ad35;
 }
 .shop-card .text {
-	color: #000;
+	color: #333;
 }
 .product-card__artno {
 	font-weight: 600;	
-	color: #000;
+	color: #333;
 }
 .product-card__state_artno {
 	font-weight: 400;
