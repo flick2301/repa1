@@ -130,9 +130,9 @@
 	margin-right: 10px;
 	border-radius: 10px;
 	position: relative;
-	top: 5.5px;}  
-  
-  
+	top: 5.5px;
+}  
+
   
   
   
@@ -451,7 +451,55 @@
 .delivery__tabs-list {
     display: block!important;/*Убрать для многокартовости*/
 }
-
+.shops-list .list {
+	padding-left: 0px;
+	padding-right: 8px;
+}
+.shops-list .head {
+    padding: 12px 0 4px 8px;
+}
+.shops__map {
+	padding-right: 10px;
+}
+.shop-card {
+	padding: 8px;
+}
+.shop-card.active:not(:hover) {
+	background: #552fec;
+	color: #fff;
+}
+.shop-card:hover {
+	background: #f3f3f3;
+}
+.shop-card.active::after, .shop-card.active:hover::after {
+	display: none;
+}
+.shop-address__href {
+	display: block;
+}
+.shop-address__href, .shop-address__href:hover, .address, .address:hover {
+	color: #552fec!important;
+}	
+.shop-card.active:not(:hover) .shop-address__href, .shop-card.active:not(:hover) .shop-address__href:hover, .shop-card.active:not(:hover) .address, .shop-card.active:not(:hover) .address:hover {
+	color: #fff!important;
+}
+.shop-card .alerts .item.-success {
+    color: #61ad35;
+}
+.shop-card.active .alerts .item.-success {
+    color: #61ad35;
+}
+.shop-card .text {
+	color: #000;
+}
+.product-card__artno {
+	font-weight: 600;	
+	color: #000;
+}
+.product-card__state_artno {
+	font-weight: 400;
+	color: #676767;
+}
 
 
 

@@ -93,7 +93,7 @@ $templateFolder = "/local/components/d7/contact_shops/templates/krep-komp.new";
                 <div class="shop-card" data-behavior="open-shop-detail" data-shop="<?=$item['ID']?>">
                     <div class="shop-address">
                         <div class="metro-dot -noMetro"></div>
-                            <a href="/addresses/?ID=<?=$item["ID"]?>"><p class="address"><?=htmlspecialchars_decode($item["PROP"]["ADDRESS"]["VALUE"])?></p></a>
+                            <a class="shop-address__href" href="/addresses/?ID=<?=$item["ID"]?>"><span class="address"><?=htmlspecialchars_decode($item["PROP"]["ADDRESS"]["VALUE"])?></p></span>
                     </div>
                     <div class="body">
                     <?if($item['PROP']['SKLAD_ID']['VALUE'])
