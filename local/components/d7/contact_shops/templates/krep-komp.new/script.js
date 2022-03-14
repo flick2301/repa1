@@ -85,7 +85,12 @@ myPlacemarks.push(myPlacemark[entry.id]);
         .add('click', function (e) {
             // Ссылку на объект, вызвавший событие,
             // можно получить из поля 'target'.
-            if(!$('#shops li[data-rel=' + entry.id +']').hasClass('active')) e.get('target').options.set('iconImageHref', template_url + '/images/shop_label_current.svg');
+			
+			if ($('.shop-card[data-shop=' + entry.id + ']')) {
+				$('.shop-card').removeClass('active');
+				$('.shop-card[data-shop=' + entry.id + ']').addClass('active');
+			}
+            if(!$('#shops li[data-rel=' + entry.id + ']').hasClass('active')) e.get('target').options.set('iconImageHref', template_url + '/images/shop_label_current.svg');
         })	
         .add('mouseenter', function (e) {
             // Ссылку на объект, вызвавший событие,
@@ -105,7 +110,8 @@ myPlacemarks.push(myPlacemark[entry.id]);
         })	
 		.add('balloonclose', function (e) {
 			e.get('target').options.set('iconImageHref', template_url + '/images/shop_label.svg');
-			$('#shops li').removeClass('active');			
+			$('#shops li').removeClass('active');
+			$('.shop-card').removeClass('active');			
         });				
 
     myMap.geoObjects.add(myPlacemark[entry.id]);
