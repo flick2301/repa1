@@ -16,8 +16,8 @@ $server = $context->getServer();
 $http_host = $server->get('HTTP_HOST');
 $sub_domain = str_replace("krep-komp.ru", "", $http_host);
 
-$allowed_sub_domains = ['dev1.', 'dev2.', 'spb.'];
-if($sub_domain == '' || in_array($sub_domain, $allowed_sub_domains))
+$disallowed_sub_domains = ['dev3.'];
+if(!in_array($sub_domain, $disallowed_sub_domains))
 	$arResult['AMOUN_ALLOWED']=true;
 else
 	$arResult['AMOUN_ALLOWED']=false;
