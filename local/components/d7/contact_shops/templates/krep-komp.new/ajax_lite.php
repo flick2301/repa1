@@ -30,7 +30,7 @@ $templateFolder = "/local/components/d7/contact_shops/templates/krep-komp.new";
 <div class="win-close" id="close"></div>
 <div class="shops">
     <div class="shops__map">
-        <div class="shop_map">
+        <div class="shop_map" style='height:450px;'>
             <div id="map"></div>
         </div>
 
