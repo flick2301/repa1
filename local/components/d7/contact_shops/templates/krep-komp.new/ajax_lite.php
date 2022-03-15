@@ -27,6 +27,12 @@ $templateFolder = "/local/components/d7/contact_shops/templates/krep-komp.new";
 
 </script>
 
+    <script id="push">
+        <?foreach($arResult["ITEMS"] AS $key=>$item):?>
+            shop.push({id: <?=$item["ID"]?>, balloon: true, lat: <?=$item["PROP"]["LAT"]["VALUE"]?>, lon: <?=$item["PROP"]["LON"]["VALUE"]?>, color: '<?if($item["PROP"]["COLOR"]["VALUE"]):?><div class="label" style="background: <?=$item["PROP"]["COLOR"]["VALUE"]?>;"></div><?endif?>', name: '<?=$item["PROP"]["TYPE"]["VALUE"]?>', address: '<?=htmlspecialchars_decode($item["PROP"]["ADDRESS"]["VALUE"])?>', text: '<?=$item["PREVIEW_TEXT"] ? "<div class=\'type\'>".$item["PROP"]["TYPE"]["VALUE"]."</div><span class=\'preview\'>Режим работы: ".preg_replace("/[^A-zА-я0-9\,:\-\<\> ]+/u", "", $item["PREVIEW_TEXT"]) : ""?></span><div class="line-btn"><a href="/addresses/?ID=<?=$item["ID"]?>" class="blue-btn">Перейти к магазину</a></div>'});
+        <?endforeach?>
+    </script>
+
 <div class="win-close" id="close"></div>
 <div class="shops">
     <div class="shops__map">
@@ -69,11 +75,7 @@ $templateFolder = "/local/components/d7/contact_shops/templates/krep-komp.new";
     </div>
 
 
-    <script id="push">
-        <?foreach($arResult["ITEMS"] AS $key=>$item):?>
-            shop.push({id: <?=$item["ID"]?>, balloon: true, lat: <?=$item["PROP"]["LAT"]["VALUE"]?>, lon: <?=$item["PROP"]["LON"]["VALUE"]?>, color: '<?if($item["PROP"]["COLOR"]["VALUE"]):?><div class="label" style="background: <?=$item["PROP"]["COLOR"]["VALUE"]?>;"></div><?endif?>', name: '<?=$item["PROP"]["TYPE"]["VALUE"]?>', address: '<?=htmlspecialchars_decode($item["PROP"]["ADDRESS"]["VALUE"])?>', text: '<?=$item["PREVIEW_TEXT"] ? "<div class=\'type\'>".$item["PROP"]["TYPE"]["VALUE"]."</div><span class=\'preview\'>Режим работы: ".preg_replace("/[^A-zА-я0-9\,:\-\<\> ]+/u", "", $item["PREVIEW_TEXT"]) : ""?></span><div class="line-btn"><a href="/addresses/?ID=<?=$item["ID"]?>" class="blue-btn">Перейти к магазину</a></div>'});
-        <?endforeach?>
-    </script>
+
 
 
     <div class="shops-list" data-selector="shops-list">

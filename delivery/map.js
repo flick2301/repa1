@@ -15,8 +15,11 @@ $(document).on('click', "li.viewmap", function() {
 	}	
 });
 
+
+
         var myMap,
             myPolygon = [];
+			
 
         function ready() {
             ymaps.ready(init);
@@ -125,6 +128,8 @@ $(document).on('click', "li.viewmap", function() {
                 strokeWidth: 1
             });
             myMap.geoObjects.add(myPolygon[numpol]);
+			
+			myMap.behaviors.disable('scrollZoom');
 			
 			myPolygon[numpol].events.add('hover', function () {
 				$('.delivery__td').removeClass('red'); 

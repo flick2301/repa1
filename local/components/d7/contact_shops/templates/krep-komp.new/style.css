@@ -493,6 +493,9 @@
 .shop-card .text {
 	color: #333;
 }
+.shop-card.active:not(:hover) .text {
+	color: #fff;
+}
 .product-card__artno {
 	font-weight: 600;	
 	color: #333;
