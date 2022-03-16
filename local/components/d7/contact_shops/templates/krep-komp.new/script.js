@@ -86,7 +86,7 @@ myPlacemarks.push(myPlacemark[entry.id]);
             // Ссылку на объект, вызвавший событие,
             // можно получить из поля 'target'.
 			
-			if ($('.shop-card[data-shop=' + entry.id + ']')) {
+			if ($('.shop-card[data-shop=' + entry.id + ']').length) {
 				$('.shop-card').removeClass('active');
 				$('.shop-card[data-shop=' + entry.id + ']').addClass('active');
 			}
@@ -96,9 +96,14 @@ myPlacemarks.push(myPlacemark[entry.id]);
             // Ссылку на объект, вызвавший событие,
             // можно получить из поля 'target'.
             if(!$('#shops li[data-rel=' + entry.id +']').hasClass('active')) e.get('target').options.set('iconImageHref', template_url + '/images/shop_label_active.svg');
+			if ($('.shop-card[data-shop=' + entry.id + ']').length) {
+				$('.shop-card').removeClass('hover');
+				$('.shop-card[data-shop=' + entry.id + ']').addClass('hover');
+			}
         })
         .add('mouseleave', function (e) {
             if(!$('#shops li[data-rel=' + entry.id +']').hasClass('active')) e.get('target').options.set('iconImageHref', template_url + '/images/shop_label.svg');
+			if ($('.shop-card[data-shop=' + entry.id + ']').length) $('.shop-card[data-shop=' + entry.id + ']').removeClass('hover');				
         });
 		
 		if (entry.balloon) myPlacemark[entry.id].events.add('balloonopen', function (e) {	

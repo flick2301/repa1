@@ -472,6 +472,9 @@
 .shop-card:hover {
 	background: #f3f3f3;
 }
+.shop-card.hover {
+	background: #f3f3f3;
+}
 .shop-card.active::after, .shop-card.active:hover::after {
 	display: none;
 }
