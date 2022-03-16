@@ -11,7 +11,7 @@ $(document).ready(function() {
 		search=search.replace(/^[ \-_:\%\$\&\*\.\,]+/, ''); 
 	    $('.moskrep-search .moskrep_input').val(search);
 		
-		if (search.length>2) {
+		if (search.length>=2) {
 			if (event.keyCode==13) send_request(search);
 			else clearTimeout(timerId); 
 			timerId = setTimeout(function() {get_ajax(search);}, 1000);  		

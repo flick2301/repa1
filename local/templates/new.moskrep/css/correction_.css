@@ -1920,6 +1920,9 @@ img.intro-slider__image {
 
 
 @media (max-width: 685px) {	
+.basic-layout__header {
+	overflow: visible!important;
+}
 #tooltip {
     margin-top: 0!important;
     margin-left: 0!important;
