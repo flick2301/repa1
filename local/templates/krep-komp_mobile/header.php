@@ -238,6 +238,29 @@ $APPLICATION->IncludeFile(
 	<div class="page-top-banner page-top-banner_mobile"> <div class="banner-textbox page page_mobile"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; color:#000; font-size:16px;'>В магазине на Каширке доступна доставка день в день. <a href="/addresses/" style="text-decoration: underline; color: #4F36E3;">Подробнее</a></strong> </div> </div> </div>	
 	<?endif?> 
 	
+	<div class="dsearch-block">
+						<?$APPLICATION->IncludeComponent(
+							"webcreature:dsearch.ajax", 
+							"krep-komp_module", 
+							array(
+								"ARTNO" => "CML2_ARTICLE",
+								"CATEGORY" => array(
+									0 => "0",
+								),
+								"DESCRIPTION_LEN" => "300",
+								"IBLOCK_ID" => "17",
+								"IBLOCK_TYPE" => "catalog",
+								"IN_CATEGORY" => "N",
+								"SEARCH_VARIABLE" => "result",
+								"SIZE" => "8",
+								"STAT" => "Y",
+								"STAT_LIMIT" => "10000",
+								"COMPONENT_TEMPLATE" => "krep-komp_module"
+							),
+							false
+						);?>	
+	</div>
+	
 	
 	<div class='mobile'>
 		<div class='mobile__wrapp'>
@@ -342,7 +365,7 @@ $APPLICATION->IncludeFile(
 							),
 							false
 						);?>
-					<div class="shelf__search global-search"></div>
+					<div class="shelf__search"></div>
 				</div>
 			</div>
 		</div>
@@ -438,18 +461,18 @@ $APPLICATION->IncludeFile(
 						);?>				
 					<?endif?>
 			</div>
-					
-					<div class="top__form">
+			
 					<?
 						$request = Application::getInstance()->getContext()->getRequest();
 						$name = $request->getCookieList();               
 					?>
-				
-     
+							
+					
+					<div class="top__form">    
 
-						<?$APPLICATION->IncludeComponent(
+						<?/*$APPLICATION->IncludeComponent(
 							"webcreature:dsearch.ajax", 
-							"krep-komp", 
+							"krep-komp_module", 
 							array(
 								"ARTNO" => "CML2_ARTICLE",
 								"CATEGORY" => array(
@@ -463,10 +486,10 @@ $APPLICATION->IncludeFile(
 								"SIZE" => "8",
 								"STAT" => "Y",
 								"STAT_LIMIT" => "10000",
-								"COMPONENT_TEMPLATE" => "krep-komp"
+								"COMPONENT_TEMPLATE" => "krep-komp_module"
 							),
 							false
-						);?>
+						);*/?>
 					</div>
                
 					<div class="top__rightside">

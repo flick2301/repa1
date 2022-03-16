@@ -576,6 +576,13 @@
 
 
 @media (max-width: 640px) {
+	.moskrep-search .moskrep_input {
+		height: 34px;
+	}	
+	.moskrep-search .moskrep_submit {
+		margin-top: 8px!important;
+		right: 8px!important;
+	}
 	.popUp-container .line-btn {
 		display: block;
 	}

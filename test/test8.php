@@ -5,7 +5,7 @@ $APPLICATION->SetTitle("Новая страница");
 
 <?$APPLICATION->IncludeComponent(
 	"webcreature:dsearch.ajax", 
-	"krep-komp", 
+	"krep-komp_module", 
 	array(
 		"ARTNO" => "CML2_ARTICLE",
 		"CATEGORY" => array(
@@ -14,12 +14,12 @@ $APPLICATION->SetTitle("Новая страница");
 		"DESCRIPTION_LEN" => "300",
 		"IBLOCK_ID" => "17",
 		"IBLOCK_TYPE" => "catalog",
-		"IN_CATEGORY" => "N",
+		"IN_CATEGORY" => "Y",
 		"SEARCH_VARIABLE" => "result",
 		"SIZE" => "8",
 		"STAT" => "Y",
 		"STAT_LIMIT" => "10000",
-		"COMPONENT_TEMPLATE" => "krep-komp"
+		"COMPONENT_TEMPLATE" => "krep-komp_module"
 	),
 	false
 );?>

@@ -4,7 +4,7 @@ $APPLICATION->SetTitle("Результаты поиска");
 
 <?$APPLICATION->IncludeComponent(
 	"webcreature:dsearch", 
-	"krep-komp", 
+	"krep-komp_module", 
 	array(
 		"ALTER_PAGINATION" => "Y",
 		"ALT_NAME" => "",
@@ -12,7 +12,7 @@ $APPLICATION->SetTitle("Результаты поиска");
 		"CATEGORY" => array(
 			0 => "0",
 		),
-		"COMPONENT_TEMPLATE" => "krep-komp",
+		"COMPONENT_TEMPLATE" => "krep-komp_module",
 		"DESCRIPTION_LEN" => "500",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",

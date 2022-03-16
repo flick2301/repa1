@@ -12,8 +12,6 @@ use \Bitrix\Main;
 use \Bitrix\Main\Localization\Loc;
 use \Bitrix\Main\Type;
 use \Webcreature\Dsearch\StatTable;
-
-
  
 class classDsearch extends CBitrixComponent
 {
@@ -22,6 +20,7 @@ var $result;
 var $comment = "";
 var $current_page;
 var $page_param = "dsearch-result";
+var $similar;
 
     protected function checkModules()
     {
@@ -41,7 +40,7 @@ var $page_param = "dsearch-result";
 	
 	if ($this->arParams["ALTER_PAGINATION"]=="Y") $this->page_param = "PAGEN_1";
 	
-	$this->current_page = $request->get($this->page_param) ? str_replace("page-", "", $request->get($this->page_param)) : 1; //РўРµРєСѓС‰Р°СЏ СЃС‚СЂР°РЅРёС†Р°
+	$this->current_page = $request->get($this->page_param) ? str_replace("page-", "", $request->get($this->page_param)) : 1; //Текущая страница
 	
 
         if ($this->arParams["ON_PAGE"]=="Y") echo $this->searchForm();		
@@ -61,7 +60,7 @@ var $page_param = "dsearch-result";
 				for($i=0; $i<$this->arResult["count"]; $i++) if ($i>=($this->current_page*$this->arParams["PAGE_SIZE"]-$this->arParams["PAGE_SIZE"]) && $i<($this->current_page*$this->arParams["PAGE_SIZE"])) $arResult[] = $this->arResult["result"][$i];
 				$this->arResult["result"] = $arResult;
 			
-			$nav = new \Bitrix\Main\UI\PageNavigation($this->page_param); //РџРѕСЃС‚СЂР°РЅРёС‡РЅР°СЏ РЅР°РІРёРіР°С†РёСЏ
+			$nav = new \Bitrix\Main\UI\PageNavigation($this->page_param); //Постраничная навигация
             $nav->allowAllRecords(true)
             ->setPageSize($this->arParams["PAGE_SIZE"])
             ->initFromUri();
@@ -71,17 +70,17 @@ var $page_param = "dsearch-result";
 			
 
 if ($this->arParams["ALTER_PAGINATION"]=="Y") {
-//РђР»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ РїРѕСЃС‚СЂР°РЅРёС‡РЅР°СЏ РЅР°РІРёРіР°С†РёСЏ			
+//Альтернативная постраничная навигация			
 $navResult = new CDBResult();
-// РћР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂР°РЅРёС†
+// Общее количество страниц
 $navResult->NavPageCount = ceil($this->arResult["count"]/$this->arParams["PAGE_SIZE"]);
-// РќРѕРјРµСЂ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹
+// Номер текущей страницы
 $navResult->NavPageNomer = $this->current_page;
-// РќРѕРјРµСЂ РїР°РіРёРЅР°С‚РѕСЂР°. РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ С„РѕСЂРјРёСЂРѕРІР°РЅРёСЏ СЃСЃС‹Р»РѕРє РЅР° СЃС‚СЂР°РЅРёС†С‹
+// Номер пагинатора. Используется для формирования ссылок на страницы
 $navResult->NavNum = 1;
-// РљРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РІС‹РІРѕРґРёРјС‹С… РЅР° РѕРґРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ
+// Количество записей выводимых на одной странице
 $navResult->NavPageSize = $this->arParams["PAGE_SIZE"];
-// РћР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№
+// Общее количество записей
 $navResult->NavRecordCount = $this->arResult["count"];
 
 
@@ -97,13 +96,13 @@ if ($this->arResult["count"] && $this->arParams["STAT"]=="Y") $this->saveData();
     }
 
 	
-	public function searchForm() //Р¤РѕСЂРјР° РїРѕРёСЃРєР°
+	public function searchForm() //Форма поиска
 	{
 	    return "<form method='get'><input type='text' name='{$this->arParams["SEARCH_VARIABLE"]}' value='{$this->result}' /><input type='submit' value='".Loc::getMessage('SEND')."' /></form><br /><br />";
 	}
 
 	
-	public function targetArray($source, $target) //Р’Р°СЂРёР°С†РёРё С„РёР»СЊС‚СЂР°С†РёРё
+	public function targetArray($source, $target, $exact = false) //Вариации фильтрации
 	{
 		$source = trim(str_replace(Array(" - ", " / ", " \\ "), Array(" "), $source));
 		$sourceArray = explode(" ", $source);
@@ -112,32 +111,50 @@ if ($this->arResult["count"] && $this->arParams["STAT"]=="Y") $this->saveData();
 		
 		for($i=0; $i<count($sourceArray); $i++) {
 		$niddle[$i] = Array('LOGIC' => 'OR');	
-			foreach ($target AS $key=>$val) $niddle[$i][$key] = Array("%={$val}" => "%{$sourceArray[$i]}%");
+			foreach ($target AS $key=>$val) $niddle[$i][$key] = Array("%={$val}" => $exact ? "{$sourceArray[$i]}%" : "%{$sourceArray[$i]}%");
 		}		
+		
 	    return $niddle;		
     }
 	
-	public function targetArrayOld($source, $target) //Р’Р°СЂРёР°С†РёРё С„РёР»СЊС‚СЂР°С†РёРё
+	public function targetArrayFull($source, $target) //Вариации фильтрации (точные соответствия)
+	{	
+		$niddle = Array('LOGIC' => 'OR');
+
+			foreach ($target AS $key=>$val) {
+				$val=="PROPERTY_".$this->arParams["ARTNO"] ? $niddle[] = Array("{$val}" => "{$source}%") : $niddle[] = Array("{$val}" => "{$source}");
+				if ($val=="NAME" && preg_match("/[0-9x]+/", $source)) $niddle[] = Array("{$val}" => "% ".str_replace("x", "х", $source)."%");		
+			}		
+
+		return $niddle;
+    }		
+	
+	public function targetArrayOld($source, $target) //Вариации фильтрации
 	{
 		$source = trim(str_replace(Array(" - ", " / ", " \\ "), Array(" "), $source));
 		$sourceArray = explode(" ", $source);
 		
 		$niddle = Array('LOGIC' => 'AND');
 		
-		for($i=0; $i<count($sourceArray); $i++) {
+/*	
+	for($i=0; $i<count($sourceArray); $i++) {
 		$niddle[$i] = Array('LOGIC' => 'OR');	
 			foreach ($target AS $key=>$val) {
-				$val=="PROPERTY_".$this->arParams["ARTNO"] ? $niddle[$i][$key] = Array("{$val}" => "{$sourceArray[$i]}%") : $niddle[$i][$key] = Array("{$val}" => "{$sourceArray[$i]}");
-				if ($val=="NAME") $niddle[$i][$key+1000] = Array("%NAME" => str_replace("x", "С…", $sourceArray[$i]));
+				$val=="PROPERTY_".$this->arParams["ARTNO"] ? $niddle[$i][$key] = Array("{$val}" => "{$sourceArray[$i]}%") : $niddle[$i][$key] = Array("{$val}" => "{$sourceArray[$i]}%");
+				if ($val=="NAME" && preg_match("/[0-9x]+/", $sourceArray[$i])) $niddle[$i][$key+1000] = Array("{$val}" => "% ".str_replace("x", "х", $sourceArray[$i])."%");
 			}		
 		}	
-		
+*/	
+
+	foreach ($target AS $key=>$val) {
+		if ($val=="NAME") $niddle = Array("{$val}" => "%{$source}%");
+	}
 
 		return $niddle;
     }	
 
 	
-	public function section() //РџРѕРёСЃРє РІ СЃРµРєС†РёСЏС…
+	public function section() //Поиск в секциях
 	{	 
 		 $result = \Bitrix\Iblock\SectionTable::getList(Array( 
     'select'  => Array('ID', 'IBLOCK_ID', 'NAME', 'PICTURE'),
@@ -148,13 +165,14 @@ if ($this->arResult["count"] && $this->arParams["STAT"]=="Y") $this->saveData();
     while ($arRes = $result->fetch()) $arSections[$arRes["ID"]] = Array(
         "NAME" => $arRes["NAME"],
 	    "PICTURE" => CFile::GetPath($arRes["PICTURE"]),
+		"PICTURE" => CFile::ResizeImageGet(CFile::GetFileArray($arRes["PICTURE"]), array('width'=>120, 'height'=>90), BX_RESIZE_IMAGE_PROPORTIONAL, true)["src"],
 	    "URL" => $this->section_url($arRes["ID"]),
     );
 	}	
 	
-	public function section_query() //РџРѕРёСЃРє РІ СЃРµРєС†РёСЏС… Query
+	public function section_query() //Поиск в секциях Query
 	{	 
-	    $query = new \Bitrix\Main\Entity\Query(\Bitrix\Iblock\Model\Section::compileEntityByIblock(1));
+	    $query = new \Bitrix\Main\Entity\Query(\Bitrix\Iblock\Model\Section::compileEntityByIblock(1)); 
 		
 		if (count($this->arParams["CATEGORY"])>1 || $this->arParams["CATEGORY"][0]!=0) $filterCategory["ID"] = $this->arParams["CATEGORY"];
 		
@@ -169,21 +187,30 @@ $query
    ->setSelect(
       Array('ID', 'IBLOCK_ID', 'NAME', 'PICTURE', 'DESCRIPTION')
    ) 
-   ->setLimit(0); 
+   ->setLimit($this->arParams["PAGE_SIZE"] ? $this->arParams["PAGE_SIZE"] : 0); 
    
 $result= $query->exec(); 
+
+if (!count($result)) {
+	
+}
+
+
+
 while ($arRes = $result->fetch()) { 
    $arSections[$arRes["ID"]] = Array(
         "NAME" => $arRes["NAME"],
 	    "PICTURE" => CFile::GetPath($arRes["PICTURE"]),
+		"PICTURE" => CFile::ResizeImageGet(CFile::GetFileArray($arRes["PICTURE"]), array('width'=>120, 'height'=>90), BX_RESIZE_IMAGE_PROPORTIONAL, true)["src"],
 	    "URL" => $this->section_url($arRes["ID"]),
 		"DESCRIPTION" => $this->description_len($arRes['DESCRIPTION'])
     ); 
 }
+
 return $arSections;
 	}
 	
-	public function element() //РџРѕРёСЃРє РІ СЌР»РµРјРµРЅС‚Р°С…
+	public function element() //Поиск в элементах
 	{	 
 		 $result = \Bitrix\Iblock\ElementTable::getList(Array( 
     'select'  => Array('ID', 'IBLOCK_ID', 'NAME', 'IBLOCK_SECTION_ID', 'DETAIL_PICTURE'),
@@ -204,37 +231,145 @@ return $arSections;
             "NAME" => ($arRes["SECTION"]["PARAMS"]["ELEMENT_PAGE_TITLE"] ? "{$arRes["SECTION"]["PARAMS"]["ELEMENT_PAGE_TITLE"]} " : "").$arRes["NAME"],
 			"ART" => $arRes["PROPS"][$this->arParams["ARTNO"]]["VALUE"],
 	        "PICTURE" => $arRes["DETAIL_PICTURE"] ? CFile::GetPath($arRes["DETAIL_PICTURE"]) : CFile::GetPath($arRes["SECTION"]["PICTURE"]),
+			"PICTURE" => $arRes["DETAIL_PICTURE"] ? CFile::ResizeImageGet(CFile::GetFileArray($arRes["DETAIL_PICTURE"]), array('width'=>120, 'height'=>90), BX_RESIZE_IMAGE_PROPORTIONAL, true)["src"] : CFile::ResizeImageGet(CFile::GetFileArray($arRes["SECTION"]["PICTURE"]), array('width'=>120, 'height'=>90), BX_RESIZE_IMAGE_PROPORTIONAL, true)["src"],
 	        "URL" => $arRes["SECTION"]["URL"].$arRes["ID"],			
         );
 	}
 	}	
 
-	public function element_query() //РџРѕРёСЃРє РІ СЌР»РµРјРµРЅС‚Р°С… Query
+	public function element_query() //Поиск в элементах Query
 	{
 		if (count($this->arParams["CATEGORY"])>1 || $this->arParams["CATEGORY"][0]!=0) $filterCategory["IBLOCK_SECTION_ID"] = $this->arParams["CATEGORY"];
 				
-        $arSelect = Array("ID", "IBLOCK_ID", "IBLOCK_SECTION_ID", "NAME", "CODE", "DETAIL_PICTURE", "DETAIL_TEXT", "PROPERTY_*");
-        $arFilter = Array("IBLOCK_ID"=>$this->arParams["IBLOCK_ID"], "ACTIVE"=>"Y", $this->targetArrayOld($this->result, Array("NAME", "PROPERTY_".$this->arParams["ARTNO"])));
-        $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
-		
+        $arSelect = Array("ID", "IBLOCK_ID", "IBLOCK_SECTION_ID", "NAME", "DETAIL_PAGE_URL", "DETAIL_PICTURE", "DETAIL_TEXT", "PROPERTY_*");
+
+        $arFilter = Array("IBLOCK_ID"=>$this->arParams["IBLOCK_ID"], "ACTIVE"=>"Y", $filterCategory, $this->targetArrayFull($this->result, Array("NAME", "PROPERTY_".$this->arParams["ARTNO"])));
+        $res = CIBlockElement::GetList(Array(), $arFilter, false, $this->arParams["PAGE_SIZE"] ? Array("nTopCount" => $this->arParams["PAGE_SIZE"]) : Array(), $arSelect);
+		if (!$res->SelectedRowsCount()) {
+			$this->arResult["SIMILAR"] = 1;
+			$arFilter = Array("IBLOCK_ID"=>$this->arParams["IBLOCK_ID"], "ACTIVE"=>"Y", $filterCategory, $this->targetArrayOld($this->result, Array("NAME", "PROPERTY_".$this->arParams["ARTNO"])));
+			$res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
+		}
+
         while($ob = $res->GetNextElement()){
-			
         $arFields = $ob->GetFields();  
         $arProps = $ob->GetProperties();
 		$arSecion = $this->getSectionParams($arFields["IBLOCK_SECTION_ID"]);
-		  \Bitrix\Main\Diag\Debug::writeToFile($arFields , $varName = "", '/service/debug.txt');
+		$old_price = CPrice::GetBasePrice($arFields["ID"]);
+		$price = $this->getFinalPriceInCurrency($arFields["ID"]);		
+		  
 		$arElements[$arFields["ID"]] = Array(
-        "NAME" => $arFields["NAME"],
+        "NAME" => ($arSecion["ELEMENT_PAGE_TITLE"] && $this->arParams["ELEMENT_PAGE_TITLE"]=="Y" ? "{$arSecion["ELEMENT_PAGE_TITLE"]} " : "").$arFields["NAME"],
 		"ART" => $arProps[$this->arParams["ARTNO"]]["VALUE"],
 	    "PICTURE" => $arFields["DETAIL_PICTURE"] ? CFile::GetPath($arFields["DETAIL_PICTURE"]) : $arSecion["PICTURE"],
-	    "URL" => $this->section_url($arFields["IBLOCK_SECTION_ID"]).$arFields["CODE"].".html",
+		"PICTURE" => $arFields["DETAIL_PICTURE"] ? CFile::ResizeImageGet(CFile::GetFileArray($arFields["DETAIL_PICTURE"]), array('width'=>120, 'height'=>90), BX_RESIZE_IMAGE_PROPORTIONAL, true)["src"] : CFile::ResizeImageGet(CFile::GetFileArray($arSecion["PICTURE"]), array('width'=>120, 'height'=>90), BX_RESIZE_IMAGE_PROPORTIONAL, true)["src"],
+	    "URL" => $arFields["DETAIL_PAGE_URL"],
 		"DESCRIPTION" => $arFields["DETAIL_TEXT"] ? $arFields["DETAIL_TEXT"] : $arSecion["DESCRIPTION"],
+		"OLD_PRICE" => CurrencyFormat($old_price["PRICE"], "RUB"),
+		"PRICE" => CurrencyFormat($price["FINAL_PRICE"], "RUB"),		
         );
 	    }
 	return $arElements;	
 	}
 	
-	public function getSectionParams($id) { //РџР°СЂР°РјРµС‚СЂС‹ СЃРµРєС†РёРё
+function getFinalPriceInCurrency($item_id, $cnt = 1, $getName="N", $sale_currency = 'RUB') { //Цены
+
+    global $USER;
+
+    // Проверяем, имеет ли товар торговые предложения?
+    if(CCatalogSku::IsExistOffers($item_id)) {
+
+        // Пытаемся найти цену среди торговых предложений
+        $res = CIBlockElement::GetByID($item_id);
+
+        if($ar_res = $res->GetNext()) {
+            $productName = $ar_res["NAME"];
+            if(isset($ar_res['IBLOCK_ID']) && $ar_res['IBLOCK_ID']) {
+
+                // Ищем все тогровые предложения
+                $offers = CIBlockPriceTools::GetOffersArray(array(
+                    'IBLOCK_ID' => $ar_res['IBLOCK_ID'],
+                    'HIDE_NOT_AVAILABLE' => 'Y',
+                    'CHECK_PERMISSIONS' => 'Y'
+                ), array($item_id), null, null, null, null, null, null, array('CURRENCY_ID' => $sale_currency), $USER->getId(), null);
+
+                foreach($offers as $offer) {
+
+                    $price = CCatalogProduct::GetOptimalPrice($offer['ID'], $cnt, $USER->GetUserGroupArray(), 'N');
+                    if(isset($price['PRICE'])) {
+
+                        $final_price = $price['PRICE']['PRICE'];
+                        $currency_code = $price['PRICE']['CURRENCY'];
+
+                        // Ищем скидки и высчитываем стоимость с учетом найденных
+                        $arDiscounts = CCatalogDiscount::GetDiscountByProduct($item_id, $USER->GetUserGroupArray(), "N");
+                        if(is_array($arDiscounts) && sizeof($arDiscounts) > 0) {
+                            $final_price = CCatalogProduct::CountPriceWithDiscount($final_price, $currency_code, $arDiscounts);
+                        }
+
+                        // Конец цикла, используем найденные значения
+                        break;
+                    }
+
+                }
+            }
+        }
+
+    } else {
+
+        // Простой товар, без торговых предложений (для количества равному $cnt)
+        $price = CCatalogProduct::GetOptimalPrice($item_id, $cnt, $USER->GetUserGroupArray(), 'N');
+
+        // Получили цену?
+        if(!$price || !isset($price['PRICE'])) {
+            return false;
+        }
+
+        // Меняем код валюты, если нашли
+        if(isset($price['CURRENCY'])) {
+            $currency_code = $price['CURRENCY'];
+        }
+        if(isset($price['PRICE']['CURRENCY'])) {
+            $currency_code = $price['PRICE']['CURRENCY'];
+        }
+
+        // Получаем итоговую цену
+        $final_price = $price['RESULT_PRICE']['UNROUND_DISCOUNT_PRICE'];
+
+        // Ищем скидки и пересчитываем цену товара с их учетом
+        $arDiscounts = CCatalogDiscount::GetDiscountByProduct($item_id, $USER->GetUserGroupArray(), "N", 2);
+        if(is_array($arDiscounts) && sizeof($arDiscounts) > 0) {
+            $final_price = CCatalogProduct::CountPriceWithDiscount($final_price, $currency_code, $arDiscounts);
+        }
+
+        if($getName=="Y"){
+            $res = CIBlockElement::GetByID($item_id);
+            $ar_res = $res->GetNext();
+            $productName = $ar_res["NAME"];
+        }
+
+    }
+
+    // Если необходимо, конвертируем в нужную валюту
+    if($currency_code != $sale_currency) {
+        $final_price = CCurrencyRates::ConvertCurrency($final_price, $currency_code, $sale_currency);
+    }
+
+    $arRes = array(
+        "PRICE"=>$price['PRICE']['PRICE'],
+        "FINAL_PRICE"=>$final_price,
+        "CURRENCY"=>$sale_currency,
+        "DISCOUNT"=>$arDiscounts,
+    );
+
+    if($productName!="")
+        $arRes['NAME']= $productName;
+
+    return $arRes;
+
+}	
+	
+	public function getSectionParams($id) { //Параметры секции
 		 $result = \Bitrix\Iblock\SectionTable::getList(Array( 
     'select'  => Array('ID', 'IBLOCK_ID', 'NAME', 'PICTURE', 'DESCRIPTION'),
     'filter'  => Array('IBLOCK_ID' => $this->arParams["IBLOCK_ID"], "ACTIVE" => "Y", "ID" => "{$id}")
@@ -255,23 +390,23 @@ $IPROPERTY  = $ipropValues->getValues();
 return $arSections;
 	}
 	
-	public function getSectionSeoParams($id) { //SEO РџР°СЂР°РјРµС‚СЂС‹ СЃРµРєС†РёРё
+	public function getSectionSeoParams($id) { //SEO Параметры секции
 		$ipropValues = new \Bitrix\Iblock\InheritedProperty\SectionValues($this->arParams["IBLOCK_ID"], $id);
         $IPROPERTY  = $ipropValues->getValues();
 		
 		return $IPROPERTY;
 	}	
 
-	public function section_url($id) //URL СЃРµРєС†РёРё
+	public function section_url($id) //URL секции
 	{
          $nav = CIBlockSection::GetNavChain($this->arParams["IBLOCK_ID"], $id, array(), false);
 		 while ($arSection = $nav->GetNext()) {
 			 $url.="{$arSection["CODE"]}/";
 		 }
-		 return "/catalog/{$url}";
+		 return "/{$url}";
 	}	
 	 
-	public function description_len($text) { //РћР±СЂР°Р·РєР° С‚РµРєСЃС‚Р°
+	public function description_len($text) { //Образка текста
 	    $text = preg_replace("/<a.*\/a>/i", "", $text);
 
         $description_text = strip_tags($text);	
@@ -280,22 +415,22 @@ return $arSections;
 
         if ($description_len > $max_len) {
         $description_text = trim(substr($description_text, 0, $max_len));
-        $description_text = preg_replace("/ [A-zРђ-СЏ\,\.\-_!\$]*$/", "", $description_text);
+        $description_text = preg_replace("/ [A-zА-я\,\.\-_!\$]*$/", "", $description_text);
 		$description_text = str_replace(Array("&nbsp;", "&nbsp"), " ", $description_text);
 		$description_text = preg_replace("/[ \.\,]+$/", "", $description_text)."...";
         //$description_text = iconv('windows-1251', 'utf-8//IGNORE', iconv('utf-8', 'windows-1251//IGNORE', $description_text));
 		
 	
 		$description_text = preg_replace("/[  ]+/", " ", trim($description_text));
-		if (stristr(LANG_CHARSET, "utf") && strstr(LANG_CHARSET, "8")) $description_text=preg_replace('/[^A-Za-zРђ-РЇР°-СЏ0-9\- *\&;\.\,:\(\)]/u', '', $description_text);
-		else $description_text=preg_replace('%[^A-Za-zРђ-РЇР°-СЏ0-9\- *\&;\.\,:\(\)]%', '', $description_text);
+		if (stristr(LANG_CHARSET, "utf") && strstr(LANG_CHARSET, "8")) $description_text=preg_replace('/[^A-Za-zА-Яа-я0-9\- *\&;\.\,:\(\)]/u', '', $description_text);
+		else $description_text=preg_replace('%[^A-Za-zА-Яа-я0-9\- *\&;\.\,:\(\)]%', '', $description_text);
         }
         return $description_text;
     }
 
-    public function saveData(){ //РЎС‚Р°С‚РёСЃС‚РёРєР°
+ public function saveData(){ //Статистика
 		
-		//return;
+		return;
         //echo $this->result;
 		
 		if ($this->arParams["STAT_LIMIT"]<1 || !$this->arParams["STAT_LIMIT"]) $this->arParams["STAT_LIMIT"] = 10000;
@@ -307,16 +442,17 @@ return $arSections;
 		
 		$arResult = $result->fetchAll();
 		
-		if (count($arResult)>3000) StatTable::delete($arResult[count($arResult)-1]["ID"]);
+		if (count($arResult)>30) StatTable::delete($arResult[count($arResult)-1]["ID"]);
+		$ip = $_SERVER['HTTP_X_REAL_IP'] ? $_SERVER['HTTP_X_REAL_IP'] : $_SERVER['REMOTE_ADDR'];
 		
 		
-		if ($arResult[0]['NAME']!=$this->result || $arResult[0]['IP']!=$_SERVER['HTTP_X_REAL_IP']) {
-		if ($this->arParams["REQUEST"]) $this->comment.="- РёРЅС‚РµСЂР°РєС‚РёРІРЅР°СЏ РІРµСЂСЃРёСЏ ";
-		if (MOBILE=='pda') $this->comment.="- РјРѕР±РёР»СЊРЅР°СЏ РІРµСЂСЃРёСЏ ";
+		if ($arResult[0]['NAME']!=$this->result || $arResult[0]['IP']!=$ip) {
+		if ($this->arParams["REQUEST"]) $this->comment.="- интерактивная версия ";
+		if (MOBILE=='pda') $this->comment.="- мобильная версия ";
 	
 		 StatTable::add(array(
             'NAME' => $this->result,
-            'IP' => $_SERVER['HTTP_X_REAL_IP'],
+            'IP' => $ip,
 			'USER_ID' => CUser::GetID() ? CUser::GetID() : "",
 			'USER_NAME' => CUser::GetLogin() ? CUser::GetLogin() : "",
 			'COMMENT' => $this->comment,

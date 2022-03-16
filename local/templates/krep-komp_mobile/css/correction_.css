@@ -1274,6 +1274,7 @@ ol.tech li {
 }
 .top__form {
 	margin: 0 10px!important;
+	border: 1px solid transparent!important;
 }
 .basic-layout__module.pages-nav {
 	margin-top: 15px;
@@ -1657,6 +1658,16 @@ ol.tech li {
 .mobile--active {
 	width: 100%!important;
 }
+.dsearch-block {
+	position: absolute;
+	top: 50px;
+	left: 0;
+	height: 50px;
+	width: 100%;
+	z-index: 1000;
+	display: none;
+}
+
 
 
 
@@ -1794,6 +1805,16 @@ ol.tech li {
 }
 
 
+@media (min-width: 769px) {
+.dsearch-block {
+	display: none!important;
+}
+#text_result {
+	position: fixed;	
+	max-height: 700px;
+	overflow-y: auto;
+}
+}
 
 
 @media (min-width: 741px) {
@@ -1993,6 +2014,9 @@ img.intro-slider__image {
 }
 .page_mobile {
 	margin-top: 48px!important;
+}
+.moskrep-search .moskrep_input {
+	border: 0 solid transparent;
 }
 }
 
