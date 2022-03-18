@@ -133,13 +133,13 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                         <div class="product__deliveries">
                             <div class="product__delivery card_pickup" data-product="<?=$item['ID']?>">
                                 <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="m14.96 8.305-1.5-3.5A.5.5 0 0 0 13 4.5h-1.5v-1A.5.5 0 0 0 11 3H1.5a.5.5 0 0 0-.5.5V12a.5.5 0 0 0 .5.5h1.07a2 2 0 0 0 3.86 0h3.14a2 2 0 0 0 3.86 0h1.07a.5.5 0 0 0 .5-.5V8.5a.499.499 0 0 0-.04-.195ZM11.5 5.5h1.17L13.74 8H11.5V5.5Zm-7 7.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm5.07-1.5H6.43a2 2 0 0 0-3.86 0H2V4h8.5v6.28a1.999 1.999 0 0 0-.93 1.22ZM11.5 13a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm2.5-1.5h-.57A2 2 0 0 0 11.5 10V9H14v2.5Z"></path>
+                                    <path d="M8 2.453 1.812 5.032l-.312.14V13.5h13V5.172l-.313-.14L8 2.453Zm0 1.094 5.5 2.296V12.5h-1V7h-9v5.5h-1V5.843L8 3.547ZM4.5 8h7v4.5h-7V8Z"></path>
                                 </svg>
                                 <div class="product__date">Самовывоз: <span><?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT'] ? "Сегодня" : "Под заказ";?></span></div>
                             </div>
                             <div class="product__delivery  card_delivery"  data-product="<?=$item['ID']?>">
                                 <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8 2.453 1.812 5.032l-.312.14V13.5h13V5.172l-.313-.14L8 2.453Zm0 1.094 5.5 2.296V12.5h-1V7h-9v5.5h-1V5.843L8 3.547ZM4.5 8h7v4.5h-7V8Z"></path>
+                                    <path d="m14.96 8.305-1.5-3.5A.5.5 0 0 0 13 4.5h-1.5v-1A.5.5 0 0 0 11 3H1.5a.5.5 0 0 0-.5.5V12a.5.5 0 0 0 .5.5h1.07a2 2 0 0 0 3.86 0h3.14a2 2 0 0 0 3.86 0h1.07a.5.5 0 0 0 .5-.5V8.5a.499.499 0 0 0-.04-.195ZM11.5 5.5h1.17L13.74 8H11.5V5.5Zm-7 7.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm5.07-1.5H6.43a2 2 0 0 0-3.86 0H2V4h8.5v6.28a1.999 1.999 0 0 0-.93 1.22ZM11.5 13a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm2.5-1.5h-.57A2 2 0 0 0 11.5 10V9H14v2.5Z"></path>
                                 </svg>
                                 <div class="product__date">Доставка: <span><?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT'] ? "Завтра" : "Под заказ";?></span></div>
                             </div>
