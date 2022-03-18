@@ -57,12 +57,12 @@
 .product__article {
 	font-family: "Montserrat";
 	font-weight: 500;
-	max-width: 110px;
+	max-width: 90px;
 	font-size: 11px;
 	line-height: 1.35;
 	color: rgba(0, 0, 0, 0.5); }
 .product__article span {
-	color: #000; }
+	color: #000; display: block; }
 .product__deliveries {
 	display: flex;
 	align-items: center; }

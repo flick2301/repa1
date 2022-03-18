@@ -149,6 +149,10 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                         <img class="product__images" src="<?=$item['PREVIEW_PICTURE']['src']?>" alt="<?=$item['NAME']?>" title="<?=$item['NAME']?>">
                     </a>
                     <a class="product__name" href="<?=$item['DETAIL_PAGE_URL']?>"><?=$item['NAME']?></a>
+
+ 					</div>
+
+				<div class="product__bottom">
                     <div class="product__params">
                     <?if($item['PROPERTIES']["DIAMETR"]["VALUE"] && $item['PROPERTIES']["DLINA"]["VALUE"]):?>
                         <div class="product__param">Размер(мм): <span><?=$item['PROPERTIES']["DIAMETR"]["VALUE"]?>x<?=$item['PROPERTIES']["DLINA"]["VALUE"]?></span></div>
@@ -166,7 +170,10 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                             <span>Товар закончился</span>
                         </div>
                     <?endif;?>
-                </div>
+
+
+
+
                 <div class="product__botside">
                     <div class="product__left">
                         <div class="product__tax">цена (с НДС)</div>
@@ -181,7 +188,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                         </div>
                     </div>
                 </div>
-
+</div>
 
 
 					 
