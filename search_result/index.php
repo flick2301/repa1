@@ -13,7 +13,7 @@ $APPLICATION->SetTitle("Результаты поиска");
 			0 => "0",
 		),
 		"COMPONENT_TEMPLATE" => "krep-komp_module",
-		"DESCRIPTION_LEN" => "500",
+		"DESCRIPTION_LEN" => "300",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
 		"ELEMENT_PAGE_TITLE" => "N",
