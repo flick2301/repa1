@@ -102,8 +102,8 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
 
     <!--catalog-feed-->
     <div class="basic-layout__module catalog-feed">
-        <?php //require_once($_SERVER["DOCUMENT_ROOT"].'/test/temp_of_cart.php');?>
-		<div class="catalog-feed__list catalog-feed__list_vi">			
+
+		<div class="product__list">
 	<?
 	
     foreach ($arResult['ITEMS'] as $item)
@@ -125,58 +125,69 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
 				
 
 
-			<div class="catalog-feed__item catalog-feed__item_vi">
+			<div class="product__box">
                      <!--product-card-->
-                     <section class="product-card product-card_vi">
-					 
-						<div class="product-card__artno-blok">
-							<p class="product-card__artno">Артикул: <span class="product-card__state product-card__state_artno"><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?></span></p>
-						</div>  		
-						
-                        <div class="product-card__header product-card__header_vi">
-                           <img class="product-card__image" src="<?=$item['PREVIEW_PICTURE']['src']?>"  height="150" alt="<?=$item['NAME']?>">
-                         <h3 class="product-card__title product-card__title_vi"><a class="product-card__link product-card__link_vi" href="<?=$item['DETAIL_PAGE_URL']?>" title='<?=$item['IPROPERTY_VALUES']['TITLE_HREF_MINI_CART']?>' target="_self" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($item['NAME']))?>')"><?=$item['NAME']?></a></h3>						   
+                <div class="product__top">
+                    <div class="product__topside">
+                        <div class="product__article">Артикул <span><?=$item['PROPERTIES']["CML2_ARTICLE"]["VALUE"]?></span></div>
+                        <div class="product__deliveries">
+                            <div class="product__delivery card_pickup" data-product="<?=$item['ID']?>">
+                                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="m14.96 8.305-1.5-3.5A.5.5 0 0 0 13 4.5h-1.5v-1A.5.5 0 0 0 11 3H1.5a.5.5 0 0 0-.5.5V12a.5.5 0 0 0 .5.5h1.07a2 2 0 0 0 3.86 0h3.14a2 2 0 0 0 3.86 0h1.07a.5.5 0 0 0 .5-.5V8.5a.499.499 0 0 0-.04-.195ZM11.5 5.5h1.17L13.74 8H11.5V5.5Zm-7 7.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm5.07-1.5H6.43a2 2 0 0 0-3.86 0H2V4h8.5v6.28a1.999 1.999 0 0 0-.93 1.22ZM11.5 13a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm2.5-1.5h-.57A2 2 0 0 0 11.5 10V9H14v2.5Z"></path>
+                                </svg>
+                                <div class="product__date">Самовывоз: <span><?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT'] ? "Сегодня" : "Под заказ";?></span></div>
+                            </div>
+                            <div class="product__delivery  card_delivery"  data-product="<?=$item['ID']?>">
+                                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 2.453 1.812 5.032l-.312.14V13.5h13V5.172l-.313-.14L8 2.453Zm0 1.094 5.5 2.296V12.5h-1V7h-9v5.5h-1V5.843L8 3.547ZM4.5 8h7v4.5h-7V8Z"></path>
+                                </svg>
+                                <div class="product__date">Доставка: <span><?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT'] ? "Завтра" : "Под заказ";?></span></div>
+                            </div>
                         </div>
-											
-      			
-				<?if($item['PROPERTIES']["DIAMETR"]["VALUE"] && $item['PROPERTIES']["DLINA"]["VALUE"]):?>
-                        <div class="product-card__content">
-						<div class="product-card__block-size">
-						   <p class="product-card__size">Размер (мм): <span class="product-card__state"><?=$item['PROPERTIES']["DIAMETR"]["VALUE"]?>x<?=$item['PROPERTIES']["DLINA"]["VALUE"]?></span></p>
-						</div>  						
-						</div> 
-				<?endif?>		
-						
-						<?if($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']):?>
-						<div class="product-card__content">
-                           <div class="product-card__block">
-                              <p class="product-card__delivery card_pickup" data-product="<?=$item['ID']?>"><i class="simple-home-icon product-card__icon"></i><span class="product-card__text">Самовывоз</span><span class="product-card__date">Сегодня</span></p>
-                              <p class="product-card__delivery card_delivery" data-product="<?=$item['ID']?>"><i class="simple-car-icon product-card__icon"></i><span class="product-card__text">Доставка</span><span class="product-card__date">Завтра</span></p>
-                           </div>
-						</div> 
-						<?endif;?>
+                    </div>
+                    <a class="product__link" href="<?=$item['DETAIL_PAGE_URL']?>">
+                        <img class="product__images" src="<?=$item['PREVIEW_PICTURE']['src']?>" alt="<?=$item['NAME']?>" title="<?=$item['NAME']?>">
+                    </a>
+                    <a class="product__name" href="<?=$item['DETAIL_PAGE_URL']?>"><?=$item['NAME']?></a>
+                    <div class="product__params">
+                    <?if($item['PROPERTIES']["DIAMETR"]["VALUE"] && $item['PROPERTIES']["DLINA"]["VALUE"]):?>
+                        <div class="product__param">Размер(мм): <span><?=$item['PROPERTIES']["DIAMETR"]["VALUE"]?>x<?=$item['PROPERTIES']["DLINA"]["VALUE"]?></span></div>
+                    <?endif;?>
+                    <?if($item['PROPERTIES']['KOLICHESTVO_V_UPAKOVKE']['VALUE']):?>
+                        <div class="product__param">Фасовка: <span><?=$item['PROPERTIES']['KOLICHESTVO_V_UPAKOVKE']['VALUE']?> шт.</span></div>
+                    <?endif;?>
+                    </div>
+                    <?if($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']):?>
+                        <div class="product__availible">
+                            <span>В наличии: <?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?> уп.</span>
+                        </div>
+                    <?else:?>
+                        <div class="product__availible product__availible--unavailible">
+                            <span>Товар закончился</span>
+                        </div>
+                    <?endif;?>
+                </div>
+                <div class="product__botside">
+                    <div class="product__left">
+                        <div class="product__tax">цена (с НДС)</div>
+                        <div class="product__price"><?echo number_format($price, 2, '.', ' ');?> р.</div>
+                        <div class="product__price product__price--one"><?echo round($price/$item['PROPERTIES']['KOLICHESTVO_V_UPAKOVKE']['VALUE'], 2);?> р. за шт.</div>
+                    </div>
+                    <div class="product__right">
+                        <div data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-product="<?=$item['ID']?>" old-price="<?=$price?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>" class="main-button main-button--mini product-card__button product-card__button_round product__buy" href="javascript:void(0);">
+                            <svg viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-product="<?=$item['ID']?>" old-price="<?=$price?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>">
+                                <path data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-product="<?=$item['ID']?>" old-price="<?=$price?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>" d="M1.957 11.634c0 1.14.806 2.094 1.877 2.325a1.578 1.578 0 0 0 .68 2.998 1.576 1.576 0 0 0 .781-2.944h6.287a1.576 1.576 0 1 0 1.563 0h1.18a.595.595 0 0 0 0-1.19h-9.99a1.19 1.19 0 0 1-1.189-1.189v-.885c.35.203.757.32 1.19.32h8.027c1.252 0 2.502-.943 2.846-2.147l1.472-5.153a.594.594 0 0 0-.571-.758H3.146v-.565A2.381 2.381 0 0 0 .768.067a.595.595 0 0 0 0 1.19c.656 0 1.19.533 1.19 1.189v9.188Zm10.406 4.133a.387.387 0 1 1 .002-.774.387.387 0 0 1-.002.774Zm-7.849 0a.387.387 0 1 1 .001-.774.387.387 0 0 1 0 .774Zm9.552-7.171c-.196.684-.991 1.284-1.703 1.284H4.336a1.19 1.19 0 0 1-1.19-1.19V4.2h12.175l-1.255 4.396Z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
 
-						<div class="product-card__content">
-                           <div class="product-card__block">
-							  <?if($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']):?>
-                              <p class="product-card__available product-card__available_vi"><span class="product-card__state">Наличие:</span><span class="product-card__amount"><i class="simple-state-yes-icon product-card__icon product-card__icon--state simple-state-yes-icon_vi"></i><span class="product-card__text"><?echo $item['STORE'][$DEFAULT_STORE_ID]['AMOUNT'];?> уп.</span></span></p>
-							  <?else:?>
-							  <p class="product-card__available product-card__available_vi"><span class="product-card__state">Под заказ</span></p>
-							  <?endif?>
-                           </div>	
-						</div>	
 
 
-                        <div class="product-card__footer product-card__footer_vi">	
-						   <p class="product-card__price-block product-card__price-block_vi">Цена (с НДС): <br /><span class="product-card__price product-card__price_vi"><?echo number_format($price, 2, '.', ' ');?> ₽</span></p>	
+					 
 
-						
-
-                           <button title="Добавить в корзину" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-product="<?=$item['ID']?>" old-price="<?=$price?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>" class="main-button main-button--mini product-card__button product-card__button_round">
-						   </button>
-                        </div>							   
 						   
-                     </section>		
+
                      <!--product-card-->
             </div>
           

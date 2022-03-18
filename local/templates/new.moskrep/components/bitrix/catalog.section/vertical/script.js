@@ -18,7 +18,7 @@ BX.ready(function () {
 		
     
     }
-	
+
 	gtag('event','view_item_list', {
 		'send_to': 'AW-958495754',
 				'items': IDs
