@@ -323,23 +323,25 @@ var result = deliveryCost.init({
 	$('#delivery_lat').val(result.lat); 
 	$('#delivery_lon').val(result.lon);
 	
+
+	
 	if (delivery_id==ID_DELIVERY_DAYTODAY) {
-		if (weight <= 15) result.cost = 350;
-		else if (weight > 15 && weight <= 30) result.cost = 450;
-		else if (weight > 30 && weight <= 100) result.cost = 800;
-		else if (weight > 100 && weight <= 200) result.cost = 1500;
-		else if (weight > 200 && weight <= 500) result.cost = 2500;
-		else if (weight > 500 && weight <= 1000) result.cost = 3900;
-		else if (weight > 1000 && weight <= 3000) result.cost = 4500;
-		else if (weight > 3000 && weight <= 5000) result.cost = 5500;
-		else if (weight > 5000 && weight <= 10000) result.cost = 9000;
+		if (weight <= 15) result.cost = 500;
+		else if (weight > 15 && weight <= 30) result.cost = 600;
+		else if (weight > 30 && weight <= 100) result.cost = 1050;
+		else if (weight > 100 && weight <= 200) result.cost = 1950;
+		else if (weight > 200 && weight <= 500) result.cost = 3250;
+		else if (weight > 500 && weight <= 1000) result.cost = 5100;
+		else if (weight > 1000 && weight <= 3000) result.cost = 5850;
+		else if (weight > 3000 && weight <= 5000) result.cost = 7150;
+		else if (weight > 5000 && weight <= 10000) result.cost = 11700;
 	}
 	
 	if (delivery_id==ID_DELIVERY_SUNDAY) {
-		if (weight <= 15) result.cost = 350;
-		else if (weight > 15 && weight <= 30) result.cost = 450;
-		else if (weight > 30 && weight <= 100) result.cost = 800;
-		else if (weight > 100 && weight <= 300) result.cost = 2300;
+		if (weight <= 15) result.cost = 500;
+		else if (weight > 15 && weight <= 30) result.cost = 600;
+		else if (weight > 30 && weight <= 100) result.cost = 1050;
+		else if (weight > 100 && weight <= 300) result.cost = 3000;
 	}	
 	
 	if (!result.cost) result.cost = 0;

@@ -610,6 +610,10 @@ if ($deliveryInfo = $resultDelivery->fetch()) $deliveryGroupID = $deliveryInfo["
 		$arFields["SALE_EMAIL"] = 'voronezh@krep-komp.ru';
 		$arFields["SALE_PHONE"] = '8 473 204-53-38';
 	
+	}elseif($_SERVER['HTTP_HOST']=='novosibirsk.krep-komp.ru'){
+		$arFields["SALE_EMAIL"] = 'novosibirsk@krep-komp.ru';
+		$arFields["SALE_PHONE"] = '8 383 280-48-35';
+	
 	}else{
 		$arFields["SALE_PHONE"] = '8 499 350-55-55';
 	}
@@ -958,6 +962,8 @@ function ($orderId, $type){
         $arOrder = CSaleOrder::GetByID($orderId);
 		if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru')
 			return sprintf('%s-%s', 'SPB', $orderId);
+		elseif($_SERVER['HTTP_HOST']=='novosibirsk.krep-komp.ru')
+			return sprintf('%s-%s', 'NSB', $orderId);
 		else
 			return sprintf('%s', $orderId);
     }
