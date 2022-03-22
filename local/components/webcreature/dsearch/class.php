@@ -140,12 +140,17 @@ if ($this->arResult["count"] && $this->arParams["STAT"]=="Y") $this->saveData();
 		$niddle = Array('LOGIC' => 'OR');
 
 			foreach ($target AS $key=>$val) {
+				if ($this->str_word_count_utf8($source, 0) && iconv_strlen($source) > 3) $source = substr($source, 0, -2);
 				if ($val=="NAME") $niddle[] = Array("{$val}" => "%".$source."%");
 				else $val=="PROPERTY_".$this->arParams["ARTNO"] ? $niddle[] = Array("{$val}" => "{$source}%") : $niddle[] = Array("{$val}" => "{$source}");		
 			}	
 
 		return $niddle;
-    }		
+    }	
+
+	public function str_word_count_utf8($str) {
+		return count(preg_split('~[^\p{L}\p{N}\']+~u',$str));
+	}		
 	
 	public function targetArrayOld($source, $target) //Вариации фильтрации
 	{

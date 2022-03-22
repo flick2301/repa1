@@ -43,8 +43,8 @@ $APPLICATION->IncludeComponent('bitrix:system.pagenavigation', $arParams["PAGER_
 
 <?php 
 	foreach ($arResult["result"] AS $val) {
-		$text[]="<tr onclick=\"window.open('{$val['URL']}', '_blank');\"><td class='search_result_start'>".($val['PICTURE'] ? "<div class='dsearch_result_imgblock'><img alt='{$val['NAME']}' src='{$val['PICTURE']}' /></div>" : "")."</td><td class='search_result_end'><b>{$val['NAME']}</b>".($arParams["ARTNO"] && $val['ART'] ? " (".Loc::getMessage("DSEARCH_ARTNO").": ".trim($val['ART']).")" : "")."<br />
-		{$val['DESCRIPTION']}</td></tr>";
+		$text[]="<tr onclick=\"window.open('{$val['URL']}', '_blank');\"><td class='search_result_start'>".($val['PICTURE'] ? "<div class='dsearch_result_imgblock'><img alt='{$val['NAME']}' src='{$val['PICTURE']}' /></div>" : "")."</td><td class='search_result_end'><b>{$val['NAME']}</b>".($arParams["ARTNO"] && $val['ART'] ? ". ".Loc::getMessage("DSEARCH_ARTNO").": ".trim($val['ART'])."" : "")."<br />
+		<!--{$val['DESCRIPTION']}--></td></tr>";
 	}
 	
 	if (count($text)) {
