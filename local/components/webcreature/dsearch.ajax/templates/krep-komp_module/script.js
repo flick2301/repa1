@@ -28,7 +28,7 @@ else $("#text_result" ).css("display", "none");
 		if (search.length>=2) {
 			if (event.keyCode==13) send_request(search);
 			else clearTimeout(timerId2); 
-			timerId2 = setTimeout(function() {get_ajax(search, true);}, 1500);  		
+			timerId2 = setTimeout(function() {get_ajax(search, true);}, 1000);  		
 		}
 //else $("#text_result" ).css("display", "none");		
 	});	
@@ -47,9 +47,18 @@ function get_ajax(search, noclose){
 				
 			$("#text_result" ).css("display", "block");		
 		
- 			if (!data.match(/error/) || noclose) $("#text_result" ).html(data);
+ 			if (!data.match(/error/) || noclose) {
+				if (!noclose) $("#text_result" ).html(data);
+				else {
+					var wrapper = document.createElement('div');
+					wrapper.innerHTML = data;
+					var div = $(wrapper).find('.dsearch_result_block');		
+					$('#text_result .dsearch_result_block').html($(div).html());
+				}
+			}
 			else $("#text_result" ).css("display", "none");		
 			});	
 
 }	
 });
+

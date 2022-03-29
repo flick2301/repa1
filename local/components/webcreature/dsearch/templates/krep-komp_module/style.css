@@ -95,7 +95,10 @@
 	justify-content: center;
 	align-items: center;
 }
-.dsearch_result_category__item:hover .dsearch_result_category__count, .dsearch_result_category__item.active .dsearch_result_category__count {
+.dsearch_result_category__item:hover .dsearch_result_category__count {
+	background: #eee;	
+}
+.dsearch_result_category__item.active .dsearch_result_category__count {
 	color: #fff;
 	background: #4f36e3;
 }
