@@ -16,13 +16,11 @@ use \Webcreature\Dsearch\StatTable;
 class classDsearch extends CBitrixComponent
 {
 
-var $request;
+var $result;
 var $comment = "";
 var $current_page;
 var $page_param = "dsearch-result";
 var $similar;
-var $category;
-var $select;
 
     protected function checkModules()
     {
@@ -37,10 +35,8 @@ var $select;
 		
     $context = \Bitrix\Main\Application::getInstance()->getContext();
     $request = $context->getRequest();
-	if ($this->arParams["REQUEST"]) $this->request = $this->arParams["REQUEST"];
-    else $this->request = $request->get($this->arParams["SEARCH_VARIABLE"] ? $this->arParams["SEARCH_VARIABLE"] : "result");
-	
-	$this->request = str_replace(Array("<", ">", ";", "%"), "", $this->request);
+	if ($this->arParams["REQUEST"]) $this->result = $this->arParams["REQUEST"];
+    else $this->result = $request->get($this->arParams["SEARCH_VARIABLE"] ? $this->arParams["SEARCH_VARIABLE"] : "result");
 	
 	if ($this->arParams["ALTER_PAGINATION"]=="Y") $this->page_param = "PAGEN_1";
 	
@@ -48,27 +44,20 @@ var $select;
 	if (!$this->current_page) $this->current_page = 1;
 	
 
-        if ($this->arParams["ON_PAGE"]=="Y") $this->arResult["ON_PAGE"] = $this->searchForm();		
+        if ($this->arParams["ON_PAGE"]=="Y") echo $this->searchForm();		
 		if (!$this->arParams["DESCRIPTION_LEN"]) $this->arParams["DESCRIPTION_LEN"] = 1000;
 		
-		if ($this->request) {
-			//if (strlen($this->arResult["sections"]) > 2) $this->arResult["sections"] = $this->section_query();
-			//$this->arResult["elements"] = $this->element_query();
-			
-			$this->arResult["elements"] = $this->newQuery();
-			
+		if ($this->result) {
+			if (strlen($this->arResult["sections"]) > 2) $this->arResult["sections"] = $this->section_query();
+			$this->arResult["elements"] = $this->element_query();
 
-if ($this->arParams["PAGER_TEMPLATE"]) {
-	
 			foreach($this->arResult["sections"] as $val) $this->arResult["result"][] = $val;
 			foreach($this->arResult["elements"] as $val) $this->arResult["result"][] = $val;
-			
-
 			
 			//$this->arResult["count"] = count($this->arResult["result"]);
 			
 			
-			if ($this->arParams["PAGE_SIZE"] && ($this->arParams["PAGE_SIZE"] < $this->arResult["count"] || $this->arParams["PAGER_SHOW_ALWAYS"]=="Y") && $this->current_page!="all") {
+			if ($this->arParams["PAGE_SIZE"] && ($this->arParams["PAGE_SIZE"]<$this->arResult["count"] || $this->arParams["PAGER_SHOW_ALWAYS"]=="Y") && $this->current_page!="all") {
 				
 			$count = 0;
 				
@@ -82,6 +71,9 @@ if ($this->arParams["PAGER_TEMPLATE"]) {
 				
 				
 
+				
+					
+				
 				
 				
 				$this->arResult["result"] = $arResult;
@@ -112,19 +104,11 @@ $navResult->NavRecordCount = $this->arResult["count"];
 
 $this->arResult["alternav"] = $navResult; 
 }
-}
-}
-else {
-	$this->arResult["count"] = count($this->arResult["elements"]);	
-}	
-
-$this->arResult["category"] = $this->category;
+			}
 			
-if ($this->arResult["count"] && $this->arParams["STAT"]=="Y") $this->saveData();	
-		
+			
+if ($this->arResult["count"] && $this->arParams["STAT"]=="Y") $this->saveData();			
 		}
-		
-		$this->arResult["request"] = $this->request;
 
         $this->includeComponentTemplate();
     }
@@ -132,11 +116,7 @@ if ($this->arResult["count"] && $this->arParams["STAT"]=="Y") $this->saveData();
 	
 	public function searchForm() //Форма поиска
 	{
-		return '<div class="moskrep-search-onpage-block"><div class="moskrep-search-onpage">
-<input class="moskrep_submit" type="button" value="Найти товар">	
-<input name="'.$this->arParams["SEARCH_VARIABLE"].'" type="text" value="'.$this->request.'" class="moskrep_input" placeholder="Поиск по каталогу..." autocomplete="off">			 
-</div></div>';
-	    return "<form method='get'><input type='text' name='{$this->arParams["SEARCH_VARIABLE"]}' value='{$this->request}' /><input type='submit' value='".Loc::getMessage('SEND')."' /></form><br /><br />";
+	    return "<form method='get'><input type='text' name='{$this->arParams["SEARCH_VARIABLE"]}' value='{$this->result}' /><input type='submit' value='".Loc::getMessage('SEND')."' /></form><br /><br />";
 	}
 
 	
@@ -210,7 +190,7 @@ if ($this->arResult["count"] && $this->arParams["STAT"]=="Y") $this->saveData();
 $query 
    ->setOrder(array("ID" => "ASC")) 
    ->setFilter( 
-      Array('IBLOCK_ID' => $this->arParams["IBLOCK_ID"], "ACTIVE" => "Y", $filterCategory, $this->targetArray($this->request, $select)) 
+      Array('IBLOCK_ID' => $this->arParams["IBLOCK_ID"], "ACTIVE" => "Y", $filterCategory, $this->targetArray($this->result, $select)) 
    ) 
    ->setSelect(
       Array('ID', 'IBLOCK_ID', 'NAME', 'PICTURE', 'DESCRIPTION')
@@ -250,7 +230,7 @@ return $arSections;
 				
         $arSelect = Array("ID", "IBLOCK_ID", "IBLOCK_SECTION_ID", "NAME", "DETAIL_PAGE_URL", "DETAIL_PICTURE", "DETAIL_TEXT", "PROPERTY_*");
 
-        $arFilter = Array("IBLOCK_ID"=>$this->arParams["IBLOCK_ID"], "ACTIVE"=>"Y", $filterCategory, $this->targetArrayFull($this->request, Array("NAME", "PROPERTY_".$this->arParams["ARTNO"])));
+        $arFilter = Array("IBLOCK_ID"=>$this->arParams["IBLOCK_ID"], "ACTIVE"=>"Y", $filterCategory, $this->targetArrayFull($this->result, Array("NAME", "PROPERTY_".$this->arParams["ARTNO"])));
 
 		//Количество
 		if(\Bitrix\Main\Loader::includeModule('iblock')){
@@ -264,7 +244,7 @@ return $arSections;
 		
 		/*if (!$res->SelectedRowsCount()) {
 			$this->arResult["SIMILAR"] = 1;
-			$arFilter = Array("IBLOCK_ID"=>$this->arParams["IBLOCK_ID"], "ACTIVE"=>"Y", $filterCategory, $this->targetArrayOld($this->request, Array("NAME", "PROPERTY_".$this->arParams["ARTNO"])));
+			$arFilter = Array("IBLOCK_ID"=>$this->arParams["IBLOCK_ID"], "ACTIVE"=>"Y", $filterCategory, $this->targetArrayOld($this->result, Array("NAME", "PROPERTY_".$this->arParams["ARTNO"])));
 			$res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
 		}*/
 
@@ -290,88 +270,6 @@ return $arSections;
 		
 	return $arElements;	
 	}
-
-public function showCombo($str_arr, $arr, $count){
-	
-	$temp = Array();
-	$select = Array();
-
-    foreach($arr as $val){
-       if(!in_array($val, $str_arr)){
-           $temp = $str_arr;
-           $temp[] = $val;
-           if ($count==count($temp)) {
-			   foreach ($temp AS $word) {
-				   	$select[] = "%{$word}%";		   
-			   }
-			   $this->select .= "OR `NAME` LIKE('".implode(" ", $select)."') OR `SECTION_NAME` LIKE('".implode(" ", $select)."') ";
-		   }
-           $comb = $this->showCombo($temp, $arr, $count);
-           if(count($comb) > 0)
-              $ret[] = $comb;
-       }
-    }
-
-}	
-	
-function newQuery()	{
-    $err_mess = "Ошибка запроса";
-    global $DB;
-	
-	$sourceArray = explode(" ", trim($this->request));
-	
-	if (count($sourceArray) > 1 && count($sourceArray) < 5) {
-		foreach ($sourceArray AS $key=>$val) {
-			if ($this->str_word_count_utf8($val, 0) && iconv_strlen($val) > 3) $word[$key] = substr($val, 0, -1);
-			else $word[$key] = $val;
-		}
-		
-		
-
-	$this->showCombo(array(), $word, count($sourceArray));		
-	$filter = $this->select;	
-	}
-	else {		
-		if ($this->str_word_count_utf8($this->request, 0) && iconv_strlen($this->request) > 3) $source = substr($this->request, 0, -2);
-		else $source = $this->request;
-		$filter = "OR `NAME` LIKE('%{$source}%') OR `SECTION_NAME` LIKE('%{$source}%')";
-	}
-	
-		
-	
-    $strSql = "SELECT * FROM `onetable_search` WHERE `ARTICLE` LIKE('{$this->request}%') {$filter} ORDER BY `ARTICLE`='{$this->request}' DESC, `ARTICLE` LIKE('{$this->request}%') DESC, `NAME`='{$this->request}' DESC, `NAME` LIKE('%{$this->request}%') DESC, `SECTION_NAME`='{$this->request}' DESC, `SECTION_NAME` LIKE('%{$this->request}%') DESC";
-    $res = $DB->Query($strSql, false, $err_mess.__LINE__);
-	$arr = Array();
-	$this->arResult["CATEGORY"] = Array();
-	
-	while ($row = $res->Fetch()) 
-	{
-		/*$file = CFile::ResizeImageFile(
-		$row["PICTURE"],
-		$destinationFile = $tempFile,
-		array('width'=>240,'height'=>180),,
-		$resizeType = BX_RESIZE_IMAGE_PROPORTIONAL,
-		$arWaterMark = Array(),
-		$jpgQuality = 80,
-		$arFilters = false
-		);*/
-		
-		$this->arResult["count"]++;		
-	
-		$item = Array(
-		"NAME" => $row["NAME"],
-		"ART" => $row["ARTICLE"],
-		"PICTURE" =>  $row["PICTURE"],
-		"URL" => $row["LINK"],
-		"PRICE" => $row["PRICE"],
-		);
-		
-		$this->category[$row["SECTION_NAME"]][] = $item;
-		$arr[] = $item;
-	}
-
-    return $arr;	
-}
 	
 function getFinalPriceInCurrency($item_id, $cnt = 1, $getName="N", $sale_currency = 'RUB') { //Цены
 
@@ -539,7 +437,7 @@ return $arSections;
  public function saveData(){ //Статистика
 		
 		return;
-        //echo $this->request;
+        //echo $this->result;
 		
 		if ($this->arParams["STAT_LIMIT"]<1 || !$this->arParams["STAT_LIMIT"]) $this->arParams["STAT_LIMIT"] = 10000;
 		
@@ -554,12 +452,12 @@ return $arSections;
 		$ip = $_SERVER['HTTP_X_REAL_IP'] ? $_SERVER['HTTP_X_REAL_IP'] : $_SERVER['REMOTE_ADDR'];
 		
 		
-		if ($arResult[0]['NAME']!=$this->request || $arResult[0]['IP']!=$ip) {
+		if ($arResult[0]['NAME']!=$this->result || $arResult[0]['IP']!=$ip) {
 		if ($this->arParams["REQUEST"]) $this->comment.="- интерактивная версия ";
 		if (MOBILE=='pda') $this->comment.="- мобильная версия ";
 	
 		 StatTable::add(array(
-            'NAME' => $this->request,
+            'NAME' => $this->result,
             'IP' => $ip,
 			'USER_ID' => CUser::GetID() ? CUser::GetID() : "",
 			'USER_NAME' => CUser::GetLogin() ? CUser::GetLogin() : "",

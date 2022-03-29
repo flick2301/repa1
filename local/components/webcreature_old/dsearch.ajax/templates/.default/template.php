@@ -32,12 +32,9 @@ BX.message({
 </script>
 
 
-<div class="moskrep-search">
+<div class="moskrep_search">
 <input class="moskrep_submit" type="button" value="<?=Loc::getMessage("DSEARCH_AJAX_SEARCH")?>"/>	
-<input name="text" type="text" value="<?=htmlspecialcharsEx($_GET['result'])?>" class="moskrep_input" placeholder="<?=Loc::getMessage("DSEARCH_AJAX_SEARCH_ARTNO")?>" autocomplete="off" />			  
-<?$this->SetViewTarget("dsearch_line");?>
-<div id="text_result" class="template_<?=$templateName?>"></div>
-<?$this->EndViewTarget();?>
+<input name="text" type="search" value="<?=htmlspecialcharsEx($_GET['result'])?>" class="moskrep_input" placeholder="<?=Loc::getMessage("DSEARCH_AJAX_SEARCH_ARTNO")?>" autocomplete="off" />			  
+<div id="text_result">
 </div>
-
-
+</div>

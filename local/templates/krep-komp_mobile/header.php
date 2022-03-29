@@ -226,7 +226,7 @@ $APPLICATION->IncludeFile(
 ?>
 <?endif?> 
 
-
+<?=$APPLICATION->ShowViewContent("dsearch_line");?>
 
     <?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/functions.php";?>
 	

@@ -4,15 +4,7 @@
 	width: 100%;
 	position: relative;
 }
-.moskrep-search-onpage-block {
-    margin: 10px 20px;
-	position: relative;
-}
-.moskrep-search-onpage {
-	width: calc(100% - 50px);
-	position: relative;
-}
-.moskrep-search .moskrep_input, .moskrep-search-onpage .moskrep_input {
+.moskrep-search .moskrep_input {
     border-radius: 3px;
     background: #fff;
     width: 100%; height: 50px;
@@ -23,9 +15,6 @@
 	background-color: #fafafa;
     font-size: 1rem;
 }
-.moskrep-search-onpage .moskrep_input {
-	border: 1px solid #979797;
-}
 .header-search.active .moskrep-search .moskrep_input {
     width: 570px;
     border: 2px solid #f6a302;
@@ -34,7 +23,7 @@
 	z-index: 1000;
 	position: relative;
 }	
-.moskrep-search .moskrep_submit, .moskrep-search-onpage .moskrep_submit {
+.moskrep-search .moskrep_submit {
     border: none; 
 	background: url(images/i-mag.png) left top no-repeat; 
 	text-indent: -9999px; 
@@ -108,47 +97,8 @@
     position: absolute;
     display: none;
     box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.3);
-    z-index: 10000;
+    z-index: 1000;
 	max-width: 570px;
-}
-#text_result.template_krep-komp_module {
-    background: #fff;
-    border: 0px solid #333;
-    border-radius: 5px;
-    padding: 0px 0px;
-    margin-top: 0;
-    position: absolute;
-    display: none;
-    box-shadow: 3px 3px 10px 0px rgb(0 0 0 / 30%);
-    max-width: 100%;
-	width: 100%;
-	left: 0;
-	top: 0;
-	overflow: auto;
-	max-height: 30000px;
-}
-#text_result.template_krep-komp_module {
-	/*top: 100px;*/	
-}
-#text_result.template_krep-komp_module table {
-	width: 100%;
-}
-#text_result .multi-closeIcon {
-    width: 43px;
-    height: 43px;
-    opacity: .9;
-    fill: #000;
-	position: relative;
-	cursor: pointer;
-	float: right;
-	margin: 5px 10px 10px 10px;
-	display: inline-flex!important;
-	cursor: pointer;
-	z-index: 2;
-}
-#text_result .multi-closeIcon svg {
-	width: 43px;
-	height: 43px;
 }
 #text_result .title {
     padding: 0px 10px;
@@ -158,35 +108,13 @@
 .moskrep-search :-moz-placeholder           {color:#b5b5b5; opacity:1;}/* Firefox 18- */
 .moskrep-search :-ms-input-placeholder      {color:#b5b5b5; opacity:1;}/* IE */
 
-
-@media (max-width: 740px) {
-#text_result .dsearch_result_category {
-	width: calc(100% - 20px);	
-	padding-left: 20px;
-}	
-}
 #text_result .dsearch_result_imgblock {
 	margin-right: 10px;
-	margin: 5px 10px 5px 0;
+	margin-top: 5px;
 	width: 60px;
 	height: 60px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background: #fff;
-}
-#text_result .dsearch_result_items__item {
-	width: calc(33.3% - 20px);
-	margin-left: 20px;
-	margin-top: 20px;	
-}
-@media (max-width: 1260.98px) {
-#text_result .dsearch_result_items__item {
-	width: calc(50% - 20px);	
-}	
-}
-@media (max-width: 1200px) {
-#text_result .dsearch_result_items__item {
-	width: 100%;	
-}	
 }

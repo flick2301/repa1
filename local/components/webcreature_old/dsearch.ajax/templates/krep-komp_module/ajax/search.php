@@ -15,9 +15,7 @@ $arParams["STAT_LIMIT"] = htmlspecialcharsEx($_POST['statlimit']);
 $arParams["CATEGORY"] = htmlspecialcharsEx($_POST['category']);
 
 if (stristr(LANG_CHARSET, "utf") && strstr(LANG_CHARSET, "8")) $search = iconv("windows-1251", "UTF-8", $search);
-$APPLICATION->ShowAjaxHead();
 ?>
-
 
 <?if (CModule::IncludeModule("iblock")):?>
 
@@ -33,7 +31,7 @@ $APPLICATION->ShowAjaxHead();
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
 		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 		"IN_CATEGORY" => $arParams["IN_CATEGORY"],
-		"ON_PAGE" => "Y",
+		"ON_PAGE" => "N",
 		"ALTER_PAGINATION" => "Y",
 		"SEARCH_VARIABLE" => $arParams["SEARCH_VARIABLE"],
 		"REQUEST" => $search,
@@ -47,7 +45,7 @@ $APPLICATION->ShowAjaxHead();
 		"PAGER_TEMPLATE" => "",
 		"PAGER_TITLE" => "",
 		"STAT" => $arParams["STAT"],
-		"STAT_LIMIT" => $arParams["STAT_LIMIT"]
+		"STAT_LIMIT" => $arParams["STAT_LIMIT"]		
 	),
 	false
 );?>
