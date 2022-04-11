@@ -38,18 +38,10 @@ if($arParams['REFERENCE_CHECK']=='Y'):
             $arResult['SORTING']['SECTION_ID'] = $arSection['ID'];
         }
     }
-    if($arResult['SORTING']['SECTION_ID']) {
-        $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'SECTION_ID' => $arResult['SORTING']['SECTION_ID']);
-        $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array('*', 'UF_TOP'));
-        while ($arSection = $rsSections->Fetch()) {
-            $arResult['SORTING']['SECTIONS'][$arSection['ID']]['NAME'] = $arSection['NAME'];
-            $arResult['SORTING']['SECTIONS'][$arSection['ID']]['TOP'] = $arSection['UF_TOP'];
-            $arSortSecID[] = $arSection['ID'];
 
-        }
-    }
 
-    
+
+
     if($arResult['SORTING']['SECTION_ID'] && $arResult['SECTION']['ID']){
         $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'SECTION_ID'=>$arResult['SORTING']['SECTION_ID']);
         $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array('*', 'UF_TOP'));
@@ -58,40 +50,40 @@ if($arParams['REFERENCE_CHECK']=='Y'):
             $arResult['SORTING']['SECTIONS'][$arSection['ID']]['NAME'] = $arSection['NAME'];
 			$arResult['SORTING']['SECTIONS'][$arSection['ID']]['TOP']=$arSection['UF_TOP'];
             $arSortSecID[]=$arSection['ID'];
-            
+
         }
-        
+
         if($arSortSecID){
             $arFilter = Array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "ACTIVE"=>"Y", 'IBLOCK_SECTION_ID'=>$arSortSecID, '!PROPERTY_VISIBILITY_VALUE'=>'Y');
             $res = CIBlockElement::GetList(Array('SORT' => 'ASC'), $arFilter, false, false, array('*'));
-            while($ob = $res->GetNextElement()){ 
-            
-                $arFields = $ob->GetFields();  
+            while($ob = $res->GetNextElement()){
+
+                $arFields = $ob->GetFields();
                 $arProps = $ob->GetProperties();
                 $arResult['SORTING']['SECTIONS'][$arFields['IBLOCK_SECTION_ID']]['ITEMS'][]=array_merge($arFields, $arProps);
 
             }
         }
-        
+
         $arFilter = Array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "ACTIVE"=>"Y", 'IBLOCK_SECTION_ID'=>$arResult['SORTING']['SECTION_ID'], '!PROPERTY_VISIBILITY_VALUE'=>'Y');
         $res = CIBlockElement::GetList(Array('SORT' => 'ASC'), $arFilter, false, false, array('*'));
-        while($ob = $res->GetNextElement()){ 
-            
-            $arFields = $ob->GetFields();  
+        while($ob = $res->GetNextElement()){
+
+            $arFields = $ob->GetFields();
             $arProps = $ob->GetProperties();
-            
+
             $arResult['SORTING']['ROOT_ELEMENTS'][$arFields['ID']]=array_merge($arFields, $arProps);
-        
+
             $arResult['SORTING']['ROOT_ELEMENTS'][$arFields['ID']]['PICTURE'] = CFile::ResizeImageGet($arFields['DETAIL_PICTURE'] ? $arFields['DETAIL_PICTURE'] : $arFields['PREVIEW_PICTURE'], array('width'=>$arParams['LIST_PREV_PIC_W_L2'], 'height'=>$arParams['LIST_PREV_PIC_H_L2']), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-			
+
 			//Отмена сжатия
-			if ($arFields['DETAIL_PICTURE'])			
+			if ($arFields['DETAIL_PICTURE'])
 			$arResult['SORTING']['ROOT_ELEMENTS'][$arFields['ID']]['PICTURE']['src'] = CFile::GetPath($arFields['DETAIL_PICTURE']);
 
         }
-        
-       
-       
+
+
+
     }else{
 
         if($arSortSecID){
@@ -110,61 +102,63 @@ if($arParams['REFERENCE_CHECK']=='Y'):
         while($arProp = $resProps->Fetch()){
             $arProp_catalog[]=$arProp['CODE'];
             $arProp_catalog_type[$arProp['CODE']]=$arProp['PROPERTY_TYPE'];
-             
+
         }
-        
+
+
+
         $arFilter = Array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "ACTIVE"=>"Y", '=CODE'=>end($arParams['SORTING']));
         $res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter, false, false, array('*'));
-        while($ob = $res->GetNextElement()){ 
-            
-            $arFields = $ob->GetFields();  
+        while($ob = $res->GetNextElement()){
+
+            $arFields = $ob->GetFields();
             $arProps = $ob->GetProperties();
-			
+
 			$URL_SORT = false;
 			$nav = CIBlockSection::GetNavChain(false, $arFields["IBLOCK_SECTION_ID"]);
-			 
+
 			while($arNav = $nav->GetNext())
 			{
-				
+
 				$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>SORTING_IBLOCK_ID, 'ID'=>$arNav['ID']), false, Array('CODE', 'UF_DIRECTORY'));
 				if($arSect = $res_sect->GetNext()){
-					
+
 					if($arSect['UF_DIRECTORY']){
-						
+
 							$code_section = $arParams['SORTING'][count($arParams['SORTING'])-1];
 							$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], 'ID'=>$arSect['UF_DIRECTORY']), false, Array('ID', 'SECTION_PAGE_URL'));
 							$dir = $APPLICATION->GetCurDir();
-							
+
 							if($parent_sec_id = $res_sect->GetNext()){
 								$right_url = $parent_sec_id['SECTION_PAGE_URL'].$arFields['CODE'].'/';
 								$right_url2 = $parent_sec_id['SECTION_PAGE_URL'].str_replace("-", "_", $arFields['CODE']).'/';
 								if($parent_sec_id['ID'] == $arSect['UF_DIRECTORY'][0] && ($dir == $right_url || $dir == $right_url2)){
-									
+
 									$URL_SORT = true;
 								}
 							}
-							
-					}	
+
+					}
 				}
 			}
-			
+
            if($URL_SORT){
             $arResult['REFERENCE']['ITEM']=array_merge($arFields, $arProps);
             if($arResult['REFERENCE']['ITEM']['DETAIL_PICTURE']){
                 $arResult['REFERENCE']['ITEM']['PICTURE'] = CFile::ResizeImageGet($arResult['REFERENCE']['ITEM']['DETAIL_PICTURE'], array('width'=>'600', 'height'=>'600'), BX_RESIZE_IMAGE_PROPORTIONAL, true);
             }
             foreach($arProps as $val){
-                
+
                 if(in_array($val['CODE'], $arProp_catalog) && $val['VALUE']!=''){
                     $arProp_sorting[]=$val;
-                    
+
                 }
-                
+
             }
 			$ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues($arResult['REFERENCE']['ITEM']["IBLOCK_ID"],$arResult['REFERENCE']['ITEM']['ID']);
 			$IPROPERTY  = $ipropValues->getValues();
 			$arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE'] = $IPROPERTY['ELEMENT_PAGE_TITLE'];
-           
+
            //$arProp_sorting - ЭТО СВОЙСТВО ПО СПРАВОЧНИКУ СОВПАДАЮЩЕЕ СО СВОЙСТВОМ КАТОЛОГА( ДИАМЕТР, ПРОЧНОСТЬ И Т.Д.)
             $cp->SetResultCacheKeys(array('REFERENCE'));
 
@@ -187,18 +181,18 @@ if($arParams['REFERENCE_CHECK']=='Y'):
                 }
 
             }
-			
+
 			//ПРОВЕРКА ЧТО ТАБЛИЦА ОБЩАЯ
 			if($arResult['REFERENCE']['ITEM']["UF_DOP_SETTINGS"])
 			{
-				
+
 				foreach($arResult['REFERENCE']['ITEM']["UF_DOP_SETTINGS"]["VALUE_XML_ID"] as $extra_setting)
 				{
-					
+
 					$_POST['ENUM_LIST'][$extra_setting] = true;
 				}
 			}
-			
+
         }
 
         //ЕСЛИ ВЫБРАНО НЕСКОЛЬКО РАЗДЕЛОВ БЕЗ СВОЙСТВ
@@ -282,7 +276,7 @@ if($arParams['REFERENCE_CHECK']=='Y'):
 
         //НАЛИЧИЕ У СПРАВОЧНИКА ВЕРХНИХ ПРИЛИНКОВАННЫХ РАЗДЕЛОВ(SECTIONS_TOP)
         if(count($arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE'])>1) {
-			
+
 
             $rsResult = CIBlockSection::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "ID" => $arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE']), false, array("*", "IPROPERTY_VALUES"));
             while ($rSection = $rsResult->GetNext()) {

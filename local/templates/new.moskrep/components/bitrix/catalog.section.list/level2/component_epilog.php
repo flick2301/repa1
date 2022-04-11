@@ -53,7 +53,7 @@ if($arResult['REFERENCE']['ITEM']['ID']!=''):
     endif;
 
 if($arResult['REFERENCE']['ITEM']['ID']=='' && $arResult["SECTION"]["ID"]==''){
-@define("ERROR_404","Y");
+    @define("ERROR_404","Y");
 	CHTTP::SetStatus("404 Not Found");
 		
 	$APPLICATION->SetPageProperty('title', "404 - HTTP not found");

@@ -9,6 +9,7 @@ $this->setFrameMode(true);
 
 global $APPLICATION;
 global $context;
+global $sec_builder;
 
 $request = $context->getRequest();
 $requestUri = $request->getRequestUri();
@@ -113,36 +114,8 @@ $requestUri = $request->getRequestUri();
                         <?$i=0;?>
                         <?foreach($sortSection['ITEMS'] as $sort_item):?>
                             <?$i++;
-                            $link = '';
-                            $values = [];
-                            foreach($sort_item['arFilters']['VALUE'] as $value)
-                            {
-                                $values[] = $value.'=Y';
-                            }
+                            $link = $link = $sec_builder->linkBuilder($sort_item, $sortSection);;
 
-                            if($sort_item['IS_ACTIVE'] && $sortSection['ACTIVES']==1)
-                                $link = $request->getRequestedPageDirectory().'/';
-                            elseif($sort_item['IS_ACTIVE'] && $sortSection['ACTIVES']>1) {
-
-                                $link = str_replace($values, '', $requestUri);
-                                $link = str_ireplace('set_filter=%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C', '',$link);
-                                $link = str_replace(['?&&','?&&&','?&','?&&&&','?&&&&&'], '?', $link).'&set_filter=Показать';
-                                $link = str_replace(['&&', '&&&', '&&&&'], '&', $link);
-                            }elseif(!$sort_item['IS_ACTIVE'] && $sortSection['ACTIVES']>1)
-                            {
-                                $link = str_ireplace('set_filter=%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C', '',$requestUri);
-                                $link = (!empty($sort_item['arFilters']['VALUE'])) ? $link.'&' . implode('&', $values).'&set_filter=Показать' : (($sort_item['LINK_TARGET']['VALUE']) ? $sort_item['LINK_TARGET']['VALUE'] : $sort_item['CODE'] . '/');
-                                $link = str_replace(['&&', '&&&', '&&&&'], '&', $link);
-
-
-                            }
-                            else {
-                                if(stripos($requestUri, '?'))
-                                    $delimiter = $requestUri.'&';
-                                else
-                                    $delimiter = '?';
-                                $link = (!empty($sort_item['arFilters']['VALUE'])) ? $delimiter . implode('&', $values) . '&set_filter=Показать' : (($sort_item['LINK_TARGET']['VALUE']) ? $sort_item['LINK_TARGET']['VALUE'] : $sort_item['CODE'] . '/');
-                            }
                             ?>
 
                             <li class="category-blocknew__item" >
@@ -528,41 +501,13 @@ if($arResult['SORTING']['SECTION_ID']){
 			<?$i=0;?>
 			<?foreach($sortSection['ITEMS'] as $sort_item):?>
 				<?$i++;
-                $link = '';
-                $values = [];
-                foreach($sort_item['arFilters']['VALUE'] as $value)
-                {
-                    $values[] = $value.'=Y';
-                }
+                $link = $sec_builder->linkBuilder($sort_item, $sortSection);
 
-                if($sort_item['IS_ACTIVE'] && $sortSection['ACTIVES']==1)
-                    $link = $request->getRequestedPageDirectory().'/';
-                elseif($sort_item['IS_ACTIVE'] && $sortSection['ACTIVES']>1) {
-
-                    $link = str_replace($values, '', $requestUri);
-                    $link = str_ireplace('set_filter=%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C', '',$link);
-                    $link = str_replace(['?&&','?&&&','?&','?&&&&','?&&&&&'], '?', $link).'&set_filter=Показать';
-                    $link = str_replace(['&&', '&&&', '&&&&'], '&', $link);
-                }elseif(!$sort_item['IS_ACTIVE'] && $sortSection['ACTIVES']>1)
-                {
-                    $link = str_ireplace('set_filter=%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C', '',$requestUri);
-                    $link = (!empty($sort_item['arFilters']['VALUE'])) ? $link.'&' . implode('&', $values).'&set_filter=Показать' : (($sort_item['LINK_TARGET']['VALUE']) ? $sort_item['LINK_TARGET']['VALUE'] : $sort_item['CODE'] . '/');
-                    $link = str_replace(['&&', '&&&', '&&&&'], '&', $link);
-
-
-                }
-                else {
-                    if(stripos($requestUri, '?'))
-                        $delimiter = $requestUri.'&';
-                    else
-                        $delimiter = '?';
-                    $link = (!empty($sort_item['arFilters']['VALUE'])) ? $delimiter . implode('&', $values) . '&set_filter=Показать' : (($sort_item['LINK_TARGET']['VALUE']) ? $sort_item['LINK_TARGET']['VALUE'] : $sort_item['CODE'] . '/');
-                }
             ?>
 
 				<li class="category-blocknew__item" >
                     <a href="<?=$link?>" <?=($sort_item['LINK_TARGET']['VALUE']) ? "target='_self'" : "";?> class="category-block__link <?=$sort_item['IS_ACTIVE']?>">
-						<?=$sort_item['NAME']?>
+						<?=$sort_item['NAME']?> <?=$sort_item['sef_filter']['VALUE_XML_ID']?>
 					</a>
 				</li>
 			<?endforeach;?>
