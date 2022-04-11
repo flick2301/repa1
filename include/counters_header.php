@@ -1,4 +1,3 @@
-<?if(!strpos($_SERVER['HTTP_USER_AGENT'],'Chrome-Lighthouse')):?>
 <!-- Google Analitycs -->
  <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -32,7 +31,7 @@
    $rsUser = CUser::GetByID($USER->GetId());
 	$arUser = $rsUser->Fetch();
 	$userEmail = $arUser["EMAIL"];
-   if(isset($arUser["PERSONAL_PHONE"]))
+   if(0)
    {
 	   $queryUrl = 'https://team.krep-komp.ru/rest/1/rdgiynh922m6xmy9/crm.contact.list';
 		$data = array(
@@ -210,4 +209,3 @@ ct.src = document.location.protocol+'//cc.calltracking.ru/phone.a7431.11162.asyn
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ct, s);
 })();
 </script>
-<?endif?>

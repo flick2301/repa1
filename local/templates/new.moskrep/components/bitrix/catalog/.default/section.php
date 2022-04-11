@@ -7,17 +7,24 @@ use Bitrix\Main\ModuleManager;
 $this->setFrameMode(true);
 global $mySmartFilter;
 global $NavNum;
+global $sec_builder;
+$sec_builder = new \CatalogHelpers\SectionBulder();
 $NavNum = 0;
 $mySmartFilter = [">CATALOG_PRICE_9" => 0];
 
 //ЭТОТ ГЛОБАЛ НЕ ТРОГАТЬ. НУЖЕН В ХЛЕБНЫХ КРОШКАХ ВИРТУАЛЬНОГО КАТАЛОГА
 $GLOBAL['SECTION_ID'] = $arResult["VARIABLES"]["SECTION_ID"];
-//
 
-// В ПЕРЕМЕННОЙ $arUrl ПОЛУЧАЕМ КОД ПОСЛЕДНЕГО РАЗДЕЛА
-// НУЖЕН ЧТОБЫ УЗНАТЬ В КАТАЛОГЕ МЫ НАХОДИМСЯ ИЛИ УЖЕ В СПРАВОЧНИКЕ
-$arUrl = explode('/', $APPLICATION->GetCurPage());
-$arUrl = array_diff($arUrl, array(''));
+
+$sorting = $sec_builder->getCurSorting();
+
+if(!empty($sorting[0]['arFilters']['VALUE']))
+	$arResult["VARIABLES"]["SECTION_ID"] = $sec_builder->getCurSection();
+
+$sec_builder->addParameters();
+
+
+
 if($APPLICATION->GetCurPage() == '/krepezh/ankera/anker-25-mm/anker-bolt-s/'){
 	@define("ERROR_404","Y");
 	CHTTP::SetStatus("404 Not Found");
@@ -130,7 +137,7 @@ if($count_sections || !empty($subsections) || !empty($uf_fields["UF_MATERIAL"]))
                 'REFERENCE_CHECK' => 'Y',
                 'REFERENCE' => $_REQUEST['reference'],
 				'META' => $meta,
-                'SORTING' => $arUrl,
+                'SORTING' => $sec_builder->arPagesCode,
 				'TYPE_TEMPLATE'=>$temple,
                 
             ], $component, ['HIDE_ICONS' => 'Y']); 
