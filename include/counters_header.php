@@ -32,7 +32,7 @@
    $rsUser = CUser::GetByID($USER->GetId());
 	$arUser = $rsUser->Fetch();
 	$userEmail = $arUser["EMAIL"];
-   if(isset($arUser["PERSONAL_PHONE"]))
+   if(0)
    {
 	   $queryUrl = 'https://team.krep-komp.ru/rest/1/rdgiynh922m6xmy9/crm.contact.list';
 		$data = array(

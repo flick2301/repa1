@@ -177,14 +177,7 @@ $APPLICATION->IncludeFile(
     
     <!--[if (lt IE 9)&(!IEMobile 7)]><script src="js/html5support.js"></script><![endif]-->
 
-<script>
-  (function(d) {
-    var s = d.createElement('script');
-    s.defer = true;
-    s.src = 'https://multisearch.io/plugin/10771';
-    if (d.head) d.head.appendChild(s);
-  })(document);
-</script>
+
 
 <!-- calltouch -->
 <script>

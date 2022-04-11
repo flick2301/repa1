@@ -96,11 +96,13 @@ foreach($arResult['ITEMS'] as $key=>$arItem){
 	if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){
 		$arResult['ITEMS'][$key]['STORE'][$DEFAULT_STORE_ID]['AMOUNT'] = $arResult['ITEMS'][$key]['STORE'][$DEFAULT_STORE_ID]['AMOUNT']+$arResult['ITEMS'][$key]['STORE'][3]['AMOUNT'];
 	}
+	
+	
+	if(stripos($arItem['NAME'], 'кг') !== false):
+		$arResult['ITEMS'][$key]['UNIT'] = ' кг';
+	else:
+		$arResult['ITEMS'][$key]['UNIT'] = ' шт.';
+	endif;
     
 }
 
-if(stripos($arResult['ITEMS'][0]['NAME'], 'кг') !== false):
-    $arResult['UNIT'] = ' кг';
-else:
-    $arResult['UNIT'] = ' шт.';
-endif;

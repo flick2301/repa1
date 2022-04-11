@@ -66,7 +66,10 @@ $(document).on('click', '.category-blocknew .category-blocknew__list.open span',
 });
 
 $(document).on('click', '.shelf__search', function() {  
-	if ($(this).hasClass('shelf__search--active')) $('.dsearch-block').slideDown();
+	if ($(this).hasClass('shelf__search--active')) {
+		$('.dsearch-block').slideDown();
+		window.scrollTo(0, 0);
+	}
 	else $('.dsearch-block').hide();
 });
 

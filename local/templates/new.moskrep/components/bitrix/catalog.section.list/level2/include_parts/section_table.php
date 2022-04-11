@@ -153,8 +153,9 @@ $intCount = CIBlockSection::GetCount(
   array('IBLOCK_ID' => $arParams['IBLOCK_ID'], 'ACTIVE' => 'Y', 'SECTION_ID' => $arResult['SECTION']['ID'])
 );
 
-
-	if (!$intCount) $template = "horizontal_new";
+	$arEnum = CUserFieldEnum::GetList(array(), array("ID"=>$arResult['SECTION']["UF_EL_LIST_TEMPL"]))->GetNext();
+	
+	if (!$intCount || $arEnum['XML_ID']=="horizontal_new") $template = "horizontal_new";
 	else $template = "vertical";
 	$arParams["ELEMENT_SORT_FIELD"] = 'property_'.$first_sort_field;
 	$arParams["ELEMENT_SORT_FIELD2"]='property_DLINA';

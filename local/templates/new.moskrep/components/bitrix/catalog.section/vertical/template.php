@@ -158,7 +158,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                         <div class="product__param">Размер(мм): <span><?=$item['PROPERTIES']["DIAMETR"]["VALUE"]?>x<?=$item['PROPERTIES']["DLINA"]["VALUE"]?></span></div>
                     <?endif;?>
                     <?if($item['PROPERTIES']['KOLICHESTVO_V_UPAKOVKE']['VALUE']):?>
-                        <div class="product__param">Фасовка: <span><?=$item['PROPERTIES']['KOLICHESTVO_V_UPAKOVKE']['VALUE']?> шт.</span></div>
+                        <div class="product__param">Фасовка: <span><?=$item['PROPERTIES']['KOLICHESTVO_V_UPAKOVKE']['VALUE']?> <?=$item['UNIT']?></span></div>
                     <?endif;?>
                     </div>
                     <?if($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']):?>
@@ -178,7 +178,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                     <div class="product__left">
                         <div class="product__tax">цена (с НДС)</div>
                         <div class="product__price"><?echo number_format($price, 2, '.', ' ');?> р.</div>
-                        <div class="product__price product__price--one"><?echo round($price/$item['PROPERTIES']['KOLICHESTVO_V_UPAKOVKE']['VALUE'], 2);?> р. за шт.</div>
+                        <div class="product__price product__price--one"><?echo round($price/$item['PROPERTIES']['KOLICHESTVO_V_UPAKOVKE']['VALUE'], 2);?> р. за <?=$item['UNIT']?></div>
                     </div>
                     <div class="product__right">
                         <div data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-product="<?=$item['ID']?>" old-price="<?=$price?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>" class="main-button main-button--mini product-card__button product-card__button_round product__buy" href="javascript:void(0);">

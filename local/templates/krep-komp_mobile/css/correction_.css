@@ -2018,6 +2018,30 @@ img.intro-slider__image {
 .moskrep-search .moskrep_input {
 	border: 0 solid transparent;
 }
+.top__basket span {
+	font-size: 12px!important;
+}
+.popular__offer {
+	font-size: 12px!important;
+}
+.popular__name {
+	font-size: 12px!important;
+}
+.popular__delivery {	
+	font-size: 12px!important;
+}
+.popular__get {
+	font-size: 12px!important;
+}	
+.popular__date {
+	font-size: 12px!important;
+}
+.popular__old {	
+	font-size: 12px!important;
+}
+.popular__add {
+	font-size: 12px!important;
+}	
 }
 
 
