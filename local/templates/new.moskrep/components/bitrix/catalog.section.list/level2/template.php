@@ -114,7 +114,7 @@ $requestUri = $request->getRequestUri();
                         <?$i=0;?>
                         <?foreach($sortSection['ITEMS'] as $sort_item):?>
                             <?$i++;
-                            $link = $link = $sec_builder->linkBuilder($sort_item, $sortSection);;
+                            $link = $link = $sec_builder->linkBuilder($sort_item, $sortSection);
 
                             ?>
 

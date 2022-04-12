@@ -1498,6 +1498,9 @@ ol.tech li {
 #shops-window .delivery {
 	padding: 10px;
 }
+.moskrep-search .moskrep_input, .moskrep-search-onpage .moskrep_input {
+	font-size: 16px;
+}
 
 
 

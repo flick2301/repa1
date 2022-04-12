@@ -38,6 +38,17 @@ if($arParams['REFERENCE_CHECK']=='Y'):
             $arResult['SORTING']['SECTION_ID'] = $arSection['ID'];
         }
     }
+	
+	if($arResult['SORTING']['SECTION_ID']) {
+        $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'SECTION_ID' => $arResult['SORTING']['SECTION_ID']);
+        $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array('*', 'UF_TOP'));
+        while ($arSection = $rsSections->Fetch()) {
+            $arResult['SORTING']['SECTIONS'][$arSection['ID']]['NAME'] = $arSection['NAME'];
+            $arResult['SORTING']['SECTIONS'][$arSection['ID']]['TOP'] = $arSection['UF_TOP'];
+            $arSortSecID[] = $arSection['ID'];
+
+        }
+    }
 
 
 
