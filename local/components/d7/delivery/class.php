@@ -27,7 +27,7 @@ class DeliveryClass extends \CBitrixComponent implements \Bitrix\Main\Engine\Con
         return parent::executeComponent();
     }
 
-    public function ajaxRequestAction($iblock_id)
+    public function ajaxRequestAction($iblock_id, $product_id)
     {
         if(\CModule::IncludeModule('iblock')){
 
@@ -37,6 +37,7 @@ class DeliveryClass extends \CBitrixComponent implements \Bitrix\Main\Engine\Con
 
             $this->arParams["IBLOCK_ID"]=$iblock_id;
             $i = 0;
+			$this->arResult['PRODUCT'] = \CCatalogProduct::GetByID($product_id);
 
             $arSelect = Array("ID", "IBLOCK_ID", "NAME", "CODE", "PREVIEW_TEXT", "DETAIL_TEXT", "PROPERTY_*");
             $arFilter = Array("IBLOCK_ID"=>$this->arParams["IBLOCK_ID"], "ACTIVE"=>"Y", "PROPERTY_SITES"=>Array($_SERVER['HTTP_HOST'], "*"));

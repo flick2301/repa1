@@ -194,11 +194,13 @@ BX.ready(function () {
 
     $('.delivery-view').click(function () {
         $('#shops-window').slideDown(0);
+		var product_id = $(this).data('product');
         var request = BX.ajax.runComponentAction("d7:delivery", "ajaxRequest", {
 
             mode: "class",
             data:{
                 iblock_id: '22',
+				product_id: product_id,
             }
 
         });

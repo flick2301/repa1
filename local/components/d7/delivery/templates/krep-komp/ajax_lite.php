@@ -2,7 +2,7 @@
 global $APPLICATION;
 $templateFolder = "/local/components/d7/delivery/templates/krep-komp";
 
-
+$weight = $arResult['PRODUCT']['WEIGHT']); //вес товара
 ?>
 
 
@@ -26,6 +26,7 @@ $templateFolder = "/local/components/d7/delivery/templates/krep-komp";
 
 <div class="win-close" id="close"></div>
 <div class="delivery">
+
     <!--content-tabs-->
     <div class="delivery__tabs" data-delivery-tabs>
         <?foreach($arResult["ITEMS"] AS $key=>$item):?>

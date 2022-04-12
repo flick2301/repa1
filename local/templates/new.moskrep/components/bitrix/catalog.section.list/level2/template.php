@@ -412,7 +412,7 @@ elseif($arParams['TYPE_TEMPLATE']!='BOTTOM')
 		<!--catalog-card-->
 		</div>
     <?}?>
-	<?if ($arResult["SECTION"]["UF_YOUTUBE"]):?>
+	<?if ($arResult["SECTION"]["UF_YOUTUBE"] && ($_SERVER['HTTP_HOST']=="krep-komp.ru" || $_SERVER['HTTP_HOST']=="spb.krep-komp.ru")):?>
 	<?$video_view_name = mb_strtolower(mb_substr($h1_section, 0, 1)) . mb_substr($h1_section, 1);?>
 <div class="catalog-feed__item catalog-feed__item__withpic catalog-feed__item__white">
 		<!--goto-video-->
