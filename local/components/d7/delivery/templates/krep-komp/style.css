@@ -161,6 +161,12 @@
   border: 2px solid #EAEAEA;
   border-top: none;
   padding: 0px 32px; }
+.delivery__tr.active {
+	background: #4f36e3;
+}  
+.delivery__tr.active .delivery__td {
+	color: #fff;
+}  
   @media (max-width: 1339px) {
     .delivery__tr {
       padding: 0px 20px; } }

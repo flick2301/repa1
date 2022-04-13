@@ -125,9 +125,9 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 					<div class="catalog-table__column catalog-table__column--state">
                            <div class="catalog-table__title">Наличие<small>:</small></div>
                            <div class="catalog-table__content">
-							<?if($item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED'])
+							<?if($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT'])
 							{?>
-								<p class="catalog-table__state"><i class="simple-state-yes-icon catalog-table__available"></i><?=$item['CATALOG_QUANTITY']+$item['CATALOG_QUANTITY_RESERVED']?> уп.</p>
+								<p class="catalog-table__state"><i class="simple-state-yes-icon catalog-table__available"></i><?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?> уп.</p>
 							<?}else{?>
 								<p class="catalog-table__state catalog-table__state--notafs">Под заказ</p>
 							<?}?>

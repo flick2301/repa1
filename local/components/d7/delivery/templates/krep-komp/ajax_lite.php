@@ -2,8 +2,11 @@
 global $APPLICATION;
 $templateFolder = "/local/components/d7/delivery/templates/krep-komp";
 
-$weight = $arResult['PRODUCT']['WEIGHT']); //вес товара
+$weight = $arResult['PRODUCT']['WEIGHT'] / 1000; //вес товара
 ?>
+
+
+
 
 
 <link href="<?=$templateFolder?>/style.css" type="text/css" rel="stylesheet" />
@@ -13,6 +16,13 @@ $weight = $arResult['PRODUCT']['WEIGHT']); //вес товара
 
 
 <script id="api-map-delivery">
+$(document).ready(function() {
+	var weight = <?=$weight ? $weight : 0?>;
+	$('.delivery__tr[data-weight]').each(function( index ) {
+		var range = $(this).attr('data-weight').split('-');
+		if (weight>=range[0] && weight<=range[1]) $(this).addClass('active');
+	});
+});
 
  <?require($_SERVER["DOCUMENT_ROOT"]."/delivery/get_areas.php");?>
 

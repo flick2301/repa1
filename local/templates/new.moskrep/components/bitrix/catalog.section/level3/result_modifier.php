@@ -11,7 +11,17 @@ foreach($arResult['ITEMS'] as $key=>$arItem){
         $arResult['ITEMS'][$key]['UNIT']= ' шт.';
     endif;
 	
-	$rsStore = CCatalogStoreProduct::GetList(array(), array('PRODUCT_ID' => $arItem['ID']), false, false, array('STORE_ID', 'AMOUNT', 'STORE_NAME'));
+	$rsStoreProduct = \Bitrix\Catalog\StoreProductTable::getList(array(
+		'filter' => array('=PRODUCT_ID'=>$arItem['ID'],'STORE.ACTIVE'=>'Y','STORE.ID'=>3),
+		'select' => array('AMOUNT','STORE_ID','STORE_TITLE' => 'STORE.TITLE'),
+	));
+	while($arStoreProduct=$rsStoreProduct->fetch())
+	{
+		$arResult['ITEMS'][$key]['KOLEDINO'] = $arStoreProduct['AMOUNT'];
+	}
+	
+	
+    $rsStore = CCatalogStoreProduct::GetList(array(), array('PRODUCT_ID' => $arItem['ID']), false, false, array('STORE_ID', 'AMOUNT', 'STORE_NAME'));
     while($arStore = $rsStore->Fetch()){
         $arResult['ITEMS'][$key]['STORE'][$arStore['STORE_ID']] = $arStore;
     }
