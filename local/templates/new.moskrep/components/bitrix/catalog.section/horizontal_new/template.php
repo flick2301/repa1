@@ -82,7 +82,7 @@ if($arParams['FOR_SEO']!='Y'){
 
 <?
 //ФИЛЬТРОВЫЕ КНОПКИ ДЛЯ ПОСАДОЧНЫХ СТРАНИЦ
-if($arResult['SORTING']['SECTION_ID']){
+if($arResult['SORTING']['SECTION_ID'] && $arParams['DISPLAY_FILTER_BUTTONS']=='Y'){
     ?>
 
     <?
