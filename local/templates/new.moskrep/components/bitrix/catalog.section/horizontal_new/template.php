@@ -4,6 +4,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 
 global $APPLICATION;
 global $DEFAULT_STORE_ID;
+global $filterObj;
 include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 $ral_in_ar = $arResult['ITEMS'][10]['PROPERTIES']["TSVET"]["VALUE"];
 
@@ -78,6 +79,43 @@ if($arParams['FOR_SEO']!='Y'){
 //ШАПКА ТАБЛИЦЫ
 
 }?>
+
+<?
+//ФИЛЬТРОВЫЕ КНОПКИ ДЛЯ ПОСАДОЧНЫХ СТРАНИЦ
+if($arResult['SORTING']['SECTION_ID']){
+    ?>
+
+    <?
+
+    foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
+        if($sortSection['TOP']){
+            ?>
+
+            <ul class="category-blocknew__list">
+                <?$i=0;?>
+                <?foreach($sortSection['ITEMS'] as $sort_item):?>
+                    <?$i++;
+                    $link =  $filterObj->sec_builder->linkBuilder($sort_item, $sortSection);
+
+                    ?>
+
+                    <li class="category-blocknew__item" >
+                        <a href="<?=$link?>" <?=($sort_item['LINK_TARGET']['VALUE']) ? "target='_self'" : "";?> class="category-block__link <?=$sort_item['IS_ACTIVE']?>">
+                            <?=$sort_item['NAME']?>
+                        </a>
+                    </li>
+                <?endforeach;?>
+            </ul>
+
+            <?
+        }
+    }
+
+}
+?>
+
+
+
     <div id="shops-window"><div class="win"></div></div>
 <div class="page_count_panel">
 
@@ -132,7 +170,10 @@ if($arParams['FOR_SEO']!='Y'){
 	
 			<?$this->SetViewTarget('catalogFilterClass');?>
                   catalog
-			<?$this->EndViewTarget();?> 
+			<?$this->EndViewTarget();?>
+
+
+
 	
 			<div class="catalog-feed__tabs">
 			<?$this->SetViewTarget('catalogFilter');?>
