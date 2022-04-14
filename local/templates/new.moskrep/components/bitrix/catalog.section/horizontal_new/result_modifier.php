@@ -6,6 +6,7 @@ use Bitrix\Highloadblock\HighloadBlockTable as HLBT;
 $module_id = 'relink.table';
 
 global $DEFAULT_STORE_ID;
+global $filterObj;
 
 
 use Bitrix\Main\Loader;
@@ -316,6 +317,10 @@ foreach($arResult['UF_SOPUT_SPR_ITMES'] as $key=>$value)
 		}
 	}
 }
+
+
+$filterObj = new \CatalogHelpers\FilterButtonsBuilder('section', $arResult, $arResult['ID']);
+$arResult = $filterObj->arResult;
 
 \Bitrix\Main\Loader::includeModule('dev2fun.opengraph');
 \Dev2fun\Module\OpenGraph::Show($arResult['ID'],'section'); 
