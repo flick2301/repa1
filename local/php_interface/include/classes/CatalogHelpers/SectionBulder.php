@@ -63,13 +63,17 @@ class SectionBulder
     public function getCurSection()
     {
 
-        $arFilter = array("IBLOCK_ID" => CATALOG_IBLOCK_ID, "ACTIVE" => "Y", '=CODE' => array_reverse($this->arPagesCode)[0]);
-        $req = \CIBlockSection::GetList(array(), $arFilter, false, array("ID", "CODE", "SECTION_PAGE_URL"));
-        if($arCurSection = $req->GetNext())
-        {
-            $this->curSection=$arCurSection;
-            return $arCurSection['ID'];
+        foreach($this->arPagesCode as $code) {
+            $section_id = $section_id ?? false;
+            $arFilter = array("IBLOCK_ID" => CATALOG_IBLOCK_ID, "SECTION_ID"=>$section_id, "ACTIVE" => "Y", '=CODE' => $code);
+            $req = \CIBlockSection::GetList(array(), $arFilter, false, array("ID", "CODE", "SECTION_PAGE_URL"));
+            if ($arCurSection = $req->GetNext()) {
+                $this->curSection = $arCurSection;
+                $section_id =  $arCurSection['ID'];
+
+            }
         }
+        return $this->curSection['ID'];
 
     }
 
