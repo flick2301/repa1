@@ -351,7 +351,10 @@ $requestUri = $request->getRequestUri();
 		  }elseif($arResult['SECTION']["UF_H1_SPB"] && $_SERVER['HTTP_HOST'] == 'spb.krep-komp.ru')
 		  {
 			$h1_section = $arResult['SECTION']["UF_H1_SPB"];
-		  }else
+		  }elseif($APPLICATION->GetPageProperty('page_title'))
+          {
+              $h1_section =$APPLICATION->GetPageProperty('page_title');
+          }else
 		  {
 			  $h1_section = $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] ? $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] : $arResult["SECTION"]["NAME"];
 		  }
