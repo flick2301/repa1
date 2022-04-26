@@ -600,6 +600,15 @@ $APPLICATION->SetPageProperty('description', '«КРЕП-КОМП» - ведущ
 CModule::IncludeModule('conversion');
 $detect = new \Bitrix\Conversion\Internals\MobileDetect;
 	if (!$USER->IsAdmin() && !$detect->isMobile()) include_once $_SERVER["DOCUMENT_ROOT"] . "/include/jivosite.php";?>
+	
+	
+<?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+       "AREA_FILE_SHOW" => "file",
+	   "PATH" => "/include/grade_site.php",
+       "AREA_FILE_SUFFIX" => "grade_site",
+       "EDIT_TEMPLATE" => ""
+   )
+);?>
 
 </body>
 </html>
