@@ -55,7 +55,7 @@ $requestUri = $request->getRequestUri();
     foreach ($arResult['DOP_SECTIONS'] as &$arSection)
     {
 ?>
-        <div class="catalog-feed__item">
+        <div class="catalog-feed__item catalog-feed__item__withpic ">
 			<!--catalog-card-->
 			<section class="catalog-card">
 				<div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></div>
@@ -74,7 +74,7 @@ $requestUri = $request->getRequestUri();
 		<div class="basic-layout__module catalog-feed">
 			<div class="catalog-feed__list">
                 <?foreach ($arResult['TOP_SECTIONS'] as &$arSection):?>
-                    <div class="catalog-feed__item">
+                    <div class="catalog-feed__item catalog-feed__item__withpic ">
 					<!--catalog-card-->
 					<section class="catalog-card">
 					<div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></div>
