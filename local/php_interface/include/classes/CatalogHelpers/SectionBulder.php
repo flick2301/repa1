@@ -113,7 +113,10 @@ class SectionBulder
         }
 
         if($sort_item['IS_ACTIVE'] && $sortSection['ACTIVES']==1) {
-            $link = $this->curSection['SECTION_PAGE_URL'];
+           if(array_slice($this->arPagesCode, -1)[0] == $this->curSorting[0]['CODE'])
+                $link = $this->curSection['SECTION_PAGE_URL']. $this->curSorting[0]['CODE'];
+            else
+                $link = $this->curSection['SECTION_PAGE_URL'];
         }
         elseif($sort_item['IS_ACTIVE'] && $sortSection['ACTIVES']>1)
         {

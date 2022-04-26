@@ -22,6 +22,9 @@ if ($page != "/")
    if($arParams["SET_STATUS_404"]==="Y")
       CHTTP::SetStatus("404 Not Found");
 }
+
+global $sec_builder;
+$sec_builder = new \CatalogHelpers\SectionBulder();
 ?>
 
 

@@ -17,6 +17,9 @@ use Bitrix\Main\ModuleManager;
 
 $this->setFrameMode(true);
 
+global $sec_builder;
+$sec_builder = new \CatalogHelpers\SectionBulder();
+
 if(!CModule::IncludeModule("iblock"))
 
 return; 
