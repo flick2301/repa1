@@ -79,7 +79,7 @@ $requestUri = $request->getRequestUri();
 					<section class="catalog-card">
 					<div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></div>
                             <div class="catalog-card__cover">
-                                <img class="catalog-card__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
+                                <img class="catalog-card__image" width="262" height="197" src="<?=($arSection['DETAIL_PICTURE']) ? CFile::GetPath($arSection['DETAIL_PICTURE']) : $arSection['PICTURE']['src'];?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                             </div>
             
 					</section>
