@@ -2,6 +2,9 @@ lat = '';
 lon = '';
 areas = [];
 
+$.getScript('/delivery/get_areas.php', function(){
+});
+
 function getMap(send_lat, send_lon, send_areas) {
 
 	lat = send_lat;
@@ -32,6 +35,7 @@ var myMap, myPolygon = [];
 			loadPolygons_spb();
 			loadPolygons_nn();
 			loadPolygons_voron();
+			loadPolygons_novosib();
         }
 
         function stopDraw() {

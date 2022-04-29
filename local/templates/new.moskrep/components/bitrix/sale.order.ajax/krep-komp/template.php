@@ -303,7 +303,7 @@ $APPLICATION->SetAdditionalCSS('/bitrix/css/main/themes/'.$arParams['TEMPLATE_TH
 //$APPLICATION->SetAdditionalCSS($templateFolder.'/style.css', true);
 $this->addExternalJs($templateFolder.'/order_ajax.js');
 $this->addExternalJs($templateFolder.'/scripts/dadata.js');
-$this->addExternalJs('/delivery/areas.js');
+//$this->addExternalJs('/delivery/areas.js');
 $this->addExternalJs($templateFolder.'/scripts/map.js');
 $this->addExternalJs('https://map.krep-komp.ru/js/script.js');
 \Bitrix\Sale\PropertyValueCollection::initJs();
