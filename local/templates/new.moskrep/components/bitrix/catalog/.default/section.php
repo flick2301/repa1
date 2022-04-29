@@ -31,6 +31,7 @@ $sec_builder->addParameters();
 
 
 
+
 if($APPLICATION->GetCurPage() == '/krepezh/ankera/anker-25-mm/anker-bolt-s/'){
 	@define("ERROR_404","Y");
 	CHTTP::SetStatus("404 Not Found");
@@ -143,7 +144,7 @@ if($count_sections || !empty($subsections) || !empty($uf_fields["UF_MATERIAL"]))
                 'REFERENCE_CHECK' => 'Y',
                 'REFERENCE' => $_REQUEST['reference'],
 				'META' => $meta,
-                'SORTING' => $sec_builder->arPagesCode,
+                'SORTING' => $sec_builder->getArrAddress(),
 				'TYPE_TEMPLATE'=>$temple,
                 
             ], $component, ['HIDE_ICONS' => 'Y']); 

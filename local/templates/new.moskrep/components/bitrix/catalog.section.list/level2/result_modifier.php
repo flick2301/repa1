@@ -17,6 +17,7 @@ while($arRelink = $relinkList->fetch()){
  */
 $cp = $this->__component;
 global $context;
+global $sec_builder;
 
 $request = $context->getRequest();
 $requestUri = $request->getRequestUri();
@@ -54,6 +55,7 @@ if($arParams['REFERENCE_CHECK']=='Y'):
 
 
     if($arResult['SORTING']['SECTION_ID'] && $arResult['SECTION']['ID']){
+
         $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'SECTION_ID'=>$arResult['SORTING']['SECTION_ID']);
         $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array('*', 'UF_TOP'));
         while ($arSection = $rsSections->Fetch())
@@ -125,86 +127,71 @@ if($arParams['REFERENCE_CHECK']=='Y'):
             $arFields = $ob->GetFields();
             $arProps = $ob->GetProperties();
 
-			$URL_SORT = false;
-			$nav = CIBlockSection::GetNavChain(false, $arFields["IBLOCK_SECTION_ID"]);
+            //isRealAddress метод-класса хелпера на проверку корректности адреса. Раздел это или посадочная страница
+           if($sec_builder->isRealAddress())
+           {
 
-			while($arNav = $nav->GetNext())
-			{
+                $arResult['REFERENCE']['ITEM']=array_merge($arFields, $arProps);
 
-				$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>SORTING_IBLOCK_ID, 'ID'=>$arNav['ID']), false, Array('CODE', 'UF_DIRECTORY'));
-				if($arSect = $res_sect->GetNext()){
+                if($arResult['REFERENCE']['ITEM']['DETAIL_PICTURE'])
+                {
+                    $arResult['REFERENCE']['ITEM']['PICTURE'] = CFile::ResizeImageGet($arResult['REFERENCE']['ITEM']['DETAIL_PICTURE'], array('width'=>'600', 'height'=>'600'), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                }
 
-					if($arSect['UF_DIRECTORY']){
+                foreach($arProps as $val)
+                {
 
-							$code_section = $arParams['SORTING'][count($arParams['SORTING'])-1];
-							$res_sect = CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], 'ID'=>$arSect['UF_DIRECTORY']), false, Array('ID', 'SECTION_PAGE_URL'));
-							$dir = $APPLICATION->GetCurDir();
+                    if(in_array($val['CODE'], $arProp_catalog) && $val['VALUE']!='')
+                    {
+                        $arProp_sorting[]=$val;
 
-							if($parent_sec_id = $res_sect->GetNext()){
-								$right_url = $parent_sec_id['SECTION_PAGE_URL'].$arFields['CODE'].'/';
-								$right_url2 = $parent_sec_id['SECTION_PAGE_URL'].str_replace("-", "_", $arFields['CODE']).'/';
-								if($parent_sec_id['ID'] == $arSect['UF_DIRECTORY'][0] && ($dir == $right_url || $dir == $right_url2)){
-
-									$URL_SORT = true;
-								}
-							}
-
-					}
-				}
-			}
-
-           if($URL_SORT){
-            $arResult['REFERENCE']['ITEM']=array_merge($arFields, $arProps);
-            if($arResult['REFERENCE']['ITEM']['DETAIL_PICTURE']){
-                $arResult['REFERENCE']['ITEM']['PICTURE'] = CFile::ResizeImageGet($arResult['REFERENCE']['ITEM']['DETAIL_PICTURE'], array('width'=>'600', 'height'=>'600'), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-            }
-            foreach($arProps as $val){
-
-                if(in_array($val['CODE'], $arProp_catalog) && $val['VALUE']!=''){
-                    $arProp_sorting[]=$val;
+                    }
 
                 }
 
-            }
-			$ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues($arResult['REFERENCE']['ITEM']["IBLOCK_ID"],$arResult['REFERENCE']['ITEM']['ID']);
-			$IPROPERTY  = $ipropValues->getValues();
-			$arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE'] = $IPROPERTY['ELEMENT_PAGE_TITLE'];
+			    $ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues($arResult['REFERENCE']['ITEM']["IBLOCK_ID"],$arResult['REFERENCE']['ITEM']['ID']);
+			    $IPROPERTY  = $ipropValues->getValues();
+			    $arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE'] = $IPROPERTY['ELEMENT_PAGE_TITLE'];
 
-           //$arProp_sorting - ЭТО СВОЙСТВО ПО СПРАВОЧНИКУ СОВПАДАЮЩЕЕ СО СВОЙСТВОМ КАТОЛОГА( ДИАМЕТР, ПРОЧНОСТЬ И Т.Д.)
-            $cp->SetResultCacheKeys(array('REFERENCE'));
+                //$arProp_sorting - ЭТО СВОЙСТВО ПО СПРАВОЧНИКУ СОВПАДАЮЩЕЕ СО СВОЙСТВОМ КАТОЛОГА( ДИАМЕТР, ПРОЧНОСТЬ И Т.Д.)
+                $cp->SetResultCacheKeys(array('REFERENCE'));
 
-            //СОПУТСТВУЮЩИЕ РАЗДЕЛЫ
-            if(count($arResult['REFERENCE']['ITEM']['COMPANION_SECTION']['VALUE'])) {
-                $arFilter = array("IBLOCK_ID" => $arParams['IBLOCK_ID'], 'ID' => $arResult['REFERENCE']['ITEM']['COMPANION_SECTION']['VALUE']);
-                $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter);
-                while ($arSection = $rsSections->GetNext()) {
+                //СОПУТСТВУЮЩИЕ РАЗДЕЛЫ
+                if(count($arResult['REFERENCE']['ITEM']['COMPANION_SECTION']['VALUE']))
+                {
+                    $arFilter = array("IBLOCK_ID" => $arParams['IBLOCK_ID'], 'ID' => $arResult['REFERENCE']['ITEM']['COMPANION_SECTION']['VALUE']);
+                    $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter);
+                    while ($arSection = $rsSections->GetNext())
+                    {
 
-                    $arResult['REFERENCE']['ITEM']['COMPANIONS'][] = array('NAME' => $arSection['NAME'], 'SRC' => $arSection['SECTION_PAGE_URL']);
+                        $arResult['REFERENCE']['ITEM']['COMPANIONS'][] = array('NAME' => $arSection['NAME'], 'SRC' => $arSection['SECTION_PAGE_URL']);
+
+                    }
+
+                }
+                //СОПУТСТВУЮЩИЕ СПРАВОЧНИКИ
+                if(count($arResult['REFERENCE']['ITEM']['COMPANION_GUIDE']['VALUE']))
+                {
+                    foreach($arResult['REFERENCE']['ITEM']['COMPANION_GUIDE']['VALUE'] as $arGuide)
+                    {
+                        $guide = explode("=", $arGuide);
+                        $arResult['REFERENCE']['ITEM']['COMPANIONS'][] = array('NAME' => $guide[0], 'SRC' => $guide[1]);
+                    }
 
                 }
 
-            }
-            //СОПУТСТВУЮЩИЕ СПРАВОЧНИКИ
-            if(count($arResult['REFERENCE']['ITEM']['COMPANION_GUIDE']['VALUE'])) {
-                foreach($arResult['REFERENCE']['ITEM']['COMPANION_GUIDE']['VALUE'] as $arGuide){
-                    $guide = explode("=", $arGuide);
-                    $arResult['REFERENCE']['ITEM']['COMPANIONS'][] = array('NAME' => $guide[0], 'SRC' => $guide[1]);
-                }
+			    //ПРОВЕРКА ЧТО ТАБЛИЦА ОБЩАЯ
+			    if($arResult['REFERENCE']['ITEM']["UF_DOP_SETTINGS"])
+			    {
 
-            }
+				    foreach($arResult['REFERENCE']['ITEM']["UF_DOP_SETTINGS"]["VALUE_XML_ID"] as $extra_setting)
+				    {
 
-			//ПРОВЕРКА ЧТО ТАБЛИЦА ОБЩАЯ
-			if($arResult['REFERENCE']['ITEM']["UF_DOP_SETTINGS"])
-			{
+					    $_POST['ENUM_LIST'][$extra_setting] = true;
+				    }
+			    }
 
-				foreach($arResult['REFERENCE']['ITEM']["UF_DOP_SETTINGS"]["VALUE_XML_ID"] as $extra_setting)
-				{
-
-					$_POST['ENUM_LIST'][$extra_setting] = true;
-				}
-			}
-
-        }
+           }
 
         //ЕСЛИ ВЫБРАНО НЕСКОЛЬКО РАЗДЕЛОВ БЕЗ СВОЙСТВ
         if(count($arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE'])>1 && $arResult['REFERENCE']['ITEM'][$arProp_sorting[0]['CODE']]['VALUE']=='') {
