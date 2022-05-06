@@ -7,6 +7,7 @@ $server = Context::getCurrent()->getServer();
 
 global $APPLICATION;
 global $USER;
+global $sec_builder;
 
 $url = $APPLICATION->GetCurPage();
 $arCode = explode("/", $url);
@@ -20,8 +21,9 @@ if(empty($arResult))
 
 $strReturn = '';
 
+$code = $sec_builder->curSorting[0]['CODE'] ?? $arCode[0];
 //БЛОК СОСТАВЛЕНИЯ НАВИГАЦИОННОЙ ЦЕПОЧКИ ДЛЯ ВИРТУАЛЬНОГО(НЕСУЩЕСТВУЮЩЕГО) КАТАЛОГА( ПРИСОЕДИНЕННОЙ К КАТАЛОГУ ИЗ 1С)
-$arFilter = array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "CODE" => $arCode[0]);
+$arFilter = array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "CODE" => $code);
 $ar_element = CIBlockElement::GetList(array('SORT' => 'asc'),$arFilter, array('*'));
 
 if($item_element = $ar_element->GetNextElement())

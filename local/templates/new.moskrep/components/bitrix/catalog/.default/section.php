@@ -17,7 +17,6 @@ $GLOBAL['SECTION_ID'] = $arResult["VARIABLES"]["SECTION_ID"];
 
 
 $sorting = $sec_builder->getCurSorting();
-
 if(!empty($sorting[0]['arFilters']['VALUE'])) {
 	$arResult["VARIABLES"]["SECTION_ID"] = $sec_builder->getCurSection();
 
@@ -25,6 +24,14 @@ if(!empty($sorting[0]['arFilters']['VALUE'])) {
 	$IPROPERTY  = $ipropValues->getValues();
 	if($IPROPERTY['ELEMENT_PAGE_TITLE']!='')
 		$APPLICATION->SetPageProperty('page_title', $IPROPERTY['ELEMENT_PAGE_TITLE']);
+}elseif(!empty($sorting[1]['arFilters']['VALUE']))
+{
+
+	$ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues(SORTING_IBLOCK_ID,$sorting[1]['ID']);
+	$IPROPERTY  = $ipropValues->getValues();
+	if($IPROPERTY['ELEMENT_PAGE_TITLE']!='')
+		$APPLICATION->SetPageProperty('page_title', $IPROPERTY['ELEMENT_PAGE_TITLE']);
+
 }
 
 $sec_builder->addParameters();
@@ -144,7 +151,7 @@ if($count_sections || !empty($subsections) || !empty($uf_fields["UF_MATERIAL"]))
                 'REFERENCE_CHECK' => 'Y',
                 'REFERENCE' => $_REQUEST['reference'],
 				'META' => $meta,
-                'SORTING' => $sec_builder->getArrAddress(),
+                'SORTING' => $sec_builder->arPagesCode,
 				'TYPE_TEMPLATE'=>$temple,
                 
             ], $component, ['HIDE_ICONS' => 'Y']); 
