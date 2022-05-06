@@ -144,11 +144,13 @@ $requestUri = $request->getRequestUri();
     </div>
     <?}?>
 <!--simple-article-->
+<?if(empty($sec_builder->curSorting[0]['arFilters']['VALUE']) && empty($sec_builder->curSorting[1]['arFilters']['VALUE'])){?>
         <div class="basic-layout__module simple-article">
             <div class="simple-article__content wysiwyg-block">
 <?=$arResult['REFERENCE']['ITEM']['DETAIL_TEXT']?>
 			</div>	
 		</div>
+		<?}?>
 <!--simple-article-->
     <?
 
@@ -543,9 +545,12 @@ if($arResult['SORTING']['SECTION_ID']){
         <ul class="category-blocknew__list">
         <?$i=0;?>
         <?foreach($sortSection['ITEMS'] as $sort_item):?>
-            <?$i++;?>
+            <?$i++;
+
+            ?>
+
             <li class="category-blocknew__item">
-                <a href="<?=($sort_item['LINK_TARGET']['VALUE']) ? $sort_item['LINK_TARGET']['VALUE'] : $sort_item['CODE'].'/';?>" <?=($sort_item['LINK_TARGET']['VALUE']) ? "target='_self'" : "";?> class="category-block__link">
+                <a href="<?=($sort_item['LINK_TARGET']['VALUE']) ? $sort_item['LINK_TARGET']['VALUE'] : $sec_builder->curSection['SECTION_PAGE_URL'].$sort_item['CODE'].'/';?>" <?=($sort_item['LINK_TARGET']['VALUE']) ? "target='_self'" : "";?> class="category-block__link">
                     <?=$sort_item['NAME']?>
                 </a>
             </li>
@@ -812,7 +817,9 @@ while($arSection = $db_list->GetNext()) {
 <?else:?>
         <div class="basic-layout__module simple-article">
             <div class="simple-article__content wysiwyg-block">
-				<?=$arResult['SECTION']['DESCRIPTION']?>
+                <?if(empty($sec_builder->curSorting[0]['arFilters']['VALUE']) && empty($sec_builder->curSorting[1]['arFilters']['VALUE'])){?>
+				    <?=$arResult['SECTION']['DESCRIPTION']?>
+				<?}?>
 			</div>	
 		</div>
 	<?endif?>	

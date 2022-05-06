@@ -25,8 +25,8 @@ $requestUri = $request->getRequestUri();
 if($arParams['REFERENCE_CHECK']=='Y'):
 
 
-
-	$arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'UF_LANDING_PAGE_CODE'=>end($arParams['SORTING']));
+    $landing_page_code = $sec_builder->curSorting[0]['CODE'] ?? end($arParams['SORTING']);
+	$arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'UF_LANDING_PAGE_CODE'=>$landing_page_code);
     $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array('*', 'UF_LANDING_PAGE_CODE'));
 
     if($arSection = $rsSections->Fetch())
@@ -119,8 +119,8 @@ if($arParams['REFERENCE_CHECK']=='Y'):
         }
 
 
-
-        $arFilter = Array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "ACTIVE"=>"Y", '=CODE'=>end($arParams['SORTING']));
+        $code = $sec_builder->curSorting[0]['CODE'] ?? end($arParams['SORTING']);
+        $arFilter = Array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "ACTIVE"=>"Y", '=CODE'=>$code);
         $res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter, false, false, array('*'));
         while($ob = $res->GetNextElement()){
 

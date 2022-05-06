@@ -30,13 +30,14 @@ class SectionBulder
     public function getCurSorting()
     {
 
-        $arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", '=CODE' => $this->arPagesCode);
+        $arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'CODE' => $this->arPagesCode);
         $res = \CIBlockElement::GetList(array("SORT" => "ASC"), $arFilter, false, false, array('*'));
         while ($ob = $res->GetNextElement()) {
 
             $arFields = $ob->GetFields();
             $arProps = $ob->GetProperties();
             $this->curSorting[] = array_merge($arFields, $arProps);
+            $this->isFilterSEF($this->arPagesCode[array_key_last($this->arPagesCode)]);
 
         }
 
@@ -100,6 +101,23 @@ class SectionBulder
         $httpApp->setContext($context);
     }
 
+    public function isFilterSEF($SEF) :bool
+    {
+        $sec_sorting_page = \CIBlockSection::GetList(array(), ["IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'UF_LANDING_PAGE_CODE'=>$this->curSorting[0]['CODE']], false, array("ID", "UF_*"))->GetNext();
+        $arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", "SECTION_ID"=>$sec_sorting_page['ID'], "INCLUDE_SUBSECTIONS"=>"Y", '=PROPERTY_sef_filter' => $SEF);
+
+        $res = \CIBlockElement::GetList(array("SORT" => "ASC"), $arFilter, false, false, array('*'));
+        if ($ob = $res->GetNextElement()) {
+
+            $arFields = $ob->GetFields();
+            $arProps = $ob->GetProperties();
+            $this->curSorting[] = array_merge($arFields, $arProps);
+            return true;
+
+        }
+        return false;
+    }
+
 
     public function getArrAddress() :array
     {
@@ -133,7 +151,8 @@ class SectionBulder
 
                         $right_url = $parent_sec_id['SECTION_PAGE_URL'].$this->curSorting[0]['CODE'];
                         $right_url2 = $parent_sec_id['SECTION_PAGE_URL'].str_replace("-", "_", $this->curSorting[0]['CODE']);
-                        if($parent_sec_id['ID'] == $arSect['UF_DIRECTORY'][0] && ($dir == $right_url || $dir == $right_url2)){
+
+                        if($parent_sec_id['ID'] == $arSect['UF_DIRECTORY'][0] && ($dir == $right_url || $dir == $right_url2 || $this->isFilterSEF($code_section))){
 
                             return true;
                         }
@@ -143,6 +162,18 @@ class SectionBulder
             }
         }
         return false;
+    }
+
+
+    public function curFilterValues()
+    {
+        $values = [];
+        $arFilters = $this->curSorting[1]['arFilters'] ?? $this->curSorting[0]['arFilters'] ?? [];
+        foreach($arFilters['VALUE'] as $value)
+        {
+            $values[] = $value.'=Y';
+        }
+        return $values;
     }
 
 
@@ -158,25 +189,19 @@ class SectionBulder
         }
 
         if($sort_item['IS_ACTIVE'] && $sortSection['ACTIVES']==1) {
-           if(array_slice($this->arPagesCode, -1)[0] == $this->curSorting[0]['CODE'])
+           if(array_slice($this->arPagesCode, -2)[0] == $this->curSorting[0]['CODE'])
                 $link = $this->curSection['SECTION_PAGE_URL']. $this->curSorting[0]['CODE'];
             else
                 $link = $this->curSection['SECTION_PAGE_URL'];
         }
         elseif($sort_item['IS_ACTIVE'] && $sortSection['ACTIVES']>1)
         {
-            if($sort_item['sef_filter']['VALUE']=='') {
-                $link = str_replace($values, '', $this->requestUri);
-                $link = str_ireplace('set_filter=%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C', '', $link);
-                $link = str_replace(['?&&', '?&&&', '?&', '?&&&&', '?&&&&&'], '?', $link) . '&set_filter=Показать';
-                $link = str_replace(['&&', '&&&', '&&&&'], '&', $link);
-                $link = str_replace('?&set_filter=Показать', '', $link);
-            }else{
-                if(stripos($this->requestUri, '--'.$sort_item['sef_filter']['VALUE']))
-                    $link = str_replace('--'.$sort_item['sef_filter']['VALUE'], '', $this->requestUri);
-                else
-                    $link = str_replace($sort_item['sef_filter']['VALUE'].'--', '', $this->requestUri);
-            }
+            $link = str_replace($values, '', $this->requestUri);
+            $link = str_ireplace('set_filter=%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C', '', $link);
+            $link = str_replace(['?&&', '?&&&', '?&', '?&&&&', '?&&&&&'], '?', $link) . '&set_filter=Показать';
+            $link = str_replace(['&&', '&&&', '&&&&'], '&', $link);
+            $link = str_replace('?&set_filter=Показать', '', $link);
+
         }elseif(!$sort_item['IS_ACTIVE'] && $sortSection['ACTIVES']>1)
         {
             $link = str_ireplace('set_filter=%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C', '',$this->requestUri);
@@ -217,7 +242,10 @@ class SectionBulder
             else
                 $delimiter = '?';
 
-            if(!empty($sort_item['arFilters']['VALUE']) && $sort_item['sef_filter']['VALUE']=='')
+            if(!empty($this->curSorting[1]) || !empty($this->curSorting[0]['arFilters']['VALUE']))
+            {
+                $link = $this->curSection['SECTION_PAGE_URL'].'?'.implode('&',$this->curFilterValues()).'&' . implode('&', $values) . '&set_filter=Показать';
+            }elseif(!empty($sort_item['arFilters']['VALUE']) && $sort_item['sef_filter']['VALUE']=='')
             {
                 $link = $delimiter . implode('&', $values) . '&set_filter=Показать';
             }elseif($sort_item['LINK_TARGET']['VALUE'])
@@ -232,7 +260,10 @@ class SectionBulder
                     $link =  $link . '--' . $sort_item['sef_filter']['VALUE'];
 
                 }else{
-                    $link = $this->curSection['SECTION_PAGE_URL'].$sort_item['sef_filter']['VALUE'];
+                    if(!empty($this->curSorting[0]['CODE']))
+                        $link = $this->curSection['SECTION_PAGE_URL'].$this->curSorting[0]['CODE'].'/'.$sort_item['sef_filter']['VALUE'];
+                    else
+                        $link = $this->curSection['SECTION_PAGE_URL'].$sort_item['sef_filter']['VALUE'];
                 }
             }else
             {
