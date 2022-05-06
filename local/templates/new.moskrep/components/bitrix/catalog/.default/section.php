@@ -144,7 +144,7 @@ if($count_sections || !empty($subsections) || !empty($uf_fields["UF_MATERIAL"]))
                 'REFERENCE_CHECK' => 'Y',
                 'REFERENCE' => $_REQUEST['reference'],
 				'META' => $meta,
-                'SORTING' => $sec_builder->getArrAddress(),
+                'SORTING' => $sec_builder->arPagesCode,
 				'TYPE_TEMPLATE'=>$temple,
                 
             ], $component, ['HIDE_ICONS' => 'Y']); 
