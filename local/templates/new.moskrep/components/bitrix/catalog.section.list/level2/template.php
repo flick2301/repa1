@@ -45,9 +45,8 @@ $requestUri = $request->getRequestUri();
 		?>
       
     
-	<?globalGetTitle($arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE'] ? $arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE'] : $arResult['REFERENCE']['ITEM']['H1']['VALUE'])?>
+	<?globalGetTitle($APPLICATION->GetPageProperty('page_title') ? $APPLICATION->GetPageProperty('page_title') : ($arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE'] ? $arResult['REFERENCE']['ITEM']['ELEMENT_PAGE_TITLE'] : $arResult['REFERENCE']['ITEM']['H1']['VALUE']))?>
 
-	
     <!--catalog-feed-->
     <div class="basic-layout__module catalog-feed">
         <div class="catalog-feed__list">
@@ -361,7 +360,7 @@ $requestUri = $request->getRequestUri();
 			  $h1_section = $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] ? $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] : $arResult["SECTION"]["NAME"];
 		  }
 		  ?>
-<?globalGetTitle($h1_section)?>	
+<?globalGetTitle($h1_section)?>
 
 
 <?
