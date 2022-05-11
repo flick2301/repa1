@@ -189,9 +189,11 @@ class SectionBulder
         }
 
         if($sort_item['IS_ACTIVE'] && $sortSection['ACTIVES']==1) {
-           if(array_slice($this->arPagesCode, -2)[0] == $this->curSorting[0]['CODE'])
-                $link = $this->curSection['SECTION_PAGE_URL']. $this->curSorting[0]['CODE'];
-            else
+           if(!empty($this->curSorting[1]) && array_slice($this->arPagesCode, -2)[0] == $this->curSorting[0]['CODE'])
+               $link = $this->curSection['SECTION_PAGE_URL']. $this->curSorting[0]['CODE'];
+           elseif(array_slice($this->arPagesCode, -1)[0] == $this->curSorting[0]['CODE'])
+               $link = $this->curSection['SECTION_PAGE_URL']. $this->curSorting[0]['CODE'];
+           else
                 $link = $this->curSection['SECTION_PAGE_URL'];
         }
         elseif($sort_item['IS_ACTIVE'] && $sortSection['ACTIVES']>1)
@@ -244,7 +246,10 @@ class SectionBulder
 
             if(!empty($this->curSorting[1]) || !empty($this->curSorting[0]['arFilters']['VALUE']))
             {
-                $link = $this->curSection['SECTION_PAGE_URL'].'?'.implode('&',$this->curFilterValues()).'&' . implode('&', $values) . '&set_filter=Показать';
+                if(!empty($this->curSorting[1]))
+                    $link = $this->curSection['SECTION_PAGE_URL'].$this->curSorting[0]['CODE'].'/?'.implode('&',$this->curFilterValues()).'&' . implode('&', $values) . '&set_filter=Показать';
+                else
+                    $link = $this->curSection['SECTION_PAGE_URL'].'?'.implode('&',$this->curFilterValues()).'&' . implode('&', $values) . '&set_filter=Показать';
             }elseif(!empty($sort_item['arFilters']['VALUE']) && $sort_item['sef_filter']['VALUE']=='')
             {
                 $link = $delimiter . implode('&', $values) . '&set_filter=Показать';
@@ -253,11 +258,8 @@ class SectionBulder
                 $link = $sort_item['LINK_TARGET']['VALUE'];
             }elseif(!empty($sort_item['arFilters']['VALUE']) && $sort_item['sef_filter']['VALUE'])
             {
-                if($_GET['set_filter'] == 'Показать' && !stripos($this->requestUri, '?')) {
-                    $link = $this->requestUri;
-                    $link = rtrim($link, "/");
-
-                    $link =  $link . '--' . $sort_item['sef_filter']['VALUE'];
+                if($_GET['set_filter'] == 'Показать') {
+                    $link = $this->requestUri.'&' . implode('&', $values) . '&set_filter=Показать';
 
                 }else{
                     if(!empty($this->curSorting[0]['CODE']))

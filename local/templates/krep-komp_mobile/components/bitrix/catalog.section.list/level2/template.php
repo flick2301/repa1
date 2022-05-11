@@ -334,8 +334,8 @@ $arSection['NEW_NAME'] = $arSection['UF_SHORT_NAME'] ? $arSection['UF_SHORT_NAME
 			if (strlen($val) > 13) {
 				$smallText = true;
 				$half = strlen($val)/2;
-				$second_half = substr($val, 13);
-				$val = substr($val, 0, 13)." ".$second_half;
+				$second_half = mb_substr($val, 13);
+				$val = mb_substr($val, 0, 13)." ".$second_half;
 			}
 			$arSection['SPLIT_NAME'] .= $val." ";			
 			};

@@ -255,6 +255,9 @@ $(document).on('click', '#view_wholesale', function() {
 	}
 	else window.open('/vashi_skidki/', '_blank');
 	});
+	
+	if($(':checkbox:checked').length)
+		window.scrollTo(0, $(".bx-filter-section").offset().top);
 
 });
 function ChangeInputCart(name, e){

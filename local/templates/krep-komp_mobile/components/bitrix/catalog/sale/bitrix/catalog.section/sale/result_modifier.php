@@ -70,7 +70,7 @@ while($el = $rsData->fetch()):
     }
 endwhile;
 
-if(substr($arResult['NAME'], -1)=='а' || substr($arResult['NAME'], -1)=='ы' || substr($arResult['NAME'], -1)=='и'):
+if(mb_substr($arResult['NAME'], -1)=='а' || mb_substr($arResult['NAME'], -1)=='ы' || mb_substr($arResult['NAME'], -1)=='и'):
     $arResult['ALL'] = 'Все';
 else:
     $arResult['ALL'] = 'Весь';
