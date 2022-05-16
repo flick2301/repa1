@@ -16,7 +16,15 @@ $scheme = CMain::isHttps() ? 'https' : 'http';
 
 <?globalGetTitle()?>			
 			
+<?php
+if($APPLICATION->GetCurPage()!=$arResult["~DETAIL_PAGE_URL"])
+{
+    @define("ERROR_404","Y");
+    CHTTP::SetStatus("404 Not Found");
 
+    $APPLICATION->SetPageProperty('title', "404 - HTTP not found");
+}
+?>
             <!--simple-article-->
             <div class="basic-layout__module simple-article" itemscope itemtype="http://schema.org/Article">
                <div class="simple-article__content wysiwyg-block">

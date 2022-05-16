@@ -63,7 +63,7 @@ if($arResult['ERROR_MESSAGE'] <> ''):
                 </div>
                 <div class="auth__top">
                   <div class="auth__name">Пароль</div>
-                  <input class="auth__input" type="text" name="USER_PASSWORD" id="user-account__pass" autocomplete="off" placeholder="">
+                  <input class="auth__input" type="password" name="USER_PASSWORD" id="user-account__pass" autocomplete="off" placeholder="">
                 </div>
 				
 <?if($arResult["CAPTCHA_CODE"]):?>

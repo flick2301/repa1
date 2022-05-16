@@ -194,8 +194,8 @@ dataLayer.push({
   "sameAs": [
    "https://vk.com/krep_komp",
    "https://www.youtube.com/channel/UCOKXuIbajRZpYJ4uShRzMYw",
-   "https://www.instagram.com/krep_komp/",
-   "https://www.facebook.com/krep.komp.ru"
+   
+   
   ]
 }
 </script>

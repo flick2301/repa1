@@ -22,7 +22,7 @@ if($arParams['FOR_SEO']!='Y'){
 
 <?if(!$_POST['ENUM_LIST']['ELEMENTS'] && !$arParams["DISABLE_HEADER"]=='Y'){?>
 
-<?globalGetTitle($arResult['META_TITLE'] ? $arResult['META_TITLE'] : $arResult['NAME'])?>
+<?globalGetTitle($APPLICATION->GetPageProperty('page_title') ? $APPLICATION->GetPageProperty('page_title') : ($arResult['META_TITLE'] ? $arResult['META_TITLE'] : $arResult['NAME']))?>
 
 <?if($arResult['DESCRIPTION']):?>
 	<div class="basic-layout__module catalog-desc">

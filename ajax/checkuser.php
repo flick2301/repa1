@@ -10,7 +10,7 @@ if (!is_array($result) && $result==true) {
 	
 	//echo $result;
 
-
+/*
 global $USER;
    $rsUser = CUser::GetByID($USER->GetId());
 	$arUser = $rsUser->Fetch();
@@ -26,3 +26,4 @@ global $USER;
    }
    else echo "auto";
 }
+*/
