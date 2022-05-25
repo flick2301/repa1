@@ -65,6 +65,7 @@ Disallow: /detail_order/
 Disallow: /mailsuccess/
 Disallow: /ysearch/
 Disallow: /search/
+Disallow: *--*
 Disallow: /store/
 Disallow: /search_result/
 Disallow: /search_yandex/

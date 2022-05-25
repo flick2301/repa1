@@ -30,7 +30,7 @@
                      <!--delivery-option-->		
 
                      <!--delivery-option-->
-                     <div class="delivery-option">
+                     <?/*<div class="delivery-option">
                         <div class="delivery-option__about">
                            <img class="delivery-option__image" src="<?=SITE_TEMPLATE_PATH?>/uploads/delivery-option/company-03.jpg" width="402" height="165" alt="Vozovoz" title="Vozovoz" />
                            <p class="delivery-option__desc">Мы производим бесплатную доставку заказа до подольского офиса компании "Возовоз"</p>
@@ -40,5 +40,5 @@
                            <iframe src="https://vozovoz.ru/widgets/calculator/?color=&amp;dispatch_point=e90f1820-0128-11e5-80c7-00155d903d03&amp;destination_point=e90f19de-0128-11e5-80c7-00155d903d03&amp;volume=0.1&amp;weight=0.1" width="370" height="840"></iframe>
 						   <?endif?>
                         </div>
-                     </div>
+                     </div>*/?>
                      <!--delivery-option-->			 

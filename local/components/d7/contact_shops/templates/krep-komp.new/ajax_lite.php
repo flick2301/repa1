@@ -109,14 +109,14 @@ $templateFolder = "/local/components/d7/contact_shops/templates/krep-komp.new";
                         }else{
                         ?>
                             <div class="alerts">
-                                <p class="item -warning">В магазине 0 шт. По предзаказу на завтра</p>
+                                <p class="item -warning">В магазине 0 шт. По предзаказу</p>
                             </div>
                         <?
                         }
                     }else{
                     ?>
                         <div class="alerts">
-                            <p class="item -warning">Пункт выдачи. По предзаказу на завтра</p>
+                            <p class="item -warning">Пункт выдачи. По предзаказу</p>
                         </div>
                     <?
                     }

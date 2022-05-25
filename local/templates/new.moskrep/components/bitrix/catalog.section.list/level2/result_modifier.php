@@ -46,6 +46,7 @@ if($arParams['REFERENCE_CHECK']=='Y'):
         while ($arSection = $rsSections->Fetch()) {
             $arResult['SORTING']['SECTIONS'][$arSection['ID']]['NAME'] = $arSection['NAME'];
             $arResult['SORTING']['SECTIONS'][$arSection['ID']]['TOP'] = $arSection['UF_TOP'];
+			$arResult['SORTING']['SECTIONS'][$arSection['ID']]['ACTIVE'] = $arSection['ACTIVE'];
             $arSortSecID[] = $arSection['ID'];
 
         }
@@ -62,6 +63,7 @@ if($arParams['REFERENCE_CHECK']=='Y'):
         {
             $arResult['SORTING']['SECTIONS'][$arSection['ID']]['NAME'] = $arSection['NAME'];
 			$arResult['SORTING']['SECTIONS'][$arSection['ID']]['TOP']=$arSection['UF_TOP'];
+			$arResult['SORTING']['SECTIONS'][$arSection['ID']]['ACTIVE'] = $arSection['ACTIVE'];
             $arSortSecID[]=$arSection['ID'];
 
         }

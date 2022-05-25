@@ -10,7 +10,7 @@
 	   
 			   
 <div class="delivery__list">
-<?foreach($arResult["ITEMS"] AS $key=>$item):?>	
+<?foreach($arResult["ITEMS"] AS $key=>$item):?>
                   <div class="delivery__box <?if($key==0):?>delivery__box--active<?endif?>" id="<?=$item["CODE"]?>">
 				  <div class="delivery__topic"></div>
 				  <?if($item["PROP"]["MAP"]["VALUE"]):?><script>document.addEventListener("DOMContentLoaded", <?=$item["PROP"]["MAP"]["VALUE"]?>);</script><?endif?>				  

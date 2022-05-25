@@ -241,4 +241,28 @@ function AgentDeactivetingRules()
 	}
 	return "AgentDeactivetingRules();";
 }
+
+//Агент деактивирует статусы "Готов к оплате" сроком более 3 дней без оплаты и изменения.
+function AgentDeactivateStatusR()
+{
+	CModule::IncludeModule(
+		'sale'
+	);
+
+	$arFilter = Array(
+		"<=DATE_UPDATE" => date($DB->DateFormatToPHP(CSite::GetDateFormat("SHORT")), mktime(0, 0, 0, date("n"), date("d")-3, date("Y"))),
+		"STATUS_ID" => "R"
+	);
+
+	$db_sales = CSaleOrder::GetList(array("DATE_INSERT" => "ASC"), $arFilter);
+	while ($ar_sales = $db_sales->Fetch())
+	{
+		$order_id = $ar_sales["ID"];
+		$order = \Bitrix\Sale\Order::load($order_id);
+		$order->setField('STATUS_ID', 'N');
+		$order->save();
+	}
+	return "AgentDeactivateStatusR();";
+
+}
 ?>

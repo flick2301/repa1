@@ -435,7 +435,7 @@ elseif($arParams['TYPE_TEMPLATE']!='BOTTOM')
     if(count($arResult['SORTING']['ROOT_ELEMENTS'])){
         foreach($arResult['SORTING']['ROOT_ELEMENTS'] as $dop_section){
             ?>
-        <div class="catalog-feed__item">
+        <div class="catalog-feed__item catalog-feed__item__withpic">
 		<!--catalog-card-->
         <section class="catalog-card">
             <div class="div_flex_h3 catalog-card__title"><a href="<?=($dop_section['LINK_TARGET']['VALUE']) ? $dop_section['LINK_TARGET']['VALUE'] : $dop_section['CODE'].'/';?>" target="_self" title='<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$dop_section['H1']["VALUE"]?></a></div>
@@ -538,7 +538,7 @@ if($arResult['SORTING']['SECTION_ID']){
 	<?
 	
     foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
-        if(!$sortSection['TOP']){
+        if(!$sortSection['TOP'] && $sortSection['ACTIVE']=='Y'){
         ?>
         <div class="div_h3 category-blocknew__title"><span><?=$sortSection["NAME"]?></span></div>
         <ul class="category-blocknew__list">
