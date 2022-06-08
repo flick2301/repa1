@@ -36,5 +36,9 @@ Loader::registerAutoLoadClasses(null, array(
 //Классы (СВои)
 include_once($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/include/classes/autoload.php');
 
+// Roistat BEGIN CODE
+include_once __DIR__ . '/roistat/roistat_integration.php';
+// Roistat END CODE
+
 
 ?>

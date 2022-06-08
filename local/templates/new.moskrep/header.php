@@ -376,7 +376,8 @@ $APPLICATION->IncludeFile(
 </form>
 </div>-->
 
-<?$APPLICATION->IncludeComponent(
+<?
+$APPLICATION->IncludeComponent(
 	"webcreature:dsearch.ajax", 
 	"krep-komp_module", 
 	array(

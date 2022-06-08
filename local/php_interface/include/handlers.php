@@ -1216,12 +1216,12 @@ function OnPageStartHandler()
 {
 	if($_GET["mode"] == "import" && $_GET['type']=='sale' && $_GET['filename'])
 	{
-		\Bitrix\Main\Diag\Debug::dumpToFile(array($_REQUEST, date('H:i:s')), "", '/upload/1.txt');
+		//\Bitrix\Main\Diag\Debug::dumpToFile(array($_REQUEST, date('H:i:s')), "", '/upload/1.txt');
 		$DIR_NAME_OUR = $_SERVER["DOCUMENT_ROOT"]."/".COption::GetOptionString("main", "upload_dir", "upload")."/1c_exchange/";
 		$DIR_NAME_TEMP = $_SERVER["DOCUMENT_ROOT"]."/".COption::GetOptionString("main", "upload_dir", "upload")."/temp_1c_exchange/";
 		$file = $DIR_NAME_OUR.$_GET['filename'];
 		$newfile = $DIR_NAME_TEMP.$_GET['filename'];
-		copy($file, $newfile);
+		//copy($file, $newfile);
 	}
 }
 

@@ -32,7 +32,7 @@ BX.message({
 </script>
 
 
-<div class="moskrep-search">
+<div id='search-popup' class="moskrep-search">
 <input class="moskrep_submit" type="button" value="<?=Loc::getMessage("DSEARCH_AJAX_SEARCH")?>"/>	
 <input name="text" type="text" value="<?=htmlspecialcharsEx($_GET['result'])?>" class="moskrep_input" placeholder="<?=Loc::getMessage("DSEARCH_AJAX_SEARCH_ARTNO")?>" autocomplete="off" />			  
 <?$this->SetViewTarget("dsearch_line");?>

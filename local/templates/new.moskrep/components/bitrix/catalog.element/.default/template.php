@@ -124,8 +124,16 @@ dataLayer.push({
 			<?if($arResult["DOP_PRICE"][3]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][3]?> ₽</b> при заказе от 5000000 ₽</div><?endif?>
 			</div>
             <?endif;?>
-						
+			
+<?if ($old_price):?>			
+<div class="product__date-block">	
+<?endif?>					
                         <a href='javascript::void(0)' data-quantity="<?=$arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>"  class="main-button main-button--plus product-purchase__button"><i class="simple-cart-icon product-purchase__icon" data-product="<?=$arResult['ID']?>" data-name="<?=$arResult['NAME']?>" data-price="<?=$price?>"  data-quantity="<?=$arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" rel="nofollow"></i>Добавить в корзину</a>
+						<?if ($old_price):?>
+			<div class="product__date">Внимание! Количество акционных товаров ограничено</div>	
+</div>			
+			<?endif?>
+			
                      </div>
                      <!--product-purchase-->
                      <!--product-data-->

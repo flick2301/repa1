@@ -1,5 +1,4 @@
-			
-		</div>
+</div>
 		
 
 		
@@ -560,4 +559,3 @@ $detect = new \Bitrix\Conversion\Internals\MobileDetect;
 
 </body>
 </html>
- 

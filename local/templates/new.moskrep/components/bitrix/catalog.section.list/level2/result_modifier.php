@@ -413,6 +413,7 @@ if (count($arResult["REFERENCE"]["ITEM"])) $GLOBALS["REFERENCE"] = $arResult["RE
 \Bitrix\Main\Loader::includeModule('dev2fun.opengraph');
 \Dev2fun\Module\OpenGraph::Show($arResult['SECTION']['ID'],'section');
 
+$isSEF = $sec_builder->isFilterSEF(end($sec_builder->arPagesCode), true);
 foreach($arResult['SORTING']['SECTIONS'] as $key=>$sortSection)
 {
     foreach($sortSection['ITEMS'] as $key_item=>$sort_item)
@@ -421,7 +422,10 @@ foreach($arResult['SORTING']['SECTIONS'] as $key=>$sortSection)
         {
             $get_params = $request->getQueryList();
 
-            $is_active = count(array_intersect_key(array_flip($sort_item['arFilters']['VALUE']), $get_params->getValues())) == count($sort_item['arFilters']['VALUE']) ? 'active' : null;
+            if($isSEF)
+                $is_active = ($sort_item['sef_filter']['VALUE']==end($sec_builder->arPagesCode)) ? 'active' : null;
+            else
+                $is_active = count(array_intersect_key(array_flip($sort_item['arFilters']['VALUE']), $get_params->getValues())) == count($sort_item['arFilters']['VALUE']) ? 'active' : null;
             $arResult['SORTING']['SECTIONS'][$key]['ITEMS'][$key_item]['IS_ACTIVE']=$is_active;
             if($is_active)
                 ++$arResult['SORTING']['SECTIONS'][$key]['ACTIVES'];

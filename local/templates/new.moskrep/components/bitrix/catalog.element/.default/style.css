@@ -327,4 +327,40 @@ element.style {
 .card_pickup{
     cursor:pointer;
 }
-
+.product__date-block {
+	position: relative;
+}
+.product__date-block .product__date {
+	font-family: "Montserrat";
+	font-weight: 500;
+	font-size: 12px;
+	color: rgba(0, 0, 0, 0.5);
+	background: #ffffff;
+	padding: 8px;
+	border-radius: 8px;
+	box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.15);
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	left: 0;
+	top: calc(100% + 11px);
+	transition: 0.3s;
+	opacity: 0;
+	visibility: hidden;
+} 
+.product__date-block .product__date span {
+	color: #000;
+	border-bottom: 1px dashed rgba(0, 0, 0, 0.5);
+}
+.product__date-block .product__date::before {
+	content: "";
+	position: absolute;
+	border: 12px solid transparent;
+	border-bottom: 12px solid #fff;
+	left: calc(50% - 12px);
+	top: -24px;
+}
+.product__date-block:hover .product__date {
+	visibility: visible;
+	opacity: 1; 
+}

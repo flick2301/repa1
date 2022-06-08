@@ -101,7 +101,7 @@ class SectionBulder
         $httpApp->setContext($context);
     }
 
-    public function isFilterSEF($SEF) :bool
+    public function isFilterSEF($SEF, $static = false) :bool
     {
         $sec_sorting_page = \CIBlockSection::GetList(array(), ["IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'UF_LANDING_PAGE_CODE'=>$this->curSorting[0]['CODE']], false, array("ID", "UF_*"))->GetNext();
         $arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", "SECTION_ID"=>$sec_sorting_page['ID'], "INCLUDE_SUBSECTIONS"=>"Y", '=PROPERTY_sef_filter' => $SEF);
@@ -111,7 +111,8 @@ class SectionBulder
 
             $arFields = $ob->GetFields();
             $arProps = $ob->GetProperties();
-            $this->curSorting[] = array_merge($arFields, $arProps);
+			if(!$static)
+				$this->curSorting[] = array_merge($arFields, $arProps);
             return true;
 
         }
@@ -228,7 +229,10 @@ class SectionBulder
                     $link =  $link . '--' . $sort_item['sef_filter']['VALUE'];
 
                 }else{
-                    $link = $this->curSection['SECTION_PAGE_URL'].$sort_item['sef_filter']['VALUE'];
+                    if(!empty($this->curSorting[0]['CODE']))
+                        $link = $this->curSection['SECTION_PAGE_URL'].$this->curSorting[0]['CODE'].'/'.$sort_item['sef_filter']['VALUE'];
+                    else
+                        $link = $this->curSection['SECTION_PAGE_URL'].$sort_item['sef_filter']['VALUE'];
                 }
             }else
             {
