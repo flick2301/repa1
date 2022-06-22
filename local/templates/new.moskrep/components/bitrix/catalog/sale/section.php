@@ -1,10 +1,19 @@
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+<?if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
+/**
+ * @var array $arParams
+ * @var array $arResult
+ * @global CMain $APPLICATION
+ * @global CUser $USER
+ * @global CDatabase $DB
+ * @var CBitrixComponentTemplate $this
+ * @var string $templateName
+ * @var string $templateFile
+ * @var string $templateFolder
+ * @var string $componentPath
+ * @var CBitrixComponent $component
  */
+$this->setFrameMode(true);
+
 
 ?>
 		
@@ -103,7 +112,7 @@
 						'SHOW_SLIDER' => $arParams['LIST_SHOW_SLIDER'],
 						'SLIDER_INTERVAL' => isset($arParams['LIST_SLIDER_INTERVAL']) ? $arParams['LIST_SLIDER_INTERVAL'] : '',
 						'SLIDER_PROGRESS' => isset($arParams['LIST_SLIDER_PROGRESS']) ? $arParams['LIST_SLIDER_PROGRESS'] : '',
-                                                "CUSTOM_FILTER" => "{\"CLASS_ID\":\"CondGroup\",\"DATA\":{\"All\":\"AND\",\"True\":\"True\"},\"CHILDREN\":[{\"CLASS_ID\":\"CondIBProp:17:141\",\"DATA\":{\"logic\":\"Equal\",\"value\":\"По акции\"}}]}",
+                        "CUSTOM_FILTER" => "{\"CLASS_ID\":\"CondGroup\",\"DATA\":{\"All\":\"AND\",\"True\":\"True\"},\"CHILDREN\":[{\"CLASS_ID\":\"CondIBProp:17:141\",\"DATA\":{\"logic\":\"Equal\",\"value\":\"По акции\"}}]}",
                                                 
 						'OFFER_ADD_PICT_PROP' => $arParams['OFFER_ADD_PICT_PROP'],
 						'OFFER_TREE_PROPS' => $arParams['OFFER_TREE_PROPS'],

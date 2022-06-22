@@ -88,7 +88,7 @@ $APPLICATION->ShowMeta("robots");?>
 	?>
    
 
-	<link rel='canonical' href='https://<?=$_SERVER["SERVER_NAME"]?><?=$APPLICATION->GetCurPage(false);?>' />	
+	<link rel='canonical' href='https://<?=$_SERVER["HTTP_HOST"]?><?=$APPLICATION->GetCurPage(false);?>' />	
 
   	<!--АНТИСОВЕТНИК-->
 	<script data-skip-moving='true'>

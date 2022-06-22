@@ -572,7 +572,7 @@ if ($deliveryInfo = $resultDelivery->fetch()) $deliveryGroupID = $deliveryInfo["
   if ($arDeliv)
   {
 	  
-    $delivery_name = $arDeliv["NAME"].($deliveryGroupID==33 ? " <span style='color: red;'>(Вход в ПВЗ только в масках и перчатках)</span>" : "");	
+    $delivery_name = $arDeliv["NAME"];//.($deliveryGroupID==33 ? " <span style='color: red;'>(Вход в ПВЗ только в масках и перчатках)</span>" : "");	
   }
   
   if ($arOrder["DELIVERY_ID"]=='sdek:courier') $delivery_name="Доставка СДЭК";

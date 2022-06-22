@@ -139,6 +139,7 @@ function rsOnAddOrder(Event $event) {
             'utmTerm'  =>  '{utmTerm}',
             'utmContent'  =>  '{utmContent}',
             'city'  =>  '{city}',
+            'url'   =>  $_SERVER['HTTP_REFERER'],
 
         ),
     );

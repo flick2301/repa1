@@ -193,6 +193,11 @@ if($arParams['REFERENCE_CHECK']=='Y'):
 				    }
 			    }
 
+           }else{
+               @define("ERROR_404","Y");
+               CHTTP::SetStatus("404 Not Found");
+
+               $APPLICATION->SetPageProperty('title', "404 - HTTP not found");
            }
 
         //ЕСЛИ ВЫБРАНО НЕСКОЛЬКО РАЗДЕЛОВ БЕЗ СВОЙСТВ

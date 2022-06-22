@@ -30,7 +30,7 @@ class SectionBulder
     public function getCurSorting()
     {
 
-        $arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'CODE' => $this->arPagesCode);
+        $arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'CODE' => $this->arPagesCode, 'PROPERTY_arFilters'=>false);
         $res = \CIBlockElement::GetList(array("SORT" => "ASC"), $arFilter, false, false, array('*'));
         while ($ob = $res->GetNextElement()) {
 

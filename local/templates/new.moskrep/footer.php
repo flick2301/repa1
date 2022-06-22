@@ -609,14 +609,34 @@ $detect = new \Bitrix\Conversion\Internals\MobileDetect;
    )
 );?>
 <!-- Roistat BEGIN CODE -->
-        <script>
-            (function(w, d, s, h, id) {
-                w.roistatProjectId = id; w.roistatHost = h;
-                var p = d.location.protocol == "https:" ? "https://" : "http://";
-                var u = /^.*roistat_visit=[^;]+(.*)?$/.test(d.cookie) ? "/dist/module.js" : "/api/site/1.0/"+id+"/init?referrer="+encodeURIComponent(d.location.href);
-                var js = d.createElement(s); js.charset="UTF-8"; js.async = 1; js.src = p+h+u; var js2 = d.getElementsByTagName(s)[0]; js2.parentNode.insertBefore(js, js2);
-            })(window, document, 'script', 'cloud.roistat.com', 'e39376bd761820b5780e54eda70448e1');
-        </script>
+<script>window.roistatCookieDomain = 'krep-komp.ru';</script>
+<script>
+    (function(w, d, s, h, id) {
+        w.roistatProjectId = id; w.roistatHost = h;
+        var p = d.location.protocol == "https:" ? "https://" : "http://";
+        var u = /^.*roistat_visit=[^;]+(.*)?$/.test(d.cookie) ? "/dist/module.js" : "/api/site/1.0/"+id+"/init?referrer="+encodeURIComponent(d.location.href);
+        var js = d.createElement(s); js.charset="UTF-8"; js.async = 1; js.src = p+h+u; var js2 = d.getElementsByTagName(s)[0]; js2.parentNode.insertBefore(js, js2);
+    })(window, document, 'script', 'cloud.roistat.com', 'e39376bd761820b5780e54eda70448e1');
+</script>
+<script type="text/javascript">
+    (function () {
+        var ct_max_wait = 150;
+        var ct_wait_attr = setInterval(function () {
+            ct_max_wait--;
+            if (ct_max_wait < 0) {
+                clearInterval(ct_wait_attr);
+            }
+            try {
+                if (!!window.ct && !!window.call_value && !!window.roistat && !!window.roistat.visit) {
+                    ct('set_attrs', '{"roistat_visit":' + window.roistat.visit + '}');
+                    clearInterval(ct_wait_attr);
+                }
+            } catch (e) {
+                console.log(e)
+            }
+        }, 200);
+    })();
+</script>
         <!-- Roistat END CODE -->
 <script>!function(e,t,n,c,o){e[o]=e[o]||function(){(e[o].a=e[o].a||[]).push(arguments)},e[o].h=c,e[o].n=o,e[o].i=1*new Date,s=t.createElement(n),a=t.getElementsByTagName(n)[0],s.async=1,s.src=c,a.parentNode.insertBefore(s,a)}(window,document,"script","https://cdn2.searchbooster.net/scripts/v2/init.js","searchbooster"),searchbooster({"apiKey":"c483a591-b614-482b-b957-7a5bc5ed1d75","apiUrl":"https://api4.searchbooster.io","scriptUrl":"https://cdn2.searchbooster.net/scripts/v2/init.js","initialized":(sb)=>{sb.mount({"selector":"#search-popup","widget":"search-popup","options":{}});}});</script>
 </body>

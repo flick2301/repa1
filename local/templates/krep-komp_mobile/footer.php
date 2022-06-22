@@ -235,6 +235,25 @@ $detect = new \Bitrix\Conversion\Internals\MobileDetect;
                 var js = d.createElement(s); js.charset="UTF-8"; js.async = 1; js.src = p+h+u; var js2 = d.getElementsByTagName(s)[0]; js2.parentNode.insertBefore(js, js2);
             })(window, document, 'script', 'cloud.roistat.com', 'e39376bd761820b5780e54eda70448e1');
         </script>
+<script type="text/javascript">
+    (function () {
+        var ct_max_wait = 150;
+        var ct_wait_attr = setInterval(function () {
+            ct_max_wait--;
+            if (ct_max_wait < 0) {
+                clearInterval(ct_wait_attr);
+            }
+            try {
+                if (!!window.ct && !!window.call_value && !!window.roistat && !!window.roistat.visit) {
+                    ct('set_attrs', '{"roistat_visit":' + window.roistat.visit + '}');
+                    clearInterval(ct_wait_attr);
+                }
+            } catch (e) {
+                console.log(e)
+            }
+        }, 200);
+    })();
+</script>
         <!-- Roistat END CODE -->
 </body>
 </html>
