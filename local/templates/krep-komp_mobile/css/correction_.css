@@ -2387,6 +2387,22 @@ main {
     margin-left: 20px;
     margin-top: -10px;
 }	
+.product-tabs__list_mobile {
+	flex-wrap: wrap;
+	justify-content: space-between;
+	height: auto;
+}
+.product-tabs__list_mobile .product-tabs__item {
+
+	height: 35px;
+	border: solid 0 #dedede;
+}
+.product-tabs__list_mobile .product-tabs__item:last-child {
+	border: solid 0 #dedede;
+}
+.product-tabs__list_mobile .product-tabs__toggle {
+	width: 100%;
+}
 }
 
 

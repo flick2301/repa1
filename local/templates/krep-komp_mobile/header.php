@@ -268,7 +268,7 @@ $APPLICATION->IncludeFile(
 							"catalog_main_mobile", 
 							array(
 								"ROOT_MENU_TYPE" => "left",
-								"MAX_LEVEL" => "3",
+								"MAX_LEVEL" => "4",
 								"CHILD_MENU_TYPE" => "left",
 								"USE_EXT" => "Y",
 								"COMPONENT_TEMPLATE" => "catalog_main_mobile",

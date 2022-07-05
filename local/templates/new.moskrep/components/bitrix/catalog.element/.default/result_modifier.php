@@ -252,3 +252,11 @@ if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){
 if($arResult['PROPERTIES']['noindex']['VALUE_XML_ID']=='Y')
     $APPLICATION->SetPageProperty('robots', 'noindex, nofollow');
 
+$arSelect = Array("ID", "PROPERTY_SITES", "PROPERTY_MIN_DELIVERY");
+$arFilter = ["IBLOCK_ID"=>22, "ACTIVE"=>"Y", 'PROPERTY_SITES'=>[$_SERVER['HTTP_HOST']]];
+$res = CIBlockElement::GetList(['ID'=>'DESC'], $arFilter, false, Array("nPageSize"=>50), $arSelect);
+if($ob = $res->GetNext())
+{
+    $arResult['PROPERTIES']['PROPERTY_MIN_DELIVERY_VALUE'] = $ob['PROPERTY_MIN_DELIVERY_VALUE'];
+}
+

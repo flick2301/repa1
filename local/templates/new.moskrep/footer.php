@@ -637,6 +637,23 @@ $detect = new \Bitrix\Conversion\Internals\MobileDetect;
         }, 200);
     })();
 </script>
+<script>
+    jQuery(document).ready(function ($) {
+        $("#feedback_form").bind('submit', function() {
+            var name = $("input[name='user_name']",this).val();
+            var phone = $("input[name='user_tell']",this).val();
+            var email = $("input[name='user_email']",this).val();
+
+            roistatGoal.reach({
+                name: name,
+                phone: phone,
+                email: email,
+                leadName: "Оставить заявку",
+                is_skip_sending: "1"
+            });
+        })
+    });
+</script>
         <!-- Roistat END CODE -->
 <script>!function(e,t,n,c,o){e[o]=e[o]||function(){(e[o].a=e[o].a||[]).push(arguments)},e[o].h=c,e[o].n=o,e[o].i=1*new Date,s=t.createElement(n),a=t.getElementsByTagName(n)[0],s.async=1,s.src=c,a.parentNode.insertBefore(s,a)}(window,document,"script","https://cdn2.searchbooster.net/scripts/v2/init.js","searchbooster"),searchbooster({"apiKey":"c483a591-b614-482b-b957-7a5bc5ed1d75","apiUrl":"https://api4.searchbooster.io","scriptUrl":"https://cdn2.searchbooster.net/scripts/v2/init.js","initialized":(sb)=>{sb.mount({"selector":"#search-popup","widget":"search-popup","options":{}});}});</script>
 </body>

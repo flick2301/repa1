@@ -46,7 +46,7 @@ class SectionBulder
 
             $sec_sorting_page = \CIBlockSection::GetList(array(), ["IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'UF_DIRECTORY'=>$secID], false, array("ID", "UF_*"))->GetNext();
             $arSortingsCurFromUrl = explode('---', end($this->arPagesCode));
-            $arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", "SECTION_ID"=>$sec_sorting_page['ID'], "INCLUDE_SUBSECTIONS"=>"Y", '?PROPERTY_sef_filter' => implode(" | ", $arSortingsCurFromUrl));
+            $arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", "SECTION_ID"=>$sec_sorting_page['ID'], "INCLUDE_SUBSECTIONS"=>"Y", 'PROPERTY_sef_filter' => implode(" | ", $arSortingsCurFromUrl));
 
             $res = \CIBlockElement::GetList(array("SORT" => "ASC"), $arFilter, false, false, array('*'));
             while ($ob = $res->GetNextElement()) {

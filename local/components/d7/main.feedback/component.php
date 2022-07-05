@@ -69,6 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"  && (!isset($_POST["PARAMS_HASH"]) || $a
 				"EMAIL_TO" => $arParams["EMAIL_TO"],
 				"TEXT" => $_POST['MESSAGE'],
 				"ROISTAT" => $_POST["roistat_visit"],
+				"PAGE_URL" => $arParams["PAGE_URL"],
                                 //"FILES" => $_POST['DOPFILE'])
                                
 			);

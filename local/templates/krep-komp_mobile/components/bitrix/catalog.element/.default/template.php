@@ -171,7 +171,7 @@ dataLayer.push({
         </div>
         <!--product-tabs-->
                <div class="product-page__tabs product-tabs" id="desc">
-                  <ul class="product-tabs__list" data-product-page-tabs>
+                  <ul class="product-tabs__list product-tabs__list_mobile" data-product-page-tabs>
                      <li class="product-tabs__item">
                         <a class="product-tabs__toggle" href="#description" data-tabby-default>Описание</a>
                      </li>

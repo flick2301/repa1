@@ -313,6 +313,7 @@ $APPLICATION->SetPageProperty("component", "catalog");
 	"ajax-file-krep-komp", 
 	array(
 		"EMAIL_TO" => "sale@krep-komp.ru",
+		"PAGE_URL" => 'https://'.$_SERVER['HTTP_HOST'].$APPLICATION->GetCurPage(),
 		"EVENT_MESSAGE_ID" => array(
 			0 => "7",
 		),

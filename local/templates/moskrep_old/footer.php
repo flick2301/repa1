@@ -293,7 +293,6 @@ else
 	$APPLICATION->AddViewContent('page_url', str_replace('index.php', '', $APPLICATION->GetCurPage(true)));
 ?>
 <!-- Roistat BEGIN CODE -->
-<script>window.roistatCookieDomain = 'krep-komp.ru';</script>
 <script>
     (function(w, d, s, h, id) {
         w.roistatProjectId = id; w.roistatHost = h;

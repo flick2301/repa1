@@ -1,4 +1,9 @@
 <?require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include/prolog_before.php");
+use Bitrix\Main\Application;
+
+$context = Application::getInstance()->getContext();
+$request = $context->getRequest();
+$referer = $request->getHeaders()->get('referer');
 
 $server = "<table>";
 foreach($_SERVER AS $key=>$val) {
@@ -13,6 +18,7 @@ $arEventFields = array(
    "GPHONE" => htmlspecialcharsbx($_POST["GPHONE"]),
    "GNAME" => htmlspecialcharsbx($_POST["GNAME"]),
    "GTEXT" => htmlspecialcharsbx($_POST["GTEXT"]),
+   "GREFERER" => htmlspecialcharsbx($referer),
  //'EMAIL_TO' => "kolobets@mail.ru", // email админа в настройках главного модуля
  );
  
