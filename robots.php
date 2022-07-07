@@ -14,6 +14,7 @@ User-Agent: *
 Disallow: /
 <?else:?>
 User-Agent: *
+Disallow: /faq/
 Disallow: */index.php
 Disallow: /bitrix/
 Disallow: /*show_include_exec_time=
