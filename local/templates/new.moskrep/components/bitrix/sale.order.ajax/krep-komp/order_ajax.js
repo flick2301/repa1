@@ -1075,7 +1075,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 					pagination = this.pickUpPagination; break;
 			}
 
-			if (pagination.pages.length > 1)
+			if (pagination.pages.length > 1 && false) //Убрана пагинация
 			{
 				navigation.push(
 					BX.create('LI', {

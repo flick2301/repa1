@@ -1,0 +1,24 @@
+.faq__topic {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.35;
+    color: #000000;
+    margin: 15px 0px;
+}
+.faq__box {
+    margin-bottom: 20px;
+}
+.faq__name {
+    color: #000;
+    font-size: 20px;
+    font-weight: 500;
+    border-bottom: 1px dashed;
+    display: initial;
+    cursor: pointer;
+}
+.faq__desc {
+    display: none;
+    padding-top: 10px;
+    font-size: 16px;
+    color: #000;
+}

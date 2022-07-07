@@ -649,7 +649,10 @@ $detect = new \Bitrix\Conversion\Internals\MobileDetect;
                 phone: phone,
                 email: email,
                 leadName: "Оставить заявку",
-                is_skip_sending: "1"
+                is_skip_sending: "1",
+                fields: {
+                    form: "Оставить заявку"
+                }
             });
         })
     });
