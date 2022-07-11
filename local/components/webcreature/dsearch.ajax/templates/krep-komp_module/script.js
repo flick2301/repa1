@@ -1,3 +1,4 @@
+/*
 $(document).ready(function() {
 	$(document).on('click', '.multi-closeIcon', function() {
 		$("#text_result" ).css("display", "none");
