@@ -639,7 +639,7 @@ while($arSection = $db_list->GetNext()) {
 
 
 <!--simple-article-->
-<?if(!($_REQUEST['PAGEN_1'] > 1)  && ($_SERVER['HTTP_HOST']=='spb.krep-komp.ru' || $_SERVER['HTTP_HOST']=='krep-komp.ru' || $_SERVER['HTTP_HOST']=='dev2.krep-komp.ru')):?>
+<?if(!($_REQUEST['PAGEN_1'] > 1)  && ($_SERVER['HTTP_HOST']=='krep-komp.ru' || $_SERVER['HTTP_HOST']=='dev2.krep-komp.ru')):?>
 <?if($arResult['SECTION']['UF_DESCRIPTION_ABOUT'] /*&& ($USER->IsAdmin() || $arResult['SECTION']['UF_DESCRIPTION_SPECIES'] || $arResult['SECTION']['UF_DESCRIPTION_WHOLESALE'] || $arResult['SECTION']['UF_DESCRIPTION_WARRANTY'] || $arResult['SECTION']['UF_DESCRIPTION_DELIVERY'] || $arResult['SECTION']['UF_DESCRIPTION_SORT'])*/):?>
 
 

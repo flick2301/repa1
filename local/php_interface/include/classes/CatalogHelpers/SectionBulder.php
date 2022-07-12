@@ -48,14 +48,16 @@ class SectionBulder
             $arSortingsCurFromUrl = explode('---', end($this->arPagesCode));
             $arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", "SECTION_ID"=>$sec_sorting_page['ID'], "INCLUDE_SUBSECTIONS"=>"Y", 'PROPERTY_sef_filter' => implode(" | ", $arSortingsCurFromUrl));
 
-            $res = \CIBlockElement::GetList(array("SORT" => "ASC"), $arFilter, false, false, array('*'));
-            while ($ob = $res->GetNextElement()) {
+			if($sec_sorting_page) {
+				$res = \CIBlockElement::GetList(array("SORT" => "ASC"), $arFilter, false, false, array('*'));
+				while ($ob = $res->GetNextElement()) {
 
-                $arFields = $ob->GetFields();
-                $arProps = $ob->GetProperties();
-                $this->curSorting[] = array_merge($arFields, $arProps);
+					$arFields = $ob->GetFields();
+					$arProps = $ob->GetProperties();
+					$this->curSorting[] = array_merge($arFields, $arProps);
 
-            }
+				}
+			}
         }
         return $this->curSorting;
     }

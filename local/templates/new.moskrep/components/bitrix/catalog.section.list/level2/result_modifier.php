@@ -248,7 +248,7 @@ if($arParams['REFERENCE_CHECK']=='Y'):
                 }elseif($arFilt_prop['CODE']=="PO_PRIMENENIYU"){
                     $GLOBALS['Filter_seo']["%PROPERTY_".$arFilt_prop['CODE']] = $arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE'];
                 }else{
-                    $GLOBALS['Filter_seo']["PROPERTY_".$arFilt_prop['CODE']] = $arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE'];
+                    $GLOBALS['Filter_seo']["PROPERTY_".$arFilt_prop['CODE']] = explode(';', $arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE']);
                 }
             }
             //ЕСЛИ ВЫБРАНЫ ТОЛЬКО СВОЙСТВА

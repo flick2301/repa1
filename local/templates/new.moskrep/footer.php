@@ -610,7 +610,7 @@ $detect = new \Bitrix\Conversion\Internals\MobileDetect;
 );?>
 <!-- Roistat BEGIN CODE -->
 <!--
-<script>window.roistatCookieDomain = 'krep-komp.ru';</script>
+<script>window.roistatCookieDomain = '.krep-komp.ru';</script>
 <script>
     (function(w, d, s, h, id) {
         w.roistatProjectId = id; w.roistatHost = h;
