@@ -31,6 +31,7 @@ Loc::LoadMessages(__FILE__);
 	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
     <meta name="yandex-verification" content="94ad628889e9793a" />
     <meta name="google-site-verification" content="tCyUZcBpb8WKtkt8O1XsKiMEeBQpIFTPY-N9GDFfIv0" />
+    <meta name="google-site-verification" content="0u5wmG04li2cctryJDRbUmxEucadQiTZ4qHvm9BMChM" />
     <meta name="apple-mobile-web-app-title" content="Главная страница – Krep-Komp" />
     <meta name="theme-color" content="#0C58CF" />
 	<meta name="viewport" content="width=device-width; initial-scale=1.0" />
