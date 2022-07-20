@@ -1,6 +1,8 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Скачать Прайс-лист");
+$APPLICATION->SetPageProperty("title", "Скачать Прайс-листы на крепеж и метизы - магазин КРЕП-КОМП");
+$APPLICATION->SetPageProperty("description", "Прайс-листы, каталог и цены на метизы, крепежные изделия и сопутствующие товары от производителя крепежа - интернет-магазин КРЕП-КОМП. Доставка по России.");
+$APPLICATION->SetTitle("Прайс-листы");
 
 use Bitrix\Highloadblock\HighloadBlockTable as HLBT;
 // id highload-инфоблока

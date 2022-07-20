@@ -57,7 +57,7 @@ $requestUri = $request->getRequestUri();
         <div class="catalog-feed__item catalog-feed__item__withpic ">
 			<!--catalog-card-->
 			<section class="catalog-card">
-				<div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></div>
+				<div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?></a></div>
                 <div class="catalog-card__cover">
                     <img class="catalog-card__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>
@@ -76,7 +76,7 @@ $requestUri = $request->getRequestUri();
                     <div class="catalog-feed__item catalog-feed__item__withpic ">
 					<!--catalog-card-->
 					<section class="catalog-card">
-					<div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['NAME']?></a></div>
+					<div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?></a></div>
                             <div class="catalog-card__cover">
                                 <img class="catalog-card__image" width="262" height="197" src="<?=($arSection['DETAIL_PICTURE']) ? CFile::GetPath($arSection['DETAIL_PICTURE']) : $arSection['PICTURE']['src'];?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                             </div>
@@ -435,11 +435,11 @@ elseif($arParams['TYPE_TEMPLATE']!='BOTTOM')
     if(count($arResult['SORTING']['ROOT_ELEMENTS'])){
         foreach($arResult['SORTING']['ROOT_ELEMENTS'] as $dop_section){
             ?>
-        <div class="catalog-feed__item catalog-feed__item__withpic">
+        <div class="catalog-feed__item catalog-feed__item__withpic <?if($dop_section['DETAIL_PICTURE']):?>catalog-feed__item__white<?endif?>">
 		<!--catalog-card-->
         <section class="catalog-card">
             <div class="div_flex_h3 catalog-card__title"><a href="<?=($dop_section['LINK_TARGET']['VALUE']) ? $dop_section['LINK_TARGET']['VALUE'] : $dop_section['CODE'].'/';?>" target="_self" title='<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$dop_section['H1']["VALUE"]?></a></div>
-                <div class="catalog-card__cover <?if(!$dop_section['DETAIL_PICTURE']):?>catalog-card__cover__white<?endif?>">
+                <div class="catalog-card__cover <?if($dop_section['DETAIL_PICTURE']):?>catalog-card__cover__white<?endif?>">
                     <img class="catalog-card__image" width="262" height="197" src="<?=$dop_section['PICTURE']['src']?>" alt="<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
                 </div>
             

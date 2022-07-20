@@ -153,6 +153,8 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
  					</div>
 
 				<div class="product__bottom">
+					<?if(($item['PROPERTIES']["DIAMETR"]["VALUE"] && $item['PROPERTIES']["DLINA"]["VALUE"]) || !empty($item['PROPERTIES']['KOLICHESTVO_V_UPAKOVKE']['VALUE']))
+					{?>
                     <div class="product__params">
                     <?if($item['PROPERTIES']["DIAMETR"]["VALUE"] && $item['PROPERTIES']["DLINA"]["VALUE"]):?>
                         <div class="product__param">Размер(мм): <span><?=$item['PROPERTIES']["DIAMETR"]["VALUE"]?>x<?=$item['PROPERTIES']["DLINA"]["VALUE"]?></span></div>
@@ -161,6 +163,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                         <div class="product__param">Фасовка: <span><?=$item['PROPERTIES']['KOLICHESTVO_V_UPAKOVKE']['VALUE']?> <?=$item['UNIT']?></span></div>
                     <?endif;?>
                     </div>
+					<?}?>
                     <?if($item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']):?>
                         <div class="product__availible">
                             <span>В наличии: <?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?> уп.</span>

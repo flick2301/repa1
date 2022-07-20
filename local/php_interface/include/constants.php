@@ -15,6 +15,7 @@ define("ID_PROPERTY_STOCK", "IN_STOCK");
 define("ID_PROPERTY_FOR_SALE", "FOR_SALE");
 define("ID_SALE_PRICE", "Распродажа");
 
+
 define("CATALOG_IBLOCK_ID", "17");
 const SORTING_IBLOCK_ID = '18';
 define("SALE_SECTION_ID", "1655");

@@ -12,7 +12,10 @@ define('STOP_STATISTICS', true);
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.php';
 
-if(!\Bitrix\Main\Loader::includeModule('disk'))
+if(
+	!\Bitrix\Main\Loader::includeModule('disk')
+	|| !\Bitrix\Main\Loader::includeModule('im')
+)
 {
 	die;
 }
@@ -22,16 +25,28 @@ $result = new Result();
 if ($request->get('FILE_ID') && $request->get('SIGN'))
 {
 	$diskFileId = (int)$request->get('FILE_ID');
-	$signer = new \Bitrix\Main\Security\Sign\Signer;
 	$sign = htmlspecialcharsbx($request->get('SIGN'));
 
 	try
 	{
+		$signer = new \Bitrix\Main\Security\Sign\Signer;
+		$signKey = \CIMDisk::GetFileLinkSign();
+		if (is_string($signKey))
+		{
+			$signer->setKey($signKey);
+		}
 		$sign = (int)$signer->unsign($sign);
 	}
 	catch (\Bitrix\Main\Security\Sign\BadSignatureException $e)
 	{
-		$result->addError(new Error('Wrong signature'));
+		try
+		{
+			$signer = new \Bitrix\Main\Security\Sign\Signer;
+			$sign = (int)$signer->unsign($sign);
+		}
+		catch (\Bitrix\Main\Security\Sign\BadSignatureException $e)
+		{
+		}
 	}
 
 	if ($diskFileId === $sign)

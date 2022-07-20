@@ -1,5 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+$APPLICATION->SetPageProperty("description", "Предлагаем сотрудничество поставщикам и производителям крепежной продукции. Интернет-магазин метизов и крепежа КРЕП-КОМП - выгодные условия для партнеров.");
+$APPLICATION->SetPageProperty("title", "Import - стань поставщиком интернет-магазина крепежа КРЕП-КОМП");
 $APPLICATION->SetTitle("Import");
 ?>
 </div>

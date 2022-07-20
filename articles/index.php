@@ -1,5 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+$APPLICATION->SetPageProperty("title", "Полезная информация, статьи от интернет-магазина крепежа КРЕП-КОМП");
+$APPLICATION->SetPageProperty("description", "Статьи, обзоры, полезная информация от интернет-магазина крепежа и метизов «КРЕП-КОМП».");
 $APPLICATION->SetTitle("Статьи");
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:news", 

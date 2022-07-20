@@ -609,7 +609,33 @@ $detect = new \Bitrix\Conversion\Internals\MobileDetect;
    )
 );?>
 <!-- Roistat BEGIN CODE -->
-<!--
+<script>
+
+window.onRoistatAllModulesLoaded = function () {
+
+document.addEventListener('focusin', function(event) {
+
+if (event.target.closest('.l-ss-c-host-node')) {
+
+window.roistat.emailtracking.enabled = false;
+
+}
+
+});
+
+document.addEventListener('focusout', function(event) {
+
+if (event.target.closest('.l-ss-c-host-node')) {
+
+window.roistat.emailtracking.enabled = true;
+
+}
+
+});
+
+};
+
+</script>
 <script>window.roistatCookieDomain = '.krep-komp.ru';</script>
 <script>
     (function(w, d, s, h, id) {
@@ -618,7 +644,8 @@ $detect = new \Bitrix\Conversion\Internals\MobileDetect;
         var u = /^.*roistat_visit=[^;]+(.*)?$/.test(d.cookie) ? "/dist/module.js" : "/api/site/1.0/"+id+"/init?referrer="+encodeURIComponent(d.location.href);
         var js = d.createElement(s); js.charset="UTF-8"; js.async = 1; js.src = p+h+u; var js2 = d.getElementsByTagName(s)[0]; js2.parentNode.insertBefore(js, js2);
     })(window, document, 'script', 'cloud.roistat.com', 'e39376bd761820b5780e54eda70448e1');
-</script>-->
+</script>
+
 <script type="text/javascript">
     (function () {
         var ct_max_wait = 150;

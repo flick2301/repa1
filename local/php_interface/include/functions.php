@@ -43,7 +43,7 @@ function globalGetTitle($title = "", $template="new.moskrep") {
 			<header class=\"basic-layout__module page-heading\">             
 			<h1>{$title}"; 
 			
-		if (!$title) $APPLICATION->ShowTitle();
+		if (!$title) echo $APPLICATION->GetTitle();
 			
 		echo "</h1>
             </header>
