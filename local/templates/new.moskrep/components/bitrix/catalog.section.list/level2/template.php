@@ -10,6 +10,7 @@ $this->setFrameMode(true);
 global $APPLICATION;
 global $context;
 global $sec_builder;
+global $filterObj;
 
 $request = $context->getRequest();
 $requestUri = $request->getRequestUri();
@@ -505,7 +506,7 @@ if($arResult['SORTING']['SECTION_ID']){
 			<?$i=0;?>
 			<?foreach($sortSection['ITEMS'] as $sort_item):?>
 				<?$i++;
-                $link = $sec_builder->linkBuilder($sort_item, $sortSection);
+                $link =  $filterObj->sec_builder->linkBuilder($sort_item, $sortSection);
 
             ?>
 

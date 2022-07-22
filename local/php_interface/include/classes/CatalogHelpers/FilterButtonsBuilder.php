@@ -1,5 +1,6 @@
 <?php
 namespace CatalogHelpers;
+use CatalogHelpers\ElementsOnPage;
 
 class  FilterButtonsBuilder
 {
@@ -21,8 +22,10 @@ class  FilterButtonsBuilder
 
         //если обработка ведется для компонента catalog.section.list (там возможны фильтры на посадочных страницах)
         if($component == 'section.list') {
+            $landing_page_code = $sec_builder->curSorting[0]['CODE'] ?? end($this->arResult['SECTION']['SORTING']);
+
             //ИЩЕМ ФИЛЬТРЫ У ПОСАДОЧНОЙ СТРАНИЦЫ ЕСЛИ НАХОДИМСЯ НА ПОСАДОЧНОЙ
-            $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'UF_LANDING_PAGE_CODE' => end($this->sorting));
+            $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'UF_LANDING_PAGE_CODE' => $landing_page_code);
             $rsSections = \CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array('*', 'UF_LANDING_PAGE_CODE'));
 
             if ($arSection = $rsSections->Fetch()) {
@@ -37,11 +40,13 @@ class  FilterButtonsBuilder
             }
 
             if ($this->arResult['SORTING']['SECTION_ID']) {
+
                 $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'SECTION_ID' => $this->arResult['SORTING']['SECTION_ID']);
                 $rsSections = \CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array('*', 'UF_TOP'));
                 while ($arSection = $rsSections->Fetch()) {
                     $this->arResult['SORTING']['SECTIONS'][$arSection['ID']]['NAME'] = $arSection['NAME'];
                     $this->arResult['SORTING']['SECTIONS'][$arSection['ID']]['TOP'] = $arSection['UF_TOP'];
+                    $this->arResult['SORTING']['SECTIONS'][$arSection['ID']]['ACTIVE'] = $arSection['ACTIVE'];
                     $this->arSortSecID[] = $arSection['ID'];
 
                 }
@@ -182,7 +187,7 @@ class  FilterButtonsBuilder
 
                     if(in_array($val['CODE'], $arProp_catalog) && $val['VALUE']!=''){
                         $arProp_sorting[]=$val;
-
+                        $this->arResult['REFERENCE']['ITEM']['PROPS_SORTING'][]=$val;
                     }
 
                 }
@@ -262,17 +267,22 @@ class  FilterButtonsBuilder
             }elseif($this->arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE']){
 
                 $this->arResult['REFERENCE']['ITEM']['DIRECTORY']=$this->arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE'][0];
+                $this->arResult['REFERENCE']['ITEM']['PROPS_CATALOG_TYPE'] = $arProp_catalog_type;
 
-                $GLOBALS['Filter_seo'] = Array();
-                foreach($arProp_sorting as $arFilt_prop){
-                    //ЕСЛИ СВОЙСТВО В КАТАЛОГЕ ТИПА СПИСОК, ТО ФИЛЬТР ДОЛЖЕН БЫТЬ PROPERTY_КОД_VALUE
-                    if($arProp_catalog_type[$arFilt_prop['CODE']] == 'L'){
-                        $GLOBALS['Filter_seo']["PROPERTY_".$arFilt_prop['CODE']."_VALUE"] = $this->arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE'];
-                    }elseif($arFilt_prop['CODE']=="PO_PRIMENENIYU"){
-                        $GLOBALS['Filter_seo']["%PROPERTY_".$arFilt_prop['CODE']] = $this->arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE'];
-                    }else{
-                        $GLOBALS['Filter_seo']["PROPERTY_".$arFilt_prop['CODE']] = $this->arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE'];
+                if(!ElementsOnPage::isUnitProperties($this->arResult)) {
+                    $GLOBALS['Filter_seo'] = array();
+                    foreach ($arProp_sorting as $arFilt_prop) {
+                        //ЕСЛИ СВОЙСТВО В КАТАЛОГЕ ТИПА СПИСОК, ТО ФИЛЬТР ДОЛЖЕН БЫТЬ PROPERTY_КОД_VALUE
+                        if ($arProp_catalog_type[$arFilt_prop['CODE']] == 'L') {
+                            $GLOBALS['Filter_seo']["PROPERTY_" . $arFilt_prop['CODE'] . "_VALUE"] = explode(';', $this->arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE']);
+                        } elseif ($arFilt_prop['CODE'] == "PO_PRIMENENIYU") {
+                            $GLOBALS['Filter_seo']["%PROPERTY_" . $arFilt_prop['CODE']] = explode(';', $this->arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE']);
+                        } else {
+                            $GLOBALS['Filter_seo']["PROPERTY_" . $arFilt_prop['CODE']] = explode(';', $this->arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE']);
+                        }
                     }
+                }else{
+                    $GLOBALS['Filter_seo'] = array('=ID' => ElementsOnPage::EditFromResult($this->arResult));
                 }
                 //ЕСЛИ ВЫБРАНЫ ТОЛЬКО СВОЙСТВА
             }elseif($this->arResult['REFERENCE']['ITEM'][$arProp_sorting[0]['CODE']]['VALUE']!=''){
@@ -290,12 +300,13 @@ class  FilterButtonsBuilder
 
                 }
                 $GLOBALS['Filter_seo'] = Array();
+                var_dump($arProp_sorting);
                 foreach($arProp_sorting as $arFilt_prop){
                     //ЕСЛИ СВОЙСТВО В КАТАЛОГЕ ТИПА СПИСОК, ТО ФИЛЬТР ДОЛЖЕН БЫТЬ PROPERTY_КОД_VALUE
                     if($arProp_catalog_type[$arFilt_prop['CODE']] == 'L'){
-                        $GLOBALS['Filter_seo']["PROPERTY_".$arFilt_prop['CODE']."_VALUE"] = $this->arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE'];
+                        //$GLOBALS['Filter_seo']["PROPERTY_".$arFilt_prop['CODE']."_VALUE"] = explode(';', $this->arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE']);
                     }else{
-                        $GLOBALS['Filter_seo']["PROPERTY_".$arFilt_prop['CODE']] = $this->arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE'];
+                        //$GLOBALS['Filter_seo']["PROPERTY_".$arFilt_prop['CODE']] = explode(';', $this->arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE']);
                     }
                 }
 

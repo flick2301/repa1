@@ -5,6 +5,7 @@ use Bitrix\Highloadblock\HighloadBlockTable as HLBT;
 $module_id = 'relink.table';
 
 global $DEFAULT_STORE_ID;
+global $filterObj;
 
 
 use Bitrix\Main\Loader;
@@ -103,6 +104,6 @@ foreach($arResult['ITEMS'] as $key=>$arItem){
 	else:
 		$arResult['ITEMS'][$key]['UNIT'] = ' шт.';
 	endif;
-    
+
 }
 

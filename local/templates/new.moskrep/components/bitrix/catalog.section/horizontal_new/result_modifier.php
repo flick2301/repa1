@@ -318,9 +318,9 @@ foreach($arResult['UF_SOPUT_SPR_ITMES'] as $key=>$value)
 	}
 }
 
-
 $filterObj = new \CatalogHelpers\FilterButtonsBuilder('section', $arResult, $arResult['ID']);
 $arResult = $filterObj->arResult;
 
+
 \Bitrix\Main\Loader::includeModule('dev2fun.opengraph');
-\Dev2fun\Module\OpenGraph::Show($arResult['ID'],'section'); 
+\Dev2fun\Module\OpenGraph::Show($arResult['ID'],'section');

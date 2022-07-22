@@ -6,8 +6,10 @@
  * and open the template in the editor.
  */
 global $APPLICATION;
+global $sec_builder;
+global $filterObj;
 
-
+$arResult = $filterObj->arResult;
 
 if($arResult['REFERENCE']['ITEM']['ID']!=''):
         $ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues($arResult['REFERENCE']['ITEM']["IBLOCK_ID"],$arResult['REFERENCE']['ITEM']['ID']);
@@ -55,6 +57,5 @@ if($arResult['REFERENCE']['ITEM']['ID']!=''):
 if($arResult['REFERENCE']['ITEM']['ID']=='' && $arResult["SECTION"]["ID"]==''){
     @define("ERROR_404","Y");
 	CHTTP::SetStatus("404 Not Found");
-
 	$APPLICATION->SetPageProperty('title', "404 - HTTP not found");
 }
