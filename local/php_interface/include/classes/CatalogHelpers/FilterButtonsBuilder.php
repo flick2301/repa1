@@ -142,43 +142,16 @@ class  FilterButtonsBuilder
         }
 
 
-
-        $arFilter = Array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "ACTIVE"=>"Y", '=CODE'=>end($this->sorting));
+        $arFilter = Array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "ACTIVE"=>"Y", '=CODE'=>$this->sec_builder->curSorting[0]['CODE']);
         $res = \CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter, false, false, array('*'));
         while($ob = $res->GetNextElement()){
 
             $arFields = $ob->GetFields();
             $arProps = $ob->GetProperties();
 
-            $URL_SORT = false;
-            $nav = \CIBlockSection::GetNavChain(false, $arFields["IBLOCK_SECTION_ID"]);
 
-            while($arNav = $nav->GetNext())
-            {
 
-                $res_sect = \CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>SORTING_IBLOCK_ID, 'ID'=>$arNav['ID']), false, Array('CODE', 'UF_DIRECTORY'));
-                if($arSect = $res_sect->GetNext()){
-
-                    if($arSect['UF_DIRECTORY']){
-
-                        $code_section = $this->sorting[count($this->sorting)-1];
-                        $res_sect = \CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, 'ID'=>$arSect['UF_DIRECTORY']), false, Array('ID', 'SECTION_PAGE_URL'));
-                        $dir = $APPLICATION->GetCurDir();
-
-                        if($parent_sec_id = $res_sect->GetNext()){
-                            $right_url = $parent_sec_id['SECTION_PAGE_URL'].$arFields['CODE'].'/';
-                            $right_url2 = $parent_sec_id['SECTION_PAGE_URL'].str_replace("-", "_", $arFields['CODE']).'/';
-                            if($parent_sec_id['ID'] == $arSect['UF_DIRECTORY'][0] && ($dir == $right_url || $dir == $right_url2)){
-
-                                $URL_SORT = true;
-                            }
-                        }
-
-                    }
-                }
-            }
-
-            if($URL_SORT){
+            if($this->sec_builder->isRealAddress()){
                 $this->arResult['REFERENCE']['ITEM']=array_merge($arFields, $arProps);
                 if($this->arResult['REFERENCE']['ITEM']['DETAIL_PICTURE']){
                     $this->arResult['REFERENCE']['ITEM']['PICTURE'] = \CFile::ResizeImageGet($this->arResult['REFERENCE']['ITEM']['DETAIL_PICTURE'], array('width'=>'600', 'height'=>'600'), BX_RESIZE_IMAGE_PROPORTIONAL, true);
@@ -300,13 +273,12 @@ class  FilterButtonsBuilder
 
                 }
                 $GLOBALS['Filter_seo'] = Array();
-                var_dump($arProp_sorting);
                 foreach($arProp_sorting as $arFilt_prop){
                     //ЕСЛИ СВОЙСТВО В КАТАЛОГЕ ТИПА СПИСОК, ТО ФИЛЬТР ДОЛЖЕН БЫТЬ PROPERTY_КОД_VALUE
                     if($arProp_catalog_type[$arFilt_prop['CODE']] == 'L'){
-                        //$GLOBALS['Filter_seo']["PROPERTY_".$arFilt_prop['CODE']."_VALUE"] = explode(';', $this->arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE']);
+                        $GLOBALS['Filter_seo']["PROPERTY_".$arFilt_prop['CODE']."_VALUE"] = explode(';', $this->arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE']);
                     }else{
-                        //$GLOBALS['Filter_seo']["PROPERTY_".$arFilt_prop['CODE']] = explode(';', $this->arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE']);
+                        $GLOBALS['Filter_seo']["PROPERTY_".$arFilt_prop['CODE']] = explode(';', $this->arResult['REFERENCE']['ITEM'][$arFilt_prop['CODE']]['VALUE']);
                     }
                 }
 

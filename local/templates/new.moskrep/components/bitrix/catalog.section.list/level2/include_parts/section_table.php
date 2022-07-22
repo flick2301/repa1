@@ -295,7 +295,7 @@ $intSectionID = $APPLICATION->IncludeComponent(
 						'COMPATIBLE_MODE' => (isset($arParams['COMPATIBLE_MODE']) ? $arParams['COMPATIBLE_MODE'] : ''),
 						'EXTRA_FIELD' => (isset($arResult['SECTION']['UF_EXTRA_FIELD']) ? $arResult['SECTION']['UF_EXTRA_FIELD'] : ''),
 						'SECTIONS_LIST_TEMPLATE'=>(isset($arParams['SECTIONS_LIST_TEMPLATE']) ? $arParams['SECTIONS_LIST_TEMPLATE'] : ''),
-						'PROPS_SORTING' => $arResult['REFERENCE']['ITEM']['PROPS_SORTING'] ?? [],
+
 
 		
 					)
