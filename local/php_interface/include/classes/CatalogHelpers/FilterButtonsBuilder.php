@@ -22,7 +22,7 @@ class  FilterButtonsBuilder
 
         //если обработка ведется для компонента catalog.section.list (там возможны фильтры на посадочных страницах)
         if($component == 'section.list') {
-            $landing_page_code = $sec_builder->curSorting[0]['CODE'] ?? end($this->arResult['SECTION']['SORTING']);
+            $landing_page_code = $this->sec_builder->curSorting[0]['CODE'] ?? end($this->arResult['SECTION']['SORTING']);
 
             //ИЩЕМ ФИЛЬТРЫ У ПОСАДОЧНОЙ СТРАНИЦЫ ЕСЛИ НАХОДИМСЯ НА ПОСАДОЧНОЙ
             $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'UF_LANDING_PAGE_CODE' => $landing_page_code);
