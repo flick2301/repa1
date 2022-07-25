@@ -25,7 +25,7 @@ class  FilterButtonsBuilder
             $landing_page_code = $this->sec_builder->curSorting[0]['CODE'] ?? end($this->arResult['SECTION']['SORTING']);
 
             //ИЩЕМ ФИЛЬТРЫ У ПОСАДОЧНОЙ СТРАНИЦЫ ЕСЛИ НАХОДИМСЯ НА ПОСАДОЧНОЙ
-            $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'UF_LANDING_PAGE_CODE' => $landing_page_code);
+            $arFilter = array('IBLOCK_ID' => SORTING_IBLOCK_ID, 'IBLOCK_SECTION_ID'=>$this->sec_builder->curSorting[0]['IBLOCK_SECTION_ID'], 'UF_LANDING_PAGE_CODE' => $landing_page_code);
             $rsSections = \CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array('*', 'UF_LANDING_PAGE_CODE'));
 
             if ($arSection = $rsSections->Fetch()) {
@@ -142,7 +142,7 @@ class  FilterButtonsBuilder
         }
 
 
-        $arFilter = Array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "ACTIVE"=>"Y", '=CODE'=>$this->sec_builder->curSorting[0]['CODE']);
+        $arFilter = Array("IBLOCK_ID"=>SORTING_IBLOCK_ID, 'IBLOCK_SECTION_ID'=>$this->sec_builder->curSorting[0]['IBLOCK_SECTION_ID'],  "ACTIVE"=>"Y", '=CODE'=>$this->sec_builder->curSorting[0]['CODE']);
         $res = \CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter, false, false, array('*'));
         while($ob = $res->GetNextElement()){
 

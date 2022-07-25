@@ -23,7 +23,7 @@ $strReturn = '';
 
 $code = $sec_builder->curSorting[0]['CODE'] ?? $arCode[0];
 //БЛОК СОСТАВЛЕНИЯ НАВИГАЦИОННОЙ ЦЕПОЧКИ ДЛЯ ВИРТУАЛЬНОГО(НЕСУЩЕСТВУЮЩЕГО) КАТАЛОГА( ПРИСОЕДИНЕННОЙ К КАТАЛОГУ ИЗ 1С)
-$arFilter = array("IBLOCK_ID"=>SORTING_IBLOCK_ID, "CODE" => $code);
+$arFilter = array("IBLOCK_ID"=>SORTING_IBLOCK_ID, 'IBLOCK_SECTION_ID'=>$sec_builder->curSorting[0]['IBLOCK_SECTION_ID'], "=CODE" => $code);
 $ar_element = CIBlockElement::GetList(array('SORT' => 'asc'),$arFilter, array('*'));
 
 if($item_element = $ar_element->GetNextElement())

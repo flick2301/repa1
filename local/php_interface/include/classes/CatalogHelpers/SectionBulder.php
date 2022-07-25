@@ -29,8 +29,18 @@ class SectionBulder
 
     public function getCurSorting()
     {
+        $req = \CIBlockSection::GetList(array(), ["IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'UF_DIRECTORY'=>$this->curSection['ID']], false, array("ID", "UF_*"));
+        while($section = $req->GetNext())
+        {
+            $arSections[]=$section['ID'];
+            $req2 = \CIBlockSection::GetList(array(), ["IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'SECTION_ID'=>$section['ID']], false, array("ID"));
+            while($sec = $req2->GetNext())
+            {
+                $arSections[] = $sec['ID'];
+            }
+        }
 
-        $arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", '=CODE' => $this->arPagesCode, 'PROPERTY_arFilters'=>false);
+        $arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'IBLOCK_SECTION_ID'=>$arSections, '=CODE' => $this->arPagesCode, 'PROPERTY_arFilters'=>false);
         $res = \CIBlockElement::GetList(array("SORT" => "ASC"), $arFilter, false, false, array('*'));
         while ($ob = $res->GetNextElement()) {
 
