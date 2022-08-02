@@ -20,7 +20,6 @@ global $APPLICATION;
     <meta name="google-site-verification" content="tCyUZcBpb8WKtkt8O1XsKiMEeBQpIFTPY-N9GDFfIv0" />
     <meta name="apple-mobile-web-app-title" content="Главная страница – Krep-Komp" />
     <meta name="theme-color" content="#0C58CF" />
-	<meta name="viewport" content="width=device-width; initial-scale=1.0" />
 	<meta name="facebook-domain-verification" content="qyjoyjc6m0agulp5ix7pznx4nhhm22" />
 
 	

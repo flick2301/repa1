@@ -730,5 +730,5 @@ dataLayer.push({
         });
 </script>
 <!-- END Criteo Product dataLayer -->
-<script src="/local/templates/moskrep/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa"></script>
+<script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa"></script>
    <script>var tabs=new Tabby("[data-product-page-tabs]");tabs=new Tabby("[data-delivery-tabs]"),tabs=new Tabby("[data-pickup-tabs]"),tabs=new Tabby("[data-product-widget-tabs]")</script>

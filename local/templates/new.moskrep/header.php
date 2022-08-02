@@ -34,7 +34,6 @@ Loc::LoadMessages(__FILE__);
     <meta name="google-site-verification" content="0u5wmG04li2cctryJDRbUmxEucadQiTZ4qHvm9BMChM" />
     <meta name="apple-mobile-web-app-title" content="Главная страница – Krep-Komp" />
     <meta name="theme-color" content="#0C58CF" />
-	<meta name="viewport" content="width=device-width; initial-scale=1.0" />
 	<meta name="facebook-domain-verification" content="qyjoyjc6m0agulp5ix7pznx4nhhm22" />
 	
 <?
@@ -101,7 +100,33 @@ js=d.createElement('script'); js.id=id;js.async=false;
 js.src='https://antisovetnic.ru/anti/'+escape(id);
 ref.parentNode.insertBefore(js, ref);}(document));
 </script>
-	<!--АНТИСОВЕТНИК-->  
+	<!--АНТИСОВЕТНИК-->
+
+    <!-- Roistat BEGIN CODE -->
+    <script>
+        window.onRoistatAllModulesLoaded = function () {
+            document.addEventListener('focusin', function(event) {
+                if (event.target.closest('.l-ss-c-host-node')) {
+                    window.roistat.emailtracking.enabled = false;
+                }
+            });
+            document.addEventListener('focusout', function(event) {
+                if (event.target.closest('.l-ss-c-host-node')) {
+                    window.roistat.emailtracking.enabled = true;
+                }
+            });
+        };
+    </script>
+    <script>window.roistatCookieDomain = 'krep-komp.ru';</script>
+    <script>
+        (function(w, d, s, h, id) {
+            w.roistatProjectId = id; w.roistatHost = h;
+            var p = d.location.protocol == "https:" ? "https://" : "http://";
+            var u = /^.*roistat_visit=[^;]+(.*)?$/.test(d.cookie) ? "/dist/module.js" : "/api/site/1.0/"+id+"/init?referrer="+encodeURIComponent(d.location.href);
+            var js = d.createElement(s); js.charset="UTF-8"; js.async = 1; js.src = p+h+u; var js2 = d.getElementsByTagName(s)[0]; js2.parentNode.insertBefore(js, js2);
+        })(window, document, 'script', 'cloud.roistat.com', 'e39376bd761820b5780e54eda70448e1');
+    </script>
+    <!-- Roistat END CODE -->
 
 <?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
 <?
