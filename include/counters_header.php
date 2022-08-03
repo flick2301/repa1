@@ -1,107 +1,15 @@
 <!-- Google Analitycs -->
- <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-69398243-1', 'auto');
-    function getRetailCrmCookie(name) {
-         var matches = document.cookie.match(new RegExp(
-             '(?:^|; )' + name + '=([^;]*)'
-         ));
-
-         return matches ? decodeURIComponent(matches[1]) : '';
-     }
-     ga('set', 'dimension1', getRetailCrmCookie('_ga'));
-
-   ga('require', 'displayfeatures');
-   ga('require', 'linkid', 'linkid.js');
-   var clientId='';
-   ga(function(tracker) {
-   clientId = tracker.get('clientId');
-   
-   ga('set', 'dimension2', clientId); });
-   ga('send', 'pageview');
-   <?
-   global $USER;
-   global $APPLICATION;
-   global $userEmail;
-   
-   $rsUser = CUser::GetByID($USER->GetId());
-	$arUser = $rsUser->Fetch();
-	$userEmail = $arUser["EMAIL"];
-   if(0)
-   {
-	   $queryUrl = 'https://team.krep-komp.ru/rest/1/rdgiynh922m6xmy9/crm.contact.list';
-		$data = array(
-			'filter' => array("PHONE" => $arUser["PERSONAL_PHONE"]),
-			'select' => array("ID")
-		);
-		$res = getContact($queryUrl, $data);
-	   ?>ga('set', 'userId', '<?=$res["result"][0]["ID"]?>');
-		
-	   <?
-   }else{
-	   ?>
-	   ga('set', 'userId', 'auto');
-			
-			<?
-   }
-	?>
-
-<!--Дополнение GA2-->
-/*ga(function(tracker) {
-    function guid() {
-      function s4() {
-        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-      }
-
-      result = '';
-
-      for(i=0; i<8; i++)
-        result += s4();
-
-      return result;
-    }
-});
-	
-   ga('set', 'dimension2', tracker.get('clientId'));
-   ga('set', 'dimension5', guid());*/
-<!--Дополнение GA2-->
-
-
-<!--Дополнение GA-->
-ga(function(tracker) {
-    function guid() {
-      function s4() {
-        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-      }
-
-      result = '';
-
-      for(i=0; i<8; i++)
-        result += s4();
-
-      return result;
-    }
-});
-
-   ga('set', 'dimension5', guid());
- <!--Дополнение GA--> 
-   
-      </script>
- <!-- /Google Analitycs -->
- 
-<!-- Global site tag (gtag.js) - Google Ads: 958495754 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-958495754"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-69398243-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'AW-958495754');
+  gtag('config', 'UA-69398243-1');
 </script>
+ <!-- /Google Analitycs -->
+ 
+
 
 
 <!-- Google Tag Manager -->
@@ -119,19 +27,7 @@ dataLayer.push({
 });
 <?endif;?>
 </script>
-<?if($APPLICATION->GetCurPage() == "/"):?>
-<!-- Criteo Homepage dataLayer -->
-<script>
-        var dataLayer = dataLayer || [];
-        dataLayer.push({  
-            'event': 'crto_homepage',
-            crto: {             
-                'email': '<?=$arUser["EMAIL"]?>' // может быть пустой строкой
-            }
-        });
-</script>
-<!-- END Criteo Homepage dataLayer -->
-<?endif;?>
+
 
 
 <!-- Yandex.Metrika counter -->
@@ -210,18 +106,6 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ct
 })();
 </script>
 
-
-
-
-
-
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W2W4XCZ');</script>
-<!-- End Google Tag Manager -->
 
 
 <?if(strstr($_SERVER['HTTP_HOST'], "pskov")):?>   
