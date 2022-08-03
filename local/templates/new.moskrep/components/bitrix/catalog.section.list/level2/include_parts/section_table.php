@@ -169,10 +169,12 @@ $intSectionID = $APPLICATION->IncludeComponent(
 					array(
 						"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 						"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-						"ELEMENT_SORT_FIELD" => $arParams["ELEMENT_SORT_FIELD"],
+						"ELEMENT_SORT_FIELD" => "SORT",
 						"ELEMENT_SORT_ORDER" => 'asc',
-						"ELEMENT_SORT_FIELD2" => $arParams["ELEMENT_SORT_FIELD2"],
+						"ELEMENT_SORT_FIELD2" => $arParams["ELEMENT_SORT_FIELD"],
 						"ELEMENT_SORT_ORDER2" => 'asc',
+						"ELEMENT_SORT_FIELD3" => $arParams["ELEMENT_SORT_FIELD2"],
+						"ELEMENT_SORT_ORDER3" => 'asc',
 						"PROPERTY_CODE" => ['*'],
 						"PROPERTY_CODE_MOBILE" => $arParams["LIST_PROPERTY_CODE_MOBILE"],
 						"SET_LAST_MODIFIED" => $arParams["SET_LAST_MODIFIED"],
@@ -295,6 +297,7 @@ $intSectionID = $APPLICATION->IncludeComponent(
 						'COMPATIBLE_MODE' => (isset($arParams['COMPATIBLE_MODE']) ? $arParams['COMPATIBLE_MODE'] : ''),
 						'EXTRA_FIELD' => (isset($arResult['SECTION']['UF_EXTRA_FIELD']) ? $arResult['SECTION']['UF_EXTRA_FIELD'] : ''),
 						'SECTIONS_LIST_TEMPLATE'=>(isset($arParams['SECTIONS_LIST_TEMPLATE']) ? $arParams['SECTIONS_LIST_TEMPLATE'] : ''),
+						'SET_SORT_MAIN'=> $arResult['SECTION']['UF_SET_SORT_MAIN'] ?? '0',
 
 
 		
