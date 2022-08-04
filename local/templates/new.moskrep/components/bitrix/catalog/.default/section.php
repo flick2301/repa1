@@ -24,6 +24,10 @@ if(!empty($sorting[0]['arFilters']['VALUE'])) {
 	$IPROPERTY  = $ipropValues->getValues();
 	if($IPROPERTY['ELEMENT_PAGE_TITLE']!='')
 		$APPLICATION->SetPageProperty('page_title', $IPROPERTY['ELEMENT_PAGE_TITLE']);
+	if($IPROPERTY['ELEMENT_META_TITLE']!='')
+    $APPLICATION->SetPageProperty('title', $IPROPERTY['ELEMENT_META_TITLE']);
+	if($IPROPERTY['ELEMENT_META_DESCRIPTION'])
+    $APPLICATION->SetPageProperty('description', $IPROPERTY['ELEMENT_META_DESCRIPTION']);
 }elseif(!empty($sorting[1]['arFilters']['VALUE']))
 {
 
@@ -31,6 +35,10 @@ if(!empty($sorting[0]['arFilters']['VALUE'])) {
 	$IPROPERTY  = $ipropValues->getValues();
 	if($IPROPERTY['ELEMENT_PAGE_TITLE']!='')
 		$APPLICATION->SetPageProperty('page_title', $IPROPERTY['ELEMENT_PAGE_TITLE']);
+	if($IPROPERTY['ELEMENT_META_TITLE']!='')
+    $APPLICATION->SetPageProperty('title', $IPROPERTY['ELEMENT_META_TITLE']);
+	if($IPROPERTY['ELEMENT_META_DESCRIPTION'])
+    $APPLICATION->SetPageProperty('description', $IPROPERTY['ELEMENT_META_DESCRIPTION']);
 
 }
 
