@@ -209,4 +209,15 @@ while($arSection = $db_list->GetNext()) {
 
 
 <?}?>
+
+<?php
+if(!empty($arResult["EGOR_SCRIPT_AR"]))
+{
+    ?>
+    <script type="application/ld+json">
+        <?=json_encode($arResult["EGOR_SCRIPT_AR"], JSON_UNESCAPED_UNICODE);?>
+    </script>
+    <?php
+}
+
 		
