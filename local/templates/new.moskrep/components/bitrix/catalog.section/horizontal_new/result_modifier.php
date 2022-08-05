@@ -14,6 +14,68 @@ use Bitrix\Main\Loader;
 $context = \Bitrix\Main\Application::getInstance()->getContext();
 $server = $context->getServer();
 
+$intCount = \Bitrix\Iblock\SectionTable::getList([
+    'select'=>['*'],
+    'filter'=>[
+        'IBLOCK_ID' => $arParams['IBLOCK_ID'],
+        'IBLOCK_SECTION_ID' => $arResult["ID"],
+        'ACTIVE'=>'Y'
+    ]]);
+
+if(!count($intCount->fetchAll()))
+{
+    //MAX цена
+    $db_price_max = CIBlockElement::GetList(
+        array("CATALOG_PRICE_9" => "ASC"),
+        array("IBLOCK_ID" => $arParams["IBLOCK_ID"],"IBLOCK_SECTION_ID"=>$arResult["ID"],"ACTIVE"=>"Y"),
+        false,
+        array(),
+        array()
+    );
+    while($ob_price_max = $db_price_max->GetNextElement())
+    {
+        $arPrices[] = $ob_price_max->GetFields();
+        if($ob_price_max->GetFields()['CATALOG_PRICE_9'])
+            (int) $pmax= $ob_price_max->GetFields()['CATALOG_PRICE_9'];
+    }
+
+//MIN цена
+    $db_price_min = CIBlockElement::GetList(
+        array("CATALOG_PRICE_9" => "DESC"),
+        array("IBLOCK_ID" => $arParams["IBLOCK_ID"],"SECTION_ID"=>$arResult["ID"],"ACTIVE"=>"Y"),
+        false,
+        array(),
+        array()
+    );
+    while($ob_price_min = $db_price_min->GetNextElement())
+    {
+        $arPrices[] = $ob_price_min->GetFields();
+        if($ob_price_min->GetFields()['CATALOG_PRICE_9'])
+            (int) $pmin= $ob_price_min->GetFields()['CATALOG_PRICE_9'];
+    }
+
+    $arEgor = [
+        "@context"=>"https://schema.org/",
+        "@type"=>"Product",
+        "name"=>$arResult['NAME'],
+        "image"=>$_SERVER[HTTP_HOST].$arResult['PICTURE']['SRC'],
+        "description"=>html_entity_decode($arResult['DESCRIPTION'], ENT_QUOTES, "UTF-8"),
+        "Organization"=>[
+            "@type"=>"Organization",
+            "name"=>"Интернет-магазин строительного крепежа «КРЕП-КОМП»"
+        ],
+        "offers"=>[
+            "@type"=>"AggregateOffer",
+            "priceCurrency"=>"RUB",
+            "offerCount"=>count($arPrices)/2,
+            "lowPrice"=>$pmin,
+            "highPrice"=>$pmax,
+        ]
+    ];
+    $arResult['EGOR_SCRIPT_AR']=$arEgor;
+
+}
+
 $http_host = $server->get('HTTP_HOST');
 $sub_domain = str_replace("krep-komp.ru", "", $http_host);
 
