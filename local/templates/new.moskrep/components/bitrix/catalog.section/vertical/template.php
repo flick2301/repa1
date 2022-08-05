@@ -278,3 +278,13 @@ while($arSection = $db_list->GetNext()) {
 if($arResult['ORIGINAL_PARAMETERS']['SECTION_CODE']=='kartridzh')
     $APPLICATION->IncludeFile(SITE_DIR."/include/calculator.php", array("SHOW_BORDER" => true, "MODE"=>"html"));
 ?>
+
+<?php
+if(!empty($arResult["EGOR_SCRIPT_AR"]))
+{
+    ?>
+    <script type="application/ld+json">
+        <?=json_encode($arResult["EGOR_SCRIPT_AR"], JSON_UNESCAPED_UNICODE);?>
+    </script>
+<?php
+}
