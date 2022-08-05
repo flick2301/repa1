@@ -4,6 +4,8 @@
 	}
 	
 $APPLICATION->SetTitle("Адреса ".((count($newResult[581]) && count($newResult)==1 ? "" : "магазинов и "))."точек выдачи в {{city}}");
+$APPLICATION->SetPageProperty("basket", "<header class=\"basic-layout__module page-heading\"><h1>Адреса ".((count($newResult[581]) && count($newResult)==1 ? "" : "магазинов и "))."точек выдачи в {{city}}</h1></header>");
+echo '<br>';
 	
 asort($newResult);	
 $newResultFinite = Array();
