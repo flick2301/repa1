@@ -61,7 +61,7 @@ if(!count($intCount->fetchAll()))
         "image"=>$_SERVER[HTTP_HOST].$arResult['PICTURE']['SRC'],
         "description"=>html_entity_decode($arResult['DESCRIPTION'], ENT_QUOTES, "UTF-8"),
         "Organization"=>[
-            "@type"=>"Organization",
+            "@type"=>"Brand",
             "name"=>"Интернет-магазин строительного крепежа «КРЕП-КОМП»"
         ],
         "offers"=>[

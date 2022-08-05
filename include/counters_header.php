@@ -89,7 +89,7 @@ dataLayer.push({
   "url": "https://krep-komp.ru/",
   "sameAs": [
    "https://vk.com/krep_komp",
-   "https://www.youtube.com/channel/UCOKXuIbajRZpYJ4uShRzMYw",
+   "https://www.youtube.com/channel/UCOKXuIbajRZpYJ4uShRzMYw"
    
    
   ]
