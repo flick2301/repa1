@@ -40,13 +40,13 @@ function globalGetTitle($title = "", $template="new.moskrep") {
 	if($template == "new.moskrep")
 	{
 		echo "<!--page-heading-->
-			<header class=\"basic-layout__module page-heading\">             
+			<div class=\"basic-layout__module page-heading\">             
 			<h1>{$title}"; 
 			
 		if (!$title) echo $APPLICATION->GetTitle();
 			
 		echo "</h1>
-            </header>
+            </div>
 			<!--page-heading-->";
 	}elseif($template == "krep-komp")
 	{

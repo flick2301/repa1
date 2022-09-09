@@ -2024,6 +2024,7 @@ img.intro-slider__image {
 }
 .top__basket span {
 	font-size: 12px!important;
+	white-space: nowrap;
 }
 .popular__offer {
 	font-size: 12px!important;

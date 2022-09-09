@@ -93,7 +93,7 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 	<?if($total_discount_price):?>
 	<div class="wholesale-baskte-block__sale">Оптовая скидка:&nbsp;<b>- <?=number_format($total_discount_price, 2, '.', ' ');?> ₽</b></div>
 	<?endif;?>
-	<div class="wholesale-baskte-block__sum"><?=$arResult['PRODUCTS'];?> на сумму:&nbsp;<b><?=number_format($arResult['TOTAL_PRICE'], 2, '.', ' ');?> ₽</b></div>
+	<div class="wholesale-baskte-block__sum"><?=$arResult['PRODUCTS'];?> на сумму:&nbsp;<b><br /><?=number_format($arResult['TOTAL_PRICE'], 2, '.', ' ');?> ₽</b></div>
 	</div>			
 		
 		

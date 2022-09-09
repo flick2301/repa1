@@ -27,7 +27,7 @@ $(document).ready(function() {
 			$.cookie("geo_id", $(this).data().value,{expires:365, path:'/', domain:'krep-komp.ru',secure: true});
 			
 			//console.log($(this).data());
-			window.location.href = 'https://'+$(this).data().domain+location.pathname;
+			window.location.href = 'https://'+$(this).data().domain+location.pathname+location.search;
       
 			$('#geolocation').slideToggle(0);
 			return false; 

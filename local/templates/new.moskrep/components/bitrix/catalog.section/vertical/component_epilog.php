@@ -7,8 +7,10 @@ $ipropValues = new \Bitrix\Iblock\InheritedProperty\SectionValues($arParams["IBL
 $IPROPERTY  = $ipropValues->getValues();
 
 $APPLICATION->SetPageProperty('title', $IPROPERTY['SECTION_META_TITLE']);
-$APPLICATION->SetPageProperty('description', $IPROPERTY['SECTION_META_DESCRIPTION']);
-$APPLICATION->SetPageProperty('keywords', $IPROPERTY['SECTION_META_KEYWORDS']);
+if(empty($APPLICATION->GetPageProperty('description')))
+	$APPLICATION->SetPageProperty('description', $IPROPERTY['SECTION_META_DESCRIPTION']);
+if(empty($APPLICATION->GetPageProperty('keywords')))
+	$APPLICATION->SetPageProperty('keywords', $IPROPERTY['SECTION_META_KEYWORDS']);
 
 if($arResult["UF_META_TITLE_MSK"] && $_SERVER['HTTP_HOST'] == 'krep-komp.ru')
 {

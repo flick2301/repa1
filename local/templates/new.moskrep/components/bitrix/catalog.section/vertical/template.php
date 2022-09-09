@@ -11,12 +11,15 @@
  */
 global $APPLICATION;
 global $DEFAULT_STORE_ID;
+       
 ?>
 <?include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");?>
 <?$ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];?>
 
 <?if(!$_POST['ENUM_LIST']['ELEMENTS'] && !$arParams["DISABLE_HEADER"]=='Y'){?>
-<?$APPLICATION->SetPageProperty('title', $arResult["NAME"].", цена - купить в интернет-магазине в Москве");?>
+<?
+if(empty($APPLICATION->GetPageProperty('title')))
+	$APPLICATION->SetPageProperty('title', $arResult["NAME"].", цена - купить в интернет-магазине в Москве");?>
 
 <?if(count($arResult['RELINK'])):?>
 <?php $this->SetViewTarget('RELINK'); ?>

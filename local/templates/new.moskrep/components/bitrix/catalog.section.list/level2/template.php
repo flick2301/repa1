@@ -15,8 +15,6 @@ global $filterObj;
 $request = $context->getRequest();
 $requestUri = $request->getRequestUri();
     
-    
-    
 
 ?>
 
@@ -38,7 +36,6 @@ $requestUri = $request->getRequestUri();
 <?endif;?>
 
 <?if($arResult['REFERENCE']['ITEM']['ID']!=''):?>
-
 
     
 <?$APPLICATION->SetPageProperty('url_canon_relink', 'Y'); 
@@ -361,6 +358,7 @@ $requestUri = $request->getRequestUri();
 			  $h1_section = $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] ? $arResult['SECTION']['IPROPERTY_VALUES']['SECTION_PAGE_TITLE'] : $arResult["SECTION"]["NAME"];
 		  }
 		  ?>
+		 
 <?globalGetTitle($h1_section)?>
 
 

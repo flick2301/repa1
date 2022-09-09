@@ -13,7 +13,8 @@ $ral_in_ar = $arResult['ITEMS'][10]['PROPERTIES']["TSVET"]["VALUE"];
 if($arParams['FOR_SEO']!='Y'){
     
 
-    $APPLICATION->SetPageProperty('title', $arResult["NAME"].", цена - купить в интернет-магазине в Москве");
+    if(empty($APPLICATION->GetPageProperty('title')))
+		$APPLICATION->SetPageProperty('title', $arResult["NAME"].", цена - купить в интернет-магазине в Москве");
 
     $clock = date('G');
 	

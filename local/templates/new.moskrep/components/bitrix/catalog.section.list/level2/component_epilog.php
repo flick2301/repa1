@@ -9,7 +9,8 @@ global $APPLICATION;
 global $sec_builder;
 global $filterObj;
 
-$arResult['REFERENCE']['ITEM'] = $filterObj->arResult['REFERENCE']['ITEM'];
+$filt = new \CatalogHelpers\FilterButtonsBuilder('section.list', $arResult, $arResult['SECTION']['ID']);
+$arResult['REFERENCE']['ITEM'] = $filt->arResult['REFERENCE']['ITEM'];
 
 
 if($arResult['REFERENCE']['ITEM']['ID']!=''):
@@ -54,10 +55,8 @@ if($arResult['REFERENCE']['ITEM']['ID']!=''):
 		}
     endif;
 
-
-
 if($arResult['REFERENCE']['ITEM']['ID']=='' && $arResult["SECTION"]["ID"]==''){
-    @define("ERROR_404","Y");
+	@define("ERROR_404","Y");
 	CHTTP::SetStatus("404 Not Found");
 	$APPLICATION->SetPageProperty('title', "404 - HTTP not found");
 }

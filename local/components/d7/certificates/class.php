@@ -3,6 +3,11 @@ use Bitrix\Main\Loader,
     Bitrix\Main\Localization\Loc,
     Bitrix\Iblock\ElementTable,
     Bitrix\Iblock;
+	
+	use Bitrix\Main\Application, 
+    Bitrix\Main\Context, 
+    Bitrix\Main\Request, 
+    Bitrix\Main\Server;
 
 
 
@@ -26,9 +31,23 @@ class classCertificates extends CBitrixComponent
 	{
 		global $APPLICATION;
 		
+		$context = Application::getInstance()->getContext();
+		$server = $context->getServer();
+		$arFolder = explode("/", $server->getRequestUri());
+		array_pop($arFolder);
+		array_pop($arFolder);
+		if(!empty($arFolder[1]))
+			$folder = implode("/", $arFolder);
+		else
+			$folder = $this->arParams["SEF_FOLDER"];
+		
+		
+		
+		
+		
 	    $arDefaultUrlTemplates404 = array(
 	       "sections" => "",
-	       "items" => "#SECTION_CODE_PATH#/",
+		   "items" => "#SECTION_CODE_PATH#/",
         );
 
         $arComponentVariables = array(
@@ -38,16 +57,17 @@ class classCertificates extends CBitrixComponent
 
         if($this->arParams["SEF_MODE"] == "Y")
         {
+			
 			$arUrlTemplates = CComponentEngine::MakeComponentUrlTemplates($arDefaultUrlTemplates404, $this->arParams["SEF_URL_TEMPLATES"]);
 	       
 	        $arVariables = array();
-	
+			
 	        $componentPage = CComponentEngine::ParseComponentPath(
-				$this->arParams["SEF_FOLDER"],
+				$folder."/",
 				$arUrlTemplates,
 				$arVariables
 			);
-		
+			
 			$b404 = false;
 			
 	        if(!$componentPage)
@@ -57,15 +77,14 @@ class classCertificates extends CBitrixComponent
 	        }
 			
 			
-			
-	
+				
 	        $this->arResult = array(
 				"FOLDER" => $this->arParams["SEF_FOLDER"],
 				"URL_TEMPLATES" => $arUrlTemplates,
 				"VARIABLES" => $arVariables,
                 "VARS" => $componentPage
                 );
-	
+				
         }
         else
         {
@@ -93,7 +112,8 @@ class classCertificates extends CBitrixComponent
 				"VARIABLES" => $arVariables,
 	        );
         }
-            
+		
+		            
             
 		//ЕСЛИ ЧПУ ВЫКЛЮЧЕН	
 		if ($this->arResult['VARIABLES']['SECTION_ID'] && $this->arParams['ADD_SECTIONS_CHAIN'])
@@ -121,16 +141,27 @@ class classCertificates extends CBitrixComponent
         //ЕСЛИ С ЧПУ  
         if($componentPage=='items')
 		{
-			\Bitrix\Main\Diag\Debug::dumpToFile($this->arResult['VARIABLES'], "", '/upload/a.txt');		
+			
             $arFilter = array('IBLOCK_ID' => $this->arParams['IBLOCK_ID'], "CODE"=>$this->arResult['VARIABLES']["SECTION_CODE_PATH"]);
             $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array("*", "UF_*"));
 					
             if($arSection = $rsSections->GetNext())
             {
 				
-                $this->arResult['SECTION']= $arSection; 
+                 $this->arResult['SECTION']= $arSection; 
                 $ipropValues = new Iblock\InheritedProperty\SectionValues($this->arParams['IBLOCK_ID'], $arSection['ID']);
                 $this->arResult['IPROP_VALUES'] = $ipropValues->getValues();
+                    
+                $arSelect = Array("*");
+				$arFilter = Array("IBLOCK_ID"=>$this->arParams['IBLOCK_ID'], "SECTION_ID"=>$this->arResult['SECTION']['ID']);
+                $res =CIBlockSection::GetList(Array(), $arFilter);
+                while ($sect = $res->GetNext())
+                    {
+						
+                       		$this->arResult['SECTIONS'][] = $sect;
+							
+                        
+                    }
                     
                 $arSelect = Array("*");
                 $arFilter = Array("IBLOCK_ID"=>$this->arParams['IBLOCK_ID'], "SECTION_CODE"=>$this->arResult['VARIABLES']["SECTION_CODE_PATH"]);
@@ -154,12 +185,12 @@ class classCertificates extends CBitrixComponent
 			}
                    
         }else{
-                    $arFilter = array('IBLOCK_ID' => $this->arParams['IBLOCK_ID']);
+                    $arFilter = array('IBLOCK_ID' => $this->arParams['IBLOCK_ID'], 'TOP_DEPTH'=>0);
                     $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter);
                     while ($arSection = $rsSections->GetNext())
                     {
-                       
-                        $this->arResult['SECTIONS'][] = $arSection;
+						if($arSection['DEPTH_LEVEL']==1)
+                       		$this->arResult['SECTIONS'][] = $arSection;
                         
                     }  
                 }			   

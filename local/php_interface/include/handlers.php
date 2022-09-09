@@ -598,10 +598,6 @@ if ($deliveryInfo = $resultDelivery->fetch()) $deliveryGroupID = $deliveryInfo["
 		$arFields["SALE_EMAIL"] = 'spb@krep-komp.ru';
 		$arFields["SALE_PHONE"] = '8 812 309-95-45';
 	
-	}elseif($_SERVER['HTTP_HOST']=='kazan.krep-komp.ru'){
-		$arFields["SALE_EMAIL"] = 'kazan@krep-komp.ru';
-		$arFields["SALE_PHONE"] = '8 843 206-07-00';
-	
 	}elseif($_SERVER['HTTP_HOST']=='nizhniy-novgorod.krep-komp.ru'){
 		$arFields["SALE_EMAIL"] = 'nn@krep-komp.ru';
 		$arFields["SALE_PHONE"] = '8 831 219-95-16';
@@ -1206,6 +1202,9 @@ function OnBeforeEventAddHandler(&$event, &$lid, &$arFields)
 if ($event == 'USER_PASS_REQUEST' || $event == 'NEW_USER'){
 	$arFields["SERVER_NAME"] = $_SERVER['HTTP_HOST'];
 	//file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', $event."-------------------".print_r($arFields, true));
+	if ($event == 'USER_PASS_REQUEST') {			
+		//CEvent::Send("USER_PASS_REQUEST", SITE_ID, $arFields);	
+	}
 }
 }
 

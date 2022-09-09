@@ -31,7 +31,7 @@ if($arParams['REFERENCE_CHECK']=='Y'):
 
     $filterObj = new \CatalogHelpers\FilterButtonsBuilder('section.list', $arResult, $arResult['SECTION']['ID']);
     $arResult = $filterObj->arResult;
-    
+	    
 
 endif;
 
