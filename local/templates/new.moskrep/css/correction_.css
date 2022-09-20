@@ -2544,6 +2544,21 @@ element.style {
 
 
 
+.sidebar__profile {
+	overflow-x: hidden;
+	position: relative;
+	z-index: 1;
+}
+.sidebar__profile:hover {
+	overflow-x: visible;
+}
+.sidebar__profile:hover .sidebar__name{
+	background: #f6f4fe;
+	padding-right: 10px;
+}
+
+
+
 
 
 

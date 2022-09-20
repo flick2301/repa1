@@ -1201,8 +1201,15 @@ function OnBeforeEventAddHandler(&$event, &$lid, &$arFields)
 {
 if ($event == 'USER_PASS_REQUEST' || $event == 'NEW_USER'){
 	$arFields["SERVER_NAME"] = $_SERVER['HTTP_HOST'];
-	//file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', $event."-------------------".print_r($arFields, true));
-	if ($event == 'USER_PASS_REQUEST') {			
+	if ($event == 'NEW_USER') {
+			mb_internal_encoding("UTF-8");
+			$arFields["NAME"] = preg_replace("/[^А-Яа-я]+/u", "", $arFields["NAME"]);
+			$arFields["LAST_NAME"] = preg_replace("/[^А-Яа-я]+/u", "", $arFields["LAST_NAME"]);
+			$arFields["NAME"] = mb_strimwidth($arFields["NAME"], 0, 15, "", "UTF-8");
+			$arFields["LAST_NAME"] = mb_strimwidth($arFields["LAST_NAME"], 0, 25, "", "UTF-8");
+			//file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', $event."-------------------".print_r($arFields, true));
+		}
+	elseif ($event == 'USER_PASS_REQUEST') {			
 		//CEvent::Send("USER_PASS_REQUEST", SITE_ID, $arFields);	
 	}
 }
