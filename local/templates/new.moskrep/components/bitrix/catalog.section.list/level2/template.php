@@ -403,15 +403,18 @@ elseif($arParams['TYPE_TEMPLATE']!='BOTTOM')
     foreach ($arResult['SECTIONS'] as &$arSection)
     {
     ?>
-		<div class="catalog-feed__item catalog-feed__item__withpic <?if(!$arSection['DETAIL_PICTURE']):?>catalog-feed__item__white<?endif?>">
+		<div class="catalog-newcard <?if(!$arSection['DETAIL_PICTURE']):?>catalog-newcard_white<?endif?>">
 		<!--catalog-card-->
-        <section class="catalog-card">
-            <div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($arSection['NAME']))?>');"><?=$arSection['UF_SHORT_NAME'] ? $arSection['UF_SHORT_NAME'] : $arSection['NAME']?></a></div>
-                <div class="catalog-card__cover <?if(!$arSection['DETAIL_PICTURE']):?>catalog-card__cover__white<?endif?>">
-                    <img class="catalog-card__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
-                </div>
-            
-        </section>
+        <a class="catalog-newcard__href" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($arSection['NAME']))?>');" href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>'>
+		
+		<span class="catalog-newcard__img">
+		<img class="catalog-newcard__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
+		</span>
+		
+		<span class="catalog-newcard__text">
+		<?=$arSection['UF_SHORT_NAME'] ? $arSection['UF_SHORT_NAME'] : $arSection['NAME']?>
+		</span>  
+        </a>
 		<!--catalog-card-->
 		</div>
     <?}?>
@@ -434,17 +437,22 @@ elseif($arParams['TYPE_TEMPLATE']!='BOTTOM')
     if(count($arResult['SORTING']['ROOT_ELEMENTS'])){
         foreach($arResult['SORTING']['ROOT_ELEMENTS'] as $dop_section){
             ?>
-        <div class="catalog-feed__item catalog-feed__item__withpic <?if($dop_section['DETAIL_PICTURE']):?>catalog-feed__item__white<?endif?>">
+		<div class="catalog-newcard">
 		<!--catalog-card-->
-        <section class="catalog-card">
-            <div class="div_flex_h3 catalog-card__title"><a href="<?=($dop_section['LINK_TARGET']['VALUE']) ? $dop_section['LINK_TARGET']['VALUE'] : $dop_section['CODE'].'/';?>" target="_self" title='<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$dop_section['H1']["VALUE"]?></a></div>
-                <div class="catalog-card__cover <?if($dop_section['DETAIL_PICTURE']):?>catalog-card__cover__white<?endif?>">
-                    <img class="catalog-card__image" width="262" height="197" src="<?=$dop_section['PICTURE']['src']?>" alt="<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
-                </div>
-            
-        </section>
+        <a class="catalog-newcard__href" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($dop_section['H1']["VALUE"]))?>');" href="<?=($dop_section['LINK_TARGET']['VALUE']) ? $dop_section['LINK_TARGET']['VALUE'] : $dop_section['CODE'].'/';?>" target="_self" title='<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>'>
+		
+		<?if($dop_section['PICTURE']['src']):?>
+		<span class="catalog-newcard__img">
+		<img class="catalog-newcard__image"  src="<?=$dop_section['PICTURE']['src']?>" alt="<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
+		</span>
+		<?endif?>
+				
+		<span class="catalog-newcard__text catalog-newcard__text_canter">
+		<?=$dop_section['H1']["VALUE"]?>
+		</span>  
+        </a>
 		<!--catalog-card-->
-		</div>
+		</div>		
     <?php
             
         }
