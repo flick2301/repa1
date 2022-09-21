@@ -467,7 +467,7 @@ elseif($arParams['TYPE_TEMPLATE']!='BOTTOM')
 
 	
 		<!--category-blocknew-->
-            <div class="basic-layout__module category-blocknew">
+            <div class="basic-layout__module category-blocknew category-blocknew_nomargin">
 	<?
 	//Если по шаблону категории должны быть под таблицей
 	if($arParams['TYPE_TEMPLATE']=='BOTTOM')
@@ -506,7 +506,7 @@ if($arResult['SORTING']['SECTION_ID']){
     foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
         if($sortSection['TOP']){
         ?>
-		<div class="basic-layout__module category-blocknew">
+		<div class="basic-layout__module category-blocknew category-blocknew_nomargin">
 			<div class="div_h3 category-blocknew__title"><span><?=$sortSection["NAME"]?></span></div>
 			<ul class="category-blocknew__list">
 			<?$i=0;?>
@@ -516,7 +516,7 @@ if($arResult['SORTING']['SECTION_ID']){
 
             ?>
 
-				<li class="category-blocknew__item" >
+				<li class="category-blocknew__item category-blocknew__newitem" >
                     <a href="<?=$link?>" <?=($sort_item['LINK_TARGET']['VALUE']) ? "target='_self'" : "";?> class="category-block__link <?=$sort_item['IS_ACTIVE']?>">
 						<?=$sort_item['NAME']?> <?=$sort_item['sef_filter']['VALUE_XML_ID']?>
 					</a>

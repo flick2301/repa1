@@ -525,7 +525,12 @@ ol.tech li {
 	text-decoration: none;
 }
 .basic-layout__module+.basic-layout__module {
-	margin-bottom: 20px;
+	/*margin-bottom: 20px;*/
+	margin-bottom: 0;
+}
+.category-blocknew.category-blocknew_nomargin {
+    margin-top: 0;
+	margin-bottom: 0;
 }
 .fancybox-button--close-new {
 	display: inline-block;
@@ -2446,6 +2451,7 @@ main {
 	font-size: 20px;
 	line-height: 24px;
 	overflow: hidden;
+	display: none;
 }
 .category-blocknew .category-blocknew__title span {
 	display: block;
@@ -2508,6 +2514,25 @@ main {
 	padding: 8px 35px 9px 35px;	
 	background: #f0f0f0;
 	border: 1px solid #c4c4c4;	
+}
+.category-blocknew .category-blocknew__list .category-blocknew__newitem {
+    display: block;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+.category-blocknew .category-blocknew__list .category-blocknew__newitem a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    padding: 7px 10px 6px;
+    background: #f0f0f0;
+    border: 1px solid #c4c4c4;
 }
 .category-blocknew .category-blocknew__list .category-blocknew__item a:hover {
 	background: rgba(79, 54, 227, 0.2);

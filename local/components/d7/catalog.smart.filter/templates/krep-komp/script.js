@@ -913,4 +913,9 @@ $(document).ready(function(){
 	$('.row.bx-filter-parameters-box-container').each(function(i,elem) {
 		//if(parseInt($(elem).html().length)==280) $(elem).parent().hide(); //Костыль на скрытие пустых пунктов
 	});	
+	$('.bx-filter-parameters-box.bx-active').each(function(i,elem) {
+		$(this).children('.bx-filter-parameters-box-title').children('.s18-title').trigger('click');
+		//$(this).children('.bx-filter-parameters-box-title').children('.s18-title').addClass('open');
+	});
+	
 });
