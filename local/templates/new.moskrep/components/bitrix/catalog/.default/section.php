@@ -253,7 +253,8 @@ if($count_sections || !empty($subsections) || !empty($uf_fields["UF_MATERIAL"]))
     $nav = CIBlockSection::GetNavChain(false, $arCurSection["ID"]);
     $arSec = $nav->GetNext();
 
-    if ($isVerticalFilter==='Y' || !in_array($arSec['ID'], $arParams["VIBOR_CATALOG_TABLE"]) || $temple == 'vertical')
+	$request = \Bitrix\Main\Context::getCurrent()->getRequest();
+    if ($isVerticalFilter==='Y' || !in_array($arSec['ID'], $arParams["VIBOR_CATALOG_TABLE"]) || $temple == 'vertical' || $request->get('TEMPLATE') == 'vertical')
 	include($_SERVER["DOCUMENT_ROOT"]."/".$this->GetFolder()."/section_vertical.php");
     else
 	include($_SERVER["DOCUMENT_ROOT"]."/".$this->GetFolder()."/section_horizontal.php");

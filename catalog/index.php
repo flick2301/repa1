@@ -220,6 +220,7 @@ $APPLICATION->SetPageProperty("component", "catalog");
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Товары",
 		"PAGE_ELEMENT_COUNT" => "15",
+        "SELECT_PAGE_TEMPLATE"=>"Y",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRICE_CODE" => array(
 			0 => "Распродажа",

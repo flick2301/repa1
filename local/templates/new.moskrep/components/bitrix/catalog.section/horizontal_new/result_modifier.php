@@ -12,6 +12,7 @@ global $filterObj;
 use Bitrix\Main\Loader;
 
 $context = \Bitrix\Main\Application::getInstance()->getContext();
+$request = \Bitrix\Main\Context::getCurrent()->getRequest();
 $server = $context->getServer();
 
 $intCount = \Bitrix\Iblock\SectionTable::getList([

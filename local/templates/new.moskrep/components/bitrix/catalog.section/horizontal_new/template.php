@@ -5,6 +5,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 global $APPLICATION;
 global $DEFAULT_STORE_ID;
 global $filterObj;
+global $request;
 include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 $ral_in_ar = $arResult['ITEMS'][10]['PROPERTIES']["TSVET"]["VALUE"];
 
@@ -138,6 +139,12 @@ if($arResult['SORTING']['SECTION_ID'] && $arParams['DISPLAY_FILTER_BUTTONS']=='Y
           <option value="<?=$page_element_count?>" <?=($arParams['PAGE_ELEMENT_COUNT'] == $page_element_count) ? 'selected="selected"' : '';?>>Показывать: по <?=$page_element_count?></option>
 	<?}?>
 </select>
+    <?if($arParams["SELECT_PAGE_TEMPLATE"]!="Y"){?>
+        <select name="select_template" id="select_template">
+            <option value="horizontal_new" selected="selected">Елементы: Таблицей</option>
+            <option value="vertical" >Елементы: Блоками</option>
+        </select>
+    <?}?>
 </div>
 </div>
 

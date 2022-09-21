@@ -167,7 +167,10 @@ $(".amount__select :contains("+$('.amount__info').text()+")").attr("selected", "
 
 $(document).on('change', '#page_element_count', function(event) {
 	location.href = location.pathname + '?SIZEN_1=' + $('#page_element_count option:selected').val();
-});   
+});
+	$(document).on('change', '#select_template', function(event) {
+		location.href = location.pathname + '?TEMPLATE=' + $('#select_template option:selected').val();
+	});
     
 
 $(".amount__select :contains("+$('.amount__info').text()+")").attr("selected", "selected");

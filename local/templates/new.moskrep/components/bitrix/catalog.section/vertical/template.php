@@ -11,6 +11,8 @@
  */
 global $APPLICATION;
 global $DEFAULT_STORE_ID;
+
+$request = \Bitrix\Main\Context::getCurrent()->getRequest();
        
 ?>
 <?include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");?>
@@ -96,6 +98,12 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
           <option value="<?=$page_element_count?>" <?=($arParams['PAGE_ELEMENT_COUNT'] == $page_element_count) ? 'selected="selected"' : '';?>>Показывать: по <?=$page_element_count?></option>
 	<?}?>
 </select>
+    <?if($arParams["SELECT_PAGE_TEMPLATE"]!="Y"){?>
+        <select name="select_template" id="select_template">
+            <option value="horizontal_new">Елементы: Таблицей</option>
+            <option value="vertical" selected="selected">Елементы: Блоками</option>
+        </select>
+    <?}?>
 </div>
 </div>
 
