@@ -162,7 +162,9 @@ $intCount = CIBlockSection::GetCount(
 	//$template = "horizontal_new";
 	
 }
-
+$request = \Bitrix\Main\Context::getCurrent()->getRequest();
+if(!empty($request->get('TEMPLATE')))
+	$template = $request->get('TEMPLATE');
 $intSectionID = $APPLICATION->IncludeComponent(
 					"bitrix:catalog.section",
 					$template,
