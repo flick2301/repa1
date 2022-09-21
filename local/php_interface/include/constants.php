@@ -18,6 +18,7 @@ define("ID_SALE_PRICE", "Распродажа");
 
 define("CATALOG_IBLOCK_ID", "17");
 const SORTING_IBLOCK_ID = '18';
+const ARTICLES_IBLOCK_ID = 16;
 define("SALE_SECTION_ID", "1655");
 define("NUMBER_SALE_PRICE", "8");
 define("NUMBER_BASE_PRICE", "9");
@@ -72,3 +73,4 @@ const CURRENT_CITY_CODE_SPB = "0000103664";
 const GEOLOCATION_MOSCOW = "49002";
 const PAGE_ELEMENT_COUNT = Array(20, 35, 50); 
 const PAGE_ELEMENT_COUNT_NEW = Array(24, 36, 48);
+const RUS_DATE = Array('январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь');

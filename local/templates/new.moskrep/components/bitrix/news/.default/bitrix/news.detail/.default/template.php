@@ -14,8 +14,6 @@ $this->setFrameMode(true);
 $scheme = CMain::isHttps() ? 'https' : 'http';
 ?>
 
-<?globalGetTitle()?>			
-			
 <?php
 if($APPLICATION->GetCurPage()!=$arResult["~DETAIL_PAGE_URL"])
 {
@@ -24,57 +22,87 @@ if($APPLICATION->GetCurPage()!=$arResult["~DETAIL_PAGE_URL"])
 
     $APPLICATION->SetPageProperty('title', "404 - HTTP not found");
 }
+$month = date('n')-1;
+$date_rus = Array('января', 'февраля', 'марта', 'апреля', 'майя', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря');
 ?>
             <!--simple-article-->
             <div class="basic-layout__module simple-article" itemscope itemtype="http://schema.org/Article">
-               <div class="simple-article__content wysiwyg-block">
+               <div class="blog--detail">
+                   <div class="blog__top">
+                       <div class="blog__category" style="background-color:#552FEC;color:#fff;">
+                           <?=$arResult["SECTION"]["PATH"][0]["NAME"];?>
+                       </div>
+                       <h1><?=$arResult["NAME"];?></h1>
+                       <div class="blog__botside">
+                           <div class="blog__data"><?php echo date('d ').$date_rus[$month].' '.date('Y');?></div>
+                           <div class="blog__view"><?=$arResult["SHOW_COUNTERS"];?></div>
+                           <!-- Длительность чтения статьи
+                           <div class="blog__time">10 мин.</div>-->
+                       </div>
+                   </div>
+                   <div class="blog__bottom">
+                       <div class="blog__content">
+                           <?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arResult["DETAIL_PICTURE"])):?>
+                               <p itemscope itemprop="image" itemtype="http://schema.org/ImageObject"><img itemprop="url contentUrl"
+                                                                                                           class="blog__images"
+                                                                                                           border="0"
+                                                                                                           src="<?=$arResult["DETAIL_PICTURE"]["SRC"]?>"
+                                                                                                           width="<?=$arResult["DETAIL_PICTURE"]["WIDTH"]?>"
+                                                                                                           height="<?=$arResult["DETAIL_PICTURE"]["HEIGHT"]?>"
+                                                                                                           alt="<?=$arResult["DETAIL_PICTURE"]["ALT"]?>"
+                                                                                                           title="<?=$arResult["DETAIL_PICTURE"]["TITLE"]?>"
+                                   />
+                                   <meta itemprop="url" content="<?=$scheme?>://<?=$_SERVER['HTTP_HOST']?><?=$arResult["DETAIL_PICTURE"]["SRC"]?>">
+                                   <meta itemprop="width" content="<?=$arResult["DETAIL_PICTURE"]["WIDTH"]?>">
+                                   <meta itemprop="height" content="<?=$arResult["DETAIL_PICTURE"]["HEIGHT"]?>">
+                               </p>
+                           <?endif?>
+                           <div class="blog__content__wrapper">
+                               <div class="blog__socials">
+                                   <?
+                                   $APPLICATION->IncludeComponent("bitrix:main.share", "left", array(
+                                       "HANDLERS" => $arParams["SHARE_HANDLERS"],
+                                       "PAGE_URL" => $arResult["~DETAIL_PAGE_URL"],
+                                       "PAGE_TITLE" => $arResult["~NAME"],
+                                       "SHORTEN_URL_LOGIN" => $arParams["SHARE_SHORTEN_URL_LOGIN"],
+                                       "SHORTEN_URL_KEY" => $arParams["SHARE_SHORTEN_URL_KEY"],
+                                       "HIDE" => $arParams["SHARE_HIDE"],
+                                   ),
+                                       $component,
+                                       array("HIDE_ICONS" => "Y")
+                                   );
+                                   ?>
+                               </div>
 
-	<?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arResult["DETAIL_PICTURE"])):?>
-		<p itemscope itemprop="image" itemtype="http://schema.org/ImageObject"><img itemprop="url contentUrl"
-			class="detail_picture"
-			border="0"
-			src="<?=$arResult["DETAIL_PICTURE"]["SRC"]?>"
-			width="<?=$arResult["DETAIL_PICTURE"]["WIDTH"]?>"
-			height="<?=$arResult["DETAIL_PICTURE"]["HEIGHT"]?>"
-			alt="<?=$arResult["DETAIL_PICTURE"]["ALT"]?>"
-			title="<?=$arResult["DETAIL_PICTURE"]["TITLE"]?>"
-			/>
-			<meta itemprop="url" content="<?=$scheme?>://<?=$_SERVER['HTTP_HOST']?><?=$arResult["DETAIL_PICTURE"]["SRC"]?>">
-			<meta itemprop="width" content="<?=$arResult["DETAIL_PICTURE"]["WIDTH"]?>">
-			<meta itemprop="height" content="<?=$arResult["DETAIL_PICTURE"]["HEIGHT"]?>">
-			</p>
-	<?endif?>
-<div itemprop="articleBody">	
-	<?if(strlen($arResult["DETAIL_TEXT"])>0):?>
-		<?echo str_replace(Array("<p>", "</p>"), Array("", ""), $arResult["DETAIL_TEXT"]);?>
-	<?else:?>
-		<?echo $arResult["PREVIEW_TEXT"];?>
-	<?endif?>
-</div>	
+                               <div class="blog__content__bottom">
+                                   <?if(strlen($arResult["DETAIL_TEXT"])>0):?>
+                                       <?echo str_replace(Array("<p>", "</p>"), Array("", ""), $arResult["DETAIL_TEXT"]);?>
+                                   <?else:?>
+                                       <?echo $arResult["PREVIEW_TEXT"];?>
+                                   <?endif?>
+                               </div>
+                           </div>
+
+                       </div>
+                       <div class="blog__rightside">
+                           <div class="blog__substence">
+                               <div class="blog__substence__name">Содержание</div>
+                               <div class="blog__substence__list">
+                                   <? for($i=0;$i<count($arResult['PROPERTIES']['links']['VALUE']);$i++)
+                                       {?>
+                                   <a class="blog__substence__link" href="#t<?=$i+1;?>">
+                                       <?=$arResult['PROPERTIES']['links']['VALUE'][$i];?>
+                                   </a>
+                                  <?}?>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+
+
+
 	<?
-	if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y")
-	{
-		?>
-		<div class="news-detail-share">
-			<noindex>
-			<?
-			$APPLICATION->IncludeComponent("bitrix:main.share", "", array(
-					"HANDLERS" => $arParams["SHARE_HANDLERS"],
-					"PAGE_URL" => $arResult["~DETAIL_PAGE_URL"],
-					"PAGE_TITLE" => $arResult["~NAME"],
-					"SHORTEN_URL_LOGIN" => $arParams["SHARE_SHORTEN_URL_LOGIN"],
-					"SHORTEN_URL_KEY" => $arParams["SHARE_SHORTEN_URL_KEY"],
-					"HIDE" => $arParams["SHARE_HIDE"],
-				),
-				$component,
-				array("HIDE_ICONS" => "Y")
-			);
-			?>
-			</noindex>
-		</div>
-		<?
-	}
-	
+
 	$month = array(
 		"01" => "января",
 		"02" => "февраля",
@@ -109,7 +137,7 @@ if($APPLICATION->GetCurPage()!=$arResult["~DETAIL_PAGE_URL"])
 	
 <div style="margin: auto; width: auto; text-align: right;">
 <script src="https://yastatic.net/share2/share.js"></script>
-<div class="ya-share2" data-curtain data-size="l" data-services="messenger,vkontakte,facebook,telegram"></div>
+
 </div>
 	
 			

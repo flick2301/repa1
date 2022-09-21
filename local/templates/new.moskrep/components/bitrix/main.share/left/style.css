@@ -1,0 +1,201 @@
+a.share-switch
+{
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: scroll transparent url('images/share.gif') center center no-repeat;
+}
+
+.share-window-parent
+{
+	position: relative;
+}
+
+table.bookmarks-table
+{
+	padding: 0px;
+	height: 19px;
+//	height: 18px;
+}
+
+.share-dialog
+{
+	z-index:1000;
+	position: absolute;
+	top: 0px;
+}
+
+.share-dialog-left
+{
+	left: 18px;	
+}
+
+.share-dialog-right
+{
+	right: 18px;	
+}
+
+.share-dialog-inner-left
+{
+	background: scroll transparent url('images/background.gif') right center no-repeat;		
+	padding: 0 1px 1px 4px;	
+//	padding: 1px 1px 1px 4px;
+}
+
+.share-dialog-inner-right
+{
+	background: scroll transparent url('images/background-right.gif') left center no-repeat;		
+	padding: 0 4px 1px 1px;
+//	padding: 1px 4px 1px 1px;
+}
+
+td.bookmarks 
+{
+	padding-left: 2px!important;
+	padding-right: 2px!important;
+	padding-top: 1px!important;	
+	padding-bottom: 0px!important;
+	border: none!important;
+}
+
+.bookmarks a
+{
+	background:none no-repeat scroll center center transparent;
+	display:block;
+	width:16px;	
+	height:16px;
+	overflow:hidden;
+}
+
+.bookmarks a.vk { background-image:url('images/vk.gif'); }
+.bookmarks a.facebook { background-image:url('images/facebook.gif'); }
+.bookmarks a.twitter { background-image:url('images/twitter.gif'); }
+.bookmarks a.delicious { background-image:url('images/delicious.gif'); }
+.bookmarks a.lj { background-image:url('images/lj.gif'); }
+.bookmarks a.mailru { background-image:url('images/mailru.gif'); }
+
+.blog__socials .ya-share2__item_service_vkontakte .ya-share2__icon {
+	background-image: url(./img/vk.svg);
+	width: 20px !important;
+	height: 20px !important;
+	background-size:16px 16px!important;
+	background-repeat: no-repeat!important;
+	background-position: center!important;
+}
+
+.blog__socials .ya-share2__item_service_vkontakte .ya-share2__badge {
+	display: flex;
+	background: #4f36e3;
+	border-radius: 8px;
+	padding: 5px;
+	margin-bottom: 8px;
+	transition: 0.3s;
+}
+
+.blog__socials .ya-share2__item_service_vkontakte .ya-share2__badge:hover{
+	background: #a1a1a1;
+}
+
+
+.blog__socials .ya-share2__item_service_telegram .ya-share2__icon{
+	background-image: url(./img/telegram.svg);
+	width: 20px !important;
+	height: 20px !important;
+	background-size:16px 16px!important;
+	background-repeat: no-repeat!important;
+	background-position: center!important;
+}
+
+.blog__socials .ya-share2__item_service_telegram .ya-share2__badge{
+	display: flex;
+	background: #4f36e3;
+	border-radius: 8px;
+	padding: 5px;
+	margin-bottom: 8px;
+	transition: 0.3s;
+}
+
+.blog__socials .ya-share2__item_service_telegram .ya-share2__badge:hover{
+	background: #a1a1a1;
+}
+
+
+
+
+.blog__socials .ya-share2__item_service_whatsapp .ya-share2__icon{
+	background-image: url(./img/whatsapp.svg);
+	width: 20px !important;
+	height: 20px !important;
+	background-size:16px 16px!important;
+	background-repeat: no-repeat!important;
+	background-position: center!important;
+}
+
+.blog__socials .ya-share2__item_service_whatsapp .ya-share2__badge{
+	display: flex;
+	background: #4f36e3;
+	border-radius: 8px;
+	padding: 5px;
+	margin-bottom: 8px;
+	transition: 0.3s;
+}
+
+.blog__socials .ya-share2__item_service_whatsapp .ya-share2__badge:hover{
+	background: #a1a1a1;
+}
+
+
+
+.blog__socials .ya-share2__item_service_messenger .ya-share2__icon{
+	background-image: url(./img/messenger.svg);
+	width: 20px !important;
+	height: 20px !important;
+	background-size: 20px 20px!important;
+	background-repeat: no-repeat!important;
+	background-position: center!important;
+}
+
+.blog__socials .ya-share2__item_service_messenger .ya-share2__badge{
+	display: flex;
+	background: #4f36e3;
+	border-radius: 8px;
+	padding: 5px;
+	margin-bottom: 8px;
+	transition: 0.3s;
+}
+
+.blog__socials .ya-share2__item_service_messenger .ya-share2__badge:hover{
+	background: #a1a1a1;
+}
+
+.blog__socials .ya-share2__item_service_odnoklassniki .ya-share2__icon{
+	background-image: url(./img/odnoklassniki.svg);
+	width: 20px !important;
+	height: 20px !important;
+	background-size:16px 16px!important;
+	background-repeat: no-repeat!important;
+	background-position: center!important;
+
+}
+
+.blog__socials .ya-share2__item_service_odnoklassniki .ya-share2__badge{
+	display: flex;
+	background: #4f36e3;
+	border-radius: 8px;
+	padding: 5px;
+	margin-bottom: 8px;
+	transition: 0.3s;
+}
+
+.blog__socials .ya-share2__item_service_odnoklassniki .ya-share2__badge:hover{
+	background: #a1a1a1;
+}
+
+
+
+
+.blog__socials .ya-share2__list{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}

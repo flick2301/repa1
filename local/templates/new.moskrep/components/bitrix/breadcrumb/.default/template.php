@@ -15,7 +15,6 @@ $arCode = array_diff($arCode, array(''));
 $url_code_ar = $arCode;
 $arCode = array_reverse($arCode);
 
-
 if(empty($arResult))
 	return "";
 
