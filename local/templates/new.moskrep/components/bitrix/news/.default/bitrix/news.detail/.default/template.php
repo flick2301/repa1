@@ -12,6 +12,8 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 $scheme = CMain::isHttps() ? 'https' : 'http';
+
+$renderImg = CFile::ResizeImageGet($arResult["DETAIL_PICTURE"] , Array("width" => 980, "height" => 540), BX_RESIZE_IMAGE_EXACT, false);
 ?>
 
 <?php
@@ -43,18 +45,15 @@ $date_rus = Array('января', 'февраля', 'марта', 'апреля'
                    <div class="blog__bottom">
                        <div class="blog__content">
                            <?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arResult["DETAIL_PICTURE"])):?>
-                               <p itemscope itemprop="image" itemtype="http://schema.org/ImageObject"><img itemprop="url contentUrl"
-                                                                                                           class="blog__images"
+                                   <p><img                                                                                                          class="blog__images"
                                                                                                            border="0"
-                                                                                                           src="<?=$arResult["DETAIL_PICTURE"]["SRC"]?>"
-                                                                                                           width="<?=$arResult["DETAIL_PICTURE"]["WIDTH"]?>"
-                                                                                                           height="<?=$arResult["DETAIL_PICTURE"]["HEIGHT"]?>"
+                                                                                                           src="<?=$renderImg["src"]?>"
+                                                                                                           width="980"
+                                                                                                           height="540"
                                                                                                            alt="<?=$arResult["DETAIL_PICTURE"]["ALT"]?>"
                                                                                                            title="<?=$arResult["DETAIL_PICTURE"]["TITLE"]?>"
                                    />
-                                   <meta itemprop="url" content="<?=$scheme?>://<?=$_SERVER['HTTP_HOST']?><?=$arResult["DETAIL_PICTURE"]["SRC"]?>">
-                                   <meta itemprop="width" content="<?=$arResult["DETAIL_PICTURE"]["WIDTH"]?>">
-                                   <meta itemprop="height" content="<?=$arResult["DETAIL_PICTURE"]["HEIGHT"]?>">
+
                                </p>
                            <?endif?>
                            <div class="blog__content__wrapper">
