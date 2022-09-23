@@ -546,10 +546,13 @@ if($arResult['SORTING']['SECTION_ID']){
 	
     foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
         if(!$sortSection['TOP'] && $sortSection['ACTIVE']=='Y'){
+			$u=0;
         ?>
-        <div class="div_h3 category-blocknew__title"><span><?=$sortSection["NAME"]?></span></div>
-        <ul class="category-blocknew__list">
-        <?$i=0;?>
+        <div class="div_h3 category-blocknew__title" style='display:flex;'><span><?=$sortSection["NAME"]?></span></div>
+        <ul class="category-blocknew__list" <?=($u==0) ? 'style="display:none;"' : '';?>>
+        <?
+		$u++;
+$i=0;?>
         <?foreach($sortSection['ITEMS'] as $sort_item):?>
             <?$i++;
 
