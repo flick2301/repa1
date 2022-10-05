@@ -6,8 +6,7 @@ global $APPLICATION;
 $ipropValues = new \Bitrix\Iblock\InheritedProperty\SectionValues($arParams["IBLOCK_ID"],$arResult['ID']);
 $IPROPERTY  = $ipropValues->getValues();
 
-if(empty($APPLICATION->GetPageProperty('title')))
-	$APPLICATION->SetPageProperty('title', $IPROPERTY['SECTION_META_TITLE']);
+$APPLICATION->SetPageProperty('title', $IPROPERTY['SECTION_META_TITLE']);
 if(empty($APPLICATION->GetPageProperty('description')))
 	$APPLICATION->SetPageProperty('description', $IPROPERTY['SECTION_META_DESCRIPTION']);
 if(empty($APPLICATION->GetPageProperty('keywords')))

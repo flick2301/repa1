@@ -570,7 +570,7 @@ $APPLICATION->IncludeComponent(
 	<?if($APPLICATION->GetCurPage() !== "/")
 	{
 		?>
-		<div class="basic-layout__columns basic-layout__columns--reverse basic-layout__columns--special">
+		<div class="basic-layout__columns basic-layout__columns--reverse basic-layout__columns--special <?if(!strstr($_SERVER["REAL_FILE_PATH"], "catalog") && !strstr($_SERVER["DOCUMENT_URI"], "personal")):?>basic-layout__full<?endif?>">
 			<div class="basic-layout__content">
             <!--crumbs-nav-->
 			<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array());?> 
@@ -594,9 +594,11 @@ $APPLICATION->IncludeComponent(
 <!--Разделы каталога-->
 		  <?$APPLICATION->ShowViewContent('catalog_section');?>
 <!--Разделы каталога-->	
-<?}?>	  
+<?}?>	
 
-      <div class="basic-layout__columns basic-layout__columns--reverse">
+
+
+      <div class="basic-layout__columns basic-layout__columns--reverse <?if(!strstr($_SERVER["REAL_FILE_PATH"], "catalog") && !strstr($_SERVER["DOCUMENT_URI"], "personal")):?>basic-layout__full<?endif?>">
          <div class="basic-layout__content<?if (CSite::InDir('/index.php') && SITE_ID!='s2'):?> full<?endif?>">
 		 
            

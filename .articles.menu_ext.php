@@ -16,7 +16,6 @@ if(CModule::IncludeModule('iblock'))
 
     if ($arIBlock = $dbIBlock->GetNext())
     {
-        echo '2';
         if(defined("BX_COMP_MANAGED_CACHE"))
             $GLOBALS["CACHE_MANAGER"]->RegisterTag("iblock_id_".$arIBlock["ID"]);
 

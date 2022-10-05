@@ -39,12 +39,14 @@ class SectionBulder
                 $arSections[] = $sec['ID'];
             }
         }
-
+		
+		
         $arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'IBLOCK_SECTION_ID'=>$arSections, '=CODE' => $this->arPagesCode, 'PROPERTY_arFilters'=>false);
         $res = \CIBlockElement::GetList(array("SORT" => "ASC"), $arFilter, false, false, array('*'));
         while ($ob = $res->GetNextElement()) {
-
+			
             $arFields = $ob->GetFields();
+			
             $arProps = $ob->GetProperties();
             $this->curSorting[] = array_merge($arFields, $arProps);
             $this->isFilterSEF($this->arPagesCode[array_key_last($this->arPagesCode)]);
@@ -69,6 +71,7 @@ class SectionBulder
 				}
 			}
         }
+		
         return $this->curSorting;
     }
 

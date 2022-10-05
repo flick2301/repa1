@@ -26,7 +26,13 @@ if($APPLICATION->GetCurPage()!=$arResult["~DETAIL_PAGE_URL"])
 }
 $month = date('n')-1;
 $date_rus = Array('января', 'февраля', 'марта', 'апреля', 'майя', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря');
+$date_created = $arResult["DISPLAY_ACTIVE_FROM"] ? $arResult["DISPLAY_ACTIVE_FROM"] : explode(" ", $arResult["TIMESTAMP_X"])[0];
+$date_created_array = explode(".", $date_created);
 ?>
+
+
+
+
             <!--simple-article-->
             <div class="basic-layout__module simple-article" itemscope itemtype="http://schema.org/Article">
                <div class="blog--detail">
@@ -36,10 +42,10 @@ $date_rus = Array('января', 'февраля', 'марта', 'апреля'
                        </div>
                        <h1><?=$arResult["NAME"];?></h1>
                        <div class="blog__botside">
-                           <div class="blog__data"><?php echo date('d ').$date_rus[$month].' '.date('Y');?></div>
+                           <div class="blog__data"><?php echo $date_created_array[0]." ".$date_rus[preg_replace("/^0/", "", $date_created_array[1])].' '.$date_created_array[2];?></div>
                            <div class="blog__view"><?=$arResult["SHOW_COUNTERS"];?></div>
-                           <!-- Длительность чтения статьи
-                           <div class="blog__time">10 мин.</div>-->
+                           <!-- Длительность чтения статьи-->
+                           <?if($arResult["PROPERTIES"]["read_time"]["VALUE"]):?><div class="blog__time"><?=$arResult["PROPERTIES"]["read_time"]["VALUE"]?></div><?endif?>
                        </div>
                    </div>
                    <div class="blog__bottom">
@@ -75,7 +81,7 @@ $date_rus = Array('января', 'февраля', 'марта', 'апреля'
 
                                <div class="blog__content__bottom">
                                    <?if(strlen($arResult["DETAIL_TEXT"])>0):?>
-                                       <?echo str_replace(Array("<p>", "</p>"), Array("", ""), $arResult["DETAIL_TEXT"]);?>
+                                       <?echo $arResult["DETAIL_TEXT"];?>
                                    <?else:?>
                                        <?echo $arResult["PREVIEW_TEXT"];?>
                                    <?endif?>
@@ -125,8 +131,8 @@ $date_rus = Array('января', 'февраля', 'марта', 'апреля'
                </div>
 		   
                <div class="simple-article__footer">
-                  <a class="second-button second-button--mini" href="<?=$arParams["BACK_URL"]?>"><?=GetMessage("T_NEWS_DETAIL_BACK")?></a>
-                  <?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?><p class="simple-article__date" itemprop="datePublished" <?/*datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arResult["DISPLAY_ACTIVE_FROM"])?>T16:20:30+00:00"*/?>>Дата публикации: <time datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arResult["DISPLAY_ACTIVE_FROM"])?>"><?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${1} ". $month["02"]." \${3}", $arResult["DISPLAY_ACTIVE_FROM"])?></time></p><?endif;?>
+                  <a class="second-button second-button--mini d-none" href="<?=$arParams["BACK_URL"]?>"><?=GetMessage("T_NEWS_DETAIL_BACK")?></a>
+                  <?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?><p class="simple-article__date d-none" itemprop="datePublished" <?/*datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arResult["DISPLAY_ACTIVE_FROM"])?>T16:20:30+00:00"*/?>>Дата публикации: <time datetime="<?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${3}-\${2}-\${1}", $arResult["DISPLAY_ACTIVE_FROM"])?>"><?echo preg_replace("/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/", "\${1} ". $month["02"]." \${3}", $arResult["DISPLAY_ACTIVE_FROM"])?></time></p><?endif;?>
 		
 	
                </div>		   

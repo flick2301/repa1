@@ -167,7 +167,7 @@ if(!empty($request->get('TEMPLATE')))
 	$template = $request->get('TEMPLATE');
 $intSectionID = $APPLICATION->IncludeComponent(
 					"bitrix:catalog.section",
-					$template,
+					'vertical',
 					array(
 						"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 						"IBLOCK_ID" => $arParams["IBLOCK_ID"],

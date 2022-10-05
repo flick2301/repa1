@@ -131,7 +131,7 @@ $requestUri = $request->getRequestUri();
     ?>
 
 
-	<?if(!empty($arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE']) && $_POST['ENUM_LIST']['ELEMENTS'])
+	<?if(!empty($arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE']) )
 		require_once __DIR__."/include_parts/section_table.php";?>
     <?if($arResult['REFERENCE']['ITEM']['PICTURE']){?>
     <div class="catalog-head__photo photo__seo">

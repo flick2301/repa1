@@ -51,25 +51,34 @@ class classCertificates extends CBitrixComponent
         );
 
         $arComponentVariables = array(
-	      "SECTION_ID",
-	      "SECTION_CODE",
+            "SECTION_ID",
+            "SECTION_CODE",
+            "ELEMENT_ID",
+            "ELEMENT_CODE",
         );
 
         if($this->arParams["SEF_MODE"] == "Y")
         {
 			
-			$arUrlTemplates = CComponentEngine::MakeComponentUrlTemplates($arDefaultUrlTemplates404, $this->arParams["SEF_URL_TEMPLATES"]);
-	       
-	        $arVariables = array();
-			
-	        $componentPage = CComponentEngine::ParseComponentPath(
-				$folder."/",
-				$arUrlTemplates,
-				$arVariables
-			);
-			
-			$b404 = false;
-			
+			$arVariables = array();
+
+            $arUrlTemplates = CComponentEngine::makeComponentUrlTemplates($arDefaultUrlTemplates404, $arParams["SEF_URL_TEMPLATES"]);
+            $arVariableAliases = CComponentEngine::makeComponentVariableAliases($arDefaultVariableAliases404, $arParams["VARIABLE_ALIASES"]);
+
+            $engine = new CComponentEngine($this);
+            if (CModule::IncludeModule('iblock'))
+            {
+                $engine->addGreedyPart("#SECTION_CODE_PATH#");
+                $engine->setResolveCallback(array("CIBlockFindTools", "resolveComponentEngine"));
+            }
+            $componentPage = $engine->guessComponentPath(
+                $this->arParams["SEF_FOLDER"],
+                $arUrlTemplates,
+                $arVariables
+            );
+
+            $b404 = false;
+            			
 	        if(!$componentPage)
 	        {
 				$componentPage = "sections";

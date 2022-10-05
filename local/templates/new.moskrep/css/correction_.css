@@ -1682,6 +1682,16 @@ ol.tech li {
 	margin-left: -312px;
 	margin-bottom: -20px;
 }
+.basic-layout__columns--reverse.basic-layout__full .basic-layout__content {
+    padding: 0;
+	width: 100%;
+}
+.basic-layout__full .basic-layout__sidebar {
+    width: 0;
+}
+.basic-layout__full .basic-layout__content .crumbs-nav {
+		margin-left: 0;
+}
 }
 
 

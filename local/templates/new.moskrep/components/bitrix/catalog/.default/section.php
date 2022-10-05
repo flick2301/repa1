@@ -18,6 +18,7 @@ $GLOBAL['SECTION_ID'] = $arResult["VARIABLES"]["SECTION_ID"];
 
 $sorting = $sec_builder->getCurSorting();
 if(!empty($sorting[0]['arFilters']['VALUE'])) {
+	
 	$arResult["VARIABLES"]["SECTION_ID"] = $sec_builder->getCurSection();
 
 	$ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues(SORTING_IBLOCK_ID,$sorting[0]['ID']);
@@ -31,19 +32,24 @@ if(!empty($sorting[0]['arFilters']['VALUE'])) {
 	}
 	if($IPROPERTY['ELEMENT_META_DESCRIPTION'])
     $APPLICATION->SetPageProperty('description', $IPROPERTY['ELEMENT_META_DESCRIPTION']);
-}elseif(!empty($sorting[1]['arFilters']['VALUE']))
+}elseif(!empty($sorting[0]['ID']))
 {
-
-	$ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues(SORTING_IBLOCK_ID,$sorting[1]['ID']);
+	
+	$ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues(SORTING_IBLOCK_ID,$sorting[0]['ID']);
 	$IPROPERTY  = $ipropValues->getValues();
 	if($IPROPERTY['ELEMENT_PAGE_TITLE']!='')
 		$APPLICATION->SetPageProperty('page_title', $IPROPERTY['ELEMENT_PAGE_TITLE']);
 	if($IPROPERTY['ELEMENT_META_TITLE']!='')
-    $APPLICATION->SetPageProperty('title', $IPROPERTY['ELEMENT_META_TITLE']);
+	{
+		
+		$APPLICATION->SetPageProperty('title', $IPROPERTY['ELEMENT_META_TITLE']);
+		$APPLICATION->SetTitle($IPROPERTY['ELEMENT_META_TITLE']);
+		
+	}
 	if($IPROPERTY['ELEMENT_META_DESCRIPTION'])
     $APPLICATION->SetPageProperty('description', $IPROPERTY['ELEMENT_META_DESCRIPTION']);
-
 }
+
 
 $sec_builder->addParameters();
 
@@ -165,7 +171,8 @@ if($count_sections || !empty($subsections) || !empty($uf_fields["UF_MATERIAL"]))
                 'SORTING' => $sec_builder->arPagesCode,
 				'TYPE_TEMPLATE'=>$temple,
                 
-            ], $component, ['HIDE_ICONS' => 'Y']); 
+            ], $component, ['HIDE_ICONS' => 'Y']);
+		
  
 }else{
     
@@ -240,10 +247,12 @@ if($count_sections || !empty($subsections) || !empty($uf_fields["UF_MATERIAL"]))
         $this->EndViewTarget();
     }
 	
-	
+	$temple = 'vertical';
 		$rsGender = CUserFieldEnum::GetList(array(), array("ID" => $arCurSection["UF_EL_LIST_TEMPL"]));
         if($arCat = $rsGender->GetNext())
                   $temple = $arCat["XML_ID"];
+			  
+		
 			  
 	   
 	

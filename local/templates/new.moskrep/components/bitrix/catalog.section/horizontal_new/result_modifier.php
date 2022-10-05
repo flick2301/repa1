@@ -8,7 +8,6 @@ $module_id = 'relink.table';
 global $DEFAULT_STORE_ID;
 global $filterObj;
 
-
 use Bitrix\Main\Loader;
 
 $context = \Bitrix\Main\Application::getInstance()->getContext();
@@ -94,7 +93,7 @@ while($nw = $nav->Fetch()){
 
 $arFilter = array('IBLOCK_ID' => IBLOCK_ID_CERT, "UF_SEC_CAT"=>$arTempID);
 $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array("*", "UF_*"));
-if($arSection = $rsSections->GetNext())
+while($arSection = $rsSections->GetNext())
 {
     
     $arResult['CERT_URL'] = $arSection['LIST_PAGE_URL'].$arSection['SECTION_PAGE_URL'];
