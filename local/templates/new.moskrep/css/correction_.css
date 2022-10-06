@@ -1507,7 +1507,7 @@ ol.tech li {
 	font-size: 16px;
 }
 .catalog-newcard {
-    flex: 0 0 calc(25% - 8px);
+/*  flex: 0 0 calc(25% - 8px);
     max-width: calc(25% - 8px);
     padding: 7px;	
 	border-radius: 4px;
@@ -1516,7 +1516,18 @@ ol.tech li {
 	display: flex;
 	align-items: center;	
 	border: 1px solid #f0f0f0;
-	transition: 0.3s;
+	transition: 0.3s;  */
+	flex: 0 0 calc(16.667% - 8px); 
+    flex-direction: column; 
+    max-width: calc(16.667% - 8px); 
+    padding: 7px; 
+    border-radius: 4px; 
+    background: #f0f0f0; 
+    margin: 4px; 
+    display: flex; 
+    align-items: center; 
+    border: 1px solid #f0f0f0; 
+    transition: 0.3s;	
 }
 .catalog-newcard:hover {
 	border: 1px solid #c4c4c4;
@@ -1526,11 +1537,16 @@ ol.tech li {
     border: 1px solid #f0f0f0;	
 }
 .catalog-newcard__img {
-    display: flex; 
+/*  display: flex; 
     justify-content: center; 
     align-items: center; 
     width: 85px; 
-    height: 60px; 
+    height: 60px;  */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: 90px; 
+    height: 80px; 	
 }
 .catalog-newcard__image {
     display: block; 
@@ -1540,24 +1556,39 @@ ol.tech li {
     width: auto; 
 }
 .catalog-newcard__text {
-    display: flex; 
+/*  display: flex; 
     justify-content: flex-start; 
     padding: 7px; 
     width: calc(100% - 80px); 
     font-size: 14px; 
     font-weight: 500; 
     line-height: 1.2em; 
+    color: #1e1e1e;  */
+    display: flex; 
+    justify-content: flex-start; 
+    padding: 7px; 
+    width: 100%; 
+    font-size: 16px; 
+    font-weight: 500; 
+    line-height: 1.2em; 
     color: #1e1e1e; 
+    text-align: center; 
+    justify-content: center; 
 }
 .catalog-newcard__text_canter {
-	align-items: center;
-	text-align: center;	
+/*  align-items: center;
+	text-align: center;	 */
+	text-align: center;
 }
 .catalog-newcard__href {
-	display: flex;
+/*	display: flex;
 	flex-direction: row;
 	width: 100%;
-	align-items: center;	
+	align-items: center;  */
+	display: flex; 
+    flex-direction: column; 
+    width: 100%; 
+    align-items: center; 	
 }
 
 
@@ -1704,10 +1735,6 @@ ol.tech li {
 @media (max-width: 1260.98px) {
 .product-tabs__toggle:not([aria-selected=true]):hover {
 	padding: 2px 11px 0;
-}
-.catalog-newcard {
-    flex: 0 0 calc(33.3% - 8px);
-    max-width: calc(33.3% - 8px);
 }
 }
 
@@ -1907,8 +1934,8 @@ img.intro-slider__image {
 	max-width: 700px;
 }
 .catalog-newcard {
-    flex: 0 0 calc(50% - 8px);
-    max-width: calc(50% - 8px);
+    flex: 0 0 calc(25% - 8px);
+    max-width: calc(25% - 8px);
 }
 }
 
@@ -2421,10 +2448,8 @@ main {
 	max-width: 400px;
 }
 .catalog-newcard {
-    flex: 0 0 100%;
-    max-width: 100%;
-	margin-left: 0;
-	margin-right: 0;
+    flex: 0 0 calc(50% - 8px);
+    max-width: calc(50% - 8px);
 }
 }
 

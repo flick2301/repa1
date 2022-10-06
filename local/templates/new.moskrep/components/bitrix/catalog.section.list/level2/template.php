@@ -130,13 +130,13 @@ $requestUri = $request->getRequestUri();
     }
     ?>
 
-
-	<?if(!empty($arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE']) )
-		require_once __DIR__."/include_parts/section_table.php";?>
+	<?if(!empty($arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE']) ){
+		require_once __DIR__."/include_parts/section_table.php";
+	}?>
     <?if($arResult['REFERENCE']['ITEM']['PICTURE']){?>
     <div class="catalog-head__photo photo__seo">
         <a href="<?=$arResult['REFERENCE']['ITEM']['PICTURE']['src']?>"  onclick="javascript:void();" rel="catalog-photo" class="catalog-photo__link">
-            <img src="<?=$arResult['REFERENCE']['ITEM']['PICTURE']['src']?>" alt="<?=$$arResult['REFERENCE']['ITEM']['H1']['VALUE']?>">
+            <img src="<?=$arResult['REFERENCE']['ITEM']['PICTURE']['src']?>" alt="<?=$arResult['REFERENCE']['ITEM']['H1']['VALUE']?>">
         </a>
     </div>
     <?}?>
@@ -161,7 +161,7 @@ $requestUri = $request->getRequestUri();
 
         $intSectionID = $APPLICATION->IncludeComponent(
 					"bitrix:catalog.section",
-					"horizontal_new",
+					"vertical",
 					array(
 						"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 						"IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -531,8 +531,10 @@ if($arResult['SORTING']['SECTION_ID']){
 }
 ?>
 
-<?if($_POST['ENUM_LIST']['ELEMENTS'])
-	require_once __DIR__."/include_parts/section_table.php";?>
+<?if(!$_POST['ENUM_LIST']['ELEMENTS']){
+	
+	require_once __DIR__."/include_parts/section_table.php";
+}?>
 
 
 

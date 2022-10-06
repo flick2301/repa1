@@ -164,7 +164,7 @@ div.news-detail img.detail_picture
 	font-size: 13px;
 	color: #a1a1a1;
 	padding-left: 25px;
-	background-image: url(../img/calendar-banner.svg);
+	background-image: url(./img/calendar-banner.svg);
 	background-position: left top 1px;
 	background-repeat: no-repeat;
 	line-height: 1.4;
@@ -185,7 +185,7 @@ div.news-detail img.detail_picture
 	line-height: 1.4;
 	padding-left: 22px;
 	font-weight: 500;
-	background-image: url(../img/view-banner.svg);
+	background-image: url(./img/view-banner.svg);
 	background-position: left top 1px;
 	background-repeat: no-repeat; }
 @media (max-width: 767px) {
@@ -398,7 +398,7 @@ div.news-detail img.detail_picture
 	line-height: 1.4;
 	margin-left: 25px;
 	padding-left: 22px;
-	background-image: url(../img/clock.svg);
+	background-image: url(./img/clock.svg);
 	background-position: left top 1px;
 	background-repeat: no-repeat; }
 @media (max-width: 767px) {

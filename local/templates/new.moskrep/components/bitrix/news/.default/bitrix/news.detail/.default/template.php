@@ -24,8 +24,21 @@ if($APPLICATION->GetCurPage()!=$arResult["~DETAIL_PAGE_URL"])
 
     $APPLICATION->SetPageProperty('title', "404 - HTTP not found");
 }
-$month = date('n')-1;
-$date_rus = Array('января', 'февраля', 'марта', 'апреля', 'майя', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря');
+	$month = array(
+		"01" => "января",
+		"02" => "февраля",
+		"03" => "марта",
+		"04" => "апреля",
+		"05" => "мая",
+		"06" => "июня",
+		"07" => "июля",
+		"08" => "августа",
+		"09" => "сентября",
+		"10" => "октября",
+		"11" => "ноября",
+		"12" => "декабря",
+	);
+
 $date_created = $arResult["DISPLAY_ACTIVE_FROM"] ? $arResult["DISPLAY_ACTIVE_FROM"] : explode(" ", $arResult["TIMESTAMP_X"])[0];
 $date_created_array = explode(".", $date_created);
 ?>
@@ -42,7 +55,7 @@ $date_created_array = explode(".", $date_created);
                        </div>
                        <h1><?=$arResult["NAME"];?></h1>
                        <div class="blog__botside">
-                           <div class="blog__data"><?php echo $date_created_array[0]." ".$date_rus[preg_replace("/^0/", "", $date_created_array[1])].' '.$date_created_array[2];?></div>
+                           <div class="blog__data"><?php echo $date_created_array[0]." ".$month[$date_created_array[1]].' '.$date_created_array[2];?></div>
                            <div class="blog__view"><?=$arResult["SHOW_COUNTERS"];?></div>
                            <!-- Длительность чтения статьи-->
                            <?if($arResult["PROPERTIES"]["read_time"]["VALUE"]):?><div class="blog__time"><?=$arResult["PROPERTIES"]["read_time"]["VALUE"]?></div><?endif?>
@@ -106,23 +119,7 @@ $date_created_array = explode(".", $date_created);
 
 
 
-	<?
 
-	$month = array(
-		"01" => "января",
-		"02" => "февраля",
-		"03" => "марта",
-		"04" => "апреля",
-		"05" => "мая",
-		"06" => "июня",
-		"07" => "июля",
-		"08" => "августа",
-		"09" => "сентября",
-		"10" => "октября",
-		"11" => "ноября",
-		"12" => "декабря",
-	);
-	?>
 	
 	
 	
@@ -138,6 +135,69 @@ $date_created_array = explode(".", $date_created);
                </div>		   
             </div>
             <!--simple-article-->
+			
+	
+
+
+	
+
+<?if($arResult["MORE"]):?>
+
+
+
+
+<div class="articles__more">
+		<!-- Три последние стоить из этой категории -->
+		<div class="articles__more__title">Похожие статьи</div>
+		<div class="articles__list">
+		
+		
+		
+<?foreach($arResult["MORE"] AS $similar):?>
+			<div class="articles__box">
+				<a class="articles__top" href="<?=dirname($_SERVER['REAL_FILE_PATH'])?>/<?=$similar["DETAIL_PAGE_URL"]?>">
+					<!-- articles__category style заполнятьеся из двух дополнительных свойств раздела цвет фона и цвет текса -->
+					<div class="articles__category" style="background-color:<?if($similar["SECTION"]["UF_COLOR"]):?><?=$similar["SECTION"]["UF_COLOR"]?><?else:?>#552FEC<?endif?>;color:<?if($similar["SECTION"]["UF_COLOR2"]):?><?=$similar["SECTION"]["UF_COLOR2"]?><?else:?>#fff<?endif?>;"><?=$similar["SECTION"]["NAME"]?></div>
+					<?if($similar["IMG"]):?>
+					<img class="articles__img" src="<?=$similar["IMG"]?>" alt="<?=$similar["NAME"]?>">
+					<?endif?>
+					
+					<!-- Сделать у элмента два свойства фото и видео, при отмечении которых появляеться соотвествующая иокнка, если они оба пустые блок не выводить -->
+					<div class="articles__options">
+						<!-- Появляется если отмечено галка фото -->
+						<?if($similar["PROPERTIES"]["photo"]["VALUE"]):?>
+						<div class="articles__options__item">
+							<img src="<?=$this->GetFolder()?>/img/gallery.svg" alt="Фотогалерея" title="Фотогалерея">
+						</div>
+						<?endif?>
+						<!-- Появляется если отмечено галка видео -->
+						<?if($similar["PROPERTIES"]["video"]["VALUE"]):?>
+						<div class="articles__options__item">
+							<img src="<?=$this->GetFolder()?>/img/video.svg" alt="Видео" title="Видео">
+						</div>
+						<?endif?>
+					</div>
+				</a>
+				<div class="articles__bottom"><a class="articles__name" href="<?=dirname($_SERVER['REAL_FILE_PATH'])?>/<?=$similar["DETAIL_PAGE_URL"]?>"><?=$similar["NAME"]?></a>
+					<div class="articles__desc"><?=$similar["PREVIEW_TEXT"]?></div>
+					<div class="articles__botside">
+						<div class="articles__data"><?php echo $similar["DATE_FORMAT"][0]." ".$month[$similar["DATE_FORMAT"][1]].' '.$similar["DATE_FORMAT"][2];?></div>
+						<div class="articles__view"><?=$similar["SHOW_COUNTER"];?></div>
+					</div>
+				</div>
+			</div>
+
+<?endforeach?>	
+
+
+</div>
+</div>	
+<?endif?>		
+
+
+
+		
+			
 			
 	
 <div style="margin: auto; width: auto; text-align: right;">
