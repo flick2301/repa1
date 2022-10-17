@@ -13,7 +13,10 @@ $ipropValues = new \Bitrix\Iblock\InheritedProperty\ElementValues(SORTING_IBLOCK
 
 $IPROPERTY  = $ipropValues->getValues();
 
-$sorting = $sec_builder->getCurSorting();
+if($APPLICATION->GetCurDir() != $sec_builder->curSection['SECTION_PAGE_URL'])
+{
+	$sorting = $sec_builder->getCurSorting();
+}
 echo '<!--';
 var_dump($sorting);
 echo '-->';

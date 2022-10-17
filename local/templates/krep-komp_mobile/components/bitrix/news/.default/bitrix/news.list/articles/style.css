@@ -1,3 +1,11 @@
+.filter__leftside {
+	margin-bottom: 30px;
+}
+.articles__category{
+    background-color: #552FEC;
+    color: #fff;
+}
+
 div.news-list
 {
 	word-wrap: break-word;
@@ -9,4 +17,894 @@ div.news-list img.preview_picture
 }
 .news-date-time {
 	color:#486DAA;
+}
+
+/* Удалисть стиль после добавления убирает лишний отсутп и размер использутеся на других страницах */
+.basic-layout__columns--reverse .basic-layout__content{
+	padding: 0px!important;
+	width: 100%!important;
+}
+/* Конец */
+
+.blog{
+	margin-bottom: 30px;
+}
+
+.blog__section{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.blog__section__item{
+	padding: 7px 15px 6px;
+	background: #f0f0f0;
+	line-height: 1.4;
+	font-family: 'Montserrat';
+	font-weight: 500;
+	font-size: 14px;
+	border-radius: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	color: #000;
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+.blog__section__item:hover{
+	background: rgba(79,54,227,.2);
+}
+
+.blog__section__item--active{
+	background: rgba(79,54,227,.2);
+}
+
+.blog__section__item:last-child{
+	margin-right: 0px;
+}
+
+.articles__title {
+
+	font-size: 28px;
+	text-align: center;
+	text-transform: uppercase;
+	color: #2a2a2a;
+	margin-bottom: 40px; }
+@media (max-width: 1023px) {
+	.articles__title {
+		font-size: 24px;
+		margin-bottom: 35px; } }
+@media (max-width: 767px) {
+	.articles__title {
+		font-size: 20px;
+		margin-bottom: 30px; } }
+.articles__list {
+	display: flex;
+	flex-wrap: wrap;
+	 }
+.articles__box {
+	width: 32%;
+	margin-right: 2%;
+	margin-bottom: 40px; 
+	}
+	.articles__box:nth-child(3n+3){
+		margin-right: 0px;
+	}
+@media (max-width: 1023px) {
+	.articles__box {
+		width: 49%;
+		margin-top: 40px; }
+		.articles__box:nth-child(3n+3){
+		margin-right: 2%;
+	}
+	.articles__box:nth-child(2n+2){
+		margin-right: 0px;
+	}
+	.articles__box:nth-child(-n+2) {
+		margin-top: 0px;
+	} }
+@media (max-width: 767px) {
+	.articles__box {
+		margin-top: 25px; margin-bottom: 0px;  width: 100%;}
+	.articles__box:nth-child(-n+2) {
+		margin-top: 25px;
+	}
+	.articles__box:first-child {
+		margin-top: 0px; } }
+.articles__top {
+	border-radius: 5px;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 15px;
+	display: flex;     align-items: flex-start;
+	justify-content: center; transition: 0.3s;}
+
+.articles__top:hover{
+	opacity: 0.6;
+}
+
+.articles__img {
+	width: 100%; }
+.articles__category {
+
+	font-weight: 600;
+	font-size: 10px;
+	text-transform: uppercase;
+	color: #fff;
+	position: absolute;
+	padding: 5px 10px 4px;
+	left: 0px;
+	bottom: 0px;
+	border-radius: 0px 0px 0px 5px;
+	z-index: 20;
+	font-family: 'Montserrat';
+}
+.articles__category--food {
+	background-color: #2D5D8C;  color: #fff;}
+.articles__category--sport {
+	background-color: #5D2F92;   color: #fff;}
+.articles__category--training {
+	background-color: #FFDF3D;   color: #2A2A2A;}
+.articles__category--green {
+	background-color: #2d8c3b;   color: #fff;}
+.articles__bottom {
+	padding: 0px 20px; }
+.articles__name {
+
+	line-height: 1.4;
+	color: #2A2A2A;
+	display: block;
+	margin-bottom: 10px;
+	transition: .3s;
+	font-family: 'Montserrat';
+	font-weight: bold;
+	font-size: 18px; }
+.articles__name:hover {
+	color: #552FEC; }
+@media (max-width: 767px) {
+	.articles__name {
+		font-size: 16px; } }
+.articles__desc {
+
+	font-family: 'Montserrat';
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 1.5;
+	color: #484848;
+	margin-bottom: 20px; }
+@media (max-width: 767px) {
+	.articles__desc {
+		font-size: 12px; } }
+.articles__botside {
+	display: flex;
+	margin-top: 16px; }
+.articles__data {
+	font-size: 13px;
+	color: #a1a1a1;
+	padding-left: 25px;
+	background-image: url(./img/calendar-banner.svg);
+	background-position: left top 1px;
+	background-repeat: no-repeat;
+	line-height: 1.4;
+	font-weight: 500;
+	font-family: 'Montserrat';
+}
+@media (max-width: 767px) {
+	.articles__data {
+		font-size: 12px;
+		padding-left: 20px;
+		background-size: 14px; } }
+.articles__view {
+
+	font-size: 13px;
+	color: #a1a1a1;
+	font-family: 'Montserrat';
+	margin-left: 25px;
+	line-height: 1.4;
+	padding-left: 22px;
+	font-weight: 500;
+	background-image: url('/images/view-banner.svg');
+	background-position: left top 1px;
+	background-repeat: no-repeat; }
+@media (max-width: 767px) {
+	.articles__view {
+		font-size: 12px;
+		padding-left: 20px;
+		background-size: 14px;
+		margin-left: 16px; } }
+
+
+.articles__options{
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	display: flex;
+}
+
+.articles__options__item{
+	display: flex;
+	width: auto;
+	height: 20px;
+	align-items: center;
+	justify-content: center;
+	margin-right: 5px;
+}
+
+.articles__options__item:last-child{
+	margin-right: 0px;
+}
+
+.articles__options__item img {
+	display: block;
+	height: auto;
+	max-height: 100%;
+	max-width: 100%;
+	width: auto;
+}
+
+@media(max-width: 1260px){
+	.articles__bottom {
+		padding: 0px 5px;
+	}
+}
+
+@media (max-width: 767px) {
+	.blog__section__item{
+		padding: 5px 10px 4px;
+		font-size: 12px;
+	}
+
+	.blog {
+		margin-bottom: 20px;
+	}
+}
+
+.blog__top {
+	border-radius: 5px;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 12px;
+	display: flex; align-items: flex-start;
+	justify-content: center; transition: 0.3s;}
+
+.blog__top img{
+	transition: 0.3s;
+}
+
+.blog__top:hover img{
+	opacity: 0.6;
+}
+
+.blog__img {
+	width: 100%; }
+.blog__category {
+	font-family: 'Montserrat';
+	font-weight: 600;
+	font-size: 10px;
+	text-transform: uppercase;
+	color: #fff;
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	border-radius: 0px 0px 0px 5px;
+	z-index: 20;
+	padding: 6px 5px; }
+.blog__category--food {
+	background-color: #2D5D8C; }
+.blog__category--training {
+	color: #2A2A2A;
+	background-color: #FFDF3D; }
+
+.blog__category--green {
+
+	background-color: #2d8c3b; }
+
+.substrate--green{
+	background-color: #f1fff0;
+}
+
+.blog__category--sport {
+	background-color: #5D2F92; }
+.blog__bottom {
+	padding: 0px 20px; }
+.blog__name {
+	font-family: 'Montserrat';
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 1.3;
+	color: #2A2A2A;
+	display: block;
+	margin-bottom: 8px;
+	transition: .3s; }
+.blog__name:hover {
+	color: #eccd69; }
+@media (max-width: 767px) {
+	.blog__name {
+		font-size: 16px; } }
+.blog__desc {
+	font-family: 'Montserrat';
+	font-size: 14px;
+	line-height: 1.5;
+	color: #484848; }
+@media (max-width: 767px) {
+	.blog__desc {
+		font-size: 12px; } }
+.blog__botside {
+	display: flex;
+	margin-top: 16px; }
+.blog__data {
+	font-family: 'Montserrat';
+	font-size: 14px;
+	color: #a1a1a1;
+	padding-left: 25px;
+	background-image: url('/images/calendar-banner.svg');
+	background-position: left top 1px;
+	background-repeat: no-repeat;font-weight: 500;
+	line-height: 1.4; }
+@media (max-width: 767px) {
+	.blog__data {
+		font-size: 12px;
+		padding-left: 20px;
+		background-size: 14px; } }
+.blog__view {
+	font-family: 'Montserrat';
+	font-size: 14px;
+	color: #a1a1a1;
+	margin-left: 25px;
+	padding-left: 22px;
+	background-image: url(../img/view-banner.svg);
+	background-position: left top 1px;
+	background-repeat: no-repeat;font-weight: 500;
+	line-height: 1.4; }
+@media (max-width: 767px) {
+	.blog__view {
+		font-size: 12px;
+		padding-left: 20px;
+		background-size: 14px;
+		margin-left: 16px; } }
+.blog__down {
+	margin-top: 50px;
+	text-align: center; }
+@media (max-width: 767px) {
+	.blog__down {
+		margin-top: 25px; } }
+.blog__button {
+	display: inline-block;
+	font-family: 'Montserrat';
+	font-weight: bold;
+	font-size: 14px;
+	padding: 12px 24px;
+	color: #fff;
+	background-color: #2a2a2a;
+	border-radius: 3px;
+	transition: .3s; }
+.blog__button:hover {
+	color: #2A2A2A;
+	background-color: #eccd69; }
+@media (max-width: 767px) {
+	.blog__button {
+		font-size: 12px;
+		padding: 10px 20px; } }
+
+
+
+.blog--detail h1 {
+	font-family: 'Montserrat';
+	font-weight: bold;
+	font-size: 32px;
+	color: #2A2A2A;
+	margin: 0px; }
+@media (max-width: 1023px) {
+	.blog--detail h1 {
+		font-size: 38px; } }
+@media (max-width: 767px) {
+	.blog--detail h1 {
+		font-size: 24px; } }
+.blog--detail .blog__top {
+	border-radius: 0px;
+	margin-bottom: 25px;
+	flex-direction: column;
+	align-items: flex-start; }
+.blog--detail .blog__botside {
+	display: flex;
+	align-items: center;
+	margin-top: 16px; }
+.blog--detail .blog__time {
+	font-family: 'Montserrat';
+	font-size: 14px;
+	color: #a1a1a1;    font-weight: 500;
+	line-height: 1.4;
+	margin-left: 25px;
+	padding-left: 22px;
+	background-image: url(../img/clock.svg);
+	background-position: left top 1px;
+	background-repeat: no-repeat; }
+@media (max-width: 767px) {
+	.blog--detail .blog__time {
+		font-size: 12px;
+		padding-left: 20px;
+		background-size: 14px;
+		margin-left: 16px; } }
+.blog--detail .blog__category {
+	font-family: 'Montserrat';
+	font-weight: 600;
+	font-size: 10px;
+	text-transform: uppercase;
+	color: #fff;
+	position: unset;
+	border-radius: 0px;
+	z-index: 20;
+	padding: 6px 5px 4px; margin-bottom: 5px; }
+@media (max-width: 767px) {
+	.blog--detail .blog__category {
+		margin-bottom: 5px; } }
+.blog--detail .blog__category--food {
+	background-color: #2D5D8C; }
+.blog--detail .blog__category--training {
+	color: #2A2A2A;
+	background-color: #FFDF3D; }
+.blog--detail .blog__category--sport {
+	background-color: #5D2F92; }
+.blog--detail .blog__bottom {
+	padding: 0px;
+	display: flex;
+	justify-content: space-between; }
+@media (max-width: 1279px) {
+	.blog--detail .blog__bottom {
+		flex-direction: column-reverse; } }
+.blog--detail .blog__content {
+	width: calc(100% - 340px); }
+@media (max-width: 1279px) {
+	.blog--detail .blog__content {
+		width: 100%; } }
+.blog--detail .blog__content__wrapper {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	position: relative; }
+@media (max-width: 767px) {
+	.blog--detail .blog__content__wrapper {
+		flex-direction: column; } }
+.blog--detail .blog__content__bottom {
+	width: calc(100% - 50px);
+	padding-right: 60px;     font-family: 'Montserrat';
+	font-size: 18px;
+	line-height: 1.6;
+	color: #121416;}
+@media (max-width: 1023px) {
+	.blog--detail .blog__content__bottom {
+		padding-right: 0px; } }
+@media (max-width: 767px) {
+	.blog--detail .blog__content__bottom {
+		width: 100%; } }
+.blog--detail .blog__content__bottom blockquote {
+	margin: 0px;
+	font-family: 'Montserrat';
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 1.6;
+	color: #000000;
+	padding: 24px 0px;
+	border-top: 1px solid #E9ECEF;
+	border-bottom: 1px solid #E9ECEF;
+	margin: 32px 0px; }
+@media (max-width: 767px) {
+	.blog--detail .blog__content__bottom blockquote {
+		font-size: 14px;
+		margin: 15px 0px;
+		padding: 10px 0px; }
+
+
+}
+.blog--detail .blog__content__bottom p {
+	margin: 25px 0px;
+	font-family: 'Montserrat';
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 1.5;
+	color: #121416; }
+
+
+.blog--detail .blog__content__bottom ul {
+	margin: 25px 0px;
+	font-family: 'Montserrat';
+	font-weight: 500;
+	font-size: 15px;
+	list-style-type: disc;
+	line-height: 1.5;
+	padding-left: 20px;
+	color: #121416; }
+
+.blog--detail .blog__content__bottom ol {
+	margin: 25px 0px;
+	font-family: 'Montserrat';
+	font-weight: 500;
+	font-size: 15px;
+	list-style-type: decimal;
+	padding-left: 20px;
+	line-height: 1.5;
+	color: #121416; }
+
+
+@media (max-width: 767px) {
+	.blog--detail .blog__content__bottom p {
+		font-size: 14px;
+		margin: 15px 0px; } }
+.blog--detail .blog__content__bottom a {
+	font-family: 'Montserrat';
+	font-size: 18px;
+	color: #2D5D8C;
+	border-bottom: 1px solid #2D5D8C;
+	transition: .3s; }
+@media (max-width: 767px) {
+	.blog--detail .blog__content__bottom a {
+		font-size: 14px; } }
+.blog--detail .blog__content__bottom a:hover {
+	border-bottom: 1px solid transparent; }
+
+.blog--detail .blog__content__bottom figure {
+	margin: 25px 0px; }
+.blog--detail .blog__content__bottom img {
+	width: 100%; }
+.blog--detail .blog__content__bottom figcaption {
+	margin-top: 12px;
+	font-family: 'Montserrat';
+	font-size: 12px;
+	text-align: center;
+	color: #A0A0A0; }
+
+
+
+
+
+.blog--detail .blog__content__bottom h2 {
+	font-family: 'Montserrat';
+	font-weight: bold;
+	font-size: 24px;
+	color: #000000;
+	margin: 25px 0px; }
+@media (max-width: 767px) {
+	.blog--detail .blog__content__bottom h2 {
+		font-size: 18px;
+		margin: 15px 0px; } }
+.blog--detail .blog__content__bottom h3 {
+	font-family: 'Montserrat';
+	font-weight: bold;
+	font-size: 18px;
+	color: #000000;
+	margin: 25px 0px; }
+@media (max-width: 767px) {
+	.blog--detail .blog__content__bottom h3 {
+		font-size: 15px;
+		margin: 15px 0px; } }
+.blog--detail .blog__images {
+	width: 100%; }
+.blog--detail .blog__socials {
+	margin-top: 32px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	position: sticky;
+	top: 30px; }
+@media (max-width: 767px) {
+	.blog--detail .blog__socials {
+		position: unset;
+		top: 0;
+		flex-direction: row;
+		margin-top: 18px; } }
+.blog--detail .blog__socials__link {
+	display: flex;
+	background: #ECD58C;
+	border-radius: 8px;
+	padding: 5px;
+	margin-bottom: 8px; }
+.blog--detail .blog__socials__link:last-child {
+	margin-bottom: 0px; }
+@media (max-width: 767px) {
+	.blog--detail .blog__socials__link {
+		margin-bottom: 0px;
+		margin-right: 8px; }
+	.blog--detail .blog__socials__link:last-child {
+		margin-right: 0px; } }
+.blog--detail .blog__socials svg {
+	fill: #121416; }
+.blog--detail .blog__fb {
+	width: 14px;
+	height: 14px; }
+.blog--detail .blog__vk {
+	width: 14px;
+	height: 14px; }
+.blog--detail .blog__telega {
+	width: 14px;
+	height: 14px; }
+.blog--detail .blog__rightside {
+	position: relative;
+	width: 100%;
+	max-width: 300px; }
+@media (max-width: 1279px) {
+	.blog--detail .blog__rightside {
+		max-width: 100%;
+		margin-bottom: 32px; } }
+.blog--detail .blog__substence {
+	width: 100%;
+	max-width: 300px;
+	padding: 20px 30px;
+	background: #FBFAFA;
+	border-radius: 6px;
+	position: sticky;
+	top: 30px; }
+@media (max-width: 1279px) {
+	.blog--detail .blog__substence {
+		max-width: 100%;
+		position: unset;
+		top: 0; } }
+@media (max-width: 767px) {
+	.blog--detail .blog__substence {
+		padding: 15px; } }
+.blog--detail .blog__substence__name {
+	font-family: 'Montserrat';
+	font-weight: bold;
+	font-size: 16px;
+	color: #000000;
+	margin-bottom: 16px; }
+.blog--detail .blog__substence__link {
+	font-family: 'Montserrat';
+	font-size: 13px;
+	color: #000000;
+	display: flex;
+	align-items: center;
+	padding: 3px 0px;
+	cursor: pointer;
+	transition: 0.3s;
+	position: relative; margin-bottom: 10px;   padding-left: 15px;
+	border-left: 1px solid #A1A1A1;}
+
+.blog--detail .blog__substence__link:hover{
+	color:#552FEC;
+}
+
+.blog--detail .blog__substence__link:last-child{
+	margin-bottom: 0px;
+}
+
+.blog--detail .blog__substence__link--h3{
+	margin-left: 12px;
+	padding-left: 15px;
+	border-left: 1px solid #A1A1A1;
+}
+
+.blog--detail .blog__substence__link--active
+{
+	border-left: 3px solid #4f36e3;
+}
+
+
+
+.blog__socials .ya-share2__item_service_vkontakte .ya-share2__icon {
+	background-image: url(../img/vk.svg);
+	width: 20px;
+	height: 20px;
+	background-size:16px 16px!important;
+	background-repeat: no-repeat!important;
+	background-position: center!important;
+}
+
+.blog__socials .ya-share2__item_service_vkontakte .ya-share2__badge {
+	display: flex;
+	background: #4f36e3;
+	border-radius: 8px;
+	padding: 5px;
+	margin-bottom: 8px;
+	transition: 0.3s;
+}
+
+.blog__socials .ya-share2__item_service_vkontakte .ya-share2__badge:hover{
+	background: #a1a1a1;
+}
+
+
+.blog__socials .ya-share2__item_service_telegram .ya-share2__icon{
+	background-image: url(../img/telegram.svg);
+	width: 20px;
+	height: 20px;
+	background-size:16px 16px!important;
+	background-repeat: no-repeat!important;
+	background-position: center!important;
+}
+
+.blog__socials .ya-share2__item_service_telegram .ya-share2__badge{
+	display: flex;
+	background: #4f36e3;
+	border-radius: 8px;
+	padding: 5px;
+	margin-bottom: 8px;
+	transition: 0.3s;
+}
+
+.blog__socials .ya-share2__item_service_telegram .ya-share2__badge:hover{
+	background: #a1a1a1;
+}
+
+
+
+
+.blog__socials .ya-share2__item_service_whatsapp .ya-share2__icon{
+	background-image: url(../img/whatsapp.svg);
+	width: 20px;
+	height: 20px;
+	background-size:16px 16px!important;
+	background-repeat: no-repeat!important;
+	background-position: center!important;
+}
+
+.blog__socials .ya-share2__item_service_whatsapp .ya-share2__badge{
+	display: flex;
+	background: #4f36e3;
+	border-radius: 8px;
+	padding: 5px;
+	margin-bottom: 8px;
+	transition: 0.3s;
+}
+
+.blog__socials .ya-share2__item_service_whatsapp .ya-share2__badge:hover{
+	background: #a1a1a1;
+}
+
+
+
+.blog__socials .ya-share2__item_service_messenger .ya-share2__icon{
+	background-image: url(../img/messenger.svg);
+	width: 20px;
+	height: 20px;
+	background-size: 20px 20px!important;
+	background-repeat: no-repeat!important;
+	background-position: center!important;
+}
+
+.blog__socials .ya-share2__item_service_messenger .ya-share2__badge{
+	display: flex;
+	background: #4f36e3;
+	border-radius: 8px;
+	padding: 5px;
+	margin-bottom: 8px;
+	transition: 0.3s;
+}
+
+.blog__socials .ya-share2__item_service_messenger .ya-share2__badge:hover{
+	background: #a1a1a1;
+}
+
+.blog__socials .ya-share2__item_service_odnoklassniki .ya-share2__icon{
+	background-image: url(../img/odnoklassniki.svg);
+	width: 20px;
+	height: 20px;
+	background-size:16px 16px!important;
+	background-repeat: no-repeat!important;
+	background-position: center!important;
+
+}
+
+.blog__socials .ya-share2__item_service_odnoklassniki .ya-share2__badge{
+	display: flex;
+	background: #4f36e3;
+	border-radius: 8px;
+	padding: 5px;
+	margin-bottom: 8px;
+	transition: 0.3s;
+}
+
+.blog__socials .ya-share2__item_service_odnoklassniki .ya-share2__badge:hover{
+	background: #a1a1a1;
+}
+
+
+
+
+.blog__socials .ya-share2__list{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+
+@media (max-width: 767px){
+	.blog__socials .ya-share2__list {
+		position: unset;
+		top: 0;
+		flex-direction: row;
+		margin-top: 0px;
+	}
+}
+
+
+@media (max-width: 1023px) {
+	.top__icon--yes{
+		font-size: 12px;
+	}
+}
+@media(max-width: 990px) {
+	.blog--detail .blog__content__bottom figure{
+		overflow-y: hidden;
+	}
+}
+
+.blog__video{
+	overflow: hidden;
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	margin: 25px 0px;
+}
+
+.blog__video iframe {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+
+.blog--detail .blog__content__bottom table{
+	width: 100%;
+}
+
+.blog--detail .blog__content__bottom table td{
+	font-family: 'Montserrat';
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 1.5;
+	padding: 8px 15px;
+	color: #121416;
+	background: #fbfafa;
+}
+
+.blog--detail .blog__content__bottom table th{
+	font-family: 'Montserrat';
+	font-size: 14px;
+	line-height: 1.5;
+	color: #121416;
+	background: #ebebeb;
+	padding: 8px 15px;
+	text-align: left;
+	font-weight: bold;
+}
+
+.articles__more{
+	margin-top: 50px;
+}
+
+.articles__more__title {
+	font-family: 'Montserrat';
+	font-weight: bold;
+	font-size: 24px;
+	color: #000000;
+	margin-bottom: 25px;
+}
+
+@media(max-width: 767px) {
+	.blog--detail .blog__content__bottom ul{
+		font-size: 15px;
+		margin: 15px 0px;
+	}
+	.blog--detail .blog__content__bottom ol{
+		font-size: 15px;
+		margin: 15px 0px;
+	}
+
+	.blog--detail .blog__content__bottom table th{
+		font-size: 13px;
+		padding: 5px 10px;
+	}
+	.blog--detail .blog__content__bottom table td{
+		font-size: 13px;
+		padding: 5px 10px;
+	}
+
+	.blog--detail .blog__content__bottom figure {
+		margin: 15px 0px;
+	}
+
+	.blog__video{
+		margin: 15px 0px;
+	}
 }

@@ -1,6 +1,29 @@
 
 				<div class="delivery__subtitle">Доставка в регионы России любыми транспортными компаниями Москвы</div>
 				
+				
+
+                     <!--delivery-option-->
+                     <div class="delivery-option">
+                        <div class="delivery-option__about">
+                           <img class="delivery-option__image" src="<?=SITE_TEMPLATE_PATH?>/uploads/delivery-option/company-04.jpg" width="402" height="165" alt="БайкалСервис" title="БайкалСервис" />
+                           <p class="delivery-option__desc">Мы производим бесплатную доставку заказа до офиса компании "БайкалСервис"</p>
+						   
+						   <?if($arParams["SHOW_FRAME"]=="Y"):?>
+						   <p><br />
+						   <iframe src="https://api.baikalsr.ru/widget/tracking?" width="333" height="190" scrolling="no" frameborder="0"></iframe>
+						   </p>
+						   <?endif?>
+						   
+                        </div>
+                        <div class="delivery-option__widget">
+						<?if($arParams["SHOW_FRAME"]=="Y"):?>
+						<iframe src="https://api.baikalsr.ru/widget/calculator?block_from=lock&block_from_expedition=lock&city_from=0c5b2444-70a0-4932-980c-b4dc0d3f02b5" width="310" height="525" scrolling="no" frameborder="0"></iframe>
+						<?endif?>
+                        </div>
+                     </div>
+                     <!--delivery-option-->						
+				
                      <!--delivery-option-->
                      <div class="delivery-option">
                         <div class="delivery-option__about">

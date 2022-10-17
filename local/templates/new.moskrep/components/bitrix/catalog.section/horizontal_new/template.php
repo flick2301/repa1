@@ -141,8 +141,8 @@ if($arResult['SORTING']['SECTION_ID'] && $arParams['DISPLAY_FILTER_BUTTONS']=='Y
 </select>
     <?if($arParams["SELECT_PAGE_TEMPLATE"]!="Y"){?>
         <select name="select_template" id="select_template">
-            <option value="horizontal_new" selected="selected">Елементы: Таблицей</option>
-            <option value="vertical" >Елементы: Блоками</option>
+            <option value="horizontal_new" selected="selected">Элементы: Таблицей</option>
+            <option value="vertical" >Элементы: Блоками</option>
         </select>
     <?}?>
 </div>
@@ -334,7 +334,7 @@ if($arResult['SORTING']['SECTION_ID'] && $arParams['DISPLAY_FILTER_BUTTONS']=='Y
                               </div>
                               <!--price-in-table-->
 							  <input type="hidden" name="quantity-hidden" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" onchange='ChangeInputCart("<?=$item['NAME']?>", $(this))' id="QUANTITY_<?=$item['ID']?>" value="1" class="value__input">
-                              <button class="catalog-table__to-cart" data-product="<?=$item['ID']?>" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"><i class="colored-cart-icon catalog-table__cart" data-product="<?=$item['ID']?>" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"></i>Добавить в корзину</button>
+                              <button class="catalog-table__to-cart" onmousedown="try { rrApi.addToBasket(<?=$item['ID']?>) } catch(e) {}" data-product="<?=$item['ID']?>" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"><i class="colored-cart-icon catalog-table__cart" data-product="<?=$item['ID']?>" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"></i>Добавить в корзину</button>
                            </div>
                     </div>
             
@@ -408,7 +408,7 @@ while($arSection = $db_list->GetNext()) {
 </div>
 <?endif?>
 
-<?if($arResult['UF_DETAIL_TEXT'] && !($_REQUEST['PAGEN_1'] > 1)  && ($_SERVER['HTTP_HOST']=='krep-komp.ru')):?>
+<?if($arResult['UF_DETAIL_TEXT'] && !($_REQUEST['PAGEN_1'] > 1)  && ($_SERVER['HTTP_HOST']=='krep-komp.ru') && empty($arParams['REFERENCE']['DETAIL_TEXT'])):?>
 <!--simple-article-->
             <div class="basic-layout__module simple-article">
                <div class="simple-article__content wysiwyg-block">
@@ -463,3 +463,11 @@ if(!empty($arResult["EGOR_SCRIPT_AR"]))
     </script>
     <?php
 }
+?>
+<script type="text/javascript"> 
+    (window["rrApiOnReady"] = window["rrApiOnReady"] || []).push(function() {
+		try{ rrApi.groupView([<? foreach($arResult['arITEMS_ID'] as $item_id) {
+			echo $item_id.', ';
+		} ?>]); } catch(e) {}
+	})
+</script>

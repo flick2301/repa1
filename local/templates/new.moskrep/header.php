@@ -216,6 +216,24 @@ $APPLICATION->IncludeFile(
 <style>@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=cyrillic);body{margin:0;font-family:'Open Sans',sans-serif;font-weight:400;letter-spacing:0;background-color:#fff;background-image:none}.project{max-width:660px;margin:0 auto;line-height:24px}.project *{font-family:'Open Sans',sans-serif}.project h1{margin:0;padding:34px 16px 25px;font-size:30px;font-weight:600;text-align:center;text-transform:capitalize}.project h2{margin:0 16px 12px;font-size:17px;font-weight:600}.project q{font-style:normal}.project q,.project q:lang(en){quotes:'\201C''\201D''\2018''\2019'}.project q:lang(ru){quotes:'\00AB''\00BB''\201E''\201C'}.project q::after,.project q::before{font-weight:600;color:#06aaf5}.project a{padding:0 10px;line-height:36px;color:#06aaf5;white-space:nowrap;text-decoration:underline}.js-no-touch .project a:hover,.project a:active{color:#28292b;text-decoration:none}.project .list{width:100%;margin:0;font-size:17px;padding:8px 0 24px}.project .list li{display:flex;flex-direction:column;padding:5px 0 7px}.project .list li:nth-of-type(2n+1){background-color:#f5f5f6}.project .name{padding:8px 16px}.project .action{display:flex;margin-top:-8px;padding:0 6px}@media (min-width:531px){.project{padding:0 40px}.project h1{padding-right:20px;padding-left:20px}.project h2{margin-right:0;margin-left:0}.project .list li{padding-right:4px;padding-left:4px}}@media (min-width:741px){.project{padding:12px 40px}.project a{padding:0 16px;line-height:40px}.project .list li{flex-direction:row;justify-content:space-between;padding-bottom:6px}.project .action{margin-top:0}}</style>
 <?endif?>
 
+<script type="text/javascript">
+       var rrPartnerId = "62cfd1541a701bd78c23c846﻿";       
+       var rrApi = {}; 
+       var rrApiOnReady = rrApiOnReady || [];
+       rrApi.addToBasket = rrApi.order = rrApi.categoryView = rrApi.view = 
+           rrApi.recomMouseDown = rrApi.recomAddToCart = function() {};
+       (function(d) {
+           var ref = d.getElementsByTagName('script')[0];
+           var apiJs, apiJsId = 'rrApi-jssdk';
+           if (d.getElementById(apiJsId)) return;
+           apiJs = d.createElement('script');
+           apiJs.id = apiJsId;
+           apiJs.async = true;
+           apiJs.src = "//cdn.retailrocket.ru/content/javascript/tracking.js";
+           ref.parentNode.insertBefore(apiJs, ref);
+       }(document));
+    </script>
+
 </head>
 
 

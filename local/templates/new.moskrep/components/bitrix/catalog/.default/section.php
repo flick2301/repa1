@@ -16,7 +16,10 @@ $mySmartFilter = [">CATALOG_PRICE_9" => 0];
 $GLOBAL['SECTION_ID'] = $arResult["VARIABLES"]["SECTION_ID"];
 
 
-$sorting = $sec_builder->getCurSorting();
+if($APPLICATION->GetCurDir() != $sec_builder->curSection['SECTION_PAGE_URL'])
+{
+	$sorting = $sec_builder->getCurSorting();
+}
 if(!empty($sorting[0]['arFilters']['VALUE'])) {
 	
 	$arResult["VARIABLES"]["SECTION_ID"] = $sec_builder->getCurSection();
@@ -112,6 +115,14 @@ if ($isFilter)
 	if (!isset($arCurSection))
 		$arCurSection = array();
 }
+
+?>
+<script type="text/javascript">
+	(window["rrApiOnReady"] = window["rrApiOnReady"] || []).push(function() {
+		try { rrApi.categoryView(<?=$arResult["VARIABLES"]["SECTION_ID"];?>); } catch(e) {}
+			})
+</script>
+<?php
 
 //Выявляем, есть ли секции в секции
 $count_sections = CIBlockSection::GetCount(Array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], "SECTION_ID"=>$arResult["VARIABLES"]["SECTION_ID"]));
@@ -240,6 +251,7 @@ if($count_sections || !empty($subsections) || !empty($uf_fields["UF_MATERIAL"]))
             "ID SMALL" => "125",
             "ID MIDLE" => "124",
             "ID BIG" => "123",
+			"FOR_SEO"=>'Y',
         ),
         false
         );

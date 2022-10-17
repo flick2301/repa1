@@ -137,6 +137,7 @@ $arSec = $nav->GetNext();
 if(!in_array($arSec['ID'], $arParams["VIBOR_CATALOG_TABLE"])){ $arResult['JUST_VERTICAL']='Y';}
 
 foreach($arResult['ITEMS'] as $key=>$arItem){
+	$arResult['arITEMS_ID'][]=$arItem['ID'];
     if(isset($arItem['PREVIEW_PICTURE']['ID'])){
       $file = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE']['ID'], array('height'=>'150'), BX_RESIZE_IMAGE_PROPORTIONAL, true);
     }else{

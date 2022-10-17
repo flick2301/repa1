@@ -172,6 +172,7 @@ $intSectionID = $APPLICATION->IncludeComponent(
 						"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 						"IBLOCK_ID" => $arParams["IBLOCK_ID"],
 						"ELEMENT_SORT_FIELD" => "SORT",
+						"FOR_SEO"=>'Y',
 						"ELEMENT_SORT_ORDER" => 'asc',
 						"ELEMENT_SORT_FIELD2" => $arParams["ELEMENT_SORT_FIELD"],
 						"ELEMENT_SORT_ORDER2" => 'asc',
@@ -300,6 +301,7 @@ $intSectionID = $APPLICATION->IncludeComponent(
 						'EXTRA_FIELD' => (isset($arResult['SECTION']['UF_EXTRA_FIELD']) ? $arResult['SECTION']['UF_EXTRA_FIELD'] : ''),
 						'SECTIONS_LIST_TEMPLATE'=>(isset($arParams['SECTIONS_LIST_TEMPLATE']) ? $arParams['SECTIONS_LIST_TEMPLATE'] : ''),
 						'SET_SORT_MAIN'=> $arResult['SECTION']['UF_SET_SORT_MAIN'] ?? '0',
+						'REFERENCE'=>$arResult['REFERENCE']['ITEM'],
 
 
 		

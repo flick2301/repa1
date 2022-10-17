@@ -1,7 +1,21 @@
 .load_more {
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    cursor: pointer;
+    background: #f0f0f0;
+    border-radius: 5px;
+    padding: 15px 10px 14px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #000;
     text-align: center;
+    cursor: pointer;
+    transition: .3s;
+    display: block;
+    line-height: 1;
+    font-family: 'Montserrat';
+    margin: 20px 0px 0px;
+	width: 100%;
+}
+
+
+.load_more:hover{
+background: rgba(79,54,227,.2);
 }

@@ -215,3 +215,42 @@ window.dataLayer = window.dataLayer || [];
 
 
 </div>
+
+<?
+if($orderId = $arResult['ORDER']['ID']) {
+    $userEmail = "";
+    if($order = \Bitrix\Sale\Order::load($orderId)) {
+        /** @var \Bitrix\Sale\PropertyValueCollection $propertyCollection */
+        if($propertyCollection = $order->getPropertyCollection()) {
+
+            /** @var \Bitrix\Sale\PropertyValue $orderProperty */
+            foreach($propertyCollection as $orderProperty) {
+                //Ищет свойство заказа, у которого символьный код EMAIL
+                if($orderProperty->getField('CODE') == 'EMAIL') {
+                    $userEmail = $orderProperty->getValue();
+                }
+            }
+
+        }
+    }
+}
+
+?>
+
+<script type="text/javascript">
+    (window["rrApiOnReady"] = window["rrApiOnReady"] || []).push(function() {
+        try {
+            rrApi.setEmail("<?=$userEmail;?>");
+            rrApi.order({
+                "transaction": "<?=$orderId;?>",
+                "items": [
+                    <? $rsCart = CSaleBasket::GetList(Array(),Array("ORDER_ID"=>$arResult['ORDER']['ID']));?>
+                    <? while ($arCartItem = $rsCart->Fetch()) {?>
+                    { "id": <?=$arCartItem["PRODUCT_ID"]?>, "qnt": <?=$arCartItem['QUANTITY']?>,  "price": <?=$arCartItem["PRICE"]*$arCartItem['QUANTITY']?>},
+                            <?};?>
+
+                                ]
+                                });
+                                } catch(e) {}
+                                })
+</script>
