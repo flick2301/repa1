@@ -9,7 +9,15 @@ $aMenuLinks = Array(
 	),
 
 	
-
+	
+	
+	Array(
+		"Распродажа крепежа",
+		"/rasprodaja-krepeja/",
+		Array(), 
+		Array(), 
+		"" 
+	),
 	Array(
 		"Сертификаты",
 		"/certificates/",
@@ -40,7 +48,7 @@ $aMenuLinks = Array(
 	),
 	Array(
 		"Обмен и возврат",
-		"/obmen_i_vozvrat/",
+		"/obmen-i-vozvrat/",
 		Array(),
 		Array(),
 		""
@@ -61,7 +69,7 @@ $aMenuLinks = Array(
 	),
         Array(
 		"Скачать Прайс",
-			"/prays_listy/",
+			"/prays-listy/",
 		Array(),
 		Array(),
 		""

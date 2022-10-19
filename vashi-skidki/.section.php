@@ -1,3 +1,3 @@
 <?
-$sSectionName="Ваши скидки";
+$sSectionName="Оптовые скидки";
 ?>

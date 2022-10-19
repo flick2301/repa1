@@ -2,7 +2,7 @@
 $aMenuLinks = Array(
 	Array(
 		"Оптовые скидки", 
-		"/vashi_skidki/", 
+		"/vashi-skidki/", 
 		Array(), 
 		Array("color"=>"#0c59cf"), 
 		"" 
@@ -30,7 +30,7 @@ $aMenuLinks = Array(
 	),
 	Array(
 		"Прайс-лист", 
-		"/prays_listy/", 
+		"/prays-listy/", 
 		Array(), 
 		Array(), 
 		"" 

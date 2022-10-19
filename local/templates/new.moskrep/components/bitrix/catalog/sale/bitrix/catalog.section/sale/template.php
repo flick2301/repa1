@@ -50,7 +50,9 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
         );
         $size = array_diff($ar_size, ['']);
 	?>
-	
+	<!--
+	<?var_dump($item);?>
+	-->
 	<div class="catalog-feed__table">
                      <!--catalog-table-->
                      <section class="catalog-table">
