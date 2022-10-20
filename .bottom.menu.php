@@ -75,17 +75,24 @@ $aMenuLinks = Array(
 		""
 	),
     Array(
+		"Правила торговли",
+		"/pravila-torgovli/	",
+		Array(),
+		Array(),
+		""
+	),		
+Array(
+		"Калькулятор веса",
+		"/calculator/",
+		Array(),
+		Array(),
+		""),	
+    Array(
 		"Карта сайта",
 		"/map/",
 		Array(),
 		Array(),
 		""
 	),	
-	Array(
-		"Калькулятор веса",
-		"/calculator/",
-		Array(),
-		Array(),
-		""),
 );
 ?>
