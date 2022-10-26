@@ -54,6 +54,13 @@
     cursor: pointer;
     background-color: #552fec;
 	height: 26px;
-	padding: 3px 12px 0;
+	padding: 3px 12px 3px;
 	min-width: 100px;
+}
+@media (max-width: 685px) {	
+.cookie__button {
+    min-width: 162px;
+    height: 38px;
+    font-size: 16px;
+}
 }

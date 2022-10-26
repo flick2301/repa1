@@ -188,6 +188,21 @@ else
 
 
 
+<?
+$cur_user_id = $USER->GetID();
+$rsUser = CUser::GetByID($cur_user_id);
+$arUser = $rsUser->Fetch();
+if($arUser["UF_AGREEMENT"])
+{
+	?>
+	<script type="text/javascript">
+    (window["rrApiOnReady"] = window["rrApiOnReady"] || []).push(function() {
+        try { rrApi.setEmail("<?=$arUser["EMAIL"];?>"); } catch(e) {}
+    })
+	</script>
+	<?
+};?>
+
 
 
 

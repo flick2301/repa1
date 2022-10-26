@@ -200,6 +200,18 @@ $APPLICATION->IncludeFile(
 
 <?$APPLICATION->ShowPanel();?>
 
+
+<?if(!$_COOKIE['use_cookie']):?>
+<?
+$APPLICATION->IncludeFile(
+ "/include/use_cookie.php",
+ array(),
+ array("MODE"=>"php")
+);
+?>
+<?endif?>
+
+
 <?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
 <?
 $APPLICATION->IncludeFile(

@@ -229,6 +229,9 @@ if($orderId = $arResult['ORDER']['ID']) {
                 if($orderProperty->getField('CODE') == 'EMAIL') {
                     $userEmail = $orderProperty->getValue();
                 }
+				if($orderProperty->getField('CODE') == 'AGREEMENT') {
+                    $agreement = $orderProperty->getValue();
+                }
             }
 
         }
@@ -254,3 +257,12 @@ if($orderId = $arResult['ORDER']['ID']) {
                                 } catch(e) {}
                                 })
 </script>
+<?
+if($agreement=='Y')
+{?>
+<script type="text/javascript">
+    (window["rrApiOnReady"] = window["rrApiOnReady"] || []).push(function() {
+        try { rrApi.setEmail("<?=$userEmail;?>"); } catch(e) {}
+    })
+</script>
+<?}?>

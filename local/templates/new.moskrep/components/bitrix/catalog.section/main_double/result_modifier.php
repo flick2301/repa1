@@ -21,6 +21,7 @@ while (($basketItem = $basketResultSet->fetch())) {
 
 
 foreach ($arResult['ITEMS'] as $key=>$item) {
+	$arResult['arITEMS_ID'][]=$item['ID'];
 $ar_result = CIBlockSection::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "ID" => $item["IBLOCK_SECTION_ID"]), false, $arSelect = array("*", "UF_*"));
 
 if($arSection = $ar_result->GetNext()) {
