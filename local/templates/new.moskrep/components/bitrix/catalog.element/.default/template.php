@@ -179,6 +179,7 @@ dataLayer.push({
                      <!--product-data-->
                   </div>
         </div>
+		<div data-retailrocket-markup-block="63591c1ce931eed4c8088b0a" data-product-id="<?=$arResult['ID']?>"></div>
         <!--product-tabs-->
                <div class="product-page__tabs product-tabs" id="desc">
                   <ul class="product-tabs__list" data-product-page-tabs>
@@ -574,6 +575,9 @@ dataLayer.push({
             </div>
             
             <div class="product-widget__content" id="other">
+			<div data-retailrocket-markup-block="63591c2ae931eed4c8088b0e" data-product-id="<?=$arResult['ID']?>"></div>
+			<script>retailrocket.markup.render();</script>
+			<div data-retailrocket-markup-block="63591c3a1e03932729114a3c" data-product-id="<?=$arResult['ID']?>"></div>
 		<?
             global $baFilter;
 			if(empty($baFilter))

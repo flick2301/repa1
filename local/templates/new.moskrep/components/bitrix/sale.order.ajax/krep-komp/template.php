@@ -15,6 +15,8 @@ use Bitrix\Main\Localization\Loc;
 $context = Main\Application::getInstance()->getContext();
 $request = $context->getRequest();
 
+
+
 if (empty($arParams['TEMPLATE_THEME']))
 {
 	$arParams['TEMPLATE_THEME'] = Main\ModuleManager::isModuleInstalled('bitrix.eshop') ? 'site' : 'blue';
@@ -396,7 +398,7 @@ else
 					</div>
 					<div class="bx-soa-section-content container-fluid"></div>
 				</div>
-
+				<div data-retailrocket-markup-block="635948f8e931eed4c8089a9e" data-products="<?=implode(",", $arResult['IDS'])?>"></div>
 
 					<!--	DELIVERY BLOCK	-->
 					<div id="bx-soa-delivery" data-visited="false" class="bx-soa-section bx-active" <?=($hideDelivery ? 'style="display:none"' : '')?>>

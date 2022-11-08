@@ -54,6 +54,7 @@ if (empty($arResult['ERROR_MESSAGE']))
                 'products': [
 				<?foreach($arResult['CITRO'] as $citroItem)
 				{
+					$retail_ids[] = $citroItem["ID"];
 					?>
 				{
                     id: '<?=$citroItem["ID"]?>',
@@ -96,7 +97,8 @@ if (empty($arResult['ERROR_MESSAGE']))
                </div>
             </div>
             <!--catalog-feed-->						
-						
+			<div data-retailrocket-markup-block="63591ca11e03932729114a43" data-products="<?=implode(",", $retail_ids)?>"></div>
+			<div data-retailrocket-markup-block="63591caf1e03932729114a44" data-products="<?=implode(",", $retail_ids)?>"></div>
 						
             <!--simple-article-->
             <div class="basic-layout__module simple-article">

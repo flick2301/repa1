@@ -22,6 +22,8 @@ $APPLICATION->SetTitle("Страница не найдена");?>
     <div class="notfound__title">К сожалению, страница, которую вы ищете, не найдена</div>
     <a href="/" class="main-nav__link" style="color:#f39101">На главную</a>
 </div>
+<div data-retailrocket-markup-block="63591db9e931eed4c8088b95"></div>
+<div data-retailrocket-markup-block="63591dcc1e03932729114ad4"></div>
 <?
 
 $fd = fopen($_SERVER["DOCUMENT_ROOT"]."/service/log_404.txt", 'a') or die("не удалось создать файл");
