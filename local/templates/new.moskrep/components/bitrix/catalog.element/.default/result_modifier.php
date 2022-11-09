@@ -16,7 +16,7 @@ $relinkList = \Relink\Table\LinksTable::getList(array("select" => array('*'), "f
 while($arRelink = $relinkList->fetch()){
     $arResult['RELINK'][] = $arRelink;
 }
-//НЕОБХОДИМО ПРОВЕРИТЬ DETAIL_PAGE_URL И URL ТЕКУЩЕЙ СТРАНИЦЫ, ЧТОБЫ ВЫДАВАЛО 404 ОШИБКУ 
+//НЕОБХОДИМО ПРОВЕРИТЬ DETAIL_PAGE_URL И URL ТЕКУЩЕЙ СТРАНИЦЫ, ЧТОБЫ ВЫДАВАЛО 404 ОШИБКУ
 //ЕСЛИ НА СТРАНИЦУ ЭЛЕМЕНТА ПЕРЕШЛИ ПО ДРУГОМУ АДРЕСУ( ЧЕРЕЗ ДРУГУЮ ДИРИКТОРИЮ).
 $dir = $APPLICATION->GetCurDir();
 $res = CIBlockElement::GetList(Array("SORT"=>"ASC"), array("IBLOCK_ID"=>$arResult["IBLOCK_ID"], "ID"=>$arResult["ID"]), Array("*"));
@@ -43,14 +43,14 @@ endif;
 
  foreach($arResult['DISPLAY_PROPERTIES'] as $key => $value){
        if(in_array($value['CODE'], ARR_UINTS_MM)){
-         $arResult['DISPLAY_PROPERTIES'][$key]['VALUE'] .= ' мм';   
-       } 
+         $arResult['DISPLAY_PROPERTIES'][$key]['VALUE'] .= ' мм';
+       }
        elseif(in_array($value['CODE'], ARR_UNITS_SHT)){
-         $arResult['DISPLAY_PROPERTIES'][$key]['VALUE'] .= $arResult['UNIT'];   
+         $arResult['DISPLAY_PROPERTIES'][$key]['VALUE'] .= $arResult['UNIT'];
        }
        elseif(in_array($value['CODE'], ARR_UNITS_RAL)){
-         $arResult['DISPLAY_PROPERTIES'][$key]['VALUE'] .= ' RAL';   
-       } 
+         $arResult['DISPLAY_PROPERTIES'][$key]['VALUE'] .= ' RAL';
+       }
 }
 
 //КОНЕЦ БЛОКА
@@ -70,7 +70,7 @@ $rsStoreProduct = \Bitrix\Catalog\StoreProductTable::getList(array(
 	}
 
 
-   
+
 
 //ДЕЛИМ ВСЕ ХАРАКТЕРИСТИКИ НА ДВА СТОЛБИКА (СЕЙЧАС НЕ НУЖНО, НО ВДРУГ ОПЯТЬ ВЕРНУТ ГОРЕ ДИЗАЙНЕРЫ)
 foreach($arResult['DISPLAY_PROPERTIES'] as $key=>$arProp):
@@ -109,24 +109,24 @@ while($nw = $nav->Fetch()){
 
 $arFilter = array('IBLOCK_ID' => IBLOCK_ID_CERT, "UF_SEC_CAT"=>$arTempID);
 $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array("*", "UF_*"));
-if($arSection = $rsSections->GetNext())
+while($arSection = $rsSections->GetNext())
 {
     $arSelect = Array("*");
     $arFilter = Array("IBLOCK_ID"=>IBLOCK_ID_CERT, "SECTION_ID"=>$arSection['ID']);
     $res = CIBlockElement::GetList(Array(), $arFilter, false, array(), $arSelect);
     while($ob = $res->GetNextElement())
     {
-        
+
         $arProperties = $ob->GetProperties();
         $arCert = array();
         foreach($arProperties['CERT_PAGE']['VALUE'] as $page_pic){
-            
+
             $arCert = CFile::ResizeImageGet($page_pic, array('width'=>'330', 'height'=>'330'), BX_RESIZE_IMAGE_PROPORTIONAL, true);
             $arCert['BIG_PIC'] = CFile::GetPath($page_pic);
             $arResult['CERT_PICTURE'][] = $arCert;
-           
+
         }
-    } 
+    }
 }
 //КОНЕЦ БЛОКА
 
@@ -135,10 +135,10 @@ if($arSection = $rsSections->GetNext())
 $ar_result = CIBlockSection::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "ID" => $arResult["IBLOCK_SECTION_ID"]), false, $arSelect = array("*", "UF_*"));
 
 if($arSection = $ar_result->GetNext()) {
-	
+
     $arResult["RELATED"] = $arSection["UF_RELATED"];
 	$arResult["SECTION_PICTURE"]=$arSection['PICTURE'];
-    
+
 }
 
 //Подбор сопутствующих товаров по свойству, нужен getlist на все верхние подразделы, будут
@@ -156,14 +156,14 @@ while($arSection = $ar_result->GetNext())
 			$props['PROPERTY_'.$prop['VALUE'].'_VALUE'] = $arResult['DISPLAY_PROPERTIES'][$prop['VALUE']]['VALUE'];
 		}
 		$filter = array_merge(['IBLOCK_ID' => $arParams['IBLOCK_ID'], 'INCLUDE_SUBSECTIONS'=>'Y', 'CATALOG_AVAILABLE'=>'Y', 'ACTIVE'=>'Y',  'SECTION_ID'=>$arResult["S_ETIM_TOVAROM"]], $props);
-		
+
 		// выборка списка элементов
 		$dbItems = CIBlockElement::GetList(Array(), $filter, false, array(), array('ID', 'NAME', 'IBLOCK_ID'));
-        global $baFilter;         
+        global $baFilter;
 		while ($arItem = $dbItems->GetNext()){
 			$baFilter['ID'][] = $arItem['ID'];
 		}
-		
+
 		break;
 	}
 }
@@ -171,7 +171,7 @@ while($arSection = $ar_result->GetNext())
 
 if($arResult['DETAIL_PICTURE']['ID']){
     $arResult['PREVIEW_PICTURE'] = CFile::ResizeImageGet($arResult['DETAIL_PICTURE']['ID'], array('width'=>$arParams['ITEMS_DETAIL_PIC_W'], 'height'=>$arParams['ITEMS_DETAIL_PIC_H']), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-    
+
 }else{
    $arResult['PREVIEW_PICTURE'] = CFile::ResizeImageGet($arResult['SECTION_PICTURE'], array('width'=>$arParams['ITEMS_DETAIL_PIC_W'], 'height'=>$arParams['ITEMS_DETAIL_PIC_H']), BX_RESIZE_IMAGE_PROPORTIONAL, true);
    if($arResult['PREVIEW_PICTURE']['src']==false):
@@ -179,7 +179,7 @@ if($arResult['DETAIL_PICTURE']['ID']){
     endif;
 }
 
-$rsStore = CCatalogStoreProduct::GetList(array(), array('PRODUCT_ID' => $arResult['ID']), false, false, array('STORE_ID', 'AMOUNT', 'STORE_NAME')); 
+$rsStore = CCatalogStoreProduct::GetList(array(), array('PRODUCT_ID' => $arResult['ID']), false, false, array('STORE_ID', 'AMOUNT', 'STORE_NAME'));
 while($arStore = $rsStore->Fetch()){
     $arResult['STORE'][$arStore['STORE_ID']] = $arStore;
 }
@@ -226,19 +226,19 @@ while($obElement = $db_elemens->GetNext())
     if($conformity && $arResult['ID'] != $obElement['ID']){
         $arResult['ELEMENT_VARS'][] = $obElement['ID'];
     }else{
-    
+
         $arElements[] = $obElement['ID'];
         if($obElement['ID']==$arResult['ID'])
             $indexElement = count($arElements);
-    
+
     }
-        
+
 }
 
 if((count($arElements) - $indexElement) < 3){
 $startTable = 3 - (count($arElements) - $indexElement);
 
-$arResult['ELEMENT_NEXT'] = array_merge(array_slice($arElements, $indexElement, count($arElements) - $indexElement), array_slice($arElements, 0, $startTable));    
+$arResult['ELEMENT_NEXT'] = array_merge(array_slice($arElements, $indexElement, count($arElements) - $indexElement), array_slice($arElements, 0, $startTable));
 }else{
 $arResult['ELEMENT_NEXT'] = array_slice($arElements, $indexElement, 3);
 }
