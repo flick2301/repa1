@@ -27,5 +27,5 @@ $dbBasketItems = CSaleBasket::GetList(
     );
 while ($arItems = $dbBasketItems->Fetch())
 {
-   $arResult['IDS'][] = $arItems['ID'];
+   $arResult['IDS'][] = $arItems['PRODUCT_ID'];
 }

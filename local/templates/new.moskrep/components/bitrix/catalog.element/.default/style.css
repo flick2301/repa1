@@ -323,9 +323,17 @@ element.style {
 }
 .card_delivery{
     cursor:pointer;
+	color: #2671e4 !important;
+}
+.card_delivery:hover {
+  text-decoration: underline;
 }
 .card_pickup{
     cursor:pointer;
+	color: #2671e4 !important;
+}
+.card_pickup:hover {
+  text-decoration: underline;
 }
 .product__date-block {
 	position: relative;
