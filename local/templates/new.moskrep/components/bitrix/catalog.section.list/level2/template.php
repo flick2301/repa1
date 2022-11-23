@@ -518,10 +518,12 @@ while($arSection = $db_list->GetNext()) {
 
         <!--product-tabs-->
                <div class="product-page__tabs product-tabs" id="desc">
-                  <ul class="product-tabs__list" data-product-page-tabs>		
+                  <ul class="product-tabs__list" data-product-page-tabs>
+<?if(empty($sec_builder->curSorting[0]['arFilters']['VALUE']) && empty($sec_builder->curSorting[1]['arFilters']['VALUE'])){?>				  
                      <li class="product-tabs__item">
                         <a class="product-tabs__toggle" href="#description_about" data-tabby-default>Описание</a>
                      </li>
+					 <?}?>
 					 
 					 <?if($arResult['SECTION']['UF_DESCRIPTION_SPECIES'] && false):?>
                      <li class="product-tabs__item">
@@ -562,11 +564,14 @@ while($arSection = $db_list->GetNext()) {
         <!--product-tabs-->
 
 
+
 <div class="product-page__section" id="description_about">
 <div class="basic-layout__module simple-article">
-<div class="simple-article__content wysiwyg-block">		
+<div class="simple-article__content wysiwyg-block">	
+<?if(empty($sec_builder->curSorting[0]['arFilters']['VALUE']) && empty($sec_builder->curSorting[1]['arFilters']['VALUE'])){?>	
 <?=$arResult['SECTION']['~UF_DESCRIPTION_ABOUT'];?>
 <?=$arResult['SECTION']['~UF_DESCRIPTION_SPECIES'];?>
+<?}?>
 </div>	
 </div>
 </div>	
@@ -689,7 +694,10 @@ while($arSection = $db_list->GetNext()) {
         <div class="basic-layout__module simple-article">
             <div class="simple-article__content wysiwyg-block">
                 <?if(empty($sec_builder->curSorting[0]['arFilters']['VALUE']) && empty($sec_builder->curSorting[1]['arFilters']['VALUE'])){?>
-				    <?=$arResult['SECTION']['DESCRIPTION']?>
+				    
+					<!--
+					<? var_dump($sec_builder->curSorting[0]['arFilters']['VALUE']);?>
+					-->
 				<?}?>
 			</div>	
 		</div>
