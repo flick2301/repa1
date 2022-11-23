@@ -3,10 +3,10 @@ use Bitrix\Main\Loader,
     Bitrix\Main\Localization\Loc,
     Bitrix\Iblock\ElementTable,
     Bitrix\Iblock;
-	
-	use Bitrix\Main\Application, 
-    Bitrix\Main\Context, 
-    Bitrix\Main\Request, 
+
+	use Bitrix\Main\Application,
+    Bitrix\Main\Context,
+    Bitrix\Main\Request,
     Bitrix\Main\Server;
 
 
@@ -21,7 +21,7 @@ Loc::loadMessages(__FILE__);
 
 if (!Loader::includeModule("iblock"))
 {
-	
+
 	return;
 }
 
@@ -30,7 +30,7 @@ class classCertificates extends CBitrixComponent
     public function executeComponent()
 	{
 		global $APPLICATION;
-		
+
 		$context = Application::getInstance()->getContext();
 		$server = $context->getServer();
 		$arFolder = explode("/", $server->getRequestUri());
@@ -40,11 +40,11 @@ class classCertificates extends CBitrixComponent
 			$folder = implode("/", $arFolder);
 		else
 			$folder = $this->arParams["SEF_FOLDER"];
-		
-		
-		
-		
-		
+
+
+
+
+
 	    $arDefaultUrlTemplates404 = array(
 	       "sections" => "",
 		   "items" => "#SECTION_CODE_PATH#/",
@@ -57,42 +57,53 @@ class classCertificates extends CBitrixComponent
 
         if($this->arParams["SEF_MODE"] == "Y")
         {
-			
+
 			$arUrlTemplates = CComponentEngine::MakeComponentUrlTemplates($arDefaultUrlTemplates404, $this->arParams["SEF_URL_TEMPLATES"]);
-	       
+
 	        $arVariables = array();
-			
-	        $componentPage = CComponentEngine::ParseComponentPath(
+
+	        /*$componentPage = CComponentEngine::ParseComponentPath(
 				$folder."/",
 				$arUrlTemplates,
 				$arVariables
+			);*/
+
+			$engine = new CComponentEngine($this);
+			$engine->addGreedyPart("#SECTION_CODE_PATH#");
+			$engine->addGreedyPart("#SMART_FILTER_PATH#");
+			$engine->setResolveCallback(array("CIBlockFindTools", "resolveComponentEngine"));
+			$componentPage = $engine->guessComponentPath(
+				$this->arParams["SEF_FOLDER"],
+				$arUrlTemplates,
+				$arVariables
 			);
-			
+
+
 			$b404 = false;
-			
+
 	        if(!$componentPage)
 	        {
 				$componentPage = "sections";
 				$b404 = true;
 	        }
-			
-			
-				
+
+
+
 	        $this->arResult = array(
 				"FOLDER" => $this->arParams["SEF_FOLDER"],
 				"URL_TEMPLATES" => $arUrlTemplates,
 				"VARIABLES" => $arVariables,
                 "VARS" => $componentPage
                 );
-				
+
         }
         else
         {
 	        $arVariables = array();
-	
+
 	        $arVariableAliases = CComponentEngine::MakeComponentVariableAliases($arDefaultVariableAliases, $this->arParams["VARIABLE_ALIASES"]);
 	        CComponentEngine::InitComponentVariables(false, $arComponentVariables, $arVariableAliases, $arVariables);
-	
+
 			$componentPage = "";
 
 	        if(isset($arVariables["SECTION_ID"]) && intval($arVariables["SECTION_ID"]) > 0)
@@ -102,7 +113,7 @@ class classCertificates extends CBitrixComponent
 			else
 				$componentPage = "sections";
             global $APPLICATION;
-	        
+
             $this->arResult = array(
 				"FOLDER" => "",
 				"URL_TEMPLATES" => Array(
@@ -112,13 +123,13 @@ class classCertificates extends CBitrixComponent
 				"VARIABLES" => $arVariables,
 	        );
         }
-		
-		            
-            
-		//ЕСЛИ ЧПУ ВЫКЛЮЧЕН	
+
+
+
+		//ЕСЛИ ЧПУ ВЫКЛЮЧЕН
 		if ($this->arResult['VARIABLES']['SECTION_ID'] && $this->arParams['ADD_SECTIONS_CHAIN'])
 		{
-			
+
 			$this->arResult['PATH'] = array();
 			$pathIterator = CIBlockSection::GetNavChain(
 				$this->arParams['IBLOCK_ID'],
@@ -137,66 +148,74 @@ class classCertificates extends CBitrixComponent
 				$this->arResult['PATH'][] = $path;
 			}
 		}
-            
-        //ЕСЛИ С ЧПУ  
+
+        //ЕСЛИ С ЧПУ
         if($componentPage=='items')
 		{
-			
-            $arFilter = array('IBLOCK_ID' => $this->arParams['IBLOCK_ID'], "CODE"=>$this->arResult['VARIABLES']["SECTION_CODE_PATH"]);
-            $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array("*", "UF_*"));
-					
-            if($arSection = $rsSections->GetNext())
-            {
-				
-                 $this->arResult['SECTION']= $arSection; 
-                $ipropValues = new Iblock\InheritedProperty\SectionValues($this->arParams['IBLOCK_ID'], $arSection['ID']);
-                $this->arResult['IPROP_VALUES'] = $ipropValues->getValues();
-                    
-                $arSelect = Array("*");
-				$arFilter = Array("IBLOCK_ID"=>$this->arParams['IBLOCK_ID'], "SECTION_ID"=>$this->arResult['SECTION']['ID']);
-                $res =CIBlockSection::GetList(Array(), $arFilter);
-                while ($sect = $res->GetNext())
-                    {
-						
-                       		$this->arResult['SECTIONS'][] = $sect;
-							
-                        
-                    }
-                    
-                $arSelect = Array("*");
-                $arFilter = Array("IBLOCK_ID"=>$this->arParams['IBLOCK_ID'], "SECTION_CODE"=>$this->arResult['VARIABLES']["SECTION_CODE_PATH"]);
-                $res = CIBlockElement::GetList(Array(), $arFilter, false, array(), $arSelect);
-                while($ob = $res->GetNextElement())
-                {
-                    $arFields = $ob->GetFields();
-                    $arProperties = $ob->GetProperties();
-                    $arItem = $arFields;
-                    $arItem['PROPERTIES'] = $arProperties;
-                    $this->arResult['ITEMS'][]=$arItem;
-                }
-			}else{
-				\Bitrix\Iblock\Component\Tools::process404(
+			if($this->arResult['VARIABLES']["SECTION_ID"]){
+
+				$arFilter = array('IBLOCK_ID' => $this->arParams['IBLOCK_ID'], "ID"=>$this->arResult['VARIABLES']["SECTION_ID"]);
+				$rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, array("*", "UF_*"));
+
+				if($arSection = $rsSections->GetNext())
+				{
+
+					 $this->arResult['SECTION']= $arSection;
+					$ipropValues = new Iblock\InheritedProperty\SectionValues($this->arParams['IBLOCK_ID'], $arSection['ID']);
+					$this->arResult['IPROP_VALUES'] = $ipropValues->getValues();
+
+					$arSelect = Array("*");
+					$arFilter = Array("IBLOCK_ID"=>$this->arParams['IBLOCK_ID'], "SECTION_ID"=>$this->arResult['SECTION']['ID']);
+					$res =CIBlockSection::GetList(Array(), $arFilter);
+					while ($sect = $res->GetNext())
+						{
+
+								$this->arResult['SECTIONS'][] = $sect;
+
+
+						}
+
+					$arSelect = Array("*");
+					$arFilter = Array("IBLOCK_ID"=>$this->arParams['IBLOCK_ID'], "SECTION_ID"=>$this->arResult['VARIABLES']["SECTION_ID"]);
+					$res = CIBlockElement::GetList(Array(), $arFilter, false, array(), $arSelect);
+					while($ob = $res->GetNextElement())
+					{
+						$arFields = $ob->GetFields();
+						$arProperties = $ob->GetProperties();
+						$arItem = $arFields;
+						$arItem['PROPERTIES'] = $arProperties;
+						$this->arResult['ITEMS'][]=$arItem;
+					}
+				}else{
+					\Bitrix\Iblock\Component\Tools::process404(
 						""
 						,($this->arParams["SET_STATUS_404"] === "Y")
 						,($this->arParams["SET_STATUS_404"] === "Y")
 						,($this->arParams["SHOW_404"] === "Y")
 						,$this->arParams["FILE_404"]
 					);
+				}
+			} else {
+				\Bitrix\Iblock\Component\Tools::process404(
+					""
+					,($this->arParams["SET_STATUS_404"] === "Y")
+					,($this->arParams["SET_STATUS_404"] === "Y")
+					,($this->arParams["SHOW_404"] === "Y")
+					,$this->arParams["FILE_404"]
+				);
 			}
-                   
         }else{
-                    $arFilter = array('IBLOCK_ID' => $this->arParams['IBLOCK_ID'], 'TOP_DEPTH'=>0);
-                    $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter);
-                    while ($arSection = $rsSections->GetNext())
-                    {
-						if($arSection['DEPTH_LEVEL']==1)
-                       		$this->arResult['SECTIONS'][] = $arSection;
-                        
-                    }  
-                }			   
-            $this->IncludeComponentTemplate($componentPage);
-		
-	
+			$arFilter = array('IBLOCK_ID' => $this->arParams['IBLOCK_ID'], 'TOP_DEPTH'=>0);
+			$rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter);
+			while ($arSection = $rsSections->GetNext())
+			{
+				if($arSection['DEPTH_LEVEL']==1)
+					$this->arResult['SECTIONS'][] = $arSection;
+
+			}
+		}
+
+		$this->IncludeComponentTemplate($componentPage);
     }
 }
 ?>
