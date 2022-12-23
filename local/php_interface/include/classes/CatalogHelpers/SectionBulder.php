@@ -245,9 +245,9 @@ class SectionBulder
 
                 }else{
                     if(!empty($this->curSorting[0]['CODE']))
-                        $link = $this->curSection['SECTION_PAGE_URL'].$this->curSorting[0]['CODE'].'/'.$sort_item['sef_filter']['VALUE'];
+                        $link = $this->curSection['SECTION_PAGE_URL'].$this->curSorting[0]['CODE'].'/'.$sort_item['sef_filter']['VALUE']. '/';
                     else
-                        $link = $this->curSection['SECTION_PAGE_URL'].$sort_item['sef_filter']['VALUE'];
+                        $link = $this->curSection['SECTION_PAGE_URL'].$sort_item['sef_filter']['VALUE']. '/';
                 }
             }else
             {
@@ -282,9 +282,9 @@ class SectionBulder
 
                 }else{
                     if(!empty($this->curSorting[0]['CODE']))
-                        $link = $this->curSection['SECTION_PAGE_URL'].$this->curSorting[0]['CODE'].'/'.$sort_item['sef_filter']['VALUE'];
+                        $link = $this->curSection['SECTION_PAGE_URL'].$this->curSorting[0]['CODE'].'/'.$sort_item['sef_filter']['VALUE']. '/';
                     else
-                        $link = $this->curSection['SECTION_PAGE_URL'].$sort_item['sef_filter']['VALUE'];
+                        $link = $this->curSection['SECTION_PAGE_URL'].$sort_item['sef_filter']['VALUE']. '/';
                 }
             }else
             {

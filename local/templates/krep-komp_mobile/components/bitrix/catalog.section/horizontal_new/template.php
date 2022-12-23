@@ -275,5 +275,12 @@ BX.ready(function () {
         });
 </script>
 <!-- END Criteo Category / Listing dataLayer -->
+<script type="text/javascript"> 
+    (window["rrApiOnReady"] = window["rrApiOnReady"] || []).push(function() {
+		try{ rrApi.groupView([<? foreach($arResult['arITEMS_ID'] as $item_id) {
+			echo $item_id.', ';
+		} ?>]); } catch(e) {}
+	})
+</script>
 
 		

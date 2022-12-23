@@ -46,6 +46,7 @@ class ContactShopsClass extends \CBitrixComponent implements \Bitrix\Main\Engine
             $rsSect = \CIBlockSection::GetList(Array(), $arFilter, false, $arSelect, Array("iNumPage"=>1));
             if ($arSection = $rsSect->GetNext()) {
                 if ($arSection["ID"]) $this->arParams["SECTION_ID"] = $arSection["ID"];
+				$this->arResult["SECTION_ID"]=$arSection["ID"];
             }
 
            $i = $lat = $lon = $center_count = $lat_max = $lat_min = $lon_max = $lon_min = 0;

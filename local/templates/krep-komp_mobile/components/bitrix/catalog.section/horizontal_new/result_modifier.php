@@ -151,6 +151,7 @@ while($arSection = $rsSections->GetNext())
 //ВЫЧИСЛЯЕМ ДОСТУПНЫЕ РАЗМЕРЫ ДЛЯ ОТОБРАЖЕНИЯ(КОНЕЦ)
 //if ($_SERVER['REQUEST_URI']=="/krepezh/samorezy/samorezy_po_derevu/ostrye_pd/") file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arResult['ITEMS'], true));
 foreach($arResult['ITEMS'] as $key=>$arItem){
+	$arResult['arITEMS_ID'][]=$arItem['ID'];
     if(isset($arItem['PREVIEW_PICTURE']['ID'])){
       $file = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE']['ID'], array('width'=>150, 'height'=>150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
     }else{

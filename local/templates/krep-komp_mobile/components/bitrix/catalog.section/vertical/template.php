@@ -188,5 +188,11 @@ while($arSection = $db_list->GetNext()) {
 <br>
 <br>
 <?}?>
-
+<script type="text/javascript"> 
+    (window["rrApiOnReady"] = window["rrApiOnReady"] || []).push(function() {
+		try{ rrApi.groupView([<? foreach($arResult['arITEMS_ID'] as $item_id) {
+			echo $item_id.', ';
+		} ?>]); } catch(e) {}
+	})
+</script>
 		

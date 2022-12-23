@@ -45,8 +45,10 @@ const STORE_ID_KOPTEVSKAYA = Array('111', 'Москва, улица Коптев
 if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){
 	global $DEFAULT_STORE_ID; 
 	$DEFAULT_STORE_ID= 12;
-}
-else{
+}elseif($_SERVER['HTTP_HOST']=='novosibirsk.krep-komp.ru'){
+	global $DEFAULT_STORE_ID; 
+	$DEFAULT_STORE_ID= 3;
+}else{
 	global $DEFAULT_STORE_ID; 
 	$DEFAULT_STORE_ID= 3;
 }

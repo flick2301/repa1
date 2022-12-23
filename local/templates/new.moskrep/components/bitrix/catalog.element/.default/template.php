@@ -179,8 +179,7 @@ dataLayer.push({
                      <!--product-data-->
                   </div>
         </div>
-		<div data-retailrocket-markup-block="63591c1ce931eed4c8088b0a" data-product-id="<?=$arResult['ID']?>"></div>
-        <!--product-tabs-->
+		    <!--product-tabs-->
                <div class="product-page__tabs product-tabs" id="desc">
                   <ul class="product-tabs__list" data-product-page-tabs>
                      <li class="product-tabs__item">
@@ -573,6 +572,8 @@ dataLayer.push({
 }?>
 
             </div>
+<div data-retailrocket-markup-block="63591c1ce931eed4c8088b0a" data-product-id="<?=$arResult['ID']?>"></div>
+    
             
             <div class="product-widget__content" id="other">
 			<div data-retailrocket-markup-block="63591c2ae931eed4c8088b0e" data-product-id="<?=$arResult['ID']?>"></div>
@@ -723,7 +724,7 @@ dataLayer.push({
 
 <?global $userEmail;?>
 <!-- Criteo Product dataLayer -->
-<script type='text/javascript'>
+<script>
         var dataLayer = dataLayer || [];
         dataLayer.push({            
             'event': 'crto_productpage',
@@ -737,7 +738,7 @@ dataLayer.push({
 <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa"></script>
    <script>var tabs=new Tabby("[data-product-page-tabs]");tabs=new Tabby("[data-delivery-tabs]"),tabs=new Tabby("[data-pickup-tabs]"),tabs=new Tabby("[data-product-widget-tabs]")</script>
    
-   ?>
+   
 <script type="text/javascript"> 
     (window["rrApiOnReady"] = window["rrApiOnReady"] || []).push(function() {
 		try{ rrApi.groupView([<? echo $arResult['ID']; ?>]); } catch(e) {}

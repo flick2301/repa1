@@ -21,7 +21,7 @@
 		<aside class="basic-layout__sidebar">
             <!--table-of-contents-->
 
-	<?=$APPLICATION->ShowViewContent('RELINK');?>
+	
 	<?=$APPLICATION->ShowViewContent("smart_filter");?>
 
 <?if($APPLICATION->GetCurPage() == "/personal/" || $APPLICATION->GetCurPage() == "/personal/private/" || $APPLICATION->GetCurPage() == "/personal/change_pass/"):?>

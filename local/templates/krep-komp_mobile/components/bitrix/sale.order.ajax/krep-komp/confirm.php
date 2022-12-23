@@ -215,3 +215,30 @@ window.dataLayer = window.dataLayer || [];
 
 
 </div>
+
+<script type="text/javascript">
+    (window["rrApiOnReady"] = window["rrApiOnReady"] || []).push(function() {
+        try {
+            rrApi.setEmail("<?=$userEmail;?>");
+            rrApi.order({
+                "transaction": "<?=$orderId;?>",
+                "items": [
+                    <? $rsCart = CSaleBasket::GetList(Array(),Array("ORDER_ID"=>$arResult['ORDER']['ID']));?>
+                    <? while ($arCartItem = $rsCart->Fetch()) {?>
+                    { "id": <?=$arCartItem["PRODUCT_ID"]?>, "qnt": <?=$arCartItem['QUANTITY']?>,  "price": <?=$arCartItem["PRICE"]*$arCartItem['QUANTITY']?>},
+                            <?};?>
+
+                                ]
+                                });
+                                } catch(e) {}
+                                })
+</script>
+<?
+if($agreement=='Y')
+{?>
+<script type="text/javascript">
+    (window["rrApiOnReady"] = window["rrApiOnReady"] || []).push(function() {
+        try { rrApi.setEmail("<?=$userEmail;?>"); } catch(e) {}
+    })
+</script>
+<?}?>

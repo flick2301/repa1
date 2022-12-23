@@ -17,9 +17,7 @@ if($APPLICATION->GetCurDir() != $sec_builder->curSection['SECTION_PAGE_URL'])
 {
 	$sorting = $sec_builder->getCurSorting();
 }
-echo '<!--';
-var_dump($sorting);
-echo '-->';
+
 if(!empty($sorting[0]['arFilters']['VALUE'])) {
 	$arResult["VARIABLES"]["SECTION_ID"] = $sec_builder->getCurSection();
 

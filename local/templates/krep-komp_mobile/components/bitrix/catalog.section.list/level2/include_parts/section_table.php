@@ -183,7 +183,8 @@ $intSectionID = $APPLICATION->IncludeComponent(
 													2 => "К05 (от 100 тыс.руб)",
 													3 => "К10 (от 500тыс.руб)",
 													4 => "К13 (от 1 млн.руб)",
-													5 => "К18 (от 5 млн.руб)"
+													5 => "К18 (от 5 млн.руб)",
+													6 => "KZT К0 (БАЗОВАЯ)",
                                                 ),
 						"USE_PRICE_COUNT" => $arParams["USE_PRICE_COUNT"],
 						"SHOW_PRICE_COUNT" => $arParams["SHOW_PRICE_COUNT"],
