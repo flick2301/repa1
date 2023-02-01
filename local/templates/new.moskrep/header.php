@@ -30,8 +30,7 @@ Loc::LoadMessages(__FILE__);
     <!--<meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CHARSET?>" />-->
 	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
     <meta name="yandex-verification" content="94ad628889e9793a" />
-    <meta name="google-site-verification" content="tCyUZcBpb8WKtkt8O1XsKiMEeBQpIFTPY-N9GDFfIv0" />
-    <meta name="google-site-verification" content="0u5wmG04li2cctryJDRbUmxEucadQiTZ4qHvm9BMChM" />
+    
     <meta name="apple-mobile-web-app-title" content="Главная страница – Krep-Komp" />
     <meta name="theme-color" content="#0C58CF" />
 	<meta name="facebook-domain-verification" content="qyjoyjc6m0agulp5ix7pznx4nhhm22" />
@@ -75,9 +74,7 @@ $APPLICATION->ShowMeta("robots");?>
 <meta name="apple-mobile-web-app-title" content="КРЕП-КОМП" />
 <meta name="theme-color" content="#ffffff" />  
 
-<?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
-<meta name="google-site-verification" content="Obf25qlplQtNOWNrsgj_jU3Xb5E7wvJ8athrd1N4bhs" />
-<?endif?> 
+
 
    
    <?
@@ -313,9 +310,9 @@ $APPLICATION->IncludeFile(
 	<header class="basic-layout__header">
 	<?=$safari?>
 	
-	<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; color:#000; font-size:16px;'>Уважаемые клиенты! Наш интернет-магазин не работает в праздничные дни с 31.12.2022 по 08.01.2023. Склад Коледино работает до 27.12.2022 включительно. С 09.01.2023 работаем в штатном режиме.<span style='color: #f39101;'></span></strong>  <svg class="icon-svg -cross close-svg" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg></div> </div> </div>
+	
 	<?if($_SERVER['HTTP_HOST']=="krep-komp.ru"):?>
-	<!--<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; color:#000; font-size:16px;'>В магазине на Каширке доступна доставка день в день. <a href="/addresses/" style="text-decoration: underline; color: #4F36E3;">Подробнее</a><span style='color: #f39101;'></span></strong>  <svg class="icon-svg -cross close-svg" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg></div> </div> </div>-->
+	<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; color:#000; font-size:16px;'>В магазине на Каширке доступна доставка день в день. <a href="/addresses/" style="text-decoration: underline; color: #4F36E3;">Подробнее</a><span style='color: #f39101;'></span></strong>  <svg class="icon-svg -cross close-svg" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg></div> </div> </div>
 	<?endif?>
 	
 	

@@ -74,6 +74,13 @@ if ($isFilter)
 	if (!isset($arCurSection))
 		$arCurSection = array();
 }
+?>
+<script type="text/javascript">
+	(window["rrApiOnReady"] = window["rrApiOnReady"] || []).push(function() {
+		try { rrApi.categoryView(<?=$arResult["VARIABLES"]["SECTION_ID"];?>); } catch(e) {}
+			})
+</script>
+<?
 
 //Выявляем, есть ли секции в секции
 $count_sections = CIBlockSection::GetCount(Array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], "SECTION_ID"=>$arResult["VARIABLES"]["SECTION_ID"]));

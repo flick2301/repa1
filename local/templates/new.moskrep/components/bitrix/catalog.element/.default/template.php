@@ -261,7 +261,7 @@ dataLayer.push({
                   </div>
         </div>
 		<div class="product-page__section" id="payment">
-		 <? include($_SERVER["DOCUMENT_ROOT"]."/kontent-elementa/var_payment.php"); ?>
+		 <? include($_SERVER["DOCUMENT_ROOT"]."/include/oplata.php"); ?>
 		 </div>
          <!--<?=$templateFolder?>-->   
 	    <? require_once($_SERVER["DOCUMENT_ROOT"].$templateFolder."/delivery.php"); ?>

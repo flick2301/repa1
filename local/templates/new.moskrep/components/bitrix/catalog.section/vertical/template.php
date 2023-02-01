@@ -88,7 +88,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
 
 <div class="page_count_panel_block">
 
-
+<a id="view_available" href="javascript:void(0);" rel="nofollow" class="blue-btn page_count_panel_viewblock_btn"><?=($request['available']=='Y') ?  'Все позиции' : 'В наличии';?></a>
 <a id="view_wholesale" href="javascript:void(0);" rel="nofollow" class="blue-btn page_count_panel_viewblock_btn">Оптовые скидки</a>
 
 
@@ -308,10 +308,4 @@ if(!empty($arResult["EGOR_SCRIPT_AR"]))
 <?php
 }
 ?>
-<script type="text/javascript"> 
-    (window["rrApiOnReady"] = window["rrApiOnReady"] || []).push(function() {
-		try{ rrApi.groupView([<? foreach($arResult['arITEMS_ID'] as $item_id) {
-			echo $item_id.', ';
-		} ?>]); } catch(e) {}
-	})
-</script>
+

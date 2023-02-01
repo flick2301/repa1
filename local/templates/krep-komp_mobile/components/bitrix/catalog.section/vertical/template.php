@@ -117,7 +117,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                         </div>
                         <div class="product-card__footer">
                            <div class="product-card__price"><?echo number_format($price, 2, '.', ' ');?> ₽</div>
-                           <button data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-product="<?=$item['ID']?>" old-price="<?=$price?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>" class="main-button main-button--mini product-card__button">В корзину</button>
+                           <button onmousedown="try { rrApi.addToBasket(<?=$item['ID']?>) } catch(e) {}" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-product="<?=$item['ID']?>" old-price="<?=$price?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>" class="main-button main-button--mini product-card__button">В корзину</button>
                         </div>
                      </section>
                      <!--product-card-->
@@ -188,11 +188,5 @@ while($arSection = $db_list->GetNext()) {
 <br>
 <br>
 <?}?>
-<script type="text/javascript"> 
-    (window["rrApiOnReady"] = window["rrApiOnReady"] || []).push(function() {
-		try{ rrApi.groupView([<? foreach($arResult['arITEMS_ID'] as $item_id) {
-			echo $item_id.', ';
-		} ?>]); } catch(e) {}
-	})
-</script>
+
 		

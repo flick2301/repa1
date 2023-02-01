@@ -13,6 +13,10 @@ $newResultFinite = Array();
 foreach($newResult AS $val) $newResultFinite = array_merge($newResultFinite, $val);
 
 $arResult["ITEMS"] = $newResultFinite;
+if( $arResult["SECTION"]["CODE"]=="nizhniy-novgorod.krep-komp.ru"){
+	$arResult["ZOOM"]=14;
+}
+
 
 /*
 global $USER;

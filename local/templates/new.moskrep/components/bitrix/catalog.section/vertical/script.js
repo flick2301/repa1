@@ -186,6 +186,55 @@ $(document).on('click', '#view_wholesale', function() {
 	}
 	else window.open('/vashi_skidki/', '_blank');
 	});
+	$.get( location.href, function( data ) {
+  
+});
+
+	
+	$(document).on('click', '#view_available', function() {
+		
+		var queryString = location.href ? location.href.split('?')[1] : window.location.search.slice(1);
+		if(queryString){
+			var arr = queryString.split('&');
+			var position = $.inArray('available=Y', arr);
+		}
+		var params = {};
+		
+		if(position == -1 || position == null){
+			params = { available:'Y' };
+			var str = jQuery.param( params );
+		
+			_url = location.href;
+			_url += (_url.split('?')[1] ? '&':'?') + str;
+			window.location.href = _url;
+		}else{
+			
+			arr.splice(position, 1);
+			for (var i=0; i<arr.length; i++) {
+				// разделяем параметр на ключ => значение
+				var a = arr[i].split('=');
+				// обработка данных вида: list[]=thing1&list[]=thing2
+				var paramNum = undefined;
+				var paramName = a[0].replace(/\[\d*\]/, function(v) {
+					paramNum = v.slice(1,-1);
+					return '';
+				});
+				// передача значения параметра ('true' если значение не задано)
+				var paramValue = typeof(a[1])==='undefined' ? true : a[1];
+				params[paramName]=paramValue;
+			}
+
+
+
+			console.log(params);
+			var str = jQuery.param( params );
+			if(str)
+				str='?'+str;
+			
+			_url = window.location.href.split('?')[0] + str;
+			window.location.href = decodeURI(_url);
+		}
+	});
 
 	$('.card_pickup').click(function () {
 		$('#shops-window').slideDown(0);
@@ -253,6 +302,8 @@ $(document).on('click', '#view_wholesale', function() {
 			$('#shops-window').slideUp(0);
 		}
 	});
+	
+	
 
 
 });

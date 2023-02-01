@@ -20,6 +20,7 @@ global $mySmartFilter;
 global $arrFilter2;
 global $NavNum;
 $NavNum=0;
+$request = \Bitrix\Main\Context::getCurrent()->getRequest();
 
 if(!empty($arResult['REFERENCE']['ITEM']['SECTION_LINK']['VALUE']))
 {
@@ -302,6 +303,7 @@ $intSectionID = $APPLICATION->IncludeComponent(
 						'SECTIONS_LIST_TEMPLATE'=>(isset($arParams['SECTIONS_LIST_TEMPLATE']) ? $arParams['SECTIONS_LIST_TEMPLATE'] : ''),
 						'SET_SORT_MAIN'=> $arResult['SECTION']['UF_SET_SORT_MAIN'] ?? '0',
 						'REFERENCE'=>$arResult['REFERENCE']['ITEM'],
+						'HIDE_NOT_AVAILABLE'=>$request['available'],
 
 
 		

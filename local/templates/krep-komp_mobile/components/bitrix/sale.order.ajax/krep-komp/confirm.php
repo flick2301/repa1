@@ -64,13 +64,14 @@ if ($arParams["SET_TITLE"] == "Y")
 		
 		?>
 		<!-- Criteo Sales dataLayer -->
+		
 <script type='text/javascript'>
         var dataLayer = dataLayer || [];
         dataLayer.push({
             'event': 'crto_transactionpage',            
             crto: {             
                 'email': '<?=$userEmail?>',   
-                'transactionid':'<?=$arResult["ORDER"]["ID"]?>',                                        
+                'transactionid':'<?=$arResult["ORDER"]["ACCOUNT_NUMBER"]?>',                                        
                 'products': [
 				<?
 				foreach ($basket as $basketItem) {
@@ -221,7 +222,7 @@ window.dataLayer = window.dataLayer || [];
         try {
             rrApi.setEmail("<?=$userEmail;?>");
             rrApi.order({
-                "transaction": "<?=$orderId;?>",
+                "transaction": "<?=$arResult["ORDER"]["ID"];?>",
                 "items": [
                     <? $rsCart = CSaleBasket::GetList(Array(),Array("ORDER_ID"=>$arResult['ORDER']['ID']));?>
                     <? while ($arCartItem = $rsCart->Fetch()) {?>

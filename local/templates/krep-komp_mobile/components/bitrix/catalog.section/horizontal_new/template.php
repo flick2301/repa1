@@ -161,7 +161,7 @@ if($arParams['FOR_SEO']!='Y'){
 						<div class='table__price table__price--forone'><?=$item['PRICE_FOR_ONE']?> ₽ за <?=$item['UNIT']?></div>
 						<?}?>
 					</div>
-					<div class='table__add' data-product='<?=$item['ID'];?>' data-quantity='<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>' data-name='<?=$item['NAME']?>' data-price='<?=$price?>'>В корзину</div>
+					<div class='table__add' onmousedown="try { rrApi.addToBasket(<?=$item['ID']?>) } catch(e) {}" data-product='<?=$item['ID'];?>' data-quantity='<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>' data-name='<?=$item['NAME']?>' data-price='<?=$price?>'>В корзину</div>
 				</div>
 			</div>
 		</div>
@@ -275,12 +275,6 @@ BX.ready(function () {
         });
 </script>
 <!-- END Criteo Category / Listing dataLayer -->
-<script type="text/javascript"> 
-    (window["rrApiOnReady"] = window["rrApiOnReady"] || []).push(function() {
-		try{ rrApi.groupView([<? foreach($arResult['arITEMS_ID'] as $item_id) {
-			echo $item_id.', ';
-		} ?>]); } catch(e) {}
-	})
-</script>
+
 
 		

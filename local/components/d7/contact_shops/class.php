@@ -130,7 +130,7 @@ class ContactShopsClass extends \CBitrixComponent implements \Bitrix\Main\Engine
           $zoom = $zoom_lon < $zoom_lat ? $zoom_lat : $zoom_lon;
 
           if (count($this->arResult["ITEMS"])==1) $this->arResult["ZOOM"] = 15;
-          else $this->arResult["ZOOM"] = round(pi() * 2 / $zoom) + 1;
+          else $this->arResult["ZOOM"] = round(pi() * 2 / $zoom) + 13;
 
           $this->arResult["SECTION"] = $arSection;
 
