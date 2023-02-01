@@ -1,7 +1,7 @@
 <? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 
 use \Bitrix\Main\Localization\Loc;
-
+global $DEFAULT_STORE_ID;
 /**
  * @global CMain $APPLICATION
  * @var array $arParams
@@ -129,7 +129,7 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
 							{?>
 								<p class="catalog-table__state"><i class="simple-state-yes-icon catalog-table__available"></i><?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?> уп.</p>
 							<?}else{?>
-								<p class="catalog-table__state catalog-table__state--notafs">Под заказ</p>
+								<p class="catalog-table__state catalog-table__state--notafs">Под заказ </p>
 							<?}?>
                            </div>
                     </div>
