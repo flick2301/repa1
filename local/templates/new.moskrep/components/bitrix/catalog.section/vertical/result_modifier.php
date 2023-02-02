@@ -6,6 +6,7 @@ $module_id = 'relink.table';
 
 global $DEFAULT_STORE_ID;
 global $filterObj;
+global $arFilter_soput;
 
 use Bitrix\Main\Loader;
 //подключаем модуль highloadblock

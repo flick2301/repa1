@@ -582,7 +582,16 @@ dataLayer.push({
 		<?
             global $baFilter;
 			if(empty($baFilter))
-				$baFilter = Array("ID" => $arResult['ELEMENT_NEXT']); 
+				$baFilter = Array("ID" => $arResult['ELEMENT_NEXT']);
+		global $arFilter_soput;
+		$arFilter_soput = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "SECTION_ID"=>$arResult["RELATED"]);
+		foreach($arResult['SOPUT_PROPERTY'] as $soput_property)
+		{	
+			$arProp = explode('=>', $soput_property);
+			$arFilter_soput[$arProp[0]] = $arProp[1];
+		}
+		
+			
 						
             
             $APPLICATION->IncludeComponent(
@@ -597,7 +606,7 @@ dataLayer.push({
 			1 => "",
 		),
                 "USE_FILTER" =>"Y",
-		"FILTER_NAME" => "baFilter",
+		"FILTER_NAME" => "arFilter_soput",
 		'DISABLE_HEADER' => 'Y',
 		"INCLUDE_SUBSECTIONS" => "Y",
 		"SHOW_ALL_WO_SECTION" => "Y",
@@ -606,8 +615,8 @@ dataLayer.push({
 		"HIDE_NOT_AVAILABLE_OFFERS" => "N",
 		
 		
-		"PAGE_ELEMENT_COUNT" => "10",
-		"LINE_ELEMENT_COUNT" => "10",
+		"PAGE_ELEMENT_COUNT" => "20",
+		"LINE_ELEMENT_COUNT" => "20",
 		"PROPERTY_CODE" => array("TSVET","CML2_ARTICLE","KOLICHESTVO_V_UPAKOVKE",""),
 		"OFFERS_LIMIT" => "5",
 		"BACKGROUND_IMAGE" => "-",
@@ -652,7 +661,7 @@ dataLayer.push({
 		"DISPLAY_COMPARE" => "N",
 		"PAGER_TEMPLATE" => ".default",
 		"DISPLAY_TOP_PAGER" => "N",
-		"DISPLAY_BOTTOM_PAGER" => "Y",
+		"DISPLAY_BOTTOM_PAGER" => "N",
 		"PAGER_TITLE" => "Товары",
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_DESC_NUMBERING" => "N",

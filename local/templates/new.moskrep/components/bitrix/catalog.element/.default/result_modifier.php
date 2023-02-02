@@ -138,6 +138,7 @@ if($arSection = $ar_result->GetNext()) {
 
     $arResult["RELATED"] = $arSection["UF_RELATED"];
 	$arResult["SECTION_PICTURE"]=$arSection['PICTURE'];
+	$arResult["SOPUT_PROPERTY"]=$arSection["UF_SOPUT_PROPERTY"];
 
 }
 
