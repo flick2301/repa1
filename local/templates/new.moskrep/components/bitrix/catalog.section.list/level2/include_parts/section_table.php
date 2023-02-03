@@ -1,5 +1,6 @@
 <?
 $first_sort_field = 'DIAMETR';
+global $DEFAULT_STORE_ID;
 
 $aSection   = CIBlockSection::GetList(array(), array('IBLOCK_ID'=> $arParams["IBLOCK_ID"], 'ID'=> $arResult['SECTION']['ID'],), false, array( 'UF_SEC_LIST_SIZES' ) )->Fetch();
 if($aSection["UF_SEC_LIST_SIZES"])
@@ -61,7 +62,7 @@ elseif(count($arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE'])>1) {
 	$filter_section_id = $arResult['SECTION']['ID'];
 	$mySmartFilter =[];
 }
-
+$arrFilter2['>CATALOG_STORE_AMOUNT_'.$DEFAULT_STORE_ID]=0;
 if (CModule::IncludeModule("iblock"))
 {
         $arFilter = array(
