@@ -3,6 +3,8 @@ use \Bitrix\Main\Loader;
 
 if(!defined('B_PROLOG_INCLUDED')||B_PROLOG_INCLUDED!==true)die();
 
+
+
 // #
 // # События и обработчики
 // #
@@ -39,6 +41,9 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/include/classes/aut
 // Roistat BEGIN CODE
 include_once __DIR__ . '/roistat/roistat_integration.php';
 // Roistat END CODE
+
+/*Выставляем заголовки if-modified-since */
+require($_SERVER['DOCUMENT_ROOT'].'/local/libs/if-modified-since.php');
 
 
 ?>
