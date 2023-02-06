@@ -428,7 +428,7 @@ dataLayer.push({
                         <a class="content-tabs__toggle" href="#packaging" data-tabby-default>Варианты упаковки</a>
                      </li>
                      <li class="content-tabs__item">
-                        <a class="content-tabs__toggle" href="#other">Сопутствующие товары</a>
+                        <a class="content-tabs__toggle" href="#other">Связанные товары</a>
                      </li>
                   </ul>
                </div>
@@ -594,129 +594,29 @@ dataLayer.push({
 			
 						
             
-            $APPLICATION->IncludeComponent(
-	    "bitrix:catalog.section", 
-	    "level3_vertical", 
-	    array(
-		"COMPONENT_TEMPLATE" => "level3_vertical",
-		"IBLOCK_TYPE" => "catalog",
-		"IBLOCK_ID" => $arParams['IBLOCK_ID'],
-		"SECTION_USER_FIELDS" => array(
-			0 => "",
-			1 => "",
-		),
-                "USE_FILTER" =>"Y",
-		"FILTER_NAME" => "arFilter_soput",
-		'DISABLE_HEADER' => 'Y',
-		"INCLUDE_SUBSECTIONS" => "Y",
-		"SHOW_ALL_WO_SECTION" => "Y",
-		"CUSTOM_FILTER" => "",
-		"HIDE_NOT_AVAILABLE" => "N",
-		"HIDE_NOT_AVAILABLE_OFFERS" => "N",
-		
-		
-		"PAGE_ELEMENT_COUNT" => "20",
-		"LINE_ELEMENT_COUNT" => "20",
-		"PROPERTY_CODE" => array("TSVET","CML2_ARTICLE","KOLICHESTVO_V_UPAKOVKE",""),
-		"OFFERS_LIMIT" => "5",
-		"BACKGROUND_IMAGE" => "-",
-		"SECTION_URL" => "",
-		"DETAIL_URL" => "",
-		"SECTION_ID_VARIABLE" => "SECTION_ID",
-		"SEF_MODE" => "N",
-		"AJAX_MODE" => "N",
-		"AJAX_OPTION_JUMP" => "N",
-		"AJAX_OPTION_STYLE" => "Y",
-		"AJAX_OPTION_HISTORY" => "N",
-		"AJAX_OPTION_ADDITIONAL" => "",
-		"CACHE_TYPE" => "A",
-		"CACHE_TIME" => "36000000",
-		"CACHE_GROUPS" => "Y",
-		"SET_TITLE" => "Y",
-		"SET_BROWSER_TITLE" => "Y",
-		"BROWSER_TITLE" => "-",
-		"SET_META_KEYWORDS" => "Y",
-		"META_KEYWORDS" => "-",
-		"SET_META_DESCRIPTION" => "Y",
-		"META_DESCRIPTION" => "-",
-		"SET_LAST_MODIFIED" => "N",
-		"USE_MAIN_ELEMENT_SECTION" => "N",
-		"ADD_SECTIONS_CHAIN" => "N",
-		"CACHE_FILTER" => "N",
-		"ACTION_VARIABLE" => "action",
-		"PRODUCT_ID_VARIABLE" => "id",
-		"PRICE_CODE" => $arParams['PRICE_CODE'],
-		"USE_PRICE_COUNT" => $arParams['USE_PRICE_COUNT'],
-		"SHOW_PRICE_COUNT" => "1",
-		"PRICE_VAT_INCLUDE" => $arParams['PRICE_VAT_INCLUDE'],
-		"CONVERT_CURRENCY" => $arParams['CONVERT_CURRENCY'],
-		"BASKET_URL" => "/personal/basket.php",
-		"USE_PRODUCT_QUANTITY" => "N",
-		"PRODUCT_QUANTITY_VARIABLE" => "quantity",
-		"ADD_PROPERTIES_TO_BASKET" => "Y",
-		"PRODUCT_PROPS_VARIABLE" => "prop",
-		"PARTIAL_PRODUCT_PROPERTIES" => "N",
-		"PRODUCT_PROPERTIES" => array(
-		),
-		"DISPLAY_COMPARE" => "N",
-		"PAGER_TEMPLATE" => ".default",
-		"DISPLAY_TOP_PAGER" => "N",
-		"DISPLAY_BOTTOM_PAGER" => "N",
-		"PAGER_TITLE" => "Товары",
-		"PAGER_SHOW_ALWAYS" => "N",
-		"PAGER_DESC_NUMBERING" => "N",
-		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-		"PAGER_SHOW_ALL" => "N",
-		"PAGER_BASE_LINK_ENABLE" => "N",
-		"SET_STATUS_404" => "N",
-		"SHOW_404" => "N",
-		"MESSAGE_404" => "",
-		"COMPATIBLE_MODE" => "Y",
-		"DISABLE_INIT_JS_IN_COMPONENT" => "N",
-		"CURRENCY_ID" => "RUB",
-		"PROPERTY_CODE_MOBILE" => "",
-		"TEMPLATE_THEME" => "blue",
-		"PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false}]",
-		"ENLARGE_PRODUCT" => "STRICT",
-		"PRODUCT_BLOCKS_ORDER" => "price,props,sku,quantityLimit,quantity,buttons",
-		"SHOW_SLIDER" => "Y",
-		"ADD_PICT_PROP" => "-",
-		"LABEL_PROP" => "",
-		"PRODUCT_SUBSCRIPTION" => "Y",
-		"SHOW_DISCOUNT_PERCENT" => "N",
-		"SHOW_OLD_PRICE" => "N",
-		"SHOW_MAX_QUANTITY" => "N",
-		"SHOW_CLOSE_POPUP" => "N",
-		"MESS_BTN_BUY" => "Купить",
-		"MESS_BTN_ADD_TO_BASKET" => "В корзину",
-		"MESS_BTN_SUBSCRIBE" => "Подписаться",
-		"MESS_BTN_DETAIL" => "Подробнее",
-		"MESS_NOT_AVAILABLE" => "Под заказ",
-		"RCM_TYPE" => "personal",
-		"RCM_PROD_ID" => $_REQUEST["PRODUCT_ID"],
-		"SHOW_FROM_SECTION" => "N",
-		"ADD_TO_BASKET_ACTION" => "ADD",
-		"USE_ENHANCED_ECOMMERCE" => "N",
-		"LAZY_LOAD" => "N",
-		"LOAD_ON_SCROLL" => "N",
-		"SLIDER_INTERVAL" => "3000",
-		"SLIDER_PROGRESS" => "N",
-		"OFFERS_SORT_FIELD" => "sort",
-		"OFFERS_SORT_ORDER" => "asc",
-		"OFFERS_SORT_FIELD2" => "id",
-		"OFFERS_SORT_ORDER2" => "desc",
-		"OFFERS_FIELD_CODE" => array(
-			0 => "",
-			1 => "",
-		),
-		"OFFERS_PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
-		),
-		"OFFERS_CART_PROPERTIES" => ""
-	)
-);
+            
 ?>
+<div class="catalog-feed__other">
+<?
+$arFilter = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "ID"=>$arResult["RELATED"], false, array("*"));
+$db_list = CIBlockSection::GetList(Array("SORT"=>"ASC"), $arFilter, true);
+while($arSection = $db_list->GetNext()) {
+    $renderImage = CFile::ResizeImageGet($arSection["PICTURE"], Array("width" => 72, "height" => 72), BX_RESIZE_IMAGE_EXACT, false); 
+    ?>
+		<div class="catalog-feed__child">
+                     <!--category-card-->
+                     <div class="category-card">
+                        <p class="category-card__title"><a class="category-card__link" href="<?=$arSection['SECTION_PAGE_URL']?>" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($arSection['NAME']))?>')"><?=$arSection['NAME']?></a></p>
+                        <div class="category-card__cover">
+                           <img class="category-card__image" src="<?=$renderImage['src']?>" width="120" height="76" alt="<?=$arSection['NAME']?>"> 
+                        </div>
+                     </div>
+                     <!--category-card-->
+		</div>
+	<?
+}
+?>
+</div>
             </div>
 			<!--content-tabs-->
 		</div>
