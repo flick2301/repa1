@@ -89,7 +89,6 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
 
 <div class="page_count_panel_block">
 
-<a id="view_available" href="javascript:void(0);" rel="nofollow" class="blue-btn page_count_panel_viewblock_btn"><?=($request['available']=='Y') ?  'Все позиции' : 'В наличии';?></a>
 <a id="view_wholesale" href="javascript:void(0);" rel="nofollow" class="blue-btn page_count_panel_viewblock_btn">Оптовые скидки</a>
 
 
@@ -250,7 +249,7 @@ if ($showBottomPager)
 <?
 
 if($arResult["UF_RELATED"]){
-	?><div class='basic-layout__module page-heading'><h2>Связанные позиции</h2></div><?
+	?><div class='basic-layout__module page-heading'><h2>Сопутствующие товары</h2></div><?
 	$arFilter_soput = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "SECTION_ID"=>$arResult["UF_RELATED"]);
 	foreach($arResult['UF_SOPUT_PROPERTY'] as $soput_property)
 	{

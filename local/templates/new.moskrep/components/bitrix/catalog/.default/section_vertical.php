@@ -5,6 +5,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+ global $DEFAULT_STORE_ID;
+
+
+ $arrFilter['>CATALOG_STORE_AMOUNT_'.$DEFAULT_STORE_ID]=0;
 ?>
 
 <?$intSectionID = $APPLICATION->IncludeComponent(
@@ -31,6 +35,7 @@
 						"PRODUCT_QUANTITY_VARIABLE" => $arParams["PRODUCT_QUANTITY_VARIABLE"],
 						"PRODUCT_PROPS_VARIABLE" => $arParams["PRODUCT_PROPS_VARIABLE"],
 						"FILTER_NAME" => $arParams["FILTER_NAME"],
+						"PREFILTER_NAME" => "mySmartFilter",
 						"CACHE_TYPE" => $arParams["CACHE_TYPE"],
 						"CACHE_TIME" => $arParams["CACHE_TIME"],
 						"CACHE_FILTER" => $arParams["CACHE_FILTER"],

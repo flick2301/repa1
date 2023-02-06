@@ -62,7 +62,9 @@ elseif(count($arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE'])>1) {
 	$filter_section_id = $arResult['SECTION']['ID'];
 	$mySmartFilter =[];
 }
+
 $arrFilter2['>CATALOG_STORE_AMOUNT_'.$DEFAULT_STORE_ID]=0;
+$Filter_seo['>CATALOG_STORE_AMOUNT_'.$DEFAULT_STORE_ID]=0;
 if (CModule::IncludeModule("iblock"))
 {
         $arFilter = array(

@@ -365,7 +365,7 @@ if($arResult['SORTING']['SECTION_ID'] && $arParams['DISPLAY_FILTER_BUTTONS']=='Y
 <?
 
 if($arResult["UF_RELATED"]){
-	?><div class='basic-layout__module page-heading'><h2>Связанные позиции</h2></div><?
+	?><div class='basic-layout__module page-heading'><h2>Сопутствующие товары</h2></div><?
 	$arFilter_soput = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "SECTION_ID"=>$arResult["UF_RELATED"]);
 	foreach($arResult['UF_SOPUT_PROPERTY'] as $soput_property)
 	{
