@@ -19,6 +19,7 @@ if($aSection["UF_SEC_LIST_SIZES"])
 
 global $mySmartFilter;
 global $arrFilter2;
+global $Filter_seo;
 global $NavNum;
 $NavNum=0;
 $request = \Bitrix\Main\Context::getCurrent()->getRequest();
