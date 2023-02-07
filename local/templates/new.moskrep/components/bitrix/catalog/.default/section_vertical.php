@@ -8,7 +8,9 @@
  global $DEFAULT_STORE_ID;
 
 
- $arrFilter['>CATALOG_STORE_AMOUNT_'.$DEFAULT_STORE_ID]=0;
+ /*
+ отфильтровать товары которых нет в наличии на складе
+ $arrFilter['>CATALOG_STORE_AMOUNT_'.$DEFAULT_STORE_ID]=0;*/
 ?>
 
 <?$intSectionID = $APPLICATION->IncludeComponent(

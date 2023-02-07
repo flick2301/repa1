@@ -7,7 +7,9 @@ if($_REQUEST['section_temp'] == 'new'){
     $name_temple = 'horizontal_new';
 }
 
-$arrFilter['>CATALOG_STORE_AMOUNT_'.$DEFAULT_STORE_ID]=0;
+/*
+отфильтровать товары которых нет в наличии на складе
+$arrFilter['>CATALOG_STORE_AMOUNT_'.$DEFAULT_STORE_ID]=0;*/
 
 	$nav = CIBlockSection::GetNavChain(false, $arResult["VARIABLES"]["SECTION_ID"]);
 	while ($sectionItem = $nav->Fetch()){
