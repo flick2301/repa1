@@ -1,7 +1,7 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
 
 
-if (preg_match("/^http(s)?:\/\/kenner\-rus\.ru*$/", @$_SERVER['HTTP_ORIGIN']) || preg_match("/^http(s)?:\/\/kenner\-rus\.ru*$/", @$_SERVER['HTTP_REFERER']) || preg_match("/^http(s)?:\/\/kenner\-rus\.ru*$/", @$_SERVER['REQUEST_URI'])) header("Access-Control-Allow-Origin: *");
+//if (preg_match("/^http(s)?:\/\/kenner\-rus\.ru*$/", @$_SERVER['HTTP_ORIGIN']) || preg_match("/^http(s)?:\/\/kenner\-rus\.ru*$/", @$_SERVER['HTTP_REFERER']) || preg_match("/^http(s)?:\/\/kenner\-rus\.ru*$/", @$_SERVER['REQUEST_URI'])) header("Access-Control-Allow-Origin: https://krep-komp.ru");
 
 
 class ElementsApi

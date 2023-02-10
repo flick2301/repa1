@@ -24,7 +24,14 @@ $APPLICATION->SetTitle("Контакты");
 						<div class="shops__address">Телефон: +7 (812) 309-95-45</div>
 						<div class="shops__time">Пн-Пт.  с  9:00 – 18:00</div> Почта: <a class="shops__email" href="mailto:spb@krep-komp.ru">spb@krep-komp.ru</a>
 					</div>
-				<?}else{?>
+				<?}elseif($_SERVER['HTTP_HOST']=='novosibirsk.krep-komp.ru')
+				{?>
+					<div class="shops__box">
+						<div class="shops__topic">ОТДЕЛ   ПРОДАЖ</div>
+						<div class="shops__address">Сделать заказ или уточнить наличие:</div>
+						<div class="shops__address">Телефон: +7 (383) 280-48-35</div>
+						<div class="shops__time">Пн-Пт.  с  9:00 – 18:00</div> Почта: <a class="shops__email" href="mailto:novosibirsk@krep-komp.ru">novosibirsk@krep-komp.ru</a>
+					</div><?}else{?>
 					<div class="shops__box">
 						<div class="shops__topic">ОТДЕЛ   ПРОДАЖ</div>
 						<div class="shops__address">Сделать заказ или уточнить наличие:</div>

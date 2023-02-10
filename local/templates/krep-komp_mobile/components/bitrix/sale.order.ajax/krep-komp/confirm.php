@@ -226,7 +226,7 @@ window.dataLayer = window.dataLayer || [];
                 "items": [
                     <? $rsCart = CSaleBasket::GetList(Array(),Array("ORDER_ID"=>$arResult['ORDER']['ID']));?>
                     <? while ($arCartItem = $rsCart->Fetch()) {?>
-                    { "id": <?=$arCartItem["PRODUCT_ID"]?>, "qnt": <?=$arCartItem['QUANTITY']?>,  "price": <?=$arCartItem["PRICE"]*$arCartItem['QUANTITY']?>},
+                    { "id": <?=$arCartItem["PRODUCT_ID"]?>, "qnt": <?=$arCartItem['QUANTITY']?>,  "price": <?=$arCartItem["PRICE"]?>},
                             <?};?>
 
                                 ]

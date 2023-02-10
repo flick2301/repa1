@@ -154,9 +154,10 @@ foreach($arResult['ITEMS'] as $key=>$arItem){
     while($arStore = $rsStore->Fetch()){
         $arResult['ITEMS'][$key]['STORE'][$arStore['STORE_ID']] = $arStore;
     }
+	
 	//Выбираем количество. Для СПБ - общее. Для МСК - только со склада в Коледино
 	if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){
-		$arResult['ITEMS'][$key]['STORE'][$DEFAULT_STORE_ID]['AMOUNT'] = $arResult['ITEMS'][$key]['STORE'][$DEFAULT_STORE_ID]['AMOUNT']+$arResult['ITEMS'][$key]['STORE'][3]['AMOUNT']+$arResult['ITEMS'][$key]['STORE'][66]['AMOUNT'];
+		$arResult['ITEMS'][$key]['STORE'][$DEFAULT_STORE_ID]['AMOUNT'] = $arResult['ITEMS'][$key]['STORE'][$DEFAULT_STORE_ID]['AMOUNT']+$arResult['ITEMS'][$key]['STORE'][3]['AMOUNT']+$arResult['ITEMS'][$key]['STORE'][66]['AMOUNT']+$arResult['ITEMS'][$key]['STORE'][74]['AMOUNT'];
 	}
 	
 	

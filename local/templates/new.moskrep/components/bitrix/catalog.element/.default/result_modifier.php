@@ -245,7 +245,7 @@ $arResult['ELEMENT_NEXT'] = array_slice($arElements, $indexElement, 3);
 }
 
 if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){
-	$arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT'] = $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']+$arResult['STORE'][3]['AMOUNT']+$arResult['STORE'][66]['AMOUNT'];
+	$arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT'] = $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']+$arResult['STORE'][3]['AMOUNT']+$arResult['STORE'][66]['AMOUNT']+$arResult['STORE'][74]['AMOUNT'];
 }
 
 \Bitrix\Main\Loader::includeModule('dev2fun.opengraph');
