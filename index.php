@@ -4,6 +4,13 @@ header("Access-Control-Allow-Origin: https://krep-komp.ru");
 $APPLICATION->SetTitle("Интернет-магазин \"Москреп\"");
 $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Москреп\"");
 ?>
+<?
+global $USER;
+if(!$USER->IsAuthorized() && ($_SERVER['HTTP_HOST'] == 'dev1.krep-komp.ru' || $_SERVER['HTTP_HOST'] == 'dev2.krep-komp.ru' || $_SERVER['HTTP_HOST'] == 'dev3.krep-komp.ru')){
+	$dev_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/bitrix/admin/';
+	header('Location: '. $dev_url);
+}	
+	?>
 
 <?if(SITE_TEMPLATE_ID=='krep-komp_mobile')
 	$template='krep-komp';
