@@ -314,7 +314,7 @@ if($arResult['SORTING']['SECTION_ID'] && $arParams['DISPLAY_FILTER_BUTTONS']=='Y
 							{?>
 								<p class="catalog-table__state"><i class="simple-state-yes-icon catalog-table__available"></i><?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?> уп.</p>
 							<?}else{?>
-								<p class="catalog-table__state catalog-table__state--notafs">Под заказ</p>
+								<p class="catalog-table__state catalog-table__state--notafs">Наличие уточнить</p>
 							<?}?>
                            </div>
                     </div>
