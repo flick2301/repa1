@@ -2684,6 +2684,9 @@ element.style {
 	background: #f6f4fe;
 	padding-right: 10px;
 }
+.pointer{
+	cursor:pointer;
+}
 
 
 

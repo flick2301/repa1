@@ -185,7 +185,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                         </div>
                     <?else:?>
                         <div class="product__availible product__availible--unavailible">
-                            <span>Наличие уточнить</span>
+                            <div class="card_pickup pointer" data-product="<?=$item['ID']?>"><span>Наличие уточнить</span></div>
                         </div>
                     <?endif;?>
 

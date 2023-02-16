@@ -146,7 +146,7 @@ dataLayer.push({
                               </li>
                               <li class="product-data__item">
                                  <p class="product-data__name"><i class="simple-available-icon product-data__icon"></i>Наличие</p>
-                                 <p class="product-data__text"><?=($arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) ?  $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT'].' уп.' : 'Наличие уточнить'?></p>
+                                 <p class="product-data__text" data-product="<?=$arResult['ID']?>"><?=($arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) ?  $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT'].' уп.' : '<span class="card_pickup" data-product="'.$arResult['ID'].'">Наличие уточнить</span>'?></p>
                               </li>
 
                               <li class="product-data__item">

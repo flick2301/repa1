@@ -155,7 +155,7 @@ BX.ready(function () {
 	});
 	*/
 
-    $('.pickup-view').click(function () {
+    $('.pickup-view, .pointer').click(function () {
         $('#shops-window').slideDown(0);
         var product_id = $(this).data('product');
         var request = BX.ajax.runComponentAction("d7:contact_shops", "ajaxRequest", {

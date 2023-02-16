@@ -22,8 +22,9 @@ if($arParams['FOR_SEO']!='Y'){
 	
 	
     ?>
+	
 
-<?if(!$_POST['ENUM_LIST']['ELEMENTS'] && !$arParams["DISABLE_HEADER"]=='Y'){?>
+<?if(!$arParams["DISABLE_HEADER"]=='Y'){?>
 
 <?globalGetTitle($APPLICATION->GetPageProperty('page_title') ? $APPLICATION->GetPageProperty('page_title') : ($arResult['META_TITLE'] ? $arResult['META_TITLE'] : $arResult['NAME']))?>
 
@@ -314,7 +315,10 @@ if($arResult['SORTING']['SECTION_ID'] && $arParams['DISPLAY_FILTER_BUTTONS']=='Y
 							{?>
 								<p class="catalog-table__state"><i class="simple-state-yes-icon catalog-table__available"></i><?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?> уп.</p>
 							<?}else{?>
-								<p class="catalog-table__state catalog-table__state--notafs">Наличие уточнить</p>
+							<div class="pointer" data-product="<?=$item['ID']?>">
+									<p class="catalog-table__state catalog-table__state--notafs"><span class='pointer'>Наличие уточнить</span></p>
+							</div>
+								
 							<?}?>
                            </div>
                     </div>
@@ -397,9 +401,10 @@ while($arSection = $db_list->GetNext()) {
 ?>
 </div>
 <?}?>
+
 <?
 
-if(!$_POST['ENUM_LIST']['ELEMENTS'] && !$arParams["DISABLE_HEADER"]=='Y')
+if(!$arParams["DISABLE_HEADER"]=='Y')
 {
 if($arResult["S_ETIM_TOVAROM"]){
 ?><!--Recommendation
