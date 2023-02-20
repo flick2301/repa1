@@ -69,7 +69,10 @@ BX.ready(function () {
                 }
             }
         });
-		}else{$('.header-basket-none').popUp();}		
+		}else{
+		$('.send-a-request__header').text('Позицию ' + e.target.dataset.name + ' уточните у менеджера')
+		$('.header-basket-none input[name="product_name"]').val(e.target.dataset.name);
+		$('.header-basket-none').popUp();}		
     }
 
 

@@ -1,6 +1,5 @@
 </div>
 		
-
 		
 		<?if (CSite::InDir('/index.php') && SITE_ID!='s2'){
     ?>

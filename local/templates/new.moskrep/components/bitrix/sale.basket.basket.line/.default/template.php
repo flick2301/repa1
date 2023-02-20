@@ -27,7 +27,13 @@ $this->setFrameMode( true );
 	?>
 </div>
 <div class='header-basket-none'>
-    Товара нет в наличии!
+<?
+/** @var \Bitrix\Main\Page\FrameBuffered $frame */
+	$frame = $this->createFrame($cartId, false)->begin();
+	
+	require(realpath(dirname(__FILE__)) . '/ajax_form.php');
+	?>
+    
 </div>
 <div class='header-basket-sberbank'>
     После обработки заказа менеджер свяжется с Вами и вышлет ссылку для оплаты по карте!

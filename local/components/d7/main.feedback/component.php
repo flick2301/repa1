@@ -68,6 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"  && (!isset($_POST["PARAMS_HASH"]) || $a
                                 "AUTHOR_TELL" => $_POST["user_tell"],
 				"EMAIL_TO" => $arParams["EMAIL_TO"],
 				"TEXT" => $_POST['MESSAGE'],
+				"POSITION" => $_POST["product_name"],
 				"ROISTAT" => $_POST["roistat_visit"],
 				"PAGE_URL" => $arParams["PAGE_URL"],
                                 //"FILES" => $_POST['DOPFILE'])
