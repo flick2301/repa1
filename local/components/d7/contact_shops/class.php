@@ -40,7 +40,7 @@ class ContactShopsClass extends \CBitrixComponent implements \Bitrix\Main\Engine
             \CModule::IncludeModule("catalog");
             $this->arParams["IBLOCK_ID"]=$iblock_id;
             $this->arParams["PRODUCT_ID"]=$product_id;
-
+			
             $arFilter = array("IBLOCK_ID" => $this->arParams["IBLOCK_ID"], "ACTIVE" => "Y", "CODE"=>$_SERVER['HTTP_HOST']);
             $arSelect = array("ID", "IBLOCK_ID", "NAME", "CODE");
             $rsSect = \CIBlockSection::GetList(Array(), $arFilter, false, $arSelect, Array("iNumPage"=>1));

@@ -250,7 +250,9 @@ $APPLICATION->IncludeFile(
     <?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/functions.php";?>
 	
 
-	
+	<script>
+	!function(e,t,n,c,o){e[o]=e[o]||function(){(e[o].a=e[o].a||[]).push(arguments)},e[o].h=c,e[o].n=o,e[o].i=1*new Date,s=t.createElement(n),a=t.getElementsByTagName(n)[0],s.async=1,s.src=c,a.parentNode.insertBefore(s,a)}(window,document,"script","https://cdn2.searchbooster.net/scripts/v2/init.js","searchbooster"),searchbooster({"apiKey":"c483a591-b614-482b-b957-7a5bc5ed1d75","apiUrl":"https://api4.searchbooster.io","scriptUrl":"https://cdn2.searchbooster.net/scripts/v2/init.js","initialized":(sb)=>{sb.mount({"selector":"#search-popup, .shelf__search","widget":"search-popup","options":{}});}})
+	</script>
 	
 	<?if($_SERVER['HTTP_HOST']=="krep-komp.ru"):?>
 	<div class="page-top-banner page-top-banner_mobile"> <div class="banner-textbox page page_mobile"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; color:#000; font-size:16px;'>В магазине на Каширке доступна доставка день в день. <a href="/addresses/" style="text-decoration: underline; color: #4F36E3;">Подробнее</a></strong> </div> </div> </div>

@@ -577,13 +577,7 @@ $detect = new \Bitrix\Conversion\Internals\MobileDetect;
 	if (!$USER->IsAdmin() && !$detect->isMobile()) include_once $_SERVER["DOCUMENT_ROOT"] . "/include/jivosite.php";?>
 	
 	
-<?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
-       "AREA_FILE_SHOW" => "file",
-	   "PATH" => "/include/grade_site.php",
-       "AREA_FILE_SUFFIX" => "grade_site",
-       "EDIT_TEMPLATE" => ""
-   )
-);?>
+
 <!-- Roistat BEGIN CODE -->
 <script>
 
@@ -662,7 +656,7 @@ window.roistat.emailtracking.enabled = true;
     });
 </script>
         <!-- Roistat END CODE -->
-<script>!function(e,t,n,c,o){e[o]=e[o]||function(){(e[o].a=e[o].a||[]).push(arguments)},e[o].h=c,e[o].n=o,e[o].i=1*new Date,s=t.createElement(n),a=t.getElementsByTagName(n)[0],s.async=1,s.src=c,a.parentNode.insertBefore(s,a)}(window,document,"script","https://cdn2.searchbooster.net/scripts/v2/init.js","searchbooster"),searchbooster({"apiKey":"c483a591-b614-482b-b957-7a5bc5ed1d75","apiUrl":"https://api4.searchbooster.io","scriptUrl":"https://cdn2.searchbooster.net/scripts/v2/init.js","initialized":(sb)=>{sb.mount({"selector":"#search-popup","widget":"search-popup","options":{}});}});</script>
+<script>!function(e,t,n,c,o){e[o]=e[o]||function(){(e[o].a=e[o].a||[]).push(arguments)},e[o].h=c,e[o].n=o,e[o].i=1*new Date,s=t.createElement(n),a=t.getElementsByTagName(n)[0],s.async=1,s.src=c,a.parentNode.insertBefore(s,a)}(window,document,"script","https://cdn2.searchbooster.net/scripts/v2/init.js","searchbooster"),searchbooster({"apiKey":"c483a591-b614-482b-b957-7a5bc5ed1d75","apiUrl":"https://api.searchbooster.net/","scriptUrl":"https://cdn2.searchbooster.net/scripts/v2/init.js","initialized":(sb)=>{sb.mount({"selector":"#search-popup","widget":"search-popup","options":{}});}});</script>
 
 </body>
 </html>

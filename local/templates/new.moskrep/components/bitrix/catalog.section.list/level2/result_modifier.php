@@ -31,8 +31,7 @@ if($arParams['REFERENCE_CHECK']=='Y'):
 
     $filterObj = new \CatalogHelpers\FilterButtonsBuilder('section.list', $arResult, $arResult['SECTION']['ID']);
     $arResult = $filterObj->arResult;
-	    
-
+	 
 endif;
 
 $nav = CIBlockSection::GetNavChain(false, $arResult['SECTION']['ID']);
@@ -158,3 +157,21 @@ foreach($arResult['SORTING']['SECTIONS'] as $key=>$sortSection)
     }
 }
 */
+
+if(!empty($arResult['ITEMS'])){
+    $time = strtotime("-5 years", time());
+    $date = date("Y-m-d", $time);
+
+    $dat['DATE'] = $date;
+    foreach ($arResult['ITEMS'] as $key => $value){
+        if($value['DATE_CREATE'] && strtotime($dat['DATE'])<strtotime($value['DATE_CREATE'])){
+            $dat['DATE'] = $value['DATE_CREATE'];
+        }
+        if($value['TIMESTAMP_X'] && strtotime($dat['DATE'])<strtotime($value['TIMESTAMP_X'])){
+            $dat['DATE'] = $value['TIMESTAMP_X'];
+        }
+    }
+
+    $this->__component->arResult["LAST_MODIFY"] = $dat['DATE'];
+    $this->__component->SetResultCacheKeys(array("LAST_MODIFY"));
+}

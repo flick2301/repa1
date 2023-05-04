@@ -834,8 +834,15 @@ include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 	</div>
 </div>
 
-
-
+<?
+$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+			"AREA_FILE_SHOW" => "file",
+			"PATH" => "/include/grade_site.php",
+			"AREA_FILE_SUFFIX" => "grade_site",
+			"EDIT_TEMPLATE" => ""
+			)
+		);
+		?>
 <script type="text/javascript">
 	var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', '<?=CUtil::JSEscape($arParams["FILTER_VIEW_MODE"])?>', <?=CUtil::PhpToJSObject($arResult["JS_FILTER_PARAMS"])?>);
 </script>

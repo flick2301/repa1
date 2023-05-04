@@ -29,7 +29,7 @@ class CBitrixCatalogSmartFilter extends CBitrixComponent
 
     //Параметр для свойств типа список фильтра( все свойста должны быть добавлены в массив)
     public $ARR_FILTER_PROPERTIES = [
-        "POKRYTIE", "GOLOVKA", "MATERIAL", "KONETS", "REZBA", "BREND", "RAZMER_POD_KLYUCH_MM", "KLASS_PROCHNOSTI", "SHAG_REZBY_MM", "DIN", "GOST", "SHLITS", "PO_PRIMENENIYU", "VIDY_UPAKOVOK", "DIAMETR_VNUTRENNIY", "STRANA_PROIZVODSTV", "SHAYB", "TIP_SVERL", "VID_KREPEZH"
+        "POKRYTIE", "GOLOVKA", "MATERIAL", "KONETS", "REZBA", "BREND", "RAZMER_POD_KLYUCH_MM", "KLASS_PROCHNOSTI", "SHAG_REZBY_MM", "DIN", "GOST", "SHLITS", "PO_PRIMENENIYU", "VIDY_UPAKOVOK", "DIAMETR_VNUTRENNIY", "STRANA_PROIZVODSTV", "SHAYB", "TIP_SVERL", "VID_KREPEZH", "NALICHIE_VINTA", "BOR"
     ];
 
 	public function onPrepareComponentParams($arParams)

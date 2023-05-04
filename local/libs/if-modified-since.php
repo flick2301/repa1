@@ -7,7 +7,7 @@ class CBDPEpilogHooks
     {
         GLOBAL $lastModified;
 
-        if (!$lastModified) $lastModified=time()-rand(1000, 100000);
+        if (!$lastModified) $lastModified=time();
 
         if ($lastModified)
         {

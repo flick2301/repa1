@@ -24,15 +24,17 @@ $arParams["OK_TEXT"] = trim($arParams["OK_TEXT"]);
 if($arParams["OK_TEXT"] == '')
 	$arParams["OK_TEXT"] = GetMessage("MF_OK_MESSAGE");
 
+
 if($_SERVER["REQUEST_METHOD"] == "POST"  && (!isset($_POST["PARAMS_HASH"]) || $arResult["PARAMS_HASH"] === $_POST["PARAMS_HASH"]))
 {
+	
 	$arResult["ERROR_MESSAGE"] = array();
 	if(check_bitrix_sessid())
 	{
             
 		if(empty($arParams["REQUIRED_FIELDS"]) || !in_array("NONE", $arParams["REQUIRED_FIELDS"]))
 		{
-			if((empty($arParams["REQUIRED_FIELDS"]) || in_array("NAME", $arParams["REQUIRED_FIELDS"])) && strlen($_POST["user_name"]) <= 1)
+			if((empty($arParams["REQUIRED_FIELDS"]) || in_array("NAME", $arParams["REQUIRED_FIELDS"])) && strlen($_POST["user_name"]) <= 1 && $arParams["USE_USER_NAME"]!="N")
 				$arResult["ERROR_MESSAGE"][] = GetMessage("MF_REQ_NAME");		
 			if((empty($arParams["REQUIRED_FIELDS"]) || in_array("EMAIL", $arParams["REQUIRED_FIELDS"])) && strlen($_POST["user_email"]) <= 1)
 				$arResult["ERROR_MESSAGE"][] = GetMessage("MF_REQ_EMAIL");
@@ -74,7 +76,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"  && (!isset($_POST["PARAMS_HASH"]) || $a
                                 //"FILES" => $_POST['DOPFILE'])
                                
 			);
-			
+			\Bitrix\Main\Diag\Debug::dumpToFile($arFields, "", '/upload/feedback.txt');
 			
 	
 
@@ -106,8 +108,6 @@ unset($FILES["TEXT"]);
 
 
 
-
-
             $no_spam=true;
             if (preg_match('/[^а-я ]+/msiu', $_POST["user_name"])) {
                 $no_spam = false;
@@ -119,7 +119,7 @@ unset($FILES["TEXT"]);
 				foreach($arParams["EVENT_MESSAGE_ID"] as $v)
 					if(IntVal($v) > 0) {
 						//CEvent::Send($arParams["EVENT_NAME"], SITE_ID, $arFields, "N", IntVal($v), $FILES);
-						
+						\Bitrix\Main\Diag\Debug::dumpToFile($arParams["EVENT_NAME"], "", '/upload/feedback.txt');
 						if ($_FILES['UPLOAD_FILES']['name'] && $_FILES['UPLOAD_FILES']['tmp_name']) {
 							$send_file = $_SERVER["DOCUMENT_ROOT"].'/service/send/'.basename($_FILES['UPLOAD_FILES']['name']);
 							if (copy($_FILES['UPLOAD_FILES']['tmp_name'], $send_file)) {

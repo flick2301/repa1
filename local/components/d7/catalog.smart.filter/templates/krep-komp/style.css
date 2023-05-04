@@ -490,7 +490,9 @@ and open the template in the editor.
 	clear: both;
 }
 
-
+.grade {
+    position: initial !important;
+}
 
 
 @media (max-width: 991px) {

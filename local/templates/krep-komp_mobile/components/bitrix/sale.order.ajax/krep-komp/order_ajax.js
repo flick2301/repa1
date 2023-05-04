@@ -8628,7 +8628,8 @@ for (var key in this.result.DELIVERY_GROUPS) {
 				BX.addClass(this.mobileTotalBlockNode, 'visible-xs');
 
 			BX.cleanNode(this.mobileTotalBlockNode);
-			this.mobileTotalBlockNode.appendChild(this.totalInfoBlockNode.cloneNode(true));
+			//убираем сверху блок ТОТАЛ
+			//this.mobileTotalBlockNode.appendChild(this.totalInfoBlockNode.cloneNode(true));
 			BX.bind(this.mobileTotalBlockNode.querySelector('a.bx-soa-price-not-calc'), 'click', BX.delegate(function(){
 				this.animateScrollTo(this.deliveryBlockNode);
 			}, this));

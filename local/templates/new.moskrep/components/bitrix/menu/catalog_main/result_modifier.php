@@ -26,7 +26,11 @@ endforeach;
 
 
 $level1 = 0;
-foreach($arResult as $arItem) {	
+foreach($arResult as $arItem) {
+	if($arItem['TEXT']=='Шурупы')
+	{
+		$arItem["DEPTH_LEVEL"]=2;
+	}
 	if ($arItem["DEPTH_LEVEL"]==1) {
 		$level1++;
 		$level2 = 0;

@@ -55,9 +55,9 @@ $requestUri = $request->getRequestUri();
         <div class="catalog-feed__item catalog-feed__item__withpic ">
 			<!--catalog-card-->
 			<section class="catalog-card">
-				<div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?></a></div>
+				<div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?>' class="catalog-card__link"><?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?></a></div>
                 <div class="catalog-card__cover">
-                    <img class="catalog-card__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
+                    <img class="catalog-card__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?>">
                 </div>
             </section>
 		</div>
@@ -71,12 +71,13 @@ $requestUri = $request->getRequestUri();
 		<div class="basic-layout__module catalog-feed">
 			<div class="catalog-feed__list">
                 <?foreach ($arResult['TOP_SECTIONS'] as &$arSection):?>
+				
                     <div class="catalog-feed__item catalog-feed__item__withpic ">
 					<!--catalog-card-->
 					<section class="catalog-card">
-					<div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>' class="catalog-card__link"><?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?></a></div>
+					<div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?>' class="catalog-card__link"><?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?></a></div>
                             <div class="catalog-card__cover">
-                                <img class="catalog-card__image" width="262" height="197" src="<?=($arSection['DETAIL_PICTURE']) ? CFile::GetPath($arSection['DETAIL_PICTURE']) : $arSection['PICTURE']['src'];?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
+                                <img class="catalog-card__image" width="262" height="197" src="<?=($arSection['DETAIL_PICTURE']) ? CFile::GetPath($arSection['DETAIL_PICTURE']) : $arSection['PICTURE']['src'];?>" alt="<?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?>">
                             </div>
             
 					</section>
@@ -89,7 +90,7 @@ $requestUri = $request->getRequestUri();
 		<!--catalog-feed-->
 
 
-		<?if($_POST['ENUM_LIST']['ELEMENTS'])
+		<?if($_POST['ENUM_LIST']['ELEMENTS'] && empty($arResult['SORTING']['SECTIONS']))
 			require_once __DIR__."/include_parts/section_table.php";?>
     <?endif;?>
 
@@ -238,10 +239,10 @@ if($arParams['TYPE_TEMPLATE']!='BOTTOM')
     ?>
 		<div class="catalog-newcard <?if(!$arSection['DETAIL_PICTURE']):?>catalog-newcard_white<?endif?>">
 		<!--catalog-card-->
-        <a class="catalog-newcard__href" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($arSection['NAME']))?>');" href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>'>
+        <a class="catalog-newcard__href" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($arSection['NAME']))?>');" href="<?=$arSection['UF_SYM_LINK'] ? $arSection['UF_SYM_LINK'] : $arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['UF_SHORT_NAME'] ? $arSection['UF_SHORT_NAME'] : $arSection['NAME']?>'>
 		
 		<span class="catalog-newcard__img">
-		<img class="catalog-newcard__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
+		<img class="catalog-newcard__image" width="262" height="197" src="<?=$arSection['PICTURE']['src']?>" alt="<?=$arSection['UF_SHORT_NAME'] ? $arSection['UF_SHORT_NAME'] : $arSection['NAME']?>">
 		</span>
 		
 		<span class="catalog-newcard__text">
@@ -256,13 +257,13 @@ if($arParams['TYPE_TEMPLATE']!='BOTTOM')
     if(count($arResult['SORTING']['ROOT_ELEMENTS'])){
         foreach($arResult['SORTING']['ROOT_ELEMENTS'] as $dop_section){
             ?>
-		<div class="catalog-newcard">
+		<div class="catalog-newcard catalog-newcard_white">
 		<!--catalog-card-->
-        <a class="catalog-newcard__href" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($dop_section['H1']["VALUE"]))?>');" href="<?=($dop_section['LINK_TARGET']['VALUE']) ? $dop_section['LINK_TARGET']['VALUE'] : $dop_section['CODE'].'/';?>" target="_self" title='<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>'>
+        <a class="catalog-newcard__href" onclick="dataLayerProduct('<?=str_replace(Array("\"", "'"), "", htmlspecialchars($dop_section['H1']["VALUE"]))?>');" href="<?=($dop_section['LINK_TARGET']['VALUE']) ? $dop_section['LINK_TARGET']['VALUE'] : $dop_section['CODE'].'/';?>" target="_self" title='<?=$dop_section['H1']["VALUE"]?>'>
 		
 		<?if($dop_section['PICTURE']['src']):?>
 		<span class="catalog-newcard__img">
-		<img class="catalog-newcard__image"  src="<?=$dop_section['PICTURE']['src']?>" alt="<?=$dop_section['IPROPERTY_VALUES']['SECTION_META_TITLE']?>">
+		<img class="catalog-newcard__image"  src="<?=$dop_section['PICTURE']['src']?>" alt="<?=$dop_section['H1']["VALUE"]?>">
 		</span>
 		<?endif?>
 				
@@ -569,15 +570,17 @@ while($arSection = $db_list->GetNext()) {
 <?else:?>
 <h2 style="text-align: left;"> Как купить <?=mb_strtoupper(explode(" ", $arResult['SECTION']["NAME"])[0])?> ОПТОМ?</h2>
 Все цены, предоставленные на нашем сайте БАЗОВЫЕ (мелкооптовые).<br />
-Для того, чтобы купить <?=mb_strtolower(explode(" ", $arResult['SECTION']["NAME"])[0])?> оптом, нужно сделать заказ от 20 000 рублей. <br />
+Для того, чтобы купить <?=mb_strtolower(explode(" ", $arResult['SECTION']["NAME"])[0])?> оптом, нужно сделать заказ от 5 000 рублей. <br />
 На такие заказы, мы предоставляем следующие скидки:<br /><br />
-От 20 000 рублей – 5%<br />
-От 100 000 рублей – 10%<br />
-От 500 000 рублей – 15%<br /><br />
+От 5 000 рублей – 5%<br />
+От 10 000 рублей – 10%<br />
+От 15 000 рублей – 15%<br />
+От 20 000 рублей – 20%<br />
+От 25 000 рублей – 25%<br />
+От 100 000 рублей – 30%<br />
+От 500 000 рублей – 35%<br /><br />
 Скидка сохраняется на месяц, при условии выбора товара на сумму, соответствующей скидки.<br />
-Также, для особо крупных клиентов, с оборотом от 5 000 000 рублей в квартал, у нас предусмотрена скидка в 20%. Она закрепляется на квартал, и по итогам нового квартала пересчитывается. <br /><br />
-Все цены, предоставленные в нашем прайс-листе и на сайте с НДС.<br /><br />
-Так же, для крупных заказов, суммой от 50 000 рублей, у нас предусмотрена бесплатная доставка по Москве, в пределах МКАД. 
+
 <?endif?>
 </div>		
 </div>

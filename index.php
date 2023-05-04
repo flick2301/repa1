@@ -80,8 +80,9 @@ else
 
 
 
-
-<div data-retailrocket-markup-block="63591b58e931eed4c8088a82"></div>
+<?if(SITE_TEMPLATE_ID!='krep-komp_mobile'){?>
+	<div data-retailrocket-markup-block="63591b58e931eed4c8088a82"></div>
+<?}?>
 
 
 

@@ -93,6 +93,10 @@ dataLayer.push({
 <?endif;?>
 
 <?globalGetTitle($arResult['NAME'].' '.$arResult['PROPERTIES']['BREND']['VALUE'])?>
+<!--
+arResult
+<?var_dump($arResult);?>
+-->
 <div id="shops-window"><div class="win"></div></div>
 <div class="card__articul">Артикул: <span class="card__articul-name"><?=$arResult['PROPERTIES']['CML2_ARTICLE']['VALUE']?></span></div>
 
@@ -115,8 +119,8 @@ dataLayer.push({
 						<p class="card__price-last"><?echo number_format($old_price, 2, '.', ' ');?> ₽</p>
                         <?}?>					 
                         <p class="product-purchase__price"><?echo number_format($price, 2, '.', ' ');?> ₽</p>
-
-            <?if($USER->IsAuthorized()):?>
+			<?//временно отключаем вывод цен?>
+            <?if($USER->IsAuthorized() && 0):?>
 			<div class='card-price-dop-contaiber'>
             <?if($arResult["DOP_PRICE"][0]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][0]?> ₽</b> при заказе от 20000 ₽</div><br><?endif?>
             <?if($arResult["DOP_PRICE"][1]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][1]?> ₽</b> при заказе от 100000 ₽</div><br><?endif?>
@@ -145,13 +149,18 @@ dataLayer.push({
                                  <p class="product-data__text">от <?=$arResult['PROPERTIES']['PROPERTY_MIN_DELIVERY_VALUE'];?> руб.</p>
                               </li>
                               <li class="product-data__item">
-                                 <p class="product-data__name"><i class="simple-available-icon product-data__icon"></i>Наличие</p>
+                                 <p class="product-data__name"><i class="simple-available-icon product-data__icon"></i>На складе</p>
                                  <p class="product-data__text" data-product="<?=$arResult['ID']?>"><?=($arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) ?  $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT'].' уп.' : '<span class="card_pickup" data-product="'.$arResult['ID'].'">Наличие уточнить</span>'?></p>
                               </li>
 
                               <li class="product-data__item">
-                                 <p class="product-data__name card_pickup" data-product="<?=$arResult['ID']?>"><i class="simple-home-icon product-data__icon"></i>Самовывоз</p>
-                                 <p class="product-data__text"><?echo ((strstr($_SERVER['HTTP_HOST'], "spb") && $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']-$arResult['STORE'][3]['AMOUNT']) || (!strstr($_SERVER['HTTP_HOST'], "spb") && $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT'])) ? ' сегодня, бесплатно' : 'на заказ';?></p>
+                                 <p class="product-data__name card_pickup" data-product="<?=$arResult['ID']?>"><i class="simple-home-icon product-data__icon"></i><?echo ($arResult['ONLY_STORE_AMOUNT']) ? 'В магазинах' : 'Самовывоз';?></p>
+								 <?if($arResult['ONLY_STORE_AMOUNT'])
+								 {?>
+									<p class="product-data__text"><?=$arResult['ONLY_STORE_COUNT'];?> <?echo ($arResult['ONLY_STORE_COUNT']>1) ? 'магазина' : 'магазин';?></p>
+								 <?}else{?>
+                                 <p class="product-data__text"><?echo ((strstr($_SERVER['HTTP_HOST'], "spb") && $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']-$arResult['STORE'][3]['AMOUNT']) || (($_SERVER['HTTP_HOST'] !== "krep-komp.ru") && $arResult['STORE_AMOUNT']) || (($_SERVER['HTTP_HOST'] == "krep-komp.ru") && $arResult['STORE'][3]['AMOUNT'])) ? ' сегодня, бесплатно' : 'на заказ';?></p>
+								 <?}?>
                               </li>
 
                            </ul>
@@ -392,18 +401,34 @@ dataLayer.push({
                         <div class="special-table special-table--lite">
                            <table>
                               <tbody>
-                                 <tr>
-                                    <th>5%</th>
-                                    <td>от 20 000 руб</td>
-                                 </tr>
-                                 <tr>
-                                    <th>10%</th>
-                                    <td>от 100 000 руб</td>
-                                 </tr>
-                                 <tr>
-                                    <th>15%</th>
-                                    <td>от 500 000 руб</td>
-                                 </tr>
+                                 <tr >
+									<th>5%</th>
+									<td >от 5 000 руб</td>
+								</tr>
+								<tr >
+									<th>10%</th>
+									<td >от 10 000 руб</td>
+								</tr>
+								<tr>
+									<th>15%</th>
+									<td >от 15 000 руб</td>
+								</tr>
+								<tr>
+									<th>20%</th>
+									<td >от 20 000 руб</td>
+								</tr>
+								<tr>
+									<th>25%</th>
+									<td >от 25 000 руб</td>
+								</tr>
+								<tr>
+									<th>30%</th>
+									<td >от 100 000 руб</td>
+								</tr>
+								<tr>
+									<th>35%</th>
+									<td >от 500 000 руб</td>
+								</tr>
                                  <!--<tr>
                                     <th>18%</th>
                                     <td>от 1 000 000 руб<br>* скидка предоставляется при условии выполнения ежеквартальных закупкок на сумму от 5 000 000 руб.</td>
@@ -445,9 +470,9 @@ dataLayer.push({
             
             $APPLICATION->IncludeComponent(
 	    "bitrix:catalog.section", 
-	    "level3", 
+	    "vertical", 
 	    array(
-		"COMPONENT_TEMPLATE" => "level3",
+		"COMPONENT_TEMPLATE" => "vertical",
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_ID" => $arParams['IBLOCK_ID'],
 		"SECTION_ID" => $arResult['IBLOCK_SECTION_ID'],
@@ -513,7 +538,7 @@ dataLayer.push({
 		"DISPLAY_COMPARE" => "N",
 		"PAGER_TEMPLATE" => ".default",
 		"DISPLAY_TOP_PAGER" => "N",
-		"DISPLAY_BOTTOM_PAGER" => "Y",
+		"DISPLAY_BOTTOM_PAGER" => "N",
 		"PAGER_TITLE" => "Товары",
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_DESC_NUMBERING" => "N",

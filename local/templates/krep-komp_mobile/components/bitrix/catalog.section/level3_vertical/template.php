@@ -94,7 +94,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
 	</div>
 <!--catalog-feed-->
 <?
-if ($showBottomPager)
+if ($showBottomPager=="Y")
 {
 	?>
 	

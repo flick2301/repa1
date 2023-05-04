@@ -60,3 +60,5 @@ if($arResult['REFERENCE']['ITEM']['ID']=='' && $arResult["SECTION"]["ID"]==''){
 	CHTTP::SetStatus("404 Not Found");
 	$APPLICATION->SetPageProperty('title', "404 - HTTP not found");
 }
+GLOBAL $lastModified;
+$lastModified = strtotime($arResult['LAST_MODIFY']);

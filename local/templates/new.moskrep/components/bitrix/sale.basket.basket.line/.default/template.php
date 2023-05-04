@@ -27,11 +27,16 @@ $this->setFrameMode( true );
 	?>
 </div>
 <div class='header-basket-none'>
+Уточните у менеджера
 <?
+
 /** @var \Bitrix\Main\Page\FrameBuffered $frame */
-	$frame = $this->createFrame($cartId, false)->begin();
+	//$frame = $this->createFrame($cartId, false)->begin();
 	
-	require(realpath(dirname(__FILE__)) . '/ajax_form.php');
+	//require(realpath(dirname(__FILE__)) . '/ajax_form.php');
+	//$frame->beginStub();
+        
+	
 	?>
     
 </div>

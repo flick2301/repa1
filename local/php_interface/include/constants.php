@@ -52,10 +52,13 @@ if($_SERVER['HTTP_HOST']=='spb.krep-komp.ru'){
 	global $DEFAULT_STORE_ID; 
 	$DEFAULT_STORE_ID= 3;
 }
-const ID_PRICE_5 = '11';
-const ID_PRICE_10 = '12';
-const ID_PRICE_13 = '10';
-const ID_PRICE_18 = '13';
+const ID_PRICE_5 = '19';
+const ID_PRICE_10 = '20';
+const ID_PRICE_15 = '21';
+const ID_PRICE_20 = '22';
+const ID_PRICE_25 = '11';
+const ID_PRICE_30 = '12';
+const ID_PRICE_35 = '10';
 
 //Платежные системы
 const BY_CARD = 8;

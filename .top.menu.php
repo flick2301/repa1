@@ -15,13 +15,6 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
-		"Самовывоз", 
-		"/addresses/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
 		"Оплата", 
 		"/oplata/", 
 		Array(), 
@@ -50,11 +43,11 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
-		"Адреса магазинов",
+		"Адреса магазинов", 
 		"/addresses/", 
 		Array(), 
 		Array(), 
 		"" 
-	)	
+	)
 );
 ?>

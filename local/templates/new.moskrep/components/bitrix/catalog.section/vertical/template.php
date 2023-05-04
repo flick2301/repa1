@@ -203,9 +203,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                     </div>
                     <div class="product__right">
                         <div data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" onmousedown="try { rrApi.addToBasket(<?=$item['ID']?>) } catch(e) {}" data-product="<?=$item['ID']?>" old-price="<?=$price?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>" class="main-button main-button--mini product-card__button product-card__button_round product__buy" href="javascript:void(0);">
-                            <svg viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-product="<?=$item['ID']?>" old-price="<?=$price?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>">
-                                <path data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-product="<?=$item['ID']?>" old-price="<?=$price?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>" d="M1.957 11.634c0 1.14.806 2.094 1.877 2.325a1.578 1.578 0 0 0 .68 2.998 1.576 1.576 0 0 0 .781-2.944h6.287a1.576 1.576 0 1 0 1.563 0h1.18a.595.595 0 0 0 0-1.19h-9.99a1.19 1.19 0 0 1-1.189-1.189v-.885c.35.203.757.32 1.19.32h8.027c1.252 0 2.502-.943 2.846-2.147l1.472-5.153a.594.594 0 0 0-.571-.758H3.146v-.565A2.381 2.381 0 0 0 .768.067a.595.595 0 0 0 0 1.19c.656 0 1.19.533 1.19 1.189v9.188Zm10.406 4.133a.387.387 0 1 1 .002-.774.387.387 0 0 1-.002.774Zm-7.849 0a.387.387 0 1 1 .001-.774.387.387 0 0 1 0 .774Zm9.552-7.171c-.196.684-.991 1.284-1.703 1.284H4.336a1.19 1.19 0 0 1-1.19-1.19V4.2h12.175l-1.255 4.396Z"></path>
-                            </svg>
+                            
                         </div>
                     </div>
                 </div>

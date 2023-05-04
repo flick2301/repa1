@@ -307,6 +307,7 @@ $APPLICATION->IncludeFile(
 </div>
 </div>	
 	
+	
 	<header class="basic-layout__header">
 	<?=$safari?>
 	
@@ -567,7 +568,6 @@ $APPLICATION->IncludeComponent(
 		</div>
 <?endif?>		
 		
-		
 		<div class="website-navbar__primary">
                <!--main-nav-->
                <nav class="main-nav<?if (CSite::InDir('/index.php') && SITE_ID!='s2'):?> full<?endif?>">
@@ -587,6 +587,7 @@ $APPLICATION->IncludeComponent(
 					</div>
 				</nav>
 			</div>
+		
 	</div>
 	</div>
     </header>

@@ -3,7 +3,12 @@ use \Bitrix\Main\Loader;
 
 if(!defined('B_PROLOG_INCLUDED')||B_PROLOG_INCLUDED!==true)die();
 
+if ($_GET['PAGEN_1']==='1') {
 
+  LocalRedirect( $APPLICATION->GetCurPageParam("", array("PAGEN_1")) );
+  exit();
+
+}
 
 // #
 // # События и обработчики

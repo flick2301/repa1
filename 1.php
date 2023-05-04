@@ -1,10 +1,19 @@
 <?php
 
-// Показывать всю информацию, по умолчанию INFO_ALL
-phpinfo();
+session_start();
 
-// Показывать информацию только о загруженных модулях.
-// phpinfo(8) выдаёт тот же результат.
-phpinfo(INFO_MODULES);
-
+if (empty($_SESSION['count'])) {
+   $_SESSION['count'] = 1;
+} else {
+   $_SESSION['count']++;
+}
 ?>
+
+<p>
+Здравствуйте, посетитель, вы видели эту страницу <?php echo $_SESSION['count']; ?> раз.
+</p>
+
+<p>
+<a href="nextpage.php?<?php echo htmlspecialchars(SID); ?>">Нажмите
+сюда</a>, чтобы продолжить.
+</p>

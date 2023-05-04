@@ -1,28 +1,28 @@
 $(document).ready(function() {
 
-$('#feedback_form input[required], #feedback_form textarea[required]').keyup(function() {	
+$('#position-request input[required], #position-request textarea[required]').keyup(function() {	
 	var correct = true;
 	
-$('#feedback_form input[required], #feedback_form textarea[required]').each(function(index,value){
+$('#position-request input[required], #position-request textarea[required]').each(function(index,value){
 	if(!$(value).val()) correct = false;
 });
 console.log(correct);
-	if (correct) $('#feedback_form .main-button').removeClass('disable');
-	else $('#feedback_form .main-button').addClass('disable');
+	if (correct) $('#position-request .main-button').removeClass('disable');
+	else $('#position-request .main-button').addClass('disable');
 });
 	
-$('#feedback_form').submit(function(e) {	
+$('#position-request').submit(function(e) {	
 
-$('#feedback_form .send-a-request__form-errors').hide();
-$('#feedback_form .send-a-request__form-reuslt').hide();
+$('#position-request .send-a-request__form-errors').hide();
+$('#position-request .send-a-request__form-reuslt').hide();
 
-$('#feedback_form input[required], #feedback_form textarea[required]').each(function(index,value){
+$('#position-request input[required], #position-request textarea[required]').each(function(index,value){
 	if(!$(value).val()) $(value).addClass('input-alert');
 });
 
-$('#feedback_form input[required], #feedback_form textarea[required]').click(function(){
+$('#position-request input[required], #position-request textarea[required]').click(function(){
 	$(this).removeClass('input-alert');
-	$('#feedback_form .send-a-request__form-errors').hide();
+	$('#position-request .send-a-request__form-errors').hide();
 });
 
 	     $.ajax({
@@ -35,16 +35,17 @@ $('#feedback_form input[required], #feedback_form textarea[required]').click(fun
 		},	 
          success: function (data) { 
 
-			var result = $(data).find('#feedback_form .header-form-feedback');
-			var error = $(data).find('#feedback_form .header-form-feedback .errortext');
+			var result = $(data).find('#position-request .header-form-feedback');
+			var error = $(data).find('#position-request .header-form-feedback .errortext');
 
 			if ($(error).html()) {
-				$('#feedback_form .send-a-request__form-errors').html('Ошибка отправки данных');
-				$('#feedback_form .send-a-request__form-errors').show();				
+				console.log($(error).html());
+				$('#position-request .send-a-request__form-errors').html('Ошибка отправки данных');
+				$('#position-request .send-a-request__form-errors').show();				
 			}
 			else {
-				//$('#feedback_form .send-a-request__form-result').html($(result).html());
-				//$('#feedback_form .send-a-request__form-result').show();
+				//$('#position-request .send-a-request__form-result').html($(result).html());
+				//$('#position-request .send-a-request__form-result').show();
 				yaCounter29426710.reachGoal('SendMessage');
 				dataLayerSendForm();
 				$('.basic-layout__module.basic-layout__module--request.send-a-request').html($('.send-a-request_success_block').html());
@@ -53,8 +54,8 @@ $('#feedback_form input[required], #feedback_form textarea[required]').click(fun
 			//else window.location.href = window.location.href;
          },
          error: function (data) {
-            $('#feedback_form .send-a-request__form-errors').html('Ошибка на сервере!');
-			$('#feedback_form .send-a-request__form-errors').show();
+            $('#position-request .send-a-request__form-errors').html('Ошибка на сервере!');
+			$('#position-request .send-a-request__form-errors').show();
 			console.log(data);
          },
 		 complete: function() {

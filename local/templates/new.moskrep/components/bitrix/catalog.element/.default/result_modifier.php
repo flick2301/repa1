@@ -189,7 +189,7 @@ $db_res = CPrice::GetList(
     array('ASC'=>'PRICE'),
     array(
         'PRODUCT_ID' => $arResult['ID'],
-        'CATALOG_GROUP_ID' => array(ID_PRICE_5, ID_PRICE_10, ID_PRICE_13, ID_PRICE_18),
+        'CATALOG_GROUP_ID' => array(ID_PRICE_5, ID_PRICE_10, ID_PRICE_15, ID_PRICE_20, ID_PRICE_25, ID_PRICE_30, ID_PRICE_35),
     )
 );
 $arResult["DOP_PRICE"] = array();
@@ -260,4 +260,41 @@ if($ob = $res->GetNext())
 {
     $arResult['PROPERTIES']['PROPERTY_MIN_DELIVERY_VALUE'] = $ob['PROPERTY_MIN_DELIVERY_VALUE'];
 }
+
+$arFilter = array("IBLOCK_ID" => 19, "ACTIVE" => "Y", "CODE"=>$_SERVER['HTTP_HOST']);
+$arSelect = array("ID", "IBLOCK_ID", "NAME", "CODE");
+$rsSect = CIBlockSection::GetList(Array(), $arFilter, false, $arSelect, Array("iNumPage"=>1));
+if ($arSection = $rsSect->GetNext()) {
+    if ($arSection["ID"])
+	{
+	
+		$arSelect = Array("ID", "IBLOCK_ID", "NAME", "PREVIEW_TEXT", "DETAIL_TEXT", "IBLOCK_SECTION_ID", "PROPERTY_*");
+		$arFilter = Array("IBLOCK_ID"=>19, "ACTIVE"=>"Y", "SECTION_ID"=>$arSection["ID"]);
+		$res = \CIBlockElement::GetList(Array("SORT"=>"ASC", "ID"=>"ASC"), $arFilter, false, Array(), $arSelect);				
+		while($ob = $res->GetNextElement())
+           {
+			   
+               $fields = $ob->GetFields();
+               $props = $ob->GetProperties();
+			   echo '<!--12379';
+			   var_dump($props);
+			   echo '-->';
+               $amount = \Bitrix\Catalog\StoreProductTable::getList([
+                   'filter' => [
+                       'PRODUCT_ID' => $arResult["ID"],
+                       'STORE_ID'=>$props['SKLAD_ID']['VALUE'],
+                   ],
+                   'select'=>['*'],
+               ])->fetch();
+               $arResult['STORE_AMOUNT'] += $amount['AMOUNT'];
+			   if($props["TYPE"]["VALUE"]=="Магазин" || $props["TYPE"]["VALUE"]=="Магазин и точка выдачи"){
+				   $arResult['ONLY_STORE_AMOUNT'] += $amount['AMOUNT'];
+				   $arResult['ONLY_STORE_COUNT']++;
+			   }
+		   }
+	}
+	
+}
+
+
 

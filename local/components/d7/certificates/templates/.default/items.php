@@ -10,7 +10,7 @@ $APPLICATION->SetPageProperty("keywords", $arResult['IPROP_VALUES']['SECTION_MET
 ?>
 
 
-<?globalGetTitle()?>
+<?globalGetTitle(current($arResult['ITEMS'])['NAME'])?>
 
             <!--catalog-feed-->
             <div class="basic-layout__module catalog-feed">

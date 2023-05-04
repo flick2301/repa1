@@ -289,7 +289,7 @@ class  FilterButtonsBuilder
             if(count($this->arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE'])>1) {
 
 
-                $rsResult = \CIBlockSection::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => CATALOG_IBLOCK_ID, "ID" => $this->arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE']), false, array("*", "IPROPERTY_VALUES"));
+                $rsResult = \CIBlockSection::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => CATALOG_IBLOCK_ID, "ID" => $this->arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE']), false, array("*", "IPROPERTY_VALUES", "UF_*"));
                 while ($rSection = $rsResult->GetNext()) {
                     $this->arResult['TOP_SECTIONS'][] = $rSection;
                 }

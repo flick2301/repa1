@@ -39,7 +39,7 @@ $strNavQueryStringFull = str_replace('bxajaxid='.$_REQUEST['bxajaxid'], '', $str
 	<?if ($arResult["NavPageNomer"] > 1):?>
 
 	
-	<a class="pages-nav__fast" rel="nofollow" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=1" target="_self">В начало</a>
+	<a class="pages-nav__fast" rel="nofollow" href="<?=$arResult["sUrlPath"]?>" target="_self">В начало</a>
 	<!--<link rel="prev" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]-1)?>" />-->
 	<ul class="pages-nav__list">
                         <li class="pages-nav__item"><a rel="nofollow" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]-1)?>" target="_self" class="pages-nav__link">&lt;</a>	
