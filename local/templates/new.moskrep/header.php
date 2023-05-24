@@ -87,17 +87,7 @@ $APPLICATION->ShowMeta("robots");?>
 
 	<link rel='canonical' href='https://<?=$_SERVER["HTTP_HOST"]?><?=$APPLICATION->GetCurPage(false);?>' />	
 
-  	<!--АНТИСОВЕТНИК-->
-	<script data-skip-moving='true'>
-(function(d) {
-var ref=d.getElementsByTagName('script')[0]; 
-var js, id='3356a6aae65d7a48c0f5f36187171be6';
-if (d.getElementById(id)) return;
-js=d.createElement('script'); js.id=id;js.async=false;
-js.src='https://antisovetnic.ru/anti/'+escape(id);
-ref.parentNode.insertBefore(js, ref);}(document));
-</script>
-	<!--АНТИСОВЕТНИК-->
+
 
     <!-- Roistat BEGIN CODE -->
     <script>

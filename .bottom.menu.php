@@ -11,13 +11,7 @@ $aMenuLinks = Array(
 	
 	
 	
-	Array(
-		"Распродажа крепежа",
-		"/rasprodaja-krepeja/",
-		Array(), 
-		Array(), 
-		"" 
-	),
+	
 	Array(
 		"Сертификаты",
 		"/certificates/",

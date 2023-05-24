@@ -159,7 +159,7 @@ arResult
 								 {?>
 									<p class="product-data__text"><?=$arResult['ONLY_STORE_COUNT'];?> <?echo ($arResult['ONLY_STORE_COUNT']>1) ? 'магазина' : 'магазин';?></p>
 								 <?}else{?>
-                                 <p class="product-data__text"><?echo ((strstr($_SERVER['HTTP_HOST'], "spb") && $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']-$arResult['STORE'][3]['AMOUNT']) || (($_SERVER['HTTP_HOST'] !== "krep-komp.ru") && $arResult['STORE_AMOUNT']) || (($_SERVER['HTTP_HOST'] == "krep-komp.ru") && $arResult['STORE'][3]['AMOUNT'])) ? ' сегодня, бесплатно' : 'на заказ';?></p>
+                                 <p class="product-data__text"><?echo ((strstr($_SERVER['HTTP_HOST'], "spb") && $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']-$arResult['STORE'][3]['AMOUNT']) || (($_SERVER['HTTP_HOST'] !== "krep-komp.ru") && $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) || (($_SERVER['HTTP_HOST'] == "krep-komp.ru") && $arResult['STORE'][3]['AMOUNT'])) ? ' сегодня, бесплатно' : 'на заказ';?></p>
 								 <?}?>
                               </li>
 

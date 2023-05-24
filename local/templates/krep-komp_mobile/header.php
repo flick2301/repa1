@@ -54,18 +54,7 @@ $APPLICATION->ShowMeta("robots");?>
 
 
     
-	<?/*
-	<link rel="manifest" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/manifest.webmanifest" />
-	<link rel="icon" sizes="32x32" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/favicon-32.png" />
-	<link rel="icon" sizes="96x96" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/favicon-96.png" />
-	<link rel="icon" sizes="16x16" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/favicon-16.png" />
-	
-	<!--appicons-->
-   <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-iphone.png" sizes="60x60" />
-   <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-ipad.png" sizes="76x76" />
-   <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-iphone@2x.png" sizes="120x120" />
-   <link rel="apple-touch-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/a-icons/icon-ipad@2x.png" sizes="152x152" />
-   */?>
+
    
 <link rel="apple-touch-icon" sizes="180x180" href="<?=SITE_TEMPLATE_PATH?>/assets/favicon/apple-touch-icon.png">
 <link el="icon" type="image/png" sizes="120x120" href="<?=SITE_TEMPLATE_PATH?>/assets/favicon/favicon-120x120.png">
@@ -90,17 +79,7 @@ $APPLICATION->ShowMeta("robots");?>
 
 	<link rel='canonical' href='https://<?=$_SERVER["SERVER_NAME"]?><?=$APPLICATION->GetCurPage(false);?>' />	
 
-  	<!--АНТИСОВЕТНИК-->
-	<script data-skip-moving='true'>
-(function(d) {
-var ref=d.getElementsByTagName('script')[0]; 
-var js, id='3356a6aae65d7a48c0f5f36187171be6';
-if (d.getElementById(id)) return;
-js=d.createElement('script'); js.id=id;js.async=false;
-js.src='https://antisovetnic.ru/anti/'+escape(id);
-ref.parentNode.insertBefore(js, ref);}(document));
-</script>
-	<!--АНТИСОВЕТНИК-->  
+ 
 
 <?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
 <?
@@ -132,7 +111,7 @@ $APPLICATION->IncludeFile(
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/fonts/proximanova/proximanova.min.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/fonts.min.css", true);	
 	
-	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/reset.css", true);
+	
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.min.css", true);
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/jquery.fancybox.min.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/styles/global.styles.min.css?v=XXXXXXa", true);
@@ -156,9 +135,7 @@ $APPLICATION->IncludeFile(
 		$rand = "?".rand();
 		
 		
-	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/new/css/main.min.css", true);	
-	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/new/css/style.css", true);	
-	//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js".$rand);	
+	
 	?>
 	
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>
@@ -288,7 +265,7 @@ $APPLICATION->IncludeFile(
 				<div class="mobile__close"></div>  
 			</div>
 			<div class='mobile__bot'>
-				<a href='/rasprodaja_krepeja/' class='mobile__item mobile__item--offer'>Акции</a>
+				
 				<div class='mobile__item mobile__item--catalog'>
 					<?$APPLICATION->IncludeComponent(
 							"bitrix:menu", 
@@ -330,8 +307,11 @@ $APPLICATION->IncludeFile(
 										"CACHE_TIME" => "3600", 
 										"CACHE_FILTER" => "N"
 									), false
-								);?>		
-							
+								);?>
+				<span class="mobile__item">
+					<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/telephone.php"), false);?><br/><br/>
+					<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/email.php"), false);?>
+				</span>			
 			</div>
 		</div>
 	</div>

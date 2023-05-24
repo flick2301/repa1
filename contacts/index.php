@@ -21,7 +21,7 @@ $APPLICATION->SetTitle("Контакты");
 					<div class="shops__box">
 						<div class="shops__topic">ОТДЕЛ   ПРОДАЖ</div>
 						<div class="shops__address">Сделать заказ или уточнить наличие:</div>
-						<div class="shops__address">Телефон: +7 (812) 309-95-45</div>
+						<div class="shops__address">Телефон: <a href='tel:+7 (812) 309-95-45'>+7 (812) 309-95-45</a></div>
 						<div class="shops__time">Пн-Пт.  с  9:00 – 18:00</div> Почта: <a class="shops__email" href="mailto:spb@krep-komp.ru">spb@krep-komp.ru</a>
 					</div>
 				<?}elseif($_SERVER['HTTP_HOST']=='novosibirsk.krep-komp.ru')
@@ -29,13 +29,13 @@ $APPLICATION->SetTitle("Контакты");
 					<div class="shops__box">
 						<div class="shops__topic">ОТДЕЛ   ПРОДАЖ</div>
 						<div class="shops__address">Сделать заказ или уточнить наличие:</div>
-						<div class="shops__address">Телефон: +7 (383) 280-48-35</div>
+						<div class="shops__address">Телефон: <a href='tel:+7 (383) 280-48-35'>+7 (383) 280-48-35</a></div>
 						<div class="shops__time">Пн-Пт.  с  9:00 – 18:00</div> Почта: <a class="shops__email" href="mailto:novosibirsk@krep-komp.ru">novosibirsk@krep-komp.ru</a>
 					</div><?}else{?>
 					<div class="shops__box">
 						<div class="shops__topic">ОТДЕЛ   ПРОДАЖ</div>
 						<div class="shops__address">Сделать заказ или уточнить наличие:</div>
-						<div class="shops__address">Телефон: + 7 (499) 350-55-55</div>
+						<div class="shops__address">Телефон: <a href='tel:+7 (499) 350-55-55'>+7 (499) 350-55-55</a></div>
 						<div class="shops__time">Пн-Пт.  с  9:00 – 18:00  по  Мск. Времени.</div> Почта: <a class="shops__email" href="mailto:sale@krep-komp.ru">sale@krep-komp.ru</a>
 					</div>
 				<?}?>
@@ -45,7 +45,7 @@ $APPLICATION->SetTitle("Контакты");
 					<div class="shops__box">
 						<div class="shops__topic">ОТДЕЛ СНАБЖЕНИЯ  (ЗАКУПКИ)</div>
 						
-						<div class="shops__address">Телефон: + 7 (812) 309-95-45  (доб. 107,  101,  133)						
+						<div class="shops__address">Телефон: <a href='tel:+7 (812) 309-95-45'>+7 (812) 309-95-45</a>  (доб. 107,  101,  133)						
 						</div>
 						<div class="shops__time">Пн-Пт.  с  9:00 – 18:00</div> Почта: <a class="shops__email" href="mailto:snab@krep-komp.ru">snab@krep-komp.ru</a>
 					</div>
@@ -54,8 +54,8 @@ $APPLICATION->SetTitle("Контакты");
 					<div class="shops__box">
 						<div class="shops__topic">ОТДЕЛ СНАБЖЕНИЯ  (ЗАКУПКИ)</div>
 						
-						<div class="shops__address">Телефон: + 7 (499) 350-55-55   (доб. 107,  101,  133)<br>
-							+7 (499)  350-47-84
+						<div class="shops__address">Телефон: <a href='tel:+7 (499) 350-55-55'>+7 (499) 350-55-55</a>   (доб. 107,  101,  133)<br>
+							<a href='tel:+7 (499)  350-47-84'>+7 (499)  350-47-84</a>
 						</div>
 						<div class="shops__time">Пн-Пт.  с  9:00 – 18:00  по  Мск. Времени.</div> Почта: <a class="shops__email" href="mailto:snab@krep-komp.ru">snab@krep-komp.ru</a>
 					</div>
@@ -67,7 +67,7 @@ $APPLICATION->SetTitle("Контакты");
 					<div class="shops__box">
 						<div class="shops__topic">БУХГАЛТЕРИЯ</div>
 						<div class="shops__address">Для актов-сверок:</div>
-						Телефон: +7 (812) 309-95-45  (доб. 136)<br>
+						Телефон: <a href='tel:+7 (812) 309-95-45'>+7 (812) 309-95-45</a>  (доб. 136)<br>
 						Почта: <a class="shops__email" href="mailto:docs@krep-komp.ru">docs@krep-komp.ru</a>
 					</div>
 				<?}else{?>	
@@ -83,7 +83,7 @@ $APPLICATION->SetTitle("Контакты");
 				{?>
 					<div class="shops__box">
 						<div class="shops__topic">ОТДЕЛ ТРАНСПОРТНОЙ ЛОГИСТИКИ</div>
-						<div class="shops__address">Телефон: +7 (812) 309-95-45  (доб. 139)
+						<div class="shops__address">Телефон: <a href='tel:+7 (812) 309-95-45'>+7 (812) 309-95-45</a>  (доб. 139)
 							
 						</div>
 						
@@ -91,8 +91,8 @@ $APPLICATION->SetTitle("Контакты");
 				<?}else{?>	
 					<div class="shops__box">
 						<div class="shops__topic">ОТДЕЛ ТРАНСПОРТНОЙ ЛОГИСТИКИ</div>
-						<div class="shops__address">Телефон: + 7 (499) 350-55-55  (доб. 123)<br>
-							+7 (499) 350-46-31
+						<div class="shops__address">Телефон: <a href='tel:+7 (499) 350-55-55'>+7 (499) 350-55-55</a>  (доб. 123)<br>
+							<a href='tel:+7 (499) 350-46-31'>+7 (499) 350-46-31</a>
 						</div>
 						Почта: <a class="shops__email" href="mailto:logist@krep-komp.ru">logist@krep-komp.ru</a>
 					</div>
@@ -177,20 +177,7 @@ $APPLICATION->SetTitle("Контакты");
 			   
 			   
 			   
-			   <div class="simple-article__content">
-                  <!--<div class="simple-article__section">
-                     <p>Забрать груз в пункте самовывоза на Каширском шоссе можно на следующий день. Для этого оформить заказ нужно до 15:00. Суббота и Воскресенье – выходные дни.</p>
-                  </div>-->
-				  <!--contact-block-->
-	<?$APPLICATION->IncludeComponent("d7:contact_shops","contacts",Array(
-				"IBLOCK_ID" => "19", 
-				"CACHE_TYPE" => "A", 
-                "CACHE_TIME" => "3600", 
-                "CACHE_FILTER" => "N" 
-                    ), false
-    );?>	
-				  <!--contact-block-->
-              </div>
+			   
 
 </div>
 <!--simple-article-->

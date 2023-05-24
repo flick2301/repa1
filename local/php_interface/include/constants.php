@@ -13,14 +13,14 @@ define("ID_PROPERTY_DIAMETR", "DIAMETR");
 define("ID_PROPERTY_DLINA", "DLINA");
 define("ID_PROPERTY_STOCK", "IN_STOCK");
 define("ID_PROPERTY_FOR_SALE", "FOR_SALE");
-define("ID_SALE_PRICE", "Распродажа");
+define("ID_SALE_PRICE", "Распродажа(отключено)");
 
 
 define("CATALOG_IBLOCK_ID", "17");
 const SORTING_IBLOCK_ID = '18';
 const ARTICLES_IBLOCK_ID = 16;
 define("SALE_SECTION_ID", "1655");
-define("NUMBER_SALE_PRICE", "8");
+define("NUMBER_SALE_PRICE", "28");
 define("NUMBER_BASE_PRICE", "9");
 define("ID_BASE_PRICE", "К0 (БАЗОВАЯ НАЧАЛЬНАЯ)");
 // id highload-инфоблока Таблицы веса(картинка в саморезах)

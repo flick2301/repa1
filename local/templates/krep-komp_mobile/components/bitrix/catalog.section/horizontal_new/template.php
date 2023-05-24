@@ -123,11 +123,11 @@ if($arParams['FOR_SEO']!='Y'){
         
 		<div class='table__box'> 
 			<div class='table__leftside'> 
-				<div class='table__topside'><img class='table__img' src='<?=$item['PREVIEW_PICTURE']['src'];?>'></div>
+				<div class='table__topside'><a href="<?=$item['DETAIL_PAGE_URL']?>"><img class='table__img' src='<?=$item['PREVIEW_PICTURE']['src'];?>'></a></div>
 			</div>
 			<div class='table__rightside'>
 				<div class='table__item'> 
-					<div class='table__name'><?=($item['PROPERTIES']['ROOT_NAME']['VALUE']) ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'];?></div>
+					<div class='table__name'><a href="<?=$item['DETAIL_PAGE_URL']?>"><?=($item['PROPERTIES']['ROOT_NAME']['VALUE']) ? $item['PROPERTIES']['ROOT_NAME']['VALUE'] : $item['NAME'];?></a></div>
 				</div>
 				<div class='table__item'>
 					<div class='table__td'>

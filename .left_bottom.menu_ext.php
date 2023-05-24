@@ -122,13 +122,7 @@ $section = CIBlockSection::GetList(array('SORT' => 'asc'),$arFilter, false, arra
 }else{
     
     $aMenuLinks = Array(
-	Array(
-		"Распродажа", 
-		"/rasprodaja_krepeja/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
+	
 	Array(
 		"Сертификаты", 
 		"/certificates/", 
