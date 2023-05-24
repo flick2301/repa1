@@ -150,7 +150,8 @@ $APPLICATION->IncludeFile(
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.min.css", true);
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/jquery.fancybox.min.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/styles/global.styles.min.css?v=XXXXXXa", true);
-	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.min.css".$rand, true);	
+	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.min.css".$rand, true);
+	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/components/bitrix/catalog.section/main_sale/style.css".$rand, true);	
 	if (IPHONE=="Y") $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/iphone.css", true);	
 	else $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/dieapple.css", true);
 	
