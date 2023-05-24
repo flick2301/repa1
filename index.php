@@ -6,7 +6,7 @@ $APPLICATION->SetPageProperty("title", "Интернет-магазин \"Мос
 ?>
 <?
 global $USER;
-if(!$USER->IsAuthorized() && ($_SERVER['HTTP_HOST'] == 'dev1.krep-komp.ru' || $_SERVER['HTTP_HOST'] == 'dev2.krep-komp.ru' || $_SERVER['HTTP_HOST'] == 'dev3.krep-komp.ru')){
+if(!$USER->IsAuthorized() && ($_SERVER['HTTP_HOST'] == 'dev.krep-komp.ru' || $_SERVER['HTTP_HOST'] == 'dev2.krep-komp.ru' || $_SERVER['HTTP_HOST'] == 'dev3.krep-komp.ru')){
 	$dev_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/bitrix/admin/';
 	header('Location: '. $dev_url);
 }	

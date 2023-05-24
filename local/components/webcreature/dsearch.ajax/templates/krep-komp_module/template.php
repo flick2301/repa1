@@ -30,14 +30,18 @@ BX.message({
    ?>]
  });
 </script>
+<div id='search-popup' class="moskrep-search c-header__searchbox">
+						
+							<input class="c-header__searchbox-input" name="search" type="text" placeholder="Найти товар" autocomplete="off">
+							<button class="c-header__searchbox-submit" type="submit">
+								<svg aria-hidden="true" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M11.9673 12.1943L16 16M13.8116 7.40645C13.8116 10.9446 10.9436 13.8129 7.40579 13.8129C3.86797 13.8129 1 10.9446 1 7.40645C1 3.86826 3.86797 1 7.40579 1C10.9436 1 13.8116 3.86826 13.8116 7.40645Z" stroke="white" stroke-width="2" stroke-linecap="round"/>
+								</svg>                
+								Найти товар
+							</button>
+						
+					</div>
 
 
-<div id='search-popup' class="moskrep-search">
-<input class="moskrep_submit" type="button" value="<?=Loc::getMessage("DSEARCH_AJAX_SEARCH")?>"/>	
-<input name="text" type="text" value="<?=htmlspecialcharsEx($_GET['result'])?>" class="moskrep_input" placeholder="<?=Loc::getMessage("DSEARCH_AJAX_SEARCH_ARTNO")?>" autocomplete="off" />			  
-<?$this->SetViewTarget("dsearch_line");?>
-<div id="text_result" class="template_<?=$templateName?>"></div>
-<?$this->EndViewTarget();?>
-</div>
 
 

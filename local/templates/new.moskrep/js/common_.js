@@ -1,8 +1,6 @@
 /* JavaScript */
 
 
-
-
 function add2basketLine() {
 	
 }

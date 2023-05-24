@@ -189,6 +189,8 @@ $APPLICATION->IncludeFile(
 
 
 <body class="!basic-layout basic-layout--default" id="basic-layout">
+	<!-- scrollTopBtn -->
+	<button class="btn-up btn-up--hide" type="button" aria-label="Вернуться в начало страницы">Top</button>
 
 <?$APPLICATION->ShowPanel();?>
 
@@ -334,8 +336,16 @@ $APPLICATION->IncludeFile(
 					</a>
 				</div>
 				<div class="shelf__right">
+					<!-- header-tel -->
+					<a class="shelf__tel" href="tel:+74993505555">
+						<svg class="shelf__tel-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M23.1538 10.2166C23.1939 9.05672 22.995 7.90099 22.5695 6.82124C22.144 5.74149 21.5009 4.76081 20.6803 3.94016C19.8596 3.11951 18.8789 2.47643 17.7992 2.0509C16.7194 1.62537 15.5637 1.42648 14.4038 1.46661" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M14.4038 6.46661C17.0288 6.46661 18.1538 7.59161 18.1538 10.2166" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M9.84614 9.23129L4.86538 4.54352L1.66346 7.55709C1.42628 9.78936 1.94807 15.1915 5.93268 18.9417C9.9173 22.6919 15.657 23.183 18.0288 22.9598L21.2307 19.9462L16.25 15.2584L13.7596 17.6023C13.0481 17.6023 11.1981 17.2005 9.49037 15.5933C7.78268 13.986 7.35576 12.2449 7.35576 11.5752L9.84614 9.23129Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</a>
 					<?
-		
+						/*
 						$APPLICATION->IncludeComponent(
 							"bitrix:sale.basket.basket.line", 
 							"mobile", 
@@ -364,7 +374,9 @@ $APPLICATION->IncludeFile(
 								"MAX_IMAGE_SIZE" => "70"
 							),
 							false
-						);?>
+						);
+						*/
+						?>
 					<div class="shelf__search"></div>
 				</div>
 			</div>
@@ -374,7 +386,74 @@ $APPLICATION->IncludeFile(
 		
 	</div>
 	
-	
+	<!-- bottom mobile navbar -->
+	<nav class="mobile-navbar">
+		<ul class="mobile-navbar__list" role="list">
+			<li class="mobile-navbar__item mobile-navbar__item--dropdown">
+				<a class="mobile-navbar__link mobile-navbar__link--dropdown" href="">
+					<svg class="mobile-navbar__icon mobile-navbar__icon--account" aria-hidden="true" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M1.94858 21.5C1.94858 16.1319 7.20468 14.4731 11.3019 14.4731C15.399 14.4731 20.8057 16.1319 20.8057 21.5M16.4276 6.08305C16.4276 8.75227 14.1326 10.9161 11.3016 10.9161C8.47054 10.9161 6.17553 8.75227 6.17553 6.08305C6.17553 3.41384 8.47054 1.25001 11.3016 1.25001C14.1326 1.25001 16.4276 3.41384 16.4276 6.08305Z" stroke="#552FEC" stroke-width="2.5" stroke-linecap="round"/>
+					</svg>
+					<span>Аккаунт</span>
+				</a>
+				<ul class="mobile-navbar__dropdown" role="list">
+					<li class="mobile-navbar__dropdown-item">
+						<a class="mobile-navbar__dropdown-link" href="">
+							<svg class="mobile-navbar__dropdown-icon" aria-hidden="true" width="16" height="17" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M1.94858 21.5C1.94858 16.1319 7.20468 14.4731 11.3019 14.4731C15.399 14.4731 20.8057 16.1319 20.8057 21.5M16.4276 6.08305C16.4276 8.75227 14.1326 10.9161 11.3016 10.9161C8.47054 10.9161 6.17553 8.75227 6.17553 6.08305C6.17553 3.41384 8.47054 1.25001 11.3016 1.25001C14.1326 1.25001 16.4276 3.41384 16.4276 6.08305Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+							</svg>
+							<span class="mobile-navbar__dropdown-title">
+								Алексей Иванов
+								<span class="mobile-navbar__dropdown-subtitle">11 760 баллов</span>
+							</span>
+
+						</a>
+					</li>
+					<li class="mobile-navbar__dropdown-item">
+						<a class="mobile-navbar__dropdown-link" href="">
+							<svg class="mobile-navbar__dropdown-icon" aria-hidden="true" width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M8.98297 3.47015L9 3.49104L9.01703 3.47015C9.67799 2.65912 11.1206 0.888889 13.0312 0.888889C14.9584 0.888889 16.1906 2.28668 16.5917 3.28654C16.9278 4.29508 17.856 5.88302 14.9239 8.91835C12.552 11.3738 9.96181 14.088 9 15.1111C8.03819 14.088 5.44805 11.3738 3.07609 8.91835C0.144023 5.88302 1.07216 4.29508 1.40827 3.28654C1.8094 2.28668 3.04159 0.888889 4.96876 0.888889C6.87936 0.888889 8.32201 2.65912 8.98297 3.47015Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+							<span>Избранное</span>
+						</a>
+					</li>
+					<li class="mobile-navbar__dropdown-item">
+						<a class="mobile-navbar__dropdown-link" href="">
+							<svg class="mobile-navbar__dropdown-icon" aria-hidden="true" width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M1 7.294L9.98105 4.96191M9.98105 4.96191L18.9621 2.62982M9.98105 4.96191V0.89M8.26126 11.7928L4.69551 7.294L1.12976 11.7928M8.26126 11.7928H1.12976M8.26126 11.7928C8.26126 13.6248 6.67121 15.11 4.70346 15.11C2.73571 15.11 1.12976 13.6248 1.12976 11.7928M18.8473 9.14704L15.2815 4.48753L11.7158 9.14704M18.8473 9.14704H11.7158M18.8473 9.14704C18.8473 10.9791 17.2572 12.4642 15.2895 12.4642C13.3217 12.4642 11.7158 10.9791 11.7158 9.14704" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+							<span>Сравнение товаров</span>
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li class="mobile-navbar__item">
+				<a class="mobile-navbar__link" href="">
+					<svg class="mobile-navbar__icon mobile-navbar__icon--basket" aria-hidden="true" width="28" height="21" viewBox="0 0 28 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M1.625 1.70306H6.35678L8.4779 8.00925M8.4779 8.00925L10.2167 17.3202C10.3935 18.2668 11.2198 18.9531 12.1827 18.9531H21.8324C22.7321 18.9531 23.5211 18.3523 23.7604 17.485L26.375 8.00925H8.4779Z" stroke="#552FEC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+					<span>Корзина <span class="mobile-navbar__basket-count" aria-label="Количество товаров в корзине - 2">2</span></span>
+				</a>
+			</li>
+			<li class="mobile-navbar__item">
+				<a class="mobile-navbar__link" href="">
+					<svg class="mobile-navbar__icon mobile-navbar__icon--store" aria-hidden="true" width="20" height="25" viewBox="0 0 20 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M10 1.5C5.24414 1.5 1.375 5.18357 1.375 9.71127C1.375 12.8034 5.69785 18.5887 9.74324 22.9716L10 23.25L10.2562 22.9708C12.2196 20.8304 18.625 13.5484 18.625 9.71099C18.6253 5.18357 14.7559 1.5 10 1.5ZM10 13.0346C8.0719 13.0346 6.50894 11.5465 6.50894 9.71099C6.50894 7.8755 8.0719 6.38762 10 6.38762C11.9281 6.38762 13.4911 7.87577 13.4911 9.71127C13.4911 11.5468 11.9281 13.0346 10 13.0346Z" stroke="#552FEC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+					<span>Магазины</span>
+				</a>
+			</li>
+			<li class="mobile-navbar__item">
+				<a class="mobile-navbar__link" href="">
+					<svg class="mobile-navbar__icon mobile-navbar__icon--stock" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M17.1801 12.9134L12.7252 17.3682M1.44108 12.8567C1.74202 13.9084 2.55185 14.7182 4.16962 16.336L6.09796 18.2643C8.92253 21.0898 10.3338 22.5 12.0873 22.5C13.8409 22.5 15.2515 21.0894 18.0716 18.2693L18.0767 18.2643C20.9023 15.4408 22.3125 14.0296 22.3125 12.275C22.3125 10.5215 20.9002 9.10926 18.0767 6.28579L16.1483 4.35749C14.5306 2.73975 13.7207 1.92994 12.669 1.62901C11.6159 1.32661 10.4976 1.58491 8.26207 2.10151L6.97263 2.39867C5.09098 2.83232 4.15015 3.04967 3.50543 3.69332C2.86177 4.33803 2.64441 5.27883 2.21075 7.16045L1.91254 8.44986C1.39698 10.6864 1.13972 11.8036 1.44108 12.8567ZM10.3272 7.54558C11.1473 8.36568 11.1473 9.69534 10.3272 10.5154C9.50708 11.3356 8.1774 11.3356 7.35728 10.5154C6.53715 9.69534 6.53715 8.36568 7.35728 7.54558C8.1774 6.72547 9.50708 6.72547 10.3272 7.54558Z" stroke="#552FEC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+					<span>Акции</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+
 	<div class='top'>
 		<div class='container'>		
 			<div class='top__wrapper'>

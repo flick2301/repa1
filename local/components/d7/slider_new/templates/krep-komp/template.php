@@ -10,14 +10,14 @@
 						?>
 						
 			<?if($val["PROPERTY"]["SLIDER_LINK"]["VALUE"]):?>
-				<a class="slider__link" href="<?=$val["PROPERTY"]["SLIDER_LINK"]["VALUE"]?>?banner_id=<?=$val['ID']?>"><img class="slider__img" src="<?=$val["SMALL_IMG_WEBP"]['WEBP_SRC'] ? $val["SMALL_IMG_WEBP"]['WEBP_SRC'] : $val["SMALL_IMG"]["src"]?>"><img class="slider__img slider__img--mobile" src="<?=$val["SMALL_IMG_WEBP"]['WEBP_SRC'] ? $val["SMALL_IMG_WEBP"]['WEBP_SRC'] : $val["SMALL_IMG"]["src"]?>"></a>
+				<a class="slider__link" href="<?=$val["PROPERTY"]["SLIDER_LINK"]["VALUE"]?>?banner_id=<?=$val['ID']?>"><img class="slider__img" src="<?=$val["SMALL_IMG_WEBP_MOBILE"]['WEBP_SRC'] ? $val["SMALL_IMG_WEBP_MOBILE"]['WEBP_SRC'] : $val["SMALL_IMG_MOBILE"]["src"]?>"><img class="slider__img slider__img--mobile" src="<?=$val["SMALL_IMG_WEBP_MOBILE"]['WEBP_SRC'] ? $val["SMALL_IMG_WEBP_MOBILE"]['WEBP_SRC'] : $val["SMALL_IMG_MOBILE"]["src"]?>"></a>
 			<?else:?>
 				<a class="slider__link" href='javascript::void();'>
-					<img class="slider__img" src="<?=$val["SMALL_IMG_WEBP"]['WEBP_SRC'] ? $val["SMALL_IMG_WEBP"]['WEBP_SRC'] : $val["SMALL_IMG"]["src"]?>">
-					<img class="slider__img slider__img--mobile" src="<?=$val["SMALL_IMG_WEBP"]['WEBP_SRC'] ? $val["SMALL_IMG_WEBP"]['WEBP_SRC'] : $val["SMALL_IMG"]["src"]?>">
+					<img class="slider__img" src="<?=$val["SMALL_IMG_WEBP_MOBILE"]['WEBP_SRC'] ? $val["SMALL_IMG_WEBP_MOBILE"]['WEBP_SRC'] : $val["SMALL_IMG_MOBILE"]["src"]?>">
+					<img class="slider__img slider__img--mobile" src="<?=$val["SMALL_IMG_WEBP_MOBILE"]['WEBP_SRC'] ? $val["SMALL_IMG_WEBP_MOBILE"]['WEBP_SRC'] : $val["SMALL_IMG_MOBILE"]["src"]?>">
 				</a>
 			<?endif?> 
-<?}?>			
+			<?}?>			
 			<?endforeach?> 
 			</div>
             <div class="slider__wrapp">

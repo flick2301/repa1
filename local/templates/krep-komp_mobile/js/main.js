@@ -229,6 +229,33 @@ $('.recomend__list').owlCarousel({
     }
   });
 
+// scrollTopBtn
+const btnUp = {
+    el: document.querySelector('.btn-up'),
+    show() {
+        // удалим у кнопки класс btn-up_hide
+        this.el.classList.remove('btn-up--hide');
+    },
+    hide() {
+        // добавим к кнопке класс btn-up_hide
+        this.el.classList.add('btn-up--hide');
+    },
+    addEventListener() {
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY || document.documentElement.scrollTop;
+            scrollY > 200 ? this.show() : this.hide();
+        });
+        document.querySelector('.btn-up').onclick = () => {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+        }
+    }
+}
+
+btnUp.addEventListener();
 
   
 /*

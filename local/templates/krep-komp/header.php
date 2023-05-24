@@ -180,6 +180,8 @@ $APPLICATION->IncludeFile(
 
 
 <body class="basic-layout basic-layout--default" id="basic-layout">
+	<!-- scrollTopBtn -->
+	<button class="btn-up btn-up--hide" type="button" aria-label="Вернуться в начало страницы">Top</button>
 
 <?$APPLICATION->ShowPanel();?>
 

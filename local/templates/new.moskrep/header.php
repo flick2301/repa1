@@ -222,11 +222,13 @@ $APPLICATION->IncludeFile(
            ref.parentNode.insertBefore(apiJs, ref);
        }(document));
     </script>
-
 </head>
 
 
 <body class="basic-layout basic-layout--default" id="basic-layout">
+	<!-- scrollTopBtn -->
+	<button class="btn-up btn-up--hide" type="button" aria-label="Вернуться в начало страницы">Top</button>
+
 <?$APPLICATION->ShowPanel();?>
 
 <?if(!$_COOKIE['use_cookie']):?>
@@ -263,163 +265,84 @@ $APPLICATION->IncludeFile(
 
     <?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/functions.php";?>
 	
-<div id="top_under_menu">
-<div class="basic-layout__section">
-<div>
-
-
-<?if(!strstr($_SERVER['HTTP_HOST'], "dev") || true)
-{?>
-<?if(!$_GET["nogeolocation"] && false):?>
-<?require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>
-<?else:?>
-	<?$APPLICATION->IncludeComponent("d7:geolocation","",Array(
-				"IBLOCK_ID" => "23", 
-				"CACHE_TYPE" => "A", 
-                "CACHE_TIME" => "3600", 
-                "CACHE_FILTER" => "N"
-                    ), false
-    );?>
-<?endif?>	
-	<?}?>
-</div>
-
-<!--contact-widget-->
-<div class="contact-widget">
-	<?$APPLICATION->IncludeComponent("d7:contact_shops","header",Array(
-				"IBLOCK_ID" => "19", 
-				"CACHE_TYPE" => "A", 
-                "CACHE_TIME" => "3600", 
-                "CACHE_FILTER" => "N",
-				"LIMIT" => 1,	
-                    ), false
-    );?>
-</div>
-</div>
-</div>	
-	
-	
-	<header class="basic-layout__header">
-	<?=$safari?>
-	
-	
-	<?if($_SERVER['HTTP_HOST']=="krep-komp.ru"):?>
-	<div class="page-top-banner"> <div id="bannerIsWork" class="banner-textbox page"> <div class='banner-link banner-text'>	<strong style='font-weight: 500; color:#000; font-size:16px;'>В магазине на Каширке доступна доставка день в день. <a href="/addresses/" style="text-decoration: underline; color: #4F36E3;">Подробнее</a><span style='color: #f39101;'></span></strong>  <svg class="icon-svg -cross close-svg" data-selector="page-top-banner-close"> <use xlink:href="#icon-cross"></use> <svg id="icon-cross" viewBox="0 0 32 32"><path d="M19.8,16l11.5,11.4c1.1,1,1.1,2.7,0,3.8c-1,1-2.8,1-3.8,0L16,19.8L4.6,31.1c-1.1,1-2.8,1-3.8,0c-1-1-1-2.7,0-3.8L12.2,16L0.8,4.7c-1-1-1-2.7,0-3.8c1.1-1,2.8-1,3.8,0L16,12.2L27.4,0.8c1-1,2.8-1,3.8,0c1.1,1,1.1,2.7,0,3.8L19.8,16z"></path></svg></svg></div> </div> </div>
-	<?endif?>
-	
-	
-	
-	
-	
-	
-    <div class="basic-layout__section">
-	<!--eshop-panel-->
-        <div class="eshop-panel">
-			<div class="eshop-panel__brand">
-			<!--website-logo-->
-			<div class="website-logo">
-				<?//$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/company_logo.php"), false, []);?>
-				<img class="website-logo__img" alt="Магазин крепежа и метизов «КРЕП-КОМП" title="Магазин крепежа и метизов «КРЕП-КОМП»" src="/local/templates/moskrep/assets/design/website-logo/krep-komp.svg" />
-				<a class="website-logo__link" href="<?=($APPLICATION->GetCurPage() != "/") ? '/' : 'javascript::void();'?>">На главную</a>
-			</div>
-			<!--website-logo-->
-            </div>
-			
-<?if (CSite::InDir('/index.php') || true):?>				
-<?$APPLICATION->IncludeComponent(
-	"bitrix:menu", 
-	"catalog_main", 
-	array(
-		"ROOT_MENU_TYPE" => "left",
-		"MAX_LEVEL" => "3",
-		"CHILD_MENU_TYPE" => "left",
-		"USE_EXT" => "Y",
-		"COMPONENT_TEMPLATE" => "catalog_main",
-		"MENU_CACHE_TYPE" => "N",
-		"MENU_CACHE_TIME" => "3600",
-		"MENU_CACHE_USE_GROUPS" => "N",
-		"MENU_CACHE_GET_VARS" => array(
-		),
-		"DELAY" => "N",
-		"ALLOW_MULTI_SELECT" => "N",
-		"VIBOR_CATALOG_TABLE" => array(
-			0 => "2312",
-			1 => "2838",
-			2 => "2841",
-			3 => "2844",
-			4 => "2411",
-			5 => "2403",
-			6 => "",
-		)
-	),
-	false
-);?>				
-<?endif?>
-			
+		<header class="c-header">
+			<div class="c-header__container basic-layout__section">
+				<div class="c-header__topline">
+					<div class="c-header__group">
+						<div class="c-header__geo">
+							<svg class="c-header__geo-icon" aria-hidden="true" width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M4.5 0C2.01868 0 0 1.86296 0 4.15282C0 5.71664 2.2554 8.64258 4.36604 10.8592L4.5 11L4.63366 10.8588C5.65808 9.7763 9 6.09344 9 4.15268C9.00015 1.86296 6.98131 0 4.5 0ZM4.5 5.83361C3.49403 5.83361 2.67858 5.08098 2.67858 4.15268C2.67858 3.22439 3.49403 2.4719 4.5 2.4719C5.50597 2.4719 6.32142 3.22453 6.32142 4.15282C6.32142 5.08112 5.50597 5.83361 4.5 5.83361Z" fill="currentColor"/>
+							</svg>            
+							<?if(!strstr($_SERVER['HTTP_HOST'], "dev") || true)
+							{?>
+							<?if(!$_GET["nogeolocation"] && false):?>
+							<?require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>
+							<?else:?>
+								<?$APPLICATION->IncludeComponent("d7:geolocation","",Array(
+											"IBLOCK_ID" => "23", 
+											"CACHE_TYPE" => "A", 
+											"CACHE_TIME" => "3600", 
+											"CACHE_FILTER" => "N"
+													), false
+									);?>
+							<?endif?>	
+							<?}?>
+						</div>
+					</div>
+					<div class="c-header__group">
+						
+						<a class="c-header__link accent-color" href="tel:<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/telephone.php"), false);?>">
+							<svg class="c-header__link-icon" aria-hidden="true" width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M2.639 5.06005C3.33895 5.81244 4.10687 6.50109 4.93337 7.11757C5.21907 7.33325 5.51795 7.52088 5.81244 7.73009C5.83117 7.74882 5.85397 7.76318 5.87913 7.77208C5.90429 7.78098 5.93117 7.78421 5.95778 7.78151C5.98438 7.77882 6.01003 7.77028 6.0328 7.75652C6.05558 7.74276 6.07491 7.72414 6.08935 7.70205C6.45636 7.31815 6.83656 6.94719 7.18819 6.55898C7.37656 6.34167 7.63575 6.19503 7.92176 6.14392C8.20777 6.09282 8.503 6.1404 8.75733 6.2786C9.32872 6.59996 9.89352 6.93641 10.4451 7.29227C10.7059 7.47011 10.8909 7.73596 10.9646 8.03909C11.0384 8.34222 10.9959 8.6614 10.8451 8.9357C10.4539 9.76173 9.69134 9.89114 8.91556 9.98172C8.2189 10.0637 7.55959 9.85879 6.93765 9.59135C5.67109 9.02952 4.49941 8.28112 3.46313 7.37207C2.44447 6.55754 1.5452 5.60898 0.790754 4.55321C0.307265 3.84365 -0.088316 3.08447 0.0171724 2.20884C0.102882 1.45829 0.261114 0.720689 0.988545 0.248363C1.25304 0.0567227 1.58192 -0.0289688 1.90845 0.00868308C2.23497 0.0463349 2.53466 0.204509 2.74668 0.451097C3.16424 0.934206 3.56861 1.43026 3.9576 1.9414C4.15088 2.18515 4.24507 2.49063 4.22192 2.79864C4.19878 3.10666 4.05995 3.39527 3.83234 3.60856C3.74193 3.6955 3.65611 3.78692 3.57521 3.88247C3.26973 4.27284 2.96425 4.65889 2.639 5.06005Z" fill="currentColor"/>
+							</svg>              
+							<span><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/telephone.php"), false);?></span>
+						</a>
+						<a class="c-header__link accent-color" href="mailto:<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/email.php"), false);?>">
+							<svg class="c-header__link-icon" aria-hidden="true" width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M2.639 5.06005C3.33895 5.81244 4.10687 6.50109 4.93337 7.11757C5.21907 7.33325 5.51795 7.52088 5.81244 7.73009C5.83117 7.74882 5.85397 7.76318 5.87913 7.77208C5.90429 7.78098 5.93117 7.78421 5.95778 7.78151C5.98438 7.77882 6.01003 7.77028 6.0328 7.75652C6.05558 7.74276 6.07491 7.72414 6.08935 7.70205C6.45636 7.31815 6.83656 6.94719 7.18819 6.55898C7.37656 6.34167 7.63575 6.19503 7.92176 6.14392C8.20777 6.09282 8.503 6.1404 8.75733 6.2786C9.32872 6.59996 9.89352 6.93641 10.4451 7.29227C10.7059 7.47011 10.8909 7.73596 10.9646 8.03909C11.0384 8.34222 10.9959 8.6614 10.8451 8.9357C10.4539 9.76173 9.69134 9.89114 8.91556 9.98172C8.2189 10.0637 7.55959 9.85879 6.93765 9.59135C5.67109 9.02952 4.49941 8.28112 3.46313 7.37207C2.44447 6.55754 1.5452 5.60898 0.790754 4.55321C0.307265 3.84365 -0.088316 3.08447 0.0171724 2.20884C0.102882 1.45829 0.261114 0.720689 0.988545 0.248363C1.25304 0.0567227 1.58192 -0.0289688 1.90845 0.00868308C2.23497 0.0463349 2.53466 0.204509 2.74668 0.451097C3.16424 0.934206 3.56861 1.43026 3.9576 1.9414C4.15088 2.18515 4.24507 2.49063 4.22192 2.79864C4.19878 3.10666 4.05995 3.39527 3.83234 3.60856C3.74193 3.6955 3.65611 3.78692 3.57521 3.88247C3.26973 4.27284 2.96425 4.65889 2.639 5.06005Z" fill="currentColor"/>
+							</svg>              
+							<span><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/email.php"), false);?></span>
+						</a>
+					</div>
+				</div>
+				<div class="c-header__main">
+					<a class="c-header__logo" href="<?=($APPLICATION->GetCurPage() != "/") ? '/' : 'javascript::void();'?>">
+						<img class="c-header__logo-img" src="/local/templates/moskrep/assets/design/website-logo/krep-komp.svg" width="152" height="43" alt="Креп-комп">
+					</a>
+					<div class="c-header__catalog">
+						<?if (CSite::InDir('/index.php') || true):?>				
+							<?$APPLICATION->IncludeComponent(
+								"bitrix:menu", 
+								"catalog_main", 
+								array(
+									"ROOT_MENU_TYPE" => "left",
+									"MAX_LEVEL" => "3",
+									"CHILD_MENU_TYPE" => "left",
+									"USE_EXT" => "Y",
+									"COMPONENT_TEMPLATE" => "catalog_main",
+									"MENU_CACHE_TYPE" => "N",
+									"MENU_CACHE_TIME" => "3600",
+									"MENU_CACHE_USE_GROUPS" => "N",
+									"MENU_CACHE_GET_VARS" => array(
+									),
+									"DELAY" => "N",
+									"ALLOW_MULTI_SELECT" => "N",
+									"VIBOR_CATALOG_TABLE" => array(
+										0 => "2312",
+										1 => "2838",
+										2 => "2841",
+										3 => "2844",
+										4 => "2411",
+										5 => "2403",
+										6 => "",
+									)
+								),
+								false
+							);?>				
+						<?endif?>
+					</div>
 					
-			<div class="eshop-panel__search <?if (CSite::InDir('/index.php') || 1):?>main<?endif?>">
-                <?
-                $request = Application::getInstance()->getContext()->getRequest();
-                $name = $request->getCookieList();               
-                ?>
-				
-                   
-
-		<?/*$APPLICATION->IncludeComponent(
-	"d7:search.title", 
-	"catalog", 
-	array(
-		"CATEGORY_0" => array(
-			0 => "iblock_catalog",
-		),
-		"CATEGORY_0_TITLE" => "",
-		"CATEGORY_0_iblock_catalog" => array(
-			0 => "17",
-		),
-		"CHECK_DATES" => "N",
-		"CONTAINER_ID" => "title-search",
-		"INPUT_ID" => "title-search-input",
-		"NUM_CATEGORIES" => "1",
-		"ORDER" => "rank",
-		"PAGE" => "#SITE_DIR#search/index.php",
-		"SHOW_INPUT" => "Y",
-		"SHOW_OTHERS" => "N",
-		"TOP_COUNT" => "10",
-		"USE_LANGUAGE_GUESS" => "N",
-		"PRICE_CODE" => array(
-			0 => "Распродажа",
-			1 => "К0 (БАЗОВАЯ НАЧАЛЬНАЯ)",
-		),
-		"COMPONENT_TEMPLATE" => "catalog",
-		"PRICE_VAT_INCLUDE" => "Y",
-		"PREVIEW_TRUNCATE_LEN" => "",
-		"SHOW_PREVIEW" => "Y",
-		"PREVIEW_WIDTH" => "75",
-		"PREVIEW_HEIGHT" => "75",
-		"CONVERT_CURRENCY" => "N",
-		"CATEGORY_OTHERS_TITLE" => "",
-		"CATEGORY_1_TITLE" => "",
-		"CATEGORY_1" => "",
-		"CATEGORY_2_TITLE" => "",
-		"CATEGORY_2" => "",
-		"CATEGORY_3_TITLE" => "",
-		"CATEGORY_3" => "",
-		"CATEGORY_4_TITLE" => "",
-		"CATEGORY_4" => ""
-	),
-	false
-);*/?>                          <?//$APPLICATION->AddHeadScript('/local/ajax/ajax_search.js');?>
-
-    
-<!--<div class='header-search__wrap' id='header-search__result'>   
-<form action="/search/index.php">
-    <input id="title-search-input" type="text" name="q" value=""  placeholder="Поиск по каталогу..." class="header-search__input" autocomplete="off">
-                <a href="javascript:void(0);" onclick="BX(&quot;search_submit&quot;).click();" class="header-search__btn"></a>
-    <input style="display:none;" id="search_submit" name="s" type="submit" value="Поиск">
-</form>
-</div>-->
-
-<?
+					<?
 $APPLICATION->IncludeComponent(
 	"webcreature:dsearch.ajax", 
 	"krep-komp_module", 
@@ -440,23 +363,31 @@ $APPLICATION->IncludeComponent(
 	),
 	false
 );?>
-		</div>
-               
-		<div class="eshop-panel__user">
-               <!--client-widget-->
-               <div class="client-widget">
-					<div class="client-widget__user">
-					<?
-					global $USER;
-					if ($USER->IsAuthorized()){ 
-						?><a class="client-widget__link" href="/personal/"><i class="simple-user-icon client-widget__icon"></i>Кабинет</a><?
-					}else{
-						?><a href="/personal/" class="client-widget__link login__btn_new"><i class="simple-user-icon client-widget__icon"></i>Вход</a><?
-					}
-					?>
-					</div>
-					
-					<?
+					<ul class="c-header__navbar navbar">
+						<?
+						global $USER;
+						if ($USER->IsAuthorized()){ 
+						?>
+						<li class="navbar__item">
+							<a class="navbar__link" href="/personal/">
+								<svg class="navbar__icon" aria-hidden="true" width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 20C1 14.9633 5.73846 13.4069 9.43212 13.4069C13.1258 13.4069 18 14.9633 18 20M14.0531 5.53472C14.0531 8.03917 11.9841 10.0694 9.43187 10.0694C6.87964 10.0694 4.81066 8.03917 4.81066 5.53472C4.81066 3.03027 6.87964 1.00001 9.43187 1.00001C11.9841 1.00001 14.0531 3.03027 14.0531 5.53472Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>                
+								<span>Кабинет</span>
+							</a>
+						</li>
+						<?}else{?>
+						<li class="navbar__item">
+							<a class="navbar__link" href="/personal/">
+								<svg class="navbar__icon" aria-hidden="true" width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 20C1 14.9633 5.73846 13.4069 9.43212 13.4069C13.1258 13.4069 18 14.9633 18 20M14.0531 5.53472C14.0531 8.03917 11.9841 10.0694 9.43187 10.0694C6.87964 10.0694 4.81066 8.03917 4.81066 5.53472C4.81066 3.03027 6.87964 1.00001 9.43187 1.00001C11.9841 1.00001 14.0531 3.03027 14.0531 5.53472Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>                
+								<span>Войти</span>
+							</a>
+						</li>
+						<?}?>
+						<li class="navbar__item">
+							<?
 		
 		$APPLICATION->IncludeComponent(
 	"bitrix:sale.basket.basket.line", 
@@ -487,102 +418,72 @@ $APPLICATION->IncludeComponent(
 	),
 	false
 );?>
-			
-				
-			</div>
-		</div>
-		<?/*<div class="eshop-panel__contact">
-               <!--contact-widget-->
-               <div class="contact-widget">
-	<?$APPLICATION->IncludeComponent("d7:contact_shops","header",Array(
-				"IBLOCK_ID" => "19", 
-				"CACHE_TYPE" => "A", 
-                "CACHE_TIME" => "3600", 
-                "CACHE_FILTER" => "N",
-				"LIMIT" => 1,	
-                    ), false
-    );?>	
+						</li>
+						
+					</ul>
 				</div>
-		</div>*/?>
-              
-		
-        
-	</div>
-	<!--eshop-panel-->
-	
-
-<div id="filter__catalog">
-<?$APPLICATION->ShowViewContent('catalogFilter');?>
-</div>
-		
-			
-</div>
-
-
-	<div class="basic-layout__section">
-         <!--website-navbar-->
-         <div class="website-navbar">
-		 
-		 
-<?if (!CSite::InDir('/index.php') && false):?>		 
-           <div class="website-navbar__catalog">
-               <!--catalog-nav-->
-               			
-	<?$APPLICATION->IncludeComponent(
-	"bitrix:menu", 
-	".default", 
-	array(
-		"ROOT_MENU_TYPE" => "left",
-		"MAX_LEVEL" => "3",
-		"CHILD_MENU_TYPE" => "left",
-		"USE_EXT" => "Y",
-		"COMPONENT_TEMPLATE" => ".default",
-		"MENU_CACHE_TYPE" => "N",
-		"MENU_CACHE_TIME" => "3600",
-		"MENU_CACHE_USE_GROUPS" => "Y",
-		"MENU_CACHE_GET_VARS" => array(
-		),
-		"DELAY" => "N",
-		"ALLOW_MULTI_SELECT" => "N",
-		"VIBOR_CATALOG_TABLE" => array(
-			0 => "2312",
-			1 => "2838",
-			2 => "2841",
-			3 => "2844",
-			4 => "2411",
-			5 => "2403",
-			6 => "",
-		)
-	),
-	false
-);?>	
-		</div>
-<?endif?>		
-		
-		<div class="website-navbar__primary">
-               <!--main-nav-->
-               <nav class="main-nav<?if (CSite::InDir('/index.php') && SITE_ID!='s2'):?> full<?endif?>">
-                  <div class="main-nav__title" data-sreader>Навигация</div>
-                  <div class="main-nav__wrap is-disabled" id="main-nav__wrap">
-                     <button class="main-nav__close" id="main-nav__close"><i class="simple-close-icon"></i>Закрыть</button>
-	<?$APPLICATION->IncludeComponent(
-        "bitrix:menu",
-        "top_menu",
-        Array(
-         "ROOT_MENU_TYPE" => "top", 
-         "MAX_LEVEL" => "3", 
-         "CHILD_MENU_TYPE" => "top", 
-         "USE_EXT" => "Y" 
-     )
-		);?>	
-					</div>
-				</nav>
 			</div>
-		
-	</div>
-	</div>
-    </header>
-    
+			<div class="basic-layout__section">
+				<!--website-navbar-->
+				<div class="website-navbar">
+					<?if (!CSite::InDir('/index.php') && false):?>		 
+										<div class="website-navbar__catalog">
+												<!--catalog-nav-->
+															
+						<?$APPLICATION->IncludeComponent(
+						"bitrix:menu", 
+						".default", 
+						array(
+							"ROOT_MENU_TYPE" => "left",
+							"MAX_LEVEL" => "3",
+							"CHILD_MENU_TYPE" => "left",
+							"USE_EXT" => "Y",
+							"COMPONENT_TEMPLATE" => ".default",
+							"MENU_CACHE_TYPE" => "N",
+							"MENU_CACHE_TIME" => "3600",
+							"MENU_CACHE_USE_GROUPS" => "Y",
+							"MENU_CACHE_GET_VARS" => array(
+							),
+							"DELAY" => "N",
+							"ALLOW_MULTI_SELECT" => "N",
+							"VIBOR_CATALOG_TABLE" => array(
+								0 => "2312",
+								1 => "2838",
+								2 => "2841",
+								3 => "2844",
+								4 => "2411",
+								5 => "2403",
+								6 => "",
+							)
+						),
+						false
+					);?>	
+				</div>
+
+					<?endif?>		
+						<div class="website-navbar__primary">
+						<!--main-nav-->
+							<nav class="main-nav<?if (CSite::InDir('/index.php') && SITE_ID!='s2'):?> full<?endif?>">
+								<div class="main-nav__title" data-sreader>Навигация</div>
+								<div class="main-nav__wrap is-disabled" id="main-nav__wrap">
+									<button class="main-nav__close" id="main-nav__close"><i class="simple-close-icon"></i>Закрыть</button>
+									<?$APPLICATION->IncludeComponent(
+												"bitrix:menu",
+												"top_menu",
+												Array(
+												"ROOT_MENU_TYPE" => "top", 
+												"MAX_LEVEL" => "3", 
+												"CHILD_MENU_TYPE" => "top", 
+												"USE_EXT" => "Y" 
+										)
+										);?>	
+								</div>
+							</nav>
+						</div>
+					</div>
+		</header>
+
+
   
     <main class="basic-layout__common <?$APPLICATION->ShowViewContent('catalogFilterClass');?>">
 	<?if($APPLICATION->GetCurPage() !== "/basket/" && $APPLICATION->GetCurPage() !== "/order/" && $APPLICATION->GetCurPage() !== "/import2/" && ($APPLICATION->GetCurPage() !== "/personal/" || $USER->IsAuthorized())):?>  	
