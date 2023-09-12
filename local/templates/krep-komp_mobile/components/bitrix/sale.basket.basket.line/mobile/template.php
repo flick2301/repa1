@@ -10,7 +10,7 @@ $this->setFrameMode( true );
 	var <?=$cartId?> = new BitrixSmallCart;
 </script>
 
-<div class="shelf__basket" id='<?=$cartId?>' onclick='<?if($arResult['NUM_PRODUCTS'] > 0):?>window.location.href="<?= $arParams['PATH_TO_BASKET'] ?>"<?else:?>javascript:void(0);<?endif?>'>
+
 	<?
      /** @var \Bitrix\Main\Page\FrameBuffered $frame */
 	$frame = $this->createFrame($cartId, false)->begin();
@@ -22,7 +22,7 @@ $this->setFrameMode( true );
 	unset($arResult['COMPOSITE_STUB']);
 	$frame->end();
 	?>
-</div>
+
 
 <script>
 	<?=$cartId?>.siteId       = '<?=SITE_ID?>';

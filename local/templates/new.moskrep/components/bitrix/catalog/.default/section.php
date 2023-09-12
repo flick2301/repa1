@@ -137,6 +137,8 @@ if($res=$ar_result->GetNext()){
 			$subsections[] = $res["UF_SUBSECTION_ID"];
 		if($res["UF_OTHER_SECTION"])
 			$subsections[] = $res["UF_OTHER_SECTION"];
+		/*if($res["UF_SECTION_ID"])
+			$arResult["VARIABLES"]["SECTION_ID"] = $res["UF_SECTION_ID"];*/
 		
 //ТАК ЖЕ СМОТРИМ В СЕКЦИИ ДОП. МЕТЫ
 

@@ -50,13 +50,48 @@ if($arParams['FOR_SEO']!='Y'){?>
 
 
 <?if($arResult['DESCRIPTION']):?>
-<!--catalog-desc-->
-            <div class="basic-layout__module catalog-desc">
-               <div class="catalog-desc__cover">
-                  <img class="catalog-desc__image" src="<?=$arResult['PICTURE']['SRC']?>" width="226" height="170" alt="<?=$arResult['NAME']?>">
-               </div>
-               <p class="catalog-desc__about"><?=html_entity_decode($arResult['DESCRIPTION'], ENT_QUOTES, "UTF-8");?></p>
+	<div class="basic-layout__module catalog-desc">
+        <div class="catalog-desc__cover">
+            <img class="catalog-desc__image" src="<?=$arResult['PICTURE']['SRC']?>" width="226" height="170" alt="<?=($arResult['META_TITLE']) ? $arResult['META_TITLE'] :$arResult['NAME'];?>" title="<?=($arResult['META_TITLE']) ? $arResult['META_TITLE'] :$arResult['NAME'];?>" />
+        </div>
+		<p class="catalog-desc__about">
+        <?=strip_tags($arResult['DESCRIPTION']);?>
+		</p>
+	
+    <?if($arResult['GENERAL_PROPERTIES']){?>
+    <!--product-data-->
+        <div class="catalog-desc__data product-data">
+            <ul class="product-data__list">
+            <?foreach($arResult['GENERAL_PROPERTIES'] as $key=>$value){
+            ?>
+				<li class="product-data__item"><p class="product-data__name"><?=$key?></p><p class="product-data__text"><?=$value?></p></li>
+		
+            <?}?>
+			</ul>
+		
+        <?if($arResult['CERT_URL']):?>
+            <div class="product-data__more">
+                <p class="product-data__title">Информация:</p>
+                <ul class="info-nav__items">
+                    <?if($arResult['CERT_URL']):?>
+                        <li>
+							<a class="product-data__link" href="<?=$arResult['CERT_URL'];?>" title='Сертификаты на <?=$arResult['CERT_NAME'];?>'>Сертификаты на <?=$arResult['CERT_NAME'];?></a>
+						</li>
+                    <?endif;?>
+					<?if($arResult["UF_YOUTUBE"]){?>
+						<li>
+							<a class="product-data__link youtube" href="#youtube">Видеообзор</a>
+							
+						</li>
+					<?}?>
+
+                </ul>
             </div>
+        <?endif;?>
+		</div>
+	<!--product-data-->
+    <?}?>
+</div>
 <!--catalog-desc-->
 <?endif;?>
 <?}
@@ -98,7 +133,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
           <option value="<?=$page_element_count?>" <?=($arParams['PAGE_ELEMENT_COUNT'] == $page_element_count) ? 'selected="selected"' : '';?>>Показывать: по <?=$page_element_count?></option>
 	<?}?>
 </select>
-    <?if($arParams["SELECT_PAGE_TEMPLATE"]!="Y"){?>
+    <?if($arParams["SELECT_PAGE_TEMPLATE"]!="N"){?>
         <select name="select_template" id="select_template">
             <option value="horizontal_new">Элементы: Таблицей</option>
             <option value="vertical" selected="selected">Элементы: Блоками</option>
@@ -185,7 +220,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                         </div>
                     <?else:?>
                         <div class="product__availible product__availible--unavailible">
-                            <div class="card_pickup pointer" data-product="<?=$item['ID']?>"><span>Наличие уточнить</span></div>
+                            <div class="unavailable_pickup pointer" data-product="<?=$item['ID']?>"><span>Наличие уточнить</span></div>
                         </div>
                     <?endif;?>
 
@@ -300,7 +335,17 @@ while($arSection = $db_list->GetNext()) {
 	$APPLICATION->IncludeFile(SITE_DIR."/include/".$arResult['UF_INCLUDE_FILE_AFTER_DESC'], array("SHOW_BORDER" => true, "MODE"=>"html"));
 }
 ?>
+<?if($arResult["UF_YOUTUBE"]):?>
+<a name='youtube'></a>
+<div class="blue-block">Видеообзор</div>
 
+<div class="simple-article__content wysiwyg-block">
+<?$arResult['UF_YOUTUBE'] = explode("|", $arResult['UF_YOUTUBE'])?>
+<?foreach($arResult['UF_YOUTUBE'] AS $youtube):?>
+<iframe class="youtube_video" width="100%" height="" src="https://www.youtube.com/embed/<?=$youtube;?>" title="<?=$arResult["NAME"]?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<?endforeach?>
+</div>
+<?endif?>
 <?
 //НУЖНО ВСТАВИТЬ КАЛЬКУЛЯТОР ДЛЯ ХИМ. КАРТРИДЖЕЙ
 if($arResult['ORIGINAL_PARAMETERS']['SECTION_CODE']=='kartridzh')

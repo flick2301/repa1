@@ -20,6 +20,15 @@ BX.ready(function () {
     
     }
 	
+	$('.unavailable_pickup').click(function () {
+        $('#unavailable-window').slideDown(0);
+    });
+	$('.unavailable-win').on('click', function(e){
+		if(e.target.id=='close') {
+			$('#unavailable-window').slideUp(0);
+		}
+	});
+	
 	gtag('event','view_item_list', {
 		'send_to': 'AW-958495754',
 				'items': IDs
@@ -155,7 +164,7 @@ BX.ready(function () {
 	});
 	*/
 
-    $('.pickup-view, .pointer').click(function () {
+    $('.pickup-view').click(function () {
         $('#shops-window').slideDown(0);
         var product_id = $(this).data('product');
         var request = BX.ajax.runComponentAction("d7:contact_shops", "ajaxRequest", {

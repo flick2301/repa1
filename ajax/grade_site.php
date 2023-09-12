@@ -18,6 +18,7 @@ $arEventFields = array(
    "GPHONE" => htmlspecialcharsbx($_POST["GPHONE"]),
    "GNAME" => htmlspecialcharsbx($_POST["GNAME"]),
    "GTEXT" => htmlspecialcharsbx($_POST["GTEXT"]),
+   "GORDERID" =>htmlspecialcharsbx($_POST["GORDERID"]),
    "GREFERER" => htmlspecialcharsbx($referer),
  //'EMAIL_TO' => "kolobets@mail.ru", // email админа в настройках главного модуля
  );

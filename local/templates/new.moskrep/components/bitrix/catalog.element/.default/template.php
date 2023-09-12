@@ -93,10 +93,7 @@ dataLayer.push({
 <?endif;?>
 
 <?globalGetTitle($arResult['NAME'].' '.$arResult['PROPERTIES']['BREND']['VALUE'])?>
-<!--
-arResult
-<?var_dump($arResult);?>
--->
+
 <div id="shops-window"><div class="win"></div></div>
 <div class="card__articul">Артикул: <span class="card__articul-name"><?=$arResult['PROPERTIES']['CML2_ARTICLE']['VALUE']?></span></div>
 
@@ -145,27 +142,27 @@ arResult
                         <div class="product-data__section">
                            <ul class="product-data__list">
                               <li class="product-data__item">
-                                 <p class="product-data__name card_delivery" data-product="<?=$arResult['ID']?>"><i class="simple-car-icon product-data__icon"></i>Доставка</p>
+                                 <p class="product-data__name card_delivery product-data__scroll" data-product="<?=$arResult['ID']?>"><i class="simple-car-icon product-data__icon"></i>Доставка</p>
                                  <p class="product-data__text">от <?=$arResult['PROPERTIES']['PROPERTY_MIN_DELIVERY_VALUE'];?> руб.</p>
                               </li>
                               <li class="product-data__item">
                                  <p class="product-data__name"><i class="simple-available-icon product-data__icon"></i>На складе</p>
-                                 <p class="product-data__text" data-product="<?=$arResult['ID']?>"><?=($arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) ?  $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT'].' уп.' : '<span class="card_pickup" data-product="'.$arResult['ID'].'">Наличие уточнить</span>'?></p>
+                                 <p class="product-data__text" data-product="<?=$arResult['ID']?>"><?=($arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) ?  $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT'].' уп.' : '<span class="unavailable_pickup" data-product="'.$arResult['ID'].'">Наличие уточнить</span>'?></p>
                               </li>
 
                               <li class="product-data__item">
-                                 <p class="product-data__name card_pickup" data-product="<?=$arResult['ID']?>"><i class="simple-home-icon product-data__icon"></i><?echo ($arResult['ONLY_STORE_AMOUNT']) ? 'В магазинах' : 'Самовывоз';?></p>
+                                 <p class="product-data__name card_pickup product-data__scroll" data-product="<?=$arResult['ID']?>"><i class="simple-home-icon product-data__icon"></i><?echo ($arResult['ONLY_STORE_AMOUNT']) ? 'В магазинах' : 'Самовывоз';?></p>
 								 <?if($arResult['ONLY_STORE_AMOUNT'])
 								 {?>
 									<p class="product-data__text"><?=$arResult['ONLY_STORE_COUNT'];?> <?echo ($arResult['ONLY_STORE_COUNT']>1) ? 'магазина' : 'магазин';?></p>
 								 <?}else{?>
-                                 <p class="product-data__text"><?echo ((strstr($_SERVER['HTTP_HOST'], "spb") && $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']-$arResult['STORE'][3]['AMOUNT']) || (($_SERVER['HTTP_HOST'] !== "krep-komp.ru") && $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) || (($_SERVER['HTTP_HOST'] == "krep-komp.ru") && $arResult['STORE'][3]['AMOUNT'])) ? ' сегодня, бесплатно' : 'на заказ';?></p>
+                                 <p class="product-data__text"><?echo ((strstr($_SERVER['HTTP_HOST'], "spb") && $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']-$arResult['STORE'][3]['AMOUNT']) || (strstr($_SERVER['HTTP_HOST'], "novosibirsk") && $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) || (($_SERVER['HTTP_HOST'] == "krep-komp.ru") && $arResult['STORE'][3]['AMOUNT'])) ? ' сегодня, бесплатно' : 'на заказ';?></p>
 								 <?}?>
                               </li>
 
                            </ul>
                            <div class="product-data__info">
-                              <a class="product-data__scroll" href="/addresses/">Адреса магазинов</a>
+                              <a class="" href="/addresses/">Адреса магазинов</a>
                            </div>
                         </div>
                         <div class="product-data__section">
@@ -250,6 +247,35 @@ arResult
                      <!--<p class="product-data__info"><?=$arResult['NAME']?></p>-->
                   </div>
                   <!--product-data-->
+				  
+				  <?
+    //ФИЛЬТРОВЫЕ КНОПКИ ДЛЯ ПОСАДОЧНЫХ СТРАНИЦ
+    if(!empty($arResult['SORT_ITEMS'])){
+        ?>
+
+        <?
+
+        
+                ?>
+                <div class="basic-layout__module category-blocknew">
+                    <div class="div_h3 category-blocknew__title"><span><?=$sortSection["NAME"]?></span></div>
+                    <ul class="category-blocknew__list">
+                       
+                        <?foreach($arResult['SORT_ITEMS'] as $sort_item):?>
+                            
+                            <li class="category-blocknew__item" >
+                                <a href="<?=$sort_item['LINK']?>" class="category-block__link active">
+                                    <?=$sort_item['NAME']?>
+                                </a>
+                            </li>
+                        <?endforeach;?>
+                    </ul>
+                </div>
+                <?
+           
+
+    }
+    ?>
         </div>
 		
 		<div class="product-page__section" id="certify">
@@ -452,9 +478,16 @@ arResult
                      <li class="content-tabs__item">
                         <a class="content-tabs__toggle" href="#packaging" data-tabby-default>Варианты упаковки</a>
                      </li>
+					 <?
+						if(!empty($arResult["RELATED"]))
+						{
+					?>
                      <li class="content-tabs__item">
                         <a class="content-tabs__toggle" href="#other">Сопутствующие товары</a>
                      </li>
+					 <?
+						}
+						?>
                   </ul>
                </div>
                <!--content-tabs-->
@@ -609,7 +642,7 @@ arResult
 			if(empty($baFilter))
 				$baFilter = Array("ID" => $arResult['ELEMENT_NEXT']);
 		global $arFilter_soput;
-		$arFilter_soput = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "SECTION_ID"=>$arResult["RELATED"]);
+		$arFilter_soput = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "SECTION_ID"=>$arResult["RELATED"], 'ACTIVE'=>'Y');
 		foreach($arResult['SOPUT_PROPERTY'] as $soput_property)
 		{	
 			$arProp = explode('=>', $soput_property);
@@ -621,9 +654,12 @@ arResult
             
             
 ?>
+
 <div class="catalog-feed__other">
 <?
-$arFilter = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "ID"=>$arResult["RELATED"], false, array("*"));
+if(!empty($arResult["RELATED"]))
+{
+$arFilter = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], "ID"=>$arResult["RELATED"], 'ACTIVE'=>'Y', false, array("*"));
 $db_list = CIBlockSection::GetList(Array("SORT"=>"ASC"), $arFilter, true);
 while($arSection = $db_list->GetNext()) {
     $renderImage = CFile::ResizeImageGet($arSection["PICTURE"], Array("width" => 72, "height" => 72), BX_RESIZE_IMAGE_EXACT, false); 
@@ -639,6 +675,7 @@ while($arSection = $db_list->GetNext()) {
                      <!--category-card-->
 		</div>
 	<?
+}
 }
 ?>
 </div>
@@ -678,3 +715,8 @@ while($arSection = $db_list->GetNext()) {
 		try{ rrApi.groupView([<? echo $arResult['ID']; ?>]); } catch(e) {}
 	})
 </script>
+<style>
+.basic-layout__content{
+	width:100% !important;
+}
+</style>

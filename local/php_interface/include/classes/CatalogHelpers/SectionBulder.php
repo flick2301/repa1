@@ -27,9 +27,11 @@ class SectionBulder
     }
 
 
-    public function getCurSorting()
+    public function getCurSorting($section_id=0)
     {
-        $req = \CIBlockSection::GetList(array(), ["IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'UF_DIRECTORY'=>$this->curSection['ID']], false, array("ID", "UF_*"));
+		if(!$section_id)
+			$section_id=$this->curSection['ID'];
+        $req = \CIBlockSection::GetList(array(), ["IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'UF_DIRECTORY'=>$section_id], false, array("ID", "UF_*"));
         while($section = $req->GetNext())
         {
             $arSections[]=$section['ID'];
@@ -74,6 +76,29 @@ class SectionBulder
 		
         return $this->curSorting;
     }
+	
+	public function setCurSorting($sort_id)
+	{
+		$arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'ID'=>$sort_id);
+		$res = \CIBlockElement::GetList(array("SORT" => "ASC"), $arFilter, false, false, array('*'));
+		while ($ob = $res->GetNextElement()) {
+			
+			$arFields = $ob->GetFields();
+			
+			$arProps = $ob->GetProperties();
+			$this->curSorting = array_merge($arFields, $arProps);
+		}
+	}
+	
+	public function setCurSection($section_id)
+	{
+		$arFilter = array("IBLOCK_ID" => CATALOG_IBLOCK_ID, "ID" => $section_id, "ACTIVE" => "Y");
+		$req = \CIBlockSection::GetList(array(), $arFilter, false, array("ID", "CODE", "SECTION_PAGE_URL"));
+		if ($arCurSection = $req->GetNext()) {
+			$this->curSection = $arCurSection;
+	
+		}
+	}
 
 
     public function getCurSection()
@@ -206,14 +231,15 @@ class SectionBulder
 
         if($sort_item['IS_ACTIVE'] && $sortSection['ACTIVES']==1) {
            if(!empty($this->curSorting[1]) && array_slice($this->arPagesCode, -2)[0] == $this->curSorting[0]['CODE'])
-               $link = $this->curSection['SECTION_PAGE_URL']. $this->curSorting[0]['CODE'];
+               $link = $this->curSection['SECTION_PAGE_URL']. $this->curSorting[0]['CODE'].'/';
            elseif(array_slice($this->arPagesCode, -1)[0] == $this->curSorting[0]['CODE'])
-               $link = $this->curSection['SECTION_PAGE_URL']. $this->curSorting[0]['CODE'];
+               $link = $this->curSection['SECTION_PAGE_URL']. $this->curSorting[0]['CODE'].'/';
            else
                 $link = $this->curSection['SECTION_PAGE_URL'];
         }
         elseif($sort_item['IS_ACTIVE'] && $sortSection['ACTIVES']>1)
         {
+			
             $link = str_replace($values, '', $this->requestUri);
             $link = str_ireplace('set_filter=%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C', '', $link);
             $link = str_replace(['?&&', '?&&&', '?&', '?&&&&', '?&&&&&'], '?', $link) . '&set_filter=Показать';
@@ -223,7 +249,7 @@ class SectionBulder
         }elseif(!$sort_item['IS_ACTIVE'] && $sortSection['ACTIVES']>1)
         {
             $link = str_ireplace('set_filter=%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C', '',$this->requestUri);
-
+			
             if(stripos($this->requestUri, '?'))
                 $delimiter = $this->requestUri.'&';
             else
@@ -231,7 +257,8 @@ class SectionBulder
 
             if(!empty($sort_item['arFilters']['VALUE'])  && $sort_item['sef_filter']['VALUE']=='')
             {
-                $link = $delimiter . implode('&', $values).'&set_filter=Показать';
+                $link = $this->curSection['SECTION_PAGE_URL'].$delimiter . implode('&', $values).'&set_filter=Показать';
+				
             }elseif($sort_item['LINK_TARGET']['VALUE'])
             {
                 $link = $sort_item['LINK_TARGET']['VALUE'];
@@ -240,8 +267,9 @@ class SectionBulder
                 if($_GET['set_filter'] == 'Показать' && !stripos($this->requestUri, '?')) {
                     $link = $this->requestUri;
                     $link = rtrim($link, "/");
-
-                    $link =  $link . '--' . $sort_item['sef_filter']['VALUE'];
+					//Сейчас ссылки на фильтры состоят из нескольких параметров (длинны и диаментра например) одновременное нажатие невозможно,
+					//либо приводит к пустой странице либо к 404 поэтому $link =  $link . '--' . $sort_item['sef_filter']['VALUE']; убираем, оставляем:
+                    $link =   $this->curSection['SECTION_PAGE_URL'].$sort_item['sef_filter']['VALUE'].'/';
 
                 }else{
                     if(!empty($this->curSorting[0]['CODE']))
@@ -278,7 +306,9 @@ class SectionBulder
             }elseif(!empty($sort_item['arFilters']['VALUE']) && $sort_item['sef_filter']['VALUE'])
             {
                 if($_GET['set_filter'] == 'Показать') {
-                    $link = $this->requestUri.'&' . implode('&', $values) . '&set_filter=Показать';
+                    //Раньше было возможность выставить два быстрых фильтра, но часто при выборке это пустая страница с товарами, оставляем только один
+					//$link = $this->requestUri.'&' . implode('&', $values) . '&set_filter=Показать';
+					$link = $this->curSection['SECTION_PAGE_URL'].'?' . implode('&', $values) . '&set_filter=Показать';
 
                 }else{
                     if(!empty($this->curSorting[0]['CODE']))

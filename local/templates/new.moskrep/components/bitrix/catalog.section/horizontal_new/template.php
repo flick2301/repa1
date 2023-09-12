@@ -53,8 +53,15 @@ if($arParams['FOR_SEO']!='Y'){
                 <p class="product-data__title">Информация:</p>
                 <ul class="info-nav__items">
                     <?if($arResult['CERT_URL']):?>
-                        <a class="product-data__link" href="<?=$arResult['CERT_URL'];?>" title='Сертификаты на <?=$arResult['CERT_NAME'];?>'>Сертификаты на <?=$arResult['CERT_NAME'];?></a>
+						<li>
+							<a class="product-data__link" href="<?=$arResult['CERT_URL'];?>" title='Сертификаты на <?=$arResult['CERT_NAME'];?>'>Сертификаты на <?=$arResult['CERT_NAME'];?></a>
+						</li>
                     <?endif;?>
+					<?if($arResult["UF_YOUTUBE"]){?>
+						<li>
+							<a class="product-data__link youtube" href="#youtube">Видеообзор</a>
+						</li>
+					<?}?>
 
                 </ul>
             </div>
@@ -141,7 +148,7 @@ if($arResult['SORTING']['SECTION_ID'] && $arParams['DISPLAY_FILTER_BUTTONS']=='Y
           <option value="<?=$page_element_count?>" <?=($arParams['PAGE_ELEMENT_COUNT'] == $page_element_count) ? 'selected="selected"' : '';?>>Показывать: по <?=$page_element_count?></option>
 	<?}?>
 </select>
-    <?if($arParams["SELECT_PAGE_TEMPLATE"]!="Y"){?>
+    <?if($arParams["SELECT_PAGE_TEMPLATE"]!="N"){?>
         <select name="select_template" id="select_template">
             <option value="horizontal_new" selected="selected">Элементы: Таблицей</option>
             <option value="vertical" >Элементы: Блоками</option>
@@ -316,7 +323,7 @@ if($arResult['SORTING']['SECTION_ID'] && $arParams['DISPLAY_FILTER_BUTTONS']=='Y
 								<p class="catalog-table__state"><i class="simple-state-yes-icon catalog-table__available"></i><?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?> уп.</p>
 							<?}else{?>
 							<div class="pointer" data-product="<?=$item['ID']?>">
-									<p class="catalog-table__state catalog-table__state--notafs"><span class='pointer'>Наличие уточнить</span></p>
+									<p class="catalog-table__state catalog-table__state--notafs"><span class='unavailable_pickup pointer'>Наличие уточнить</span></p>
 							</div>
 								
 							<?}?>
@@ -458,6 +465,17 @@ while($arSection = $db_list->GetNext()) {
             <!--simple-article-->
 <?endif;?>
 <?}?>
+<?if($arResult["UF_YOUTUBE"]):?>
+<a name='youtube'></a>
+<div class="blue-block">Видеообзор</div>
+
+<div class="simple-article__content wysiwyg-block">
+<?$arResult['UF_YOUTUBE'] = explode("|", $arResult['UF_YOUTUBE'])?>
+<?foreach($arResult['UF_YOUTUBE'] AS $youtube):?>
+<iframe class="youtube_video" width="100%" height="" src="https://www.youtube.com/embed/<?=$youtube;?>" title="<?=$arResult["NAME"]?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<?endforeach?>
+</div>
+<?endif?>
 <script>
 BX.ready(function () {
     var buyBtnDetail = document.body.querySelectorAll('.basket-btn');

@@ -3,6 +3,47 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 require_once($_SERVER["DOCUMENT_ROOT"]."/local/modules/relink.table/lib/table.php");
 $module_id = 'relink.table';
 
+global $sec_builder;
+global $filterObj;
+
+\Bitrix\Main\Loader::includeModule("highloadblock");
+
+use \Bitrix\Highloadblock as HL; 
+use \Bitrix\Main\Entity;
+
+$hlbl = 11; // Указываем ID нашего highloadblock блока к которому будет делать запросы.
+$hlblock = HL\HighloadBlockTable::getById($hlbl)->fetch(); 
+
+$entity = HL\HighloadBlockTable::compileEntity($hlblock); 
+$entity_data_class = $entity->getDataClass(); 
+$rsData = $entity_data_class::getList(array(
+			"select" => array("*"),
+			"order" => array("ID" => "ASC"),
+			"filter" => array("UF_CATALOG_ELEMENTS"=>$arResult['ID'])  // Задаем параметры фильтра выборки
+));
+while($arData = $rsData->Fetch()){
+		$arSorts[] = $arData;
+}
+
+$sortSection['ACTIVES']=0;
+
+if(!empty($arSorts))
+{
+	foreach($arSorts as $sort)
+	{
+		$sec_builder->setCurSorting($sort['UF_SORT_ID']);
+		$sec_builder->setCurSection($sort['UF_CATALOG_SECTION_ID']);
+
+		$link = $sec_builder->linkBuilder($sec_builder->curSorting, $sortSection);
+		$add = $sec_builder->getArrAddress();
+		$name =$sec_builder->curSorting['H1']['VALUE'] ?? $sec_builder->curSorting['NAME'];
+		$arResult['SORT_ITEMS'][] = ['NAME'=>$name, 'LINK'=>$link];
+		//var_dump($sec_builder->curSorting['NAME']);
+		//var_dump($link);
+		//var_dump($add);
+	}
+}
+
 /*$cp = $this->__component; // объект компонента
 if (is_object($cp))
    $cp->SetResultCacheKeys(array('TIMESTAMP_X'));*/
@@ -276,9 +317,7 @@ if ($arSection = $rsSect->GetNext()) {
 			   
                $fields = $ob->GetFields();
                $props = $ob->GetProperties();
-			   echo '<!--12379';
-			   var_dump($props);
-			   echo '-->';
+			   
                $amount = \Bitrix\Catalog\StoreProductTable::getList([
                    'filter' => [
                        'PRODUCT_ID' => $arResult["ID"],

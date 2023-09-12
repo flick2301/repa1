@@ -56,4 +56,104 @@ function globalGetTitle($title = "", $template="new.moskrep") {
 		echo "</div>";
 	}
 }
+
+function getSalesFromPrice($price, $currency)
+{
+	$sale = 0;
+	if($price > 5000 && $price < 10000)
+		$sale = $price * 0.05;
+	if($price > 10000 && $price < 15000)
+		$sale = $price * 0.1;
+	if($price > 15000 && $price < 20000)
+		$sale = $price * 0.15;
+	if($price > 20000 && $price < 25000)
+		$sale = $price * 0.2;
+	if($price > 25000 && $price < 100000)
+		$sale = $price * 0.25;
+	if($price > 100000 && $price < 500000)
+		$sale = $price * 0.3;
+	if($price > 500000)
+		$sale = $price * 0.35;
+	$price_new = CurrencyFormat($price-$sale, $currency);
+	$sale = CurrencyFormat($sale, $currency);
+	return $price_new;
+}
+
+function getSalesPersent($price)
+{
+	$percent = 0;
+	global $USER;
+	if(!$USER->IsAuthorized()){
+		if($price > 5000 && $price < 10000)
+			$percent = 5;
+		if($price > 10000 && $price < 15000)
+			$percent = 10;
+		if($price > 15000 && $price < 20000)
+			$percent = 15;
+		if($price > 20000 && $price < 25000)
+			$percent = 20;
+		if($price > 25000 && $price < 100000)
+			$percent = 25;
+		if($price > 100000 && $price < 500000)
+			$percent = 30;
+		if($price > 500000)
+			$percent = 35;
+	}
+	
+	return $percent;
+}
+
+
+function sitemap_gen(){
+	$sitemap_path = 'sitemap-iblock-17.xml';
+	$site_url = 'krep-komp.ru';
+	$new_path = 'sitemap_dyn.php';
+	
+	if (substr($sitemap_path, 0, 1) != '/'){
+		$sitemap_path = '/'.$sitemap_path;
+	}
+	$sitemap_path = $_SERVER["DOCUMENT_ROOT"].$sitemap_path;
+	if (substr($new_path, 0, 1) != '/'){
+		$new_path = '/'.$new_path;
+	}
+	$new_path = $_SERVER["DOCUMENT_ROOT"].$new_path;
+
+	$dyn_sitemap = '<?'.PHP_EOL.'$host = preg_replace("/\:\d+/is", "", $_SERVER["HTTP_HOST"]);'.PHP_EOL.
+		'if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on"){'.PHP_EOL.
+		'	$http = "https";'.PHP_EOL.
+		'}'.PHP_EOL.
+		'else{'.PHP_EOL.
+		'	$http = "http";'.PHP_EOL.
+		'}'.PHP_EOL.
+		'header("Content-Type: text/xml");'.PHP_EOL;
+
+	$sitemap = file_get_contents($sitemap_path);
+	if (!$sitemap){
+		return false;
+	}
+
+	// замены
+	$search = Array(
+		$site_url,
+		'http:',
+		'https:',
+	);
+	$replace = Array(
+		'<?=$host?>',
+		'<?=$http?>:',
+		'<?=$http?>:'
+	);
+
+	$sitemap = str_replace($search, $replace, $sitemap);
+
+	$sitemap = preg_replace('/(\<\?xml[^\>]+\>)/i', "echo '$1';?>".PHP_EOL, $sitemap);
+
+	$dyn_sitemap .= $sitemap;
+
+	if (!file_put_contents($new_path, $dyn_sitemap)){
+		return false;
+	}
+	return true;
+}
+
 ?>

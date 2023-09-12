@@ -1032,3 +1032,23 @@ div.geo li.master {
     background-color: #512da8; /* цвет заднего фона при наведении */
   }
 }
+
+@media (max-width:768px) {
+  .slider {
+    margin: 16px 0 0;
+    position: relative;
+  }
+
+  .slider__dots {
+    position: absolute;
+    margin: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 12px;
+    z-index: 1;
+  }
+
+  .slider__link {
+    border-radius: 12px;
+  }
+}

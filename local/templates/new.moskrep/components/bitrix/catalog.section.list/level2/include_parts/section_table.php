@@ -53,6 +53,11 @@ elseif(count($arResult['REFERENCE']['ITEM']['SECTIONS_TOP']['VALUE'])>1) {
 	$filter_section_id = $arResult['SECTION']['UF_SECTION_ID'];
 	
 	$filter = array_merge($GLOBALS['Filter_seo'], array('IBLOCK_ID' => CATALOG_IBLOCK_ID, 'SECTION_ID'=> $filter_section_id, 'INCLUDE_SUBSECTIONS'=>'Y'));	
+	if($arResult['SECTION']['UF_SUBSECTION_ID'])
+	{
+		
+		$arrFilter2 = array('IBLOCK_ID' => CATALOG_IBLOCK_ID, 'SECTION_ID'=> $arResult['SECTION']['UF_SUBSECTION_ID']);
+	}
 	$dbItems = CIBlockElement::getList(array('SORT' => 'ASC', 'ID' => 'DESC'),	$filter, false, false, array('ID', 'PROPERTY_GOLOVKA'));
 	while ($row = $dbItems->getNext()) 
 	{
@@ -310,6 +315,7 @@ $intSectionID = $APPLICATION->IncludeComponent(
 						'SET_SORT_MAIN'=> $arResult['SECTION']['UF_SET_SORT_MAIN'] ?? '0',
 						'REFERENCE'=>$arResult['REFERENCE']['ITEM'],
 						'HIDE_NOT_AVAILABLE'=>$request['available'],
+						'SELECT_PAGE_TEMPLATE'=>'N',
 
 
 		

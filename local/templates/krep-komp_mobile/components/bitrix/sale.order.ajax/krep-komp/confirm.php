@@ -213,7 +213,15 @@ window.dataLayer = window.dataLayer || [];
 	</table>
 
 <? endif ?>
-
+<?
+$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+			"AREA_FILE_SHOW" => "file",
+			"PATH" => "/include/grade_site_confirm.php",
+			"AREA_FILE_SUFFIX" => "grade_site",
+			"EDIT_TEMPLATE" => ""
+			)
+		);
+		?>  
 
 </div>
 

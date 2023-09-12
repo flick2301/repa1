@@ -96,7 +96,7 @@ $rsSections = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, false, 
 while($arSection = $rsSections->GetNext())
 {
     
-    $arResult['CERT_URL'] = $arSection['LIST_PAGE_URL'].$arSection['SECTION_PAGE_URL'];
+    $arResult['CERT_URL'] = $arSection['SECTION_PAGE_URL'];
     $arResult['CERT_NAME'] = strtolower($arSection['NAME']);
     
 
@@ -226,8 +226,7 @@ while($arSection = $rsSections->GetNext())
 //if ($_SERVER['REQUEST_URI']=="/krepezh/samorezy/samorezy_po_derevu/ostrye_pd/") file_put_contents($_SERVER["DOCUMENT_ROOT"].'/service/text.txt', print_r($arResult['ITEMS'], true));
 foreach($arResult['ITEMS'] as $key=>$arItem){
 	$arResult['arITEMS_ID'][]=$arItem['ID'];
-	if($arResult["ID"]==2992)
-		\Bitrix\Main\Diag\Debug::dumpToFile($arItem['PROPERTIES']['DIAMETR_VNUTRENNIY_INTEGER']["VALUE"], "", '/upload/15.txt');
+	
     if(isset($arItem['PREVIEW_PICTURE']['ID'])){
       $file = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE']['ID'], array('width'=>150, 'height'=>150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
     }else{

@@ -20,12 +20,14 @@ use Bitrix\Main\Localization\Loc;
                      <p class="in-cart-total__name">Стоимость</p>
                      <p class="in-cart-total__text" data-entity="basket-total-price">{{{PRICE_FORMATED}}}</p>
                   </li>
-				  <?if($arResult["DISCOUNT_PRICE_ALL"]):?>
+				  {{#DISCOUNT_OF_PRICE_PERCENT}}
 				  <li class="in-cart-total__item">
-                     <p class="in-cart-total__name">Учет скидки</p>
-                     <p class="in-cart-total__text" data-entity="basket-total-price"><?=$arResult["DISCOUNT_PRICE_ALL_FORMATED"]?></p>
+                     <p class="in-cart-total__name">Со скидкой {{{DISCOUNT_OF_PRICE_PERCENT}}}%</p>
+					 
+						<p class="in-cart-total__text" data-entity="basket-total-sale">{{{DISCOUNT_OF_PRICE_FORMATED}}}</p>
+					
                   </li>
-				  <?endif;?>
+				  {{/DISCOUNT_OF_PRICE_PERCENT}}
                </ul>
                <div class="in-cart-total__footer">
                   <a onclick="dataLayerToOrder('{{{PRICE_FORMATED}}}')" class="main-button main-button--plus in-cart-total__submit" data-entity="basket-checkout-button" href="javascript:void(0);">Оформить заказ</a>

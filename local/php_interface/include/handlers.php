@@ -475,6 +475,16 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
        $phone = htmlspecialchars($arProps["VALUE"]);
 	   
     }
+	if ($arProps["CODE"] == "NDS_YF")
+    {
+       $nds = $arProps["VALUE"];
+	   
+    }
+	if ($arProps["CODE"] == "NDS_YF_IP")
+    {
+       $nds = $arProps["VALUE"];
+	   
+    }
     if ($arProps["CODE"] == "LOCATION")
     {
         $arLocs = CSaleLocation::GetByID($arProps["VALUE"]);
@@ -511,6 +521,10 @@ function bxModifySaleMails($orderID, &$eventName, &$arFields)
     }	
 
     if ($arProps["CODE"] == "PREQ")
+    {
+      $preq = $arProps["VALUE"];
+    }
+	if ($arProps["CODE"] == "PREQ")
     {
       $preq = $arProps["VALUE"];
     }	
@@ -617,6 +631,8 @@ if ($deliveryInfo = $resultDelivery->fetch()) $deliveryGroupID = $deliveryInfo["
    
    //-- добавляем новые поля в массив результатов
   $arFields["ORDER_DESCRIPTION"] = $arOrder['USER_DESCRIPTION'];
+  if(!empty($nds))
+	  $arFields["NDS"]=($nds=='Y') ? 'Да' : 'Нет';
   $arFields["PPHONE"] =  $phone;
   $arFields["DELIVERY"] =  $delivery_name;
   $arFields["PAY_SYSTEM_NAME"] =  $pay_system_name;
@@ -1043,8 +1059,8 @@ class SaleOrderEvents
 
         $propertyCollection = $order->getPropertyCollection();
 
-
-
+		
+		
         foreach ($propertyCollection as $property)
         {
 
@@ -1053,9 +1069,55 @@ class SaleOrderEvents
                 continue;
 
             $arProperty = $property->getProperty();
-
+			
+			$avail_cur_city = $arUserResult["ORDER_PROP"][$arProperty['ID']]==CURRENT_CITY_CODE || $arUserResult["ORDER_PROP"][$arProperty['ID']]==CURRENT_CITY_CODE_PODOLSK;
+			//несовсем понятно зачем строка кода выше где сравнивается соответствие только коду москвы или подольска, при переключении пользователя это мешает
+			$avail_cur_city = true;
             if ($arProperty['TYPE'] === 'LOCATION' && array_key_exists($arProperty['ID'],$arUserResult["ORDER_PROP"]) && !$request->getPost("ORDER_PROP_".$arProperty['ID']) && (!is_array($arOrder=$request->getPost("order")) || !$arOrder["ORDER_PROP_".$arProperty['ID']])) {
-                if (strstr($_SERVER['HTTP_HOST'], "spb") && $arUserResult["ORDER_PROP"][$arProperty['ID']]==CURRENT_CITY_CODE) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_SPB;
+                if (strstr($_SERVER['HTTP_HOST'], "spb") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_SPB;
+				if (strstr($_SERVER['HTTP_HOST'], "yoshkar-ola") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_YOSHKAR_OLA;
+				if (strstr($_SERVER['HTTP_HOST'], "arhangelsk") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_ARHANGELSK;
+				if (strstr($_SERVER['HTTP_HOST'], "astrahan") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_ASTRAHAN;
+				if (strstr($_SERVER['HTTP_HOST'], "belgorod") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_BELGOROD;
+				if (strstr($_SERVER['HTTP_HOST'], "bryansk") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_BRYANSK;
+				if (strstr($_SERVER['HTTP_HOST'], "vladimir") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_VLADIMIR;
+				if (strstr($_SERVER['HTTP_HOST'], "volgograd") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_VOLGOGRAD;
+				if (strstr($_SERVER['HTTP_HOST'], "vologda") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_VOLOGDA;
+				if (strstr($_SERVER['HTTP_HOST'], "voronezh") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_VORONEZH;
+				if (strstr($_SERVER['HTTP_HOST'], "ekaterinburg") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_EKATERINBURG;
+				if (strstr($_SERVER['HTTP_HOST'], "izhevsk") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_IZHEVSK;
+				if (strstr($_SERVER['HTTP_HOST'], "kazan") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_KAZAN;
+				if (strstr($_SERVER['HTTP_HOST'], "kaliningrad") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_ARHANGELSK;
+				if (strstr($_SERVER['HTTP_HOST'], "kaluga") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_KALUGA;
+				if (strstr($_SERVER['HTTP_HOST'], "krasnodar") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_KRASNODAR;
+				if (strstr($_SERVER['HTTP_HOST'], "kurgan") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_KURGAN;
+				if (strstr($_SERVER['HTTP_HOST'], "kursk") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_KURSK;
+				if (strstr($_SERVER['HTTP_HOST'], "lipetsk") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_LIPETSK;
+				if (strstr($_SERVER['HTTP_HOST'], "magnitogorsk") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_MAGNITOGORSK;
+				if (strstr($_SERVER['HTTP_HOST'], "naberezhnie-chelny") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_NABEREZHNIE_CHELNY;
+				if (strstr($_SERVER['HTTP_HOST'], "nizhniy-novgorod") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_NIZHNIY_NOVGOROD;
+				if (strstr($_SERVER['HTTP_HOST'], "novosibirsk") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_NOVOSIBIRSK;
+				if (strstr($_SERVER['HTTP_HOST'], "orel") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_OREL;
+				if (strstr($_SERVER['HTTP_HOST'], "orenburg") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_ORENBURG;
+				if (strstr($_SERVER['HTTP_HOST'], "penza") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_PENZA;
+				if (strstr($_SERVER['HTTP_HOST'], "perm") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_PERM;
+				if (strstr($_SERVER['HTTP_HOST'], "pskov") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_PSKOV;
+				if (strstr($_SERVER['HTTP_HOST'], "rostov-na-donu") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_ROSTOV_NA_DONU;
+				if (strstr($_SERVER['HTTP_HOST'], "ryazan") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_RYAZAN;
+				if (strstr($_SERVER['HTTP_HOST'], "samara") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_SAMARA;
+				if (strstr($_SERVER['HTTP_HOST'], "saransk") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_SARANSK;
+				if (strstr($_SERVER['HTTP_HOST'], "saratov") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_SARATOV;
+				if (strstr($_SERVER['HTTP_HOST'], "smolensk") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_SMOLENSK;
+				if (strstr($_SERVER['HTTP_HOST'], "stavropol") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_STAVROPOL;
+				if (strstr($_SERVER['HTTP_HOST'], "tambov") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_TAMBOV;
+				if (strstr($_SERVER['HTTP_HOST'], "tver") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_TVER;
+				if (strstr($_SERVER['HTTP_HOST'], "tula") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_TULA;
+				if (strstr($_SERVER['HTTP_HOST'], "tyumen") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_TYUMEN;
+				if (strstr($_SERVER['HTTP_HOST'], "ufa") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_UFA;
+				if (strstr($_SERVER['HTTP_HOST'], "cheboksary") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_CHEBOKSARY;
+				if (strstr($_SERVER['HTTP_HOST'], "chelyabinsk") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_CHELYABINSK;
+				if (strstr($_SERVER['HTTP_HOST'], "cherepovec") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_CHEREPOVEC;
+				if (strstr($_SERVER['HTTP_HOST'], "yaroslavl") && $avail_cur_city) $arUserResult["ORDER_PROP"][$arProperty['ID']] = CURRENT_CITY_CODE_YAROSLAVL;
             }
         }
     }
@@ -1266,3 +1328,4 @@ function onBeforePriceAdd($event){
    return $result;
    
 }
+

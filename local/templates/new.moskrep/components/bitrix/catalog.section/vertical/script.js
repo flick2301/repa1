@@ -19,6 +19,15 @@ BX.ready(function () {
     
     }
 
+	$('.unavailable_pickup').click(function () {
+        $('#unavailable-window').slideDown(0);
+    });
+	$('.unavailable-win').on('click', function(e){
+		if(e.target.id=='close') {
+			$('#unavailable-window').slideUp(0);
+		}
+	});
+	
 	gtag('event','view_item_list', {
 		'send_to': 'AW-958495754',
 				'items': IDs

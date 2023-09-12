@@ -166,7 +166,36 @@ foreach($arResult['ITEMS'] as $key=>$arItem){
 	else:
 		$arResult['ITEMS'][$key]['UNIT'] = ' шт.';
 	endif;
+	
+	foreach($arItem['PROPERTIES'] as $prop){
+        if(!in_array($prop['CODE'], ['SOPUTSTVUYUSHCHIE_TOVARY', 'PO_PRIMENENIYU', 'DIAMETR', 'DLINA', 'VYSOTA', 'SHIRINA', 'RAZMER_POD_KLYUCH_MM', 'SHAG_REZBY_MM'])){
+            if($arProp[$prop['NAME']]=='' || $arProp[$prop['NAME']]==$prop['VALUE'])
+                $arProp[$prop['NAME']]=$prop['VALUE'];
+            else
+                $arProp[$prop['NAME']]='false';
+        }
+    }
+	
+	if($arItem['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"] > 1){
+		$price = $arItem['PRICES'][ID_SALE_PRICE]['VALUE'] ? $arItem['PRICES'][ID_SALE_PRICE]['VALUE'] : $arItem['PRICES'][ID_BASE_PRICE]['VALUE'];
+		$arResult['ITEMS'][$key]["PRICE_FOR_ONE"] = number_format($price/$arItem['PROPERTIES']["KOLICHESTVO_V_UPAKOVKE"]["VALUE"], 2, '.', ' ');
+	}
 
 }
 
-
+$arProp = array_diff($arProp, array(''));
+$arProp = array_diff($arProp, array('false'));
+unset($arProp['Ставки налогов']);
+unset($arProp['Базовая единица']);
+if(count($arResult['UF_CHARS'])>1)
+{
+	foreach($arResult['UF_CHARS'] as $char){
+		$arVal = explode(';', trim($char,';'));
+		$arResult['GENERAL_PROPERTIES'][$arVal[0]]=$arVal[1];
+	}
+}elseif($arResult['UF_CHARS'][0]=='-')
+{
+	$arResult['GENERAL_PROPERTIES']=[];
+}else{
+	$arResult['GENERAL_PROPERTIES']=$arProp;
+}

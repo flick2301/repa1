@@ -16,7 +16,7 @@
 			);
 			?>
 		
-<?if (!in_array($APPLICATION->GetCurPage(), $page_footer_menu) && strpos($APPLICATION->GetCurPage(), "/articles/")===false):?>
+<?if (!in_array($APPLICATION->GetCurPage(), $page_footer_menu) && strpos($APPLICATION->GetCurPage(), "/articles/")===false && $is_cart==false):?>
 		<aside class="basic-layout__sidebar">
             <!--table-of-contents-->
 

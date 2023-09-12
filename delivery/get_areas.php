@@ -64,6 +64,7 @@ function getTypes(int $delivery_id): array { //Зоны
 function getAreas($type): array { //Координаты
 	$sql = mysqli_query($this->link, "SELECT * FROM `areas` WHERE `type`='{$type}' ORDER BY `id`");
 	$i = 0;
+	$arr=array();
 	while($res = mysqli_fetch_assoc($sql)) {
 		$i++;
 		if ($i==1) $start_coords = $res;

@@ -35,7 +35,6 @@ $ral_in_ar = $arResult['ITEMS'][0]['PROPERTIES']["TSVET"]["VALUE"];
  
 	<div class="catalog-feed__list">
 	<?
-
     foreach ($arResult['ITEMS'] as $item)
     {
        

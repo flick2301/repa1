@@ -1,4 +1,6 @@
 <?
+$MESS["SBB_EMPTY_BASKET_TITLE"] = "Ваш кошик порожній";
+$MESS["SBB_EMPTY_BASKET_HINT"] = "#A1#Натисніть тут#A2#, щоб продовжити покупки";
 $MESS["SBB_FILTER_EMPTY_RESULT"] = "За даним запитом товарів не знайдено";
 $MESS["SBB_BASKET_ITEM_WARNING"] = "У вашому кошику <a href=\"javascript:void(0)\" data-entity=\"basket-items-warning-count\"></a> вимагає уваги.";
 $MESS["SBB_BASKET_FILTER"] = "фільтр";
@@ -36,4 +38,5 @@ $MESS["SBB_GOOD_2"] = "товару";
 $MESS["SBB_GOODS"] = "Товарів";
 $MESS["SBB_DELETE"] = "Видалити";
 $MESS["SBB_IN_BASKET"] = "В кошику";
+$MESS["SBB_GIFTS_BLOCK_TITLE"] = "Виберіть один з подарунків";
 ?>

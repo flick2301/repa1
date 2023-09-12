@@ -9,7 +9,7 @@
 foreach($arResult['SECTIONS'] as $key=>$arSection){
     
     $arSelect = Array("ID", "NAME", "PROPERTY_FOR_SALE");
-    $arFilter = Array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], "SECTION_ID"=>$arSection['ID'], "INCLUDE_SUBSECTIONS"=>"Y","PROPERTY_FOR_SALE"=>"По акции", "ACTIVE"=>"Y");
+    $arFilter = Array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], "SECTION_ID"=>$arSection['ID'], "INCLUDE_SUBSECTIONS"=>"Y", "ACTIVE"=>"Y");
     $res = CIBlockElement::GetList(Array(), $arFilter, array(), false, $arSelect);
     if($res == 0)
    {

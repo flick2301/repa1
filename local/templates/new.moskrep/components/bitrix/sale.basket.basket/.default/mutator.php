@@ -396,6 +396,14 @@ if ($result['allWeight'] > 0)
 {
 	$totalData['WEIGHT_FORMATED'] = $result['allWeight_FORMATED'];
 }
+if ($result['allSum_FORMATED'] > 0)
+{
+	$totalData['DISCOUNT_OF_PRICE_FORMATED'] = getSalesFromPrice($result['allSum'], $result['CURRENCY']);
+}
+if ($result['allSum_FORMATED'] > 0)
+{
+	$totalData['DISCOUNT_OF_PRICE_PERCENT'] = getSalesPersent($result['allSum']);
+}
 
 if ($this->priceVatShowValue === 'Y')
 {

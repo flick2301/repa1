@@ -8,8 +8,19 @@ BX.ready(function () {
         }, this));
     
     }
-
-    $('.card_pickup').click(function () {
+	
+	$('.unavailable_pickup').click(function () {
+        $('#unavailable-window').slideDown(0);
+    });
+	$('.unavailable-win').on('click', function(e){
+		if(e.target.id=='close') {
+			$('#unavailable-window').slideUp(0);
+		}
+	});
+	
+    $('.product-data__item .card_pickup').click(function () {
+		
+		
         $('#shops-window').slideDown(0);
         var product_id = $(this).data('product');
         var request = BX.ajax.runComponentAction("d7:contact_shops", "ajaxRequest", {
@@ -36,7 +47,7 @@ BX.ready(function () {
             eval(code);
 
         });
-
+		
 
 
     });

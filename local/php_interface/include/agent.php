@@ -57,7 +57,7 @@ function AgentCheckCatalogProps(){
     
     //ПОИСК ЭЛЕМЕНТОВ ГДЕ ЕСТЬ ЦЕНА ПО РАСПРОДАЖИ, НО НЕ ПРОСТАВЛЕНА АКЦИЯ
     $arSelect = Array("ID", "IBLOCK_ID", "NAME", "PROPERTY_*");
-    $arFilter = Array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, "!=PROPERTY_FOR_SALE"=>"По акции", ">CATALOG_PRICE_SCALE_".NUMBER_SALE_PRICE=>"0", "");
+    $arFilter = Array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, "!=PROPERTY_FOR_SALE"=>"По акции", ">CATALOG_PRICE_SCALE_8"=>"0", "");
     $res = CIBlockElement::GetList(Array(), $arFilter, false, Array('nPageSize' => 100), $arSelect);
     while($ob = $res->GetNextElement()){ 
         $arFields = $ob->GetFields();  
@@ -69,14 +69,14 @@ function AgentCheckCatalogProps(){
 
         // Установим новое значение для данного свойства данного элемента
         CIBlockElement::SetPropertyValuesEx($ELEMENT_ID, false, array($PROPERTY_CODE => $PROPERTY_VALUE));
-		
+		\Bitrix\Main\Diag\Debug::dumpToFile($ELEMENT_ID, "", '/upload/akc.txt');
         
     }
     
     
     //ПОИСК ЭЛЕМЕНТОВ ГДЕ ПРОСТАВЛЕНА АКЦИЯ, НО РАСПРОДАЖНОЙ ЦЕНЫ НЕТ
     $arSelect = Array("ID", "IBLOCK_ID", "NAME", "PROPERTY_*");
-    $arFilter = Array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, "PROPERTY_FOR_SALE"=>"По акции", "CATALOG_PRICE_SCALE_".NUMBER_SALE_PRICE=>false, "");
+    $arFilter = Array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, "PROPERTY_FOR_SALE"=>"По акции", "CATALOG_PRICE_SCALE_8"=>false, "");
     $res = CIBlockElement::GetList(Array(), $arFilter, false, Array('nPageSize' => 100), $arSelect);
     while($ob = $res->GetNextElement()){
         
@@ -250,7 +250,7 @@ function AgentDeactivateStatusR()
 	);
 
 	$arFilter = Array(
-		"<=DATE_UPDATE" => date($DB->DateFormatToPHP(CSite::GetDateFormat("SHORT")), mktime(0, 0, 0, date("n"), date("d")-3, date("Y"))),
+		"<=DATE_UPDATE" => date($DB->DateFormatToPHP(CSite::GetDateFormat("SHORT")), mktime(0, 0, 0, date("n"), date("d")-2, date("Y"))),
 		"STATUS_ID" => "R"
 	);
 

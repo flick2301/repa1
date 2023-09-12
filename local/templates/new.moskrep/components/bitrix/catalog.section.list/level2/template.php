@@ -72,15 +72,18 @@ $requestUri = $request->getRequestUri();
 			<div class="catalog-feed__list">
                 <?foreach ($arResult['TOP_SECTIONS'] as &$arSection):?>
 				
-                    <div class="catalog-feed__item catalog-feed__item__withpic ">
+                    <div class="catalog-newcard catalog-newcard_white">
 					<!--catalog-card-->
-					<section class="catalog-card">
-					<div class="div_flex_h3 catalog-card__title"><a href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title='<?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?>' class="catalog-card__link"><?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?></a></div>
-                            <div class="catalog-card__cover">
-                                <img class="catalog-card__image" width="262" height="197" src="<?=($arSection['DETAIL_PICTURE']) ? CFile::GetPath($arSection['DETAIL_PICTURE']) : $arSection['PICTURE']['src'];?>" alt="<?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?>">
-                            </div>
-            
-					</section>
+					<a class="catalog-newcard__href" onclick="dataLayerProduct('<?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?>');" href="<?=$arSection['SECTION_PAGE_URL']?>" target="_self" title="<?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?>">
+		
+						<span class="catalog-newcard__img">
+							<img class="catalog-newcard__image" width="262" height="197" src="<?=($arSection['DETAIL_PICTURE']) ? CFile::GetPath($arSection['DETAIL_PICTURE']) : $arSection['PICTURE']['src'];?>" alt="<?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?>">
+						</span>
+		
+						<span class="catalog-newcard__text">
+							<?=$arSection['UF_SHORT_NAME'] ?? $arSection['NAME']?>		</span> 
+					</a>
+					
 					<!--catalog-card-->
 					</div>
    
@@ -341,7 +344,7 @@ if($arResult['SORTING']['SECTION_ID']){
     foreach($arResult['SORTING']['SECTIONS'] as $sortSection){
         if($sortSection['TOP']){
         ?>
-		<div class="basic-layout__module category-blocknew category-blocknew_nomargin">
+		<div class="basic-layout__module category-blocknew category-blocknew_nomargin <?=$sec_builder->curSorting;?>">
 			<div class="div_h3 category-blocknew__title"><span><?=$sortSection["NAME"]?></span></div>
 			<ul class="category-blocknew__list">
 			<?$i=0;?>

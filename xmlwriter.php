@@ -80,9 +80,10 @@ class XML_PINBOX
 			while($arResult = $dbResult->GetNextElement())
 			{
 				
-				$img_url = CFile::GetPath($fields["PREVIEW_PICTURE"]) ?? CFile::GetPath($arSection["PICTURE"]) ?? CFile::GetPath($arSection["DETAIL_PICTURE"]);
+				
 				$fields = $arResult->GetFields();
 				$props = $arResult->GetProperties();
+				$img_url = CFile::GetPath($fields["PREVIEW_PICTURE"]) ?? CFile::GetPath($arSection["PICTURE"]) ?? CFile::GetPath($fields["DETAIL_PICTURE"]);
 				$this->response .= '<product>';
 				$this->response .= '<id>'.$fields['ID'].'</id>';
 				$this->response .= '<title>'.htmlspecialchars($fields['NAME']).'</title>';

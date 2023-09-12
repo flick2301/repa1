@@ -1113,7 +1113,7 @@ div[data-property-id-row="17"],
 }
 .bx-soa-cart-total.bx-soa-cart-total-fixed {
     position: fixed;
-    top: 10px;
+    top: -40px;
 }
 .bx-soa-cart-total.bx-soa-cart-total-bottom {opacity: 0;}
 @media(max-width: 768px){
@@ -1460,7 +1460,7 @@ div[data-property-id-row="17"],
 /*pay*/
 .bx-soa-pp-company {
     padding-bottom: 20px;
-    z-index: 100;
+    z-index: 80;
     position: relative;
 }
 .bx-soa-pp .bx-soa-pp-company {
@@ -2083,4 +2083,26 @@ label[data-bx-user-consent] input{
 	margin-left: 5px;!important;
 }
 .ymaps-2-1-79-zoom__minus {
+}
+.bx-sales-cart-total-fixed{
+	top:280px;
+	position:fixed;
+}
+.bx-sales-cart-total-fixed td{
+	background-color: white;
+}
+.basic-layout__footer{
+	z-index: 100;
+    background-color: white;
+}
+.no-sticky{
+	position:static;
+}
+.bx-soa-cart-total
+{
+	font-size:16px !important;
+}
+#bx-soa-total .bx-soa-cart-d
+{
+	font-size:16px !important;
 }

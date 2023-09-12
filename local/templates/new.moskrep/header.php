@@ -3,6 +3,7 @@
 use \Bitrix\Main\Localization\Loc;
 use \Bitrix\Main\Page\Asset;
 use Bitrix\Main\Application;
+GLOBAL $is_cart;
 
 Loc::LoadMessages(__FILE__);
 ?>
@@ -151,6 +152,8 @@ $APPLICATION->IncludeFile(
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/jquery.fancybox.min.css", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/styles/global.styles.min.css?v=XXXXXXa", true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/correction.min.css".$rand, true);
+	
+	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/slick-theme.css".$rand, true);
 	$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/components/bitrix/catalog.section/main_sale/style.css".$rand, true);	
 	if (IPHONE=="Y") $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/iphone.css", true);	
 	else $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/dieapple.css", true);
@@ -177,7 +180,7 @@ $APPLICATION->IncludeFile(
 	//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/new/css/style.css", true);	
 	//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/script.js");	
 	?>
-	
+	 
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/jquery.icheck-1.0.2.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa" defer="defer"></script>
@@ -186,8 +189,10 @@ $APPLICATION->IncludeFile(
    <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.popup.js" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/js/common.min.js" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/js/slick.min.js" defer="defer"></script>
-   <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.cookie.js" defer="defer"></script>		
-
+   <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.cookie.js" defer="defer"></script>
+<script src="<?=SITE_TEMPLATE_PATH?>/components/bitrix/catalog.section/main_double/script.js"></script>   
+<script src="<?=SITE_TEMPLATE_PATH?>/js/main.js" defer="defer"></script>  
+	<script src="<?=SITE_TEMPLATE_PATH?>/js/owl.carousel.min.js"></script> 
     
     <!--[if (lt IE 9)&(!IEMobile 7)]><script src="js/html5support.js"></script><![endif]-->
 
@@ -265,7 +270,7 @@ $APPLICATION->IncludeFile(
 
     <?include_once $_SERVER["DOCUMENT_ROOT"] . "/include/functions.php";?>
 	
-		<header class="c-header">
+		<header class="c-header" id='c-header'>
 			<div class="c-header__container basic-layout__section">
 				<div class="c-header__topline">
 					<div class="c-header__group">
@@ -288,21 +293,24 @@ $APPLICATION->IncludeFile(
 							<?endif?>	
 							<?}?>
 						</div>
+						<?
+$APPLICATION->IncludeFile(
+ "/include/header_addresses.php",
+ array(),
+ array("SHOW_BORDER" => true, "MODE"=>"php")
+);
+?>
 					</div>
 					<div class="c-header__group">
 						
-						<a class="c-header__link accent-color" href="tel:<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/telephone.php"), false);?>">
-							<svg class="c-header__link-icon" aria-hidden="true" width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M2.639 5.06005C3.33895 5.81244 4.10687 6.50109 4.93337 7.11757C5.21907 7.33325 5.51795 7.52088 5.81244 7.73009C5.83117 7.74882 5.85397 7.76318 5.87913 7.77208C5.90429 7.78098 5.93117 7.78421 5.95778 7.78151C5.98438 7.77882 6.01003 7.77028 6.0328 7.75652C6.05558 7.74276 6.07491 7.72414 6.08935 7.70205C6.45636 7.31815 6.83656 6.94719 7.18819 6.55898C7.37656 6.34167 7.63575 6.19503 7.92176 6.14392C8.20777 6.09282 8.503 6.1404 8.75733 6.2786C9.32872 6.59996 9.89352 6.93641 10.4451 7.29227C10.7059 7.47011 10.8909 7.73596 10.9646 8.03909C11.0384 8.34222 10.9959 8.6614 10.8451 8.9357C10.4539 9.76173 9.69134 9.89114 8.91556 9.98172C8.2189 10.0637 7.55959 9.85879 6.93765 9.59135C5.67109 9.02952 4.49941 8.28112 3.46313 7.37207C2.44447 6.55754 1.5452 5.60898 0.790754 4.55321C0.307265 3.84365 -0.088316 3.08447 0.0171724 2.20884C0.102882 1.45829 0.261114 0.720689 0.988545 0.248363C1.25304 0.0567227 1.58192 -0.0289688 1.90845 0.00868308C2.23497 0.0463349 2.53466 0.204509 2.74668 0.451097C3.16424 0.934206 3.56861 1.43026 3.9576 1.9414C4.15088 2.18515 4.24507 2.49063 4.22192 2.79864C4.19878 3.10666 4.05995 3.39527 3.83234 3.60856C3.74193 3.6955 3.65611 3.78692 3.57521 3.88247C3.26973 4.27284 2.96425 4.65889 2.639 5.06005Z" fill="currentColor"/>
-							</svg>              
-							<span><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/telephone.php"), false);?></span>
-						</a>
-						<a class="c-header__link accent-color" href="mailto:<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/email.php"), false);?>">
-							<svg class="c-header__link-icon" aria-hidden="true" width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M2.639 5.06005C3.33895 5.81244 4.10687 6.50109 4.93337 7.11757C5.21907 7.33325 5.51795 7.52088 5.81244 7.73009C5.83117 7.74882 5.85397 7.76318 5.87913 7.77208C5.90429 7.78098 5.93117 7.78421 5.95778 7.78151C5.98438 7.77882 6.01003 7.77028 6.0328 7.75652C6.05558 7.74276 6.07491 7.72414 6.08935 7.70205C6.45636 7.31815 6.83656 6.94719 7.18819 6.55898C7.37656 6.34167 7.63575 6.19503 7.92176 6.14392C8.20777 6.09282 8.503 6.1404 8.75733 6.2786C9.32872 6.59996 9.89352 6.93641 10.4451 7.29227C10.7059 7.47011 10.8909 7.73596 10.9646 8.03909C11.0384 8.34222 10.9959 8.6614 10.8451 8.9357C10.4539 9.76173 9.69134 9.89114 8.91556 9.98172C8.2189 10.0637 7.55959 9.85879 6.93765 9.59135C5.67109 9.02952 4.49941 8.28112 3.46313 7.37207C2.44447 6.55754 1.5452 5.60898 0.790754 4.55321C0.307265 3.84365 -0.088316 3.08447 0.0171724 2.20884C0.102882 1.45829 0.261114 0.720689 0.988545 0.248363C1.25304 0.0567227 1.58192 -0.0289688 1.90845 0.00868308C2.23497 0.0463349 2.53466 0.204509 2.74668 0.451097C3.16424 0.934206 3.56861 1.43026 3.9576 1.9414C4.15088 2.18515 4.24507 2.49063 4.22192 2.79864C4.19878 3.10666 4.05995 3.39527 3.83234 3.60856C3.74193 3.6955 3.65611 3.78692 3.57521 3.88247C3.26973 4.27284 2.96425 4.65889 2.639 5.06005Z" fill="currentColor"/>
-							</svg>              
-							<span><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/email.php"), false);?></span>
-						</a>
+						<?$APPLICATION->IncludeComponent("d7:contact_shops","header",Array(
+				"IBLOCK_ID" => "19", 
+				"CACHE_TYPE" => "A", 
+                "CACHE_TIME" => "3600", 
+                "CACHE_FILTER" => "N",
+				"LIMIT" => 1,	
+                    ), false
+    );?>
 					</div>
 				</div>
 				<div class="c-header__main">
@@ -530,23 +538,7 @@ $APPLICATION->IncludeComponent(
 			
 			
 			
-            <?if(0):?>            
-            <div class="aside-contacts">
-	        <div class="aside-contacts__adres-wrap">
-		    <h3 class="s22-title">Контактная информация</h3>
-		    <span class="aside-contacts__title">Адрес магазина:</span>
-		    <p class="aside-contacts__adres"><?=STORE_ID_KASHIRKA[1]?></p>
-		    <span class="aside-contacts__title">Адрес склада:</span>
-		    <p class="aside-contacts__adres"><?=STORE_ID_KOLEDINO[1]?></p>
-		</div>
-		<div class="aside-contacts__phone-wrap">
-		    <span class="aside-contacts__phone"><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/telephone.php"), false);?></span>
-		    <a href="<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/telephone.php"), false);?>" class="aside-contacts__mail"><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/email.php"), false);?></a>
-		    <span class="aside-contacts__schedule"><?=STORE_ID_KASHIRKA[2]?></span>
-		    <a href="javascript:void(0)" class="blue-btn aside-contacts__btn">Отправить запрос</a>
-		</div>
-	    </div>
-            <?endif;?>
+            
         
         
 <?else:?>

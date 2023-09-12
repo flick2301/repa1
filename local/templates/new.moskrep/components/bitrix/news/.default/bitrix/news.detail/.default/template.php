@@ -101,7 +101,7 @@
 		<div class="articles__list">
 			<?foreach($arResult["MORE"] AS $similar):?>
 			<div class="articles__box">
-				<a class="articles__top" href="<?=dirname($_SERVER['REAL_FILE_PATH'])?>/<?=$similar["DETAIL_PAGE_URL"]?>">
+				<a class="articles__top" href="<?=$similar["DETAIL_PAGE_URL"]?>">
 					<!-- articles__category style заполнятьеся из двух дополнительных свойств раздела цвет фона и цвет текса -->
 					<div class="articles__category" style="background-color:<?if($similar["SECTION"]["UF_COLOR"]):?><?=$similar["SECTION"]["UF_COLOR"]?><?else:?>#552FEC<?endif?>;color:<?if($similar["SECTION"]["UF_COLOR2"]):?><?=$similar["SECTION"]["UF_COLOR2"]?><?else:?>#fff<?endif?>;"><?=$similar["SECTION"]["NAME"]?></div>
 					<?if($similar["IMG"]):?>
@@ -124,7 +124,7 @@
 						<?endif?>
 					</div>
 				</a>
-				<div class="articles__bottom"><a class="articles__name" href="<?=dirname($_SERVER['REAL_FILE_PATH'])?>/<?=$similar["DETAIL_PAGE_URL"]?>"><?=$similar["NAME"]?></a>
+				<div class="articles__bottom"><a class="articles__name" href="<?=$similar["DETAIL_PAGE_URL"]?>"><?=$similar["NAME"]?></a>
 					<div class="articles__desc"><?=$similar["PREVIEW_TEXT"]?></div>
 					<div class="articles__botside">
 						<div class="articles__data"><?php echo $similar["DATE_FORMAT"][0]." ".$month[$similar["DATE_FORMAT"][1]].' '.$similar["DATE_FORMAT"][2];?></div>

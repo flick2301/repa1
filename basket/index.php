@@ -5,7 +5,7 @@ $APPLICATION->SetTitle("Корзина");
 	"bitrix:sale.basket.basket", 
 	".default", 
 	array(
-		"ACTION_VARIABLE" => "basketAction",
+		"ACTION_VARIABLE" => "action",
 		"ADDITIONAL_PICT_PROP_2" => "-",
 		"ADDITIONAL_PICT_PROP_3" => "-",
 		"ADDITIONAL_PICT_PROP_4" => "-",

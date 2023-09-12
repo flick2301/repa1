@@ -1,4 +1,6 @@
 <?
+$MESS["CP_SBB_EMPTY_BASKET_HINT_PATH"] = "Шлях до сторінки для продовження покупок";
+$MESS["EMPTY_BASKET_HINT_PATH_TIP"] = "Посилання для продовження покупок відображається у випадку якщо кошик порожній.<br>За умови, що шлях порожній, текст не буде відображений.";
 $MESS["CP_SBB_TPL_PROPERTIES_RECALCULATE_BASKET"] = "Властивості, що впливають на перерахунок кошика";
 $MESS["CP_SBB_TPL_THEME_SITE"] = "Брати тему з налаштувань сайту (для рішення bitrix.eshop)";
 $MESS["CP_SBB_TPL_THEME_BLUE"] = "Синя (за замовчуванням)";

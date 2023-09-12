@@ -3,7 +3,15 @@ define("HIDE_SIDEBAR", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог");
 $APPLICATION->SetPageProperty("component", "catalog");
-?><?$APPLICATION->IncludeComponent(
+?>
+<?
+$APPLICATION->IncludeFile(
+ "/include/unavailable_popup.php",
+ array(),
+ array("SHOW_BORDER" => true, "MODE"=>"php")
+);
+?>
+<?$APPLICATION->IncludeComponent(
 	"bitrix:catalog", 
 	".default", 
 	array(

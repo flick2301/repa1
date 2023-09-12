@@ -214,7 +214,7 @@ $detect = new \Bitrix\Conversion\Internals\MobileDetect;
 </div>
 </div>
 <!-- Roistat BEGIN CODE -->
-<script>
+<script async>
 
 window.onRoistatAllModulesLoaded = function () {
 
@@ -241,8 +241,8 @@ window.roistat.emailtracking.enabled = true;
 };
 
 </script>
-<script>window.roistatCookieDomain = '.krep-komp.ru';</script>
-<script>
+<script async>window.roistatCookieDomain = '.krep-komp.ru';</script>
+<script async>
     (function(w, d, s, h, id) {
         w.roistatProjectId = id; w.roistatHost = h;
         var p = d.location.protocol == "https:" ? "https://" : "http://";
@@ -270,7 +270,7 @@ window.roistat.emailtracking.enabled = true;
         }, 200);
     })();
 </script>
-<script>
+<script async>
     jQuery(document).ready(function ($) {
         $("#feedback_form").bind('submit', function() {
             var name = $("input[name='user_name']",this).val();
@@ -291,5 +291,7 @@ window.roistat.emailtracking.enabled = true;
     });
 </script>
         <!-- Roistat END CODE -->
+		
+
 </body>
 </html>

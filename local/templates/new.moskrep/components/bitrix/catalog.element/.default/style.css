@@ -375,3 +375,11 @@ element.style {
 .card_delivery{
 text-decoration-skip-ink: none;
 }
+.delivery__tab--active{
+	border-bottom: 2px dashed !important;
+	
+}
+.delivery__tab:hover{
+	border-bottom: 2px dashed;
+	
+}

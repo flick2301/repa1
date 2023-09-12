@@ -133,6 +133,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			{
 				this.totalInfoBlockNode = this.totalBlockNode.querySelector('.bx-soa-cart-total');
 				this.totalGhostBlockNode = this.totalBlockNode.querySelector('.bx-soa-cart-total-ghost');
+				this.totalSalesBlockNode = this.totalBlockNode.querySelector('.col');
 			}
 
 			this.options.deliveriesPerPage = parseInt(parameters.params.DELIVERIES_PER_PAGE);
@@ -1401,11 +1402,56 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			{
 				total = this.result.TOTAL;
 				this.options.showOrderWeight = total.ORDER_WEIGHT && parseFloat(total.ORDER_WEIGHT) > 0;
+				total.SALE_PRICE = this.getSalesFromPrice(total.ORDER_PRICE);
+				total.SALE_PERCENT = this.getSalesPersent(total.ORDER_PRICE);
 				this.options.showPriceWithoutDiscount = parseFloat(total.ORDER_PRICE) < parseFloat(total.PRICE_WITHOUT_DISCOUNT_VALUE);
 				this.options.showDiscountPrice = total.DISCOUNT_PRICE && parseFloat(total.DISCOUNT_PRICE) > 0;
 				this.options.showTaxList = total.TAX_LIST && total.TAX_LIST.length;
 				this.options.showPayedFromInnerBudget = total.PAYED_FROM_ACCOUNT_FORMATED && total.PAYED_FROM_ACCOUNT_FORMATED.length;
 			}
+		},
+		
+		getSalesFromPrice: function(price)
+		{
+			var sale = 0;
+			if(price > 5000 && price < 10000)
+				sale = price * 0.05;
+			if(price > 10000 && price < 15000)
+				sale = price * 0.1;
+			if(price > 15000 && price < 20000)
+				sale = price * 0.15;
+			if(price > 20000 && price < 25000)
+				sale = price * 0.2;
+			if(price > 25000 && price < 100000)
+				sale = price * 0.25;
+			if(price > 100000 && price < 500000)
+				sale = price * 0.3;
+			if(price > 500000)
+				sale = price * 0.35;
+			var price_new = price-sale;
+	
+			return price_new;
+		},
+		
+		getSalesPersent: function(price)
+		{
+			var percent = 0;
+			if(price > 5000 && price < 10000)
+				percent = 5;
+			if(price > 10000 && price < 15000)
+				percent = 10;
+			if(price > 15000 && price < 20000)
+				percent = 15;
+			if(price > 20000 && price < 25000)
+				percent = 20;
+			if(price > 25000 && price < 100000)
+				percent = 25;
+			if(price > 100000 && price < 500000)
+				percent = 30;
+			if(price > 500000)
+				percent = 35;
+				
+			return percent;
 		},
 
 		reachGoal: function(goal, section)
@@ -8581,6 +8627,11 @@ for (var key in this.result.DELIVERY_GROUPS) {
 				this.totalInfoBlockNode.appendChild(this.createTotalUnit(BX.message('SOA_PAYSYSTEM_PRICE'), '~' + total.PAY_SYSTEM_PRICE_FORMATTED));
 			}
 			
+			if(total.SALE_PERCENT > 0 && !this.result.IS_AUTHORIZED)
+			{
+				this.totalInfoBlockNode.appendChild(this.createTotalUnit('Со скидкой '+this.getSalesPersent(total.ORDER_PRICE)+'%', total.SALE_PRICE.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' }).replace(/,/g, '.')));
+			}
+			
 			this.totalInfoBlockNode.append(
 					BX.create('A', {props: {className: 'main-button main-button--plus in-cart-total__submit', id: 'ORDER_CONFIRM_BUTTON', href: 'javascript:void(0)',}, text: "Оформить заказ",
 													events: {
@@ -8669,6 +8720,11 @@ for (var key in this.result.DELIVERY_GROUPS) {
 			if (params.highlighted)
 			{
 				className += ' bx-soa-cart-total-line-highlighted';
+			}
+			if(name.indexOf('Со скидкой') >= 0)
+			{
+				className += ' bx-soa-cart-total-line-highlighted';
+				
 			}
 
 			return BX.create('DIV', {
@@ -8762,12 +8818,15 @@ for (var key in this.result.DELIVERY_GROUPS) {
 			{
 				width = this.totalInfoBlockNode.offsetWidth;
 				BX.addClass(this.totalInfoBlockNode, 'bx-soa-cart-total-fixed');
+				BX.addClass(this.totalSalesBlockNode, 'bx-sales-cart-total-fixed');
+				BX.addClass(BX('c-header'), "no-sticky");
 				this.totalGhostBlockNode.style.paddingTop = this.totalInfoBlockNode.offsetHeight + 'px';
 				this.totalInfoBlockNode.style.width = width + 'px';
 			}
 			else if (scrollTop < ghostTop && BX.hasClass(this.totalInfoBlockNode, 'bx-soa-cart-total-fixed'))
 			{
 				BX.removeClass(this.totalInfoBlockNode, 'bx-soa-cart-total-fixed');
+				BX.removeClass(this.totalSalesBlockNode, 'bx-sales-cart-total-fixed');
 				this.totalGhostBlockNode.style.paddingTop = 0;
 				this.totalInfoBlockNode.style.width = '';
 			}

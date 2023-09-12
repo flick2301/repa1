@@ -133,7 +133,7 @@ dataLayer.push({
                         <div class="product-data__section">
                            <ul class="product-data__list">
                               <li class="product-data__item">
-                                 <p class="product-data__name"><i class="simple-car-icon product-data__icon"></i>Доставка</p>
+                                 <p class="product-data__name product-data__scroll"><i class="simple-car-icon product-data__icon"></i>Доставка</p>
                                  <p class="product-data__text">от 290 руб.</p>
                               </li>
                               <li class="product-data__item">
@@ -141,12 +141,12 @@ dataLayer.push({
                                  <p class="product-data__text"><?=($arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) ?  $arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT'].' уп.' : 'нет в наличии'?></p>
                               </li>
                               <li class="product-data__item">
-                                 <p class="product-data__name"><i class="simple-home-icon product-data__icon"></i>Самовывоз</p>
+                                 <p class="product-data__name product-data__scroll"><i class="simple-home-icon product-data__icon"></i>Самовывоз</p>
                                  <p class="product-data__text"><?echo ($arResult['STORE'][$DEFAULT_STORE_ID]['AMOUNT']) ? ' сегодня, бесплатно' : 'на заказ';?></p>
                               </li>
                            </ul>
                            <div class="product-data__info">
-                              <a class="product-data__scroll" href="/addresses/">Адреса магазинов</a>
+                              <a class="" href="/addresses/">Адреса магазинов</a>
                            </div>
                         </div>
                         <div class="product-data__section">
