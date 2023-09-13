@@ -353,9 +353,10 @@ if($arResult['SORTING']['SECTION_ID']){
                 $link =  $filterObj->sec_builder->linkBuilder($sort_item, $sortSection);
 
             ?>
+			
 
 				<li class="category-blocknew__item category-blocknew__newitem" >
-                    <a href="<?=$link?>" <?=($sort_item['LINK_TARGET']['VALUE']) ? "target='_self'" : "";?> class="category-block__link <?=$sort_item['IS_ACTIVE']?>">
+                    <a href="<?=$link?>" <?=($sort_item['LINK_TARGET']['VALUE']) ? "target='_self'" : "";?> <?=(!empty($sort_item['arFilters']['VALUE']) && empty($sort_item['sef_filter']['VALUE'])) ? "rel='nofollow'" : "";?> class="category-block__link <?=$sort_item['IS_ACTIVE']?>">
 						<?=$sort_item['NAME']?> <?=$sort_item['sef_filter']['VALUE_XML_ID']?>
 					</a>
 				</li>

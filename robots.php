@@ -89,20 +89,16 @@ Disallow: /*?VERTICAL_FILTER=
 Disallow: /*?reference=
 Disallow: /*reference=
 Disallow: /*rk.php
-Disallow: /*&set_filter=y
 Disallow: /*?baobab_event_id=
 Disallow: /*?keyword
 Disallow: /*?text=
 Disallow: /*?reference
-Disallow: /*?set_filter=y
-Disallow: /*?arrFilter_
 Disallow: /*?s=
 Disallow: /?back_url_admin=
 Disallow: /logs/
 Disallow: /*?_openstat=
 Disallow: */_openstat
 Disallow: /*?_r=
-Disallow: /*?arrFilter2_
 Disallow: /*?banner_id=
 Disallow: /*?clid=
 Disallow: /*?mobile=
@@ -119,18 +115,13 @@ Disallow: /krepezhhttps:/
 Disallow: /shops/
 Disallow: /*?frommarket=
 Disallow: /*?ID=
-Disallow: /*?&set_filter
 Disallow: /*?length=
-Disallow: /*?set_filter=
 Disallow: /*?size=
 Disallow: /*?SECTION_ID=
-Disallow: *section_id*
 Disallow: /*?SIZEN_1=
 Disallow: /*PAGEN_1*&*
 Disallow: *UF_TYPE*
 Disallow: *pagen*
-Disallow: *set_filter*
-Disallow: *arrfilter*
 Disallow: *from*
 Disallow: *nogeolocation*
 Disallow: */length_30/*
@@ -154,8 +145,7 @@ Allow: /bitrix/js/
 Allow: /bitrix/templates/
 Allow: /bitrix/panel/
 Allow: */?PAGEN_1
-Disallow: /*.html?PAGEN
-Clean-param: roistat&roistat_referrer&roistat_pos
+Clean-param: roistat&roistat_referrer&roistat_pos&arrFilter2_&set_filter&
 
 User-Agent: *
 Disallow: /faq/
@@ -238,8 +228,6 @@ Disallow: /*?baobab_event_id=
 Disallow: /*?keyword
 Disallow: /*?text=
 Disallow: /*?reference
-Disallow: /*?set_filter=y
-Disallow: /*?arrFilter_
 Disallow: /*?s=
 Disallow: /?back_url_admin=
 Disallow: /logs/
@@ -263,9 +251,7 @@ Disallow: /krepezhhttps:/
 Disallow: /shops/
 Disallow: /*?frommarket=
 Disallow: /*?ID=
-Disallow: /*?&set_filter
 Disallow: /*?length=
-Disallow: /*?set_filter=
 Disallow: /*?size=
 Disallow: /*?SECTION_ID=
 Disallow: *section_id*
@@ -273,8 +259,6 @@ Disallow: /*?SIZEN_1=
 Disallow: /*PAGEN_1*&*
 Disallow: *UF_TYPE*
 Disallow: *pagen*
-Disallow: *set_filter*
-Disallow: *arrfilter*
 Disallow: *from*
 Disallow: *nogeolocation*
 Disallow: */length_30/*
@@ -292,16 +276,13 @@ Disallow: /*?yhid=
 Disallow: /*?etext=
 Disallow: /*?t=
 Disallow: /*?rs=
-Disallow: /*roistat=
-Disallow: /*roistat_referrer=
-Disallow: /*roistat_pos=
-Disallow: /*.html?PAGEN
 Allow: /bitrix/components/
 Allow: /bitrix/cache/
 Allow: /bitrix/js/
 Allow: /bitrix/templates/
 Allow: /bitrix/panel/
 Allow: */?PAGEN_1
+
 
 
 Host: <?=$http?>://<?=$host.PHP_EOL;?>

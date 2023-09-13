@@ -33,7 +33,12 @@ if(preg_match("/[^0-9]/",$arResult['VARIABLES']['ELEMENT_ID'])):
 endif;
 */
 
-
+if($_GET['PAGEN_2'] || $_GET['PAGEN_1']){
+	@define("ERROR_404","Y");
+	CHTTP::SetStatus("404 Not Found");
+		
+	$APPLICATION->SetPageProperty('title', "404 - HTTP not found");
+}
 
 
 if (isset($arParams['USE_COMMON_SETTINGS_BASKET_POPUP']) && $arParams['USE_COMMON_SETTINGS_BASKET_POPUP'] == 'Y')

@@ -1,5 +1,6 @@
 <?
 GLOBAL $lastModified;
+$APPLICATION->SetPageProperty("element", true);
 $m = $arResult['TIMESTAMP_X'] ? $arResult['TIMESTAMP_X'] : $arResult['DATE_CREATE'];
 
 if (!$m){

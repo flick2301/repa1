@@ -156,4 +156,19 @@ function sitemap_gen(){
 	return true;
 }
 
+function canonnical()
+{
+	global $APPLICATION;
+        ob_start();
+
+        if($APPLICATION->GetProperty('element') == true) {
+            echo "<link rel='canonical' href='https://".$_SERVER["HTTP_HOST"].$APPLICATION->GetCurPage(false)."' />";
+        } else {
+            echo "<link rel='canonical'  href='https://".$_SERVER["HTTP_HOST"].$APPLICATION->GetCurPageParam()."' />";
+        }
+        $result = ob_get_contents();
+        ob_end_clean();
+        return $result;
+}
+
 ?>

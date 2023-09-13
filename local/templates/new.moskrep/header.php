@@ -35,6 +35,12 @@ Loc::LoadMessages(__FILE__);
     <meta name="apple-mobile-web-app-title" content="Главная страница – Krep-Komp" />
     <meta name="theme-color" content="#0C58CF" />
 	<meta name="facebook-domain-verification" content="qyjoyjc6m0agulp5ix7pznx4nhhm22" />
+	<meta name="yandex-verification" content="648cf2950148c11f" />
+	<meta name="yandex-verification" content="648cf2950148c11f" />
+	<meta name="yandex-verification" content="648cf2950148c11f" />
+	<?if($paramList['set_filter'] || $paramList['roistat'] || $paramList['roistat_referrer'] || $paramList['roistat_pos']){?>
+	<meta name="googlebot" content="noindex, nofollow">
+	<?}?>
 	
 <?
 $path = $APPLICATION->GetCurPage();
@@ -86,7 +92,7 @@ $APPLICATION->ShowMeta("robots");?>
 	?>
    
 
-	<link rel='canonical' href='https://<?=$_SERVER["HTTP_HOST"]?><?=$APPLICATION->GetCurPage(false);?>' />	
+	<?$APPLICATION->AddBufferContent("canonnical");?>
 
 
 

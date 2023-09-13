@@ -97,6 +97,7 @@ dataLayer.push({
 <div id="shops-window"><div class="win"></div></div>
 <div class="card__articul">Артикул: <span class="card__articul-name"><?=$arResult['PROPERTIES']['CML2_ARTICLE']['VALUE']?></span></div>
 
+
     <div itemscope class="basic-layout__module product-page">
 		<div class="product-page__main">
                   <div class="product-page__gallery">
