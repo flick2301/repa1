@@ -11,20 +11,22 @@ global $filterObj;
 use \Bitrix\Highloadblock as HL; 
 use \Bitrix\Main\Entity;
 
-$hlbl = 11; // Указываем ID нашего highloadblock блока к которому будет делать запросы.
-$hlblock = HL\HighloadBlockTable::getById($hlbl)->fetch(); 
+if(strpos($_SERVER["HTTP_HOST"], 'dev') === false)
+{
+	$hlbl = 11; // Указываем ID нашего highloadblock блока к которому будет делать запросы.
+	$hlblock = HL\HighloadBlockTable::getById($hlbl)->fetch(); 
 
-$entity = HL\HighloadBlockTable::compileEntity($hlblock); 
-$entity_data_class = $entity->getDataClass(); 
-$rsData = $entity_data_class::getList(array(
+	$entity = HL\HighloadBlockTable::compileEntity($hlblock); 
+	$entity_data_class = $entity->getDataClass(); 
+	$rsData = $entity_data_class::getList(array(
 			"select" => array("*"),
 			"order" => array("ID" => "ASC"),
 			"filter" => array("UF_CATALOG_ELEMENTS"=>$arResult['ID'])  // Задаем параметры фильтра выборки
-));
-while($arData = $rsData->Fetch()){
-		$arSorts[] = $arData;
+	));
+	while($arData = $rsData->Fetch()){
+			$arSorts[] = $arData;
+	}
 }
-
 $sortSection['ACTIVES']=0;
 
 if(!empty($arSorts))
