@@ -22,6 +22,7 @@
 		$APPLICATION->SetPageProperty('title', "404 - HTTP not found");
 	}	
 	$date_created = $arResult["DISPLAY_ACTIVE_FROM"] ? $arResult["DISPLAY_ACTIVE_FROM"] : explode(" ", $arResult["TIMESTAMP_X"])[0];
+	$date_modified = $arResult["TIMESTAMP_X"];
 ?>
 <!--simple-article-->
 <div class="basic-layout__module simple-article">
@@ -136,3 +137,31 @@
 		</div>
 	</div>	
 <?endif?>
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://<?=$_SERVER["HTTP_HOST"]?><?$APPLICATION->GetCurPage(false)?>"
+  },
+  "headline": "<?=$arResult["NAME"];?>",
+  "description": "<?=$arResult["PREVIEW_TEXT"];?>",
+  "image": "https://krep-komp.ru<?=$arResult["DETAIL_PICTURE"]["SRC"]?>",  
+  "author": {
+    "@type": "Organization",
+    "name": "Креп-Комп",
+    "url": "https://krep-komp.ru/"
+  },  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Креп-Комп",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://krep-komp.ru/local/templates/moskrep/assets/design/website-logo/krep-komp.svg"
+    }
+  },
+  "datePublished": "<?=FormatDate("y-m-d", MakeTimeStamp($date_created))?>",
+  "dateModified": "<?=FormatDate("y-m-d", MakeTimeStamp($date_modified))?>"
+}
+</script>
