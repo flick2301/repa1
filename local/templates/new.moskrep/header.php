@@ -323,6 +323,14 @@ $APPLICATION->IncludeFile(
 					<a class="c-header__logo" href="<?=($APPLICATION->GetCurPage() != "/") ? '/' : 'javascript::void();'?>">
 						<img class="c-header__logo-img" src="/local/templates/moskrep/assets/design/website-logo/krep-komp.svg" width="152" height="43" alt="Креп-комп">
 					</a>
+					<script type="application/ld+json">
+					{
+						"@context": "https://schema.org",
+						"@type": "Organization",
+						"url": "https://krep-komp.ru/",
+						"logo": "https://krep-komp.ru/local/templates/moskrep/assets/design/website-logo/krep-komp.svg"
+					}
+					</script>
 					<div class="c-header__catalog">
 						<?if (CSite::InDir('/index.php') || true):?>				
 							<?$APPLICATION->IncludeComponent(

@@ -70,6 +70,12 @@ dataLayer.push({
           "name": "КРЕП-КОМП"
         }
       }
+	  "aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue" : "5",
+		"ratingCount" : "1",
+		"reviewCount" : "1"
+	}
 	}
     </script>
 <!--json-ld-->
