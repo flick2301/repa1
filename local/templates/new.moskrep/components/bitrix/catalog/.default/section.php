@@ -284,5 +284,75 @@ if($count_sections || !empty($subsections) || !empty($uf_fields["UF_MATERIAL"]))
 
     
 }?>
-
+<?
+$url = 'https://'.$_SERVER['HTTP_HOST'].$APPLICATION->GetCurPage(false);
+?>
+<script type="application/ld+json">
+[{
+"url":"<?=$url?>",
+"name":" 🔹 Более 15 000 наименований",
+"@type":"SaleEvent","about":" 🔹 Более 15 000 наименований",
+"image":"https://krep-komp.ru/local/templates/moskrep/assets/design/website-logo/krep-komp.svg","offers":
+{"url":"<?=$url?>",
+"@type":"Offer",
+"price":100,
+"validFrom":"2023-01-01T03:00:00+00:00",
+"availability":"https://schema.org/InStock",
+"priceCurrency":"RUB"
+},
+"endDate":"2023-12-31T03:00:00+00:00",
+"@context":"https://schema.org",
+"location":
+{
+"geo":
+{"@type":"GeoCoordinates","latitude":"37.60295113218015","longitude":"55.60059870162757"},
+"name":"Креп-Комп","@type":"Place","address":
+{"@type":"PostalAddress","addressLocality":"Москва"}},
+"organizer":"Креп-Комп","performer":"Креп-Комп","startDate":"2023-01-01T03:00:00+00:00"
+},
+{
+"url":"<?=$url?>",
+"name":"🔹 Бесплатная доставка по Москве и МО",
+"@type":"SaleEvent","about":"🔹 Бесплатная доставка по Москве и МО ",
+"image":"https://krep-komp.ru/local/templates/moskrep/assets/design/website-logo/krep-komp.svg","offers":
+{"url":"<?=$url?>",
+"@type":"Offer",
+"price":100,
+"validFrom":"2023-01-01T03:00:00+00:00",
+"availability":"https://schema.org/InStock",
+"priceCurrency":"RUB"
+},
+"endDate":"2023-12-31T03:00:00+00:00",
+"@context":"https://schema.org",
+"location":
+{
+"geo":
+{"@type":"GeoCoordinates","latitude":"37.60295113218015","longitude":"55.60059870162757"},
+"name":"Креп-Комп","@type":"Place","address":
+{"@type":"PostalAddress","addressLocality":"Москва"}},
+"organizer":"Креп-Комп","performer":"Креп-Комп","startDate":"2023-01-01T03:00:00+00:00"
+},
+{
+"url":"<?=$url?>",
+"name":" 🔹 Гарантия качества",
+"@type":"SaleEvent","about":" 🔹 Гарантия качества",
+"image":" https://krep-komp.ru/local/templates/moskrep/assets/design/website-logo/krep-komp.svg","offers":
+{"url":" <?=$url?>",
+"@type":"Offer",
+"price":100,
+"validFrom":"2023-01-01T03:00:00+00:00",
+"availability":"https://schema.org/InStock",
+"priceCurrency":"RUB"
+},
+"endDate":"2023-12-31T03:00:00+00:00",
+"@context":"https://schema.org",
+"location":
+{
+"geo":
+{"@type":"GeoCoordinates","latitude":"37.60295113218015","longitude":"55.60059870162757"},
+"name":"Креп-Комп","@type":"Place","address":
+{"@type":"PostalAddress","addressLocality":"Москва"}},
+"organizer":"Креп-Комп","performer":"Креп-Комп","startDate":"2023-01-01T03:00:00+00:00"
+}]
+</script>
 
