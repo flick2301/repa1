@@ -223,7 +223,18 @@ $arrFilter['!CATALOG_PRICE_8'] = false;
 <?}?>
 
 
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  "name": "Креп-комп",
+  "url": "https://krep-komp.ru/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://krep-komp.ru/#/query={search_term_string}",
+  }
+}
+</script>
 
 <script>$(document).ready(function(){var tabs=new Tabby("[data-tabby-tabs]");});</script>
 
