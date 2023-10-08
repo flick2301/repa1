@@ -57,7 +57,45 @@ function globalGetTitle($title = "", $template="new.moskrep") {
 	}
 }
 
-function getSalesFromPrice($price, $currency)
+function getSalesFromPriceNew($price, $currency, $items)
+{
+	if(CModule::IncludeModule("catalog")){
+	$sale = 0;
+	if($price > 5000 && $price < 10000)
+		$catalog_group_id = ID_PRICE_5;
+	if($price > 10000 && $price < 15000)
+		$catalog_group_id = ID_PRICE_10;
+	if($price > 15000 && $price < 20000)
+		$catalog_group_id = ID_PRICE_15;
+	if($price > 20000 && $price < 25000)
+		$catalog_group_id = ID_PRICE_20;
+	if($price > 25000 && $price < 100000)
+		$catalog_group_id = ID_PRICE_25;
+	if($price > 100000 && $price < 500000)
+		$catalog_group_id = ID_PRICE_30;
+	if($price > 500000)
+		$catalog_group_id = ID_PRICE_35;
+	
+	foreach($items as $item)
+	{
+		
+		$db_item_price = CPrice::GetList(array(), array("PRODUCT_ID" => $item['PRODUCT_ID'], "CATALOG_GROUP_ID" => $catalog_group_id));
+		
+		while ($ar_item_price = $db_item_price->Fetch())
+		{
+			
+			$price_new += $ar_item_price["PRICE"]*$item['QUANTITY'];
+	
+		}
+	}
+	$price_new = CurrencyFormat($price_new, $currency);
+	$sale = CurrencyFormat($sale, $currency);
+	}
+	return $price_new;
+}
+
+
+function getSalesFromPrice($price, $currency, $items)
 {
 	$sale = 0;
 	if($price > 5000 && $price < 10000)

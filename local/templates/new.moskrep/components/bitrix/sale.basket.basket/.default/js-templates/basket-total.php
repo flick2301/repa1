@@ -22,7 +22,7 @@ use Bitrix\Main\Localization\Loc;
                   </li>
 				  {{#DISCOUNT_OF_PRICE_PERCENT}}
 				  <li class="in-cart-total__item">
-                     <p class="in-cart-total__name">Со скидкой {{{DISCOUNT_OF_PRICE_PERCENT}}}%</p>
+                     <p class="in-cart-total__name">Со скидкой </p>
 					 
 						<p class="in-cart-total__text" data-entity="basket-total-sale">{{{DISCOUNT_OF_PRICE_FORMATED}}}</p>
 					

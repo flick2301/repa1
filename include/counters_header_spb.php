@@ -1,4 +1,4 @@
-<?if(!strpos($_SERVER['HTTP_USER_AGENT'],'Chrome-Lighthouse')):?>
+
 <!-- Google Analitycs -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-69398243-1"></script>
 <script>
@@ -106,4 +106,4 @@ ct.src = document.location.protocol+'//cc.calltracking.ru/phone.a7431.11162.asyn
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ct, s);
 })();
 </script>
-<?endif?>
+

@@ -21,6 +21,7 @@ $result['BASKET_ITEM_RENDER_DATA'] = array();
 foreach ($this->basketItems as $row)
 {
   
+	$result['ITEMS'][] = $row;
 	$rowData = array(
 		'ID' => $row['ID'],
 		'PRODUCT_ID' => $row['PRODUCT_ID'],
@@ -398,7 +399,7 @@ if ($result['allWeight'] > 0)
 }
 if ($result['allSum_FORMATED'] > 0)
 {
-	$totalData['DISCOUNT_OF_PRICE_FORMATED'] = getSalesFromPrice($result['allSum'], $result['CURRENCY']);
+	$totalData['DISCOUNT_OF_PRICE_FORMATED'] = getSalesFromPriceNew($result['allSum'], $result['CURRENCY'], $result['ITEMS']);
 }
 if ($result['allSum_FORMATED'] > 0)
 {

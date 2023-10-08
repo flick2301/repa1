@@ -1,6 +1,8 @@
 <?php
 //УДАЛЕНИЕ ЭЛЕМЕНТОВ С ПУСТЫМИ ЦЕНАМИ(ЕДИНСТВЕННЫЙ СПОСОБ ЗАЧИСТКИ УСТАРЕВШИХ ПОЗИЦИЙ ИЗ 1С)
 //А ТАК ЖЕ РАНЖИРОВАНИЕ ПОЗИЦИЙ С ВНУТРЕННИМ ДИАМЕТРОМ (добавление числового значения диаметра)
+
+
 function AgentDeleteZeroElements(){
     
     if(CModule::IncludeModule('iblock')){
@@ -265,4 +267,8 @@ function AgentDeactivateStatusR()
 	return "AgentDeactivateStatusR();";
 
 }
-?>
+
+
+
+
+

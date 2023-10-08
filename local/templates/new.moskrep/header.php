@@ -93,6 +93,7 @@ $APPLICATION->ShowMeta("robots");?>
    
 
 	<?$APPLICATION->AddBufferContent("canonnical");?>
+	<?$APPLICATION->AddBufferContent("newsschema");?>
 
 
 
@@ -233,6 +234,22 @@ $APPLICATION->IncludeFile(
            ref.parentNode.insertBefore(apiJs, ref);
        }(document));
     </script>
+	
+	<?if($path=='/')
+	{?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  "name": "Креп-комп",
+  "url": "https://krep-komp.ru/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://krep-komp.ru/#/query={search_term_string}",
+  }
+}
+</script>
+	<?}?>
 </head>
 
 

@@ -27,5 +27,12 @@ $dbBasketItems = CSaleBasket::GetList(
     );
 while ($arItems = $dbBasketItems->Fetch())
 {
-   $arResult['IDS'][] = $arItems['PRODUCT_ID'];
+   //$arResult['IDS'][] = $arItems;
 }
+foreach($arResult['JS_DATA']['GRID']['ROWS'] as $row)
+{
+	$arResult['IDS'][] = $row['data'];
+}
+$discount_price = getSalesFromPriceNew($arResult['JS_DATA']['TOTAL']['ORDER_PRICE'], 'RUB', $arResult['IDS']);
+
+$arResult['JS_DATA']['TOTAL']['DISCOUNT_FROM_FUNCTION'] = $discount_price;

@@ -67,8 +67,16 @@ $APPLICATION->SetTitle("Контакты");
 					<div class="shops__box">
 						<div class="shops__topic">БУХГАЛТЕРИЯ</div>
 						<div class="shops__address">Для актов-сверок:</div>
-						Телефон: <a href='tel:+7 (812) 309-95-45'>+7 (812) 309-95-45</a>  (доб. 136)<br>
-						Почта: <a class="shops__email" href="mailto:docs@krep-komp.ru">docs@krep-komp.ru</a>
+						Телефон: <a href='tel:+7 (812) 309-95-45'>+7 (812) 309-95-45</a>  (доб. 153)<br>
+						Почта: <a class="shops__email" href="mailto:buh3@krep-komp.ru">buh3@krep-komp.ru</a>
+					</div>
+				<?}elseif($_SERVER['HTTP_HOST']=='pskov.krep-komp.ru')
+				{?>	
+					<div class="shops__box">
+						<div class="shops__topic">БУХГАЛТЕРИЯ</div>
+						<div class="shops__address">Для актов-сверок:</div>
+						Телефон: <a href='tel:+7 (812) 309-95-45'>+7 (812) 309-95-45</a>  (доб. 153)<br>
+						Почта: <a class="shops__email" href="mailto:buh3@krep-komp.ru">buh3@krep-komp.ru</a>
 					</div>
 				<?}else{?>	
 					

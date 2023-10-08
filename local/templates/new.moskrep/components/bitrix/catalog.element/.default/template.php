@@ -69,7 +69,7 @@ dataLayer.push({
           "@type": "Organization",
           "name": "КРЕП-КОМП"
         }
-      }
+      },
 	  "aggregateRating": {
 		"@type": "AggregateRating",
 		"ratingValue" : "5",

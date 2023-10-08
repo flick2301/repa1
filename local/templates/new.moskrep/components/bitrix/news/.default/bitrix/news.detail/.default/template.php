@@ -11,6 +11,10 @@
 	/** @var string $componentPath */
 	/** @var CBitrixComponent $component */
 	$this->setFrameMode(true);	
+	global $newsResult;
+	global $date_created;
+	global $date_modified;
+	$newsResult = $arResult;
 ?>
 
 <?php
@@ -137,17 +141,25 @@
 		</div>
 	</div>	
 <?endif?>
+<?function newsschema()
+{
+	global $APPLICATION;
+	global $newsResult;
+	global $date_created;
+	global $date_modified;
+    ob_start();
+	echo '
 <script type="application/ld+json">
 {
 	"@context": "https://schema.org",
   "@type": "Article",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://<?=$_SERVER["HTTP_HOST"]?><?$APPLICATION->GetCurPage(false)?>"
+    "@id": "https://'.$_SERVER["HTTP_HOST"].$APPLICATION->GetCurPage(false).'"
   },
-  "headline": "<?=$arResult["NAME"];?>",
-  "description": "<?=$arResult["PREVIEW_TEXT"];?>",
-  "image": "https://krep-komp.ru<?=$arResult["DETAIL_PICTURE"]["SRC"]?>",  
+  "headline": "'.$newsResult["NAME"].'",
+  "description": "'.$newsResult["PREVIEW_TEXT"].'",
+  "image": "https://krep-komp.ru'.$newsResult["DETAIL_PICTURE"]["SRC"].'",  
   "author": {
     "@type": "Organization",
     "name": "Креп-Комп",
@@ -161,7 +173,11 @@
       "url": "https://krep-komp.ru/local/templates/moskrep/assets/design/website-logo/krep-komp.svg"
     }
   },
-  "datePublished": "<?=FormatDate("y-m-d", MakeTimeStamp($date_created))?>",
-  "dateModified": "<?=FormatDate("y-m-d", MakeTimeStamp($date_modified))?>"
+  "datePublished": "'.FormatDate("y-m-d", MakeTimeStamp($date_created)).'",
+  "dateModified": "'.FormatDate("y-m-d", MakeTimeStamp($date_modified)).'"
 }
-</script>
+</script>';
+$result = ob_get_contents();
+        ob_end_clean();
+        return $result;
+}

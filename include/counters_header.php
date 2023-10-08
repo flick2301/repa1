@@ -1,5 +1,3 @@
-
-<? if(!strpos($_SERVER['HTTP_USER_AGENT'],'Chrome-Lighthouse')){?> 
 <script>
 <?if(isset($arUser["PERSONAL_PHONE"])):?>
 dataLayer.push({  
@@ -109,15 +107,9 @@ var mscroll = false;
 <!--json-ld-->
 
 
-<script async>
-
-</script>
-
-
 
 <?if(strstr($_SERVER['HTTP_HOST'], "pskov")):?>   
 <meta name="yandex-verification" content="c14e7a8c7df8075d" />
 <?elseif(strstr($_SERVER['HTTP_HOST'], "novosibirsk")):?>   
 <meta name="yandex-verification" content="e8a6f5c6b10febdb" />
 <?endif?>
-<?}?>
