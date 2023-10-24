@@ -268,6 +268,125 @@ function AgentDeactivateStatusR()
 
 }
 
+//АГЕНТ ФОРМИРОВАНИЯ sitemap.xml.
+function AgentImportSitemap()
+{
+	
+	\Bitrix\Main\Loader::includeModule(
+		'iblock'
+	);
+	
+	
+	// массив для категорий и элементов
+	$array_pages = array();
+	// простые текстовые страницы
+	$array_pages[] = array(
+		'NAME' => 'Главная страница',
+		'URL' => '/',
+		'CHANGEFREQ' => 'monthly',
+		'PRIORITY' => '0.3',
+	);
+	$array_pages[] = array(
+		'NAME' => 'Компания',
+		'URL' => '/company/contacts/',
+		'CHANGEFREQ' => 'monthly',
+		'PRIORITY' => '0.3',
+	);
+	// ID инфоблоков, разделы и элементы которых попадут в карту сайта
+	$array_iblocks_id = array(['id_block' => '17', 'changefreq_block' => 'daily1', 'priority_block' => '0.7', 'changefreq_element' => 'always', 'priority_element' => '0.5']);
+
+    foreach ($array_iblocks_id as $iblock) {
+        // список разделов d7
+        $sectionsQuery = new \Bitrix\Main\Entity\Query(
+            \Bitrix\Iblock\SectionTable::getEntity()
+        );
+        $sectionsQuery->setSelect(array('ID', 'NAME', 'CODE', 'SECTION_PAGE_URL'  =>  'IBLOCK.SECTION_PAGE_URL'))
+            ->setFilter(array('=IBLOCK_ID' => $iblock['id_block'], '=ACTIVE' => "Y"));
+        $sections = $sectionsQuery->exec();
+        foreach ($sections as $section) {
+            $array_pages[] = [
+                'NAME' => $section['NAME'],
+                'URL' => \CIBlock::ReplaceDetailUrl($section['SECTION_PAGE_URL'], $section, true, 'S'),
+                'CHANGEFREQ' => $iblock['changefreq_block'],
+                'PRIORITY' => $iblock['priority_block'],
+            ];
+			
+			
+			$filter = new \CatalogHelpers\FilterButtonsBuilder('section', array(), $section['ID']);
+			
+			foreach($filter->arResult["SORTING"]["SECTIONS"] as $sor_section)
+			{
+                foreach($sor_section["ITEMS"] as $item) {
+							
+							$url = null;
+//							remove or replace SERVER_NAME
+                            if(!empty($item["sef_filter"]["VALUE"]))
+                                $url = CIBlock::ReplaceDetailUrl($section['SECTION_PAGE_URL'].$item["sef_filter"]["VALUE"].'/', $section, true, 'S');
+                            elseif(!$item["arFilters"]["VALUE"])
+                                $url = CIBlock::ReplaceDetailUrl($section['SECTION_PAGE_URL'].$item['CODE'].'/', $section, true, 'S');
+							if($url){
+								$array_pages[] = [
+									'NAME' => $item['NAME'],
+									'URL' => $url,
+                
+								];
+							}
+							
+                        }
+            }
+			
+			
+			
+        }
+		
+        
+        // cписок элементов d7
+        $elementQuery = new \Bitrix\Main\Entity\Query(
+            \Bitrix\Iblock\ElementTable::getEntity()
+        );
+        $elementQuery->setSelect(array('ID', 'NAME', 'CODE', 'DETAIL_PAGE_URL' => 'IBLOCK.DETAIL_PAGE_URL'))
+            ->setFilter(array('=IBLOCK_ID' => $iblock['id_block'], '=ACTIVE' => "Y"));
+        $elements = $elementQuery->exec();
+        foreach ($elements as $element) {
+            $array_pages[] = [
+                'NAME' => $element['NAME'],
+                'URL' => CIBlock::ReplaceDetailUrl($element['DETAIL_PAGE_URL'], $element, true, 'E'),
+                'CHANGEFREQ' => $iblock['changefreq_element'],
+                'PRIORITY' => $iblock['priority_element'],
+            ];
+        }
+        
+    }
+
+	// URL сайта
+	$site_url = 'https://krep-komp.ru/';
+	// cоздаём XML документ 
+	$xml_content = '';
+	foreach ($array_pages as $key => $value) {
+		$xml_content .= '
+		<url>
+		<loc>' . $site_url . $value['URL'] . '</loc>
+		<lastmod>' . date('Y-m-d') . '</lastmod>
+			<changefreq>' . $value['CHANGEFREQ'] . '</changefreq>
+			<priority>' . $value['PRIORITY'] . '</priority>
+		</url>
+		';
+	}
+	// подготовка к записи
+	$xml_file = '<?xml version="1.0" encoding="UTF-8"?>
+	<urlset>
+	' . $xml_content . '
+	</urlset>
+	';
+	// находим/создаем файл для записи
+	$file = new \Bitrix\Main\IO\File(\Bitrix\Main\Application::getDocumentRoot() . '/site.xml');
+	// запись содержимого в файл с заменой
+	$file->putContents($xml_file);
+	
+	return "AgentImportSitemap();";
+
+}
+
 
 
 

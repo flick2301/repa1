@@ -14,6 +14,15 @@ CModule::IncludeModule('highloadblock');
     return $entity_data_class;
 }
 
+function sub_domain()
+{
+	$sub_domain = array_shift((explode('.', $_SERVER['HTTP_HOST'])));
+	if($sub_domain != "krep-komp")
+		return $sub_domain;
+	else
+		return '';
+}
+
 function getContact($url, $data)
 {
     $queryUrl = $url;

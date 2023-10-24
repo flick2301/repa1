@@ -793,7 +793,7 @@ function ChangeMyContent(&$content)
 			$replace = array(
 				'Москве',
 				'Москве и МО',
-				'<span>8 499 350-55-55</span>'
+				'8 499 350-55-55'
 			);  
 		}
 		

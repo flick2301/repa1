@@ -217,8 +217,9 @@ $arrFilter['!CATALOG_PRICE_8'] = false;
 );?>
 
 
+
 <?if(SITE_TEMPLATE_ID!='krep-komp_mobile'){?>
-	<div data-retailrocket-markup-block="63591b58e931eed4c8088a82"></div>
+	<div data-retailrocket-markup-block="63591b58e931eed4c8088a82" region="<?=sub_domain();?>"></div>
 	
 <?}?>
 

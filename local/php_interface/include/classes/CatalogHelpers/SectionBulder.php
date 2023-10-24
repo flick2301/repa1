@@ -12,9 +12,11 @@ class SectionBulder
     public $context;
     public $request;
     public $requestUri;
+	public $sortin_id_iblock;
 
     public function __construct()
     {
+		$this->sortin_id_iblock = 18;
         $this->httpApp = \Bitrix\Main\Application::getInstance();
         $this->context = $this->httpApp->getContext();
         $this->request = $this->context->getRequest();
@@ -31,11 +33,11 @@ class SectionBulder
     {
 		if(!$section_id)
 			$section_id=$this->curSection['ID'];
-        $req = \CIBlockSection::GetList(array(), ["IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'UF_DIRECTORY'=>$section_id], false, array("ID", "UF_*"));
+        $req = \CIBlockSection::GetList(array(), ["IBLOCK_ID" => $this->sortin_id_iblock, "ACTIVE" => "Y", 'UF_DIRECTORY'=>$section_id], false, array("ID", "UF_*"));
         while($section = $req->GetNext())
         {
             $arSections[]=$section['ID'];
-            $req2 = \CIBlockSection::GetList(array(), ["IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'SECTION_ID'=>$section['ID']], false, array("ID"));
+            $req2 = \CIBlockSection::GetList(array(), ["IBLOCK_ID" => $this->sortin_id_iblock, "ACTIVE" => "Y", 'SECTION_ID'=>$section['ID']], false, array("ID"));
             while($sec = $req2->GetNext())
             {
                 $arSections[] = $sec['ID'];
@@ -43,7 +45,7 @@ class SectionBulder
         }
 		
 		
-        $arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'IBLOCK_SECTION_ID'=>$arSections, '=CODE' => $this->arPagesCode, 'PROPERTY_arFilters'=>false);
+        $arFilter = array("IBLOCK_ID" => $this->sortin_id_iblock, "ACTIVE" => "Y", 'IBLOCK_SECTION_ID'=>$arSections, '=CODE' => $this->arPagesCode, 'PROPERTY_arFilters'=>false);
         $res = \CIBlockElement::GetList(array("SORT" => "ASC"), $arFilter, false, false, array('*'));
         while ($ob = $res->GetNextElement()) {
 			
@@ -58,9 +60,9 @@ class SectionBulder
         if (empty($this->curSorting)) {
             $secID = $this->getCurSection();
 
-            $sec_sorting_page = \CIBlockSection::GetList(array(), ["IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'UF_DIRECTORY'=>$secID], false, array("ID", "UF_*"))->GetNext();
+            $sec_sorting_page = \CIBlockSection::GetList(array(), ["IBLOCK_ID" => $this->sortin_id_iblock, "ACTIVE" => "Y", 'UF_DIRECTORY'=>$secID], false, array("ID", "UF_*"))->GetNext();
             $arSortingsCurFromUrl = explode('---', end($this->arPagesCode));
-            $arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", "SECTION_ID"=>$sec_sorting_page['ID'], "INCLUDE_SUBSECTIONS"=>"Y", 'PROPERTY_sef_filter' => implode(" | ", $arSortingsCurFromUrl));
+            $arFilter = array("IBLOCK_ID" => $this->sortin_id_iblock, "ACTIVE" => "Y", "SECTION_ID"=>$sec_sorting_page['ID'], "INCLUDE_SUBSECTIONS"=>"Y", 'PROPERTY_sef_filter' => implode(" | ", $arSortingsCurFromUrl));
 
 			if($sec_sorting_page) {
 				$res = \CIBlockElement::GetList(array("SORT" => "ASC"), $arFilter, false, false, array('*'));
@@ -79,7 +81,7 @@ class SectionBulder
 	
 	public function setCurSorting($sort_id)
 	{
-		$arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'ID'=>$sort_id);
+		$arFilter = array("IBLOCK_ID" => $this->sortin_id_iblock, "ACTIVE" => "Y", 'ID'=>$sort_id);
 		$res = \CIBlockElement::GetList(array("SORT" => "ASC"), $arFilter, false, false, array('*'));
 		while ($ob = $res->GetNextElement()) {
 			
@@ -143,8 +145,8 @@ class SectionBulder
 
     public function isFilterSEF($SEF, $static = false) :bool
     {
-        $sec_sorting_page = \CIBlockSection::GetList(array(), ["IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", 'UF_LANDING_PAGE_CODE'=>$this->curSorting[0]['CODE']], false, array("ID", "UF_*"))->GetNext();
-        $arFilter = array("IBLOCK_ID" => SORTING_IBLOCK_ID, "ACTIVE" => "Y", "SECTION_ID"=>$sec_sorting_page['ID'], "INCLUDE_SUBSECTIONS"=>"Y", '=PROPERTY_sef_filter' => $SEF);
+        $sec_sorting_page = \CIBlockSection::GetList(array(), ["IBLOCK_ID" => $this->sortin_id_iblock, "ACTIVE" => "Y", 'UF_LANDING_PAGE_CODE'=>$this->curSorting[0]['CODE']], false, array("ID", "UF_*"))->GetNext();
+        $arFilter = array("IBLOCK_ID" => $this->sortin_id_iblock, "ACTIVE" => "Y", "SECTION_ID"=>$sec_sorting_page['ID'], "INCLUDE_SUBSECTIONS"=>"Y", '=PROPERTY_sef_filter' => $SEF);
 
         $res = \CIBlockElement::GetList(array("SORT" => "ASC"), $arFilter, false, false, array('*'));
         if ($ob = $res->GetNextElement()) {
@@ -179,7 +181,7 @@ class SectionBulder
         while($arNav = $nav->GetNext())
         {
 
-            $res_sect = \CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>SORTING_IBLOCK_ID, 'ID'=>$arNav['ID']), false, Array('CODE', 'UF_DIRECTORY'));
+            $res_sect = \CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>$this->sortin_id_iblock, 'ID'=>$arNav['ID']), false, Array('CODE', 'UF_DIRECTORY'));
             if($arSect = $res_sect->GetNext()){
 
                 if($arSect['UF_DIRECTORY']){

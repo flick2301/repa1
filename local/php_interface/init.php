@@ -1,6 +1,6 @@
 <?php
 use \Bitrix\Main\Loader;
-
+ini_set('session.cookie_secure', "1"); ini_set('session.cookie_httponly', "1"); ini_set('session.cookie_samesite','None'); session_start();
 if(!defined('B_PROLOG_INCLUDED')||B_PROLOG_INCLUDED!==true)die();
 
 if ($_GET['PAGEN_1']==='1') {

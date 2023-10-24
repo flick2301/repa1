@@ -1,8 +1,36 @@
-<?
-// подключаем пролог
-require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
-use Bitrix\Main\IO;
-use Bitrix\Main\Application;
+<?php
+$_SERVER["DOCUMENT_ROOT"] = realpath(dirname(__FILE__));
+$DOCUMENT_ROOT = $_SERVER["DOCUMENT_ROOT"];
+
+define("NO_KEEP_STATISTIC", true);
+define("NOT_CHECK_PERMISSIONS",true);
+define('BX_NO_ACCELERATOR_RESET', true);
+define('CHK_EVENT', true);
+define('BX_WITH_ON_AFTER_EPILOG', true);
+
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
+
+
+// #
+// # Функции
+// #
+include_once($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/include/functions.php');
+ 
+
+	include_once($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/include/constants.php');
+
+
+
+
+//Классы (СВои)
+include_once($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/include/classes/autoload.php');
+
+CModule::IncludeModule("iblock");
+CModule::IncludeModule("main");
+CModule::IncludeModule("sale");
+CModule::IncludeModule("catalog");
+@set_time_limit(0);
+@ignore_user_abort(true);
 
 global $mySmartFilter;
 global $NavNum;
@@ -76,26 +104,7 @@ if (CModule::IncludeModule("iblock")) {
 			
 			$filter = new \CatalogHelpers\FilterButtonsBuilder('section', array(), $section['ID']);
 			
-			foreach($filter->arResult["SORTING"]["SECTIONS"] as $sor_section)
-			{
-                foreach($sor_section["ITEMS"] as $item) {
-							
-							$url = null;
-//							remove or replace SERVER_NAME
-                            if(!empty($item["sef_filter"]["VALUE"]))
-                                $url = CIBlock::ReplaceDetailUrl($section['SECTION_PAGE_URL'].$item["sef_filter"]["VALUE"].'/', $section, true, 'S');
-                            elseif(!$item["arFilters"]["VALUE"])
-                                $url = CIBlock::ReplaceDetailUrl($section['SECTION_PAGE_URL'].$item['CODE'].'/', $section, true, 'S');
-							if($url){
-								$array_pages[] = [
-									'NAME' => $item['NAME'],
-									'URL' => $url,
-                
-								];
-							}
-							
-                        }
-            }
+			
 		}
         
         // cписок элементов d7
@@ -139,7 +148,7 @@ if (CModule::IncludeModule("iblock")) {
     }
 }
 // URL сайта
-$site_url = 'https://' . $_SERVER['HTTP_HOST'];
+$site_url = 'https://krep-komp.ru';
 // cоздаём XML документ 
 $xml_content = '';
 foreach ($array_pages as $key => $value) {
@@ -157,8 +166,6 @@ $xml_file = '<?xml version="1.0" encoding="UTF-8"?>
   ' . $xml_content . '
 </urlset>
 ';
-// находим/создаем файл для записи
-$file = new IO\File(Application::getDocumentRoot() . '/site.xml');
-// запись содержимого в файл с заменой
-$file->putContents($xml_file);
+
+Bitrix\Main\IO\File::putFileContents('/var/www/krep_komp/krep-komp.ru/site.xml', $xml_file);
 echo 'Завершен!';

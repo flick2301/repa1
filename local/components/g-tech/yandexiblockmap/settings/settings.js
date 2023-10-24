@@ -60,7 +60,7 @@ JCEditorOpener.prototype.btnClick = function ()
 
 	if (BX.util.trim(map_key) == '')
 	{
-		alert(this.jsOptions[2]);
+		//alert(this.jsOptions[2]);
 		return false;
 	}
 

@@ -89,4 +89,9 @@ Array(
 		""
 	),	
 );
+foreach($aMenuLinks as $key=>$val)
+{
+	if(array_search("/articles/", $val) && $_SERVER['HTTP_HOST']!='krep-komp.ru')
+		unset($aMenuLinks[$key]);
+}
 ?>

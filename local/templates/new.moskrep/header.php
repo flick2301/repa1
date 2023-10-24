@@ -4,7 +4,7 @@ use \Bitrix\Main\Localization\Loc;
 use \Bitrix\Main\Page\Asset;
 use Bitrix\Main\Application;
 GLOBAL $is_cart;
-
+header("Set-Cookie: key=value; path=/; domain=krep-komp.ru; Secure; SameSite=None");
 Loc::LoadMessages(__FILE__);
 ?>
 <!-- DESKTOP -->
@@ -93,7 +93,7 @@ $APPLICATION->ShowMeta("robots");?>
    
 
 	<?$APPLICATION->AddBufferContent("canonnical");?>
-	<?$APPLICATION->AddBufferContent("newsschema");?>
+	<?//$APPLICATION->AddBufferContent("newsschema");?>
 
 
 
