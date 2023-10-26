@@ -4,7 +4,6 @@ use \Bitrix\Main\Localization\Loc;
 use \Bitrix\Main\Page\Asset;
 use Bitrix\Main\Application;
 GLOBAL $is_cart;
-header("Set-Cookie: key=value; path=/; domain=krep-komp.ru; Secure; SameSite=None");
 Loc::LoadMessages(__FILE__);
 ?>
 <!-- DESKTOP -->
@@ -193,7 +192,7 @@ $APPLICATION->IncludeFile(
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/jquery.slick-1.9.0.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/tabby-12.0.3.min.js?v=XXXXXXa" defer="defer"></script>
-   <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.popup.js" defer="defer"></script>
+   <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.popup.js<?=$rand?>" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/js/common.min.js" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/js/slick.min.js" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.cookie.js" defer="defer"></script>

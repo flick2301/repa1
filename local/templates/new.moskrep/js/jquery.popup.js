@@ -147,7 +147,10 @@
 			if (D.closeOnOverlayClick)
 				D.overlay.block.add(D.container.block).click(function(e) {
 					if (utils.isEventOut($('>*', D.body), e))
+					{
 						$this.popUp('close');
+						$('.callback_form').fadeOut();
+					}
 				});
 
 			// Запомним настройки
