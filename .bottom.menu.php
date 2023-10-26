@@ -7,11 +7,6 @@ $aMenuLinks = Array(
 		Array(),
 		""
 	),
-
-	
-	
-	
-	
 	Array(
 		"Сертификаты",
 		"/certificates/",
@@ -46,24 +41,24 @@ $aMenuLinks = Array(
 		Array(),
 		Array(),
 		""
-	),	
-    Array(
+	),
+	Array(
 		"Контакты",
 		"/contacts/",
 		Array(),
 		Array(),
 		""
 	),
-    Array(
+	Array(
 		"Статьи",
 		"/articles/",
 		Array(),
 		Array(),
 		""
 	),
-        Array(
+    Array(
 		"Скачать Прайс",
-			"/prays-listy/",
+		"/prays-listy/",
 		Array(),
 		Array(),
 		""
@@ -75,19 +70,21 @@ $aMenuLinks = Array(
 		Array(),
 		""
 	),		
-Array(
+	Array(
 		"Калькулятор веса",
 		"/calculator/",
 		Array(),
 		Array(),
-		""),	
+		""
+	),	
     Array(
 		"Карта сайта",
 		"/map/",
 		Array(),
 		Array(),
 		""
-	),	
+	),
+	
 );
 foreach($aMenuLinks as $key=>$val)
 {

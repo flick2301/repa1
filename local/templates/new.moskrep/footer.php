@@ -126,7 +126,8 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 				Array(
 				"ROOT_MENU_TYPE" => "bottom", 
 				"MAX_LEVEL" => "3", 
-				"CHILD_MENU_TYPE" => "bottom", 
+				"CHILD_MENU_TYPE" => "bottom",
+				"MENU_CACHE_TYPE"=>"N",
 				"USE_EXT" => "Y" 
 				)
 				);?>
