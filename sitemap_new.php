@@ -102,12 +102,33 @@ if (CModule::IncludeModule("iblock")) {
 		
 		foreach ($ar_krepezh as $section) {
 			
-			$filter = new \CatalogHelpers\FilterButtonsBuilder('section', array(), $section['ID']);
+			$filter = new \CatalogHelpers\FilterButtonsBuilder('section', array(), $section['ID'], 18, true);
 			
+			foreach($filter->arResult["SORTING"]["SECTIONS"] as $sor_section)
+			{
+                foreach($sor_section["ITEMS"] as $item) {
+
+							$url = null;
+//							remove or replace SERVER_NAME
+                            if(!empty($item["sef_filter"]["VALUE"]))
+                                $url = \CIBlock::ReplaceDetailUrl($section['SECTION_PAGE_URL'].$item["sef_filter"]["VALUE"].'/', $section, true, 'S');
+                            elseif(!$item["arFilters"]["VALUE"])
+                                $url = \CIBlock::ReplaceDetailUrl($section['SECTION_PAGE_URL'].$item['CODE'].'/', $section, true, 'S');
+							if($url){
+								$array_pages[] = [
+									'NAME' => $item['NAME'],
+									'URL' => $url,
+
+								];
+							}
+
+                        }
+            }
+			//\Bitrix\Main\Diag\Debug::dumpToFile($filter->arResult, "", '/upload/filter.txt');
 			
 		}
         
-        // cписок элементов d7
+        /* cписок элементов d7
         $elementQuery = new Bitrix\Main\Entity\Query(
             \Bitrix\Iblock\ElementTable::getEntity()
         );
@@ -117,34 +138,35 @@ if (CModule::IncludeModule("iblock")) {
         foreach ($elements as $element) {
             $array_pages[] = [
                 'NAME' => $element['NAME'],
-                'URL' => CIBlock::ReplaceDetailUrl($element['DETAIL_PAGE_URL'], $element, true, 'E'),
+                'URL' => \CIBlock::ReplaceDetailUrl($element['DETAIL_PAGE_URL'], $element, true, 'E'),
                 'CHANGEFREQ' => $iblock['changefreq_element'],
                 'PRIORITY' => $iblock['priority_element'],
             ];
         }
+		*/
         // // cписок элементов
-        // $res = CIBlockElement::GetList(
-        //     array(),
-        //     array(
-        //         "IBLOCK_ID" => $iblock['id_block'],
-        //         "ACTIVE" => "Y",
-        //     ),
-        //     false,
-        //     false,
-        //     array(
-        //         "ID",
-        //         "NAME",
-        //         "DETAIL_PAGE_URL",
-        //     )
-        // );
-        // while ($ob = $res->GetNext()) {
-        //     $array_pages[] = array(
-        //         'NAME' => $ob['NAME'],
-        //         'URL' => $ob['DETAIL_PAGE_URL'],
-        //         'CHANGEFREQ' => $iblock['changefreq_element'],
-        //         'PRIORITY' => $iblock['priority_element'],
-        //     );
-        // }
+         $res = \CIBlockElement::GetList(
+             array(),
+             array(
+                 "IBLOCK_ID" => 17,
+                 "ACTIVE" => "Y",
+             ),
+             false,
+             false,
+             array(
+                 "ID",
+                 "NAME",
+                 "DETAIL_PAGE_URL",
+             )
+         );
+         while ($ob = $res->GetNext()) {
+             $array_pages[] = array(
+                 'NAME' => $ob['NAME'],
+                 'URL' => $ob['DETAIL_PAGE_URL'],
+                 'CHANGEFREQ' => $iblock['changefreq_element'],
+                 'PRIORITY' => $iblock['priority_element'],
+             );
+         }
     }
 }
 // URL сайта

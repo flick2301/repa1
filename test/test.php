@@ -25,7 +25,7 @@ while ($arItem = $rsData->Fetch()) {
 ?>
 
 <?
-$arProps_for = ['DIAMETR', 'POKRYTIE',  'GOLOVKA', 'KONETS',  'TSVET', 'DLINA'];
+$arProps_for = ['DIAMETR', 'POKRYTIE',  'GOLOVKA', 'KONETS',  'TSVET', 'DLINA', 'DIN', 'REZBA', 'MATERIAL', 'KONETS', 'PO_PRIMENENIYU'];
 
 foreach($arProps_for as $prop_item)
 {

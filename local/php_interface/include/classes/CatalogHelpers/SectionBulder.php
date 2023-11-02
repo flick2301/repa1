@@ -13,10 +13,15 @@ class SectionBulder
     public $request;
     public $requestUri;
 	public $sortin_id_iblock;
+	public $catalog_iblock_id=17;
+	public $cron;
 
-    public function __construct()
+    public function __construct($cron=false)
     {
 		$this->sortin_id_iblock = 18;
+		$this->cron = $cron;
+		if(!$cron)
+		{
         $this->httpApp = \Bitrix\Main\Application::getInstance();
         $this->context = $this->httpApp->getContext();
         $this->request = $this->context->getRequest();
@@ -25,14 +30,25 @@ class SectionBulder
         $path = $uri->getPath();
         $arUrl = explode('/', $path);
         $this->arPagesCode = array_diff($arUrl, array(''));
-        $this->getCurSection();
+		$this->getCurSection();
+		}else{
+			$uri = new \Bitrix\Main\Web\Uri("/");
+			$path = $uri->getPath();
+			$arUrl = explode('/', $path);
+			$this->arPagesCode = array_diff($arUrl, array(''));
+		}
+        
     }
 
 
     public function getCurSorting($section_id=0)
     {
-		if(!$section_id)
+		if($this->cron)
+			$section_id=0;
+		elseif(!$section_id)
 			$section_id=$this->curSection['ID'];
+		
+		
         $req = \CIBlockSection::GetList(array(), ["IBLOCK_ID" => $this->sortin_id_iblock, "ACTIVE" => "Y", 'UF_DIRECTORY'=>$section_id], false, array("ID", "UF_*"));
         while($section = $req->GetNext())
         {
@@ -44,7 +60,10 @@ class SectionBulder
             }
         }
 		
-		
+		if($this->cron)
+		{
+			$this->arPagesCode="";
+		}
         $arFilter = array("IBLOCK_ID" => $this->sortin_id_iblock, "ACTIVE" => "Y", 'IBLOCK_SECTION_ID'=>$arSections, '=CODE' => $this->arPagesCode, 'PROPERTY_arFilters'=>false);
         $res = \CIBlockElement::GetList(array("SORT" => "ASC"), $arFilter, false, false, array('*'));
         while ($ob = $res->GetNextElement()) {
@@ -52,10 +71,19 @@ class SectionBulder
             $arFields = $ob->GetFields();
 			
             $arProps = $ob->GetProperties();
+			if(!$this->cron)
+			{
             $this->curSorting[] = array_merge($arFields, $arProps);
-            $this->isFilterSEF($this->arPagesCode[array_key_last($this->arPagesCode)]);
+			
+				$this->isFilterSEF($this->arPagesCode[array_key_last($this->arPagesCode)]);
+			}else{
+				$curSorting[] = array_merge($arFields, $arProps);
+			}				
 
         }
+		
+		if(!$this->cron)
+		{
 
         if (empty($this->curSorting)) {
             $secID = $this->getCurSection();
@@ -75,8 +103,11 @@ class SectionBulder
 				}
 			}
         }
-		
-        return $this->curSorting;
+		}
+		if(!$this->cron)
+			return $this->curSorting;
+		else
+			return $curSorting;
     }
 	
 	public function setCurSorting($sort_id)
@@ -94,7 +125,7 @@ class SectionBulder
 	
 	public function setCurSection($section_id)
 	{
-		$arFilter = array("IBLOCK_ID" => CATALOG_IBLOCK_ID, "ID" => $section_id, "ACTIVE" => "Y");
+		$arFilter = array("IBLOCK_ID" => $this->catalog_iblock_id, "ID" => $section_id, "ACTIVE" => "Y");
 		$req = \CIBlockSection::GetList(array(), $arFilter, false, array("ID", "CODE", "SECTION_PAGE_URL"));
 		if ($arCurSection = $req->GetNext()) {
 			$this->curSection = $arCurSection;
@@ -108,7 +139,7 @@ class SectionBulder
 
         foreach ($this->arPagesCode as $code) {
             $section_id = $section_id ?? false;
-            $arFilter = array("IBLOCK_ID" => CATALOG_IBLOCK_ID, "SECTION_ID" => $section_id, "ACTIVE" => "Y", '=CODE' => $code);
+            $arFilter = array("IBLOCK_ID" => $this->catalog_iblock_id, "SECTION_ID" => $section_id, "ACTIVE" => "Y", '=CODE' => $code);
             $req = \CIBlockSection::GetList(array(), $arFilter, false, array("ID", "CODE", "SECTION_PAGE_URL"));
             if ($arCurSection = $req->GetNext()) {
                 $this->curSection = $arCurSection;
@@ -187,7 +218,7 @@ class SectionBulder
                 if($arSect['UF_DIRECTORY']){
 
                     $code_section = $this->arPagesCode[array_key_last($this->arPagesCode)];
-                    $res_sect = \CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>CATALOG_IBLOCK_ID, 'ID'=>$arSect['UF_DIRECTORY']), false, Array('ID', 'SECTION_PAGE_URL'));
+                    $res_sect = \CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>$this->catalog_iblock_id, 'ID'=>$arSect['UF_DIRECTORY']), false, Array('ID', 'SECTION_PAGE_URL'));
                     $dir = $this->request->getRequestedPageDirectory();
 
                     if($parent_sec_id = $res_sect->GetNext()){

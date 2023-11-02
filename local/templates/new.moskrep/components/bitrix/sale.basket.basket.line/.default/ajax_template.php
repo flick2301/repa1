@@ -53,7 +53,7 @@ if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empt
 				<?$rsStore = CCatalogStoreProduct::GetList(array(), array('PRODUCT_ID' => $v['ID']), false, false, array('STORE_ID', 'AMOUNT', 'STORE_NAME'));
 					while($arStore = $rsStore->Fetch()){
 						$v['STORE'][$arStore['STORE_ID']] = $arStore;
-						?><script>alert(<?=$v['STORE'][$arStore['STORE_ID']]?>);</script><?
+						?><?
 					}
 				?>
                 <tr class="added-product__tr">

@@ -86,8 +86,8 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
           </div>
           <div class="footer__right">
             <div class="footer__top">
-              <div class="footer__item"><a class="footer__link" href="/">Пользовательское соглашение</a></div>
-              <div class="footer__item"><a class="footer__link" href="/">Что такое cookies?</a></div>
+              <div class="footer__item"><a class="footer__link" href="/privacy/">Пользовательское соглашение</a></div>
+              <div class="footer__item"><a class="footer__link" href="/cookies/">Что такое cookies?</a></div>
               <div class="footer__item"><a class="footer__link" href="/">Программа лояльности</a></div>
             </div>
             <div class="footer__bot"><?$APPLICATION->IncludeComponent("d7:contact_shops","phone",Array(
