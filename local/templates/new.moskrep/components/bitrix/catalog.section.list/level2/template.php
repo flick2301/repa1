@@ -494,7 +494,6 @@ while($arSection = $db_list->GetNext()) {
 <?if($arResult['SECTION']['UF_DESCRIPTION_ABOUT'] /*&& ($USER->IsAdmin() || $arResult['SECTION']['UF_DESCRIPTION_SPECIES'] || $arResult['SECTION']['UF_DESCRIPTION_WHOLESALE'] || $arResult['SECTION']['UF_DESCRIPTION_WARRANTY'] || $arResult['SECTION']['UF_DESCRIPTION_DELIVERY'] || $arResult['SECTION']['UF_DESCRIPTION_SORT'])*/):?>
 
 
-
         <!--product-tabs-->
                <div class="product-page__tabs product-tabs" id="desc">
                   <ul class="product-tabs__list" data-product-page-tabs>

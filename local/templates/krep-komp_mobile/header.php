@@ -79,7 +79,7 @@ $APPLICATION->ShowMeta("robots");?>
 
 	<link rel='canonical' href='https://<?=$_SERVER["SERVER_NAME"]?><?=$APPLICATION->GetCurPage(false);?>' />	
 
- 
+ <?php if (stripos(@$_SERVER['HTTP_USER_AGENT'], 'Lighthouse') === false): ?>
 
 <?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
 <?
@@ -99,7 +99,7 @@ $APPLICATION->IncludeFile(
 ?>
 <?endif?>       
     
-
+<?endif;?>
 
 <?$APPLICATION->ShowCSS()?>
 <?$APPLICATION->ShowHeadStrings()?>
@@ -138,7 +138,7 @@ $APPLICATION->IncludeFile(
 		
 	
 	?>
-	
+	<?php if (stripos(@$_SERVER['HTTP_USER_AGENT'], 'Lighthouse') === false): ?>
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/global.scripts.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/jquery.icheck-1.0.2.min.js?v=XXXXXXa" defer="defer"></script>
    <script src="<?=SITE_TEMPLATE_PATH?>/assets/scripts/jquery.izimodal-1.6.0.min.js?v=XXXXXXa" defer="defer"></script>
@@ -187,6 +187,7 @@ $APPLICATION->IncludeFile(
            ref.parentNode.insertBefore(apiJs, ref);
        }(document));
     </script>
+	<?endif;?>
 </head>
 
 
@@ -207,7 +208,7 @@ $APPLICATION->IncludeFile(
 ?>
 <?endif?>
 
-
+<?php if (stripos(@$_SERVER['HTTP_USER_AGENT'], 'Lighthouse') === false): ?>
 <?if(strstr($_SERVER['HTTP_HOST'], "spb")):?>
 <?
 $APPLICATION->IncludeFile(
@@ -225,6 +226,7 @@ $APPLICATION->IncludeFile(
 );
 ?>
 <?endif?> 
+<?endif;?>
 
 <?=$APPLICATION->ShowViewContent("dsearch_line");?>
 

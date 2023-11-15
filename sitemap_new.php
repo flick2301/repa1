@@ -37,8 +37,12 @@ global $NavNum;
 global $sec_builder;
 
 
-// массив для категорий и элементов
+// массив для категорий и посадочных страниц
 $array_pages = array();
+// массив для элементов
+$array_pages_products = array();
+// массив для элементов
+$array_pages_images = array();
 // простые текстовые страницы
 $array_pages[] = array(
     'NAME' => 'Главная страница',
@@ -157,15 +161,25 @@ if (CModule::IncludeModule("iblock")) {
                  "ID",
                  "NAME",
                  "DETAIL_PAGE_URL",
+				 'DETAIL_PICTURE',
              )
          );
          while ($ob = $res->GetNext()) {
-             $array_pages[] = array(
+             $array_pages_products[] = array(
                  'NAME' => $ob['NAME'],
                  'URL' => $ob['DETAIL_PAGE_URL'],
                  'CHANGEFREQ' => $iblock['changefreq_element'],
                  'PRIORITY' => $iblock['priority_element'],
              );
+			 if($ob['DETAIL_PICTURE'])
+			 {
+				 $array_pages_images[] = array(
+                 'NAME' => $ob['NAME'],
+                 'URL' => $ob['DETAIL_PAGE_URL'],
+                 'IMAGE' => CFile::GetPath($ob['DETAIL_PICTURE']),
+                 
+             );
+			 }
          }
     }
 }
@@ -189,5 +203,48 @@ $xml_file = '<?xml version="1.0" encoding="UTF-8"?>
 </urlset>
 ';
 
-Bitrix\Main\IO\File::putFileContents('/var/www/krep_komp/krep-komp.ru/site.xml', $xml_file);
+Bitrix\Main\IO\File::putFileContents('/var/www/krep_komp/krep-komp.ru/category.xml', $xml_file);
+
+$xml_content = '';
+foreach ($array_pages_products as $key => $value) {
+    $xml_content .= '
+      <url>
+    <loc>' . $site_url . $value['URL'] . '</loc>
+    <lastmod>' . date('Y-m-d') . '</lastmod>
+        
+  </url>
+  ';
+}
+// подготовка к записи
+$xml_file = '<?xml version="1.0" encoding="UTF-8"?>
+<urlset>
+  ' . $xml_content . '
+</urlset>
+';
+
+Bitrix\Main\IO\File::putFileContents('/var/www/krep_komp/krep-komp.ru/products.xml', $xml_file);
+
+
+$xml_content = '';
+foreach ($array_pages_images as $key => $value) {
+    $xml_content .= '
+      <url>
+    <loc>' . $site_url . $value['URL'] . '</loc>
+    <image:image>
+      <image:loc>https://krep-komp.ru'. $value['IMAGE'] .'</image:loc>
+    </image:image>
+        
+  </url>
+  ';
+}
+// подготовка к записи
+$xml_file = '<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  ' . $xml_content . '
+</urlset>
+';
+
+Bitrix\Main\IO\File::putFileContents('/var/www/krep_komp/krep-komp.ru/sitemap_image.xml', $xml_file);
+
 echo 'Завершен!';
