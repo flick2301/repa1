@@ -74,12 +74,36 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 			<div><div>Получите заказ в этот же день с доставкой по Москве и области</div></div>
 			<div><div>"КРЕП-КОМП" - главный оптовый поставщик крепежа в России</div></div>
 			</div>	
-	
-	
-	
-	
+	<div class='basic-layout__content full'>
+	<div class="main_hits_title">Полезные статьи</div>
+	<?$APPLICATION->IncludeComponent("bitrix:news.list","articles",Array(
+		
+		"IBLOCK_ID" => "16",
+		"NEWS_COUNT" => "6",
+		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_ORDER1" => "DESC",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER2" => "ASC",
+		"SET_TITLE" => "N",
+		"SET_BROWSER_TITLE" => "N",
+		"SET_META_KEYWORDS" => "N",
+		"SET_META_DESCRIPTION" => "N",
+		"SET_LAST_MODIFIED" => "N",
+		"FILTER_NAME" => "sliderFilter",
+		"FIELD_CODE" => Array("ID"),
+		"PROPERTY_CODE" => Array("DESCRIPTION"),
+		"CHECK_DATES" => "Y",
+		"DETAIL_URL" => "",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"DISPLAY_BOTTOM_PAGER"=>"N",
+		
+	)
+);?>
+</div>
          
 </div>
+
 <?}?>
 	
 

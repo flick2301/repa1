@@ -229,4 +229,7 @@ $arrFilter['!CATALOG_PRICE_8'] = false;
 <script>$(document).ready(function(){var tabs=new Tabby("[data-tabby-tabs]");});</script>
 
 
+
+
+
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

@@ -504,7 +504,80 @@ dataLayer.push({
                </div>
 			</div>
 			<!--product-page-->
+		<div class="basic-layout__module product-widget">
+<?$APPLICATION->IncludeComponent(
+	"bitrix:catalog.products.viewed",
+	"",
+	Array(
 		
+		"ADD_PROPERTIES_TO_BASKET" => "Y",
+		"ADD_TO_BASKET_ACTION" => "BUY",
+		"BASKET_URL" => "/personal/basket.php",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "3600",
+		"CACHE_TYPE" => "A",
+		"CART_PROPERTIES_2" => array("*"),
+		"CART_PROPERTIES_3" => array("*"),
+		"CONVERT_CURRENCY" => "Y",
+		"CURRENCY_ID" => "RUB",
+		"DATA_LAYER_NAME" => "dataLayer",
+		"DEPTH" => "",
+		"DISCOUNT_PERCENT_POSITION" => "top-right",
+		"ENLARGE_PRODUCT" => "STRICT",
+		"ENLARGE_PROP_2" => "NEWPRODUCT",
+		"HIDE_NOT_AVAILABLE" => "N",
+		"HIDE_NOT_AVAILABLE_OFFERS" => "L",
+		"IBLOCK_ID" => "17",
+		"IBLOCK_MODE" => "single",
+		"IBLOCK_TYPE" => "catalog",
+		"LABEL_PROP_2" => array("NEWPRODUCT"),
+		"LABEL_PROP_MOBILE_2" => array(),
+		"LABEL_PROP_POSITION" => "top-left",
+		"MESS_BTN_ADD_TO_BASKET" => "В корзину",
+		"MESS_BTN_BUY" => "Купить",
+		"MESS_BTN_DETAIL" => "Подробнее",
+		"MESS_BTN_SUBSCRIBE" => "Подписаться",
+		"MESS_NOT_AVAILABLE" => "Нет в наличии",
+		"MESS_RELATIVE_QUANTITY_FEW" => "мало",
+		"MESS_RELATIVE_QUANTITY_MANY" => "много",
+		"MESS_SHOW_MAX_QUANTITY" => "Наличие",
+		"OFFER_TREE_PROPS_3" => array("COLOR_REF","SIZES_SHOES","SIZES_CLOTHES"),
+		"PAGE_ELEMENT_COUNT" => "4",
+		"PARTIAL_PRODUCT_PROPERTIES" => "N",
+		"PRICE_CODE" => array("*"
+		),
+		"PRICE_VAT_INCLUDE" => "Y",
+		"PRODUCT_BLOCKS_ORDER" => "price,props,quantityLimit,sku,quantity,buttons,compare",
+		"PRODUCT_ID_VARIABLE" => "id",
+		"PRODUCT_PROPS_VARIABLE" => "prop",
+		"PRODUCT_QUANTITY_VARIABLE" => "",
+		"PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'3','BIG_DATA':false},{'VARIANT':'3','BIG_DATA':false}]",
+		"PRODUCT_SUBSCRIPTION" => "Y",
+		"PROPERTY_CODE_17" => array("*"),
+		"PROPERTY_CODE_3" => array("*"),
+		"PROPERTY_CODE_MOBILE_2" => array(),
+		"RELATIVE_QUANTITY_FACTOR" => "5",
+		"SECTION_CODE" => "",
+		"SECTION_ELEMENT_CODE" => "",
+		"SECTION_ELEMENT_ID" => "",
+		"SECTION_ID" => "",
+		"SHOW_CLOSE_POPUP" => "N",
+		"SHOW_DISCOUNT_PERCENT" => "Y",
+		"SHOW_FROM_SECTION" => "N",
+		"SHOW_MAX_QUANTITY" => "M",
+		"SHOW_OLD_PRICE" => "Y",
+		"SHOW_PRICE_COUNT" => "",
+		"SHOW_PRODUCTS_2" => "N",
+		"SHOW_SLIDER" => "Y",
+		"SLIDER_INTERVAL" => "3000",
+		"SLIDER_PROGRESS" => "Y",
+		"TEMPLATE_THEME" => "blue",
+		"USE_ENHANCED_ECOMMERCE" => "N",
+		"USE_PRICE_COUNT" => "N",
+		"USE_PRODUCT_QUANTITY" => "Y"
+	)
+);?>
+</div>
 	
 			<div class="basic-layout__module product-widget">
                <!--content-tabs-->
@@ -629,7 +702,7 @@ dataLayer.push({
 		"LABEL_PROP" => "",
 		"PRODUCT_SUBSCRIPTION" => "Y",
 		"SHOW_DISCOUNT_PERCENT" => "N",
-		"SHOW_OLD_PRICE" => "N",
+		"SHOW_OLD_PRICE" => "Y",
 		"SHOW_MAX_QUANTITY" => "N",
 		"SHOW_CLOSE_POPUP" => "N",
 		"MESS_BTN_BUY" => "Купить",
@@ -714,11 +787,15 @@ while($arSection = $db_list->GetNext()) {
 }
 ?>
 </div>
+
+
             </div>
 			<!--content-tabs-->
 		</div>
 		<!--product-widget-->
-               
+          
+
+		  
 	</div>
 
 <br> 	
@@ -727,6 +804,9 @@ while($arSection = $db_list->GetNext()) {
 <div class="ya-share2" data-curtain data-size="l" data-services="messenger,vkontakte,facebook,telegram"></div>
 </div>
 <br>   
+
+
+
 
 <?global $userEmail;?>
 <!-- Criteo Product dataLayer -->
