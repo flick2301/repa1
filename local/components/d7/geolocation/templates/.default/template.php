@@ -67,7 +67,7 @@ foreach($arResult["ITEMS"] AS $item) {
 <?if($item["PROP"]["VISIBLE"]["VALUE"]):?><?$i++?><li class="<?if($item["SORT"] < 500 || $item["PROP"]['HAVE_STORES']["VALUE"]):?>master<?endif?>" rel='<?=$item["PROP"]["NAME"]["VALUE"] ? $item["PROP"]["NAME"]["VALUE"] : $item["NAME"]?>'  data-value='<?=$item["ID"]?>' data-domain='<?=$item["PROP"]["DOMAIN"]["VALUE"]?>'><?=$item["NAME"]?><?if($item["PROP"]["REGION"]["VALUE"] && false):?><span><?=$item["PROP"]["REGION"]["VALUE"]?></span><?endif?>(<?=$item['SHOPS_COUNT']?>)</li><?endif?>
 <?endforeach?>
 			
-                        <!--<li data-value='0' data-domain='krep-komp.ru'>Другой регион</li>-->
+                        <!--1<li data-value='0' data-domain='krep-komp.ru'>Другой регион</li>-->
                     
                 </ul>
 				</div> 

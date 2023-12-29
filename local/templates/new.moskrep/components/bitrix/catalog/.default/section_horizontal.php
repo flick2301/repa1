@@ -6,7 +6,10 @@ if($_REQUEST['section_temp'] == 'new'){
 }else{
     $name_temple = 'horizontal_new';
 }
-
+if($_GET['SIZEN_1'])
+	$page_elements=$_GET['SIZEN_1'];
+else
+	$page_elements=20;	
 /*
 отфильтровать товары которых нет в наличии на складе
 $arrFilter['>CATALOG_STORE_AMOUNT_'.$DEFAULT_STORE_ID]=0;*/
@@ -73,7 +76,7 @@ if($aSection["UF_SEC_LIST_SIZES"])
 						"SHOW_404" => $arParams["SHOW_404"],
 						"FILE_404" => $arParams["FILE_404"],
 						"DISPLAY_COMPARE" => $arParams["USE_COMPARE"],
-						"PAGE_ELEMENT_COUNT" => $_GET['SIZEN_1'],
+						"PAGE_ELEMENT_COUNT" => $page_elements,
 						"LINE_ELEMENT_COUNT" => $arParams["LINE_ELEMENT_COUNT"],
 						"PRICE_CODE" => $arParams["PRICE_CODE"],
 						"USE_PRICE_COUNT" => $arParams["USE_PRICE_COUNT"],

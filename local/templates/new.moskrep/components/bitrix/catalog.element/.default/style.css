@@ -74,7 +74,8 @@
 }
 
 .card-price-dop{
-    font-size:0.775rem;
+    font-size:1.275rem !important;
+	line-height: 1.25rem !important;
 }
 
 
@@ -413,4 +414,20 @@ text-decoration-skip-ink: none;
     height: 1em;
     width: 1em;
 	color:#552fec;
+}
+#tooltip2 {
+  z-index: 9999;
+  position: absolute;
+  display: none;
+  top:0px;
+  left:0px;
+  margin-left:0px !important;
+  background-color: #fff;
+  padding: 5px 10px 5px 10px;
+  color: #000;
+  border-radius: 5px; 
+  box-shadow: 0 1px 2px #555;
+}
+.product-purchase img{
+	height:30px;
 }

@@ -148,18 +148,21 @@ dataLayer.push({
                      <!--product-purchase-->
                      <div class="product-purchase">
 						<?if($old_price){?>
-						<p class="card__price-last"><?echo number_format($old_price, 2, '.', ' ');?> ₽</p>
+						<p class="card__price-last" ><?echo number_format($old_price, 2, '.', ' ');?> ₽<img src='/images/info-svgrepo-com.svg' data-tooltip2="<?echo number_format($old_price, 2, '.', ' ');?>" /></p>
                         <?}?>					 
-                        <p class="product-purchase__price"><?echo number_format($price, 2, '.', ' ');?> ₽</p>
+                        <p class="product-purchase__price" ><?echo number_format($price, 2, '.', ' ');?> ₽<img src='/images/info-svgrepo-com.svg' data-tooltip2="<?echo number_format($price, 2, '.', ' ');?>" /></p>
 			<?//временно отключаем вывод цен?>
-            <?if($USER->IsAuthorized() && 0):?>
-			<div class='card-price-dop-contaiber'>
-            <?if($arResult["DOP_PRICE"][0]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][0]?> ₽</b> при заказе от 20000 ₽</div><br><?endif?>
-            <?if($arResult["DOP_PRICE"][1]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][1]?> ₽</b> при заказе от 100000 ₽</div><br><?endif?>
-            <?if($arResult["DOP_PRICE"][2]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][2]?> ₽</b> при заказе от 500000 ₽</div><br><?endif?>
-			<?if($arResult["DOP_PRICE"][3]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][3]?> ₽</b> при заказе от 5000000 ₽</div><?endif?>
+            
+			<div class='card-price-dop-contaiber' id='tooltip2'>
+            <?if($arResult["DOP_PRICE"][0]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][0]?> ₽</b> при заказе от 5 000₽</div><br><?endif?>
+            <?if($arResult["DOP_PRICE"][1]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][1]?> ₽</b> при заказе от 10 0000₽</div><br><?endif?>
+            <?if($arResult["DOP_PRICE"][2]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][2]?> ₽</b> при заказе от 15 000₽</div><br><?endif?>
+			<?if($arResult["DOP_PRICE"][3]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][3]?> ₽</b> при заказе от 20 000₽</div><br><?endif?>
+			<?if($arResult["DOP_PRICE"][4]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][4]?> ₽</b> при заказе от 25 000₽</div><br><?endif?>
+			<?if($arResult["DOP_PRICE"][5]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][5]?> ₽</b> при заказе от 100 000₽</div><br><?endif?>
+			<?if($arResult["DOP_PRICE"][6]):?><div class='card-price-dop'><b><?=$arResult["DOP_PRICE"][6]?> ₽</b> при заказе от 500 000₽</div><?endif?>
 			</div>
-            <?endif;?>
+            
 			
 <?if ($old_price):?>			
 <div class="product__date-block">	

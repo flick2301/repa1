@@ -336,15 +336,24 @@ if($arResult['SORTING']['SECTION_ID'] && $arParams['DISPLAY_FILTER_BUTTONS']=='Y
                            <div class="catalog-table__content catalog-table__content--to-cart">
                               <!--price-in-table-->
                               <div class="price-in-table">
-                                 <p class="price-in-table__actual"><?=number_format($price, 2, '.', ' ');?> ₽</p>
+                                 <p class="price-in-table__actual" data-tooltip2="<?echo number_format($price, 2, '.', ' ');?>"><?=number_format($price, 2, '.', ' ');?> ₽</p>
 								 <?if($old_price){?>
-								 <p class="price-in-table__legacy"><?=number_format($old_price, 2, '.', ' ');?> ₽</p>
+								 <p class="price-in-table__legacy" data-tooltip2="<?echo number_format($price, 2, '.', ' ');?>"><?=number_format($old_price, 2, '.', ' ');?> ₽</p>
 								 <?}?>
 								 <?if($item['PRICE_FOR_ONE']){?>
                                  <p class="price-in-table__units"><?=$item['PRICE_FOR_ONE']?> ₽ за <?=$item['UNIT']?></p>
 								 <?}?>
                               </div>
                               <!--price-in-table-->
+							  <div class='card-price-dop-contaiber' id='tooltip2'>
+            <?if($item["DOP_PRICE"][0]):?><div class='card-price-dop'><b><?=$item["DOP_PRICE"][0]?> ₽</b> при заказе от 5 000₽</div><br><?endif?>
+            <?if($item["DOP_PRICE"][1]):?><div class='card-price-dop'><b><?=$item["DOP_PRICE"][1]?> ₽</b> при заказе от 10 0000₽</div><br><?endif?>
+            <?if($item["DOP_PRICE"][2]):?><div class='card-price-dop'><b><?=$item["DOP_PRICE"][2]?> ₽</b> при заказе от 15 000₽</div><br><?endif?>
+			<?if($item["DOP_PRICE"][3]):?><div class='card-price-dop'><b><?=$item["DOP_PRICE"][3]?> ₽</b> при заказе от 20 000₽</div><br><?endif?>
+			<?if($item["DOP_PRICE"][4]):?><div class='card-price-dop'><b><?=$item["DOP_PRICE"][4]?> ₽</b> при заказе от 25 000₽</div><br><?endif?>
+			<?if($item["DOP_PRICE"][5]):?><div class='card-price-dop'><b><?=$item["DOP_PRICE"][5]?> ₽</b> при заказе от 100 000₽</div><br><?endif?>
+			<?if($item["DOP_PRICE"][6]):?><div class='card-price-dop'><b><?=$item["DOP_PRICE"][6]?> ₽</b> при заказе от 500 000₽</div><?endif?>
+			</div>
 							  <input type="hidden" name="quantity-hidden" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" onchange='ChangeInputCart("<?=$item['NAME']?>", $(this))' id="QUANTITY_<?=$item['ID']?>" value="1" class="value__input">
                               <button class="catalog-table__to-cart" onmousedown="try { rrApi.addToBasket(<?=$item['ID']?>) } catch(e) {}" data-product="<?=$item['ID']?>" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"><i class="colored-cart-icon catalog-table__cart" data-product="<?=$item['ID']?>" data-quantity="<?=$item['STORE'][$DEFAULT_STORE_ID]['AMOUNT']?>" data-name="<?=$item['NAME']?>" data-price="<?=$price?>"></i>Добавить в корзину</button>
                            </div>

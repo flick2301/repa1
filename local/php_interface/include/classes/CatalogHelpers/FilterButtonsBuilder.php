@@ -76,7 +76,7 @@ class  FilterButtonsBuilder
             }
 
         }
-
+		
 		if(!$cron)
 		{
         if($this->arResult['SORTING']['SECTION_ID'] && $section_id)
@@ -150,7 +150,7 @@ class  FilterButtonsBuilder
         }
 		if(!$cron)
 		{
-
+		
         $resProps = \CIBlock::GetProperties($this->catalog_iblock_id, Array(), Array());
         while($arProp = $resProps->Fetch()){
             $arProp_catalog[]=$arProp['CODE'];
@@ -215,6 +215,7 @@ class  FilterButtonsBuilder
                         $_POST['ENUM_LIST'][$extra_setting] = true;
                     }
                 }
+				
 
             }
 
@@ -276,6 +277,7 @@ class  FilterButtonsBuilder
                 }
                 //ЕСЛИ ВЫБРАНЫ ТОЛЬКО СВОЙСТВА
             }elseif($this->arResult['REFERENCE']['ITEM'][$arProp_sorting[0]['CODE']]['VALUE']!=''){
+				
 
                 $nav = \CIBlockSection::GetNavChain(false,$arFields['IBLOCK_SECTION_ID']);
                 while($arSectionPath = $nav->GetNext()){
@@ -335,6 +337,7 @@ class  FilterButtonsBuilder
             }
         }
 		}
+		
     }
 
 

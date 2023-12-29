@@ -270,6 +270,22 @@ $(document).on('click', '#view_wholesale', function() {
 	
 	if($(':checkbox:checked').length)
 		window.scrollTo(0, $(".bx-filter-section").offset().top);
+	
+	
+	
+	
+	$("[data-tooltip2]").mousemove(function (eventObject) {
+          $data_tooltip = $(this).attr("data-tooltip2");
+		  var x = eventObject.pageX+15;
+          $("#tooltip2").css({ 
+                "top" : eventObject.pageY - 105,
+                "left" : x,
+				"margin-left" : 0
+              })
+              .show();
+          }).mouseout(function () {
+            $("#tooltip2").hide();
+      });
 
 });
 function ChangeInputCart(name, e){

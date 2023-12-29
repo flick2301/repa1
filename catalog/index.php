@@ -93,7 +93,7 @@ $APPLICATION->IncludeFile(
 			16 => "NEWPRODUCT",
 			17 => "MANUFACTURER",
 			18 => "STRANA_PROIZVODSTV",
-			19=>"",
+			19=>"KLASS_PROCHNOSTI",
 		),
 		"DETAIL_SET_CANONICAL_URL" => "N",
 		"DETAIL_SET_VIEWED_IN_COMPONENT" => "N",
@@ -231,7 +231,7 @@ $APPLICATION->IncludeFile(
         "SELECT_PAGE_TEMPLATE"=>"Y",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRICE_CODE" => array(
-			0 => "Распродажа",
+			0 => "*",
 			1 => "К0 (БАЗОВАЯ НАЧАЛЬНАЯ)",
 			2 => "К18 (от 5 млн.руб)",
 		),

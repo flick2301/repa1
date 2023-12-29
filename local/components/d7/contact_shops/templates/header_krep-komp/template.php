@@ -1,6 +1,12 @@
+<?
+global $phone_global;
+global $email_global;
+
+?>
 <?foreach($arResult["ITEMS"] AS $key=>$item):?>
 
- 
+ <?$email_global = $item["PROP"]["EMAIL"]["VALUE"];?>
+ <?$phone_global = $item["PROP"]["PHONE"]["VALUE"];?>
 
 	<div class="call-back b24-web-form-popup-btn-2 top__chat">Заказать звонок</div>
 

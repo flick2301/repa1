@@ -196,6 +196,10 @@ shop.push({id: <?=$item["ID"]?>, balloon: true, lat: <?=$item["PROP"]["LAT"]["VA
               </div>
 
 <?endif?>
-<script>
-
-</script>
+<?if(SITE_TEMPLATE_ID!='krep-komp_mobile'){?>
+<style>
+.shops .shops__map{
+	height:800px;
+}
+</style>
+<?}?>

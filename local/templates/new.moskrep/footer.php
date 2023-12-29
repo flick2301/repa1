@@ -74,6 +74,9 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 			<div><div>Получите заказ в этот же день с доставкой по Москве и области</div></div>
 			<div><div>"КРЕП-КОМП" - главный оптовый поставщик крепежа в России</div></div>
 			</div>	
+			
+			<?if($_SERVER['HTTP_HOST'] == 'krep-komp.ru')
+			{?>
 	<div class='basic-layout__content full'>
 	<div class="main_hits_title">Полезные статьи</div>
 	<?$APPLICATION->IncludeComponent("bitrix:news.list","articles",Array(
@@ -101,6 +104,7 @@ if (CSite::InDir('/index.php') && SITE_ID!='s2'){
 	)
 );?>
 </div>
+			<?}?>
          
 </div>
 

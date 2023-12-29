@@ -211,7 +211,7 @@ class SectionBulder
 
         while($arNav = $nav->GetNext())
         {
-
+			
             $res_sect = \CIBlockSection::GetList(array("SORT"=>"ASC"), array("IBLOCK_ID"=>$this->sortin_id_iblock, 'ID'=>$arNav['ID']), false, Array('CODE', 'UF_DIRECTORY'));
             if($arSect = $res_sect->GetNext()){
 
@@ -223,9 +223,10 @@ class SectionBulder
 
                     if($parent_sec_id = $res_sect->GetNext()){
 
-                        $right_url = $parent_sec_id['SECTION_PAGE_URL'].$this->curSorting[0]['CODE'];
-                        $right_url2 = $parent_sec_id['SECTION_PAGE_URL'].str_replace("-", "_", $this->curSorting[0]['CODE']);
-
+                        $right_url = $parent_sec_id['SECTION_PAGE_URL'].$this->curSorting[0]['CODE'].'/';
+                        $right_url2 = $parent_sec_id['SECTION_PAGE_URL'].str_replace("-", "_", $this->curSorting[0]['CODE'].'/');
+						
+						
                         if($parent_sec_id['ID'] == $arSect['UF_DIRECTORY'][0] && ($dir == $right_url || $dir == $right_url2 || $this->isFilterSEF($code_section))){
 
                             return true;

@@ -7,6 +7,8 @@ use Bitrix\Main\Application;
 Loc::LoadMessages(__FILE__);
 
 global $APPLICATION;
+global $phone_global;
+global $email_global;
 ?>
 <!-- DESKTOP -->
 <!DOCTYPE html>
@@ -192,6 +194,16 @@ $APPLICATION->IncludeFile(
 
 
 <body class="!basic-layout basic-layout--default" id="basic-layout">
+<div style='display:none'>
+<?$APPLICATION->IncludeComponent("d7:contact_shops","header_krep-komp",Array(
+								"IBLOCK_ID" => "19", 
+								"CACHE_TYPE" => "A", 
+								"CACHE_TIME" => "3600", 
+								"CACHE_FILTER" => "N",
+								"LIMIT" => 1,	
+							), false
+						);?>
+						</div>
 	<!-- scrollTopBtn -->
 	<button class="btn-up btn-up--hide" type="button" aria-label="Вернуться в начало страницы">Top</button>
 
@@ -293,8 +305,9 @@ $APPLICATION->IncludeFile(
 									), false
 								);?>
 				<span class="mobile__item mobile__item_footer">
-					<a href='tel:<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/telephone.php"), false);?>'><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/telephone.php"), false);?></a><br/><br/>
-					<a href='mailto:<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/email.php"), false);?>'><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/email.php"), false);?></a>
+				
+					<a href='tel:<?=$phone_global?>'><?=$phone_global?></a><br/><br/>
+					<a href='mailto:<?=$email_global?>'><?=$email_global?></a>
 				</span>			
 			</div>
 		</div>
@@ -454,18 +467,7 @@ $APPLICATION->IncludeFile(
 						<div class='top__address'>
 						<?if(!strstr($_SERVER['HTTP_HOST'], "dev") || true)
 						{?>
-							<?if(!$_GET["nogeolocation"] && false):?>
-								<?require_once($_SERVER["DOCUMENT_ROOT"] . "/include/geolocation.php");?>
-							<?elseif(false):?>
-								<?$APPLICATION->IncludeComponent("d7:geolocation","",Array(
-										"IBLOCK_ID" => "23", 
-										"CACHE_TYPE" => "A", 
-										"CACHE_TIME" => "3600", 
-										"CACHE_FILTER" => "N",
-										"SHOPS_IBLOCK_ID" => '19',
-									), false
-								);?>
-							<?endif?>	
+							
 						<?}?>				
 						</div>
 					</div>

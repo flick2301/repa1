@@ -316,6 +316,22 @@ if(count($arSizes)>0 && (count($arSizes)!=1 || $arSizes[0]!='DIAMETR_VNUTRENNIY'
 		$vnut_diametr=false;
 		$arResult['SIZES'][$arResult['ITEMS'][$key]['SIZES']][$key]=$arResult['ITEMS'][$key];
 	}
+	
+	
+	
+	$db_res = CPrice::GetList(
+		array('ASC'=>'PRICE'),
+		array(
+			'PRODUCT_ID' => $arItem['ID'],
+			'CATALOG_GROUP_ID' => array(ID_PRICE_5, ID_PRICE_10, ID_PRICE_15, ID_PRICE_20, ID_PRICE_25, ID_PRICE_30, ID_PRICE_35),
+		)
+	);
+	$arResult['ITEMS'][$key]["DOP_PRICE"] = array();
+	while($ar_res = $db_res->Fetch())
+	{
+		$arResult['ITEMS'][$key]["DOP_PRICE"][] = round($ar_res['PRICE'], 2);
+	}
+	rsort($arResult['ITEMS'][$key]["DOP_PRICE"]);
     
     
 }

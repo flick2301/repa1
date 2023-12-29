@@ -4,6 +4,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 
 global $APPLICATION;
 global $DEFAULT_STORE_ID;
+
 include($_SERVER["DOCUMENT_ROOT"]."/include/array_rals.php");
 $ral_in_ar = $arResult['ITEMS'][10]['PROPERTIES']["TSVET"]["VALUE"];
 

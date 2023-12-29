@@ -64,7 +64,7 @@ foreach($arResult["ITEMS"] AS $item) {
 					
 <?foreach($arResult["ITEMS"] AS $item):?>
 <?if($first_letter != mb_substr($item['NAME'], 0,1,"UTF-8")) { echo "</ul><ul><b>".mb_substr($item['NAME'], 0,1,"UTF-8")."</b>";}?>
-<?if($item["PROP"]["VISIBLE"]["VALUE"]):?><?$i++?><li class="<?if($item["SORT"] < 500):?>master<?endif?>" rel='<?=$item["PROP"]["NAME"]["VALUE"] ? $item["PROP"]["NAME"]["VALUE"] : $item["NAME"]?>' data-value='<?=$item["ID"]?>' data-domain='<?=$item["PROP"]["DOMAIN"]["VALUE"]?>'><?=$item["NAME"]?> (<?=$item['SHOPS_COUNT']?>)</li><?endif?>
+<?if($item["PROP"]["VISIBLE"]["VALUE"]):?><?$i++?><li class="<?if($item["SORT"] < 500 || $item["PROP"]['HAVE_STORES']["VALUE"]):?>master<?endif?>" rel='<?=$item["PROP"]["NAME"]["VALUE"] ? $item["PROP"]["NAME"]["VALUE"] : $item["NAME"]?>' data-value='<?=$item["ID"]?>' data-domain='<?=$item["PROP"]["DOMAIN"]["VALUE"]?>'><?=$item["NAME"]?> (<?=$item['SHOPS_COUNT']?>)</li><?endif?>
 <?$first_letter = mb_substr($item['NAME'],0,1,"UTF-8");?>
 <?endforeach?>
 			

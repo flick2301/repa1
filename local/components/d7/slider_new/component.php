@@ -5,28 +5,7 @@ if(CModule::IncludeModule('iblock')){
 	CModule::IncludeModule('conversion');
 	$detect = new \Bitrix\Conversion\Internals\MobileDetect;
 
-	$obCache = new CPHPCache();
 	
-	if($detect->isMobile())
-	{
-		$res_width = 792;
-		$res_height = 507;
-	}else
-	{
-		$res_width = 1584;
-		$res_height = 1014;
-	}
-	
-
-
-
-if($obCache->InitCache($arParams["CACHE_TIME"], "slider", "/"))// Если кэш валиден
-{
-   $vars = $obCache->GetVars();// Извлечение переменных из кэша
-   $arResult = $vars["RESULT"];
-}
-elseif($obCache->StartDataCache())// Если кэш невалиден
-{	
 
 
 		$arFilter = array('IBLOCK_ID' => $arParams["IBLOCK_ID"], 'ACTIVE' => 'Y');
@@ -46,11 +25,7 @@ elseif($obCache->StartDataCache())// Если кэш невалиден
 			$i++;
 		}
 	
-	$obCache->EndDataCache(array(
-        "RESULT"    => $arResult
-        ));// Сохраняем переменные в кэш.	
-		
-   }  
+	
 
 	if (count($arResult["ITEMS"])) $this->IncludeComponentTemplate();	
 } 

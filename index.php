@@ -23,7 +23,7 @@ else
 	"d7:slider_new", 
 	$template, 
 	array(
-		"IBLOCK_TYPE" => "banners",
+		
 		"IBLOCK_ID" => "6",
 		"width" => "904",
 		"height" => "290",
@@ -36,7 +36,7 @@ else
 		"controlNav" => "Y",
 		"pauseOnHover" => "Y",
 		"text_title" => "",
-		"COMPONENT_TEMPLATE" => ".default"
+		"COMPONENT_TEMPLATE" => "krep-komp_desktop"
 	),
 	false
 );?>
